@@ -45,7 +45,7 @@ format:
 ::: {.workflow-tables}
 ### PM6 relaxed scan, TS, IRC and endpoint frequencies; B3LYP density/ESP
 
-A semiempirical PM6 scan of the proton-transfer coordinate seeds the saddle search, the IRC connects the saddle to both tautomers, and B3LYP/6-31+G(d) single points give density and ESP at the stationary points.
+A semiempirical PM6 scan of the proton-transfer coordinate seeds the saddle search, the IRC connects the saddle to both tautomers, and B3LYP/$6\text{-}31{+}\mathrm{G}(d)$ single points give density and ESP at the stationary points.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |

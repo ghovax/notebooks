@@ -43,9 +43,9 @@ format:
 ## Methods
 
 ::: {.workflow-tables}
-### Lotus screened Slater exchange, 6-31G, fixed geometry
+### Lotus screened Slater exchange, $6\text{-}31\mathrm{G}$, fixed geometry
 
-The Lotus code iterates the density, screened Slater exchange and electronic response together at a fixed geometry in the 6-31G basis until the screening $\varepsilon_s$ converges.
+The Lotus code iterates the density, screened Slater exchange and electronic response together at a fixed geometry in the $6\text{-}31\mathrm{G}$ basis until the screening $\varepsilon_s$ converges.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |

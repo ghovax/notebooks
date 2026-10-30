@@ -45,7 +45,7 @@ format:
 ::: {.workflow-tables}
 ### PM6-D3 plane-constrained scans, TS and IRC; B3LYP density/ESP
 
-Dispersion-corrected PM6 scans with the molecule held planar locate the in-plane exchange saddle and its IRC, and B3LYP/6-31+G(d) single points give density and ESP along the path.
+Dispersion-corrected PM6 scans with the molecule held planar locate the in-plane exchange saddle and its IRC, and B3LYP/$6\text{-}31{+}\mathrm{G}(d)$ single points give density and ESP along the path.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
