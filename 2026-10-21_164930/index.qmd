@@ -54,7 +54,7 @@ The same B3LYP and DD-DFT sequence, with each run starting from logged coordinat
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
-| ![In progress](../../../private/research-findings/projects/icons/hourglass.svg "In progress: The B3LYP branch, its screening and the DD-DFT screening are complete; the five DD-DFT runs that follow are prepared. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse."){.workflow-status} | 29–30 Oct 2026 | Benzene with independent guesses | Rebuilds the benzene comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
+| ![In progress](../../../private/research-findings/projects/icons/hourglass.svg "In progress: The B3LYP branch, its screening and the DD-DFT screening are complete; the remaining DD-DFT calculations are prepared. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse."){.workflow-status} | 29–30 Oct 2026 | [Benzene with independent guesses](2026-10-29_183718/) | Rebuilds the benzene comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
 |  | 28 Oct 2026 | Methoxy difluoroboron chelate (1) with independent guesses | Rebuilds the methoxy comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
 :::
 

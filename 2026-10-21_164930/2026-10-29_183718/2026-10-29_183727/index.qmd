@@ -1,0 +1,54 @@
+---
+title: 'Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations'
+pagetitle: 'Calculate DD-DFT vertical ground-state to excited-state excitations'
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-29
+date-modified: last-modified
+jupyter: research-findings
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    toc: true
+    toc-depth: 4
+    toc-expand: true
+    embed-resources: true
+    html-math-method: katex
+    body-classes: calculation-page
+    template-partials:
+    - ../../../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../../../private/research-findings/quarto/mathml.html
+    - file: ../../../../../private/research-findings/quarto/math-header.html
+    - file: ../../../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../../../private/research-findings/quarto/folds.html
+execute:
+  echo: false
+  warning: false
+  error: false
+  daemon: false
+---
+
+::: {.header-breadcrumb}
+[Homepage](../../../)[/]{.sep}[Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](../../)[/]{.sep}[Benzene with independent guesses](../)[/]{.sep}[Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations]{.current}
+:::
+
+::: {.calculation-status}
+ **Not run**
+:::
+
+{{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
+
+This calculation is prepared; no output is available yet.
+
+## Goal
+
+- Calculate the ten lowest vertical $S_0\rightarrow S_n$ excitations at the verified DD-DFT $S_0$ geometry.
+

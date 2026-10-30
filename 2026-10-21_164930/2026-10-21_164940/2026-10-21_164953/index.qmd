@@ -90,7 +90,7 @@ _calculation_table(_calculation.overview())
 The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
 
 ```{python}
-_calculation_table(_calculation.link0_table(1))
+_calculation_table(_calculation.links_table(1, 0))
 ```
 
 ### Route keywords and options

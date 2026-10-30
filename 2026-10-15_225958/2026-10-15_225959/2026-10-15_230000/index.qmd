@@ -84,7 +84,7 @@ The calculation runs 2 steps in one Gaussian input; each step reads the previous
 The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
 
 ```{python}
-_calculation_table(_calculation.link0_table(1))
+_calculation_table(_calculation.links_table(1, 0))
 ```
 
 ### Route keywords and options
@@ -238,7 +238,7 @@ _calculation_table(_calculation.coverage_table(1))
 The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
 
 ```{python}
-_calculation_table(_calculation.link0_table(2))
+_calculation_table(_calculation.links_table(2, 0))
 ```
 
 ### Route keywords and options

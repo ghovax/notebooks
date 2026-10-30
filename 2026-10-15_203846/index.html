@@ -2144,13 +2144,21 @@ vertical-align: -.125em;
             (original, text) => widths.has(text) ? '<mspace width="' + widths.get(text) + '"></mspace>' : original);
     }
     function normalize(root) {
-        const nodes = root.matches?.("mtext") ? [root] : root.querySelectorAll?.("mtext") || [];
+        // The DOM renderer emits bare text nodes; serialized MathML uses mtext.
+        const nodes = [];
+        if (root.nodeType === 3) nodes.push(root);
+        const roots = root.namespaceURI === namespace ? [root] : root.querySelectorAll?.("math") || [];
+        for (const math of roots) {
+            const walker = document.createTreeWalker(math, 4);
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+        }
         for (const node of nodes) {
-            const width = widths.get(node.textContent);
-            if (!width || node.namespaceURI !== namespace) continue;
+            const parent = node.parentNode, width = widths.get(node.nodeValue);
+            if (!width || parent?.namespaceURI !== namespace) continue;
             const space = document.createElementNS(namespace, "mspace");
             space.setAttribute("width", width);
-            node.replaceWith(space);
+            if (parent.localName === "mtext" && parent.childNodes.length === 1) parent.replaceWith(space);
+            else node.replaceWith(space);
         }
     }
     function install() {
@@ -2171,7 +2179,7 @@ vertical-align: -.125em;
     }
     new MutationObserver(changes => {
         for (const change of changes) for (const node of change.addedNodes)
-            if (node.nodeType === 1) normalize(node);
+            if (node.nodeType === 1 || node.nodeType === 3) normalize(node);
     }).observe(document.documentElement, {childList: true, subtree: true});
     document.addEventListener("DOMContentLoaded", install);
     window.addEventListener("load", install);

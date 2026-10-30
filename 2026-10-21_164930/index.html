@@ -2144,13 +2144,21 @@ vertical-align: -.125em;
             (original, text) => widths.has(text) ? '<mspace width="' + widths.get(text) + '"></mspace>' : original);
     }
     function normalize(root) {
-        const nodes = root.matches?.("mtext") ? [root] : root.querySelectorAll?.("mtext") || [];
+        // The DOM renderer emits bare text nodes; serialized MathML uses mtext.
+        const nodes = [];
+        if (root.nodeType === 3) nodes.push(root);
+        const roots = root.namespaceURI === namespace ? [root] : root.querySelectorAll?.("math") || [];
+        for (const math of roots) {
+            const walker = document.createTreeWalker(math, 4);
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+        }
         for (const node of nodes) {
-            const width = widths.get(node.textContent);
-            if (!width || node.namespaceURI !== namespace) continue;
+            const parent = node.parentNode, width = widths.get(node.nodeValue);
+            if (!width || parent?.namespaceURI !== namespace) continue;
             const space = document.createElementNS(namespace, "mspace");
             space.setAttribute("width", width);
-            node.replaceWith(space);
+            if (parent.localName === "mtext" && parent.childNodes.length === 1) parent.replaceWith(space);
+            else node.replaceWith(space);
         }
     }
     function install() {
@@ -2171,7 +2179,7 @@ vertical-align: -.125em;
     }
     new MutationObserver(changes => {
         for (const change of changes) for (const node of change.addedNodes)
-            if (node.nodeType === 1) normalize(node);
+            if (node.nodeType === 1 || node.nodeType === 3) normalize(node);
     }).observe(document.documentElement, {childList: true, subtree: true});
     document.addEventListener("DOMContentLoaded", install);
     window.addEventListener("load", install);
@@ -2473,12 +2481,6 @@ math { font-family: "STIX Two Math", math; font-size: 1.073em; math-style: compa
 <h3 class="anchored" data-anchor-id="b3lyp-and-dd-dft-independent-guesses-stability-checked">B3LYP and DD-DFT, independent guesses, stability-checked</h3>
 <p>The same B3LYP and DD-DFT sequence, with each run starting from logged coordinates and Gaussian’s default guess and testing the stability of its SCF solution before use.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Status</th>
@@ -2489,9 +2491,9 @@ math { font-family: "STIX Two Math", math; font-size: 1.073em; math-style: compa
 </thead>
 <tbody>
 <tr class="odd">
-<td><img role="img" aria-label="In progress" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" title="In progress: The B3LYP branch, its screening and the DD-DFT screening are complete; the five DD-DFT runs that follow are prepared. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse." class="workflow-status img-fluid" alt="In progress"></td>
+<td><img role="img" aria-label="In progress" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" title="In progress: The B3LYP branch, its screening and the DD-DFT screening are complete; the remaining DD-DFT calculations are prepared. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse." class="workflow-status img-fluid" alt="In progress"></td>
 <td>29–30 Oct 2026</td>
-<td>Benzene with independent guesses</td>
+<td><a href="2026-10-29_183718/">Benzene with independent guesses</a></td>
 <td>Rebuilds the benzene comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability.</td>
 </tr>
 <tr class="even">

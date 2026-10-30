@@ -1,0 +1,387 @@
+---
+title: 'Check stability and verify the B3LYP $S_0$ minimum'
+pagetitle: 'Check stability and verify the B3LYP ground-state minimum'
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-29
+date-modified: last-modified
+jupyter: research-findings
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    toc: true
+    toc-depth: 4
+    toc-expand: true
+    embed-resources: true
+    html-math-method: katex
+    body-classes: calculation-page
+    template-partials:
+    - ../../../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../../../private/research-findings/quarto/mathml.html
+    - file: ../../../../../private/research-findings/quarto/math-header.html
+    - file: ../../../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../../../private/research-findings/quarto/folds.html
+execute:
+  echo: false
+  warning: false
+  error: false
+  daemon: false
+---
+
+::: {.header-breadcrumb}
+[Homepage](../../../)[/]{.sep}[Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](../../)[/]{.sep}[Benzene with independent guesses](../)[/]{.sep}[Check stability and verify the B3LYP $S_0$ minimum]{.current}
+:::
+
+::: {.calculation-status}
+![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 10.7815. Vibrational frequencies: The largest alpha MO coefficient is 10.7815. Vibrational frequencies: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} **Problems**
+:::
+
+{{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
+
+```{python}
+import sys
+sys.path.insert(0, "../../../../../private/research-findings/quarto")
+from pathlib import Path
+import pandas as pd
+from runflow.results import read_gaussian_checkpoint, xyz_frames
+from IPython.display import Markdown, display
+from molstarview import MolstarViewer
+from calculations import LABELS, PLOT_LABELS, Calculation
+
+_calculation = Calculation("../../../../../private/research-findings/projects/2026-10-21_164930/2026-10-29_183718/2026-10-29_183720")
+register_plot_labels(PLOT_LABELS)
+_calculation_icons = {True: "![Yes](../../../../../private/research-findings/projects/icons/check.svg){.workflow-status}", False: "![No](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}", "Warning": "![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status}", "Error": "![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}"}
+
+
+def _calculation_table(data, precision=5):
+    """Render a table of codename columns under their labels, with booleans as status icons."""
+    data = data.map(lambda value: _calculation_icons[value] if isinstance(value, bool) else value)
+    display(Markdown(scientific_table(data.rename(columns=LABELS), precision=precision)))
+```
+
+## Warnings and errors
+
+Every warning and error parsed from the program output and the runflow script records, with where it comes from and its physical or numerical reason.
+
+```{python}
+_calculation_table(_calculation.findings_table(_calculation_icons))
+```
+
+## Calculation overview
+
+The program, the resources and the timing of the calculation.
+
+```{python}
+_calculation_table(_calculation.overview())
+```
+
+The calculation runs 2 steps in one Gaussian input; each step reads the previous step's checkpoint.
+
+## Single point
+
+### Link 0 commands
+
+The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
+
+```{python}
+_calculation_table(_calculation.links_table(1, 0))
+```
+
+### Route keywords and options
+
+The route selects the method, basis set and job type. Each keyword is listed with its meaning, followed by its options, as Gaussian read them.
+
+::: {.grouped-table}
+```{python}
+_calculation_table(_calculation.route_table(1))
+```
+
+:::
+
+### Molecule specification
+
+The job's title, charge and spin multiplicity, and where Gaussian took its geometry from.
+
+```{python}
+_calculation_table(_calculation.molecule_table(1))
+```
+
+### Starting geometry
+
+The structure the calculation starts from, as the first geometry Gaussian printed.
+
+```{python}
+display(MolstarViewer(_calculation.geometry_frame()))
+```
+
+::: {.fold}
+#### Starting coordinates
+
+Cartesian coordinates of every atom.
+
+```{python}
+_calculation_table(_calculation.coordinates_table())
+```
+
+:::
+
+### Electronic system and solvent
+
+The size of the electronic problem Gaussian set up for this geometry and basis set, with the solvent model where the job uses one.
+
+```{python}
+_calculation_table(_calculation.system_table(1))
+```
+
+### SCF convergence
+
+The job converged 1 self-consistent field solution, each with its final energy, number of cycles and remaining RMS density change. Every SCF uses `RB3LYP`. Convergence is marked on the first SCF and wherever it changes.
+
+```{python}
+_calculation_table(_calculation.scf_table(1), precision=12)
+```
+
+The RMS density change falls cycle by cycle below its convergence threshold, the dashed line.
+
+```{python}
+display_chart(_calculation.scf_chart(1), zoom_axes=('x',))
+```
+
+### Geometries along the job
+
+Every geometry Gaussian printed during the job, in order; the viewer steps through them, trailed by faded copies of the preceding geometries.
+
+```{python}
+display(MolstarViewer(_calculation.trajectory(1)))
+```
+
+### Frontier orbitals
+
+The frontier orbital energies of the final SCF and their gap, an orbital-energy difference rather than an excitation energy.
+
+```{python}
+_calculation_table(_calculation.frontier_table(1))
+```
+
+The canonical orbital energies around the gap.
+
+```{python}
+display_chart(_calculation.orbitals_chart(1), zoom_axes=('y',))
+```
+
+### Atomic charges and dipole
+
+The Mulliken atomic charges of the last population analysis, blue where positive and red where negative.
+
+```{python}
+display_chart(_calculation.charges_chart(1))
+```
+
+The dipole moment of the same density, by component and in magnitude.
+
+```{python}
+_calculation_table(_calculation.dipole_table(1))
+```
+
+### Wavefunction stability
+
+Gaussian's test of whether the SCF wavefunction is stable against orbital rotations.
+
+```{python}
+_calculation_table(_calculation.stability_table(1))
+```
+
+### Gaussian archive entry
+
+The archive entry is Gaussian's own summary, printed when the job ends normally. Its energies are rounded; the SCF table holds the precise values.
+
+```{python}
+_calculation_table(_calculation.archive_table(1))
+```
+
+::: {.fold}
+### Parsing coverage
+
+Every category of output runflow recognises: whether the route requested it and whether runflow decoded it from the log, marked with a cross where it decoded only part, with the number of records it read.
+
+```{python}
+_calculation_table(_calculation.coverage_table(1))
+```
+
+:::
+
+## Vibrational frequencies
+
+### Link 0 commands
+
+The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
+
+```{python}
+_calculation_table(_calculation.links_table(2, 0))
+```
+
+### Route keywords and options
+
+The route selects the method, basis set and job type. Each keyword is listed with its meaning, followed by its options, as Gaussian read them.
+
+::: {.grouped-table}
+```{python}
+_calculation_table(_calculation.route_table(2))
+```
+
+:::
+
+### Molecule specification
+
+The job's title, charge and spin multiplicity, and where Gaussian took its geometry from.
+
+```{python}
+_calculation_table(_calculation.molecule_table(2))
+```
+
+### Electronic system and solvent
+
+The size of the electronic problem Gaussian set up for this geometry and basis set, with the solvent model where the job uses one.
+
+```{python}
+_calculation_table(_calculation.system_table(2))
+```
+
+### SCF convergence
+
+The job converged 1 self-consistent field solution, each with its final energy, number of cycles and remaining RMS density change. Every SCF uses `RB3LYP`. Convergence is marked on the first SCF and wherever it changes.
+
+```{python}
+_calculation_table(_calculation.scf_table(2), precision=12)
+```
+
+### Geometry convergence
+
+Gaussian checked its four geometry convergence criteria once, at the geometry the job started from.
+
+```{python}
+_calculation_table(_calculation.optimization_table(2), precision=12)
+```
+
+### Geometries along the job
+
+Every geometry Gaussian printed during the job, in order; the viewer steps through them, trailed by faded copies of the preceding geometries.
+
+```{python}
+display(MolstarViewer(_calculation.trajectory(2)))
+```
+
+### Vibrational frequencies
+
+The harmonic analysis gave 30 modes, 0 of them imaginary. The stick spectrum places each mode's infrared intensity at its wavenumber, imaginary modes at negative wavenumbers.
+
+```{python}
+display_chart(_calculation.ir_chart(2), zoom_axes=('x',))
+```
+
+The viewer animates every imaginary mode, the six lowest real modes and the four most intense in the infrared, each with a largest atomic excursion of 0.6 $\mathrm{\AA}$; choose one in its snapshot selector. Faded copies spread over the mode's frames trail the motion; the trail button on the right toolbar hides them.
+
+```{python}
+_frames, _names = _calculation.mode_frames(2)
+display(MolstarViewer(_frames, names=_names))
+```
+
+::: {.fold}
+#### Normal modes
+
+Every mode with its reduced mass, force constant and infrared intensity, and its symmetry when the molecule has any.
+
+```{python}
+_calculation_table(_calculation.modes_table(2))
+```
+
+:::
+
+### Thermochemistry
+
+Gaussian's ideal-gas, rigid-rotor and harmonic-oscillator thermochemistry at the stated temperature and pressure: the thermal corrections and the corrected energies.
+
+```{python}
+_calculation_table(_calculation.thermochemistry_table(2))
+```
+
+::: {.fold}
+#### Thermal contributions
+
+Thermal energy, heat capacity and entropy from the electronic, translational, rotational and vibrational contributions.
+
+```{python}
+_calculation_table(_calculation.thermal_components(2))
+```
+
+:::
+
+### Frontier orbitals
+
+The frontier orbital energies of the final SCF and their gap, an orbital-energy difference rather than an excitation energy.
+
+```{python}
+_calculation_table(_calculation.frontier_table(2))
+```
+
+The canonical orbital energies around the gap.
+
+```{python}
+display_chart(_calculation.orbitals_chart(2), zoom_axes=('y',))
+```
+
+### Atomic charges and dipole
+
+The Mulliken atomic charges of the last population analysis, blue where positive and red where negative.
+
+```{python}
+display_chart(_calculation.charges_chart(2))
+```
+
+The dipole moment of the same density, by component and in magnitude.
+
+```{python}
+_calculation_table(_calculation.dipole_table(2))
+```
+
+### Static polarizability
+
+The static dipole polarizability tensor $\boldsymbol{\alpha}$ from the job's last complete response calculation: each element is the dipole induced along one axis by a unit field along another.
+
+```{python}
+_calculation_table(_calculation.polarizability_table(2))
+```
+
+### Gaussian archive entry
+
+The archive entry is Gaussian's own summary, printed when the job ends normally. Its energies are rounded; the SCF table holds the precise values.
+
+```{python}
+_calculation_table(_calculation.archive_table(2))
+```
+
+The archived dipole derivatives form each atom's atomic polar tensor; one third of its trace is the atom's APT charge.
+
+```{python}
+display_chart(_calculation.apt_chart(2))
+```
+
+::: {.fold}
+### Parsing coverage
+
+Every category of output runflow recognises: whether the route requested it and whether runflow decoded it from the log, marked with a cross where it decoded only part, with the number of records it read.
+
+```{python}
+_calculation_table(_calculation.coverage_table(2))
+```
+
+:::
+
