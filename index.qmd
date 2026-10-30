@@ -7,6 +7,9 @@ author:
     orcid: 0009-0001-0115-359X
 date: 2026-10-06
 date-modified: last-modified
+filters:
+  - quarto
+  - ../../private/research-findings/quarto/remote-readme.lua
 format:
   html:
     theme: default

@@ -2381,6 +2381,27 @@ html .katex { font-size: 1em !important; }
 .katex .katex-html { display: none !important; }
 .katex .katex-mathml { position: static !important; width: auto !important; height: auto !important; clip: auto !important; overflow: visible !important; white-space: normal !important; }
 math { font-family: "STIX Two Math", math; font-size: 1.073em; math-style: compact; }
+
+@media (min-width: 768px) {
+#title-block-header.quarto-title-block.default .quarto-title-meta.has-remote-link {
+grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+}
+.header-breadcrumb.has-remote-link { display: flex; align-items: center; gap: 1rem; line-height: 1.5; }
+.header-breadcrumb .breadcrumb-path { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.header-breadcrumb .header-actions { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: 1rem; }
+.header-breadcrumb .header-actions .calculations-link { float: none; display: inline-flex; align-items: center; }
+.header-breadcrumb .header-actions a { color: var(--bs-link-color, #0d6efd); display: inline-flex; align-items: center; gap: 0.35em; line-height: inherit; }
+
+.header-breadcrumb .header-actions a::before { flex: none; align-self: center; }
+.header-breadcrumb .header-actions .remote-readme-link::before {
+content: "";
+width: 1.1em;
+height: 1em;
+background-color: currentColor;
+-webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20576%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%206.6.0%20by%20%40fontawesome%20-%20https%3A%2F%2Ffontawesome.com%20License%20-%20https%3A%2F%2Ffontawesome.com%2Flicense%2Ffree%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202024%20Fonticons%2C%20Inc.%20--%3E%3Cpath%20d%3D%22M9.4%2086.6C-3.1%2074.1-3.1%2053.9%209.4%2041.4s32.8-12.5%2045.3%200l192%20192c12.5%2012.5%2012.5%2032.8%200%2045.3l-192%20192c-12.5%2012.5-32.8%2012.5-45.3%200s-12.5-32.8%200-45.3L178.7%20256%209.4%2086.6zM256%20416l288%200c17.7%200%2032%2014.3%2032%2032s-14.3%2032-32%2032l-288%200c-17.7%200-32-14.3-32-32s14.3-32%2032-32z%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20576%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%206.6.0%20by%20%40fontawesome%20-%20https%3A%2F%2Ffontawesome.com%20License%20-%20https%3A%2F%2Ffontawesome.com%2Flicense%2Ffree%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202024%20Fonticons%2C%20Inc.%20--%3E%3Cpath%20d%3D%22M9.4%2086.6C-3.1%2074.1-3.1%2053.9%209.4%2041.4s32.8-12.5%2045.3%200l192%20192c12.5%2012.5%2012.5%2032.8%200%2045.3l-192%20192c-12.5%2012.5-32.8%2012.5-45.3%200s-12.5-32.8%200-45.3L178.7%20256%209.4%2086.6zM256%20416l288%200c17.7%200%2032%2014.3%2032%2032s-14.3%2032-32%2032l-288%200c-17.7%200-32-14.3-32-32s14.3-32%2032-32z%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+}
 </style>
 </head>
 
@@ -2398,7 +2419,7 @@ math { font-family: "STIX Two Math", math; font-size: 1.073em; math-style: compa
 
 <!-- Quarto title metadata for authors, dates and scientific document details. -->
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta has-remote-link">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -2421,6 +2442,13 @@ math { font-family: "STIX Two Math", math; font-size: 1.073em; math-style: compa
     </div>
   </div>
     
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">Open remote</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-17_122143/README.md:1" title="Open this page’s remote README in Visual Studio Code">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
   </div>
   
 <div>
@@ -2434,8 +2462,8 @@ math { font-family: "STIX Two Math", math; font-size: 1.073em; math-style: compa
 </header>
 
 
-<div class="header-breadcrumb">
-<p><a href="../">Homepage</a><span class="sep">/</span><span class="current">Benzene electronic screening <span class="math inline">\varepsilon_s</span></span></p>
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../">Homepage</a><span class="sep">/</span><span class="current">Benzene electronic screening <span class="math inline">\varepsilon_s</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-17_122143/README.md:1" class="remote-readme-link" title="Open this page&#39;s remote README in Visual Studio Code">Open remote</a></span>
 </div>
 <div class="molecules">
 <p><img role="img" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0naXNvLTg4NTktMSc/Pgo8c3ZnIHZlcnNpb249JzEuMScgYmFzZVByb2ZpbGU9J2Z1bGwnCiAgICAgICAgICAgICAgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJwogICAgICAgICAgICAgICAgICAgICAgeG1sbnM6cmRraXQ9J2h0dHA6Ly93d3cucmRraXQub3JnL3htbCcKICAgICAgICAgICAgICAgICAgICAgIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJwogICAgICAgICAgICAgICAgICB4bWw6c3BhY2U9J3ByZXNlcnZlJwp3aWR0aD0nNjlweCcgaGVpZ2h0PSc2MHB4JyB2aWV3Qm94PScwIDAgNjkgNjAnPgo8IS0tIEVORCBPRiBIRUFERVIgLS0+CjxwYXRoIGNsYXNzPSdib25kLTAgYXRvbS0wIGF0b20tMScgZD0nTSA2Mi41LDI5LjggTCA0OC4zLDUuMScgc3R5bGU9J2ZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6I0U1RTVFNTtzdHJva2Utd2lkdGg6Mi4wcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MScgLz4KPHBhdGggY2xhc3M9J2JvbmQtMSBhdG9tLTEgYXRvbS0yJyBkPSdNIDQ4LjMsNS4xIEwgMTkuOCw1LjEnIHN0eWxlPSdmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiNFNUU1RTU7c3Ryb2tlLXdpZHRoOjIuMHB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEnIC8+CjxwYXRoIGNsYXNzPSdib25kLTEgYXRvbS0xIGF0b20tMicgZD0nTSA0NS44LDkuNCBMIDIyLjIsOS40JyBzdHlsZT0nZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxJyAvPgo8cGF0aCBjbGFzcz0nYm9uZC0yIGF0b20tMiBhdG9tLTMnIGQ9J00gMTkuOCw1LjEgTCA1LjUsMjkuOCcgc3R5bGU9J2ZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6I0U1RTVFNTtzdHJva2Utd2lkdGg6Mi4wcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MScgLz4KPHBhdGggY2xhc3M9J2JvbmQtMyBhdG9tLTMgYXRvbS00JyBkPSdNIDUuNSwyOS44IEwgMTkuOCw1NC41JyBzdHlsZT0nZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxJyAvPgo8cGF0aCBjbGFzcz0nYm9uZC0zIGF0b20tMyBhdG9tLTQnIGQ9J00gMTAuNSwyOS44IEwgMjIuMiw1MC4yJyBzdHlsZT0nZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxJyAvPgo8cGF0aCBjbGFzcz0nYm9uZC00IGF0b20tNCBhdG9tLTUnIGQ9J00gMTkuOCw1NC41IEwgNDguMyw1NC41JyBzdHlsZT0nZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxJyAvPgo8cGF0aCBjbGFzcz0nYm9uZC01IGF0b20tNSBhdG9tLTAnIGQ9J00gNDguMyw1NC41IEwgNjIuNSwyOS44JyBzdHlsZT0nZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxJyAvPgo8cGF0aCBjbGFzcz0nYm9uZC01IGF0b20tNSBhdG9tLTAnIGQ9J00gNDUuOCw1MC4yIEwgNTcuNiwyOS44JyBzdHlsZT0nZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxJyAvPgo8cGF0aCBkPSdNIDYxLjgsMjguNiBMIDYyLjUsMjkuOCBMIDYxLjgsMzEuMCcgc3R5bGU9J2ZpbGw6bm9uZTtzdHJva2U6I0U1RTVFNTtzdHJva2Utd2lkdGg6Mi4wcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLW9wYWNpdHk6MTsnIC8+CjxwYXRoIGQ9J00gNDkuMCw2LjQgTCA0OC4zLDUuMSBMIDQ2LjgsNS4xJyBzdHlsZT0nZmlsbDpub25lO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2Utb3BhY2l0eToxOycgLz4KPHBhdGggZD0nTSAyMS4yLDUuMSBMIDE5LjgsNS4xIEwgMTkuMSw2LjQnIHN0eWxlPSdmaWxsOm5vbmU7c3Ryb2tlOiNFNUU1RTU7c3Ryb2tlLXdpZHRoOjIuMHB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1vcGFjaXR5OjE7JyAvPgo8cGF0aCBkPSdNIDYuMiwyOC42IEwgNS41LDI5LjggTCA2LjIsMzEuMCcgc3R5bGU9J2ZpbGw6bm9uZTtzdHJva2U6I0U1RTVFNTtzdHJva2Utd2lkdGg6Mi4wcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLW9wYWNpdHk6MTsnIC8+CjxwYXRoIGQ9J00gMTkuMSw1My4yIEwgMTkuOCw1NC41IEwgMjEuMiw1NC41JyBzdHlsZT0nZmlsbDpub25lO3N0cm9rZTojRTVFNUU1O3N0cm9rZS13aWR0aDoyLjBweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2Utb3BhY2l0eToxOycgLz4KPHBhdGggZD0nTSA0Ni44LDU0LjUgTCA0OC4zLDU0LjUgTCA0OS4wLDUzLjInIHN0eWxlPSdmaWxsOm5vbmU7c3Ryb2tlOiNFNUU1RTU7c3Ryb2tlLXdpZHRoOjIuMHB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1vcGFjaXR5OjE7JyAvPgo8L3N2Zz4K" class="molecule img-fluid" width="73"></p>
