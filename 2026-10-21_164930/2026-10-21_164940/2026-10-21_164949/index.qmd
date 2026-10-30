@@ -20,7 +20,11 @@ format:
     toc-depth: 4
     toc-expand: true
     embed-resources: true
-    html-math-method: katex
+    # KaTeX itself loads from quarto/math-header.html; Quarto's loader gets an empty script, and its
+    # render runs on that KaTeX.
+    html-math-method:
+      method: katex
+      url: "data:text/javascript,//"
     body-classes: calculation-page
     template-partials:
     - ../../../../../private/research-findings/quarto/title-metadata.html
@@ -64,10 +68,16 @@ register_plot_labels(PLOT_LABELS)
 _calculation_icons = {True: "![Yes](../../../../../private/research-findings/projects/icons/check.svg){.workflow-status}", False: "![No](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}", "Warning": "![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status}", "Error": "![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}"}
 
 
+def _calculation_labels(data):
+    """Codename columns under their labels and booleans as status icons, in subtables too."""
+    data = data.map(lambda value: _calculation_icons[value] if isinstance(value, bool)
+                    else _calculation_labels(value) if isinstance(value, pd.DataFrame) else value)
+    return data.rename(columns=LABELS)
+
+
 def _calculation_table(data, precision=5):
     """Render a table of codename columns under their labels, with booleans as status icons."""
-    data = data.map(lambda value: _calculation_icons[value] if isinstance(value, bool) else value)
-    display(Markdown(scientific_table(data.rename(columns=LABELS), precision=precision)))
+    display(Markdown(scientific_table(_calculation_labels(data), precision=precision)))
 ```
 
 ## Warnings and errors
@@ -100,12 +110,9 @@ _calculation_table(_calculation.links_table(1, 0))
 
 The route selects the method, basis set and job type. Each keyword is listed with its meaning, followed by its options, as Gaussian read them.
 
-::: {.grouped-table}
 ```{python}
 _calculation_table(_calculation.route_table(1))
 ```
-
-:::
 
 ### Molecule specification
 
