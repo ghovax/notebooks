@@ -14,6 +14,7 @@ format:
   html:
     theme: default
     fontsize: 1rem
+    body-classes: index-page
     grid:
       body-width: 960px
     embed-resources: true
