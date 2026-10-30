@@ -17,7 +17,8 @@ format:
     body-classes: index-page
     grid:
       body-width: 960px
-    embed-resources: true
+    # Libraries are shared across pages by quarto/render.py instead of embedded in each.
+    embed-resources: false
     html-math-method: katex
     template-partials:
     - ../../private/research-findings/quarto/title-metadata.html

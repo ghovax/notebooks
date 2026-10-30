@@ -19,7 +19,8 @@ format:
     toc: true
     toc-depth: 4
     toc-expand: true
-    embed-resources: true
+    # Libraries are shared across pages by quarto/render.py instead of embedded in each.
+    embed-resources: false
     # KaTeX itself loads from quarto/math-header.html; Quarto's loader gets an empty script, and its
     # render runs on that KaTeX.
     html-math-method:
