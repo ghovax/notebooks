@@ -201,12 +201,22 @@ The canonical orbital energies around the gap.
 display_chart(_calculation.orbitals_chart(1), zoom_axes=('y',))
 ```
 
-### Atomic charges and dipole
-
-The Mulliken atomic charges of the last population analysis, blue where positive and red where negative.
+The two highest occupied and two lowest virtual orbitals on the molecule, chosen in the snapshot selector, with their energies $\epsilon$. Red surfaces enclose where the orbital amplitude $\psi$ is below $-0.02\,a_0^{-3/2}$, blue where it is above $+0.02\,a_0^{-3/2}$.
 
 ```{python}
-display_chart(_calculation.charges_chart(1))
+_orbitals = _calculation.frontier_viewer(1)
+if _orbitals is not None:
+    display(_orbitals)
+else:
+    display(Markdown("The checkpoint holding the orbitals is not retained."))
+```
+
+### Atomic charges and dipole
+
+The Mulliken atomic charges of the last SCF population analysis, drawn on the molecule: red atoms carry negative charge, blue positive and white about none, on a scale symmetric about zero. Hover over an atom for its charge.
+
+```{python}
+display(_calculation.charges_viewer(1))
 ```
 
 The dipole moment of the same density, by component and in magnitude.
@@ -333,12 +343,22 @@ The canonical orbital energies around the gap.
 display_chart(_calculation.orbitals_chart(2), zoom_axes=('y',))
 ```
 
-### Atomic charges and dipole
-
-The Mulliken atomic charges of the last population analysis, blue where positive and red where negative.
+The two highest occupied and two lowest virtual orbitals on the molecule, chosen in the snapshot selector, with their energies $\epsilon$. Red surfaces enclose where the orbital amplitude $\psi$ is below $-0.02\,a_0^{-3/2}$, blue where it is above $+0.02\,a_0^{-3/2}$.
 
 ```{python}
-display_chart(_calculation.charges_chart(2))
+_orbitals = _calculation.frontier_viewer(2)
+if _orbitals is not None:
+    display(_orbitals)
+else:
+    display(Markdown("The checkpoint holding the orbitals is not retained."))
+```
+
+### Atomic charges and dipole
+
+The Mulliken atomic charges of the last SCF population analysis, drawn on the molecule: red atoms carry negative charge, blue positive and white about none, on a scale symmetric about zero. Hover over an atom for its charge.
+
+```{python}
+display(_calculation.charges_viewer(2))
 ```
 
 The dipole moment of the same density, by component and in magnitude.
@@ -346,10 +366,6 @@ The dipole moment of the same density, by component and in magnitude.
 ```{python}
 _calculation_table(_calculation.dipole_table(2))
 ```
-
-### Static polarizability
-
-Identical to the Geometry optimization step before it, where the tables and plots are shown.
 
 ### Gaussian archive entry
 
