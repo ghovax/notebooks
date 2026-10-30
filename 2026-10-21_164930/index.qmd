@@ -18,7 +18,9 @@ format:
     body-classes: index-page
     grid:
       body-width: 960px
-    embed-resources: true
+    # Libraries are shared across pages by quarto/render.py instead of embedded in each.
+    embed-resources: false
+    # Pinned to the KaTeX the notebooks load: newer releases hide the MathML that styles.css shows.
     html-math-method:
       method: katex
       url: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/"
@@ -60,7 +62,7 @@ The same B3LYP and DD-DFT sequence, with each run starting from logged coordinat
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
-| ![In progress](../../../private/research-findings/projects/icons/hourglass.svg "In progress: The B3LYP branch, its screening and the DD-DFT screening are complete; the remaining DD-DFT calculations are prepared. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse."){.workflow-status} | 29–30 Oct 2026 | [Benzene with independent guesses](2026-10-29_183718/) | Rebuilds the benzene comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: Without checkpoint reuse, the B3LYP and DD-DFT spectra match the checkpoint-chained ones within 3\,\mathrm{meV}, so checkpoint reuse did not change the benzene results. A second geometry/screening cycle makes the DD-DFT weights self-consistent with the geometry and moves the spectrum by at most 2.7\,\mathrm{meV}. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse."){.workflow-status} | 29–30 Oct 2026 | [Benzene with independent guesses](2026-10-29_183718/) | Rebuilds the benzene comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
 |  | 28 Oct 2026 | Methoxy difluoroboron chelate (1) with independent guesses | Rebuilds the methoxy comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
 :::
 

@@ -1,0 +1,334 @@
+---
+title: 'Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations with self-consistent weights'
+pagetitle: 'Calculate DD-DFT vertical ground-state to excited-state excitations with self-consistent weights'
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-30
+date-modified: last-modified
+filters:
+  - quarto
+  - ../../../../../private/research-findings/quarto/remote-readme.lua
+jupyter: research-findings
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    toc: true
+    toc-depth: 4
+    toc-expand: true
+    # Libraries are shared across pages by quarto/render.py instead of embedded in each.
+    embed-resources: false
+    # KaTeX itself loads from quarto/math-header.html; Quarto's loader gets an empty script, and its
+    # render runs on that KaTeX.
+    html-math-method:
+      method: katex
+      url: "data:text/javascript,//"
+    body-classes: calculation-page
+    template-partials:
+    - ../../../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../../../private/research-findings/quarto/mathml.html
+    - file: ../../../../../private/research-findings/quarto/math-header.html
+    - file: ../../../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../../../private/research-findings/quarto/folds.html
+execute:
+  echo: false
+  warning: false
+  error: false
+  daemon: false
+---
+
+::: {.header-breadcrumb}
+[Homepage](../../../)[/]{.sep}[Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](../../)[/]{.sep}[Benzene with independent guesses](../)[/]{.sep}[Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations with self-consistent weights]{.current}
+:::
+
+::: {.calculation-status}
+![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 11.0838. Excited states: The largest alpha MO coefficient is 11.0838."){.workflow-status} **Problems**
+:::
+
+{{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
+
+```{python}
+import sys
+sys.path.insert(0, "../../../../../private/research-findings/quarto")
+from pathlib import Path
+import pandas as pd
+from runflow.results import read_gaussian_checkpoint, xyz_frames
+from IPython.display import Markdown, display
+from molstarview import MolstarViewer
+from calculations import LABELS, PLOT_LABELS, Calculation
+
+_calculation = Calculation("../../../../../private/research-findings/projects/2026-10-21_164930/2026-10-29_183718/2026-10-30_232954")
+register_plot_labels(PLOT_LABELS)
+_calculation_icons = {True: "![Yes](../../../../../private/research-findings/projects/icons/check.svg){.workflow-status}", False: "![No](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}", "Warning": "![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status}", "Error": "![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}"}
+
+
+def _calculation_labels(data):
+    """Codename columns under their labels and booleans as status icons, in subtables too."""
+    data = data.map(lambda value: _calculation_icons[value] if isinstance(value, bool)
+                    else _calculation_labels(value) if isinstance(value, pd.DataFrame) else value)
+    return data.rename(columns=LABELS)
+
+
+def _calculation_table(data, precision=5):
+    """Render a table of codename columns under their labels, with booleans as status icons."""
+    display(Markdown(scientific_table(_calculation_labels(data), precision=precision)))
+```
+
+## Warnings and errors
+
+Every warning and error parsed from the program output and the runflow script records, with where it comes from and its physical or numerical reason.
+
+```{python}
+_calculation_table(_calculation.findings_table(_calculation_icons))
+```
+
+## Calculation overview
+
+The program, the resources and the timing of the calculation.
+
+```{python}
+_calculation_table(_calculation.overview())
+```
+
+## Calculation steps
+
+The calculation runs 2 steps in one Gaussian input; each step reads the previous step's checkpoint and has its own section below, with its input followed by its output.
+
+```{python}
+_calculation_table(_calculation.steps_table(), precision=12)
+```
+
+## Single point
+
+### Link 0 commands
+
+The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
+
+```{python}
+_calculation_table(_calculation.links_table(1, 0))
+```
+
+### Route keywords and options
+
+The route selects the method, basis set and job type: each keyword with its meaning and options, as Gaussian read them.
+
+```{python}
+_calculation_table(_calculation.route_table(1))
+```
+
+### Molecule specification
+
+The job's title, charge and spin multiplicity, and where Gaussian took its geometry from.
+
+```{python}
+_calculation_table(_calculation.molecule_table(1))
+```
+
+### Starting geometry
+
+The structure the calculation starts from, as the first geometry Gaussian printed.
+
+```{python}
+display(MolstarViewer(_calculation.geometry_frame()))
+```
+
+::: {.fold}
+#### Starting coordinates
+
+Cartesian coordinates of every atom.
+
+```{python}
+_calculation_table(_calculation.coordinates_table())
+```
+
+:::
+
+### Electronic system and solvent
+
+The size of the electronic problem Gaussian set up for this geometry and basis set, with the solvent model where the job uses one.
+
+```{python}
+_calculation_table(_calculation.system_table(1))
+```
+
+### SCF convergence
+
+The job converged 1 self-consistent field solution. Every SCF uses `RB+HF-LYP`. 
+
+```{python}
+_calculation_table(_calculation.scf_table(1), precision=12)
+```
+
+The RMS density change falls cycle by cycle below its convergence threshold, the dashed line.
+
+```{python}
+display_chart(_calculation.scf_chart(1), zoom_axes=('x',))
+```
+
+### Geometries along the job
+
+Every geometry Gaussian printed during the job, in order, trailed by faded copies of the preceding ones.
+
+```{python}
+display(MolstarViewer(_calculation.trajectory(1)))
+```
+
+### Frontier orbitals
+
+The frontier orbital energies of the final SCF and their gap, an orbital-energy difference rather than an excitation energy.
+
+```{python}
+_calculation_table(_calculation.frontier_table(1))
+```
+
+The canonical orbital energies around the gap.
+
+```{python}
+display_chart(_calculation.orbitals_chart(1), zoom_axes=('y',))
+```
+
+The frontier orbitals on the molecule, chosen in the snapshot selector:
+
+- The orbitals are $\mathrm{H}_{-1}$, $\mathrm{H}_{0}$, $\mathrm{L}_{0}$ and $\mathrm{L}_{+1}$, each with its energy $\epsilon$.
+- Red surfaces enclose $\psi<-0.02\,a_0^{-3/2}$, blue ones $\psi>+0.02\,a_0^{-3/2}$.
+
+```{python}
+_orbitals = _calculation.frontier_viewer(1)
+if _orbitals is not None:
+    display(_orbitals)
+else:
+    display(Markdown("The checkpoint holding the orbitals is not retained."))
+```
+
+### Atomic charges and dipole
+
+The Mulliken atomic charges of the last SCF population analysis, drawn on the molecule:
+
+- Red atoms carry $q_A<0$, blue ones $q_A>0$ and white ones $q_A\approx0$, on a scale symmetric about zero.
+- Hovering over an atom shows its $q_A$.
+
+```{python}
+display(_calculation.charges_viewer(1))
+```
+
+The dipole moment of the same density, by component and in magnitude.
+
+```{python}
+_calculation_table(_calculation.dipole_table(1))
+```
+
+### Wavefunction stability
+
+Gaussian's test of whether the SCF wavefunction is stable against orbital rotations.
+
+```{python}
+_calculation_table(_calculation.stability_table(1))
+```
+
+### Gaussian archive entry
+
+Gaussian's own summary, printed when the job ends normally; its energies are rounded, and the SCF table holds the precise values.
+
+```{python}
+_calculation_table(_calculation.archive_table(1))
+```
+
+::: {.fold}
+### Parsing coverage
+
+Every category of output runflow recognises; a cross marks one decoded only in part.
+
+```{python}
+_calculation_table(_calculation.coverage_table(1))
+```
+
+:::
+
+## Excited states
+
+### Link 0 commands
+
+The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
+
+```{python}
+_calculation_table(_calculation.links_table(2, 0))
+```
+
+### Route keywords and options
+
+The route selects the method, basis set and job type: each keyword with its meaning and options, as Gaussian read them.
+
+```{python}
+_calculation_table(_calculation.route_table(2))
+```
+
+### Molecule specification
+
+The job's title, charge and spin multiplicity, and where Gaussian took its geometry from.
+
+```{python}
+_calculation_table(_calculation.molecule_table(2))
+```
+
+### SCF convergence
+
+The job converged 1 self-consistent field solution. Every SCF uses `RB+HF-LYP`. 
+
+```{python}
+_calculation_table(_calculation.scf_table(2), precision=12)
+```
+
+### Geometries along the job
+
+Every geometry Gaussian printed during the job, in order, trailed by faded copies of the preceding ones.
+
+```{python}
+display(MolstarViewer(_calculation.trajectory(2)))
+```
+
+### Excited states and spectrum
+
+The job solved for 10 excited states. The stick spectrum places each state at its wavelength $\lambda_n$ with its oscillator strength $f_n$.
+
+```{python}
+display_chart(_calculation.spectrum_chart(2), zoom_axes=('x',))
+```
+
+Each excited state, followed by its configurations; orbitals are labelled $\mathrm{H}_{-k}$, counting down from the HOMO $\mathrm{H}_{0}$, and $\mathrm{L}_{+k}$, counting up from the LUMO $\mathrm{L}_{0}$.
+
+```{python}
+_calculation_table(_calculation.excitations_table(2))
+```
+
+The configuration weights of every state, stacked.
+
+```{python}
+display_chart(_calculation.configurations_chart(2))
+```
+
+### Gaussian archive entry
+
+Gaussian's own summary, printed when the job ends normally; its energies are rounded, and the SCF table holds the precise values.
+
+```{python}
+_calculation_table(_calculation.archive_table(2))
+```
+
+::: {.fold}
+### Parsing coverage
+
+Every category of output runflow recognises; a cross marks one decoded only in part.
+
+```{python}
+_calculation_table(_calculation.coverage_table(2))
+```
+
+:::
+

@@ -97,7 +97,13 @@ The program, the resources and the timing of the calculation.
 _calculation_table(_calculation.overview())
 ```
 
-The calculation runs 2 steps in one Gaussian input; each step reads the previous step's checkpoint.
+## Calculation steps
+
+The calculation runs 2 steps in one Gaussian input; each step reads the previous step's checkpoint and has its own section below, with its input followed by its output.
+
+```{python}
+_calculation_table(_calculation.steps_table(), precision=12)
+```
 
 ## Excited states
 
@@ -111,7 +117,7 @@ _calculation_table(_calculation.links_table(1, 0))
 
 ### Route keywords and options
 
-The route selects the method, basis set and job type. Each keyword is listed with its meaning, followed by its options, as Gaussian read them.
+The route selects the method, basis set and job type: each keyword with its meaning and options, as Gaussian read them.
 
 ```{python}
 _calculation_table(_calculation.route_table(1))
@@ -154,7 +160,7 @@ _calculation_table(_calculation.system_table(1))
 
 ### SCF convergence
 
-The job converged 1 self-consistent field solution, each with its final energy, number of cycles and remaining RMS density change. Every SCF uses `RB3LYP`. Convergence is marked on the first SCF and wherever it changes.
+The job converged 1 self-consistent field solution. Every SCF uses `RB3LYP`. 
 
 ```{python}
 _calculation_table(_calculation.scf_table(1), precision=12)
@@ -162,13 +168,13 @@ _calculation_table(_calculation.scf_table(1), precision=12)
 
 ### Excited states and spectrum
 
-The job solved for 10 excited states. The stick spectrum places each state at its wavelength with its oscillator strength.
+The job solved for 10 excited states. The stick spectrum places each state at its wavelength $\lambda_n$ with its oscillator strength $f_n$.
 
 ```{python}
 display_chart(_calculation.spectrum_chart(1), zoom_axes=('x',))
 ```
 
-Each state with its excitation energy, wavelength, length- and velocity-gauge oscillator strengths and $\langle S^2\rangle$, followed by its configurations: the orbital transition, written with HOMO and LUMO labels, its coefficient and its weight.
+Each excited state, followed by its configurations; orbitals are labelled $\mathrm{H}_{-k}$, counting down from the HOMO $\mathrm{H}_{0}$, and $\mathrm{L}_{+k}$, counting up from the LUMO $\mathrm{L}_{0}$.
 
 ```{python}
 _calculation_table(_calculation.excitations_table(1))
@@ -194,7 +200,10 @@ The canonical orbital energies around the gap.
 display_chart(_calculation.orbitals_chart(1), zoom_axes=('y',))
 ```
 
-The two highest occupied and two lowest virtual orbitals on the molecule, chosen in the snapshot selector, with their energies $\epsilon$. Red surfaces enclose where the orbital amplitude $\psi$ is below $-0.02\,a_0^{-3/2}$, blue where it is above $+0.02\,a_0^{-3/2}$.
+The frontier orbitals on the molecule, chosen in the snapshot selector:
+
+- The orbitals are $\mathrm{H}_{-1}$, $\mathrm{H}_{0}$, $\mathrm{L}_{0}$ and $\mathrm{L}_{+1}$, each with its energy $\epsilon$.
+- Red surfaces enclose $\psi<-0.02\,a_0^{-3/2}$, blue ones $\psi>+0.02\,a_0^{-3/2}$.
 
 ```{python}
 _orbitals = _calculation.frontier_viewer(1)
@@ -206,7 +215,10 @@ else:
 
 ### Atomic charges and dipole
 
-The Mulliken atomic charges of the last SCF population analysis, drawn on the molecule: red atoms carry negative charge, blue positive and white about none, on a scale symmetric about zero. Hover over an atom for its charge.
+The Mulliken atomic charges of the last SCF population analysis, drawn on the molecule:
+
+- Red atoms carry $q_A<0$, blue ones $q_A>0$ and white ones $q_A\approx0$, on a scale symmetric about zero.
+- Hovering over an atom shows its $q_A$.
 
 ```{python}
 display(_calculation.charges_viewer(1))
@@ -220,7 +232,7 @@ _calculation_table(_calculation.dipole_table(1))
 
 ### Gaussian archive entry
 
-The archive entry is Gaussian's own summary, printed when the job ends normally. Its energies are rounded; the SCF table holds the precise values.
+Gaussian's own summary, printed when the job ends normally; its energies are rounded, and the SCF table holds the precise values.
 
 ```{python}
 _calculation_table(_calculation.archive_table(1))
@@ -229,7 +241,7 @@ _calculation_table(_calculation.archive_table(1))
 ::: {.fold}
 ### Parsing coverage
 
-Every category of output runflow recognises: whether the route requested it and whether runflow decoded it from the log, marked with a cross where it decoded only part, with the number of records it read.
+Every category of output runflow recognises; a cross marks one decoded only in part.
 
 ```{python}
 _calculation_table(_calculation.coverage_table(1))
@@ -249,7 +261,7 @@ _calculation_table(_calculation.links_table(2, 0))
 
 ### Route keywords and options
 
-The route selects the method, basis set and job type. Each keyword is listed with its meaning, followed by its options, as Gaussian read them.
+The route selects the method, basis set and job type: each keyword with its meaning and options, as Gaussian read them.
 
 ```{python}
 _calculation_table(_calculation.route_table(2))
@@ -267,10 +279,9 @@ _calculation_table(_calculation.molecule_table(2))
 
 The dominant pair of natural transition orbitals, chosen in the snapshot selector:
 
-- **Hole** $\phi_{\mathrm{h}}$: the orbital the electron leaves.
-- **Particle** $\phi_{\mathrm{p}}$: the orbital it enters.
-- **Weight** $\lambda$: the pair's share of the transition density.
-- **Surfaces**: red where the amplitude $\phi$ is below $-0.02\,a_0^{-3/2}$, blue where it is above $+0.02\,a_0^{-3/2}$.
+- The hole $\phi_{\mathrm{h}}$ is the orbital the electron leaves, the particle $\phi_{\mathrm{p}}$ the one it enters.
+- Their weight $\lambda$ is the pair's share of the transition density.
+- Red surfaces enclose $\phi<-0.02\,a_0^{-3/2}$, blue ones $\phi>+0.02\,a_0^{-3/2}$.
 
 ```{python}
 _nto = _calculation.nto_viewer(2)
@@ -280,10 +291,34 @@ else:
     display(Markdown("The checkpoint holding the orbitals is not retained."))
 ```
 
+### Transition density
+
+Where the excitation moves electron density, from every NTO pair, each weighted by its share $\lambda_k/\sum_k\lambda_k$ so that the hole density $\rho_{\mathrm{h}}=\sum_k\lambda_k\lvert\phi_{\mathrm{h},k}\rvert^2/\sum_k\lambda_k$ and the particle density $\rho_{\mathrm{p}}$ each hold one electron:
+
+- The selector shows the loss $-\rho_{\mathrm{h}}$, the gain $\rho_{\mathrm{p}}$ and their sum, the difference density $\Delta\rho=\rho_{\mathrm{p}}-\rho_{\mathrm{h}}$.
+- Blue surfaces enclose $\Delta\rho<-0.001\,a_0^{-3}$, where electrons leave, and red ones $\Delta\rho>+0.001\,a_0^{-3}$, where they arrive.
+- $\Delta\rho$ is the unrelaxed difference density: exact within the Tamm–Dancoff approximation, approximate for full TDDFT, and without orbital relaxation.
+
+```{python}
+display(_calculation.transition_density_viewer(2))
+```
+
+The charge-transfer descriptors of the same densities, with $\rho_{+}$ and $\rho_{-}$ the positive and negative parts of $\Delta\rho$.
+
+```{python}
+_calculation_table(_calculation.charge_transfer_table(2))
+```
+
+Each atom's change in charge on excitation, $\Delta q_A=-\int_A\Delta\rho\,\mathrm{d}\mathbf{r}$ over the region nearer its nucleus than any other, drawn in the charge colours: red atoms gain electrons, blue ones lose them.
+
+```{python}
+display(_calculation.transition_charges_viewer(2))
+```
+
 ::: {.fold}
 ### Parsing coverage
 
-Every category of output runflow recognises: whether the route requested it and whether runflow decoded it from the log, marked with a cross where it decoded only part, with the number of records it read.
+Every category of output runflow recognises; a cross marks one decoded only in part.
 
 ```{python}
 _calculation_table(_calculation.coverage_table(2))

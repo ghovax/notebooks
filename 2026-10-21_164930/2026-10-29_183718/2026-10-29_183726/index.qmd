@@ -19,10 +19,13 @@ format:
     toc: true
     toc-depth: 4
     toc-expand: true
-    embed-resources: true
+    # Libraries are shared across pages by quarto/render.py instead of embedded in each.
+    embed-resources: false
+    # KaTeX itself loads from quarto/math-header.html; Quarto's loader gets an empty script, and its
+    # render runs on that KaTeX.
     html-math-method:
       method: katex
-      url: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/"
+      url: "data:text/javascript,//"
     body-classes: calculation-page
     template-partials:
     - ../../../../../private/research-findings/quarto/title-metadata.html
@@ -46,14 +49,114 @@ execute:
 :::
 
 ::: {.calculation-status}
- **Not run**
+![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Geometry relaxation changed the rounded DD-DFT weights; review the residual before further calculations."){.workflow-status} **Problems**
 :::
 
 {{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
 
-This calculation is prepared; no output is available yet.
+```{python}
+import sys
+sys.path.insert(0, "../../../../../private/research-findings/quarto")
+from pathlib import Path
+import pandas as pd
+from runflow.results import read_gaussian_checkpoint, xyz_frames
+from IPython.display import Markdown, display
+from molstarview import MolstarViewer
+from calculations import LABELS, PLOT_LABELS, Calculation
 
-## Goal
+_calculation = Calculation("../../../../../private/research-findings/projects/2026-10-21_164930/2026-10-29_183718/2026-10-29_183726")
+register_plot_labels(PLOT_LABELS)
+_calculation_icons = {True: "![Yes](../../../../../private/research-findings/projects/icons/check.svg){.workflow-status}", False: "![No](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}", "Warning": "![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status}", "Error": "![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}"}
 
-- Recheck the DD-DFT screening at the relaxed DD-DFT geometry and compare its weights with those used.
+
+def _calculation_labels(data):
+    """Codename columns under their labels and booleans as status icons, in subtables too."""
+    data = data.map(lambda value: _calculation_icons[value] if isinstance(value, bool)
+                    else _calculation_labels(value) if isinstance(value, pd.DataFrame) else value)
+    return data.rename(columns=LABELS)
+
+
+def _calculation_table(data, precision=5):
+    """Render a table of codename columns under their labels, with booleans as status icons."""
+    display(Markdown(scientific_table(_calculation_labels(data), precision=precision)))
+```
+
+## Warnings and errors
+
+Every warning and error parsed from the program output and the runflow script records, with where it comes from and its physical or numerical reason.
+
+```{python}
+_calculation_table(_calculation.findings_table(_calculation_icons))
+```
+
+## Calculation overview
+
+The program, the resources and the timing of the calculation.
+
+```{python}
+_calculation_table(_calculation.overview())
+```
+
+## Lotus input
+
+### Lotus settings
+
+The Lotus settings, read from the comment line of its XYZ input.
+
+```{python}
+_calculation_table(_calculation.lotus_settings())
+```
+
+### Starting geometry
+
+The structure the calculation starts from, as `benzene.xyz`.
+
+```{python}
+display(MolstarViewer(_calculation.geometry_frame()))
+```
+
+::: {.fold}
+#### Starting coordinates
+
+Cartesian coordinates of every atom.
+
+```{python}
+_calculation_table(_calculation.coordinates_table())
+```
+
+:::
+
+## Lotus output
+
+The final Lotus results: iterations and convergence, the applied and evaluated screening, the frontier orbitals and the functional weights.
+
+```{python}
+_calculation_table(_calculation.lotus_summary(), precision=10)
+```
+
+### Lotus SCF convergence
+
+The energy and the density change at each Lotus SCF iteration.
+
+```{python}
+_energy, _change = _calculation.lotus_scf_charts()
+display_chart(_energy, zoom_axes=('x',))
+display_chart(_change, zoom_axes=('x',))
+```
+
+### Orbital gap per iteration
+
+The frontier orbital gap at each iteration.
+
+```{python}
+display_chart(_calculation.lotus_orbitals_chart(), zoom_axes=('x',))
+```
+
+### Screening convergence
+
+The screening applied at each outer iteration, as it converges to the evaluated value.
+
+```{python}
+display_chart(_calculation.lotus_screening_chart(), zoom_axes=('x',))
+```
 

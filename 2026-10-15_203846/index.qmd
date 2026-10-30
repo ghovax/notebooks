@@ -20,6 +20,7 @@ format:
       body-width: 960px
     # Libraries are shared across pages by quarto/render.py instead of embedded in each.
     embed-resources: false
+    # Pinned to the KaTeX the notebooks load: newer releases hide the MathML that styles.css shows.
     html-math-method:
       method: katex
       url: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/"
