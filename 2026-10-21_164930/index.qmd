@@ -46,6 +46,14 @@ format:
 ## Methods
 
 ::: {.workflow-tables}
+### Lotus screened Slater exchange, $6\text{-}31\mathrm{G}$, fixed geometry
+
+A reference screening calculation: Lotus iterates the density, screened Slater exchange and electronic response together at the fixed benzene geometry of the supplied example, in the $6\text{-}31\mathrm{G}$ basis, until $\varepsilon_s$ converges.
+
+| Status | Period | Workflow | Description |
+| --- | --- | --- | --- |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: The self-consistent screening and its numerical consistency checks passed."){.workflow-status} | 17 Oct 2026 | [Benzene electronic screening $\varepsilon_s$](2026-10-17_122144/) | Converges the electronic screening $\varepsilon_s$ of benzene. |
+
 ### B3LYP and DD-DFT, checkpoint-chained guesses
 
 B3LYP and DD-DFT, BLYP weighted by the Lotus screening, run as a chain in which each Gaussian step reads its geometry and orbitals from the previous step's checkpoint.

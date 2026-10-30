@@ -178,7 +178,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 30, 2026</p>
+      <p class="date-modified">October 31, 2026</p>
     </div>
   </div>
     
@@ -211,6 +211,28 @@ window.Quarto = {
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
 <div class="workflow-tables">
+<section id="lotus-screened-slater-exchange-6text-31mathrmg-fixed-geometry" class="level3">
+<h3 class="anchored" data-anchor-id="lotus-screened-slater-exchange-6text-31mathrmg-fixed-geometry">Lotus screened Slater exchange, <span class="math inline">6\text{-}31\mathrm{G}</span>, fixed geometry</h3>
+<p>A reference screening calculation: Lotus iterates the density, screened Slater exchange and electronic response together at the fixed benzene geometry of the supplied example, in the <span class="math inline">6\text{-}31\mathrm{G}</span> basis, until <span class="math inline">\varepsilon_s</span> converges.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Period</th>
+<th>Workflow</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" title="Accepted: The self-consistent screening and its numerical consistency checks passed." class="workflow-status img-fluid" alt="Accepted"></td>
+<td>17 Oct 2026</td>
+<td><a href="2026-10-17_122144/">Benzene electronic screening <span class="math inline">\varepsilon_s</span></a></td>
+<td>Converges the electronic screening <span class="math inline">\varepsilon_s</span> of benzene.</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="b3lyp-and-dd-dft-checkpoint-chained-guesses" class="level3">
 <h3 class="anchored" data-anchor-id="b3lyp-and-dd-dft-checkpoint-chained-guesses">B3LYP and DD-DFT, checkpoint-chained guesses</h3>
 <p>B3LYP and DD-DFT, BLYP weighted by the Lotus screening, run as a chain in which each Gaussian step reads its geometry and orbitals from the previous step’s checkpoint.</p>

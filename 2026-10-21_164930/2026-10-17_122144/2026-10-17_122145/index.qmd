@@ -45,7 +45,7 @@ execute:
 ---
 
 ::: {.header-breadcrumb}
-[Homepage](../../../)[/]{.sep}[Benzene electronic screening $\varepsilon_s$](../../)[/]{.sep}[Benzene electronic screening $\varepsilon_s$](../)[/]{.sep}[Converge screened Slater/VWN-RPA benzene $\varepsilon_s$]{.current}
+[Homepage](../../../)[/]{.sep}[Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](../../)[/]{.sep}[Benzene electronic screening $\varepsilon_s$](../)[/]{.sep}[Converge screened Slater/VWN-RPA benzene $\varepsilon_s$]{.current}
 :::
 
 ::: {.calculation-status}
@@ -64,7 +64,7 @@ from IPython.display import Markdown, display
 from molstarview import MolstarViewer
 from calculations import LABELS, PLOT_LABELS, Calculation
 
-_calculation = Calculation("../../../../../private/research-findings/projects/2026-10-17_122143/2026-10-17_122144/2026-10-17_122145")
+_calculation = Calculation("../../../../../private/research-findings/projects/2026-10-21_164930/2026-10-17_122144/2026-10-17_122145")
 register_plot_labels(PLOT_LABELS)
 _calculation_icons = {True: "![Yes](../../../../../private/research-findings/projects/icons/check.svg){.workflow-status}", False: "![No](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}", "Warning": "![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status}", "Error": "![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}"}
 
