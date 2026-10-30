@@ -1,0 +1,406 @@
+---
+title: 'Scan planar PM6-D3 carbon exchange from indigo'
+pagetitle: 'Scan planar PM6-D3 carbon exchange from indigo'
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-15
+date-modified: last-modified
+jupyter: research-findings
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    toc: true
+    toc-depth: 4
+    toc-expand: true
+    embed-resources: true
+    html-math-method: katex
+    body-classes: calculation-page
+    template-partials:
+    - ../../../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../../../private/research-findings/quarto/mathml.html
+    - file: ../../../../../private/research-findings/quarto/math-header.html
+    - file: ../../../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../../../private/research-findings/quarto/folds.html
+execute:
+  echo: false
+  warning: false
+  error: false
+  daemon: false
+---
+
+::: {.header-breadcrumb}
+[Homepage](../../../)[/]{.sep}[Carbon exchange and central-bond torsion](../../)[/]{.sep}[Plane-constrained carbon exchange](../)[/]{.sep}[Scan planar PM6-D3 carbon exchange from indigo]{.current}
+:::
+
+::: {.calculation-status}
+![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} **Succeeded**
+:::
+
+{{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
+
+```{python}
+import sys
+sys.path.insert(0, "../../../../../private/research-findings/quarto")
+from pathlib import Path
+import pandas as pd
+from runflow.results import read_gaussian_checkpoint, xyz_frames
+from IPython.display import Markdown, display
+from molstarview import MolstarViewer
+from calculations import LABELS, PLOT_LABELS, Calculation
+
+_calculation = Calculation("../../../../../private/research-findings/projects/2026-10-15_225958/2026-10-15_225959/2026-10-15_230000")
+register_plot_labels(PLOT_LABELS)
+_calculation_icons = {True: "![Yes](../../../../../private/research-findings/projects/icons/check.svg){.workflow-status}", False: "![No](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}", "Warning": "![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status}", "Error": "![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}"}
+
+
+def _calculation_table(data, precision=5):
+    """Render a table of codename columns under their labels, with booleans as status icons."""
+    data = data.map(lambda value: _calculation_icons[value] if isinstance(value, bool) else value)
+    display(Markdown(scientific_table(data.rename(columns=LABELS), precision=precision)))
+```
+
+## Calculation overview
+
+The program, the resources and the timing of the calculation.
+
+```{python}
+_calculation_table(_calculation.overview())
+```
+
+The calculation runs 2 steps in one Gaussian input; each step reads the previous step's checkpoint.
+
+## Geometry optimization
+
+### Link 0 commands
+
+The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
+
+```{python}
+_calculation_table(_calculation.link0_table(1))
+```
+
+### Route keywords and options
+
+The route selects the method, basis set and job type. Each keyword is listed with its meaning, followed by its options, as Gaussian read them.
+
+::: {.grouped-table}
+```{python}
+_calculation_table(_calculation.route_table(1))
+```
+
+:::
+
+### Molecule specification
+
+The job's title, charge and spin multiplicity, and where Gaussian took its geometry from.
+
+```{python}
+_calculation_table(_calculation.molecule_table(1))
+```
+
+### Starting geometry
+
+The structure the calculation starts from, as the first geometry Gaussian printed.
+
+```{python}
+display(MolstarViewer(_calculation.geometry_frame()))
+```
+
+::: {.fold}
+#### Starting coordinates
+
+Cartesian coordinates of every atom.
+
+```{python}
+_calculation_table(_calculation.coordinates_table())
+```
+
+:::
+
+### Electronic system and solvent
+
+The size of the electronic problem Gaussian set up for this geometry and basis set, with the solvent model where the job uses one.
+
+```{python}
+_calculation_table(_calculation.system_table(1))
+```
+
+### SCF convergence
+
+The job converged 53 self-consistent field solutions, one per geometry or state it evaluated, each with its final energy, number of cycles and remaining RMS density change. Every SCF uses `RPM6D3`. Convergence is marked on the first SCF and wherever it changes.
+
+```{python}
+_calculation_table(_calculation.scf_table(1), precision=12)
+```
+
+The number of cycles each SCF needed, against its index.
+
+```{python}
+display_chart(_calculation.scf_chart(1), zoom_axes=('x',))
+```
+
+### Geometry optimization
+
+The geometry optimization took 53 steps. The first plot shows the energy relative to the final step; the second divides each of Gaussian's four convergence criteria by its threshold, so a step converges when all four fall below the dashed line at 1.
+
+```{python}
+_energy, _criteria = _calculation.optimization_charts(1)
+display_chart(_energy, zoom_axes=('x',))
+display_chart(_criteria, zoom_axes=('x',))
+```
+
+::: {.fold}
+#### Optimization steps
+
+Every step with its energy and the four criteria.
+
+```{python}
+_calculation_table(_calculation.optimization_table(1), precision=12)
+```
+
+:::
+
+### Geometries along the job
+
+Every geometry Gaussian printed during the job, in order; the viewer steps through them, trailed by faded copies of the preceding geometries.
+
+```{python}
+display(MolstarViewer(_calculation.trajectory(1)))
+```
+
+### Frontier orbitals
+
+The frontier orbital energies of the final SCF and their gap, an orbital-energy difference rather than an excitation energy.
+
+```{python}
+_calculation_table(_calculation.frontier_table(1))
+```
+
+The canonical orbital energies around the gap.
+
+```{python}
+display_chart(_calculation.orbitals_chart(1), zoom_axes=('y',))
+```
+
+### Atomic charges and dipole
+
+The Mulliken atomic charges of the last population analysis, blue where positive and red where negative.
+
+```{python}
+display_chart(_calculation.charges_chart(1))
+```
+
+The dipole moment of the same density, by component and in magnitude.
+
+```{python}
+_calculation_table(_calculation.dipole_table(1))
+```
+
+### Static polarizability
+
+The static dipole polarizability tensor $\boldsymbol{\alpha}$ from the job's last complete response calculation: each element is the dipole induced along one axis by a unit field along another.
+
+```{python}
+_calculation_table(_calculation.polarizability_table(1))
+```
+
+### Gaussian archive entry
+
+The archive entry is Gaussian's own summary, printed when the job ends normally. Its energies are rounded; the SCF table holds the precise values.
+
+```{python}
+_calculation_table(_calculation.archive_table(1))
+```
+
+::: {.fold}
+### Parsing coverage
+
+Every category of output runflow recognises: whether the route requested it and whether runflow decoded it from the log, marked with a cross where it decoded only part, with the number of records it read.
+
+```{python}
+_calculation_table(_calculation.coverage_table(1))
+```
+
+:::
+
+## Geometry optimization
+
+### Link 0 commands
+
+The Link 0 commands set the job's memory, processors and files before the route; each is explained after the Gaussian manual.
+
+```{python}
+_calculation_table(_calculation.link0_table(2))
+```
+
+### Route keywords and options
+
+The route selects the method, basis set and job type. Each keyword is listed with its meaning, followed by its options, as Gaussian read them.
+
+::: {.grouped-table}
+```{python}
+_calculation_table(_calculation.route_table(2))
+```
+
+:::
+
+### Molecule specification
+
+The job's title, charge and spin multiplicity, and where Gaussian took its geometry from.
+
+```{python}
+_calculation_table(_calculation.molecule_table(2))
+```
+
+### Electronic system and solvent
+
+The size of the electronic problem Gaussian set up for this geometry and basis set, with the solvent model where the job uses one.
+
+```{python}
+_calculation_table(_calculation.system_table(2))
+```
+
+### SCF convergence
+
+The job converged 52 self-consistent field solutions, one per geometry or state it evaluated, each with its final energy, number of cycles and remaining RMS density change. Every SCF uses `RPM6D3`. Convergence is marked on the first SCF and wherever it changes.
+
+```{python}
+_calculation_table(_calculation.scf_table(2), precision=12)
+```
+
+The number of cycles each SCF needed, against its index.
+
+```{python}
+display_chart(_calculation.scf_chart(2), zoom_axes=('x',))
+```
+
+### Geometry optimization
+
+The geometry optimization took 52 steps. The first plot shows the energy relative to the final step; the second divides each of Gaussian's four convergence criteria by its threshold, so a step converges when all four fall below the dashed line at 1.
+
+```{python}
+_energy, _criteria = _calculation.optimization_charts(2)
+display_chart(_energy, zoom_axes=('x',))
+display_chart(_criteria, zoom_axes=('x',))
+```
+
+::: {.fold}
+#### Optimization steps
+
+Every step with its energy and the four criteria.
+
+```{python}
+_calculation_table(_calculation.optimization_table(2), precision=12)
+```
+
+:::
+
+### Geometries along the job
+
+Every geometry Gaussian printed during the job, in order; the viewer steps through them, trailed by faded copies of the preceding geometries.
+
+```{python}
+display(MolstarViewer(_calculation.trajectory(2)))
+```
+
+### Frontier orbitals
+
+The frontier orbital energies of the final SCF and their gap, an orbital-energy difference rather than an excitation energy.
+
+```{python}
+_calculation_table(_calculation.frontier_table(2))
+```
+
+The canonical orbital energies around the gap.
+
+```{python}
+display_chart(_calculation.orbitals_chart(2), zoom_axes=('y',))
+```
+
+### Atomic charges and dipole
+
+The Mulliken atomic charges of the last population analysis, blue where positive and red where negative.
+
+```{python}
+display_chart(_calculation.charges_chart(2))
+```
+
+The dipole moment of the same density, by component and in magnitude.
+
+```{python}
+_calculation_table(_calculation.dipole_table(2))
+```
+
+### Static polarizability
+
+The static dipole polarizability tensor $\boldsymbol{\alpha}$ from the job's last complete response calculation: each element is the dipole induced along one axis by a unit field along another.
+
+```{python}
+_calculation_table(_calculation.polarizability_table(2))
+```
+
+### Gaussian archive entry
+
+The archive entry is Gaussian's own summary, printed when the job ends normally. Its energies are rounded; the SCF table holds the precise values.
+
+```{python}
+_calculation_table(_calculation.archive_table(2))
+```
+
+::: {.fold}
+### Parsing coverage
+
+Every category of output runflow recognises: whether the route requested it and whether runflow decoded it from the log, marked with a cross where it decoded only part, with the number of records it read.
+
+```{python}
+_calculation_table(_calculation.coverage_table(2))
+```
+
+:::
+
+## Checkpoint structures and electronic data
+
+Retained formatted checkpoints show the saved geometry and electronic state. They are snapshots, rather than a complete history of every intermediate checkpoint write.
+
+### Saved checkpoint 1
+
+```{python}
+_checkpoint_path = Path('../../../../../private/research-findings/') / 'projects/2026-10-15_225958/2026-10-15_225959/2026-10-15_230000/checkpoints/indigo-carbon-barrier.fchk'
+_checkpoint = read_gaussian_checkpoint(_checkpoint_path)
+_calculation_table(_calculation.checkpoint_table(_checkpoint_path))
+display(MolstarViewer(xyz_frames(_checkpoint.numbers, _checkpoint.coordinates[None, :, :])) )
+_orbitals = _calculation.checkpoint_orbitals(_checkpoint_path)
+if _orbitals is not None:
+    display_chart(_orbitals)
+if _checkpoint.irc is not None:
+    display(MolstarViewer(_checkpoint.irc.frames))
+if _checkpoint.vibrations is not None:
+    _v = _checkpoint.vibrations
+    _calculation_table(pd.DataFrame(dict(mode=range(1, len(_v.frequencies)+1), frequency=_v.frequencies.to('1/cm').magnitude, intensity=_v.intensities.to('km/mol').magnitude)).head(10))
+```
+
+### Saved checkpoint 2
+
+```{python}
+_checkpoint_path = Path('../../../../../private/research-findings/') / 'projects/2026-10-15_225958/2026-10-15_225959/2026-10-15_230000/checkpoints/indigo-carbon-scan.fchk'
+_checkpoint = read_gaussian_checkpoint(_checkpoint_path)
+_calculation_table(_calculation.checkpoint_table(_checkpoint_path))
+display(MolstarViewer(xyz_frames(_checkpoint.numbers, _checkpoint.coordinates[None, :, :])) )
+_orbitals = _calculation.checkpoint_orbitals(_checkpoint_path)
+if _orbitals is not None:
+    display_chart(_orbitals)
+if _checkpoint.irc is not None:
+    display(MolstarViewer(_checkpoint.irc.frames))
+if _checkpoint.vibrations is not None:
+    _v = _checkpoint.vibrations
+    _calculation_table(pd.DataFrame(dict(mode=range(1, len(_v.frequencies)+1), frequency=_v.frequencies.to('1/cm').magnitude, intensity=_v.intensities.to('km/mol').magnitude)).head(10))
+```
+

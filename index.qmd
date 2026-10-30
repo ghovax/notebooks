@@ -1,0 +1,57 @@
+---
+title: 'Research findings'
+abstract: |
+  Computational chemistry results grouped by scientific question: proton transfer and carbon exchange in indigo and epindolidione, electronic screening and optical excitations, and reaction-path references. Each project has its own page listing its workflows, each reported in one notebook.
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-06
+date-modified: last-modified
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    embed-resources: true
+    html-math-method: katex
+    template-partials:
+    - ../../private/research-findings/quarto/title-metadata.html
+    css: ../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../private/research-findings/quarto/mathml.html
+    - file: ../../private/research-findings/quarto/breadcrumb.html
+---
+
+::: {.header-breadcrumb}
+[Homepage]{.current}
+:::
+
+## Indigo and epindolidione
+
+Compare electronic structure, proton transfer and carbon rearrangement in the two molecular frameworks.
+
+::: {.molecules}
+![](../../private/research-findings/projects/2026-10-15_225958/figures/indigo-epindolidione.svg){width=650px .molecule}
+:::
+
+
+| Status | Period | Project | Description |
+| --- | --- | --- | --- |
+| ![Completed](../../private/research-findings/projects/icons/check.svg "Completed: For both molecules, the PM6 proton-transfer path and both endpoint minima are verified, and the B3LYP fields are complete."){.workflow-status} | 15–16 Oct 2026 | [Indigo and epindolidione proton transfer](2026-10-15_203846/) | Follows N–H-to-O–H transfer in both frameworks through sampling, TS refinement, IRC, endpoint verification and electronic-field comparisons. |
+| ![Problems](../../private/research-findings/projects/icons/warning.svg "Problems: The planar connection is established, but no full-space first-order saddle or torsional pathway has been found."){.workflow-status} | 15–20 Oct 2026 | [Carbon exchange and central-bond torsion](2026-10-15_225958/) | Studies the planar rearrangement and its electronic fields, alongside independent out-of-plane TS searches. |
+
+## Electronic screening and optical excitations
+
+Use benzene to establish the screening calculations, then compare B3LYP and DD-DFT for benzene and the difluoroboron dyes.
+
+::: {.molecules}
+![](../../private/research-findings/projects/2026-10-21_164930/figures/benzene.svg){width=73px .molecule} ![](../../private/research-findings/projects/2026-10-21_164930/figures/methoxy-chelate.svg){width=405px .molecule}
+:::
+
+
+| Status | Period | Project | Description |
+| --- | --- | --- | --- |
+| ![Completed](../../private/research-findings/projects/icons/check.svg "Completed: The screening converged and passed its numerical consistency checks."){.workflow-status} | 17 Oct 2026 | [Benzene electronic screening $\varepsilon_s$](2026-10-17_122143/) | Reproduces the fixed-geometry Lotus example with screened Slater exchange. |
+| ![In progress](../../private/research-findings/projects/icons/hourglass.svg "In progress: The B3LYP results of both checkpoint-chained workflows are suspect, so the comparison is being rebuilt without checkpoint reuse; the benzene rebuild is under way and the methoxy rebuild is prepared."){.workflow-status} | 21–30 Oct 2026 | [Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](2026-10-21_164930/) | Connects Gaussian geometries and excitations with Lotus screening and BLYP-based DD-DFT weights. |

@@ -1,0 +1,50 @@
+---
+title: 'Indigo and epindolidione proton transfer'
+pagetitle: 'Indigo and epindolidione proton transfer'
+abstract: |
+  Determine, for indigo and epindolidione, whether intramolecular transfer of the nitrogen-bound proton to oxygen connects two minima through a first-order saddle.
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-15
+date-modified: last-modified
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    embed-resources: true
+    html-math-method: katex
+    template-partials:
+    - ../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../private/research-findings/quarto/mathml.html
+    - file: ../../../private/research-findings/quarto/breadcrumb.html
+---
+
+::: {.header-breadcrumb}
+[Homepage](../)[/]{.sep}[Indigo and epindolidione proton transfer]{.current}
+:::
+
+
+::: {.molecules}
+![](../../../private/research-findings/projects/2026-10-15_203846/figures/indigo.svg){width=271px .molecule} ![](../../../private/research-findings/projects/2026-10-15_203846/figures/epindolidione.svg){width=249px .molecule}
+:::
+
+
+## Methods
+
+::: {.workflow-tables}
+### PM6 relaxed scan, TS, IRC and endpoint frequencies; B3LYP density/ESP
+
+A semiempirical PM6 scan of the proton-transfer coordinate seeds the saddle search, the IRC connects the saddle to both tautomers, and B3LYP/6-31+G(d) single points give density and ESP at the stationary points.
+
+| Status | Period | Workflow | Description |
+| --- | --- | --- | --- |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: The saddle, IRC and both endpoint minima are verified within PM6."){.workflow-status} | 15–16 Oct 2026 | [Indigo proton transfer](2026-10-15_203847/) | Follows the N–H to O–H transfer in indigo and compares the ESP of both tautomers. |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: The saddle, IRC and both endpoint minima are verified within PM6."){.workflow-status} | 15–16 Oct 2026 | [Epindolidione proton transfer](2026-10-15_203850/) | Applies the same sequence to epindolidione. |
+:::
+

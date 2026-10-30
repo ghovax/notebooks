@@ -1,0 +1,4 @@
+# Native Quarto execution caches and generated per-page ignore files.
+.quarto/
+**/.gitignore
+!/.gitignore

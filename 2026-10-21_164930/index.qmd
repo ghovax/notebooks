@@ -1,0 +1,60 @@
+---
+title: 'Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations'
+pagetitle: 'Molecular screening and excitations'
+abstract: |
+  Determine how molecular electronic screening changes the predicted geometries and optical excitations when B3LYP is replaced by dielectric-dependent DFT (DD-DFT), built from BLYP.
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-21
+date-modified: last-modified
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    embed-resources: true
+    html-math-method: katex
+    template-partials:
+    - ../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../private/research-findings/quarto/mathml.html
+    - file: ../../../private/research-findings/quarto/breadcrumb.html
+---
+
+::: {.header-breadcrumb}
+[Homepage](../)[/]{.sep}[Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations]{.current}
+:::
+
+
+::: {.molecules}
+![](../../../private/research-findings/projects/2026-10-21_164930/figures/benzene.svg){width=73px .molecule} ![](../../../private/research-findings/projects/2026-10-21_164930/figures/methoxy-chelate.svg){width=405px .molecule}
+:::
+
+
+## Methods
+
+::: {.workflow-tables}
+### B3LYP and DD-DFT, checkpoint-chained guesses
+
+B3LYP and DD-DFT, BLYP weighted by the Lotus screening, run as a chain in which each Gaussian step reads its geometry and orbitals from the previous step's checkpoint.
+
+| Status | Period | Workflow | Description |
+| --- | --- | --- | --- |
+| ![Rejected](../../../private/research-findings/projects/icons/cross.svg "Rejected: Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked, and a calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable; the runs are kept as history. Superseded by the independent-guess rebuild."){.workflow-status} | 21–23 Oct 2026 | [[Benzene with checkpoint-chained guesses](2026-10-21_164931/)]{.rejected} | [Compares screening and $S_0\rightarrow S_n$ absorption of benzene with the gas-phase spectrum.]{.rejected} |
+| ![Rejected](../../../private/research-findings/projects/icons/cross.svg "Rejected: Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked, and a calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable; the runs are kept as history. Superseded by the independent-guess rebuild."){.workflow-status} | 21–26 Oct 2026 | [[Methoxy difluoroboron chelate (1) with checkpoint-chained guesses](2026-10-21_164940/)]{.rejected} | [Compares absorption and $S_1$ relaxation of methoxy chelate 1 with the measured spectra.]{.rejected} |
+|  | 21 Oct 2026 | Dimethylamino difluoroboron chelate (3) | Prepares the screening, absorption and $S_1$ relaxation sequence for the dimethylamino chelate. |
+
+### B3LYP and DD-DFT, independent guesses, stability-checked
+
+The same B3LYP and DD-DFT sequence, with each run starting from logged coordinates and Gaussian's default guess and testing the stability of its SCF solution before use.
+
+| Status | Period | Workflow | Description |
+| --- | --- | --- | --- |
+| ![In progress](../../../private/research-findings/projects/icons/hourglass.svg "In progress: The B3LYP branch, its screening and the DD-DFT screening are complete; the five DD-DFT runs that follow are prepared. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse."){.workflow-status} | 29–30 Oct 2026 | Benzene with independent guesses | Rebuilds the benzene comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
+|  | 28 Oct 2026 | Methoxy difluoroboron chelate (1) with independent guesses | Rebuilds the methoxy comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
+:::
+

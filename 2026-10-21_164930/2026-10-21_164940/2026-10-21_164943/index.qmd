@@ -1,0 +1,140 @@
+---
+title: 'Evaluate B3LYP screening $\varepsilon_s$'
+pagetitle: 'Evaluate B3LYP screening dielectric constant'
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-21
+date-modified: last-modified
+jupyter: research-findings
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    toc: true
+    toc-depth: 4
+    toc-expand: true
+    embed-resources: true
+    html-math-method: katex
+    body-classes: calculation-page
+    template-partials:
+    - ../../../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../../../private/research-findings/quarto/mathml.html
+    - file: ../../../../../private/research-findings/quarto/math-header.html
+    - file: ../../../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../../../private/research-findings/quarto/folds.html
+execute:
+  echo: false
+  warning: false
+  error: false
+  daemon: false
+---
+
+::: {.header-breadcrumb}
+[Homepage](../../../)[/]{.sep}[Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](../../)[/]{.sep}[Methoxy difluoroboron chelate (1) with checkpoint-chained guesses](../)[/]{.sep}[Evaluate B3LYP screening $\varepsilon_s$]{.current}
+:::
+
+::: {.calculation-status}
+![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} **Succeeded**
+:::
+
+{{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
+
+```{python}
+import sys
+sys.path.insert(0, "../../../../../private/research-findings/quarto")
+from pathlib import Path
+import pandas as pd
+from runflow.results import read_gaussian_checkpoint, xyz_frames
+from IPython.display import Markdown, display
+from molstarview import MolstarViewer
+from calculations import LABELS, PLOT_LABELS, Calculation
+
+_calculation = Calculation("../../../../../private/research-findings/projects/2026-10-21_164930/2026-10-21_164940/2026-10-21_164943")
+register_plot_labels(PLOT_LABELS)
+_calculation_icons = {True: "![Yes](../../../../../private/research-findings/projects/icons/check.svg){.workflow-status}", False: "![No](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}", "Warning": "![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status}", "Error": "![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status}"}
+
+
+def _calculation_table(data, precision=5):
+    """Render a table of codename columns under their labels, with booleans as status icons."""
+    data = data.map(lambda value: _calculation_icons[value] if isinstance(value, bool) else value)
+    display(Markdown(scientific_table(data.rename(columns=LABELS), precision=precision)))
+```
+
+## Calculation overview
+
+The program, the resources and the timing of the calculation.
+
+```{python}
+_calculation_table(_calculation.overview())
+```
+
+## Lotus input
+
+### Lotus settings
+
+The Lotus settings, read from the comment line of its XYZ input.
+
+```{python}
+_calculation_table(_calculation.lotus_settings())
+```
+
+### Starting geometry
+
+The structure the calculation starts from, as `methoxy-chelate.xyz`.
+
+```{python}
+display(MolstarViewer(_calculation.geometry_frame()))
+```
+
+::: {.fold}
+#### Starting coordinates
+
+Cartesian coordinates of every atom.
+
+```{python}
+_calculation_table(_calculation.coordinates_table())
+```
+
+:::
+
+## Lotus output
+
+The final Lotus results: iterations and convergence, the applied and evaluated screening, the frontier orbitals and the functional weights.
+
+```{python}
+_calculation_table(_calculation.lotus_summary(), precision=10)
+```
+
+### Lotus SCF convergence
+
+The energy and the density change at each Lotus SCF iteration.
+
+```{python}
+_energy, _change = _calculation.lotus_scf_charts()
+display_chart(_energy, zoom_axes=('x',))
+display_chart(_change, zoom_axes=('x',))
+```
+
+### Orbital gap per iteration
+
+The frontier orbital gap at each iteration.
+
+```{python}
+display_chart(_calculation.lotus_orbitals_chart(), zoom_axes=('x',))
+```
+
+### Screening convergence
+
+The screening applied at each outer iteration, as it converges to the evaluated value.
+
+```{python}
+display_chart(_calculation.lotus_screening_chart(), zoom_axes=('x',))
+```
+

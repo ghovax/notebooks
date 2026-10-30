@@ -1,0 +1,49 @@
+---
+title: 'Benzene electronic screening $\varepsilon_s$'
+pagetitle: 'Benzene electronic screening'
+abstract: |
+  Determine the self-consistent molecular electronic screening of benzene at the fixed geometry of the supplied Lotus example.
+author:
+  - name: Giovanni Gravili
+    orcid: 0009-0001-0115-359X
+date: 2026-10-17
+date-modified: last-modified
+format:
+  html:
+    theme: default
+    fontsize: 1rem
+    grid:
+      body-width: 960px
+    embed-resources: true
+    html-math-method: katex
+    template-partials:
+    - ../../../private/research-findings/quarto/title-metadata.html
+    css: ../../../private/research-findings/quarto/styles.css
+    include-in-header:
+    - text: '<style>html .katex { font-size: 1.05em; }</style>'
+    - file: ../../../private/research-findings/quarto/mathml.html
+    - file: ../../../private/research-findings/quarto/breadcrumb.html
+---
+
+::: {.header-breadcrumb}
+[Homepage](../)[/]{.sep}[Benzene electronic screening $\varepsilon_s$]{.current}
+:::
+
+
+::: {.molecules}
+![](../../../private/research-findings/projects/2026-10-21_164930/figures/benzene.svg){width=73px .molecule}
+:::
+
+
+## Methods
+
+::: {.workflow-tables}
+### Lotus screened Slater exchange, 6-31G, fixed geometry
+
+The Lotus code iterates the density, screened Slater exchange and electronic response together at a fixed geometry in the 6-31G basis until the screening $\varepsilon_s$ converges.
+
+| Status | Period | Workflow | Description |
+| --- | --- | --- | --- |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: The self-consistent screening and its numerical consistency checks passed."){.workflow-status} | 17 Oct 2026 | [Benzene electronic screening $\varepsilon_s$](2026-10-17_122144/) | Converges the electronic screening $\varepsilon_s$ of benzene. |
+:::
+
