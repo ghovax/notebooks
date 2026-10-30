@@ -20,7 +20,9 @@ format:
     toc-depth: 4
     toc-expand: true
     embed-resources: true
-    html-math-method: katex
+    html-math-method:
+      method: katex
+      url: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/"
     body-classes: calculation-page
     template-partials:
     - ../../../../../private/research-findings/quarto/title-metadata.html
