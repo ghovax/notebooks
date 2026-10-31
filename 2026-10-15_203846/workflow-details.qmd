@@ -1,0 +1,37 @@
+:::: {.link-details}
+::: {.link-detail data-href="2026-10-15_203847/"}
+::: {.callout-tip .status-accepted title="Accepted"}
+The saddle, IRC and both endpoint minima are verified within PM6.
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the PM6 $S_0$ geometry](2026-10-15_203847/2026-10-15_203848/) | Opt | 0:00:04 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Scan the relaxed PM6 proton-transfer coordinate](2026-10-15_203847/2026-10-15_203849/) | Opt | 0:00:30 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Refine and verify the PM6 proton-transfer TS](2026-10-15_203847/2026-10-15_203850/) | Opt Freq | 0:00:01 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Follow both PM6 proton-transfer IRC branches](2026-10-15_203847/2026-10-15_210001/) | IRC | 0:01:16 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize and verify the PM6 N–H endpoint](2026-10-15_203847/2026-10-15_210002/) | Opt Freq | 0:00:02 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize and verify the PM6 O–H endpoint](2026-10-15_203847/2026-10-15_210003/) | Opt Freq | 0:00:02 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the N–H minimum](2026-10-15_203847/2026-10-16_094543/) | SP | 0:01:58 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the proton-transfer TS](2026-10-15_203847/2026-10-16_094544/) | SP | 0:02:20 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the O–H minimum](2026-10-15_203847/2026-10-16_094545/) | SP | 0:02:15 |
+:::
+
+::: {.link-detail data-href="2026-10-15_203850/"}
+::: {.callout-tip .status-accepted title="Accepted"}
+The saddle, IRC and both endpoint minima are verified within PM6.
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the PM6 $S_0$ geometry](2026-10-15_203850/2026-10-15_203851/) | Opt | 0:00:03 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Scan the relaxed PM6 proton-transfer coordinate](2026-10-15_203850/2026-10-15_203852/) | Opt | 0:00:29 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Refine and verify the PM6 proton-transfer TS](2026-10-15_203850/2026-10-15_203853/) | Opt Freq | 0:00:01 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Follow both PM6 proton-transfer IRC branches](2026-10-15_203850/2026-10-15_210005/) | IRC | 0:00:59 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize and verify the PM6 N–H endpoint](2026-10-15_203850/2026-10-15_210006/) | Opt Freq | 0:00:02 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize and verify the PM6 O–H endpoint](2026-10-15_203850/2026-10-15_210007/) | Opt Freq | 0:00:02 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the N–H minimum](2026-10-15_203850/2026-10-16_094546/) | SP | 0:02:02 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the proton-transfer TS](2026-10-15_203850/2026-10-16_094547/) | SP | 0:02:22 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the O–H minimum](2026-10-15_203850/2026-10-16_094548/) | SP | 0:02:25 |
+:::
+::::

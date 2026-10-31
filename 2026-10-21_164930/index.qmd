@@ -31,6 +31,8 @@ format:
     - text: '<style>html .katex { font-size: 1.05em; }</style>'
     - file: ../../../private/research-findings/quarto/mathml.html
     - file: ../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../private/research-findings/quarto/link-popovers.html
 ---
 
 ::: {.header-breadcrumb}
@@ -43,34 +45,36 @@ format:
 :::
 
 
-## Methods
+## Workflows
 
 ::: {.workflow-tables}
-### Lotus screened Slater exchange, $6\text{-}31\mathrm{G}$, fixed geometry
+### Benzene as the screening reference
 
-A reference screening calculation: Lotus iterates the density, screened Slater exchange and electronic response together at the fixed benzene geometry of the supplied example, in the $6\text{-}31\mathrm{G}$ basis, until $\varepsilon_s$ converges.
-
-| Status | Period | Workflow | Description |
-| --- | --- | --- | --- |
-| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: The self-consistent screening and its numerical consistency checks passed."){.workflow-status} | 17 Oct 2026 | [Benzene electronic screening $\varepsilon_s$](2026-10-17_122144/) | Converges the electronic screening $\varepsilon_s$ of benzene. |
-
-### B3LYP and DD-DFT, checkpoint-chained guesses
-
-B3LYP and DD-DFT, BLYP weighted by the Lotus screening, run as a chain in which each Gaussian step reads its geometry and orbitals from the previous step's checkpoint.
+Benzene, a small aromatic molecule with a measured gas-phase spectrum, establishes the screening calculation and the B3LYP and DD-DFT comparison before the dyes.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
-| ![Rejected](../../../private/research-findings/projects/icons/cross.svg "Rejected: Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked, and a calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable; the runs are kept as history. Superseded by the independent-guess rebuild."){.workflow-status} | 21–23 Oct 2026 | [[Benzene with checkpoint-chained guesses](2026-10-21_164931/)]{.rejected} | [Compares screening and $S_0\rightarrow S_n$ absorption of benzene with the gas-phase spectrum.]{.rejected} |
-| ![Rejected](../../../private/research-findings/projects/icons/cross.svg "Rejected: Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked, and a calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable; the runs are kept as history. Superseded by the independent-guess rebuild."){.workflow-status} | 21–26 Oct 2026 | [[Methoxy difluoroboron chelate (1) with checkpoint-chained guesses](2026-10-21_164940/)]{.rejected} | [Compares absorption and $S_1$ relaxation of methoxy chelate 1 with the measured spectra.]{.rejected} |
-|  | 21 Oct 2026 | Dimethylamino difluoroboron chelate (3) | Prepares the screening, absorption and $S_1$ relaxation sequence for the dimethylamino chelate. |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 17 Oct 2026 | [Benzene electronic screening $\varepsilon_s$](2026-10-17_122144/) | Converges the electronic screening $\varepsilon_s$ with Lotus screened Slater exchange in the $6\text{-}31\mathrm{G}$ basis, at the fixed geometry of the supplied example. |
+| ![Rejected](../../../private/research-findings/projects/icons/cross.svg "Rejected"){.workflow-status} | 21–23 Oct 2026 | [[Benzene with checkpoint-chained guesses](2026-10-21_164931/)]{.rejected} | [Compares B3LYP and DD-DFT screening and $S_0\rightarrow S_n$ absorption with the gas-phase spectrum, each Gaussian step reading the previous step's checkpoint.]{.rejected} |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 29–30 Oct 2026 | [Benzene with independent guesses](2026-10-29_183718/) | Rebuilds the same comparison from logged coordinates and default guesses, checking wavefunction stability and recording energies and orbital gaps. |
 
-### B3LYP and DD-DFT, independent guesses, stability-checked
+### Methoxy difluoroboron chelate (1)
 
-The same B3LYP and DD-DFT sequence, with each run starting from logged coordinates and Gaussian's default guess and testing the stability of its SCF solution before use.
+Structure 1 of Saito et al. (2023), whose absorption and emission were measured in five solvents, tests the comparison on a donor–acceptor dye in IEFPCM acetonitrile.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
-| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: Without checkpoint reuse, the B3LYP and DD-DFT spectra match the checkpoint-chained ones within 3\,\mathrm{meV}, so checkpoint reuse did not change the benzene results. A second geometry/screening cycle makes the DD-DFT weights self-consistent with the geometry and moves the spectrum by at most 2.7\,\mathrm{meV}. Supersedes the checkpoint-chained workflow, rebuilt without checkpoint reuse."){.workflow-status} | 29–30 Oct 2026 | [Benzene with independent guesses](2026-10-29_183718/) | Rebuilds the benzene comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
-|  | 28 Oct 2026 | Methoxy difluoroboron chelate (1) with independent guesses | Rebuilds the methoxy comparison without checkpoint reuse, recording energies, orbital gaps and wavefunction stability. |
+| ![Rejected](../../../private/research-findings/projects/icons/cross.svg "Rejected"){.workflow-status} | 21–26 Oct 2026 | [[Methoxy difluoroboron chelate (1) with checkpoint-chained guesses](2026-10-21_164940/)]{.rejected} | [Compares B3LYP and DD-DFT absorption and $S_1$ relaxation with the measured spectra, each Gaussian step reading the previous step's checkpoint.]{.rejected} |
+|  | 28 Oct 2026 | Methoxy difluoroboron chelate (1) with independent guesses | Rebuilds the same comparison from logged coordinates and default guesses, checking wavefunction stability and recording energies and orbital gaps. |
+
+### Dimethylamino difluoroboron chelate (3)
+
+Structure 3 of the same paper replaces the methoxy donor with dimethylamino, whose TICT emission separates the effect of donor substitution.
+
+| Status | Period | Workflow | Description |
+| --- | --- | --- | --- |
+| ![Rejected](../../../private/research-findings/projects/icons/cross.svg "Rejected"){.workflow-status} | 21 Oct 2026 | [Dimethylamino difluoroboron chelate (3)]{.rejected} | [Prepares the checkpoint-chained screening, absorption and $S_1$ relaxation sequence; superseded before submission.]{.rejected} |
 :::
+
+{{< include workflow-details.qmd >}}
 

@@ -49,7 +49,7 @@ execute:
 :::
 
 ::: {.calculation-status}
-![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} **Succeeded**
+![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} **Succeeded**
 :::
 
 {{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
@@ -204,6 +204,8 @@ import elk from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/
 import "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/chunks/mermaid.esm.min/flowDiagram-YHGXBVSY.mjs";
 import "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/chunks/mermaid-layout-elk.esm.min/render-T4E67GNI.mjs";
 restoreRequireDefine();
+// Typesets and draws a workflow diagram, after the Mermaid and ELK imports that build_calculations.py places
+// before it in the page's module script; `mermaid` and `elk` are those imports.
 mermaid.registerLayoutLoaders(elk);
 mermaid.initialize({ startOnLoad: false, securityLevel: "loose" });
 const container = document.querySelector(".calculations-diagram");
@@ -333,28 +335,38 @@ try {
   const saved = JSON.parse(sessionStorage.getItem(key));
   if (saved) trace(saved.node ?? links[saved.link] ?? null);
 } catch {}
-// Hovering a calculation's label shows, in Quarto's own hover popover, its row of the overview tables below, the
-// workflow's assessment of it and the findings behind its status. The copied formulas are typeset already, so they
-// are marked for the popover hook in math-header.html to leave alone.
-for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
-  const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
-  if (!row || !globalThis.tippy) continue;
-  tippy(anchor, {
-    content: () => {
-      const box = document.createElement("div"), copy = document.createElement("table"), body = document.createElement("tbody");
-      box.className = "diagram-popover";
-      copy.className = "table table-sm";
+// Hovering a calculation's link, in the diagram or in the overview tables, shows the same Quarto hover popover: its
+// status box with the workflow's assessment of it, its overview-table row and the findings behind its status. The
+// copied formulas are typeset already, so they are marked for the popover hook in math-header.html to leave alone.
+const popover = (anchor, row) => tippy(anchor, {
+  content: () => {
+    const box = document.createElement("div");
+    box.className = "diagram-popover";
+    const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
+    if (detail) box.append(...detail.cloneNode(true).childNodes);
+    if (row) {
+      const copy = document.createElement("table"), body = document.createElement("tbody");
+      copy.className = "table table-sm popover-row";
       body.append(row.cloneNode(true));
       copy.append(row.closest("table").tHead.cloneNode(true), body);
-      box.append(copy);
-      const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
-      if (detail) box.append(...detail.cloneNode(true).childNodes);
-      for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
-      return box;
-    },
-    allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
-    theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
-  });
+      const callout = box.querySelector(".callout");
+      if (callout) callout.after(copy);
+      else box.prepend(copy);
+    }
+    for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
+    return box;
+  },
+  allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
+  theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
+});
+if (globalThis.tippy) {
+  for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
+    const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
+    if (row) popover(anchor, row);
+  }
+  for (const anchor of document.querySelectorAll(".calculations-table a")) {
+    if (!anchor.closest(".diagram-details")) popover(anchor, anchor.closest("tr"));
+  }
 }
 </script>
 ```
@@ -363,29 +375,32 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 ::: {.calculations-table}
 | Status | Calculation | Program | Job | Calculation started | Wall time |
 | --- | --- | --- | --- | --- | --- |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](../2026-10-29_183719/) | Gaussian | Opt | 29 Oct 2026, 18:41:01 JST | 0:00:07 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 10.7815. Vibrational frequencies: The largest alpha MO coefficient is 10.7815. Vibrational frequencies: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} | [Check stability and verify the B3LYP $S_0$ minimum](../2026-10-29_183720/) | Gaussian | Stable, Freq | 29 Oct 2026, 18:48:57 JST | 0:00:43 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](../2026-10-29_183721/) | Lotus | Screening | 30 Oct 2026, 00:18:16 JST | 0:00:40 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 10.7815. Excited states: The largest alpha MO coefficient is 10.7815."){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](../2026-10-29_183722/) | Gaussian | Stable, TD | 30 Oct 2026, 00:17:26 JST | 0:00:33 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](../2026-10-29_183723/) | Lotus | Self-consistent screening | 30 Oct 2026, 00:18:16 JST | 0:00:53 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 10.8795."){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](../2026-10-29_183724/) | Gaussian | Stable, Opt | 30 Oct 2026, 17:32:30 JST | 0:00:28 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 11.0834. Vibrational frequencies: The largest alpha MO coefficient is 11.0834. Vibrational frequencies: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} | [Check stability and verify the DD-DFT $S_0$ minimum](../2026-10-29_183725/) | Gaussian | Stable, Freq | 30 Oct 2026, 17:33:02 JST | 0:00:26 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Geometry relaxation changed the rounded DD-DFT weights; review the residual before further calculations."){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](../2026-10-29_183726/) | Lotus | Self-consistent screening | 30 Oct 2026, 17:33:36 JST | 0:00:46 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 11.0834. Excited states: The largest alpha MO coefficient is 11.0834."){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](../2026-10-29_183727/) | Gaussian | Stable, TD | 30 Oct 2026, 17:33:31 JST | 0:00:20 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 11.0838."){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry with the rechecked weights](../2026-10-30_232951/) | Gaussian | Stable, Opt | 30 Oct 2026, 23:32:18 JST | 0:00:14 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 11.0838. Vibrational frequencies: The largest alpha MO coefficient is 11.0838. Vibrational frequencies: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} | [Check stability and verify the rechecked-weight DD-DFT $S_0$ minimum](../2026-10-30_232952/) | Gaussian | Stable, Freq | 30 Oct 2026, 23:32:36 JST | 0:00:27 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Recheck $\varepsilon_s$ at the rechecked-weight DD-DFT geometry](../2026-10-30_232953/) | Lotus | Self-consistent screening | 30 Oct 2026, 23:33:07 JST | 0:00:39 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Single point: The largest alpha MO coefficient is 11.0838. Excited states: The largest alpha MO coefficient is 11.0838."){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations with self-consistent weights](../2026-10-30_232954/) | Gaussian | Stable, TD | 30 Oct 2026, 23:33:48 JST | 0:00:21 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](../2026-10-29_183719/) | Gaussian | Opt | 29 Oct 2026, 18:41:01 JST | 0:00:07 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Check stability and verify the B3LYP $S_0$ minimum](../2026-10-29_183720/) | Gaussian | Stable, Freq | 29 Oct 2026, 18:48:57 JST | 0:00:43 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](../2026-10-29_183721/) | Lotus | Screening | 30 Oct 2026, 00:18:16 JST | 0:00:40 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](../2026-10-29_183722/) | Gaussian | Stable, TD | 30 Oct 2026, 00:17:26 JST | 0:00:33 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](../2026-10-29_183723/) | Lotus | Self-consistent screening | 30 Oct 2026, 00:18:16 JST | 0:00:53 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](../2026-10-29_183724/) | Gaussian | Stable, Opt | 30 Oct 2026, 17:32:30 JST | 0:00:28 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Check stability and verify the DD-DFT $S_0$ minimum](../2026-10-29_183725/) | Gaussian | Stable, Freq | 30 Oct 2026, 17:33:02 JST | 0:00:26 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](../2026-10-29_183726/) | Lotus | Self-consistent screening | 30 Oct 2026, 17:33:36 JST | 0:00:46 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](../2026-10-29_183727/) | Gaussian | Stable, TD | 30 Oct 2026, 17:33:31 JST | 0:00:20 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry with the rechecked weights](../2026-10-30_232951/) | Gaussian | Stable, Opt | 30 Oct 2026, 23:32:18 JST | 0:00:14 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Check stability and verify the rechecked-weight DD-DFT $S_0$ minimum](../2026-10-30_232952/) | Gaussian | Stable, Freq | 30 Oct 2026, 23:32:36 JST | 0:00:27 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Recheck $\varepsilon_s$ at the rechecked-weight DD-DFT geometry](../2026-10-30_232953/) | Lotus | Self-consistent screening | 30 Oct 2026, 23:33:07 JST | 0:00:39 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations with self-consistent weights](../2026-10-30_232954/) | Gaussian | Stable, TD | 30 Oct 2026, 23:33:48 JST | 0:00:21 |
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183719/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
 - The [B3LYP $S_0$ optimization](../2026-10-29_183719/) converged normally at $E_{\mathrm{SCF}}=-6320.06765194\,\mathrm{eV}$, and the [stability and minimum check](../2026-10-29_183720/) found a stable wavefunction and 30 real frequencies.
-
+:::
 
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183720/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The [B3LYP $S_0$ optimization](../2026-10-29_183719/) converged normally at $E_{\mathrm{SCF}}=-6320.06765194\,\mathrm{eV}$, and the [stability and minimum check](../2026-10-29_183720/) found a stable wavefunction and 30 real frequencies.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -396,13 +411,16 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183721/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
 - The [B3LYP screening](./) gives $\varepsilon_s=2.44559$, and the self-consistent [DD-DFT screening](../2026-10-29_183723/) $\varepsilon_s=2.166639$, $\alpha=0.461544$; both are within $0.1\%$ of the checkpoint-chained values.
-
+:::
 
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183722/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The [B3LYP excitations](../2026-10-29_183722/) place the bright $S_3/S_4$ pair at $7.3660\,\mathrm{eV}$, $f_n=0.5585$, within $3\,\mathrm{meV}$ of the checkpoint-chained result.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -412,13 +430,16 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183723/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
 - The [B3LYP screening](./) gives $\varepsilon_s=2.44559$, and the self-consistent [DD-DFT screening](../2026-10-29_183723/) $\varepsilon_s=2.166639$, $\alpha=0.461544$; both are within $0.1\%$ of the checkpoint-chained values.
-
+:::
 
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183724/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The [DD-DFT optimization](../2026-10-29_183724/) converged at $E_{\mathrm{SCF}}=-6306.02096116\,\mathrm{eV}$ with HF exchange $0.4615$, and the [DD-DFT minimum check](../2026-10-29_183725/) found a stable wavefunction and 30 real frequencies.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -427,7 +448,9 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183725/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The [DD-DFT optimization](../2026-10-29_183724/) converged at $E_{\mathrm{SCF}}=-6306.02096116\,\mathrm{eV}$ with HF exchange $0.4615$, and the [DD-DFT minimum check](../2026-10-29_183725/) found a stable wavefunction and 30 real frequencies.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -438,7 +461,9 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183726/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The [$\varepsilon_s$ recheck](../2026-10-29_183726/) gives $\varepsilon_s=2.161399$ at the DD-DFT minimum, $0.24\%$ below the value used, which moves the rounded weights in the fourth decimal; the spectrum above keeps the original weights.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -447,7 +472,9 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-29_183727/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The [DD-DFT excitations](../2026-10-29_183727/) place the bright $S_3/S_4$ pair at $7.5737\,\mathrm{eV}$, $f_n=0.6081$, within $0.4\,\mathrm{meV}$ of the checkpoint-chained result and $0.2077\,\mathrm{eV}$ above B3LYP.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -457,7 +484,9 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-30_232951/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The second cycle uses the rechecked weights, HF exchange $0.4627$. The [rechecked-weight DD-DFT optimization](../2026-10-30_232951/) converged at its first step, so the geometry stays within the default criteria, and the [stability and minimum check](../2026-10-30_232952/) found a stable wavefunction and 30 real frequencies.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -466,7 +495,9 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-30_232952/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The second cycle uses the rechecked weights, HF exchange $0.4627$. The [rechecked-weight DD-DFT optimization](../2026-10-30_232951/) converged at its first step, so the geometry stays within the default criteria, and the [stability and minimum check](../2026-10-30_232952/) found a stable wavefunction and 30 real frequencies.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |
@@ -477,13 +508,16 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-30_232953/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
 - The [$\varepsilon_s$ recheck](../2026-10-30_232953/) there gives $\varepsilon_s=2.161399$ again and reproduces the four-decimal weights, so geometry and weights are self-consistent.
-
+:::
 
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-30_232954/"}
+::: {.callout-warning .status-caveats title="Problems"}
 - The [self-consistent excitations](../2026-10-30_232954/) place the bright $S_3/S_4$ pair at $7.5744\,\mathrm{eV}$, $f_n=0.6083$, $0.2084\,\mathrm{eV}$ above B3LYP; every state moves by at most $2.7\,\mathrm{meV}$ from the first-cycle spectrum.
+:::
 
 | Kind | Source | Message |
 | --- | --- | --- |

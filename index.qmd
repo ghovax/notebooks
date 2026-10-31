@@ -30,6 +30,8 @@ format:
     - text: '<style>html .katex { font-size: 1.05em; }</style>'
     - file: ../../private/research-findings/quarto/mathml.html
     - file: ../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../private/research-findings/quarto/link-popovers.html
 ---
 
 ::: {.header-breadcrumb}
@@ -47,8 +49,8 @@ Compare electronic structure, proton transfer and carbon rearrangement in the tw
 
 | Status | Period | Project | Description |
 | --- | --- | --- | --- |
-| ![Completed](../../private/research-findings/projects/icons/check.svg "Completed: For both molecules, the PM6 proton-transfer path and both endpoint minima are verified, and the B3LYP fields are complete."){.workflow-status} | 15–16 Oct 2026 | [Indigo and epindolidione proton transfer](2026-10-15_203846/) | Follows N–H-to-O–H transfer in both frameworks through sampling, TS refinement, IRC, endpoint verification and electronic-field comparisons. |
-| ![Problems](../../private/research-findings/projects/icons/warning.svg "Problems: The planar connection is established, but no full-space first-order saddle or torsional pathway has been found."){.workflow-status} | 15–20 Oct 2026 | [Carbon exchange and central-bond torsion](2026-10-15_225958/) | Studies the planar rearrangement and its electronic fields, alongside independent out-of-plane TS searches. |
+| ![Completed](../../private/research-findings/projects/icons/check.svg "Completed"){.workflow-status} | 15–16 Oct 2026 | [Indigo and epindolidione proton transfer](2026-10-15_203846/) | Follows N–H-to-O–H transfer in both frameworks through sampling, TS refinement, IRC, endpoint verification and electronic-field comparisons. |
+| ![Problems](../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | 15–20 Oct 2026 | [Carbon exchange and central-bond torsion](2026-10-15_225958/) | Studies the planar rearrangement and its electronic fields, alongside independent out-of-plane TS searches. |
 
 ## Electronic screening and optical excitations
 
@@ -61,4 +63,44 @@ Use benzene to establish the screening calculations, then compare B3LYP and DD-D
 
 | Status | Period | Project | Description |
 | --- | --- | --- | --- |
-| ![In progress](../../private/research-findings/projects/icons/hourglass.svg "In progress: The B3LYP results of both checkpoint-chained workflows are suspect, so the comparison is being rebuilt without checkpoint reuse; the benzene rebuild reproduces the checkpoint-chained spectra within 3\,\mathrm{meV} and reaches self-consistent DD-DFT weights after a second geometry/screening cycle, and the methoxy rebuild is prepared."){.workflow-status} | 17–30 Oct 2026 | [Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](2026-10-21_164930/) | Connects Gaussian geometries and excitations with Lotus screening and BLYP-based DD-DFT weights. |
+| ![In progress](../../private/research-findings/projects/icons/hourglass.svg "In progress"){.workflow-status} | 17–30 Oct 2026 | [Molecular screening $\varepsilon_s$ and $S_0\rightarrow S_n$ excitations](2026-10-21_164930/) | Connects Gaussian geometries and excitations with Lotus screening and BLYP-based DD-DFT weights. |
+
+:::: {.link-details}
+::: {.link-detail data-href="2026-10-15_203846/"}
+::: {.callout-tip .status-accepted title="Completed"}
+For both molecules, the PM6 proton-transfer path and both endpoint minima are verified, and the B3LYP fields are complete.
+:::
+
+| Status | Period | Workflow |
+| --- | --- | --- |
+| ![Accepted](../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 15–16 Oct 2026 | [Indigo proton transfer](2026-10-15_203846/2026-10-15_203847/) |
+| ![Accepted](../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 15–16 Oct 2026 | [Epindolidione proton transfer](2026-10-15_203846/2026-10-15_203850/) |
+:::
+
+::: {.link-detail data-href="2026-10-15_225958/"}
+::: {.callout-warning .status-caveats title="Problems"}
+The planar connection is established, but no full-space first-order saddle or torsional pathway has been found.
+:::
+
+| Status | Period | Workflow |
+| --- | --- | --- |
+| ![Caveats](../../private/research-findings/projects/icons/warning.svg "Caveats"){.workflow-status} | 15–20 Oct 2026 | [Plane-constrained carbon exchange](2026-10-15_225958/2026-10-15_225959/) |
+| ![Caveats](../../private/research-findings/projects/icons/warning.svg "Caveats"){.workflow-status} | 17 Oct 2026 | Out-of-plane central-bond torsion |
+| ![Caveats](../../private/research-findings/projects/icons/warning.svg "Caveats"){.workflow-status} | 20 Oct 2026 | [Indigo displacement TS experiments](2026-10-15_225958/2026-10-20_144850/) |
+:::
+
+::: {.link-detail data-href="2026-10-21_164930/"}
+::: {.callout-note .status-in-progress title="In progress"}
+The B3LYP results of both checkpoint-chained workflows are suspect, so the comparison is being rebuilt without checkpoint reuse; the benzene rebuild reproduces the checkpoint-chained spectra within $3\,\mathrm{meV}$ and reaches self-consistent DD-DFT weights after a second geometry/screening cycle, and the methoxy rebuild is prepared; the checkpoint-chained dimethylamino workflow is superseded before submission.
+:::
+
+| Status | Period | Workflow |
+| --- | --- | --- |
+| ![Accepted](../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 17 Oct 2026 | [Benzene electronic screening $\varepsilon_s$](2026-10-21_164930/2026-10-17_122144/) |
+| ![Rejected](../../private/research-findings/projects/icons/cross.svg "Rejected"){.workflow-status} | 21–23 Oct 2026 | [Benzene with checkpoint-chained guesses](2026-10-21_164930/2026-10-21_164931/) |
+| ![Accepted](../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 29–30 Oct 2026 | [Benzene with independent guesses](2026-10-21_164930/2026-10-29_183718/) |
+| ![Rejected](../../private/research-findings/projects/icons/cross.svg "Rejected"){.workflow-status} | 21–26 Oct 2026 | [Methoxy difluoroboron chelate (1) with checkpoint-chained guesses](2026-10-21_164930/2026-10-21_164940/) |
+|  | 28 Oct 2026 | Methoxy difluoroboron chelate (1) with independent guesses |
+| ![Rejected](../../private/research-findings/projects/icons/cross.svg "Rejected"){.workflow-status} | 21 Oct 2026 | Dimethylamino difluoroboron chelate (3) |
+:::
+::::

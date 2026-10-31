@@ -49,7 +49,7 @@ execute:
 :::
 
 ::: {.calculation-status}
-![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed: Gaussian: Assumption of classical behavior for rotation may cause significant error. Gaussian: Explicit consideration of 26 degrees of freedom as vibrations may cause significant error. Gaussian: 0 imaginary modes where 1 are expected. A converged TS with exactly one imaginary mode was not obtained; inspect before IRC."){.workflow-status} **Failed**
+![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed"){.workflow-status} **Failed**
 :::
 
 {{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
@@ -142,6 +142,8 @@ import elk from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/
 import "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/chunks/mermaid.esm.min/flowDiagram-YHGXBVSY.mjs";
 import "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/chunks/mermaid-layout-elk.esm.min/render-T4E67GNI.mjs";
 restoreRequireDefine();
+// Typesets and draws a workflow diagram, after the Mermaid and ELK imports that build_calculations.py places
+// before it in the page's module script; `mermaid` and `elk` are those imports.
 mermaid.registerLayoutLoaders(elk);
 mermaid.initialize({ startOnLoad: false, securityLevel: "loose" });
 const container = document.querySelector(".calculations-diagram");
@@ -271,28 +273,38 @@ try {
   const saved = JSON.parse(sessionStorage.getItem(key));
   if (saved) trace(saved.node ?? links[saved.link] ?? null);
 } catch {}
-// Hovering a calculation's label shows, in Quarto's own hover popover, its row of the overview tables below, the
-// workflow's assessment of it and the findings behind its status. The copied formulas are typeset already, so they
-// are marked for the popover hook in math-header.html to leave alone.
-for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
-  const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
-  if (!row || !globalThis.tippy) continue;
-  tippy(anchor, {
-    content: () => {
-      const box = document.createElement("div"), copy = document.createElement("table"), body = document.createElement("tbody");
-      box.className = "diagram-popover";
-      copy.className = "table table-sm";
+// Hovering a calculation's link, in the diagram or in the overview tables, shows the same Quarto hover popover: its
+// status box with the workflow's assessment of it, its overview-table row and the findings behind its status. The
+// copied formulas are typeset already, so they are marked for the popover hook in math-header.html to leave alone.
+const popover = (anchor, row) => tippy(anchor, {
+  content: () => {
+    const box = document.createElement("div");
+    box.className = "diagram-popover";
+    const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
+    if (detail) box.append(...detail.cloneNode(true).childNodes);
+    if (row) {
+      const copy = document.createElement("table"), body = document.createElement("tbody");
+      copy.className = "table table-sm popover-row";
       body.append(row.cloneNode(true));
       copy.append(row.closest("table").tHead.cloneNode(true), body);
-      box.append(copy);
-      const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
-      if (detail) box.append(...detail.cloneNode(true).childNodes);
-      for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
-      return box;
-    },
-    allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
-    theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
-  });
+      const callout = box.querySelector(".callout");
+      if (callout) callout.after(copy);
+      else box.prepend(copy);
+    }
+    for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
+    return box;
+  },
+  allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
+  theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
+});
+if (globalThis.tippy) {
+  for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
+    const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
+    if (row) popover(anchor, row);
+  }
+  for (const anchor of document.querySelectorAll(".calculations-table a")) {
+    if (!anchor.closest(".diagram-details")) popover(anchor, anchor.closest("tr"));
+  }
 }
 </script>
 ```
@@ -301,11 +313,15 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 ::: {.calculations-table}
 | Status | Calculation | Program | Job | Calculation started | Wall time |
 | --- | --- | --- | --- | --- | --- |
-| ![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed: Gaussian: Assumption of classical behavior for rotation may cause significant error. Gaussian: Explicit consideration of 26 degrees of freedom as vibrations may cause significant error. Gaussian: 0 imaginary modes where 1 are expected. A converged TS with exactly one imaginary mode was not obtained; inspect before IRC."){.workflow-status} | [Search for a PM6-D3 TS from perpendicular indigo halves](../2026-10-20_144851/) | Gaussian | Opt Freq | 20 Oct 2026, 15:54:00 JST | 0:00:01 |
-| ![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed: Gaussian: Assumption of classical behavior for rotation may cause significant error. Gaussian: Explicit consideration of 21 degrees of freedom as vibrations may cause significant error. Gaussian: 3 imaginary modes where 1 are expected. A converged TS with exactly one imaginary mode was not obtained; inspect before IRC."){.workflow-status} | [Search for a PM6-D3 TS from offset parallel indigo halves](../2026-10-20_151041/) | Gaussian | Opt Freq | 20 Oct 2026, 15:54:00 JST | 0:00:01 |
+| ![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed"){.workflow-status} | [Search for a PM6-D3 TS from perpendicular indigo halves](../2026-10-20_144851/) | Gaussian | Opt Freq | 20 Oct 2026, 15:54:00 JST | 0:00:01 |
+| ![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed"){.workflow-status} | [Search for a PM6-D3 TS from offset parallel indigo halves](../2026-10-20_151041/) | Gaussian | Opt Freq | 20 Oct 2026, 15:54:00 JST | 0:00:01 |
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-20_144851/"}
+::: {.callout-important .status-rejected title="Failed"}
+4 findings, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | Assumption of classical behavior for rotation may cause significant error. |
@@ -316,6 +332,10 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-20_151041/"}
+::: {.callout-important .status-rejected title="Failed"}
+4 findings, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | Assumption of classical behavior for rotation may cause significant error. |

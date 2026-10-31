@@ -31,6 +31,8 @@ format:
     - text: '<style>html .katex { font-size: 1.05em; }</style>'
     - file: ../../../private/research-findings/quarto/mathml.html
     - file: ../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../private/research-findings/quarto/link-popovers.html
 ---
 
 ::: {.header-breadcrumb}
@@ -43,16 +45,18 @@ format:
 :::
 
 
-## Methods
+## Workflows
 
 ::: {.workflow-tables}
-### PM6 relaxed scan, TS, IRC and endpoint frequencies; B3LYP density/ESP
+### N–H to O–H proton transfer in both frameworks
 
 A semiempirical PM6 scan of the proton-transfer coordinate seeds the saddle search, the IRC connects the saddle to both tautomers, and B3LYP/$6\text{-}31{+}\mathrm{G}(d)$ single points give density and ESP at the stationary points.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
-| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: The saddle, IRC and both endpoint minima are verified within PM6."){.workflow-status} | 15–16 Oct 2026 | [Indigo proton transfer](2026-10-15_203847/) | Follows the N–H to O–H transfer in indigo and compares the ESP of both tautomers. |
-| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted: The saddle, IRC and both endpoint minima are verified within PM6."){.workflow-status} | 15–16 Oct 2026 | [Epindolidione proton transfer](2026-10-15_203850/) | Applies the same sequence to epindolidione. |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 15–16 Oct 2026 | [Indigo proton transfer](2026-10-15_203847/) | Follows the N–H to O–H transfer in indigo and compares the ESP of both tautomers. |
+| ![Accepted](../../../private/research-findings/projects/icons/check.svg "Accepted"){.workflow-status} | 15–16 Oct 2026 | [Epindolidione proton transfer](2026-10-15_203850/) | Applies the same sequence to epindolidione. |
 :::
+
+{{< include workflow-details.qmd >}}
 

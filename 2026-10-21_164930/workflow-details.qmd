@@ -1,0 +1,73 @@
+:::: {.link-details}
+::: {.link-detail data-href="2026-10-17_122144/"}
+::: {.callout-tip .status-accepted title="Accepted"}
+The self-consistent screening and its numerical consistency checks passed.
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Converge screened Slater/VWN-RPA benzene $\varepsilon_s$](2026-10-17_122144/2026-10-17_122145/) | Self-consistent screening | 0:00:40 |
+:::
+
+::: {.link-detail data-href="2026-10-21_164931/"}
+::: {.callout-important .status-rejected title="Rejected"}
+Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked, and a calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable; the runs are kept as history. Superseded by the [independent-guess rebuild](2026-10-29_183718/).
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](2026-10-21_164931/2026-10-21_164932/) | Opt | 0:00:57 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the B3LYP $S_0$ minimum](2026-10-21_164931/2026-10-21_164933/) | Freq | 0:00:58 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](2026-10-21_164931/2026-10-21_164934/) | Screening | 0:00:55 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](2026-10-21_164931/2026-10-21_164935/) | TD, SP | 0:01:07 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](2026-10-21_164931/2026-10-21_164936/) | Self-consistent screening | 0:01:05 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](2026-10-21_164931/2026-10-21_164937/) | Opt | 0:00:53 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the DD-DFT $S_0$ minimum](2026-10-21_164931/2026-10-21_164938/) | Freq | 0:00:36 |
+| ![Failed](../../../private/research-findings/projects/icons/cross.svg "Failed"){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](2026-10-21_164931/2026-10-21_164939/) | Self-consistent screening | 0:00:39 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](2026-10-21_164931/2026-10-21_164940/) | TD, SP | 0:00:32 |
+:::
+
+::: {.link-detail data-href="2026-10-21_164940/"}
+::: {.callout-important .status-rejected title="Rejected"}
+Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked, and a calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable; the runs are kept as history. Superseded by the independent-guess rebuild.
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](2026-10-21_164940/2026-10-21_164941/) | Opt | 1:33:31 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the B3LYP $S_0$ minimum](2026-10-21_164940/2026-10-21_164942/) | Freq | 0:18:28 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](2026-10-21_164940/2026-10-21_164943/) | Screening | 0:29:19 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](2026-10-21_164940/2026-10-21_164944/) | TD, SP | 0:07:29 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize the B3LYP $S_1$ geometry](2026-10-21_164940/2026-10-21_164945/) | TD Opt | 7:12:08 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the B3LYP $S_1$ minimum](2026-10-21_164940/2026-10-21_164946/) | TD Freq | 0:55:52 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](2026-10-21_164940/2026-10-21_164947/) | Self-consistent screening | 0:34:52 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](2026-10-21_164940/2026-10-21_164948/) | Opt | 0:35:19 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the DD-DFT $S_0$ minimum](2026-10-21_164940/2026-10-21_164949/) | Freq | 0:19:48 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](2026-10-21_164940/2026-10-21_164950/) | Self-consistent screening | 0:26:55 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](2026-10-21_164940/2026-10-21_164951/) | TD, SP | 0:09:41 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize the DD-DFT $S_1$ geometry](2026-10-21_164940/2026-10-21_164952/) | TD Opt | 5:43:04 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the DD-DFT $S_1$ minimum](2026-10-21_164940/2026-10-21_164953/) | TD Freq | 0:54:59 |
+:::
+
+::: {.link-detail data-href="2026-10-29_183718/"}
+::: {.callout-tip .status-accepted title="Accepted"}
+Without checkpoint reuse, the B3LYP and DD-DFT spectra match the checkpoint-chained ones within $3\,\mathrm{meV}$, so checkpoint reuse did not change the benzene results. A second geometry/screening cycle makes the DD-DFT weights self-consistent with the geometry and moves the spectrum by at most $2.7\,\mathrm{meV}$. Supersedes the [checkpoint-chained workflow](2026-10-21_164931/), rebuilt without checkpoint reuse.
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](2026-10-29_183718/2026-10-29_183719/) | Opt | 0:00:07 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Check stability and verify the B3LYP $S_0$ minimum](2026-10-29_183718/2026-10-29_183720/) | Stable, Freq | 0:00:43 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](2026-10-29_183718/2026-10-29_183721/) | Screening | 0:00:40 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](2026-10-29_183718/2026-10-29_183722/) | Stable, TD | 0:00:33 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](2026-10-29_183718/2026-10-29_183723/) | Self-consistent screening | 0:00:53 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](2026-10-29_183718/2026-10-29_183724/) | Stable, Opt | 0:00:28 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Check stability and verify the DD-DFT $S_0$ minimum](2026-10-29_183718/2026-10-29_183725/) | Stable, Freq | 0:00:26 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](2026-10-29_183718/2026-10-29_183726/) | Self-consistent screening | 0:00:46 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](2026-10-29_183718/2026-10-29_183727/) | Stable, TD | 0:00:20 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry with the rechecked weights](2026-10-29_183718/2026-10-30_232951/) | Stable, Opt | 0:00:14 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Check stability and verify the rechecked-weight DD-DFT $S_0$ minimum](2026-10-29_183718/2026-10-30_232952/) | Stable, Freq | 0:00:27 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Recheck $\varepsilon_s$ at the rechecked-weight DD-DFT geometry](2026-10-29_183718/2026-10-30_232953/) | Self-consistent screening | 0:00:39 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations with self-consistent weights](2026-10-29_183718/2026-10-30_232954/) | Stable, TD | 0:00:21 |
+:::
+::::

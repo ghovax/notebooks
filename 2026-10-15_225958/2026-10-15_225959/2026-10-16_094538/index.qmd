@@ -49,7 +49,7 @@ execute:
 :::
 
 ::: {.calculation-status}
-![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: IWarn = 0."){.workflow-status} **Problems**
+![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} **Problems**
 :::
 
 {{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
@@ -181,6 +181,8 @@ import elk from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/
 import "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/chunks/mermaid.esm.min/flowDiagram-YHGXBVSY.mjs";
 import "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/chunks/mermaid-layout-elk.esm.min/render-T4E67GNI.mjs";
 restoreRequireDefine();
+// Typesets and draws a workflow diagram, after the Mermaid and ELK imports that build_calculations.py places
+// before it in the page's module script; `mermaid` and `elk` are those imports.
 mermaid.registerLayoutLoaders(elk);
 mermaid.initialize({ startOnLoad: false, securityLevel: "loose" });
 const container = document.querySelector(".calculations-diagram");
@@ -310,28 +312,38 @@ try {
   const saved = JSON.parse(sessionStorage.getItem(key));
   if (saved) trace(saved.node ?? links[saved.link] ?? null);
 } catch {}
-// Hovering a calculation's label shows, in Quarto's own hover popover, its row of the overview tables below, the
-// workflow's assessment of it and the findings behind its status. The copied formulas are typeset already, so they
-// are marked for the popover hook in math-header.html to leave alone.
-for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
-  const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
-  if (!row || !globalThis.tippy) continue;
-  tippy(anchor, {
-    content: () => {
-      const box = document.createElement("div"), copy = document.createElement("table"), body = document.createElement("tbody");
-      box.className = "diagram-popover";
-      copy.className = "table table-sm";
+// Hovering a calculation's link, in the diagram or in the overview tables, shows the same Quarto hover popover: its
+// status box with the workflow's assessment of it, its overview-table row and the findings behind its status. The
+// copied formulas are typeset already, so they are marked for the popover hook in math-header.html to leave alone.
+const popover = (anchor, row) => tippy(anchor, {
+  content: () => {
+    const box = document.createElement("div");
+    box.className = "diagram-popover";
+    const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
+    if (detail) box.append(...detail.cloneNode(true).childNodes);
+    if (row) {
+      const copy = document.createElement("table"), body = document.createElement("tbody");
+      copy.className = "table table-sm popover-row";
       body.append(row.cloneNode(true));
       copy.append(row.closest("table").tHead.cloneNode(true), body);
-      box.append(copy);
-      const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
-      if (detail) box.append(...detail.cloneNode(true).childNodes);
-      for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
-      return box;
-    },
-    allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
-    theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
-  });
+      const callout = box.querySelector(".callout");
+      if (callout) callout.after(copy);
+      else box.prepend(copy);
+    }
+    for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
+    return box;
+  },
+  allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
+  theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
+});
+if (globalThis.tippy) {
+  for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
+    const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
+    if (row) popover(anchor, row);
+  }
+  for (const anchor of document.querySelectorAll(".calculations-table a")) {
+    if (!anchor.closest(".diagram-details")) popover(anchor, anchor.closest("tr"));
+  }
 }
 </script>
 ```
@@ -340,16 +352,27 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 ::: {.calculations-table}
 | Status | Calculation | Program | Job | Calculation started | Wall time |
 | --- | --- | --- | --- | --- | --- |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Scan planar PM6-D3 carbon exchange from indigo](../2026-10-15_230000/) | Gaussian | Opt, Opt | 16 Oct 2026, 16:26:07 JST | 0:00:46 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: IWarn = 0."){.workflow-status} | [Scan planar PM6-D3 carbon exchange from epindolidione](../2026-10-16_094538/) | Gaussian | Opt | 16 Oct 2026, 09:08:36 JST | 0:00:52 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: Assumption of classical behavior for rotation may cause significant error. Gaussian: Explicit consideration of 27 degrees of freedom as vibrations may cause significant error. Gaussian: 3 imaginary modes where 1 are expected. Constrained saddle only."){.workflow-status} | [Refine the PM6-D3 saddle within the plane](../2026-10-16_105709/) | Gaussian | Opt Freq | 16 Oct 2026, 16:28:35 JST | 0:00:01 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: TS HAS MORE THAN 1 IMAGINARY FREQUENCY!."){.workflow-status} | [Follow both in-plane PM6-D3 IRC branches](../2026-10-16_131402/) | Gaussian | IRC | 16 Oct 2026, 16:30:01 JST | 0:01:18 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Evaluate B3LYP fields at the reverse IRC endpoint](../2026-10-20_115624/) | Gaussian | SP | 20 Oct 2026, 13:50:23 JST | 0:02:04 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Evaluate B3LYP fields at the planar saddle](../2026-10-20_115625/) | Gaussian | SP | 20 Oct 2026, 13:50:23 JST | 0:02:34 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Evaluate B3LYP fields at the forward IRC endpoint](../2026-10-20_115626/) | Gaussian | SP | 20 Oct 2026, 13:50:23 JST | 0:02:12 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Scan planar PM6-D3 carbon exchange from indigo](../2026-10-15_230000/) | Gaussian | Opt, Opt | 16 Oct 2026, 16:26:07 JST | 0:00:46 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Scan planar PM6-D3 carbon exchange from epindolidione](../2026-10-16_094538/) | Gaussian | Opt | 16 Oct 2026, 09:08:36 JST | 0:00:52 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Refine the PM6-D3 saddle within the plane](../2026-10-16_105709/) | Gaussian | Opt Freq | 16 Oct 2026, 16:28:35 JST | 0:00:01 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Follow both in-plane PM6-D3 IRC branches](../2026-10-16_131402/) | Gaussian | IRC | 16 Oct 2026, 16:30:01 JST | 0:01:18 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the reverse IRC endpoint](../2026-10-20_115624/) | Gaussian | SP | 20 Oct 2026, 13:50:23 JST | 0:02:04 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the planar saddle](../2026-10-20_115625/) | Gaussian | SP | 20 Oct 2026, 13:50:23 JST | 0:02:34 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the forward IRC endpoint](../2026-10-20_115626/) | Gaussian | SP | 20 Oct 2026, 13:50:23 JST | 0:02:12 |
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-15_230000/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
+
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-16_094538/"}
+::: {.callout-warning .status-caveats title="Problems"}
+1 finding, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | IWarn = $0$. |
@@ -357,6 +380,10 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-16_105709/"}
+::: {.callout-warning .status-caveats title="Problems"}
+4 findings, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | Assumption of classical behavior for rotation may cause significant error. |
@@ -367,9 +394,34 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-16_131402/"}
+::: {.callout-warning .status-caveats title="Problems"}
+1 finding, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | TS HAS MORE THAN $1$ IMAGINARY FREQUENCY!. |
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-20_115624/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-20_115625/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-20_115626/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
 
 :::
 ::::

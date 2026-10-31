@@ -1,0 +1,28 @@
+:::: {.link-details}
+::: {.link-detail data-href="2026-10-15_225959/"}
+::: {.callout-warning .status-caveats title="Caveats"}
+The planar saddle has additional out-of-plane negative curvature, so it is not a full-space first-order TS.
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Scan planar PM6-D3 carbon exchange from indigo](2026-10-15_225959/2026-10-15_230000/) | Opt, Opt | 0:00:46 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Scan planar PM6-D3 carbon exchange from epindolidione](2026-10-15_225959/2026-10-16_094538/) | Opt | 0:00:52 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Refine the PM6-D3 saddle within the plane](2026-10-15_225959/2026-10-16_105709/) | Opt Freq | 0:00:01 |
+| ![Problems](../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Follow both in-plane PM6-D3 IRC branches](2026-10-15_225959/2026-10-16_131402/) | IRC | 0:01:18 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the reverse IRC endpoint](2026-10-15_225959/2026-10-20_115624/) | SP | 0:02:04 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the planar saddle](2026-10-15_225959/2026-10-20_115625/) | SP | 0:02:34 |
+| ![Succeeded](../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP fields at the forward IRC endpoint](2026-10-15_225959/2026-10-20_115626/) | SP | 0:02:12 |
+:::
+
+::: {.link-detail data-href="2026-10-20_144850/"}
+::: {.callout-warning .status-caveats title="Caveats"}
+Neither displaced guess reached a converged first-order saddle.
+:::
+
+| Status | Calculation | Job | Wall time |
+| --- | --- | --- | --- |
+| ![Failed](../../../private/research-findings/projects/icons/cross.svg "Failed"){.workflow-status} | [Search for a PM6-D3 TS from perpendicular indigo halves](2026-10-20_144850/2026-10-20_144851/) | Opt Freq | 0:00:01 |
+| ![Failed](../../../private/research-findings/projects/icons/cross.svg "Failed"){.workflow-status} | [Search for a PM6-D3 TS from offset parallel indigo halves](2026-10-20_144850/2026-10-20_151041/) | Opt Freq | 0:00:01 |
+:::
+::::

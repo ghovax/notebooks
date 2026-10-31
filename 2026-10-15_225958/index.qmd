@@ -31,6 +31,8 @@ format:
     - text: '<style>html .katex { font-size: 1.05em; }</style>'
     - file: ../../../private/research-findings/quarto/mathml.html
     - file: ../../../private/research-findings/quarto/breadcrumb.html
+    include-after-body:
+    - file: ../../../private/research-findings/quarto/link-popovers.html
 ---
 
 ::: {.header-breadcrumb}
@@ -43,31 +45,26 @@ format:
 :::
 
 
-## Methods
+## Workflows
 
 ::: {.workflow-tables}
-### PM6-D3 plane-constrained scans, TS and IRC; B3LYP density/ESP
+### In-plane carbon exchange
 
 Dispersion-corrected PM6 scans with the molecule held planar locate the in-plane exchange saddle and its IRC, and B3LYP/$6\text{-}31{+}\mathrm{G}(d)$ single points give density and ESP along the path.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
-| ![Caveats](../../../private/research-findings/projects/icons/warning.svg "Caveats: The planar saddle has additional out-of-plane negative curvature, so it is not a full-space first-order TS."){.workflow-status} | 15–20 Oct 2026 | [Plane-constrained carbon exchange](2026-10-15_225959/) | Follows the in-plane exchange from both molecules through the planar saddle, with the ESP along the path. |
+| ![Caveats](../../../private/research-findings/projects/icons/warning.svg "Caveats"){.workflow-status} | 15–20 Oct 2026 | [Plane-constrained carbon exchange](2026-10-15_225959/) | Follows the in-plane exchange from both molecules through the planar saddle, with the ESP along the path. |
 
-### PM6-D3 unconstrained TS searches from displaced guesses
+### Out-of-plane saddle searches
 
-Out-of-plane starting geometries are refined with PM6-D3 and every coordinate free, and frequencies test whether each converged geometry is a first-order saddle.
-
-| Status | Period | Workflow | Description |
-| --- | --- | --- | --- |
-| ![Caveats](../../../private/research-findings/projects/icons/warning.svg "Caveats: Neither displaced guess reached a converged first-order saddle."){.workflow-status} | 20 Oct 2026 | [Indigo displacement TS experiments](2026-10-20_144850/) | Tests two out-of-plane starting geometries for a first-order saddle; neither converges to one. |
-
-### PM6-D3 dihedral scan and unconstrained TS search
-
-A PM6-D3 scan of the central-bond dihedral supplies a twisted starting geometry for an unconstrained saddle search.
+Twisted or out-of-plane starting geometries are refined with PM6-D3 and every coordinate free, and frequencies test whether each converged geometry is a first-order saddle.
 
 | Status | Period | Workflow | Description |
 | --- | --- | --- | --- |
-| ![Caveats](../../../private/research-findings/projects/icons/warning.svg "Caveats: The torsional TS search did not converge, and no spin-pure singlet pathway is established."){.workflow-status} | 17 Oct 2026 | Out-of-plane central-bond torsion | Tests whether rotation about the central bond yields a stationary torsional saddle. |
+| ![Caveats](../../../private/research-findings/projects/icons/warning.svg "Caveats"){.workflow-status} | 17 Oct 2026 | Out-of-plane central-bond torsion | Scans the central-bond dihedral for a twisted starting geometry and tests whether it refines to a stationary torsional saddle. |
+| ![Caveats](../../../private/research-findings/projects/icons/warning.svg "Caveats"){.workflow-status} | 20 Oct 2026 | [Indigo displacement TS experiments](2026-10-20_144850/) | Refines two out-of-plane displaced geometries of indigo; neither converges to a first-order saddle. |
 :::
+
+{{< include workflow-details.qmd >}}
 

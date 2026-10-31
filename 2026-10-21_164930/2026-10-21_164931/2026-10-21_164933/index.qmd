@@ -49,7 +49,7 @@ execute:
 :::
 
 ::: {.calculation-status}
-![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: The largest alpha MO coefficient is 10.767. Gaussian: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} **Problems**
+![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} **Problems**
 :::
 
 {{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
@@ -190,6 +190,8 @@ import elk from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/
 import "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/chunks/mermaid.esm.min/flowDiagram-YHGXBVSY.mjs";
 import "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/chunks/mermaid-layout-elk.esm.min/render-T4E67GNI.mjs";
 restoreRequireDefine();
+// Typesets and draws a workflow diagram, after the Mermaid and ELK imports that build_calculations.py places
+// before it in the page's module script; `mermaid` and `elk` are those imports.
 mermaid.registerLayoutLoaders(elk);
 mermaid.initialize({ startOnLoad: false, securityLevel: "loose" });
 const container = document.querySelector(".calculations-diagram");
@@ -319,28 +321,38 @@ try {
   const saved = JSON.parse(sessionStorage.getItem(key));
   if (saved) trace(saved.node ?? links[saved.link] ?? null);
 } catch {}
-// Hovering a calculation's label shows, in Quarto's own hover popover, its row of the overview tables below, the
-// workflow's assessment of it and the findings behind its status. The copied formulas are typeset already, so they
-// are marked for the popover hook in math-header.html to leave alone.
-for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
-  const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
-  if (!row || !globalThis.tippy) continue;
-  tippy(anchor, {
-    content: () => {
-      const box = document.createElement("div"), copy = document.createElement("table"), body = document.createElement("tbody");
-      box.className = "diagram-popover";
-      copy.className = "table table-sm";
+// Hovering a calculation's link, in the diagram or in the overview tables, shows the same Quarto hover popover: its
+// status box with the workflow's assessment of it, its overview-table row and the findings behind its status. The
+// copied formulas are typeset already, so they are marked for the popover hook in math-header.html to leave alone.
+const popover = (anchor, row) => tippy(anchor, {
+  content: () => {
+    const box = document.createElement("div");
+    box.className = "diagram-popover";
+    const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
+    if (detail) box.append(...detail.cloneNode(true).childNodes);
+    if (row) {
+      const copy = document.createElement("table"), body = document.createElement("tbody");
+      copy.className = "table table-sm popover-row";
       body.append(row.cloneNode(true));
       copy.append(row.closest("table").tHead.cloneNode(true), body);
-      box.append(copy);
-      const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
-      if (detail) box.append(...detail.cloneNode(true).childNodes);
-      for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
-      return box;
-    },
-    allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
-    theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
-  });
+      const callout = box.querySelector(".callout");
+      if (callout) callout.after(copy);
+      else box.prepend(copy);
+    }
+    for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
+    return box;
+  },
+  allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
+  theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
+});
+if (globalThis.tippy) {
+  for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
+    const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
+    if (row) popover(anchor, row);
+  }
+  for (const anchor of document.querySelectorAll(".calculations-table a")) {
+    if (!anchor.closest(".diagram-details")) popover(anchor, anchor.closest("tr"));
+  }
 }
 </script>
 ```
@@ -349,18 +361,29 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 ::: {.calculations-table}
 | Status | Calculation | Program | Job | Calculation started | Wall time |
 | --- | --- | --- | --- | --- | --- |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](../2026-10-21_164932/) | Gaussian | Opt | 22 Oct 2026, 17:14:26 JST | 0:00:57 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: The largest alpha MO coefficient is 10.767. Gaussian: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} | [Verify the B3LYP $S_0$ minimum](../2026-10-21_164933/) | Gaussian | Freq | 22 Oct 2026, 17:16:20 JST | 0:00:58 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](../2026-10-21_164934/) | Lotus | Screening | 22 Oct 2026, 18:35:46 JST | 0:00:55 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Excited states: The largest alpha MO coefficient is 10.767. Natural transition orbitals: Basis set taken from checkpoint file."){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](../2026-10-21_164935/) | Gaussian | TD, SP | 22 Oct 2026, 18:34:31 JST | 0:01:07 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](../2026-10-21_164936/) | Lotus | Self-consistent screening | 22 Oct 2026, 18:35:46 JST | 0:01:05 |
-| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](../2026-10-21_164937/) | Gaussian | Opt | 22 Oct 2026, 20:14:46 JST | 0:00:53 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: The largest alpha MO coefficient is 11.0828. Gaussian: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} | [Verify the DD-DFT $S_0$ minimum](../2026-10-21_164938/) | Gaussian | Freq | 23 Oct 2026, 13:01:15 JST | 0:00:36 |
-| ![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed: Relaxation changed the rounded DD-BLYP weights; assess before further calculations."){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](../2026-10-21_164939/) | Lotus | Self-consistent screening | 23 Oct 2026, 13:10:52 JST | 0:00:39 |
-| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Excited states: The largest alpha MO coefficient is 11.0828. Natural transition orbitals: Basis set taken from checkpoint file. Using the first-cycle DD-DFT geometry and weights with the documented screening residual."){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](../2026-10-21_164940/) | Gaussian | TD, SP | 23 Oct 2026, 13:22:55 JST | 0:00:32 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](../2026-10-21_164932/) | Gaussian | Opt | 22 Oct 2026, 17:14:26 JST | 0:00:57 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the B3LYP $S_0$ minimum](../2026-10-21_164933/) | Gaussian | Freq | 22 Oct 2026, 17:16:20 JST | 0:00:58 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](../2026-10-21_164934/) | Lotus | Screening | 22 Oct 2026, 18:35:46 JST | 0:00:55 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](../2026-10-21_164935/) | Gaussian | TD, SP | 22 Oct 2026, 18:34:31 JST | 0:01:07 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](../2026-10-21_164936/) | Lotus | Self-consistent screening | 22 Oct 2026, 18:35:46 JST | 0:01:05 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded"){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](../2026-10-21_164937/) | Gaussian | Opt | 22 Oct 2026, 20:14:46 JST | 0:00:53 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Verify the DD-DFT $S_0$ minimum](../2026-10-21_164938/) | Gaussian | Freq | 23 Oct 2026, 13:01:15 JST | 0:00:36 |
+| ![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed"){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](../2026-10-21_164939/) | Lotus | Self-consistent screening | 23 Oct 2026, 13:10:52 JST | 0:00:39 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems"){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](../2026-10-21_164940/) | Gaussian | TD, SP | 23 Oct 2026, 13:22:55 JST | 0:00:32 |
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-21_164932/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
+
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-21_164933/"}
+::: {.callout-warning .status-caveats title="Problems"}
+2 findings, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | The largest $\alpha$ MO coefficient is $10.767$. |
@@ -368,7 +391,18 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 
 :::
 
+::: {.diagram-detail data-calculation="../2026-10-21_164934/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
+
+:::
+
 ::: {.diagram-detail data-calculation="../2026-10-21_164935/"}
+::: {.callout-warning .status-caveats title="Problems"}
+2 findings, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Excited states | The largest $\alpha$ MO coefficient is $10.767$. |
@@ -376,7 +410,25 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 
 :::
 
+::: {.diagram-detail data-calculation="../2026-10-21_164936/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-21_164937/"}
+::: {.callout-tip .status-accepted title="Succeeded"}
+Every parsed check passed.
+:::
+
+:::
+
 ::: {.diagram-detail data-calculation="../2026-10-21_164938/"}
+::: {.callout-warning .status-caveats title="Problems"}
+2 findings, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | The largest $\alpha$ MO coefficient is $11.0828$. |
@@ -385,6 +437,10 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-21_164939/"}
+::: {.callout-important .status-rejected title="Failed"}
+1 finding, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status} |  | Relaxation changed the rounded DD-BLYP weights; assess before further calculations. |
@@ -392,6 +448,10 @@ for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
 :::
 
 ::: {.diagram-detail data-calculation="../2026-10-21_164940/"}
+::: {.callout-warning .status-caveats title="Problems"}
+3 findings, listed below.
+:::
+
 | Kind | Source | Message |
 | --- | --- | --- |
 | ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Excited states | The largest $\alpha$ MO coefficient is $11.0828$. |
