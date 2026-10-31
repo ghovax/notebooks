@@ -54,6 +54,353 @@ execute:
 
 {{< include ../../../../../private/research-findings/quarto/formatting.qmd >}}
 
+```{=html}
+<div class="calculations-diagram compact" data-workflow="2026-10-21_164930/2026-10-21_164931" data-current="Converge1" data-edges="[[&quot;Optimize1&quot;, &quot;Verify1&quot;], [&quot;Verify1&quot;, &quot;Evaluate1&quot;], [&quot;Verify1&quot;, &quot;Converge1&quot;], [&quot;Verify1&quot;, &quot;Excitations1&quot;], [&quot;Converge1&quot;, &quot;Optimize2&quot;], [&quot;Optimize2&quot;, &quot;Verify2&quot;], [&quot;Verify2&quot;, &quot;Recheck1&quot;], [&quot;Recheck1&quot;, &quot;Excitations2&quot;], [&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;Optimize1&quot;], [&quot;Evaluate1&quot;, &quot;Output1Screening&quot;], [&quot;Converge1&quot;, &quot;Output1Screening&quot;], [&quot;Recheck1&quot;, &quot;Output1Screening&quot;], [&quot;Output1Screening&quot;, &quot;End1&quot;], [&quot;Excitations1&quot;, &quot;Output1Excitations&quot;], [&quot;Excitations2&quot;, &quot;Output1Excitations&quot;], [&quot;Output1Excitations&quot;, &quot;End1&quot;], [&quot;Verify1&quot;, &quot;Output1Geometry&quot;], [&quot;Verify2&quot;, &quot;Output1Geometry&quot;], [&quot;Output1Geometry&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph Reference["&lt;span&gt;Reference $$S_0$$ geometry&lt;/span&gt;"]
+        %% description: Establish the $S_0$ reference geometry and verify its curvature before using it in the electronic-response branches.
+        direction TB
+        Optimize1["&lt;a href='../2026-10-21_164932/'&gt;Optimize the B3LYP $$S_0$$ geometry&lt;/a&gt;"]
+        Verify1["&lt;a href='../2026-10-21_164933/'&gt;Verify the B3LYP $$S_0$$ minimum&lt;/a&gt;"]
+    end
+
+    subgraph Conventional["&lt;span&gt;B3LYP $$\varepsilon_s$$ and $$S_0\rightarrow S_n$$ absorption&lt;/span&gt;"]
+
+        %% description: Evaluate B3LYP molecular screening and vertical absorption at the reference geometry; where included, relax and verify the $S_1$ structure.
+        direction TB
+        Evaluate1["&lt;a href='../2026-10-21_164934/'&gt;Evaluate B3LYP screening $$\varepsilon_s$$&lt;/a&gt;"]
+        Excitations1["&lt;a href='../2026-10-21_164935/'&gt;Calculate B3LYP vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
+    end
+
+    subgraph Dielectric["&lt;span&gt;DD-DFT $$\varepsilon_s$$ and $$S_0\rightarrow S_n$$ absorption&lt;/span&gt;"]
+
+        %% description: Use molecular screening to set $\alpha=1/\varepsilon_s$, then compare DD-DFT geometry, response and absorption with the conventional branch.
+        direction TB
+        Converge1["Converge DD-DFT $$\varepsilon_s$$ and weights"]
+        Optimize2["&lt;a href='../2026-10-21_164937/'&gt;Optimize the DD-DFT $$S_0$$ geometry&lt;/a&gt;"]
+        Verify2["&lt;a href='../2026-10-21_164938/'&gt;Verify the DD-DFT $$S_0$$ minimum&lt;/a&gt;"]
+        Recheck1["&lt;a href='../2026-10-21_164939/'&gt;Recheck $$\varepsilon_s$$ at the DD-DFT geometry&lt;/a&gt;"]
+        Excitations2["&lt;a href='../2026-10-21_164940/'&gt;Calculate DD-DFT vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
+    end
+
+    Optimize1 --&gt; Verify1
+    Verify1 --&gt; Evaluate1
+    Verify1 --&gt; Converge1
+    Verify1 --&gt; Excitations1
+    Converge1 --&gt; Optimize2
+    Optimize2 --&gt; Verify2
+    Verify2 --&gt; Recheck1
+    Recheck1 --&gt; Excitations2
+
+    Start1(( ))
+    Input1[/"Benzene starting geometry"/]
+    Output1Screening[/"&lt;span&gt;Molecular screening $$\varepsilon_s$$&lt;/span&gt;"/]
+    Output1Excitations[/"&lt;span&gt;Vertical $$S_0\rightarrow S_n$$ excitations&lt;/span&gt;"/]
+    Output1Geometry[/"&lt;span&gt;Verified $$S_0$$ geometries&lt;/span&gt;"/]
+    End1((( )))
+
+    Start1 --&gt; Input1
+    Input1 --&gt; Optimize1
+
+    Evaluate1 --&gt; Output1Screening
+    Converge1 --&gt; Output1Screening
+    Recheck1 --&gt; Output1Screening
+    Output1Screening --&gt; End1
+    Excitations1 --&gt; Output1Excitations
+    Excitations2 --&gt; Output1Excitations
+    Output1Excitations --&gt; End1
+    Verify1 --&gt; Output1Geometry
+    Verify2 --&gt; Output1Geometry
+    Output1Geometry --&gt; End1
+
+    classDef complete stroke:#198754,stroke-width:2px;
+    classDef warning stroke:#e0a800,stroke-width:2px;
+    classDef serious stroke:#fd7e14,stroke-width:2px;
+    classDef blocked stroke:#dc3545,stroke-width:2px;
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    class Optimize1,Verify1,Evaluate1,Converge1,Optimize2,Verify2,Input1,Output1Geometry,Start1 complete;
+    class End1,Recheck1,Excitations1,Excitations2,Output1Excitations,Output1Screening warning;
+
+    class Verify1,Verify2,Recheck1 verification;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 3 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 6 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 7 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 9 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 10 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 11 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 12 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 13 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 14 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 15 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 16 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 17 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 19 stroke:#198754,color:#198754,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async onerror="restoreRequireDefine()">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs";
+import elk from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/mermaid-layout-elk.esm.min.mjs";
+import "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/chunks/mermaid.esm.min/flowDiagram-YHGXBVSY.mjs";
+import "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/chunks/mermaid-layout-elk.esm.min/render-T4E67GNI.mjs";
+restoreRequireDefine();
+mermaid.registerLayoutLoaders(elk);
+mermaid.initialize({ startOnLoad: false, securityLevel: "loose" });
+const container = document.querySelector(".calculations-diagram");
+while (!globalThis.katex) await new Promise(resolve => setTimeout(resolve, 50));
+// Typeset each formula here; Mermaid labels are double-quoted, so the HTML uses single quotes.
+// Native MathML keeps formulas aligned with diagram text.
+// The TeX annotation is dropped, since Mermaid's sanitizer would leave its text visible.
+const source = container.querySelector("pre").textContent.replace(/\$\$(.+?)\$\$/g,
+    (_, tex) => katex.renderToString(tex, { throwOnError: true, output: "mathml" })
+      .replace(/<annotation[^>]*>.*?<\/annotation>/g, "").replaceAll('"', "'"));
+const { svg, bindFunctions } = await mermaid.render("calculations-diagram", source);
+container.innerHTML = svg;
+bindFunctions?.(container);
+const drawing = container.querySelector("svg");
+// Mermaid shares one arrowhead marker between edges and ignores linkStyle for it; give each
+// coloured edge an arrowhead of its own colour.
+for (const path of drawing.querySelectorAll("path[marker-end]")) {
+  const colour = path.style.stroke, id = path.getAttribute("marker-end").match(/#([^)"']+)/)?.[1];
+  const marker = id && drawing.querySelector(`marker[id="${id}"]`);
+  if (!colour || !marker) continue;
+  const key = `${id}-${colour.replace(/[^a-z0-9]/gi, "")}`;
+  if (!drawing.querySelector(`marker[id="${key}"]`)) {
+    const copy = marker.cloneNode(true);
+    copy.id = key;
+    for (const shape of copy.querySelectorAll("path, circle")) Object.assign(shape.style, { fill: colour, stroke: colour });
+    marker.after(copy);
+  }
+  path.setAttribute("marker-end", `url(#${key})`);
+}
+// Mermaid paints group titles before the arrows, which then cross them; repaint the titles above the arrows and
+// nodes, on the group's own background.
+// Each title keeps the group's box, so it can fade with the group's nodes.
+const titles = document.createElementNS("http://www.w3.org/2000/svg", "g");
+titles.setAttribute("class", "cluster-labels");
+const groups = [...drawing.querySelectorAll("g.cluster")].map(cluster => ({
+  box: cluster.querySelector("rect").getBBox(), label: cluster.querySelector("g.cluster-label") }));
+titles.append(...groups.map(group => group.label).filter(Boolean));
+drawing.querySelector("g.nodes")?.after(titles);
+// On a calculation page the diagram keeps the workflow page's scale in a smaller framed view, centred on that
+// calculation; the workflow page opens on the start circle when the diagram is wider than the page.
+const current = container.dataset.current;
+const focus = drawing.querySelector(current ? `g.node[id*="-flowchart-${current}-"]` : 'g.node[id*="-Start"]');
+if (focus) {
+  const box = focus.getBoundingClientRect(), frame = container.getBoundingClientRect();
+  container.scrollLeft += box.left + box.width / 2 - frame.left - container.clientWidth / 2;
+  if (current) container.scrollTop += box.top + box.height / 2 - frame.top - container.clientHeight / 2;
+}
+// Clicking a node traces every path through it, back to the inputs and on to the outputs; clicking an arrow traces
+// only the paths through that arrow. Clicking it again, elsewhere or pressing Escape clears the trace; a label's
+// link still opens its page. The arrows come from the README source, in order, as [from, to] node names.
+const nodes = new Map(), links = [], counts = {};
+for (const node of drawing.querySelectorAll("g.node")) {
+  const name = node.id.match(/flowchart-(.+)-\d+$/)?.[1];
+  if (name) { nodes.set(name, node); node.dataset.name = name; }
+}
+for (const [from, to] of JSON.parse(container.dataset.edges)) {
+  const key = `L_${from}_${to}_`;
+  counts[key] = (counts[key] ?? -1) + 1;
+  const path = drawing.querySelector(`path[data-id="${key}${counts[key]}"]`);
+  if (!path) continue;
+  // A wide transparent copy of each arrow catches clicks near its thin line.
+  const hit = path.cloneNode(false);
+  hit.removeAttribute("id"); hit.removeAttribute("marker-end"); hit.removeAttribute("style");
+  hit.removeAttribute("data-id"); hit.setAttribute("class", "edge-hit");
+  path.after(hit);
+  const link = { from, to, path };
+  hit.link = link;
+  links.push(link);
+}
+// Every node and arrow reached from a node by repeatedly following arrows upwards or downwards.
+const reach = (name, upwards, found) => {
+  for (const link of links) {
+    if ((upwards ? link.to : link.from) !== name || found.links.has(link)) continue;
+    found.links.add(link);
+    const next = upwards ? link.from : link.to;
+    found.nodes.add(next);
+    reach(next, upwards, found);
+  }
+  return found;
+};
+let selected = null;
+// The selection is kept per workflow for this browser tab, so the workflow page and its calculation pages share it.
+const key = `calculations-diagram:${container.dataset.workflow}`;
+const remember = choice => {
+  try {
+    if (choice) sessionStorage.setItem(key, JSON.stringify(typeof choice === "string" ? { node: choice } : { link: links.indexOf(choice) }));
+    else sessionStorage.removeItem(key);
+  } catch {}
+};
+const rows = [...document.querySelectorAll(".calculations-table tbody tr")];
+const trace = choice => {
+  selected = choice;
+  remember(choice);
+  drawing.classList.toggle("traced", Boolean(choice));
+  for (const element of drawing.querySelectorAll(".on-trace, .trace-origin")) element.classList.remove("on-trace", "trace-origin");
+  for (const row of rows) row.classList.remove("off-trace");
+  if (!choice) return;
+  const [up, down] = typeof choice === "string" ? [choice, choice] : [choice.from, choice.to];
+  const found = { nodes: new Set([up, down]), links: new Set(typeof choice === "string" ? [] : [choice]) };
+  reach(up, true, found);
+  reach(down, false, found);
+  for (const name of found.nodes) nodes.get(name)?.classList.add("on-trace");
+  // A group's title fades unless the trace passes through one of its nodes.
+  for (const { box, label } of groups) {
+    const inside = [...found.nodes].some(name => {
+      const at = nodes.get(name)?.transform.baseVal.consolidate()?.matrix;
+      return at && at.e >= box.x && at.e <= box.x + box.width && at.f >= box.y && at.f <= box.y + box.height;
+    });
+    label?.classList.toggle("on-trace", inside);
+  }
+  for (const link of found.links) link.path.classList.add("on-trace");
+  (typeof choice === "string" ? nodes.get(choice) : choice.path).classList.add("trace-origin");
+  // The overview tables grey out the calculations off the trace.
+  const traced = new Set([...found.nodes].map(name => nodes.get(name)?.querySelector(".nodeLabel a")?.getAttribute("href")));
+  for (const row of rows) row.classList.toggle("off-trace", !traced.has(row.querySelector("a")?.getAttribute("href")));
+};
+// A calculation page's diagram clears only from within itself, since the page's viewers and charts take clicks too.
+document.addEventListener("click", event => {
+  if (event.target.closest("a, .tippy-box") || (current && !event.target.closest(".calculations-diagram"))) return;
+  const hit = event.target.closest(".calculations-diagram .edge-hit");
+  const node = event.target.closest(".calculations-diagram g.node");
+  const choice = hit ? hit.link : node ? node.dataset.name : null;
+  trace(choice === selected ? null : choice);
+});
+document.addEventListener("keydown", event => { if (event.key === "Escape") trace(null); });
+try {
+  const saved = JSON.parse(sessionStorage.getItem(key));
+  if (saved) trace(saved.node ?? links[saved.link] ?? null);
+} catch {}
+// Hovering a calculation's label shows, in Quarto's own hover popover, its row of the overview tables below, the
+// workflow's assessment of it and the findings behind its status. The copied formulas are typeset already, so they
+// are marked for the popover hook in math-header.html to leave alone.
+for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
+  const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
+  if (!row || !globalThis.tippy) continue;
+  tippy(anchor, {
+    content: () => {
+      const box = document.createElement("div"), copy = document.createElement("table"), body = document.createElement("tbody");
+      box.className = "diagram-popover";
+      copy.className = "table table-sm";
+      body.append(row.cloneNode(true));
+      copy.append(row.closest("table").tHead.cloneNode(true), body);
+      box.append(copy);
+      const detail = document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
+      if (detail) box.append(...detail.cloneNode(true).childNodes);
+      for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
+      return box;
+    },
+    allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
+    theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
+  });
+}
+</script>
+```
+
+:::: {.diagram-details}
+::: {.calculations-table}
+| Status | Calculation | Program | Job | Calculation started | Wall time |
+| --- | --- | --- | --- | --- | --- |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Optimize the B3LYP $S_0$ geometry](../2026-10-21_164932/) | Gaussian | Opt | 22 Oct 2026, 17:14:26 JST | 0:00:57 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: The largest alpha MO coefficient is 10.767. Gaussian: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} | [Verify the B3LYP $S_0$ minimum](../2026-10-21_164933/) | Gaussian | Freq | 22 Oct 2026, 17:16:20 JST | 0:00:58 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Evaluate B3LYP screening $\varepsilon_s$](../2026-10-21_164934/) | Lotus | Screening | 22 Oct 2026, 18:35:46 JST | 0:00:55 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Excited states: The largest alpha MO coefficient is 10.767. Natural transition orbitals: Basis set taken from checkpoint file."){.workflow-status} | [Calculate B3LYP vertical $S_0\rightarrow S_n$ excitations](../2026-10-21_164935/) | Gaussian | TD, SP | 22 Oct 2026, 18:34:31 JST | 0:01:07 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Converge DD-DFT $\varepsilon_s$ and weights](../2026-10-21_164936/) | Lotus | Self-consistent screening | 22 Oct 2026, 18:35:46 JST | 0:01:05 |
+| ![Succeeded](../../../../../private/research-findings/projects/icons/check.svg "Succeeded: Every parsed check passed."){.workflow-status} | [Optimize the DD-DFT $S_0$ geometry](../2026-10-21_164937/) | Gaussian | Opt | 22 Oct 2026, 20:14:46 JST | 0:00:53 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Gaussian: The largest alpha MO coefficient is 11.0828. Gaussian: Explicit consideration of 2 degrees of freedom as vibrations may cause significant error."){.workflow-status} | [Verify the DD-DFT $S_0$ minimum](../2026-10-21_164938/) | Gaussian | Freq | 23 Oct 2026, 13:01:15 JST | 0:00:36 |
+| ![Failed](../../../../../private/research-findings/projects/icons/cross.svg "Failed: Relaxation changed the rounded DD-BLYP weights; assess before further calculations."){.workflow-status} | [Recheck $\varepsilon_s$ at the DD-DFT geometry](../2026-10-21_164939/) | Lotus | Self-consistent screening | 23 Oct 2026, 13:10:52 JST | 0:00:39 |
+| ![Problems](../../../../../private/research-findings/projects/icons/warning.svg "Problems: Excited states: The largest alpha MO coefficient is 11.0828. Natural transition orbitals: Basis set taken from checkpoint file. Using the first-cycle DD-DFT geometry and weights with the documented screening residual."){.workflow-status} | [Calculate DD-DFT vertical $S_0\rightarrow S_n$ excitations](../2026-10-21_164940/) | Gaussian | TD, SP | 23 Oct 2026, 13:22:55 JST | 0:00:32 |
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-21_164933/"}
+| Kind | Source | Message |
+| --- | --- | --- |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | The largest $\alpha$ MO coefficient is $10.767$. |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | Explicit consideration of $2$ degrees of freedom as vibrations may cause significant error. |
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-21_164935/"}
+| Kind | Source | Message |
+| --- | --- | --- |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Excited states | The largest $\alpha$ MO coefficient is $10.767$. |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Natural transition orbitals | Basis set taken from checkpoint file. |
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-21_164938/"}
+| Kind | Source | Message |
+| --- | --- | --- |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | The largest $\alpha$ MO coefficient is $11.0828$. |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Gaussian | Explicit consideration of $2$ degrees of freedom as vibrations may cause significant error. |
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-21_164939/"}
+| Kind | Source | Message |
+| --- | --- | --- |
+| ![Error](../../../../../private/research-findings/projects/icons/cross.svg){.workflow-status} |  | Relaxation changed the rounded DD-BLYP weights; assess before further calculations. |
+
+:::
+
+::: {.diagram-detail data-calculation="../2026-10-21_164940/"}
+| Kind | Source | Message |
+| --- | --- | --- |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Excited states | The largest $\alpha$ MO coefficient is $11.0828$. |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} | Natural transition orbitals | Basis set taken from checkpoint file. |
+| ![Warning](../../../../../private/research-findings/projects/icons/warning.svg){.workflow-status} |  | Using the first-cycle DD-DFT geometry and weights with the documented screening residual. |
+
+:::
+::::
+
 ```{python}
 import sys
 sys.path.insert(0, "../../../../../private/research-findings/quarto")
