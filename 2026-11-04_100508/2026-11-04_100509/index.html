@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Giovanni Gravili">
+<meta name="dcterms.date" content="2026-11-04">
+<meta name="keywords" content="Diels–Alder, transition state, IRC, cyclohexene">
+
+<title>Butadiene and ethene Diels-Alder path from offset planes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html-c7679b57201a/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html-c7679b57201a/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html-c7679b57201a/popper.min.js"></script>
+<script src="../../site_libs/quarto-html-c7679b57201a/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html-c7679b57201a/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html-c7679b57201a/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html-c7679b57201a/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap-774910676954/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap-774910676954/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap-774910676954/bootstrap-8ca65c5d82e728bf7ec30b66f47be7b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
+<script>
+(() => {
+    const widths = new Map([["\u2009", "0.16666667em"], ["\u2005", "0.22222222em"], ["\u2005\u200a", "0.27777778em"]]);
+    const patched = new WeakSet();
+    const namespace = "http://www.w3.org/1998/Math/MathML";
+    // Chrome draws only mathvariant="normal"; KaTeX writes \mathbf, \boldsymbol and their kin as other mathvariants,
+    // which Chrome ignores, so a bold r is drawn as an italic one. Each letter, digit or Greek letter is replaced by
+    // its Unicode mathematical alphanumeric, which the math font draws in that style: per variant, the code points of
+    // A, a, 0, Alpha and alpha in that style, or null where Unicode has no such letters.
+    const alphabets = {
+        "bold": [0x1D400, 0x1D41A, 0x1D7CE, 0x1D6A8, 0x1D6C2],
+        "bold-italic": [0x1D468, 0x1D482, 0x1D7CE, 0x1D71C, 0x1D736],
+        "italic": [0x1D434, 0x1D44E, null, 0x1D6E2, 0x1D6FC],
+        "double-struck": [0x1D538, 0x1D552, 0x1D7D8, null, null],
+        "script": [0x1D49C, 0x1D4B6, null, null, null],
+        "fraktur": [0x1D504, 0x1D51E, null, null, null],
+        "sans-serif": [0x1D5A0, 0x1D5BA, 0x1D7E2, null, null],
+        "bold-sans-serif": [0x1D5D4, 0x1D5EE, 0x1D7EC, 0x1D756, 0x1D770],
+        "monospace": [0x1D670, 0x1D68A, 0x1D7F6, null, null],
+    };
+    // Letters Unicode places outside the alphabets, in the Letterlike Symbols block.
+    const holes = {"italic": {h: 0x210E}, "double-struck": {C: 0x2102, H: 0x210D, N: 0x2115, P: 0x2119, Q: 0x211A, R: 0x211D, Z: 0x2124},
+        "script": {B: 0x212C, E: 0x2130, F: 0x2131, H: 0x210B, I: 0x2110, L: 0x2112, M: 0x2133, R: 0x211B, e: 0x212F, g: 0x210A, o: 0x2134},
+        "fraktur": {C: 0x212D, H: 0x210C, I: 0x2111, R: 0x211C, Z: 0x2128}};
+    function styled(text, variant) {
+        const [upper, lower, digit, greekUpper, greekLower] = alphabets[variant];
+        return [...text].map(character => {
+            const code = character.codePointAt(0), hole = holes[variant]?.[character];
+            if (hole) return String.fromCodePoint(hole);
+            if (code >= 65 && code <= 90 && upper) return String.fromCodePoint(upper + code - 65);
+            if (code >= 97 && code <= 122 && lower) return String.fromCodePoint(lower + code - 97);
+            if (code >= 48 && code <= 57 && digit) return String.fromCodePoint(digit + code - 48);
+            if (code >= 0x391 && code <= 0x3A9 && code !== 0x3A2 && greekUpper) return String.fromCodePoint(greekUpper + code - 0x391);
+            if (code >= 0x3B1 && code <= 0x3C9 && greekLower) return String.fromCodePoint(greekLower + code - 0x3B1);
+            return character;
+        }).join("");
+    }
+    function variants(root) {
+        const elements = root.namespaceURI === namespace && root.hasAttribute?.("mathvariant") ? [root] : [];
+        elements.push(...(root.querySelectorAll?.("[mathvariant]") || []));
+        for (const element of elements) {
+            const variant = element.getAttribute("mathvariant");
+            if (!(variant in alphabets) || element.namespaceURI !== namespace) continue;
+            const walker = document.createTreeWalker(element, 4);
+            while (walker.nextNode()) walker.currentNode.nodeValue = styled(walker.currentNode.nodeValue, variant);
+            element.removeAttribute("mathvariant");
+        }
+    }
+    function explicitSpaces(html) {
+        return html.replace(/<mtext>([\u2005\u2009\u200a]+)<\/mtext>/g,
+            (original, text) => widths.has(text) ? '<mspace width="' + widths.get(text) + '"></mspace>' : original)
+            .replace(/<(m[ino]|mtext) mathvariant="([a-z-]+)">([^<]*)<\/\1>/g,
+                (original, tag, variant, text) => variant in alphabets ? `<${tag}>${styled(text, variant)}</${tag}>` : original);
+    }
+    // Chrome lays out tables as MathML Core does, centring every cell and padding it alike, so it ignores the
+    // columnalign and columnspacing that KaTeX's aligned, cases and matrices rely on. Each cell takes its column's
+    // alignment, the last one repeating, and half the spacing of the gaps beside it.
+    function tables(root) {
+        const found = root.namespaceURI === namespace && root.localName === "mtable" ? [root]
+            : [...(root.querySelectorAll?.("mtable") || [])];
+        for (const table of found) {
+            const aligns = (table.getAttribute("columnalign") || "").split(/\s+/).filter(Boolean);
+            const spacing = (table.getAttribute("columnspacing") || "").split(/\s+/).filter(Boolean);
+            const pick = (list, index) => list[Math.min(index, list.length - 1)];
+            for (const row of table.children) {
+                const cells = [...row.children];
+                cells.forEach((cell, index) => {
+                    if (aligns.length) cell.style.textAlign = pick(aligns, index);
+                    if (!spacing.length) return;
+                    cell.style.paddingInlineStart = index ? `calc(${pick(spacing, index - 1)} / 2)` : "0";
+                    cell.style.paddingInlineEnd = index < cells.length - 1 ? `calc(${pick(spacing, index)} / 2)` : "0";
+                });
+            }
+        }
+    }
+    function normalize(root) {
+        if (root.querySelectorAll) variants(root);
+        if (root.nodeType !== 3) tables(root);
+        // The DOM renderer emits bare text nodes; serialized MathML uses mtext.
+        const nodes = [];
+        if (root.nodeType === 3) nodes.push(root);
+        const roots = root.namespaceURI === namespace ? [root] : root.querySelectorAll?.("math") || [];
+        for (const math of roots) {
+            const walker = document.createTreeWalker(math, 4);
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+        }
+        for (const node of nodes) {
+            const parent = node.parentNode, width = widths.get(node.nodeValue);
+            if (!width || parent?.namespaceURI !== namespace) continue;
+            const space = document.createElementNS(namespace, "mspace");
+            space.setAttribute("width", width);
+            if (parent.localName === "mtext" && parent.childNodes.length === 1) parent.replaceWith(space);
+            else node.replaceWith(space);
+        }
+    }
+    function install() {
+        const katex = globalThis.katex;
+        if (katex && !patched.has(katex)) {
+            const render = katex.render, renderToString = katex.renderToString;
+            katex.render = function (tex, element, options) {
+                const result = render.call(this, tex, element, options);
+                normalize(element);
+                return result;
+            };
+            katex.renderToString = function (...args) {
+                return explicitSpaces(renderToString.apply(this, args));
+            };
+            patched.add(katex);
+        }
+        normalize(document);
+    }
+    new MutationObserver(changes => {
+        for (const change of changes) {
+            const parent = change.target.nodeType === 1 ? change.target : change.target.parentElement;
+            if (parent?.closest(".molstar-notebook-viewer, .vega-embed")) continue;
+            for (const node of change.addedNodes)
+                if (node.nodeType === 1 || node.nodeType === 3) normalize(node);
+        }
+    }).observe(document.documentElement, {childList: true, subtree: true});
+    document.addEventListener("DOMContentLoaded", install);
+    window.addEventListener("load", install);
+    install();
+})();
+</script>
+<!-- Match visible KaTeX glyph heights to the surrounding text without rounding small canvas measurements. -->
+<script>
+(() => {
+    async function size() {
+        const style = getComputedStyle(document.body);
+        await Promise.all([document.fonts.load("italic 1000px KaTeX_Math"),
+                           document.fonts.load("1000px KaTeX_Main"), document.fonts.ready]);
+        const context = document.createElement("canvas").getContext("2d");
+        if (!context) return;
+        const height = (font, character) => {
+            context.font = font;
+            const bounds = context.measureText(character);
+            return bounds.actualBoundingBoxAscent + bounds.actualBoundingBoxDescent;
+        };
+        let cross = 0, square = 0;
+        for (const [characters, font] of [["acemnorsuvwxzABCEHKMNORSUXZ", "italic 1000px KaTeX_Math"],
+                                          ["0123456789", "1000px KaTeX_Main"]]) {
+            for (const character of characters) {
+                const text = height(`1000px ${style.fontFamily}`, character);
+                const math = height(font, character);
+                if (!Number.isFinite(text) || !Number.isFinite(math) || text <= 0 || math <= 0) continue;
+                cross += text * math;
+                square += math * math;
+            }
+        }
+        const ratio = cross / square;
+        if (Number.isFinite(ratio) && ratio > 0.5 && ratio < 2)
+            document.documentElement.style.setProperty("--math-scale", ratio.toFixed(4));
+    }
+    if (document.body) size(); else document.addEventListener("DOMContentLoaded", size);
+})();
+</script>
+<script>
+// GitHub Pages serves every page also under its folder's index.html; show the folder's own URL instead.
+if (location.pathname.endsWith("/index.html")) {
+    history.replaceState(history.state, "", location.pathname.slice(0, -"index.html".length) + location.search + location.hash);
+}
+</script>
+<!-- KaTeX and its mhchem extension, so \ce{...} renders on every page, load here, once and before the page parses on. Quarto's own loader starts it only when the page has
+     parsed and shields it from the widgets' RequireJS only if that loader is visible then, so KaTeX could register
+     as an AMD module instead of a global and leave the math raw until a reload. RequireJS's define is hidden for
+     this one script alone. These pages give Quarto's loader an empty script as KaTeX, so its render runs on this
+     global KaTeX once the empty script has loaded. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+<script>window.quartoKatexDefine = window.define; window.define = undefined;</script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script>
+<script>window.define = window.quartoKatexDefine; delete window.quartoKatexDefine;</script>
+<!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
+     the viewers' own request of the same URL. -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
+<style>
+/* Math axis labels may extend beyond Vega's native text bounds after zooming. */
+.cell-output.cell-output-display:has(.vega-embed) { overflow: visible; }
+/* A chart's redraw lays out only the chart, not the rest of the page. */
+.vega-embed { contain: layout style; }
+.vega-embed .role-axis-title > text { visibility: hidden; }
+.vega-embed .katex, #vg-tooltip-element .katex { font-size: 1em; }
+#vg-tooltip-element, #vg-tooltip-element td, #vg-tooltip-element th { font-size: 14px; font-family: system-ui; }
+/* The info button beside a described quantity, in a table header or a plot title, and the explanation it opens. */
+.quantity-info-icon { display: inline-flex; vertical-align: -0.1em; margin-left: 0.3em; width: 0.9em; height: 0.9em;
+    color: #8c8c8c; cursor: help; pointer-events: auto; }
+.quantity-info-icon:hover { color: #333333; }
+.quantity-info-icon svg { width: 100%; height: 100%; fill: currentColor; }
+.quantity-popover { max-width: 22rem; font-size: 0.875rem; line-height: 1.4; text-align: left; white-space: normal;
+    font-weight: normal; }
+.quantity-popover ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.quantity-popover ul:first-child { margin-top: 0; }
+</style>
+<script>
+(() => {
+    const labels = new Map(), descriptions = new Map(), sources = new WeakSet(), records = new WeakMap(), templates = new Map();
+    // An explanation's Markdown as HTML: $...$ LaTeX typeset by KaTeX, and links, inline code, bold and italics.
+    function explanation(text) {
+        // Lines starting with "- " form a bulleted list; any other line is a run of inline Markdown before or after it.
+        const html = [];
+        let items = null;
+        for (const line of text.split('\n')) {
+            if (line.startsWith('- ')) {
+                if (!items) { items = []; html.push(items); }
+                items.push(line.slice(2));
+            } else if (line.trim()) {
+                items = null;
+                html.push(line);
+            }
+        }
+        return html.map(part => Array.isArray(part) ? '<ul>' + part.map(item => '<li>' + inlineMarkdown(item) + '</li>').join('') + '</ul>' : '<div>' + inlineMarkdown(part) + '</div>').join('');
+    }
+    function inlineMarkdown(text) {
+        const escape = part => part.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const inline = part => escape(part)
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
+        return text.split(/(\$[^$]+\$)/).map(part => part.length > 2 && part.startsWith('$') && part.endsWith('$')
+            ? (globalThis.katex ? katex.renderToString(part.slice(1, -1), {throwOnError:false}) : escape(part))
+            : inline(part)).join('');
+    }
+    // An info button that opens an explanation, Markdown with $...$ LaTeX, in Quarto's own hover popover, typeset
+    // when the popover opens.
+    function infoButton(description) {
+        const button = document.createElement('span');
+        button.className = 'quantity-info-icon';
+        button.dataset.quartoMath = 'true';
+        button.setAttribute('aria-label', 'Explanation');
+        // Material "info" outline icon.
+        button.innerHTML = '<svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>';
+        if (globalThis.tippy) tippy(button, {
+            content: '',
+            onShow(instance) {
+                const box = document.createElement('div');
+                box.className = 'quantity-popover';
+                box.innerHTML = explanation(description);
+                instance.setContent(box);
+            },
+            allowHTML: true, maxWidth: 'none', delay: 100, arrow: false, theme: 'quarto', placement: 'bottom',
+            appendTo: () => document.body,
+        });
+        return button;
+    }
+    // Viewers' colour scales open their quantity's explanation from the same button.
+    globalThis.quartoInfoButton = infoButton;
+    // Table cells that scientific_table gave an explanation, a marker after their label holding its Markdown source,
+    // get their info button once.
+    function describeHeaders() {
+        for (const marker of document.querySelectorAll('span.quantity-info[data-description]:not([data-ready])')) {
+            marker.dataset.ready = 'true';
+            const bytes = Uint8Array.from(atob(marker.dataset.description), c => c.charCodeAt(0));
+            marker.replaceChildren(infoButton(new TextDecoder().decode(bytes)));
+        }
+    }
+    const measure = document.createElement('div');
+    Object.assign(measure.style, {position:'fixed', left:'-10000px', top:'0', visibility:'hidden', whiteSpace:'nowrap', lineHeight:'1'});
+    measure.dataset.quartoMath = 'true';
+    let scheduled = false;
+    function formula(value) {
+        const text = value.trim().replaceAll('\u2212', '-');
+        const scientific = text.match(/^([+-]?(?:\d+(?:\.\d*)?|\.\d+))[eE]([+-]?\d+)$/);
+        const result = scientific
+            ? `$\\mathord{${scientific[1]}\\times 10^{${Number(scientific[2])}}}$`
+            : labels.get(text) || text;
+        return result?.startsWith('$') && result.endsWith('$') ? result.slice(1, -1) : null;
+    }
+    // A label with inline math, or any registered label that differs from the raw field name.
+    function mixed(value) {
+        const key = value.trim(), text = labels.get(key) || key;
+        return (/\$[^$]+\$/.test(text) || text !== key) && formula(value) === null ? text : null;
+    }
+    function typeset(value, size, family = 'inherit', isMixed = false) {
+        const key = JSON.stringify([value, size, family, isMixed]);
+        if (!templates.has(key)) {
+            const span = document.createElement('span');
+            span.style.fontSize = size;
+            span.style.fontFamily = family;
+            // Mixed labels alternate plain text and $...$ math; others are one formula.
+            for (const part of isMixed ? value.split(/(\$[^$]+\$)/).filter(Boolean) : ['$' + value + '$']) {
+                if (!(part.startsWith('$') && part.endsWith('$'))) { span.append(document.createTextNode(part)); continue; }
+                const math = document.createElement('span');
+                katex.render(part.slice(1, -1), math, {throwOnError:true, displayMode:false});
+                span.append(math);
+            }
+            // A zero-size probe on the baseline gives the formula's real ascent, so it can sit
+            // on the SVG text's baseline instead of an estimate from its height.
+            const probe = document.createElement('span');
+            Object.assign(probe.style, {display:'inline-block', width:'0', height:'0', verticalAlign:'baseline'});
+            span.append(probe);
+            measure.append(span);
+            const bounds = span.getBoundingClientRect();
+            const baseline = probe.getBoundingClientRect().top - bounds.top;
+            probe.remove();
+            templates.set(key, {span:span.cloneNode(true), width:bounds.width, height:bounds.height, baseline});
+            span.remove();
+        }
+        return templates.get(key);
+    }
+
+    // Sets each axis title clear of its tick labels: snug on a chart's first layout, and only ever further out once laid
+    // out, so that titles stay still as a zoom changes the width of the labels, moving only to avoid overlapping them.
+    function spaceAxisTitles(charts, snug) {
+        for (const text of charts.flatMap(chart => [...chart.querySelectorAll('.role-axis-title > text')])) {
+            const record = records.get(text);
+            const axis = text.closest('.role-axis');
+            if (!record?.node.isConnected || !axis) continue;
+            const ticks = [...axis.querySelectorAll('.role-axis-label > text')]
+                .map(tick => records.get(tick)?.node || tick)
+                .map(tick => tick.getBoundingClientRect())
+                .filter(rect => rect.width && rect.height);
+            if (!ticks.length) continue;
+            const title = record.node.getBoundingClientRect();
+            const vertical = /rotate\(\s*-?90/.test(text.getAttribute('transform') || '');
+            let dx = 0, dy = 0;
+            if (vertical) {
+                const domain = axis.querySelector('.role-axis-domain line');
+                if (!domain) continue;
+                const centre = domain.getBoundingClientRect().left;
+                const left = (title.left + title.right) / 2 < centre;
+                const boundary = left ? Math.min(...ticks.map(r => r.left)) : Math.max(...ticks.map(r => r.right));
+                dx = left ? boundary - title.right - 8 : boundary + 8 - title.left;
+                if (!snug && (left ? dx > 0 : dx < 0)) dx = 0;
+            } else {
+                dy = Math.max(...ticks.map(r => r.bottom)) + 8 - title.top;
+                if (!snug && dy < 0) dy = 0;
+            }
+            if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) continue;
+            const inverse = record.node.parentNode.getScreenCTM()?.inverse();
+            if (!inverse) continue;
+            record.offsetX = (record.offsetX || 0) + inverse.a * dx + inverse.c * dy;
+            record.offsetY = (record.offsetY || 0) + inverse.b * dx + inverse.d * dy;
+            record.node.setAttribute('transform',
+                `translate(${record.offsetX},${record.offsetY}) ${text.getAttribute('transform') || ''}`);
+        }
+    }
+
+    // Vega lays a legend out from its plain label text, which for a typeset label is the LaTeX source, and in a
+    // single row unless told otherwise. Lay every legend of a plot out again from the typeset widths. Each legend is
+    // a grid: entries in reading order, each column as wide as its own widest entry, as many columns as fit, rows
+    // at Vega's spacing. The legends of one plot then flow left to right from where Vega put the first, a legend
+    // moving to a new band below when it would need more rows beside the previous one than on its own. The plot
+    // grows by the height the legends gained. Vega's own transforms are kept as the originals, so a Vega re-layout
+    // is taken as the new original.
+    function original(node) {
+        const current = node.getAttribute('transform') || 'translate(0,0)';
+        if (current !== node.dataset.quartoShifted) node.dataset.quartoOriginal = current;
+        const match = node.dataset.quartoOriginal.match(/translate\(\s*([-\d.e]+)[ ,]+([-\d.e]+)\s*\)/);
+        return match && {current, x: Number(match[1]), y: Number(match[2])};
+    }
+    function place(node, current, x, y) {
+        const wanted = `translate(${x},${y})`;
+        node.dataset.quartoShifted = wanted;
+        if (current !== wanted) node.setAttribute('transform', wanted);
+    }
+    const legendGap = 16, legendBandGap = 10;
+    // A legend's grid for a width: column count, column starts, row count and total width.
+    function grid(entries, room) {
+        const widths = count => Array.from({length: count}, (_, column) =>
+            Math.max(...entries.filter((_, index) => index % count === column).map(entry => entry.width)));
+        let columns = entries.length;
+        while (columns > 1 && widths(columns).reduce((sum, width) => sum + width + legendGap, 0) - legendGap > room) columns--;
+        const starts = widths(columns).reduce((list, width) => [...list, list[list.length - 1] + width + legendGap], [0]);
+        return {columns, starts, rows: Math.ceil(entries.length / columns), width: starts[columns] - legendGap};
+    }
+    function spaceLegends(charts) {
+        for (const svg of charts.flatMap(chart => [...chart.querySelectorAll('svg.marks')])) {
+            const scale = svg.getScreenCTM()?.a || 1;
+            const legends = [];
+            let ready = true;
+            for (const legend of svg.querySelectorAll('.role-legend > g')) {
+                const scope = legend.querySelector('.role-legend-entry .role-scope');
+                const self = original(legend);
+                if (!scope || !self) continue;
+                const entries = [];
+                for (const item of [...scope.children].filter(child => child.matches('g[transform]'))) {
+                    const position = original(item);
+                    const text = item.querySelector('.role-legend-label > text');
+                    if (!position || !text) continue;
+                    // The drawn extent of the entry, symbol to the end of its label as shown (typeset or plain), in
+                    // the plot's own units.
+                    const node = records.get(text)?.node;
+                    const label = (node?.isConnected ? node.querySelector('div') || node : text).getBoundingClientRect();
+                    const start = item.getBoundingClientRect().left;
+                    entries.push({item, ...position, width: label.width ? (label.right - start) / scale : 0});
+                }
+                // A legend not laid out yet, as in a closed fold, is measured once it is shown.
+                if (!entries.length || entries.some(entry => !entry.width)) { ready = false; break; }
+                entries.sort((a, b) => a.y - b.y || a.x - b.x);
+                const ys = [...new Set(entries.map(entry => entry.y))].sort((a, b) => a - b);
+                // Where the entries start within the legend, below its title.
+                const offset = (scope.getBoundingClientRect().top - legend.getBoundingClientRect().top) / scale;
+                legends.push({legend, self, entries, rows: ys.length, rowHeight: ys.length > 1 ? ys[1] - ys[0] : 20,
+                              left: Math.min(...entries.map(entry => entry.x)), top: ys[0],
+                              inset: (scope.getBoundingClientRect().left - legend.getBoundingClientRect().left) / scale,
+                              head: Math.max(0, offset)});
+            }
+            if (!ready || !legends.length) continue;
+            const origin = {x: Math.min(...legends.map(item => item.self.x)), y: Math.min(...legends.map(item => item.self.y))};
+            // Vega sets a bottom legend below the x axis as it measured it, from the LaTeX source of typeset labels,
+            // which rotated reach far below the typeset ones. Such legends start instead Vega's legend offset below
+            // the axes as drawn: their lines, shown labels and titles.
+            const first = legends[0], shown = first.self.current.match(/translate\(\s*([-\d.e]+)[ ,]+([-\d.e]+)/);
+            const drawn = [...svg.querySelectorAll('.role-axis line, .role-axis path, .role-axis text, .role-axis foreignObject')]
+                .filter(node => node.tagName !== 'text' || getComputedStyle(node).visibility !== 'hidden')
+                .map(node => node.getBoundingClientRect()).filter(rect => rect.width || rect.height);
+            const legendTop = first.legend.getBoundingClientRect().top;
+            const axesBottom = Math.max(...drawn.map(rect => rect.bottom));
+            if (shown && drawn.length && legendTop >= axesBottom - 1) {
+                // Moved only by a whole step of at least a pixel, so that a later pass finds the legends where it
+                // would put them and writes nothing, instead of each write's mutation scheduling another pass.
+                const placed = Number(shown[2]) - (first.self.y - origin.y);
+                const wanted = placed + (axesBottom + 18 * scale - legendTop) / scale;
+                origin.y = Math.abs(wanted - placed) < 1 ? placed : Math.round(wanted);
+            }
+            // The room from where the legends start to the plot's right edge, in the plot's units: the first legend's
+            // drawn left edge, taken back to the origin from its current position.
+            const shownX = Number(first.self.current.match(/translate\(\s*([-\d.e]+)/)?.[1] ?? first.self.x);
+            const room = (svg.getBoundingClientRect().right - first.legend.getBoundingClientRect().left) / scale + shownX - origin.x;
+            const heightOf = (item, rows) => item.head + rows * item.rowHeight;
+            const originalBottom = Math.max(...legends.map(item => item.self.y + heightOf(item, item.rows)));
+            let x = origin.x, y = origin.y, bottom = origin.y;
+            for (const item of legends) {
+                const alone = grid(item.entries, room - item.inset);
+                let layout = grid(item.entries, room - item.inset - (x - origin.x));
+                // Beside the previous legend only when it fits there without needing more rows.
+                if (x > origin.x && (layout.rows > alone.rows || x - origin.x + item.inset + layout.width > room)) {
+                    x = origin.x; y = bottom + legendBandGap; layout = alone;
+                }
+                place(item.legend, item.self.current, x, y);
+                item.entries.forEach((entry, index) => place(entry.item, entry.current,
+                    item.left + layout.starts[index % layout.columns], item.top + Math.floor(index / layout.columns) * item.rowHeight));
+                bottom = Math.max(bottom, y + heightOf(item, layout.rows));
+                x += item.inset + layout.width + 2 * legendGap;
+            }
+            // Grow the plot by the height the legends gained over Vega's own layout,
+            const height = svg.getAttribute('height');
+            if (height !== svg.dataset.quartoHeight) svg.dataset.quartoBase = height;
+            // or shrink it by the height they gave back by moving up.
+            const extra = bottom - originalBottom;
+            const wantedHeight = String(Number(svg.dataset.quartoBase) + extra);
+            svg.dataset.quartoHeight = wantedHeight;
+            if (height !== wantedHeight) {
+                svg.setAttribute('height', wantedHeight);
+                const box = svg.getAttribute('viewBox')?.split(/[ ,]+/).map(Number);
+                if (box?.length === 4) svg.setAttribute('viewBox', [box[0], box[1], box[2], Number(wantedHeight)].join(' '));
+            }
+        }
+    }
+
+    // Vega reserves the x-axis band from the LaTeX source of labels that are rotated, and the page typesets them much
+    // narrower, moving the axis title up to them; the rest of the reserved band then stays empty below the plot. Trim
+    // the svg to its lowest drawn element, so no blank strip separates the chart from the block beneath it, and keep
+    // the viewBox at the drawn scale so positions and interactions are unchanged.
+    function trimEmptyBand(charts) {
+        for (const svg of charts.flatMap(chart => [...chart.querySelectorAll('svg.marks')])) {
+            const rect = svg.getBoundingClientRect();
+            if (!rect.height) continue;
+            let bottom = -Infinity;
+            // Axes, legends, text marks and the plot frame establish the visible extent; the data marks lie inside it,
+            // and a page's thousands of them must not be measured.
+            for (const node of svg.querySelectorAll(
+                '.role-axis :is(text, foreignObject, path, line), .role-legend :is(text, foreignObject, path, line, rect), .mark-text :is(text, foreignObject), .role-frame > path')) {
+                // Zoomed marks can extend far beyond their clip path; their bounding boxes ignore clipping and
+                // must not grow the SVG.
+                if (node.closest('defs, clipPath, mask, marker, pattern, [clip-path]')) continue;
+                const style = getComputedStyle(node);
+                if (style.visibility === 'hidden' || style.display === 'none' || style.opacity === '0') continue;
+                const drawn = node.getBoundingClientRect();
+                if (drawn.width || drawn.height) bottom = Math.max(bottom, drawn.bottom);
+            }
+            if (!isFinite(bottom)) continue;
+            const scale = rect.height / (svg.viewBox.baseVal.height || rect.height);
+            const wanted = String(Math.ceil((bottom - rect.top) / scale + 2));
+            if (svg.getAttribute('height') === wanted) continue;
+            svg.setAttribute('height', wanted);
+            const box = svg.getAttribute('viewBox')?.split(/[ ,]+/).map(Number);
+            if (box?.length === 4) svg.setAttribute('viewBox', [box[0], box[1], box[2], wanted].join(' '));
+        }
+    }
+
+    // What changed since the last scan: the whole page, the charts in ``dirty``, or the tooltip. A zoom redraws one chart
+    // every frame, so a scan touches only that chart.
+    let wholePage = true, tooltipChanged = false, settling = 0;
+    const dirty = new Set(), unsettled = new Set(), settled = new WeakSet();
+    function settle() {
+        settling = 0;
+        const charts = [...unsettled].filter(chart => chart.isConnected);
+        unsettled.clear();
+        spaceLegends(charts);
+        trimEmptyBand(charts);
+    }
+    function scan() {
+        scheduled = false;
+        if (!document.body) return;
+        if (!measure.isConnected) document.body.append(measure);
+        const whole = wholePage;
+        const charts = whole ? [...document.querySelectorAll('.vega-embed')] : [...dirty].filter(chart => chart.isConnected);
+        wholePage = false;
+        dirty.clear();
+        if (whole) for (const source of document.querySelectorAll('script.quarto-plot-labels, script.quarto-plot-descriptions')) {
+            if (sources.has(source)) continue;
+            const target = source.classList.contains('quarto-plot-labels') ? labels : descriptions;
+            // The observer can see a script before the HTML parser has finished its JSON text. Leave it pending;
+            // the subsequent text mutation or DOMContentLoaded schedules another scan.
+            let entries;
+            try { entries = Object.entries(JSON.parse(source.textContent)); }
+            catch (error) {
+                if (document.readyState !== 'loading' && source.textContent.trim()) console.error('Invalid plot labels:', error);
+                continue;
+            }
+            for (const [key, value] of entries) if (value) target.set(key, value);
+            sources.add(source);
+        }
+        if (whole) describeHeaders();
+        // Axis and legend text, and text marks drawn in the plot, which are typeset when they hold inline math.
+        for (const text of charts.flatMap(chart => [...chart.querySelectorAll('.role-axis-title > text, .role-axis-label > text, .role-legend-label > text, .role-legend-title > text, .mark-text.role-mark > text')])) {
+            const description = text.closest('.role-axis-title, .role-legend-title') && descriptions.get(text.textContent.trim());
+            const label = mixed(text.textContent) || (description && !formula(text.textContent) ? text.textContent.trim() : null);
+            const value = label || formula(text.textContent);
+            if (!value) {
+                records.get(text)?.node.remove();
+                records.delete(text);
+                text.style.visibility = 'inherit';
+                continue;
+            }
+            if (!globalThis.katex) continue;
+            const previous = records.get(text), transform = text.getAttribute('transform') || '';
+            const x = Number(text.getAttribute('x') || 0), y = Number(text.getAttribute('y') || 0);
+            const anchor = text.getAttribute('text-anchor');
+            // The typeset copy is hidden and shown as Vega hides and shows the text, as a label is when a zoom leaves no
+            // room for it, and a text drawn as an outline beneath another, a halo, keeps that outline as a glow.
+            const opacity = String(Number(text.getAttribute('opacity') ?? 1) * Number(text.getAttribute('fill-opacity') ?? 1));
+            if (previous?.node.isConnected && previous.node.style.opacity !== opacity) previous.node.style.opacity = opacity;
+            // Vega moves a tick's text every frame of a zoom. The same words only move their typeset copy, which is built
+            // again, and the font read, only when the words change.
+            if (previous?.value === value && previous.node.isConnected) {
+                const place = [x, y, transform, anchor].join('|');
+                if (place === previous.place) continue;
+                previous.place = place;
+                const {width, baseline} = previous.math;
+                previous.node.setAttribute('x', x - (anchor === 'middle' ? width / 2 : anchor === 'end' ? width : 0));
+                previous.node.setAttribute('y', y - baseline + (previous.shift || 0));
+                // An axis title keeps the offset that clears it of its labels.
+                previous.node.setAttribute('transform', previous.offsetX || previous.offsetY
+                    ? `translate(${previous.offsetX || 0},${previous.offsetY || 0}) ${transform}` : transform);
+                continue;
+            }
+            const style = getComputedStyle(text);
+            try {
+                const math = typeset(value, style.fontSize, style.fontFamily, Boolean(label));
+                const node = previous?.node || document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+                node.dataset.quartoMath = 'true';
+                node.setAttribute('x', x - (anchor === 'middle' ? math.width / 2 : anchor === 'end' ? math.width : 0));
+                node.setAttribute('y', y - math.baseline);
+                node.setAttribute('width', math.width + 2); node.setAttribute('height', math.height + 2);
+                node.setAttribute('transform', transform); node.style.overflow = 'visible';
+                const content = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+                // Legend titles keep Vega's bold weight once typeset.
+                Object.assign(content.style, {fontSize:style.fontSize, fontFamily:style.fontFamily, color:style.fill, lineHeight:'1', whiteSpace:'nowrap',
+                                              fontWeight: text.closest('.role-legend-title') ? style.fontWeight : 'normal'});
+                const halo = text.getAttribute('stroke'), width = Number(text.getAttribute('stroke-width') || 0);
+                if (halo && halo !== 'none' && width) content.style.textShadow = Array(4).fill(`0 0 ${width / 2}px ${halo}`).join(', ');
+                content.append(math.span.cloneNode(true));
+                // An axis or legend title of a described quantity gets its info button.
+                if (description) content.append(infoButton(description));
+                node.replaceChildren(content);
+                node.style.opacity = opacity;
+                text.style.visibility = 'hidden';
+                if (node.parentNode !== text.parentNode) text.parentNode.append(node);
+                text.closest('svg.marks').style.overflow = 'visible';
+                // A typeset legend label is centred on its symbol, as plain labels are: its subscripts and
+                // superscripts would otherwise leave it visibly off the symbol's middle.
+                const symbol = text.closest('.role-legend-label')?.parentNode?.querySelector('.role-legend-symbol path');
+                let shift = 0;
+                const mark = symbol?.getBoundingClientRect(), drawn = mark && content.getBoundingClientRect();
+                if (mark && mark.height && drawn.height) {
+                    const scale = drawn.height / (math.height || drawn.height);
+                    shift = ((mark.top + mark.bottom) - (drawn.top + drawn.bottom)) / 2 / (scale || 1);
+                    node.setAttribute('y', y - math.baseline + shift);
+                }
+                records.set(text, {value, math, shift, node, place:[x, y, transform, anchor].join('|')});
+            } catch (error) {text.style.visibility = 'inherit'; console.error(error);}
+        }
+        // Legends and the plot's height do not change under a zoom, so a chart already laid out is laid out again only when
+        // its redraws stop; a new chart, or a change to the page, is laid out at once.
+        const fresh = charts.filter(chart => whole || !settled.has(chart));
+        fresh.forEach(chart => settled.add(chart));
+        const later = charts.filter(chart => !fresh.includes(chart));
+        spaceAxisTitles(later, false);
+        if (fresh.length) { spaceAxisTitles(fresh, true); spaceLegends(fresh); trimEmptyBand(fresh); }
+        if (later.length) {
+            later.forEach(chart => unsettled.add(chart));
+            clearTimeout(settling);
+            settling = setTimeout(settle, 150);
+        }
+        if (!globalThis.katex || !(whole || tooltipChanged)) return;
+        tooltipChanged = false;
+        for (const cell of document.querySelectorAll('.vg-tooltip td.key, .vg-tooltip td.value, .vg-tooltip th')) {
+            if (cell.querySelector('.katex')) continue;
+            // Mixed text such as "$S_0$ minimum" alternates plain text and $...$ math, as in legends.
+            const label = mixed(cell.textContent);
+            if (label) {
+                cell.replaceChildren(...label.split(/(\$[^$]+\$)/).filter(Boolean).map(part => {
+                    if (!(part.startsWith('$') && part.endsWith('$'))) return document.createTextNode(part);
+                    const math = document.createElement('span');
+                    katex.render(part.slice(1, -1), math, {throwOnError:true, displayMode:false});
+                    return math;
+                }));
+                continue;
+            }
+            const value = formula(cell.textContent);
+            if (!value) continue;
+            const math = document.createElement('span');
+            katex.render(value, math, {throwOnError:true, displayMode:false});
+            cell.replaceChildren(math);
+        }
+    }
+    // Once a frame at most, however many times Vega draws in it; a hidden page draws no frames, so it scans at once.
+    function queue() {
+        if (scheduled) return;
+        scheduled = true;
+        if (document.hidden) queueMicrotask(scan); else requestAnimationFrame(scan);
+    }
+    function schedule() {
+        wholePage = true;
+        queue();
+    }
+    // Own math/layout writes must not re-enter the observer and starve browser events. A redraw marks its chart; a change
+    // anywhere else marks the whole page.
+    const observer = new MutationObserver(mutations => {
+        let changed = false;
+        // A redraw writes thousands of records for one chart; those of one parent need looking at only once.
+        const seen = new Set();
+        for (const mutation of mutations) {
+            const element = mutation.target.nodeType === Node.ELEMENT_NODE
+                ? mutation.target : mutation.target.parentElement;
+            // Molstar typesets its own labels; its toolbar and scene updates do not change plot or page math.
+            if (!element) continue;
+            if (mutation.type === 'childList') {
+                const nodes = [...mutation.addedNodes, ...mutation.removedNodes];
+                if (nodes.length && nodes.every(node =>
+                    node.nodeType === Node.ELEMENT_NODE && node.matches('[data-quarto-math]'))) continue;
+            }
+            const parent = element.parentNode;
+            if (mutation.type === 'attributes' && seen.has(parent)) continue;
+            seen.add(parent);
+            if (element.closest('.molstar-notebook-viewer, [data-quarto-math]')) continue;
+            const tip = element.closest('#vg-tooltip-element');
+            if (tip) {
+                if (mutation.type === 'childList' && element.querySelector('.katex')) continue;
+                tooltipChanged = changed = true;
+                continue;
+            }
+            const chart = element.closest('.vega-embed');
+            if (chart) dirty.add(chart); else wholePage = true;
+            changed = true;
+        }
+        if (changed) queue();
+    });
+    observer.observe(document.documentElement, {childList:true, subtree:true, characterData:true,
+        attributes:true, attributeFilter:['transform','x','y','text-anchor','font-size','opacity','fill-opacity']});
+    document.addEventListener('DOMContentLoaded', schedule);
+    window.addEventListener('load', schedule);
+    // Labels are measured as drawn, so lay legends out again once fonts load, on resize and when a fold opens.
+    document.fonts?.ready.then(schedule);
+    window.addEventListener('resize', schedule);
+    document.addEventListener('toggle', schedule, true);
+    schedule();
+})();
+</script>
+<script>
+// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
+// default scales; the browser's context menu is suppressed only over the plot itself.
+document.addEventListener('contextmenu', event => {
+    const plot = event.target.closest?.('.vega-embed');
+    if (!plot || event.target.closest('.vega-actions')) return;
+    event.preventDefault();
+    event.target.dispatchEvent(new MouseEvent('dblclick', {
+        bubbles: true, cancelable: true, composed: true, view: window,
+        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
+    }));
+});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+<script>
+// Quarto's hover popovers copy a bibliography entry's raw math spans; typeset them on display.
+new MutationObserver(() => {
+    if (!globalThis.katex) return;
+    for (const span of document.querySelectorAll('.tippy-box span.math:not([data-typeset])')) {
+        span.dataset.typeset = 'true';
+        katex.render(span.textContent.replace(/^\\[(\[]|\\[)\]]$/g, ''), span,
+                     {throwOnError: false, displayMode: span.classList.contains('display')});
+    }
+}).observe(document.documentElement, {childList: true, subtree: true});
+</script>
+
+  <script defer="" src="data:text/javascript,//katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="data:text/javascript,//katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="data:text/css;base64,LyogRmlndXJlIGNhcHRpb25zIGZvbGxvdyB0aGUgY2VudGVyZWQgZmlndXJlczsgdGFibGUgY2FwdGlvbnMgcmVtYWluIGFib3ZlIHRhYmxlcy4gKi8KZmlnY2FwdGlvbi5xdWFydG8tZmxvYXQtZmlnIHsKICAgIHRleHQtYWxpZ246IGNlbnRlcjsKfQoKLyogQSB0YWJsZS1vZi1jb250ZW50cyBlbnRyeSB0b28gbG9uZyBmb3IgdGhlIG1hcmdpbiwgc3VjaCBhcyBhIGxvbmcgZmlsZSBvciBmaWVsZCBuYW1lLCBlbmRzIGluIGFuIGVsbGlwc2lzIGluc3RlYWQKICAgb2YgYmVpbmcgY3V0IG9mZjsgaXRzIGZ1bGwgdGV4dCBzaG93cyBvbiBob3Zlci4gKi8KbmF2I1RPQyBhLm5hdi1saW5rIHsgb3ZlcmZsb3c6IGhpZGRlbjsgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7IH0KLyogS2VlcCBzdWJzZWN0aW9uIGVudHJpZXMgcXVpZXRlciB0aGFuIHRoZSBtYWluIFRPQyBoZWFkaW5ncy4gKi8KbmF2I1RPQyB1bCB1bCA+IGxpID4gYTpub3QoLmFjdGl2ZSk6bm90KDpob3ZlcikgewogICAgY29sb3I6IHZhcigtLWJzLXNlY29uZGFyeS1jb2xvciwgIzZjNzU3ZCk7Cn0KCi8qIEtlZXAgbm9ybWFsLXRleHQgbWFudGlzc2FzIGFuZCB0aGVpciBtYXRoZW1hdGljYWwgcG93ZXJzIG9uIG9uZSBiYXNlbGluZS4gKi8KLnNjaWVudGlmaWMtbnVtYmVyIHsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgfQouc2NpZW50aWZpYy1udW1iZXIgLmthdGV4IHsgZm9udC1zaXplOiAxZW07IH0KCi8qIEJyZWFkY3J1bWIgYWJvdmUgdGhlIHRpdGxlOiBIb21lcGFnZSAvIHByb2plY3QgLyBub3RlYm9vay4gKi8KLmhlYWRlci1icmVhZGNydW1iIHsgZm9udC1zaXplOiAwLjlyZW07IG1hcmdpbi1ib3R0b206IDAuNzVyZW07IGNvbG9yOiB2YXIoLS1icy1zZWNvbmRhcnktY29sb3IsICM2Yzc1N2QpOwogICAgd2hpdGUtc3BhY2U6IG5vd3JhcDsgb3ZlcmZsb3c6IGhpZGRlbjsgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7IG1heC13aWR0aDogMTAwJTsgfQovKiBPbmUgbGluZTsgYSBicmVhZGNydW1iIHRvbyBsb25nIGZvciBpdCBlbmRzIGluIGFuIGVsbGlwc2lzIHJhdGhlciB0aGFuIGJlaW5nIGN1dCBvZmYuICovCi5oZWFkZXItYnJlYWRjcnVtYiBwIHsgbWFyZ2luOiAwOyB3aGl0ZS1zcGFjZTogbm93cmFwOyBvdmVyZmxvdzogaGlkZGVuOyB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpczsgfQouaGVhZGVyLWJyZWFkY3J1bWIgYSB7IGNvbG9yOiBpbmhlcml0OyB0ZXh0LWRlY29yYXRpb246IG5vbmU7IH0KLmhlYWRlci1icmVhZGNydW1iIGE6aG92ZXIgeyB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsgfQouaGVhZGVyLWJyZWFkY3J1bWIgLnNlcCB7IG1hcmdpbjogMCAwLjQ1ZW07IG9wYWNpdHk6IDAuNjsgfQouaGVhZGVyLWJyZWFkY3J1bWIgLmN1cnJlbnQgeyBjb2xvcjogdmFyKC0tYnMtYm9keS1jb2xvciwgIzIxMjUyOSk7IH0KLmhlYWRlci1icmVhZGNydW1iIC5rYXRleCB7IGZvbnQtc2l6ZTogMWVtOyB9CgovKiBUYWJzIHN0YWNrIHRoZWlyIHBhbmVscyBpbiBvbmUgZ3JpZCBjZWxsIGFuZCBoaWRlIHRoZSBpbmFjdGl2ZSBvbmVzIGluc3RlYWQgb2YgcmVtb3ZpbmcgdGhlbQogICBmcm9tIGxheW91dCwgc28gbW9sZWN1bGFyIHZpZXdlcnMga2VlcCB0aGVpciBzaXplIGFuZCBhcmUgbm90IHJlYnVpbHQgd2hlbiBhIHRhYiBpcyBzZWxlY3RlZC4gKi8KLnBhbmVsLXRhYnNldCAudGFiLWNvbnRlbnQgeyBkaXNwbGF5OiBncmlkOyBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IG1pbm1heCgwLCAxZnIpOyB9Ci8qIFF1YXJ0byBoaWRlcyBpbmFjdGl2ZSBwYW5lcyB3aXRoIGRpc3BsYXk6IG5vbmUgIWltcG9ydGFudCwgc28gdGhpcyBvdmVycmlkZSBuZWVkcyB0aGUgc2FtZSB3ZWlnaHQuICovCi8qIEdyaWQgaXRlbXMgZGVmYXVsdCB0byB0aGVpciBjb250ZW50J3MgbWluaW11bSB3aWR0aDsgYXQgemVybyBhIHdpZGUgdGFibGUgY2FuIG5vIGxvbmdlciB3aWRlbiB0aGUgcGFuZSBiZXlvbmQKICAgdGhlIGNvbHVtbiwgc28gaXQgc2Nyb2xscyBpbiBpdHMgb3duIG91dHB1dCBpbnN0ZWFkIG9mIHJ1bm5pbmcgdW5kZXIgdGhlIHRhYmxlIG9mIGNvbnRlbnRzLiAqLwoucGFuZWwtdGFic2V0IC50YWItY29udGVudCA+IC50YWItcGFuZSB7IGRpc3BsYXk6IGJsb2NrICFpbXBvcnRhbnQ7IGdyaWQtYXJlYTogMSAvIDE7IHZpc2liaWxpdHk6IGhpZGRlbjsgb3BhY2l0eTogMTsgbWluLXdpZHRoOiAwOyB9CgovKiBUaGUgYm9keSBjb2x1bW4gbmV2ZXIgZ3Jvd3MgdG8gZml0IGl0cyBjb250ZW50LCBhbmQgYSB0YWJsZSB3aWRlciB0aGFuIHRoZSBjb2x1bW4gc2Nyb2xscyBzaWRld2F5cyB3aXRoaW4gaXRzCiAgIG91dHB1dC4gKi8KbWFpbi5jb250ZW50IHsgbWluLXdpZHRoOiAwOyB9CgovKiBQYW5kb2MgZXN0aW1hdGVzIE1hcmtkb3duIGNvbHVtbiB3aWR0aHMgZnJvbSBzb3VyY2UgdGV4dCwgaW5jbHVkaW5nIGhpZGRlbiBiYXNlNjQgbWV0YWRhdGEgaW4gaGVhZGVyczsgZXZlcnkKICAgdGFibGUgc2l6ZXMgaXRzIGNvbHVtbnMgZnJvbSB0aGUgcmVuZGVyZWQgY29udGVudCBpbnN0ZWFkLiAqLwptYWluIHRhYmxlIGNvbCB7IHdpZHRoOiBhdXRvICFpbXBvcnRhbnQ7IH0KbWFpbiAuY2VsbC1vdXRwdXQtZGlzcGxheTpoYXMoPiB0YWJsZSkgeyBvdmVyZmxvdy14OiBhdXRvOyB9Ci8qIEFuIGluYWN0aXZlIHBhbmUgdGFrZXMgbm8gaGVpZ2h0LCBzbyB0aGUgdGFic2V0IGlzIGFzIHRhbGwgYXMgaXRzIG9wZW4gdGFiOyBpdCBrZWVwcyBpdHMgd2lkdGgsIHNvIG1vbGVjdWxhciB2aWV3ZXJzCiAgIGluIGl0IGtlZXAgdGhlaXIgc2l6ZS4gKi8KLnBhbmVsLXRhYnNldCAudGFiLWNvbnRlbnQgPiAudGFiLXBhbmU6bm90KC5hY3RpdmUpIHsgaGVpZ2h0OiAwOyBvdmVyZmxvdzogaGlkZGVuOyB9Ci8qIEEgdGFic2V0IGFmdGVyIGEgdGFibGUgb3IgdGV4dCBnZXRzIHRoZSBzcGFjZSBhIGhlYWRpbmcgZ2V0cyBhYm92ZSBpdCwgc28gaXQgZG9lcyBub3Qgc2l0IG9uIHRoZSB0YWJsZSdzIGxhc3Qgcm93OwogICB0aGUgZmlyc3QgaGVhZGluZyBpbnNpZGUgYSB0YWIgc3RhcnRzIGF0IHRoZSB0YWIncyB0b3AsIGFzIHRoZSB0YWIncyBib3JkZXIgYWxyZWFkeSBzZXRzIGl0IGFwYXJ0LiAqLwptYWluIC5wYW5lbC10YWJzZXQgeyBtYXJnaW4tdG9wOiAxLjVyZW07IH0KLnRhYi1wYW5lID4gc2VjdGlvbjpmaXJzdC1jaGlsZCA+IC5hbmNob3JlZDpmaXJzdC1jaGlsZCwKLnRhYi1wYW5lID4gc2VjdGlvbjpmaXJzdC1jaGlsZCA+IHNlY3Rpb246Zmlyc3QtY2hpbGQgPiAuYW5jaG9yZWQ6Zmlyc3QtY2hpbGQgeyBtYXJnaW4tdG9wOiAwOyB9Ci8qIEFuIGFjdGl2ZSBwYW5lIGluaGVyaXRzIGl0cyB2aXNpYmlsaXR5LCBzbyBvbmUgaW5zaWRlIGFuIGluYWN0aXZlIHBhbmUsIGFzIGEgc3RlcCdzIHdpdGhpbiBhIGhpZGRlbiBjYWxjdWxhdGlvbiwKICAgc3RheXMgaGlkZGVuIHdpdGggaXQuICovCi5wYW5lbC10YWJzZXQgLnRhYi1jb250ZW50ID4gLnRhYi1wYW5lLmFjdGl2ZSB7IHZpc2liaWxpdHk6IGluaGVyaXQ7IH0KCi8qIE1vbGVjdWxlIGZpZ3VyZXMgYXJlIFJES2l0IGRyYXdpbmdzIGluIGl0cyBkYXJrIHBhbGV0dGUsIGZvciBkYXJrIGVkaXRvcnM7IG9uIHRoZSB3aGl0ZSBwYWdlIHRoZXkKICAgYXJlIGludmVydGVkIGFuZCB0aGVpciBodWVzIHR1cm5lZCBiYWNrLCBzbyBib25kcyBiZWNvbWUgZGFyayBhbmQgYXRvbSBjb2xvdXJzIGtlZXAgdGhlaXIgaHVlLiAqLwppbWcubW9sZWN1bGUsIC5tb2xlY3VsZSBpbWcgeyBmaWx0ZXI6IGludmVydCgxKSBodWUtcm90YXRlKDE4MGRlZyk7IH0KCi8qIFJvd3Mgb2YgbW9sZWN1bGUgZmlndXJlcyBvbiB0aGUgaW5kZXggcGFnZXMgYXJlIGNlbnRyZWQuICovCi5tb2xlY3VsZXMgcCB7IHRleHQtYWxpZ246IGNlbnRlcjsgfQoKLyogV29ya2Zsb3cgYW5kIHByb2plY3Qgc3RhdHVzIGljb25zIChGb250IEF3ZXNvbWUgU1ZHcyBmcm9tIHByb2plY3RzL2ljb25zKSBzaXplZCB0byB0aGUgdGV4dDsKICAgcmVqZWN0ZWQgd29ya2Zsb3dzIGFuZCBmYWlsZWQgcHJvamVjdHMgYXJlIGdyZXllZCBvdXQuICovCmltZy53b3JrZmxvdy1zdGF0dXMgeyB3aWR0aDogMWVtOyBoZWlnaHQ6IDFlbTsgdmVydGljYWwtYWxpZ246IC0wLjEyNWVtOyB9Ci8qIFRoZSB2aWV3ZXIncyBmaWxlcywgb25lIHRhYmxlIHBlciBjYWxjdWxhdGlvbiwgc2hhcmUgb25lIHNldCBvZiBjb2x1bW4gd2lkdGhzIHNvIHRoZWlyIGNvbHVtbnMgbGluZSB1cC4gKi8KI3ZpZXdlci1maWxlLWxpc3QgdGFibGUgeyB0YWJsZS1sYXlvdXQ6IGZpeGVkOyB3aWR0aDogMTAwJTsgfQojdmlld2VyLWZpbGUtbGlzdCA6aXModGgsIHRkKTpudGgtY2hpbGQoMSkgeyB3aWR0aDogNC41cmVtOyB9CiN2aWV3ZXItZmlsZS1saXN0IDppcyh0aCwgdGQpOm50aC1jaGlsZCgyKSB7IHdpZHRoOiAzMCU7IG92ZXJmbG93LXdyYXA6IGFueXdoZXJlOyB9CiN2aWV3ZXItZmlsZS1saXN0IDppcyh0aCwgdGQpOm50aC1jaGlsZCgzKSB7IHdpZHRoOiA2cmVtOyB9CiN2aWV3ZXItZmlsZS1saXN0IDppcyh0aCwgdGQpOm50aC1jaGlsZCg0KSB7IHdpZHRoOiAxM3JlbTsgfQojdmlld2VyLWZpbGUtbGlzdCA6aXModGgsIHRkKTpudGgtY2hpbGQoNikgeyB3aWR0aDogMi41cmVtOyB9Ci8qIEEgc3Bpbm5lciBpbiBwbGFjZSBvZiBhIHN0YXR1cyBpY29uOiB0aGUgc2FtZSBib3gsIGl0cyByaW5nIGRyYXduIHRoaW5uZXIgdG8gc3VpdCB0aGUgc2l6ZS4gKi8KLnNwaW5uZXItYm9yZGVyLndvcmtmbG93LXN0YXR1cyB7IGRpc3BsYXk6IGlubGluZS1ibG9jazsgd2lkdGg6IDFlbTsgaGVpZ2h0OiAxZW07IHZlcnRpY2FsLWFsaWduOiAtMC4xMjVlbTsgLS1icy1zcGlubmVyLWJvcmRlci13aWR0aDogMC4xNWVtOyB9Ci5yZWplY3RlZCwgLnJlamVjdGVkIGEgeyBjb2xvcjogdmFyKC0tYnMtc2Vjb25kYXJ5LWNvbG9yLCAjNmM3NTdkKTsgfQoKLyogQ2FsbG91dHMgYXJlIG9yZGluYXJ5IGJveGVzOiBhIHRoaW4gYm9yZGVyIG9mIHRoZSBjYWxsb3V0J3MgY29sb3VyIG9uIGV2ZXJ5IHNpZGUgYW5kIHJvdW5kZWQgY29ybmVycywKICAgaW5zdGVhZCBvZiBRdWFydG8ncyB0aGljayBsZWZ0IGJhci4gUXVhcnRvIHNldHMgdGhlIGJvcmRlciBwZXIgc2lkZSB3aXRoIGhpZ2ggc3BlY2lmaWNpdHkuICovCmRpdi5jYWxsb3V0IHsgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tY2FsbG91dC1lZGdlLCAjZGVlMmU2KSAhaW1wb3J0YW50OyBib3JkZXItcmFkaXVzOiAwLjM3NXJlbTsgb3ZlcmZsb3c6IGhpZGRlbjsgfQpkaXYuY2FsbG91dC1ub3RlIHsgLS1jYWxsb3V0LWVkZ2U6ICM5ZWM1ZmU7IH0KZGl2LmNhbGxvdXQtdGlwIHsgLS1jYWxsb3V0LWVkZ2U6ICNhM2NmYmI7IH0KZGl2LmNhbGxvdXQtd2FybmluZyB7IC0tY2FsbG91dC1lZGdlOiAjZmZlNjljOyB9CmRpdi5jYWxsb3V0LWNhdXRpb24geyAtLWNhbGxvdXQtZWRnZTogI2ZlY2JhMTsgfQpkaXYuY2FsbG91dC1pbXBvcnRhbnQgeyAtLWNhbGxvdXQtZWRnZTogI2YxYWViNTsgfQoKLyogQ2FsbG91dCBoZWFkZXJzIGdldCByb29tIHRvIGJyZWF0aGU6IHRoZSBpY29uIGlzIGNlbnRyZWQgYmVzaWRlIHRoZSB0aXRsZSwgd2l0aCBldmVuIHBhZGRpbmcgaW4gdGhlCiAgIGhlYWRlciBhbmQgYm9keS4gSWNvbnMgYXJlIEZvbnQgQXdlc29tZSBGcmVlJ3Mgb3duIHNvbGlkIFNWR3MgKGZvbnRhd2Vzb21lZnJlZSA2LjYuMCkgd2l0aCBvbmx5IGEgZmlsbAogICBjb2xvdXIgYWRkZWQsIGJ5IGNhbGxvdXQgdHlwZTsgYSB3b3JrZmxvdydzIHN0YXR1cyBub3RlIHVzZXMgaXRzIHN0YXR1cyBpY29uIGZyb20gcHJvamVjdHMvaWNvbnMsIGFzIGluIHRoZSBzdGF0dXMgdGFibGVzLiAqLwovKiBRdWFydG8gcHVsbHMgdGhlIGhlYWRlciAyLjg4cHggaW50byB0aGUgYm9keSdzIGJvcmRlciBhbmQgdGhlIHRpdGxlIDFweCB1cDsgYSBzdGF0dXMgYm94IHdpdGhvdXQgYSBib2R5IHdvdWxkCiAgIGxvc2UgdGhlIGhlYWRlcidzIGxvd2VyIGVkZ2UsIGFuZCB0aGUgdGl0bGUgd291bGQgc2l0IG9mZiB0aGUgaWNvbidzIGNlbnRyZS4gKi8KZGl2LmNhbGxvdXQgLmNhbGxvdXQtaGVhZGVyIHsgcGFkZGluZzogMC40cmVtIDAuNTVyZW0gIWltcG9ydGFudDsgbWFyZ2luOiAwICFpbXBvcnRhbnQ7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogMC41cmVtOyB9CmRpdi5jYWxsb3V0IC5jYWxsb3V0LWljb24tY29udGFpbmVyIHsgcGFkZGluZzogMCAhaW1wb3J0YW50OyBkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyB9CmRpdi5jYWxsb3V0IC5jYWxsb3V0LWljb24geyBkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyB9CmRpdi5jYWxsb3V0IC5jYWxsb3V0LWljb246OmJlZm9yZSB7IGRpc3BsYXk6IGJsb2NrOyB3aWR0aDogMXJlbSAhaW1wb3J0YW50OyBoZWlnaHQ6IDFyZW0gIWltcG9ydGFudDsgbWFyZ2luOiAwICFpbXBvcnRhbnQ7CiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvbnRhaW4gIWltcG9ydGFudDsgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyOyB9CmRpdi5jYWxsb3V0IC5jYWxsb3V0LXRpdGxlLWNvbnRhaW5lciB7IGxpbmUtaGVpZ2h0OiAxLjU7IG1hcmdpbjogMCAhaW1wb3J0YW50OyB9Ci8qIEEgc3RhdHVzIGJveCB3aXRoIG5vdGhpbmcgYmV5b25kIGl0cyB0aXRsZSBzaG93cyBvbmx5IGl0cyBoZWFkZXIuICovCmRpdi5jYWxsb3V0Om5vdCg6aGFzKC5jYWxsb3V0LWJvZHktY29udGFpbmVyID4gKikpIC5jYWxsb3V0LWJvZHktY29udGFpbmVyIHsgZGlzcGxheTogbm9uZTsgfQovKiBUaGUgaWNvbiBzaXRzIGFzIGZhciBmcm9tIHRoZSBoZWFkZXIncyBsZWZ0IGVkZ2UgYXMgZnJvbSBpdHMgdG9wIGFuZCBib3R0b207IHRoZSBib2R5IHRleHQgc3RhcnRzIHVuZGVyIHRoZQogICBpY29uIGFuZCBoYXMgZXF1YWwgc3BhY2UgYWJvdmUgYW5kIGJlbG93LiAqLwpkaXYuY2FsbG91dCAuY2FsbG91dC1ib2R5LWNvbnRhaW5lciB7IHBhZGRpbmc6IDAuNTVyZW0gIWltcG9ydGFudDsgfQovKiBRdWFydG8gcGFkcyBwYXJhZ3JhcGhzIGluc2lkZSBjYWxsb3V0cyB0b287IHRoZSBib2R5IHBhZGRpbmcgYWxvbmUgc2V0cyB0aGUgc3BhY2luZy4gKi8KZGl2LmNhbGxvdXQgLmNhbGxvdXQtYm9keS1jb250YWluZXIgcCB7IHBhZGRpbmc6IDAgIWltcG9ydGFudDsgfQpkaXYuY2FsbG91dCAuY2FsbG91dC1ib2R5LWNvbnRhaW5lciA+IDpmaXJzdC1jaGlsZCB7IG1hcmdpbi10b3A6IDAgIWltcG9ydGFudDsgfQpkaXYuY2FsbG91dCAuY2FsbG91dC1ib2R5LWNvbnRhaW5lciA+IDpsYXN0LWNoaWxkIHsgbWFyZ2luLWJvdHRvbTogMCAhaW1wb3J0YW50OyB9CmRpdi5jYWxsb3V0LW5vdGUgLmNhbGxvdXQtaWNvbjo6YmVmb3JlIHsgYmFja2dyb3VuZC1pbWFnZTogdXJsKCJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIGZpbGw9JTIyJTIzMGQ2ZWZkJTIyIHhtbG5zPSUyMmh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJTIyIHZpZXdCb3g9JTIyMCAwIDUxMiA1MTIlMjIlM0UlM0MlMjEtLSUyMSBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSAlNDBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgJTI4SWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSUyOSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0lM0UlM0NwYXRoIGQ9JTIyTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6JTIyLyUzRSUzQy9zdmclM0UiKSAhaW1wb3J0YW50OyB9CmRpdi5jYWxsb3V0LXRpcCAuY2FsbG91dC1pY29uOjpiZWZvcmUgeyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgZmlsbD0lMjIlMjMxOTg3NTQlMjIgeG1sbnM9JTIyaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmclMjIgdmlld0JveD0lMjIwIDAgMzg0IDUxMiUyMiUzRSUzQyUyMS0tJTIxIEZvbnQgQXdlc29tZSBGcmVlIDYuNi4wIGJ5ICU0MGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSAlMjhJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlJTI5IENvcHlyaWdodCAyMDI0IEZvbnRpY29ucywgSW5jLiAtLSUzRSUzQ3BhdGggZD0lMjJNMjcyIDM4NGM5LjYtMzEuOSAyOS41LTU5LjEgNDkuMi04Ni4yYzAgMCAwIDAgMCAwYzUuMi03LjEgMTAuNC0xNC4yIDE1LjQtMjEuNGMxOS44LTI4LjUgMzEuNC02MyAzMS40LTEwMC4zQzM2OCA3OC44IDI4OS4yIDAgMTkyIDBTMTYgNzguOCAxNiAxNzZjMCAzNy4zIDExLjYgNzEuOSAzMS40IDEwMC4zYzUgNy4yIDEwLjIgMTQuMyAxNS40IDIxLjRjMCAwIDAgMCAwIDBjMTkuOCAyNy4xIDM5LjcgNTQuNCA0OS4yIDg2LjJsMTYwIDB6TTE5MiA1MTJjNDQuMiAwIDgwLTM1LjggODAtODBsMC0xNi0xNjAgMCAwIDE2YzAgNDQuMiAzNS44IDgwIDgwIDgwek0xMTIgMTc2YzAgOC44LTcuMiAxNi0xNiAxNnMtMTYtNy4yLTE2LTE2YzAtNjEuOSA1MC4xLTExMiAxMTItMTEyYzguOCAwIDE2IDcuMiAxNiAxNnMtNy4yIDE2LTE2IDE2Yy00NC4yIDAtODAgMzUuOC04MCA4MHolMjIvJTNFJTNDL3N2ZyUzRSIpICFpbXBvcnRhbnQ7IH0KZGl2LmNhbGxvdXQtd2FybmluZyAuY2FsbG91dC1pY29uOjpiZWZvcmUgeyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgZmlsbD0lMjIlMjNlMGE4MDAlMjIgeG1sbnM9JTIyaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmclMjIgdmlld0JveD0lMjIwIDAgNTEyIDUxMiUyMiUzRSUzQyUyMS0tJTIxIEZvbnQgQXdlc29tZSBGcmVlIDYuNi4wIGJ5ICU0MGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSAlMjhJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlJTI5IENvcHlyaWdodCAyMDI0IEZvbnRpY29ucywgSW5jLiAtLSUzRSUzQ3BhdGggZD0lMjJNMjU2IDMyYzE0LjIgMCAyNy4zIDcuNSAzNC41IDE5LjhsMjE2IDM2OGM3LjMgMTIuNCA3LjMgMjcuNyAuMiA0MC4xUzQ4Ni4zIDQ4MCA0NzIgNDgwTDQwIDQ4MGMtMTQuMyAwLTI3LjYtNy43LTM0LjctMjAuMXMtNy0yNy44IC4yLTQwLjFsMjE2LTM2OEMyMjguNyAzOS41IDI0MS44IDMyIDI1NiAzMnptMCAxMjhjLTEzLjMgMC0yNCAxMC43LTI0IDI0bDAgMTEyYzAgMTMuMyAxMC43IDI0IDI0IDI0czI0LTEwLjcgMjQtMjRsMC0xMTJjMC0xMy4zLTEwLjctMjQtMjQtMjR6bTMyIDIyNGEzMiAzMiAwIDEgMCAtNjQgMCAzMiAzMiAwIDEgMCA2NCAweiUyMi8lM0UlM0Mvc3ZnJTNFIikgIWltcG9ydGFudDsgfQpkaXYuY2FsbG91dC1jYXV0aW9uIC5jYWxsb3V0LWljb246OmJlZm9yZSB7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyBmaWxsPSUyMiUyM2ZkN2UxNCUyMiB4bWxucz0lMjJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyUyMiB2aWV3Qm94PSUyMjAgMCA1MTIgNTEyJTIyJTNFJTNDJTIxLS0lMjEgRm9udCBBd2Vzb21lIEZyZWUgNi42LjAgYnkgJTQwZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlICUyOEljb25zOiBDQyBCWSA0LjAsIEZvbnRzOiBTSUwgT0ZMIDEuMSwgQ29kZTogTUlUIExpY2Vuc2UlMjkgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuIC0tJTNFJTNDcGF0aCBkPSUyMk0yNTYgNTEyQTI1NiAyNTYgMCAxIDAgMjU2IDBhMjU2IDI1NiAwIDEgMCAwIDUxMnptMC0zODRjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCAxMTJjMCAxMy4zLTEwLjcgMjQtMjQgMjRzLTI0LTEwLjctMjQtMjRsMC0xMTJjMC0xMy4zIDEwLjctMjQgMjQtMjR6TTIyNCAzNTJhMzIgMzIgMCAxIDEgNjQgMCAzMiAzMiAwIDEgMSAtNjQgMHolMjIvJTNFJTNDL3N2ZyUzRSIpICFpbXBvcnRhbnQ7IH0KZGl2LmNhbGxvdXQtaW1wb3J0YW50IC5jYWxsb3V0LWljb246OmJlZm9yZSB7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyBmaWxsPSUyMiUyM2RjMzU0NSUyMiB4bWxucz0lMjJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyUyMiB2aWV3Qm94PSUyMjAgMCA1MTIgNTEyJTIyJTNFJTNDJTIxLS0lMjEgRm9udCBBd2Vzb21lIEZyZWUgNi42LjAgYnkgJTQwZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlICUyOEljb25zOiBDQyBCWSA0LjAsIEZvbnRzOiBTSUwgT0ZMIDEuMSwgQ29kZTogTUlUIExpY2Vuc2UlMjkgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuIC0tJTNFJTNDcGF0aCBkPSUyMk0yNTYgNTEyQTI1NiAyNTYgMCAxIDAgMjU2IDBhMjU2IDI1NiAwIDEgMCAwIDUxMnptMC0zODRjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCAxMTJjMCAxMy4zLTEwLjcgMjQtMjQgMjRzLTI0LTEwLjctMjQtMjRsMC0xMTJjMC0xMy4zIDEwLjctMjQgMjQtMjR6TTIyNCAzNTJhMzIgMzIgMCAxIDEgNjQgMCAzMiAzMiAwIDEgMSAtNjQgMHolMjIvJTNFJTNDL3N2ZyUzRSIpICFpbXBvcnRhbnQ7IH0KZGl2LmNhbGxvdXQuc3RhdHVzLWFjY2VwdGVkIC5jYWxsb3V0LWljb246OmJlZm9yZSB7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyBmaWxsPSUyMiUyMzE5ODc1NCUyMiB4bWxucz0lMjJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyUyMiB2aWV3Qm94PSUyMjAgMCA1MTIgNTEyJTIyJTNFJTNDJTIxLS0lMjEgRm9udCBBd2Vzb21lIEZyZWUgNi42LjAgYnkgJTQwZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlICUyOEljb25zOiBDQyBCWSA0LjAsIEZvbnRzOiBTSUwgT0ZMIDEuMSwgQ29kZTogTUlUIExpY2Vuc2UlMjkgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuIC0tJTNFJTNDcGF0aCBkPSUyMk0yNTYgNTEyQTI1NiAyNTYgMCAxIDAgMjU2IDBhMjU2IDI1NiAwIDEgMCAwIDUxMnpNMzY5IDIwOUwyNDEgMzM3Yy05LjQgOS40LTI0LjYgOS40LTMzLjkgMGwtNjQtNjRjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45czI0LjYtOS40IDMzLjkgMGw0NyA0N0wzMzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOXolMjIvJTNFJTNDL3N2ZyUzRSIpICFpbXBvcnRhbnQ7IH0KZGl2LmNhbGxvdXQuc3RhdHVzLWNhdmVhdHMgLmNhbGxvdXQtaWNvbjo6YmVmb3JlIHsgYmFja2dyb3VuZC1pbWFnZTogdXJsKCJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIGZpbGw9JTIyJTIzZTBhODAwJTIyIHhtbG5zPSUyMmh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJTIyIHZpZXdCb3g9JTIyMCAwIDUxMiA1MTIlMjIlM0UlM0MlMjEtLSUyMSBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSAlNDBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgJTI4SWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSUyOSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0lM0UlM0NwYXRoIGQ9JTIyTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHolMjIvJTNFJTNDL3N2ZyUzRSIpICFpbXBvcnRhbnQ7IH0KZGl2LmNhbGxvdXQuc3RhdHVzLWluLXByb2dyZXNzIC5jYWxsb3V0LWljb246OmJlZm9yZSB7IGJhY2tncm91bmQtaW1hZ2U6IHVybCgiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyBmaWxsPSUyMiUyMzBkNmVmZCUyMiB4bWxucz0lMjJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyUyMiB2aWV3Qm94PSUyMjAgMCAzODQgNTEyJTIyJTNFJTNDJTIxLS0lMjEgRm9udCBBd2Vzb21lIEZyZWUgNi42LjAgYnkgJTQwZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlICUyOEljb25zOiBDQyBCWSA0LjAsIEZvbnRzOiBTSUwgT0ZMIDEuMSwgQ29kZTogTUlUIExpY2Vuc2UlMjkgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuIC0tJTNFJTNDcGF0aCBkPSUyMk0zMiAwQzE0LjMgMCAwIDE0LjMgMCAzMlMxNC4zIDY0IDMyIDY0bDAgMTFjMCA0Mi40IDE2LjkgODMuMSA0Ni45IDExMy4xTDE0Ni43IDI1NiA3OC45IDMyMy45QzQ4LjkgMzUzLjkgMzIgMzk0LjYgMzIgNDM3bDAgMTFjLTE3LjcgMC0zMiAxNC4zLTMyIDMyczE0LjMgMzIgMzIgMzJsMzIgMCAyNTYgMCAzMiAwYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMybDAtMTFjMC00Mi40LTE2LjktODMuMS00Ni45LTExMy4xTDIzNy4zIDI1Nmw2Ny45LTY3LjljMzAtMzAgNDYuOS03MC43IDQ2LjktMTEzLjFsMC0xMWMxNy43IDAgMzItMTQuMyAzMi0zMnMtMTQuMy0zMi0zMi0zMkwzMjAgMCA2NCAwIDMyIDB6TTk2IDc1bDAtMTEgMTkyIDAgMCAxMWMwIDE5LTUuNiAzNy40LTE2IDUzTDExMiAxMjhjLTEwLjMtMTUuNi0xNi0zNC0xNi01M3ptMTYgMzA5YzMuNS01LjMgNy42LTEwLjMgMTIuMS0xNC45TDE5MiAzMDEuM2w2Ny45IDY3LjljNC42IDQuNiA4LjYgOS42IDEyLjEgMTQuOUwxMTIgMzg0eiUyMi8lM0UlM0Mvc3ZnJTNFIikgIWltcG9ydGFudDsgfQpkaXYuY2FsbG91dC5zdGF0dXMtcmVqZWN0ZWQgLmNhbGxvdXQtaWNvbjo6YmVmb3JlIHsgYmFja2dyb3VuZC1pbWFnZTogdXJsKCJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIGZpbGw9JTIyJTIzZGMzNTQ1JTIyIHhtbG5zPSUyMmh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJTIyIHZpZXdCb3g9JTIyMCAwIDUxMiA1MTIlMjIlM0UlM0MlMjEtLSUyMSBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSAlNDBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgJTI4SWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSUyOSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0lM0UlM0NwYXRoIGQ9JTIyTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiUyMi8lM0UlM0Mvc3ZnJTNFIikgIWltcG9ydGFudDsgfQoKLyogVGhlIG1ldGhvZC1ncm91cGVkIHdvcmtmbG93IHRhYmxlcyBvZiBhIHByb2plY3QgcGFnZSBzaGFyZSBjb2x1bW4gd2lkdGhzLCBzbyB0aGV5IGxpbmUgdXAuICovCi53b3JrZmxvdy10YWJsZXMgdGFibGUgeyB0YWJsZS1sYXlvdXQ6IGZpeGVkOyB3aWR0aDogMTAwJTsgfQovKiBQYW5kb2MgZml4ZXMgY29sdW1uIHdpZHRocyBmb3IgbG9uZyBzb3VyY2Ugcm93czsgaGVyZSB0aGUgaGVhZGVyIHdpZHRocyBiZWxvdyBkZWNpZGUuICovCi53b3JrZmxvdy10YWJsZXMgY29sIHsgd2lkdGg6IGF1dG8gIWltcG9ydGFudDsgfQoud29ya2Zsb3ctdGFibGVzIHRoOm50aC1jaGlsZCgxKSB7IHdpZHRoOiA0LjVyZW07IH0KLndvcmtmbG93LXRhYmxlcyB0aDpudGgtY2hpbGQoMikgeyB3aWR0aDogOC41cmVtOyB9Ci53b3JrZmxvdy10YWJsZXMgdGg6bnRoLWNoaWxkKDMpIHsgd2lkdGg6IDMwJTsgfQoKLyogQ2FsY3VsYXRpb25zIHBhZ2VzLiBUaGUgbm90ZWJvb2sgYnJlYWRjcnVtYiBsaW5rcyB0byB0aGVtIGF0IGl0cyByaWdodCBlbmQsIHdpdGggRm9udCBBd2Vzb21lJ3MKICAgZGlhZ3JhbS1wcm9qZWN0IGljb24gaW4gdGhlIGxpbmsgY29sb3VyLiAqLwouaGVhZGVyLWJyZWFkY3J1bWIgLmNhbGN1bGF0aW9ucy1saW5rIHsgZmxvYXQ6IHJpZ2h0OyB9Ci5oZWFkZXItYnJlYWRjcnVtYiAuY2FsY3VsYXRpb25zLWxpbmsgYSB7IGNvbG9yOiB2YXIoLS1icy1saW5rLWNvbG9yLCAjMGQ2ZWZkKTsgZGlzcGxheTogaW5saW5lLWZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogMC4zNWVtOyB9Ci5oZWFkZXItYnJlYWRjcnVtYiAuY2FsY3VsYXRpb25zLWxpbmsgYTo6YmVmb3JlIHsgY29udGVudDogIiI7IHdpZHRoOiAxLjFlbTsgaGVpZ2h0OiAxZW07IGJhY2tncm91bmQtY29sb3I6IGN1cnJlbnRDb2xvcjsKICAtd2Via2l0LW1hc2s6IHVybCgiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0lMjJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyUyMiB2aWV3Qm94PSUyMjAgMCA1NzYgNTEyJTIyJTNFJTNDJTIxLS0lMjEgRm9udCBBd2Vzb21lIEZyZWUgNi42LjAgYnkgJTQwZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlICUyOEljb25zOiBDQyBCWSA0LjAsIEZvbnRzOiBTSUwgT0ZMIDEuMSwgQ29kZTogTUlUIExpY2Vuc2UlMjkgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuIC0tJTNFJTNDcGF0aCBkPSUyMk0wIDgwQzAgNTMuNSAyMS41IDMyIDQ4IDMybDk2IDBjMjYuNSAwIDQ4IDIxLjUgNDggNDhsMCAxNiAxOTIgMCAwLTE2YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4bDk2IDBjMjYuNSAwIDQ4IDIxLjUgNDggNDhsMCA5NmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtOTYgMGMtMjYuNSAwLTQ4LTIxLjUtNDgtNDhsMC0xNi0xOTIgMCAwIDE2YzAgMS43LS4xIDMuNC0uMyA1TDI3MiAyODhsOTYgMGMyNi41IDAgNDggMjEuNSA0OCA0OGwwIDk2YzAgMjYuNS0yMS41IDQ4LTQ4IDQ4bC05NiAwYy0yNi41IDAtNDgtMjEuNS00OC00OGwwLTk2YzAtMS43IC4xLTMuNCAuMy01TDE0NCAyMjRsLTk2IDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4TDAgODB6JTIyLyUzRSUzQy9zdmclM0UiKSBjZW50ZXIgLyBjb250YWluIG5vLXJlcGVhdDsgbWFzazogdXJsKCJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIHhtbG5zPSUyMmh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJTIyIHZpZXdCb3g9JTIyMCAwIDU3NiA1MTIlMjIlM0UlM0MlMjEtLSUyMSBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSAlNDBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgJTI4SWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSUyOSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0lM0UlM0NwYXRoIGQ9JTIyTTAgODBDMCA1My41IDIxLjUgMzIgNDggMzJsOTYgMGMyNi41IDAgNDggMjEuNSA0OCA0OGwwIDE2IDE5MiAwIDAtMTZjMC0yNi41IDIxLjUtNDggNDgtNDhsOTYgMGMyNi41IDAgNDggMjEuNSA0OCA0OGwwIDk2YzAgMjYuNS0yMS41IDQ4LTQ4IDQ4bC05NiAwYy0yNi41IDAtNDgtMjEuNS00OC00OGwwLTE2LTE5MiAwIDAgMTZjMCAxLjctLjEgMy40LS4zIDVMMjcyIDI4OGw5NiAwYzI2LjUgMCA0OCAyMS41IDQ4IDQ4bDAgOTZjMCAyNi41LTIxLjUgNDgtNDggNDhsLTk2IDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtOTZjMC0xLjcgLjEtMy40IC4zLTVMMTQ0IDIyNGwtOTYgMGMtMjYuNSAwLTQ4LTIxLjUtNDgtNDhMMCA4MHolMjIvJTNFJTNDL3N2ZyUzRSIpIGNlbnRlciAvIGNvbnRhaW4gbm8tcmVwZWF0OyB9Ci8qIFRoZSB3b3JrZmxvdyBkaWFncmFtIHNjcm9sbHMgc2lkZXdheXMgcmF0aGVyIHRoYW4gc2hyaW5raW5nIGl0cyB0ZXh0OyBNZXJtYWlkJ3Mgbm9kZSB0b29sdGlwLiAqLwouY2FsY3VsYXRpb25zLWRpYWdyYW0geyBvdmVyZmxvdy14OiBhdXRvOyBtYXJnaW46IDFyZW0gMCAxLjVyZW07IHRleHQtYWxpZ246IGNlbnRlcjsgfQouY2FsY3VsYXRpb25zLWRpYWdyYW0gcHJlLmRpYWdyYW0tc291cmNlIHsgZGlzcGxheTogbm9uZTsgfQouY2FsY3VsYXRpb25zLWRpYWdyYW0gc3ZnIHsgbWF4LXdpZHRoOiBub25lICFpbXBvcnRhbnQ7IH0KLyogT24gYSBjYWxjdWxhdGlvbiBwYWdlIHRoZSBkaWFncmFtIGtlZXBzIGl0cyBzY2FsZSBpbiBhIHNtYWxsZXIgZnJhbWVkIHZpZXcgb2YgaXRzIG93biB0aGF0IHNjcm9sbHMgYm90aCB3YXlzOyB0aGUKICAgY3VycmVudCBjYWxjdWxhdGlvbidzIGxhYmVsIGlzIHBsYWluIHRleHQgcmF0aGVyIHRoYW4gYSBsaW5rLiAqLwouY2FsY3VsYXRpb25zLWRpYWdyYW0uY29tcGFjdCB7IG1heC1oZWlnaHQ6IDIycmVtOyBvdmVyZmxvdzogYXV0bzsgYm9yZGVyOiAxcHggc29saWQgI2RlZTJlNjsgYm9yZGVyLXJhZGl1czogMC4zNzVyZW07IG1hcmdpbi10b3A6IDA7IH0KLyogQSBsYWJlbCBsaW5rZWQgdG8gaXRzIGNhbGN1bGF0aW9uIHBhZ2UgcmVhZHMgYXMgYSBsaW5rLCB1bmRlcmxpbmVkIG9uIGhvdmVyLCBhcyBpbiB0aGUgUkVBRE1FLiAqLwouY2FsY3VsYXRpb25zLWRpYWdyYW0gLm5vZGVMYWJlbCBhLCAuY2FsY3VsYXRpb25zLWRpYWdyYW0gLm5vZGVMYWJlbCBhICogeyBjb2xvcjogdmFyKC0tYnMtbGluay1jb2xvcikgIWltcG9ydGFudDsgdGV4dC1kZWNvcmF0aW9uOiBub25lOyB9Ci5jYWxjdWxhdGlvbnMtZGlhZ3JhbSAubm9kZUxhYmVsIGE6aG92ZXIgeyB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsgfQovKiBUaGUgY2FsY3VsYXRpb24gd2hvc2UgcGFnZSBpcyBvcGVuIGdsb3dzIGluIGl0cyBjb21wYWN0IHdvcmtmbG93IGRpYWdyYW0sIGxpa2UgYSBzZWxlY3Rpb24sIGluIHRoZSBub2RlJ3Mgb3duCiAgIGJvcmRlciBjb2xvdXIsIHdoaWNoIHRoZSBkaWFncmFtIHNjcmlwdCByZWFkcyBpbnRvIHRoZSBub2RlJ3MgY29sb3VyIHByb3BlcnR5LiAqLwouY2FsY3VsYXRpb25zLWRpYWdyYW0gc3ZnIGcubm9kZS5jdXJyZW50LWNhbGN1bGF0aW9uIHsKICAgIGZpbHRlcjogZHJvcC1zaGFkb3coMCAwIDJweCBjb2xvci1taXgoaW4gc3JnYiwgY3VycmVudENvbG9yIDQ1JSwgdHJhbnNwYXJlbnQpKQogICAgICAgICAgICBkcm9wLXNoYWRvdygwIDAgNXB4IGNvbG9yLW1peChpbiBzcmdiLCBjdXJyZW50Q29sb3IgMjIlLCB0cmFuc3BhcmVudCkpOwp9Ci8qIEEgY2xpY2tlZCBsaW5rIHNob3dzIG5vIGZvY3VzIHJpbmc7IHRoZSBjbGljayBvcGVucyBpdHMgcGFnZS4gKi8KLmNhbGN1bGF0aW9ucy1kaWFncmFtIGE6aXMoOmZvY3VzLCA6Zm9jdXMtdmlzaWJsZSwgOmFjdGl2ZSkgeyBvdXRsaW5lOiBub25lOyB9Ci8qIFRoZSBvdmVydmlldyB0YWJsZSBrZWVwcyBpdHMgc2hvcnQgY29sdW1ucyBvbiBvbmUgbGluZSBhbmQgZ2l2ZXMgdGhlIHRpdGxlcyBhbmQgcmVzdWx0cyB0aGUgcm9vbS4gKi8KLmNhbGN1bGF0aW9ucy10YWJsZSB0YWJsZSB7IHdpZHRoOiAxMDAlOyB9Ci5jYWxjdWxhdGlvbnMtdGFibGUgOmlzKHRoLCB0ZCk6aXMoOm50aC1jaGlsZCgxKSwgOm50aC1jaGlsZCgzKSwgOm50aC1jaGlsZCg0KSwgOm50aC1jaGlsZCg1KSkgeyB3aGl0ZS1zcGFjZTogbm93cmFwOyB9Ci5jYWxjdWxhdGlvbnMtdGFibGUgOmlzKHRoLCB0ZCk6bnRoLWNoaWxkKDIpIHsgd2lkdGg6IDM0JTsgfQovKiBBIHNjYW4gaXMgb25lIG1hdHJpeCBvZiBib3JkZXJlZCBjZWxscyB3aXRoIGxhYmVsbGVkIGF4ZXMuIEEgY2VsbCBsaW5rcyB0byBpdHMgcnVuLCBvciBvcGVucyB0aGUgcnVucyBpbnNpZGUgaXQgYXMgZG90cyBvciBhIGRvbnV0LiAqLwovKiBEb3RzIGFuZCBwaWUgc2hhcmUgb25lIHNjYWxlLCBhbmQgdGhlIHBpZSBrZWVwcyBvbmUgc2l6ZSBhdCBldmVyeSBsZXZlbDogdGhlIGhlaWdodCBvZiB0aGUgdGhyZWUgcm93cyB0aGF0IHR3ZWx2ZSBkb3RzIG1ha2UuICovCi5zY2FuLW1hdHJpeCB7IC0tc2Nhbi1kb3Q6IDAuNXJlbTsgLS1zY2FuLWRvdC1nYXA6IDJweDsgLS1zY2FuLXBpZTogY2FsYygzICogdmFyKC0tc2Nhbi1kb3QpICsgMiAqIHZhcigtLXNjYW4tZG90LWdhcCkpOyBtYXJnaW46IDAuNXJlbSAwIDFyZW07IH0KLnNjYW4tY29udHJvbHMgeyBkaXNwbGF5OiBncmlkOyBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdChhdXRvLWZpbGwsIG1pbm1heCgxMnJlbSwgMWZyKSk7IGdhcDogMC43NXJlbSAxcmVtOyBtYXJnaW4tYm90dG9tOiAxcmVtOyBmb250LXNpemU6IDAuODc1cmVtOyB9Ci8qIEEgZml4ZWQgbGFiZWwgaGVpZ2h0LCBzbyBhIGxhYmVsIGhvbGRpbmcgbWF0aCBsZWF2ZXMgaXRzIGRyb3Bkb3duIGluIGxpbmUgd2l0aCB0aGUgb3RoZXJzLiAqLwouc2Nhbi1sYWJlbCB7IGhlaWdodDogMS4zNzVyZW07IGxpbmUtaGVpZ2h0OiAxLjM3NXJlbTsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgZm9udC13ZWlnaHQ6IDcwMDsgbWFyZ2luLWJvdHRvbTogMC4yNXJlbTsgfQouc2Nhbi1zZWxlY3QgeyBwb3NpdGlvbjogcmVsYXRpdmU7IH0KLnNjYW4tc2VsZWN0ID4gYnV0dG9uIHsgZGlzcGxheTogYmxvY2s7IHdpZHRoOiAxMDAlOyBtaW4taGVpZ2h0OiAycmVtOyB0ZXh0LWFsaWduOiBsZWZ0OyB1c2VyLXNlbGVjdDogbm9uZTsgfQovKiBCb290c3RyYXAncyBmb2N1cyByaW5nIGlzIGZvciBrZXlib2FyZCB1c2VyczogYSBtb3VzZSBjbGljaywgb3IgdGhlIHNjcmlwdCByZXR1cm5pbmcgZm9jdXMgYWZ0ZXIgYSBjaG9pY2UsIGxlYXZlcyBub25lLiAqLwouc2Nhbi1zZWxlY3QgPiBidXR0b246Zm9jdXM6bm90KDpmb2N1cy12aXNpYmxlKSB7IGJvcmRlci1jb2xvcjogdmFyKC0tYnMtYm9yZGVyLWNvbG9yLCAjZGVlMmU2KTsgYm94LXNoYWRvdzogbm9uZTsgdHJhbnNpdGlvbjogbm9uZTsgfQouc2Nhbi1zZWxlY3QgLmRyb3Bkb3duLW1lbnUgeyBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogMTAwJTsgbGVmdDogMDsgbWluLXdpZHRoOiAxMDAlOyBtYXgtaGVpZ2h0OiAxNnJlbTsgb3ZlcmZsb3cteTogYXV0bzsgbWFyZ2luLXRvcDogMC4xMjVyZW07IGZvbnQtc2l6ZTogMC44NzVyZW07IHotaW5kZXg6IDEwNTA7IH0KLnNjYW4tc2VsZWN0IC5kcm9wZG93bi1pdGVtIHsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgdXNlci1zZWxlY3Q6IG5vbmU7IH0KLnNjYW4tc2VsZWN0IC5kcm9wZG93bi1pdGVtOmZvY3VzIHsgb3V0bGluZTogbm9uZTsgfQouc2Nhbi1zZWxlY3QgLmRyb3Bkb3duLWl0ZW06Zm9jdXMtdmlzaWJsZSB7IG91dGxpbmU6IDJweCBzb2xpZCB2YXIoLS1icy1zZWNvbmRhcnktY29sb3IsICM2Yzc1N2QpOyBvdXRsaW5lLW9mZnNldDogLTJweDsgfQovKiBQcmVzc2luZyBhbiBlbnRyeSB0dXJucyBpdCBibHVlIGFzIGluIEJvb3RzdHJhcCdzIG93biBkcm9wZG93bnM7IHRoZSBjdXJyZW50IGVudHJ5IGlzIGRpbS4gKi8KLnNjYW4tc2VsZWN0IC5kcm9wZG93bi1pdGVtIC5xdWFudGl0eS1pbmZvLWljb24geyBtYXJnaW4tbGVmdDogMC4zNWVtOyB9Ci5zY2FuLXNlbGVjdCAuZHJvcGRvd24taXRlbS5zY2FuLWN1cnJlbnQsIC5zY2FuLXNlbGVjdCAuZHJvcGRvd24taXRlbS5zY2FuLWN1cnJlbnQ6aXMoOmhvdmVyLCA6Zm9jdXMsIDphY3RpdmUpIHsgY29sb3I6IHZhcigtLWJzLXNlY29uZGFyeS1jb2xvciwgIzZjNzU3ZCk7IGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OyBvcGFjaXR5OiAwLjY7IGN1cnNvcjogZGVmYXVsdDsgfQouc2Nhbi1tYXRyaWNlcyB7IG92ZXJmbG93LXg6IGF1dG87IH0KLnNjYW4tdmlldyB7IGRpc3BsYXk6IGlubGluZS1ncmlkOyBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IGF1dG8gbWF4LWNvbnRlbnQ7IGZvbnQtc2l6ZTogMC44NzVyZW07IH0KLnNjYW4tcm93LXRpdGxlIHsgZ3JpZC1jb2x1bW46IDE7IHBvc2l0aW9uOiByZWxhdGl2ZTsgbWFyZ2luLXJpZ2h0OiAwLjc1cmVtOyBmb250LXdlaWdodDogNjAwOyB9Ci5zY2FuLXJvdy10aXRsZSA+IHNwYW4geyBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogNTAlOyBsZWZ0OiA1MCU7IHRleHQtYWxpZ246IGNlbnRlcjsgbGluZS1oZWlnaHQ6IDEuMjU7IHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpIHJvdGF0ZSgtOTBkZWcpOyB9Ci5zY2FuLWFyZWEgeyBncmlkLWNvbHVtbjogMjsgZGlzcGxheTogZ3JpZDsgZ2FwOiAxLjVyZW0gMnJlbTsgfQouc2Nhbi1jb2x1bW4tdGl0bGUgeyBncmlkLWNvbHVtbjogMjsgZm9udC13ZWlnaHQ6IDYwMDsgdGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW4tdG9wOiAwLjc1cmVtOyB9Ci5zY2FuLWdyaWQgeyBkaXNwbGF5OiBpbmxpbmUtZ3JpZDsgZ3JpZC1hdXRvLXJvd3M6IGF1dG87IGdyaWQtYXV0by1jb2x1bW5zOiBhdXRvOyBwYWRkaW5nOiAxcHg7IH0KLnNjYW4tcm93LXRpY2sgeyBkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kOyBwYWRkaW5nLXJpZ2h0OiAwLjVyZW07IH0KLnNjYW4tY29sdW1uLXRpY2sgeyB0ZXh0LWFsaWduOiBjZW50ZXI7IHBhZGRpbmctdG9wOiAwLjM3NXJlbTsgfQouc2Nhbi1jZWxsIHsgZGlzcGxheTogZmxleDsgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgd2lkdGg6IDMuMjVyZW07IG1pbi1oZWlnaHQ6IDIuMjVyZW07IG1hcmdpbjogMCAtMXB4IC0xcHggMDsgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tYnMtYm9yZGVyLWNvbG9yLCAjZGVlMmU2KTsgYmFja2dyb3VuZDogdmFyKC0tYnMtYm9keS1iZywgI2ZmZmZmZik7IH0KLnNjYW4tY2VsbC5zY2FuLXVuc2VsZWN0ZWQgeyBiYWNrZ3JvdW5kOiB2YXIoLS1icy10ZXJ0aWFyeS1iZywgI2Y4ZjlmYSk7IH0KLnNjYW4tY2VsbC5zY2FuLXZvaWQgeyB2aXNpYmlsaXR5OiBoaWRkZW47IH0KLnNjYW4tY2VsbCA6aXMoYSwgLnNjYW4tb3BlbikgeyBmbGV4OiAxOyBkaXNwbGF5OiBmbGV4OyBmbGV4LWRpcmVjdGlvbjogY29sdW1uOyBhbGlnbi1pdGVtczogY2VudGVyOyBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsgZ2FwOiAwLjEyNXJlbTsgcGFkZGluZzogMC4yNXJlbTsgdGV4dC1hbGlnbjogY2VudGVyOyB0ZXh0LWRlY29yYXRpb246IG5vbmU7IGxpbmUtaGVpZ2h0OiAxLjI7IH0KLnNjYW4tY2VsbCA6aXMoYSwgLnNjYW4tb3Blbik6aXMoOmhvdmVyLCA6Zm9jdXMpIHsgYmFja2dyb3VuZDogdmFyKC0tYnMtdGVydGlhcnktYmcsICNmOGY5ZmEpOyBib3gtc2hhZG93OiBpbnNldCAwIDAgMCAycHggdmFyKC0tYnMtcHJpbWFyeSwgIzBkNmVmZCk7IH0KLnNjYW4tb3BlbiB7IHdpZHRoOiAxMDAlOyBib3JkZXI6IDA7IGJhY2tncm91bmQ6IG5vbmU7IGNvbG9yOiBpbmhlcml0OyBmb250OiBpbmhlcml0OyBjdXJzb3I6IHBvaW50ZXI7IH0KLnNjYW4tZG90cyB7IGRpc3BsYXk6IGdyaWQ7IGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDQsIHZhcigtLXNjYW4tZG90KSk7IGdhcDogdmFyKC0tc2Nhbi1kb3QtZ2FwKTsgfQouc2Nhbi1kb3QgeyBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7IHdpZHRoOiB2YXIoLS1zY2FuLWRvdCk7IGhlaWdodDogdmFyKC0tc2Nhbi1kb3QpOyBib3JkZXItcmFkaXVzOiA1MCU7IH0KLnNjYW4tZG90LnNjYW4taG9sbG93IHsgYmFja2dyb3VuZDogdmFyKC0tYnMtYm9keS1iZywgI2ZmZmZmZik7IGJvcmRlcjogMS41cHggc29saWQgI2FkYjViZDsgfQouc2Nhbi1waWUgeyB3aWR0aDogdmFyKC0tc2Nhbi1waWUpOyBoZWlnaHQ6IHZhcigtLXNjYW4tcGllKTsgfQovKiBCYWNrIGFuZCBGb3J3YXJkIGFyZSBCb290c3RyYXAncyBvd24gc21hbGwgb3V0bGluZSBidXR0b25zIGluIGEgZ3JvdXAsIGVhY2ggd2l0aCBpdHMgRm9udCBBd2Vzb21lIGFuZ2xlLiAqLwouc2Nhbi1oaXN0b3J5IHsgbWFyZ2luLWJvdHRvbTogMXJlbTsgfQouc2Nhbi1oaXN0b3J5IC5idG4geyBkaXNwbGF5OiBpbmxpbmUtZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiAwLjM3NXJlbTsgfQouc2Nhbi1oaXN0b3J5LWljb24geyB3aWR0aDogMC42MjVlbTsgaGVpZ2h0OiAxZW07IH0KLyogSG92ZXJpbmcgYSBjZWxsIG9mIHNldmVyYWwgcnVuczogdGhlIHN0YXR1cyBhbmQgb3V0Y29tZSB0YWxseSwgaW4gdGhlIHNhbWUgcG9wb3ZlciBhcyBhIHNpbmdsZSBydW4uICovCi5zY2FuLXBvcG92ZXIgeyBtaW4td2lkdGg6IDE0cmVtOyBmb250LXNpemU6IDAuODc1cmVtOyB9Ci5zY2FuLXBvcG92ZXIgcCB7IG1hcmdpbjogMCAwIDAuMjVyZW07IH0KLnNjYW4tcG9wb3ZlciBwOm5vdCg6Zmlyc3QtY2hpbGQpIHsgbWFyZ2luLXRvcDogMC43NXJlbTsgfQouc2Nhbi1wb3BvdmVyIC50YWJsZSB7IG1hcmdpbi1ib3R0b206IDA7IH0KLnNjYW4tcG9wb3ZlciAuc2Nhbi1pY29uLWNlbGwgeyB3aWR0aDogMS41cmVtOyBwYWRkaW5nLXJpZ2h0OiAwOyB9Ci5zY2FuLXBvcG92ZXIgaW1nIHsgd2lkdGg6IDFyZW07IGhlaWdodDogMXJlbTsgdmVydGljYWwtYWxpZ246IC0wLjEyNWVtOyB9Ci8qIE1lcm1haWQncyBvd24gdG9vbHRpcCBib3ggaXMgdW51c2VkLiAqLwoubWVybWFpZFRvb2x0aXAgeyBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7IH0KLyogQ2xpY2tpbmcgYSBub2RlIG9yIGFuIGFycm93IHRyYWNlcyB0aGUgcGF0aHMgdGhyb3VnaCBpdDogdGhlIHJlc3Qgb2YgdGhlIGRpYWdyYW0gZmFkZXMsIGFuZCBzbyBkbyB0aGUgb3ZlcnZpZXctdGFibGUKICAgcm93cyBvZiB0aGUgY2FsY3VsYXRpb25zIG9mZiB0aGUgdHJhY2UuICovCi5jYWxjdWxhdGlvbnMtZGlhZ3JhbSBzdmcgZy5ub2RlIHsgY3Vyc29yOiBwb2ludGVyOyB9Ci5jYWxjdWxhdGlvbnMtZGlhZ3JhbSBzdmcgOmlzKGcubm9kZSwgcGF0aFtkYXRhLWlkXSwgZy5jbHVzdGVyLWxhYmVsKSB7IHRyYW5zaXRpb246IG9wYWNpdHkgMC4xNXM7IH0KLmNhbGN1bGF0aW9ucy1kaWFncmFtIHN2Zy50cmFjZWQgOmlzKGcubm9kZSwgcGF0aFtkYXRhLWlkXSwgZy5jbHVzdGVyLWxhYmVsKTpub3QoLm9uLXRyYWNlKSB7IG9wYWNpdHk6IDAuMjU7IH0KLmNhbGN1bGF0aW9ucy1kaWFncmFtIHN2ZyAuZWRnZS1oaXQgeyBmaWxsOiBub25lOyBzdHJva2U6IHRyYW5zcGFyZW50OyBzdHJva2Utd2lkdGg6IDE0cHg7IHBvaW50ZXItZXZlbnRzOiBzdHJva2U7IGN1cnNvcjogcG9pbnRlcjsgfQouY2FsY3VsYXRpb25zLXRhYmxlIHRib2R5IHRyID4gdGQgeyB0cmFuc2l0aW9uOiBvcGFjaXR5IDAuMTVzOyB9Ci5jYWxjdWxhdGlvbnMtdGFibGUgdGJvZHkgdHIub2ZmLXRyYWNlID4gdGQgeyBvcGFjaXR5OiAwLjM1OyB9Ci8qIEEgc2NhbidzIGpvYiBjZWxsIHN0YXJ0cyB3aXRoIHRoZSBzY2FuIGljb24sIGFuZCBpdHMgcm93IG5hbWVzIGl0IHdpdGhvdXQgYSBsaW5rLiAqLwouc2Nhbi1pY29uIHsgbWFyZ2luLXJpZ2h0OiAwLjRlbTsgfQouZGlhZ3JhbS1wb3BvdmVyIC5zY2FuLW1hdHJpeCB7IG1hcmdpbjogMC43NXJlbSAwIDA7IH0KLyogQSBjYWxjdWxhdGlvbidzIHBvcG92ZXIgaG9sZHMgaXRzIHN0YXR1cyBib3ggd2l0aCB0aGUgd29ya2Zsb3cncyBhc3Nlc3NtZW50LCBhIGRpYWdyYW0gbGFiZWwncyBvdmVydmlldy10YWJsZSByb3cKICAgYW5kIGl0cyBmaW5kaW5ncyB0YWJsZTsgdGhlIGhpZGRlbiBzb3VyY2Ugb2YgdGhlIGJveCBhbmQgZmluZGluZ3MgZm9sbG93cyB0aGUgb3ZlcnZpZXcgdGFibGVzLiBJbiB0aGUgcm93IG9ubHkgdGhlCiAgIHRpdGxlIHdyYXBzLiAqLwouZGlhZ3JhbS1kZXRhaWxzLCAubGluay1kZXRhaWxzIHsgZGlzcGxheTogbm9uZTsgfQovKiBHcm91cCB0aXRsZXMsIHJlcGFpbnRlZCBhYm92ZSB0aGUgYXJyb3dzLCBoaWRlIHRoZSBhcnJvd3MgYmVoaW5kIHRoZW0gd2l0aCB0aGUgZ3JvdXAncyBiYWNrZ3JvdW5kLiAqLwouY2FsY3VsYXRpb25zLWRpYWdyYW0gLmNsdXN0ZXItbGFiZWxzIGZvcmVpZ25PYmplY3QgPiBkaXYgeyBiYWNrZ3JvdW5kOiAjZjhmOWZhOyB9Ci5kaWFncmFtLXBvcG92ZXIgeyBtYXgtd2lkdGg6IG1pbig5MHZ3LCA3NjBweCk7IGZvbnQtc2l6ZTogMC44NzVyZW07IH0KLmRpYWdyYW0tcG9wb3ZlciB0YWJsZSB7IG1hcmdpbjogMDsgZm9udC1zaXplOiAwLjg3NXJlbTsgfQouZGlhZ3JhbS1wb3BvdmVyIC5wb3BvdmVyLXJvdyA6aXModGgsIHRkKSB7IHdoaXRlLXNwYWNlOiBub3dyYXA7IH0KLmRpYWdyYW0tcG9wb3ZlciAucG9wb3Zlci1yb3cgOmlzKHRoLCB0ZCk6bnRoLWNoaWxkKDIpIHsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgbWluLXdpZHRoOiAxMnJlbTsgfQouZGlhZ3JhbS1wb3BvdmVyIHVsIHsgbWFyZ2luOiAwLjVyZW0gMDsgcGFkZGluZy1sZWZ0OiAxLjJyZW07IH0KLmRpYWdyYW0tcG9wb3ZlciB0YWJsZSArIHRhYmxlLCAuZGlhZ3JhbS1wb3BvdmVyIHVsICsgdGFibGUgeyBtYXJnaW4tdG9wOiAwLjI1cmVtOyB9Ci8qIFRoZSBmaW5kaW5ncyB0YWJsZSBzaXplcyBpdHMgY29sdW1ucyB0byB0aGVpciBjb250ZW50IHJhdGhlciB0aGFuIFBhbmRvYydzIGVxdWFsIHdpZHRoczsgdGhlIG1lc3NhZ2Ugd3JhcHMuICovCi5kaWFncmFtLXBvcG92ZXIgdGFibGU6bm90KC5wb3BvdmVyLXJvdykgY29sIHsgd2lkdGg6IGF1dG8gIWltcG9ydGFudDsgfQovKiBBIHN0YXR1cyBib3ggb3BlbnMgdGhlIHBvcG92ZXIgZmx1c2ggd2l0aCBpdHMgdG9wIGVkZ2U7IFF1YXJ0bydzIGNhbGxvdXQgbWFyZ2lucyB3b3VsZCBsZWF2ZSBhIGdhcCBhYm92ZSBhbmQgYmVsb3cuICovCi5kaWFncmFtLXBvcG92ZXIgPiAuY2FsbG91dCB7IG1hcmdpbjogMCAwIDAuNXJlbTsgfQouZGlhZ3JhbS1wb3BvdmVyIHRhYmxlOm5vdCgucG9wb3Zlci1yb3cpIDppcyh0aCwgdGQpOm5vdCg6bGFzdC1jaGlsZCkgeyB3aGl0ZS1zcGFjZTogbm93cmFwOyB3aWR0aDogMSU7IH0KLmRpYWdyYW0tcG9wb3ZlciA6aXModGgsIHRkKSB7IHBhZGRpbmc6IDAuMjVyZW0gMC41cmVtOyB9CgovKiBUYWJsZXMgd2l0aCBzdWJ0YWJsZXM6IGVhY2ggb3V0ZXIgcm93IHNwYW5zIGl0cyBzdWJ0YWJsZSdzIHJvd3MsIHVuZGVyIGEgc3Bhbm5pbmcgaGVhZGluZyB3aXRoIHRoZSBzdWJ0YWJsZSdzCiAgIG93biBjb2x1bW4gbmFtZXMgYmVsb3cgaXQuIEEgcnVsZSBzdGFydHMgZWFjaCBvdXRlciByb3cgYW5kIG5vbmUgZGl2aWRlcyBpdHMgc3VidGFibGUgcm93czsgc3RyaXBpbmcgaXMgb2ZmLAogICBzbyBlYWNoIG91dGVyIHJvdyByZWFkcyBhcyBvbmUgYmxvY2ssIGl0cyBzcGFubmluZyBjZWxscyBhdCB0aGUgdG9wLiAqLwp0YWJsZS5zdWJ0YWJsZXMgdGJvZHkgOmlzKHRyLCB0ZCkgeyBiYWNrZ3JvdW5kOiBub25lICFpbXBvcnRhbnQ7IC0tYnMtdGFibGUtYmctdHlwZTogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsKICAtLWJzLXRhYmxlLWFjY2VudC1iZzogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsgYm94LXNoYWRvdzogbm9uZSAhaW1wb3J0YW50OyB9Ci8qIENlbGwgY29udGVudCBhcnJpdmVzIGFzIGEgcGFyc2VkIGRpdiBob2xkaW5nIGEgcGFyYWdyYXBoLCB3aG9zZSBtYXJnaW5zIHdvdWxkIGRvdWJsZSBlYWNoIHJvdydzIGhlaWdodC4gKi8KdGFibGUuc3VidGFibGVzIDppcyh0ZCwgdGgpID4gOmlzKHAsIGRpdiA+IHApIHsgbWFyZ2luOiAwOyB9CnRhYmxlLnN1YnRhYmxlcyB0Ym9keSB0ZCB7IHZlcnRpY2FsLWFsaWduOiB0b3A7IH0KLyogQSBjZWxsIG9mIHJ1bm5pbmcgdGV4dCBrZWVwcyBhIHJlYWRhYmxlIHdpZHRoIGhvd2V2ZXIgbWFueSBjb2x1bW5zIHNoYXJlIHRoZSBwYWdlOyBzaG9ydCB2YWx1ZXMgc3RheSBuYXJyb3cuCiAgIEEgdGFibGUgY2VsbCdzIG93biBtaW4td2lkdGggaXMgbm90IGhvbm91cmVkLCBzbyB0aGUgd2lkdGggaXMgb24gdGhlIGNvbnRlbnQgaW5zaWRlIGl0LiAqLwp0YWJsZS5zdWJ0YWJsZXMgdGQucHJvc2UgPiA6aXMoZGl2LCBwKSB7IG1pbi13aWR0aDogOXJlbTsgfQoKLyogQSB0YWJsZSB0aGF0IGVuZHMgYSBjZWxsJ3Mgb3V0cHV0IGhhcyBubyBib3R0b20gbWFyZ2luLCBzbyBhIHBhcmFncmFwaCBhZnRlciBpdCBnZXRzIHRoZSBzcGFjZSBhCiAgIHBhcmFncmFwaCBsZWF2ZXMgYmVmb3JlIGEgdGFibGUuICovCjppcyguY2VsbDpoYXModGFibGUpLCB0YWJsZSkgKyBwIHsgbWFyZ2luLXRvcDogMXJlbTsgfQoKLyogUXVhcnRvIHNwYWNlcyBoZWFkaW5ncyBkb3duIHRvIGxldmVsIDQgYWJvdmU7IGxldmVsIDUgYW5kIDYgaGVhZGluZ3MsIGFzIGluIGZvbGRzIGRlZXAgaW4gYSBjYWxjdWxhdGlvbiwgZ2V0IHRoZQogICBsZXZlbC00IHNwYWNlIHRvbywgc28gdGhleSBkbyBub3Qgc2l0IG9uIHRoZSB0YWJsZSBvciB0ZXh0IGJlZm9yZSB0aGVtLiAqLwptYWluIDppcyhoNSwgaDYpLmFuY2hvcmVkIHsgbWFyZ2luLXRvcDogMS41cmVtOyB9CgovKiBNYXRjaCBLYVRlWCBtYXRoIHRvIHRoZSBzdXJyb3VuZGluZyB0ZXh0IHVzaW5nIG1lYXN1cmVkIGxldHRlciBhbmQgZGlnaXQgaGVpZ2h0cy4gKi8KaHRtbCAua2F0ZXggeyBmb250LXNpemU6IGNhbGModmFyKC0tbWF0aC1zY2FsZSwgMSkgKiAxZW0pICFpbXBvcnRhbnQ7IH0KLyogS2VlcCBLYVRlWOKAmXMgYWNjZXNzaWJsZSBNYXRoTUwgd2l0aGluIHRoZSBjbGlwcGluZyBjb250ZXh0IG9mIGhpZGRlbiB0YWJzLiAqLwoua2F0ZXggeyBwb3NpdGlvbjogcmVsYXRpdmU7IH0KCi8qIE9wdGlvbmFsIHJlbW90ZSBzaG9ydGN1dCBpcyBhIGZvdXJ0aCBtZXRhZGF0YSBjb2x1bW4gYW5kIGEgaGVhZGVyIGFjdGlvbi4gKi8KQG1lZGlhIChtaW4td2lkdGg6IDc2OHB4KSB7CiAgICAjdGl0bGUtYmxvY2staGVhZGVyLnF1YXJ0by10aXRsZS1ibG9jay5kZWZhdWx0IC5xdWFydG8tdGl0bGUtbWV0YS5oYXMtcmVtb3RlLWxpbmsgewogICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDQsIG1pbm1heCgwLCAxZnIpKTsKICAgIH0KfQouaGVhZGVyLWJyZWFkY3J1bWIuaGFzLXJlbW90ZS1saW5rIHsgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiAxcmVtOyBsaW5lLWhlaWdodDogMS41OyB9Ci5oZWFkZXItYnJlYWRjcnVtYiAuYnJlYWRjcnVtYi1wYXRoIHsgZmxleDogMSAxIGF1dG87IG1pbi13aWR0aDogMDsgb3ZlcmZsb3c6IGhpZGRlbjsgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7IH0KLmhlYWRlci1icmVhZGNydW1iIC5oZWFkZXItYWN0aW9ucyB7IG1hcmdpbi1sZWZ0OiBhdXRvOyBmbGV4OiBub25lOyBkaXNwbGF5OiBpbmxpbmUtZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiAxcmVtOyB9Ci5oZWFkZXItYnJlYWRjcnVtYiAuaGVhZGVyLWFjdGlvbnMgLmNhbGN1bGF0aW9ucy1saW5rIHsgZmxvYXQ6IG5vbmU7IGRpc3BsYXk6IGlubGluZS1mbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyB9Ci5oZWFkZXItYnJlYWRjcnVtYiAuaGVhZGVyLWFjdGlvbnMgYSB7IGNvbG9yOiB2YXIoLS1icy1saW5rLWNvbG9yLCAjMGQ2ZWZkKTsgZGlzcGxheTogaW5saW5lLWZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogMC4zNWVtOyBsaW5lLWhlaWdodDogaW5oZXJpdDsgfQovKiBNYXRjaCB0aGUgYWN0aW9uIGljb25zJyBib3hlcyBzbyB0aGV5IGNhbm5vdCBzaGlmdCBlaXRoZXIgdGV4dCBiYXNlbGluZS4gKi8KLmhlYWRlci1icmVhZGNydW1iIC5oZWFkZXItYWN0aW9ucyBhOjpiZWZvcmUgeyBmbGV4OiBub25lOyBhbGlnbi1zZWxmOiBjZW50ZXI7IH0KLmhlYWRlci1icmVhZGNydW1iIC5oZWFkZXItYWN0aW9ucyAucmVtb3RlLXJlYWRtZS1saW5rOjpiZWZvcmUgewogICAgY29udGVudDogIiI7CiAgICB3aWR0aDogMS4xZW07CiAgICBoZWlnaHQ6IDFlbTsKICAgIGJhY2tncm91bmQtY29sb3I6IGN1cnJlbnRDb2xvcjsKICAgIC13ZWJraXQtbWFzazogdXJsKCJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnJTIweG1sbnMlM0QlMjJodHRwJTNBJTJGJTJGd3d3LnczLm9yZyUyRjIwMDAlMkZzdmclMjIlMjB2aWV3Qm94JTNEJTIyMCUyMDAlMjA1NzYlMjA1MTIlMjIlM0UlM0MlMjEtLSUyMSUyMEZvbnQlMjBBd2Vzb21lJTIwRnJlZSUyMDYuNi4wJTIwYnklMjAlNDBmb250YXdlc29tZSUyMC0lMjBodHRwcyUzQSUyRiUyRmZvbnRhd2Vzb21lLmNvbSUyMExpY2Vuc2UlMjAtJTIwaHR0cHMlM0ElMkYlMkZmb250YXdlc29tZS5jb20lMkZsaWNlbnNlJTJGZnJlZSUyMCUyOEljb25zJTNBJTIwQ0MlMjBCWSUyMDQuMCUyQyUyMEZvbnRzJTNBJTIwU0lMJTIwT0ZMJTIwMS4xJTJDJTIwQ29kZSUzQSUyME1JVCUyMExpY2Vuc2UlMjklMjBDb3B5cmlnaHQlMjAyMDI0JTIwRm9udGljb25zJTJDJTIwSW5jLiUyMC0tJTNFJTNDcGF0aCUyMGQlM0QlMjJNOS40JTIwODYuNkMtMy4xJTIwNzQuMS0zLjElMjA1My45JTIwOS40JTIwNDEuNHMzMi44LTEyLjUlMjA0NS4zJTIwMGwxOTIlMjAxOTJjMTIuNSUyMDEyLjUlMjAxMi41JTIwMzIuOCUyMDAlMjA0NS4zbC0xOTIlMjAxOTJjLTEyLjUlMjAxMi41LTMyLjglMjAxMi41LTQ1LjMlMjAwcy0xMi41LTMyLjglMjAwLTQ1LjNMMTc4LjclMjAyNTYlMjA5LjQlMjA4Ni42ek0yNTYlMjA0MTZsMjg4JTIwMGMxNy43JTIwMCUyMDMyJTIwMTQuMyUyMDMyJTIwMzJzLTE0LjMlMjAzMi0zMiUyMDMybC0yODglMjAwYy0xNy43JTIwMC0zMi0xNC4zLTMyLTMyczE0LjMtMzIlMjAzMi0zMnolMjIlMkYlM0UlM0MlMkZzdmclM0UiKSBjZW50ZXIgLyBjb250YWluIG5vLXJlcGVhdDsKICAgIG1hc2s6IHVybCgiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyUyMHhtbG5zJTNEJTIyaHR0cCUzQSUyRiUyRnd3dy53My5vcmclMkYyMDAwJTJGc3ZnJTIyJTIwdmlld0JveCUzRCUyMjAlMjAwJTIwNTc2JTIwNTEyJTIyJTNFJTNDJTIxLS0lMjElMjBGb250JTIwQXdlc29tZSUyMEZyZWUlMjA2LjYuMCUyMGJ5JTIwJTQwZm9udGF3ZXNvbWUlMjAtJTIwaHR0cHMlM0ElMkYlMkZmb250YXdlc29tZS5jb20lMjBMaWNlbnNlJTIwLSUyMGh0dHBzJTNBJTJGJTJGZm9udGF3ZXNvbWUuY29tJTJGbGljZW5zZSUyRmZyZWUlMjAlMjhJY29ucyUzQSUyMENDJTIwQlklMjA0LjAlMkMlMjBGb250cyUzQSUyMFNJTCUyME9GTCUyMDEuMSUyQyUyMENvZGUlM0ElMjBNSVQlMjBMaWNlbnNlJTI5JTIwQ29weXJpZ2h0JTIwMjAyNCUyMEZvbnRpY29ucyUyQyUyMEluYy4lMjAtLSUzRSUzQ3BhdGglMjBkJTNEJTIyTTkuNCUyMDg2LjZDLTMuMSUyMDc0LjEtMy4xJTIwNTMuOSUyMDkuNCUyMDQxLjRzMzIuOC0xMi41JTIwNDUuMyUyMDBsMTkyJTIwMTkyYzEyLjUlMjAxMi41JTIwMTIuNSUyMDMyLjglMjAwJTIwNDUuM2wtMTkyJTIwMTkyYy0xMi41JTIwMTIuNS0zMi44JTIwMTIuNS00NS4zJTIwMHMtMTIuNS0zMi44JTIwMC00NS4zTDE3OC43JTIwMjU2JTIwOS40JTIwODYuNnpNMjU2JTIwNDE2bDI4OCUyMDBjMTcuNyUyMDAlMjAzMiUyMDE0LjMlMjAzMiUyMDMycy0xNC4zJTIwMzItMzIlMjAzMmwtMjg4JTIwMGMtMTcuNyUyMDAtMzItMTQuMy0zMi0zMnMxNC4zLTMyJTIwMzItMzJ6JTIyJTJGJTNFJTNDJTJGc3ZnJTNFIikgY2VudGVyIC8gY29udGFpbiBuby1yZXBlYXQ7Cn0KLyogVGhlIGhvbWVwYWdlJ3MgbGluayB0byB0aGUgY2FsY3VsYXRpb24gdmlld2VyLCB3aXRoIEZvbnQgQXdlc29tZSBGcmVlJ3MgZmlsZS1pbXBvcnQgaWNvbiAoZm9udGF3ZXNvbWVmcmVlIDYuNi4wKS4gKi8KLmhlYWRlci1icmVhZGNydW1iIC5oZWFkZXItYWN0aW9ucyAudmlld2VyLWxpbmsgYTo6YmVmb3JlIHsKICAgIGNvbnRlbnQ6ICIiOwogICAgd2lkdGg6IDEuMWVtOwogICAgaGVpZ2h0OiAxZW07CiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBjdXJyZW50Q29sb3I7CiAgICAtd2Via2l0LW1hc2s6IHVybCgiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0lMjJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyUyMiB2aWV3Qm94PSUyMjAgMCA1MTIgNTEyJTIyJTNFJTNDJTIxLS0lMjEgRm9udCBBd2Vzb21lIEZyZWUgNi42LjAgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuIC0tJTNFJTNDcGF0aCBkPSUyMk0xMjggNjRjMC0zNS4zIDI4LjctNjQgNjQtNjRMMzUyIDBsMCAxMjhjMCAxNy43IDE0LjMgMzIgMzIgMzJsMTI4IDAgMCAyODhjMCAzNS4zLTI4LjcgNjQtNjQgNjRsLTI1NiAwYy0zNS4zIDAtNjQtMjguNy02NC02NGwwLTExMiAxNzQuMSAwLTM5IDM5Yy05LjQgOS40LTkuNCAyNC42IDAgMzMuOXMyNC42IDkuNCAzMy45IDBsODAtODBjOS40LTkuNCA5LjQtMjQuNiAwLTMzLjlsLTgwLTgwYy05LjQtOS40LTI0LjYtOS40LTMzLjkgMHMtOS40IDI0LjYgMCAzMy45bDM5IDM5TDEyOCAyODhsMC0yMjR6bTAgMjI0bDAgNDhMMjQgMzM2Yy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDEwNCAwek01MTIgMTI4bC0xMjggMEwzODQgMCA1MTIgMTI4eiUyMi8lM0UlM0Mvc3ZnJTNFIikgY2VudGVyIC8gY29udGFpbiBuby1yZXBlYXQ7CiAgICBtYXNrOiB1cmwoImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9JTIyaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmclMjIgdmlld0JveD0lMjIwIDAgNTEyIDUxMiUyMiUzRSUzQyUyMS0tJTIxIEZvbnQgQXdlc29tZSBGcmVlIDYuNi4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgKEljb25zOiBDQyBCWSA0LjAsIEZvbnRzOiBTSUwgT0ZMIDEuMSwgQ29kZTogTUlUIExpY2Vuc2UpIENvcHlyaWdodCAyMDI0IEZvbnRpY29ucywgSW5jLiAtLSUzRSUzQ3BhdGggZD0lMjJNMTI4IDY0YzAtMzUuMyAyOC43LTY0IDY0LTY0TDM1MiAwbDAgMTI4YzAgMTcuNyAxNC4zIDMyIDMyIDMybDEyOCAwIDAgMjg4YzAgMzUuMy0yOC43IDY0LTY0IDY0bC0yNTYgMGMtMzUuMyAwLTY0LTI4LjctNjQtNjRsMC0xMTIgMTc0LjEgMC0zOSAzOWMtOS40IDkuNC05LjQgMjQuNiAwIDMzLjlzMjQuNiA5LjQgMzMuOSAwbDgwLTgwYzkuNC05LjQgOS40LTI0LjYgMC0zMy45bC04MC04MGMtOS40LTkuNC0yNC42LTkuNC0zMy45IDBzLTkuNCAyNC42IDAgMzMuOWwzOSAzOUwxMjggMjg4bDAtMjI0em0wIDIyNGwwIDQ4TDI0IDMzNmMtMTMuMyAwLTI0LTEwLjctMjQtMjRzMTAuNy0yNCAyNC0yNGwxMDQgMHpNNTEyIDEyOGwtMTI4IDBMMzg0IDAgNTEyIDEyOHolMjIvJTNFJTNDL3N2ZyUzRSIpIGNlbnRlciAvIGNvbnRhaW4gbm8tcmVwZWF0Owp9CgovKiBFdmVyeSBNYXJrZG93biBhbmQgZ2VuZXJhdGVkIHRhYmxlIHVzZXMgdGhlIGNvbXBhY3Qgc3R5bGUgb2YgdGhlIGxpbmsgcG9wb3ZlcnM6IDAuODc1cmVtIHRleHQsIDAuMzEyNXJlbSBieQogICAwLjVyZW0gY2VsbHMgYW5kIHVuc3RyaXBlZCByb3dzLiBCb290c3RyYXAgcGFpbnRzIGl0cyBzdHJpcGVzIHRocm91Z2ggLS1icy10YWJsZS1iZy10eXBlIG9uIG9kZCByb3dzLiAqLwptYWluIHRhYmxlIHsgZm9udC1zaXplOiAwLjg3NXJlbTsgbGluZS1oZWlnaHQ6IDEuNDsgfQptYWluIHRhYmxlID4gOm5vdChjYXB0aW9uKSA+ICogPiAqIHsgcGFkZGluZzogMC4zMTI1cmVtIDAuNXJlbSAhaW1wb3J0YW50OyB9Cm1haW4gdGFibGUudGFibGUtc3RyaXBlZCA+IHRib2R5ID4gdHIgPiAqIHsKICAgIC0tYnMtdGFibGUtYmctdHlwZTogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsKICAgIC0tYnMtdGFibGUtYmctc3RhdGU6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7CiAgICAtLWJzLXRhYmxlLWFjY2VudC1iZzogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsKfQoKLyogQ29kZSwgaW5saW5lIG9yIGluIGJsb2Nrcywgc2l0cyBvbiB0aGUgcGFnZSBiYWNrZ3JvdW5kLCBzZXQgYXBhcnQgYnkgaXRzIGZvbnQgYW5kIGNvbG91ciBhbG9uZS4gKi8KY29kZSwgcHJlLCBkaXYuc291cmNlQ29kZSwgcHJlLnNvdXJjZUNvZGUgeyBiYWNrZ3JvdW5kOiBub25lICFpbXBvcnRhbnQ7IGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7IH0KOm5vdChwcmUpID4gY29kZSB7IHBhZGRpbmc6IDAgIWltcG9ydGFudDsgYm9yZGVyLXJhZGl1czogMDsgfQo=">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#Calculations" id="toc-Calculations" class="nav-link active" data-scroll-target="#Calculations">Calculations</a>
+  <ul class="collapse">
+  <li><a href="#Saddle_and_reaction_path" id="toc-Saddle_and_reaction_path" class="nav-link" data-scroll-target="#Saddle_and_reaction_path">Saddle and reaction path</a></li>
+  <li><a href="#Endpoint_minima" id="toc-Endpoint_minima" class="nav-link" data-scroll-target="#Endpoint_minima">Endpoint minima</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Butadiene and ethene Diels–Alder path from offset planes</h1>
+</div>
+
+
+<!-- Quarto title metadata for authors, dates and scientific document details. -->
+
+<div class="quarto-title-meta has-remote-link">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Giovanni Gravili <a href="https://orcid.org/0009-0001-0115-359X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 4, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 6, 2026</p>
+    </div>
+  </div>
+    
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">Open remote</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-04_100509/README.md:1" title="Open this page’s remote README in Visual Studio Code">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Transition-state refinement and IRC following for the parent Diels–Alder reaction of 1,3-butadiene and ethene to cyclohexene.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Diels–Alder, transition state, IRC, cyclohexene</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../../">Homepage</a><span class="sep">/</span><a href="../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><span class="current">Butadiene and ethene Diels–Alder path from offset planes</span></span><span class="header-actions"><span class="calculations-link"><a href="#Calculations">Calculations</a></span> <a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-04_100509/README.md:1" class="remote-readme-link" title="Open this page's remote README in Visual Studio Code">Open remote</a></span>
+</div>
+<div class="status-in-progress callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In progress
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The saddle refinement converged to a first-order saddle with one imaginary mode at <span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span>, forming C–C bonds of <span class="math inline">2.2675\,\mathrm{\AA}</span> and a stable closed-shell wavefunction; the IRC branches recorded both directions, with the reverse path stopping on a failed correction step, the reverse terminus converged to a boat-shaped cyclohexene with one imaginary mode rather than a minimum, and the reactant optimization stopped at its 100-step limit with the fragments drifting apart.</p>
+</div>
+</div>
+<!-- Generated by quarto/build_calculations.py from the calculation folders; do not edit. -->
+<section id="Calculations" class="level2">
+<h2 class="anchored" data-anchor-id="Calculations">Calculations</h2>
+<p>Every calculation of this workflow, grouped as in the diagram. Select one to open its page.</p>
+<div class="calculations-diagram" data-workflow="2026-11-04_100508/2026-11-04_100509" data-edges="[[&quot;Refine1&quot;, &quot;IRC1&quot;], [&quot;IRC1&quot;, &quot;Optimize2&quot;], [&quot;IRC1&quot;, &quot;Optimize3&quot;], [&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Start1&quot;, &quot;Input2&quot;], [&quot;Input1&quot;, &quot;Refine1&quot;], [&quot;Input2&quot;, &quot;Refine1&quot;], [&quot;Refine1&quot;, &quot;Output1Energy&quot;], [&quot;Optimize2&quot;, &quot;Output1Energy&quot;], [&quot;Optimize3&quot;, &quot;Output1Energy&quot;], [&quot;Output1Energy&quot;, &quot;End1&quot;], [&quot;IRC1&quot;, &quot;Output1Path&quot;], [&quot;Output1Path&quot;, &quot;End1&quot;], [&quot;Refine1&quot;, &quot;Output1Modes&quot;], [&quot;Optimize2&quot;, &quot;Output1Modes&quot;], [&quot;Optimize3&quot;, &quot;Output1Modes&quot;], [&quot;Output1Modes&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph Path["&lt;span&gt;Saddle and reaction path&lt;/span&gt;"]
+        %% description: Refine the constructed $[4+2]$ guess to a first-order saddle, check its closed-shell singlet wavefunction and follow both IRC branches.
+        direction TB
+        Refine1["&lt;a href='2026-11-04_100510/'&gt;Optimize and verify the Diels–Alder TS&lt;/a&gt;"]
+        IRC1["&lt;a href='2026-11-04_100511/'&gt;Follow both Diels–Alder IRC branches&lt;/a&gt;"]
+    end
+
+    subgraph Minima["&lt;span&gt;Endpoint minima&lt;/span&gt;"]
+        %% description: Optimize each IRC terminus and check its harmonic frequencies; the forming-bond distances assign the separated-reactant and cyclohexene minima.
+        direction TB
+        Optimize2["&lt;a href='2026-11-04_100512/'&gt;Optimize and verify the reactant endpoint&lt;/a&gt;"]
+        Optimize3["&lt;a href='2026-11-04_100513/'&gt;Optimize and verify the cyclohexene endpoint&lt;/a&gt;"]
+    end
+
+    Refine1 --&gt; IRC1
+    IRC1 --&gt; Optimize2
+    IRC1 --&gt; Optimize3
+
+    Start1(( ))
+    Input1[/"s-cis-Butadiene and ethene"/]
+    Input2[/"Concerted $$[4+2]$$ TS guess"/]
+    Output1Energy[/"&lt;span&gt;Barrier $$\Delta E^{\ddagger}$$ and reaction energy $$\Delta E$$&lt;/span&gt;"/]
+    Output1Path[/"&lt;span&gt;IRC path and forming-bond distances&lt;/span&gt;"/]
+    Output1Modes[/"&lt;span&gt;Stationary-point frequencies $$\nu_i$$&lt;/span&gt;"/]
+    End1((( )))
+
+    Start1 --&gt; Input1
+    Start1 --&gt; Input2
+    Input1 --&gt; Refine1
+    Input2 --&gt; Refine1
+
+    Refine1 --&gt; Output1Energy
+    Optimize2 --&gt; Output1Energy
+    Optimize3 --&gt; Output1Energy
+    Output1Energy --&gt; End1
+    IRC1 --&gt; Output1Path
+    Output1Path --&gt; End1
+    Refine1 --&gt; Output1Modes
+    Optimize2 --&gt; Output1Modes
+    Optimize3 --&gt; Output1Modes
+    Output1Modes --&gt; End1
+
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    classDef success stroke:#198754,stroke-width:2px;
+    classDef failed stroke:#dc3545,stroke-width:2px;
+    classDef problems stroke:#e0a800,stroke-width:2px;
+    class Start1,Input1,Input2,Refine1 success;
+    class Optimize2,Optimize3,Output1Energy,Output1Modes,End1 failed;
+    class Output1Path,IRC1 problems;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 1 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 2 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 6 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 7 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 8 stroke:#dc3545,color:#dc3545,stroke-width:2px;
+    linkStyle 9 stroke:#dc3545,color:#dc3545,stroke-width:2px;
+    linkStyle 10 stroke:#dc3545,color:#dc3545,stroke-width:2px;
+    linkStyle 11 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 12 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 13 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 14 stroke:#dc3545,color:#dc3545,stroke-width:2px;
+    linkStyle 15 stroke:#dc3545,color:#dc3545,stroke-width:2px;
+    linkStyle 16 stroke:#dc3545,color:#dc3545,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs";
+import elk from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/mermaid-layout-elk.esm.min.mjs";
+import "https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/chunks/mermaid.esm.min/flowDiagram-YHGXBVSY.mjs";
+import "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.3/dist/chunks/mermaid-layout-elk.esm.min/render-T4E67GNI.mjs";
+restoreRequireDefine();
+// Typesets and draws a workflow diagram, after the Mermaid and ELK imports that build_calculations.py places
+// before it in the page's module script; `mermaid` and `elk` are those imports.
+mermaid.registerLayoutLoaders(elk);
+mermaid.initialize({ startOnLoad: false, securityLevel: "loose" });
+const container = document.querySelector(".calculations-diagram");
+while (!globalThis.katex) await new Promise(resolve => setTimeout(resolve, 50));
+// Typeset each formula here; Mermaid labels are double-quoted, so the HTML uses single quotes.
+const source = container.querySelector("pre").textContent.replace(/\$\$(.+?)\$\$/g,
+    (_, tex) => katex.renderToString(tex, { throwOnError: true, output: "html" })
+      .replace(/<annotation[^>]*>.*?<\/annotation>/g, "").replaceAll('"', "'"));
+const { svg, bindFunctions } = await mermaid.render("calculations-diagram", source);
+container.innerHTML = svg;
+bindFunctions?.(container);
+const drawing = container.querySelector("svg");
+// Mermaid shares one arrowhead marker between edges and ignores linkStyle for it; give each
+// coloured edge an arrowhead of its own colour.
+for (const path of drawing.querySelectorAll("path[marker-end]")) {
+  const colour = path.style.stroke, id = path.getAttribute("marker-end").match(/#([^)"']+)/)?.[1];
+  const marker = id && drawing.querySelector(`marker[id="${id}"]`);
+  if (!colour || !marker) continue;
+  const key = `${id}-${colour.replace(/[^a-z0-9]/gi, "")}`;
+  if (!drawing.querySelector(`marker[id="${key}"]`)) {
+    const copy = marker.cloneNode(true);
+    copy.id = key;
+    for (const shape of copy.querySelectorAll("path, circle")) Object.assign(shape.style, { fill: colour, stroke: colour });
+    marker.after(copy);
+  }
+  path.setAttribute("marker-end", `url(#${key})`);
+}
+// Mermaid paints group titles before the arrows, which then cross them; repaint the titles above the arrows and
+// nodes, on the group's own background.
+// Each title keeps the group's box, so it can fade with the group's nodes.
+const titles = document.createElementNS("http://www.w3.org/2000/svg", "g");
+titles.setAttribute("class", "cluster-labels");
+const groups = [...drawing.querySelectorAll("g.cluster")].map(cluster => ({
+  box: cluster.querySelector("rect").getBBox(), label: cluster.querySelector("g.cluster-label") }));
+titles.append(...groups.map(group => group.label).filter(Boolean));
+drawing.querySelector("g.nodes")?.after(titles);
+// On a calculation page the diagram keeps the workflow page's scale in a smaller framed view, centred on that
+// calculation; the workflow page opens on the start circle when the diagram is wider than the page.
+const current = container.dataset.current;
+const focus = drawing.querySelector(current ? `g.node[id*="flowchart-${current}-"]` : 'g.node[id*="-Start"]');
+const centerFocus = () => {
+  if (!focus) return;
+  const box = focus.getBoundingClientRect(), frame = container.getBoundingClientRect();
+  container.scrollLeft += box.left + box.width / 2 - frame.left - container.clientWidth / 2;
+  if (current) container.scrollTop += box.top + box.height / 2 - frame.top - container.clientHeight / 2;
+};
+if (current && focus) {
+  // The glow takes the node's own border colour.
+  const shape = focus.querySelector("rect, polygon, path"), stroke = shape && getComputedStyle(shape).stroke;
+  if (stroke && stroke !== "none") focus.style.color = stroke;
+  focus.classList.add("current-calculation");
+  container.addEventListener("contextmenu", event => {
+    event.preventDefault();
+    centerFocus();
+  });
+}
+centerFocus();
+// Clicking a node traces every path through it, back to the inputs and on to the outputs; clicking an arrow traces
+// only the paths through that arrow. Clicking it again, elsewhere or pressing Escape clears the trace; a label's
+// link still opens its page. The arrows come from the README source, in order, as [from, to] node names.
+const nodes = new Map(), links = [], counts = {};
+for (const node of drawing.querySelectorAll("g.node")) {
+  const name = node.id.match(/flowchart-(.+)-\d+$/)?.[1];
+  if (name) { nodes.set(name, node); node.dataset.name = name; }
+}
+for (const [from, to] of JSON.parse(container.dataset.edges)) {
+  const key = `L_${from}_${to}_`;
+  counts[key] = (counts[key] ?? -1) + 1;
+  const path = drawing.querySelector(`path[data-id="${key}${counts[key]}"]`);
+  if (!path || path.style.opacity === "0") continue;
+  // A wide transparent copy of each arrow catches clicks near its thin line.
+  const hit = path.cloneNode(false);
+  hit.removeAttribute("id"); hit.removeAttribute("marker-end"); hit.removeAttribute("style");
+  hit.removeAttribute("data-id"); hit.setAttribute("class", "edge-hit");
+  path.after(hit);
+  const link = { from, to, path };
+  hit.link = link;
+  links.push(link);
+}
+// Every node and arrow reached from a node by repeatedly following arrows upwards or downwards.
+const reach = (name, upwards, found) => {
+  for (const link of links) {
+    if ((upwards ? link.to : link.from) !== name || found.links.has(link)) continue;
+    found.links.add(link);
+    const next = upwards ? link.from : link.to;
+    found.nodes.add(next);
+    reach(next, upwards, found);
+  }
+  return found;
+};
+let selected = null;
+// The selection is kept per workflow for this browser tab, so the workflow page and its calculation pages share it.
+const key = `calculations-diagram:${container.dataset.workflow}`;
+const remember = choice => {
+  try {
+    if (choice) sessionStorage.setItem(key, JSON.stringify(typeof choice === "string" ? { node: choice } : { link: links.indexOf(choice) }));
+    else sessionStorage.removeItem(key);
+  } catch {}
+};
+const rows = [...document.querySelectorAll(".calculations-table tbody tr")];
+const trace = choice => {
+  selected = choice;
+  remember(choice);
+  drawing.classList.toggle("traced", Boolean(choice));
+  for (const element of drawing.querySelectorAll(".on-trace, .trace-origin")) element.classList.remove("on-trace", "trace-origin");
+  for (const row of rows) row.classList.remove("off-trace");
+  if (!choice) return;
+  const [up, down] = typeof choice === "string" ? [choice, choice] : [choice.from, choice.to];
+  const found = { nodes: new Set([up, down]), links: new Set(typeof choice === "string" ? [] : [choice]) };
+  reach(up, true, found);
+  reach(down, false, found);
+  for (const name of found.nodes) nodes.get(name)?.classList.add("on-trace");
+  // A group's title fades unless the trace passes through one of its nodes.
+  for (const { box, label } of groups) {
+    const inside = [...found.nodes].some(name => {
+      const at = nodes.get(name)?.transform.baseVal.consolidate()?.matrix;
+      return at && at.e >= box.x && at.e <= box.x + box.width && at.f >= box.y && at.f <= box.y + box.height;
+    });
+    label?.classList.toggle("on-trace", inside);
+  }
+  for (const link of found.links) link.path.classList.add("on-trace");
+  (typeof choice === "string" ? nodes.get(choice) : choice.path).classList.add("trace-origin");
+  // The overview tables grey out the calculations off the trace.
+  const traced = new Set([...found.nodes].map(name => nodes.get(name)?.querySelector(".nodeLabel a")?.getAttribute("href")));
+  // A scan's row is unlinked and names its node instead.
+  for (const row of rows) {
+    const scan = row.querySelector(".scan-title")?.dataset.node;
+    row.classList.toggle("off-trace", scan ? !found.nodes.has(scan) : !traced.has(row.querySelector("a")?.getAttribute("href")));
+  }
+};
+// A calculation page's diagram clears only from within itself, since the page's viewers and charts take clicks too.
+document.addEventListener("click", event => {
+  if (event.target.closest("a, .tippy-box") || (current && !event.target.closest(".calculations-diagram"))) return;
+  const hit = event.target.closest(".calculations-diagram .edge-hit");
+  const node = event.target.closest(".calculations-diagram g.node");
+  const choice = hit ? hit.link : node ? node.dataset.name : null;
+  trace(choice === selected ? null : choice);
+});
+document.addEventListener("keydown", event => { if (event.key === "Escape") trace(null); });
+try {
+  const saved = JSON.parse(sessionStorage.getItem(key));
+  if (saved) trace(saved.node ?? links[saved.link] ?? null);
+} catch {}
+// Hovering a calculation's link, in the diagram or in the overview tables, shows the same Quarto hover popover: its
+// status box with the workflow's assessment of it, its overview-table row and the findings behind its status. The
+// copied formulas are typeset already, so they are marked for the popover hook in math-header.html to leave alone.
+// A scan's node and row have no status box; their popover holds its row and a matrix drawn from its hidden data.
+const popover = (anchor, row, scan = null) => tippy(anchor, {
+  content: () => {
+    const box = document.createElement("div");
+    box.className = "diagram-popover";
+    const detail = scan ? null : document.querySelector(`.diagram-detail[data-calculation="${anchor.getAttribute("href")}"]`);
+    if (detail) box.append(...detail.cloneNode(true).childNodes);
+    if (row) {
+      const copy = document.createElement("table"), body = document.createElement("tbody");
+      copy.className = "table table-sm popover-row";
+      body.append(row.cloneNode(true));
+      copy.append(row.closest("table").tHead.cloneNode(true), body);
+      const callout = box.querySelector(".callout");
+      if (callout) callout.after(copy);
+      else box.prepend(copy);
+    }
+    const data = scan && document.querySelector(`.diagram-detail[data-scan="${scan}"] .scan-matrix`);
+    if (data && globalThis.drawScan) {
+      const matrix = data.cloneNode(true);
+      box.append(matrix);
+      globalThis.drawScan(matrix);
+    }
+    for (const span of box.querySelectorAll("span.math")) span.dataset.typeset = "true";
+    return box;
+  },
+  allowHTML: true, maxWidth: "none", delay: 100, arrow: false, interactive: true, interactiveBorder: 10,
+  theme: "quarto", placement: "bottom-start", appendTo: () => document.body,
+});
+if (globalThis.tippy) {
+  // A scan redraws its table as its selectors change, so its script attaches this to each new cell as well.
+  globalThis.calculationPopover = popover;
+  for (const anchor of drawing.querySelectorAll(".nodeLabel a")) {
+    const row = document.querySelector(`.calculations-table a[href="${anchor.getAttribute("href")}"]`)?.closest("tr");
+    if (row) popover(anchor, row);
+  }
+  for (const anchor of document.querySelectorAll(".calculations-table a")) {
+    if (!anchor.closest(".diagram-details")) popover(anchor, anchor.closest("tr"));
+  }
+  // A scan's cell has no overview row; its popover holds the run's status box.
+  for (const anchor of document.querySelectorAll(".scan-matrix a")) {
+    if (!anchor.closest(".diagram-details")) popover(anchor, null);
+  }
+  // A scan's node and its row show its row and matrix.
+  for (const [name, node] of nodes) {
+    const row = document.querySelector(`.calculations-table .scan-title[data-node="${name}"]`)?.closest("tr");
+    if (row) popover(node, row, name);
+  }
+  for (const title of document.querySelectorAll(".calculations-table .scan-title")) {
+    if (!title.closest(".diagram-details")) popover(title, title.closest("tr"), title.dataset.node);
+  }
+}
+</script>
+<section id="Saddle_and_reaction_path" class="level3">
+<h3 class="anchored" data-anchor-id="Saddle_and_reaction_path">Saddle and reaction path</h3>
+<p>Refine the constructed <span class="math inline">[4+2]</span> guess to a first-order saddle, check its closed-shell singlet wavefunction and follow both IRC branches.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="2026-11-04_100510/">Optimize and verify the Diels–Alder TS</a></td>
+<td>Gaussian</td>
+<td>Opt Freq, Stable</td>
+<td>4 Nov 2026, 18:55:17 JST</td>
+<td>0:02:21</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
+<td><a href="2026-11-04_100511/">Follow both Diels–Alder IRC branches</a></td>
+<td>Gaussian</td>
+<td>IRC</td>
+<td>5 Nov 2026, 14:49:23 JST</td>
+<td>1:52:38</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="Endpoint_minima" class="level3">
+<h3 class="anchored" data-anchor-id="Endpoint_minima">Endpoint minima</h3>
+<p>Optimize each IRC terminus and check its harmonic frequencies; the forming-bond distances assign the separated-reactant and cyclohexene minima.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Failed"></td>
+<td><a href="2026-11-04_100512/">Optimize and verify the reactant endpoint</a></td>
+<td>Gaussian</td>
+<td>Opt Freq</td>
+<td>6 Nov 2026, 16:12:21 JST</td>
+<td>0:12:53</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Failed"></td>
+<td><a href="2026-11-04_100513/">Optimize and verify the cyclohexene endpoint</a></td>
+<td>Gaussian</td>
+<td>Opt Freq</td>
+<td>6 Nov 2026, 16:12:21 JST</td>
+<td>0:01:13</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="diagram-details">
+<div class="diagram-detail" data-calculation="2026-11-04_100510/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Accepted
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The optimized saddle has one imaginary mode at <span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span>, forming bonds of <span class="math inline">2.2675\,\mathrm{\AA}</span>, and a stable closed-shell wavefunction. Gaussian warns that its vibrational thermochemistry approximation may introduce significant error.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>Explicit consideration of 7 degrees of freedom as vibrations may cause significant error.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-04_100511/">
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Both IRC branches recorded points, but the reverse path stopped at point 201 when Gaussian could not complete a correction step. Neither endpoint is verified as a minimum; separate optimizations and frequency checks are needed.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Error"></td>
+<td>Gaussian could not complete the reaction-path correction.</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Error"></td>
+<td>Gaussian crashed with a segmentation fault.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-04_100512/">
+<div class="status-rejected callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Failed
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <a href="2026-11-04_100512/">reactant endpoint</a> stopped at its limit of 100 optimization steps with the forming C–C distances grown to about <span class="math inline">4\,\mathrm{\AA}</span>, so the reactant energy is not established.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Error"></td>
+<td>Gaussian stopped the geometry optimization after 100 steps.</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Error"></td>
+<td>Gaussian crashed with a segmentation fault.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-04_100513/">
+<div class="status-rejected callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Failed
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <a href="2026-11-04_100513/">cyclohexene endpoint</a> converged to a closed boat-shaped ring with one imaginary mode at <span class="math inline">30.6556i\,\mathrm{cm}^{-1}</span>, so it failed the minimum check and the product energy is not established.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>Explicit consideration of 4 degrees of freedom as vibrations may cause significant error.</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>Gaussian found 1 imaginary mode; 0 were expected.</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Error"></td>
+<td>A complete minimum with no imaginary modes is required.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<!-- Fold sections: a ::: {.fold} div opening with a heading, which Pandoc renders as
+     section.fold; the heading becomes the summary of a collapsible block, so it stays a
+     real heading and appears in the TOC. -->
+<style>
+  /* The summary is the regular heading with its normal margins, led by a chevron
+     that turns down when the fold opens. Quarto mutes details > summary; keep the
+     normal heading colour. */
+  details.fold > summary { list-style: none; cursor: pointer; color: inherit; }
+  details.fold > summary::-webkit-details-marker { display: none; }
+  details.fold > summary > :is(h2, h3, h4, h5, h6) { display: flex; align-items: center; gap: 0.35em; }
+  details.fold > summary > :is(h2, h3, h4, h5, h6)::before {
+    content: "";
+    flex: none;
+    width: 0.8em;
+    height: 0.8em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.5 2.5 11 8l-5.5 5.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.5 2.5 11 8l-5.5 5.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition: transform 0.15s ease;
+  }
+  details.fold[open] > summary > :is(h2, h3, h4, h5, h6)::before { transform: rotate(90deg); }
+  details.fold > summary:focus-visible { outline: 2px solid var(--bs-primary, #0d6efd); outline-offset: 2px; }
+</style>
+<script>
+  // Wrap each fold's heading and the content after it in <details>, inside the heading's
+  // section, which keeps the id the TOC links to. Runs before widgets render, and again on
+  // sections the viewer page adds.
+  function wrapFolds(root) {
+    for (const fold of root.querySelectorAll("section.fold, div.fold")) {
+      const heading = fold.querySelector(":scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6");
+      if (!heading) continue;
+      const details = document.createElement("details"), summary = document.createElement("summary");
+      details.className = "fold";
+      heading.parentElement.insertBefore(details, heading);
+      summary.append(heading);
+      details.append(summary);
+      while (details.nextSibling) details.append(details.nextSibling);
+    }
+  }
+  window.wrapFolds = wrapFolds;
+  wrapFolds(document);
+  // Open the fold that holds a linked target, from the TOC, a cross-reference or the URL.
+  function openFoldFor(hash) {
+    const target = hash && document.getElementById(decodeURIComponent(hash.slice(1)));
+    const details = target && (target.closest("details.fold") || target.querySelector(":scope > details.fold"));
+    if (details && !details.open) { details.open = true; target.scrollIntoView(); }
+  }
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link) openFoldFor(link.getAttribute("href"));
+  });
+  window.addEventListener("hashchange", () => openFoldFor(location.hash));
+  openFoldFor(location.hash);
+  // Vega and Molstar size to their container, which has zero width while folded.
+  document.addEventListener("toggle", (event) => {
+    if (event.target.matches("details.fold") && event.target.open) window.dispatchEvent(new Event("resize"));
+  }, true);
+</script>
+
+
+
+
+</body></html>
