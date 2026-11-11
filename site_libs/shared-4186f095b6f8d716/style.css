@@ -1,0 +1,17 @@
+
+/* Math axis labels may extend beyond Vega's native text bounds after zooming. */
+.cell-output.cell-output-display:has(.vega-embed) { overflow: visible; }
+/* A chart's redraw lays out only the chart, not the rest of the page. */
+.vega-embed { contain: layout style; }
+.vega-embed .role-axis-title > text { visibility: hidden; }
+.vega-embed .katex, #vg-tooltip-element .katex { font-size: 1em; }
+#vg-tooltip-element, #vg-tooltip-element td, #vg-tooltip-element th { font-size: 14px; font-family: system-ui; }
+/* The info button beside a described quantity, in a table header or a plot title, and the explanation it opens. */
+.quantity-info-icon { display: inline-flex; vertical-align: -0.1em; margin-left: 0.3em; width: 0.9em; height: 0.9em;
+    color: #8c8c8c; cursor: help; pointer-events: auto; }
+.quantity-info-icon:hover { color: #333333; }
+.quantity-info-icon svg { width: 100%; height: 100%; fill: currentColor; }
+.quantity-popover { max-width: 22rem; font-size: 0.875rem; line-height: 1.4; text-align: left; white-space: normal;
+    font-weight: normal; }
+.quantity-popover ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.quantity-popover ul:first-child { margin-top: 0; }

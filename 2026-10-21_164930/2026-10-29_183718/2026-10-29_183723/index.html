@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Giovanni Gravili">
+<meta name="dcterms.date" content="2026-10-29">
+
+<title>Converge DD-DFT dielectric constant and weights (benzene, independent)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html-fd12455ea9a5/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html-fd12455ea9a5/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+<!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
+<script>window.requireJsDefine = window.define;</script>
+<!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
+<script src="../../../site_libs/shared-ceab9ae74975b28a/script.js"></script>
+<!-- Match visible KaTeX glyph heights to the surrounding text without rounding small canvas measurements. -->
+<script src="../../../site_libs/shared-a3a28c948f20a597/script.js"></script>
+<script>
+// GitHub Pages serves every page also under its folder's index.html; show the folder's own URL instead.
+if (location.pathname.endsWith("/index.html")) {
+    history.replaceState(history.state, "", location.pathname.slice(0, -"index.html".length) + location.search + location.hash);
+}
+</script>
+<!-- KaTeX and its mhchem extension, so \ce{...} renders on every page, load here, once and before the page parses on. Quarto's own loader starts it only when the page has
+     parsed and shields it from the widgets' RequireJS only if that loader is visible then, so KaTeX could register
+     as an AMD module instead of a global and leave the math raw until a reload. RequireJS's define, saved by mathml.html, is hidden for
+     this one script alone. These pages give Quarto's loader an empty script as KaTeX, so its render runs on this
+     global KaTeX once the empty script has loaded. -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+<script>window.define = undefined;</script>
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script>
+<script>window.define = window.requireJsDefine; delete window.requireJsDefine;</script>
+<!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
+     the viewers' own request of the same URL. -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../site_libs/shared-4186f095b6f8d716/style.css">
+<script src="../../../site_libs/shared-81930e167e0ed622/script.js"></script>
+<script>
+// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
+// default scales; the browser's context menu is suppressed only over the plot itself.
+document.addEventListener('contextmenu', event => {
+    const plot = event.target.closest?.('.vega-embed');
+    if (!plot || event.target.closest('.vega-actions')) return;
+    event.preventDefault();
+    event.target.dispatchEvent(new MouseEvent('dblclick', {
+        bubbles: true, cancelable: true, composed: true, view: window,
+        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
+    }));
+});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+<script>
+// Quarto's hover popovers copy a bibliography entry's raw math spans, which are typeset on display. The popovers of
+// links and calculations copy spans that KaTeX has typeset already, whose text is the MathML and HTML renderings
+// joined, not TeX, so a span that holds KaTeX output is never typeset again: its content decides, whichever popover
+// made it.
+new MutationObserver(() => {
+    if (!globalThis.katex) return;
+    for (const span of document.querySelectorAll('.tippy-box span.math:not([data-typeset])')) {
+        span.dataset.typeset = 'true';
+        if (span.querySelector('.katex, .katex-display, math')) continue;
+        katex.render(span.textContent.replace(/^\\[(\[]|\\[)\]]$/g, ''), span,
+                     {throwOnError: false, displayMode: span.classList.contains('display')});
+    }
+}).observe(document.documentElement, {childList: true, subtree: true});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+
+  <script defer="" src="data:text/javascript,//katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="data:text/javascript,//katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../site_libs/shared-cd84bebae8af86ee/styles.css">
+</head>
+
+<body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#Input" id="toc-Input" class="nav-link active" data-scroll-target="#Input">Input</a>
+  <ul>
+  <li><a href="#Settings" id="toc-Settings" class="nav-link" data-scroll-target="#Settings">Settings</a></li>
+  <li><a href="#Starting_geometry" id="toc-Starting_geometry" class="nav-link" data-scroll-target="#Starting_geometry">Starting geometry</a></li>
+  </ul></li>
+  <li><a href="#Output" id="toc-Output" class="nav-link" data-scroll-target="#Output">Output</a>
+  <ul>
+  <li><a href="#Electronic_structure_and_screening" id="toc-Electronic_structure_and_screening" class="nav-link" data-scroll-target="#Electronic_structure_and_screening">Electronic structure and screening</a></li>
+  <li><a href="#Energy_components" id="toc-Energy_components" class="nav-link" data-scroll-target="#Energy_components">Energy components</a></li>
+  <li><a href="#SCF_convergence" id="toc-SCF_convergence" class="nav-link" data-scroll-target="#SCF_convergence">SCF convergence</a></li>
+  <li><a href="#Orbital_gap_per_iteration" id="toc-Orbital_gap_per_iteration" class="nav-link" data-scroll-target="#Orbital_gap_per_iteration">Orbital gap per iteration</a></li>
+  <li><a href="#Screening_convergence" id="toc-Screening_convergence" class="nav-link" data-scroll-target="#Screening_convergence">Screening convergence</a></li>
+  </ul></li>
+  <li><a href="#Technical_details" id="toc-Technical_details" class="nav-link" data-scroll-target="#Technical_details">Technical details</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Converge <span class="math inline">\varepsilon_s</span> and weights</h1>
+</div>
+
+
+<!-- Quarto title metadata for authors, dates and scientific document details. -->
+
+<div class="quarto-title-meta has-remote-link">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Giovanni Gravili <a href="https://orcid.org/0009-0001-0115-359X" class="quarto-title-author-orcid" aria-label="ORCID profile for Giovanni Gravili"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 29, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 11, 2026</p>
+    </div>
+  </div>
+    
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">Open remote</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-29_183718/2026-10-29_183723/README.md:1" title="Open this page’s remote README in Visual Studio Code">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
+  </div>
+  
+
+
+</header>
+
+
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../../../">Homepage</a><span class="sep">/</span><a href="../../">Molecular screening <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> excitations</a><span class="sep">/</span><a href="../">Benzene with independent guesses</a><span class="sep">/</span><span class="current">Converge <span class="math inline">\varepsilon_s</span> and weights</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-29_183718/2026-10-29_183723/README.md:1" class="remote-readme-link" title="Open this page's remote README in Visual Studio Code">Open remote</a></span>
+</div>
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Succeeded
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <a href="../2026-10-29_183721/">B3LYP screening</a> gives <span class="math inline">\varepsilon_s=2.44559</span>, and the self-consistent <a href="./">DD-DFT screening</a> <span class="math inline">\varepsilon_s=2.166639</span>, <span class="math inline">\alpha=0.461544</span>; the differences from the checkpoint-chained values are about <span class="math inline">0.11\%</span> and <span class="math inline">0.10\%</span>, respectively.</li>
+</ul>
+</div>
+</div>
+<div class="calculations-diagram compact" data-workflow="2026-10-21_164930/2026-10-29_183718" data-current="Converge5" data-edges="[[&quot;Optimize15&quot;, &quot;Verify15&quot;], [&quot;Verify15&quot;, &quot;Evaluate5&quot;], [&quot;Verify15&quot;, &quot;Converge5&quot;], [&quot;Verify15&quot;, &quot;Excitations9&quot;], [&quot;Converge5&quot;, &quot;Optimize16&quot;], [&quot;Optimize16&quot;, &quot;Verify16&quot;], [&quot;Verify16&quot;, &quot;Recheck5&quot;], [&quot;Verify16&quot;, &quot;Excitations10&quot;], [&quot;Start5&quot;, &quot;Input5&quot;], [&quot;Input5&quot;, &quot;Optimize15&quot;], [&quot;Evaluate5&quot;, &quot;Output5Screening&quot;], [&quot;Converge5&quot;, &quot;Output5Screening&quot;], [&quot;Recheck5&quot;, &quot;Output5Screening&quot;], [&quot;Output5Screening&quot;, &quot;End5&quot;], [&quot;Excitations9&quot;, &quot;Output5Excitations&quot;], [&quot;Excitations10&quot;, &quot;Output5Excitations&quot;], [&quot;Output5Excitations&quot;, &quot;End5&quot;], [&quot;Verify15&quot;, &quot;Output5Geometry&quot;], [&quot;Verify16&quot;, &quot;Output5Geometry&quot;], [&quot;Output5Geometry&quot;, &quot;End5&quot;], [&quot;Recheck5&quot;, &quot;Optimize17&quot;], [&quot;Optimize17&quot;, &quot;Verify17&quot;], [&quot;Verify17&quot;, &quot;Recheck6&quot;], [&quot;Verify17&quot;, &quot;Excitations11&quot;], [&quot;Recheck6&quot;, &quot;Excitations11&quot;], [&quot;Recheck6&quot;, &quot;Output5Screening&quot;], [&quot;Excitations11&quot;, &quot;Output5Excitations&quot;], [&quot;Verify17&quot;, &quot;Output5Geometry&quot;]]"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph IndependentBenzeneReference["&lt;span&gt;Reference $$S_0$$ geometry&lt;/span&gt;"]
+        %% description: Establish the $S_0$ reference geometry and verify its curvature before using it in the electronic-response branches.
+        direction TB
+        Optimize15["&lt;a href='../2026-10-29_183719/'&gt;Optimize the B3LYP $$S_0$$ geometry&lt;/a&gt;"]
+        Verify15["&lt;a href='../2026-10-29_183720/'&gt;Check stability and verify the B3LYP $$S_0$$ minimum&lt;/a&gt;"]
+    end
+
+    subgraph IndependentBenzeneConventional["&lt;span&gt;B3LYP $$\varepsilon_s$$ and $$S_0\rightarrow S_n$$ absorption&lt;/span&gt;"]
+
+        %% description: Evaluate B3LYP molecular screening and vertical $S_0\rightarrow S_n$ absorption at the verified $S_0$ geometry.
+        direction TB
+        Evaluate5["&lt;a href='../2026-10-29_183721/'&gt;Evaluate screening $$\varepsilon_s$$&lt;/a&gt;"]
+        Excitations9["&lt;a href='../2026-10-29_183722/'&gt;Calculate B3LYP vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
+    end
+
+    subgraph IndependentBenzeneDielectric["&lt;span&gt;DD-DFT $$\varepsilon_s$$ and $$S_0\rightarrow S_n$$ absorption&lt;/span&gt;"]
+
+        %% description: Use molecular screening to set $\alpha=1/\varepsilon_s$, then compare DD-DFT geometry, response and absorption with the conventional branch.
+        direction TB
+        Converge5["Converge $$\varepsilon_s$$ and weights"]
+        Optimize16["&lt;a href='../2026-10-29_183724/'&gt;Optimize the DD-DFT $$S_0$$ geometry&lt;/a&gt;"]
+        Verify16["&lt;a href='../2026-10-29_183725/'&gt;Check stability and verify the DD-DFT $$S_0$$ minimum&lt;/a&gt;"]
+        Recheck5["&lt;a href='../2026-10-29_183726/'&gt;Recheck $$\varepsilon_s$$ at the DD-DFT geometry&lt;/a&gt;"]
+        Excitations10["&lt;a href='../2026-10-29_183727/'&gt;Calculate DD-DFT vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
+        Optimize17["&lt;a href='../2026-10-30_232951/'&gt;Optimize the $$S_0$$ geometry, rechecked weights&lt;/a&gt;"]
+        Verify17["&lt;a href='../2026-10-30_232952/'&gt;Check stability and verify the rechecked $$S_0$$ minimum&lt;/a&gt;"]
+        Recheck6["&lt;a href='../2026-10-30_232953/'&gt;Recheck $$\varepsilon_s$$ at the rechecked DD-DFT geometry&lt;/a&gt;"]
+        Excitations11["&lt;a href='../2026-10-30_232954/'&gt;Calculate $$S_0\rightarrow S_n$$ excitations, self-consistent weights&lt;/a&gt;"]
+    end
+
+    Optimize15 --&gt; Verify15
+    Verify15 --&gt; Evaluate5
+    Verify15 --&gt; Converge5
+    Verify15 --&gt; Excitations9
+    Converge5 --&gt; Optimize16
+    Optimize16 --&gt; Verify16
+    Verify16 --&gt; Recheck5
+    Verify16 --&gt; Excitations10
+
+    Start5(( ))
+    Input5[/"Benzene starting geometry"/]
+    Output5Screening[/"&lt;span&gt;Molecular screening $$\varepsilon_s$$&lt;/span&gt;"/]
+    Output5Excitations[/"&lt;span&gt;Vertical $$S_0\rightarrow S_n$$ excitations&lt;/span&gt;"/]
+    Output5Geometry[/"&lt;span&gt;Verified $$S_0$$ geometries&lt;/span&gt;"/]
+    End5((( )))
+
+    Start5 --&gt; Input5
+    Input5 --&gt; Optimize15
+    Evaluate5 --&gt; Output5Screening
+    Converge5 --&gt; Output5Screening
+    Recheck5 --&gt; Output5Screening
+    Output5Screening --&gt; End5
+    Excitations9 --&gt; Output5Excitations
+    Excitations10 --&gt; Output5Excitations
+    Output5Excitations --&gt; End5
+    Verify15 --&gt; Output5Geometry
+    Verify16 --&gt; Output5Geometry
+    Output5Geometry --&gt; End5
+    Recheck5 --&gt; Optimize17
+    Optimize17 --&gt; Verify17
+    Verify17 --&gt; Recheck6
+    Verify17 --&gt; Excitations11
+    Recheck6 --&gt; Excitations11
+    Recheck6 --&gt; Output5Screening
+    Excitations11 --&gt; Output5Excitations
+    Verify17 --&gt; Output5Geometry
+
+    classDef complete stroke:#198754,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    classDef warning stroke:#e0a800,stroke-width:2px;
+    classDef success stroke:#198754,stroke-width:2px;
+    classDef problems stroke:#e0a800,stroke-width:2px;
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    class Excitations10,Recheck5,Optimize17,Verify17,Excitations11,Output5Excitations,End5,Output5Geometry,Output5Screening,Recheck6 problems;
+    class Excitations9,Optimize16,Verify16,Verify15,Evaluate5,Converge5,Start5,Input5,Optimize15 success;
+    class Recheck5,Recheck6,Verify15,Verify16,Verify17 verification;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 6 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 7 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 9 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 10 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 11 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 12 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 13 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 14 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 15 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 16 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 17 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 19 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 20 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 21 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 22 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 23 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 24 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 25 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 26 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 27 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-93617e864c9cb341/script.js"></script>
+<div class="diagram-details">
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Succeeded"></td>
+<td><a href="../2026-10-29_183719/">Optimize the B3LYP <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td>29 Oct 2026, 18:41:01 JST</td>
+<td>0:00:07</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="../2026-10-29_183720/">Check stability and verify the B3LYP <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Stable, Freq</td>
+<td>29 Oct 2026, 18:48:57 JST</td>
+<td>0:00:43</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Succeeded"></td>
+<td><a href="../2026-10-29_183721/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td>Lotus</td>
+<td>Screening</td>
+<td>30 Oct 2026, 00:18:16 JST</td>
+<td>0:00:40</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="../2026-10-29_183722/">Calculate B3LYP vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>Stable, TD</td>
+<td>30 Oct 2026, 00:17:26 JST</td>
+<td>0:00:33</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Succeeded"></td>
+<td><a href="../2026-10-29_183723/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td>Lotus</td>
+<td>Self-consistent screening</td>
+<td>30 Oct 2026, 00:18:16 JST</td>
+<td>0:00:53</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="../2026-10-29_183724/">Optimize the DD-DFT <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Stable, Opt</td>
+<td>30 Oct 2026, 17:32:30 JST</td>
+<td>0:00:28</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="../2026-10-29_183725/">Check stability and verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Stable, Freq</td>
+<td>30 Oct 2026, 17:33:02 JST</td>
+<td>0:00:26</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
+<td><a href="../2026-10-29_183726/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td>Lotus</td>
+<td>Self-consistent screening</td>
+<td>30 Oct 2026, 17:33:36 JST</td>
+<td>0:00:46</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
+<td><a href="../2026-10-29_183727/">Calculate DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>Stable, TD</td>
+<td>30 Oct 2026, 17:33:31 JST</td>
+<td>0:00:20</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="../2026-10-30_232951/">Optimize the <span class="math inline">S_0</span> geometry, rechecked weights</a></td>
+<td>Gaussian</td>
+<td>Stable, Opt</td>
+<td>30 Oct 2026, 23:32:18 JST</td>
+<td>0:00:14</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="../2026-10-30_232952/">Check stability and verify the rechecked <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Stable, Freq</td>
+<td>30 Oct 2026, 23:32:36 JST</td>
+<td>0:00:27</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Succeeded"></td>
+<td><a href="../2026-10-30_232953/">Recheck <span class="math inline">\varepsilon_s</span> at the rechecked DD-DFT geometry</a></td>
+<td>Lotus</td>
+<td>Self-consistent screening</td>
+<td>30 Oct 2026, 23:33:07 JST</td>
+<td>0:00:39</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Accepted"></td>
+<td><a href="../2026-10-30_232954/">Calculate <span class="math inline">S_0\rightarrow S_n</span> excitations, self-consistent weights</a></td>
+<td>Gaussian</td>
+<td>Stable, TD</td>
+<td>30 Oct 2026, 23:33:48 JST</td>
+<td>0:00:21</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183719/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Succeeded
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <a href="../2026-10-29_183719/">B3LYP <span class="math inline">S_0</span> optimization</a> converged normally at <span class="math inline">E_{\mathrm{SCF}}=-6320.06765194\,\mathrm{eV}</span>, and the <a href="../2026-10-29_183720/">stability and minimum check</a> found a stable wavefunction and 30 real frequencies.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183720/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Accepted
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Accepted for the stated stability and minimum checks: the wavefunction is stable and all 30 harmonic frequencies are real. The reported basis sensitivity and thermochemistry limitations remain relevant to those separate uses of the calculation.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 10.7815.</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>Explicit consideration of 2 degrees of freedom as vibrations may cause significant error.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183721/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Succeeded
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <a href="../2026-10-29_183721/">B3LYP screening</a> gives <span class="math inline">\varepsilon_s=2.44559</span>, and the self-consistent <a href="./">DD-DFT screening</a> <span class="math inline">\varepsilon_s=2.166639</span>, <span class="math inline">\alpha=0.461544</span>; the differences from the checkpoint-chained values are about <span class="math inline">0.11\%</span> and <span class="math inline">0.10\%</span>, respectively.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183722/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Accepted
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All ten requested excitations converged on a stable reference. The documented basis and model limitations remain relevant to quantitative comparison with experiment.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 10.7815.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183723/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Succeeded
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <a href="../2026-10-29_183721/">B3LYP screening</a> gives <span class="math inline">\varepsilon_s=2.44559</span>, and the self-consistent <a href="./">DD-DFT screening</a> <span class="math inline">\varepsilon_s=2.166639</span>, <span class="math inline">\alpha=0.461544</span>; the differences from the checkpoint-chained values are about <span class="math inline">0.11\%</span> and <span class="math inline">0.10\%</span>, respectively.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183724/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Accepted
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The fixed-weight optimization converged from a stable reference. The separate screening recheck tests whether the chosen weights remain self-consistent at the relaxed geometry.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 10.8795.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183725/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Accepted
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Accepted for the stated fixed-weight stability and minimum checks: the wavefunction is stable and all 30 harmonic frequencies are real. The documented basis and thermochemistry limitations remain relevant to those separate uses.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0834.</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>Explicit consideration of 2 degrees of freedom as vibrations may cause significant error.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183726/">
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>Relaxing the geometry changed the rounded screening-dependent functional weights; examine the screening residual before further calculations.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-29_183727/">
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All ten excitations converged on a stable reference for the stated fixed-weight model. The screening recheck changed the weights, so the spectrum is preliminary.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0834.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-30_232951/">
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The rechecked-weight optimization converged on a stable reference. Its small geometry change is below the default optimization thresholds. - The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. This comes from <a href="../2026-10-29_183726/">an upstream calculation</a>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0838.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-30_232952/">
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Accepted for the stated fixed-weight stability and minimum checks: the wavefunction is stable and all 30 harmonic frequencies are real. The documented basis and thermochemistry limitations remain relevant to those separate uses. - The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. This comes from <a href="../2026-10-29_183726/">an upstream calculation</a>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0838.</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>Explicit consideration of 2 degrees of freedom as vibrations may cause significant error.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-30_232953/">
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <a href="../2026-10-30_232953/"><span class="math inline">\varepsilon_s</span> recheck</a> there gives <span class="math inline">\varepsilon_s=2.161399</span> again and reproduces the four-decimal weights, so geometry and weights are self-consistent.</li>
+<li>The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. This comes from <a href="../2026-10-29_183726/">an upstream calculation</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="../2026-10-30_232954/">
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All ten requested roots converged on a stable reference, and the screening recheck reproduced the functional weights. Basis and model limitations remain relevant to quantitative comparison. - The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. This comes from <a href="../2026-10-29_183726/">an upstream calculation</a>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Warning"></td>
+<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0838.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="39f3bd1c" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<script src="../../../site_libs/shared-7a20aa369adc5812/data.js"></script><script src="../../../site_libs/shared-0f796796dc96bfed/data.js"></script>
+</div>
+</div>
+<section id="Input" class="level2 step">
+<h2 class="step anchored" data-anchor-id="Input">Input</h2>
+<section id="Settings" class="level3">
+<h3 class="anchored" data-anchor-id="Settings">Settings</h3>
+<p>Settings from the XYZ comment line.</p>
+<div id="ed8704c3" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 78%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Method<span class="quantity-info" data-description="RGllbGVjdHJpYy1kZXBlbmRlbnQgaHlicmlkIHVzaW5nIEI4OCBleGNoYW5nZSBhbmQgTFlQIGNvcnJlbGF0aW9uLg=="></span></td>
+<td style="text-align: left;">DD-BLYP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Basis set<span class="quantity-info" data-description="UG9wbGUgc3BsaXQtdmFsZW5jZSBkb3VibGUtemV0YSBiYXNpcyB3aXRoICRkJCBwb2xhcml6YXRpb24gZnVuY3Rpb25zIG9uIGhlYXZ5IGF0b21zIGFuZCAkcCQgZnVuY3Rpb25zIG9uIGh5ZHJvZ2VuOyBhbHNvIHdyaXR0ZW4gYDYtMzFHKipgLg=="></span></td>
+<td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}(d,p)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spin multiplicity <span class="math inline">2S+1</span><span class="quantity-info" data-description="U3BpbiBtdWx0aXBsaWNpdHkgJDJTKzEkOiAkMlMrMT0xJCBmb3IgYSBzaW5nbGV0LCAkMiQgZm9yIGEgZG91YmxldCwgJDMkIGZvciBhIHRyaXBsZXQuIFNpbmdsZXRzIG5lZWQgbm90IGJlIGNsb3NlZCBzaGVsbC4="></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Charge <span class="math inline">q</span><span class="quantity-info" data-description="VGhlIG5ldCBtb2xlY3VsYXIgY2hhcmdlIGluIGVsZW1lbnRhcnkgY2hhcmdlcyBpcyAkcT1cc3VtX0EgWl9BLU4kLCB0aGUgdG90YWwgbnVjbGVhciBjaGFyZ2UgbWludXMgdGhlIG51bWJlciBvZiBlbGVjdHJvbnMu"></span></td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Initial screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCB0aGUgZmlyc3QgaXRlcmF0aW9uIHVzZXMgdG8gc2V0IHRoZSBleGNoYW5nZSBmcmFjdGlvbiAkXGFscGhhPTEvXHZhcmVwc2lsb25fcyQsIGJlZm9yZSB0aGUgbW9sZWN1bGUncyBvd24gcmVzcG9uc2UgcmVwbGFjZXMgaXQu"></span></td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Screening iterated to self-consistency<span class="quantity-info" data-description="V2hldGhlciB0aGUgc2NyZWVuaW5nIGlzIHVwZGF0ZWQgZnJvbSBlYWNoIGl0ZXJhdGlvbidzIGVsZWN0cm9uaWMgcmVzcG9uc2UgdW50aWwgJFx2YXJlcHNpbG9uX3MkIGFuZCB0aGUgZGVuc2l0eSBhZ3JlZSwgcmF0aGVyIHRoYW4ga2VwdCBmaXhlZC4="></span></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Yes"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maximum SCF iterations<span class="quantity-info" data-description="TW9zdCBzZWxmLWNvbnNpc3RlbnQtZmllbGQgaXRlcmF0aW9ucyBhbGxvd2VkIGJlZm9yZSB0aGUgcHJvZ3JhbSBzdG9wcyB3aXRob3V0IGNvbnZlcmdlbmNlLg=="></span></td>
+<td style="text-align: left;">300</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCF convergence threshold<span class="quantity-info" data-description="TGFyZ2VzdCBjaGFuZ2Ugb2YgdGhlIGRlbnNpdHksIG9yIG9mIHRoZSBlbmVyZ3ksIGJldHdlZW4gaXRlcmF0aW9ucyBhdCB3aGljaCB0aGUgU0NGIGNvdW50cyBhcyBjb252ZXJnZWQu"></span></td>
+<td style="text-align: left;"><span class="math inline">\mathord{1\times 10^{-8}}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="Starting_geometry" class="level3">
+<h3 class="anchored" data-anchor-id="Starting_geometry">Starting geometry</h3>
+<p>The structure the calculation starts from.</p>
+<div id="eae00ad6" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"6c11df35320a4b90a75cf58f94699d16","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="Output" class="level2 step">
+<h2 class="step anchored" data-anchor-id="Output">Output</h2>
+<section id="Electronic_structure_and_screening" class="level3">
+<h3 class="anchored" data-anchor-id="Electronic_structure_and_screening">Electronic structure and screening</h3>
+<div id="c21d6f1b" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 90%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Method<span class="quantity-info" data-description="RGllbGVjdHJpYy1kZXBlbmRlbnQgaHlicmlkIHVzaW5nIEI4OCBleGNoYW5nZSBhbmQgTFlQIGNvcnJlbGF0aW9uLg=="></span></td>
+<td style="text-align: left;">DD-BLYP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCF iterations<span class="quantity-info" data-description="TnVtYmVyIG9mIHNlbGYtY29uc2lzdGVudC1maWVsZCBpdGVyYXRpb25zIHRoZSBwcm9ncmFtIG5lZWRlZC4="></span></td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Final density change<span class="quantity-info" data-description="Q2hhbmdlIG9mIHRoZSBkZW5zaXR5IGluIHRoZSBsYXN0IFNDRiBpdGVyYXRpb24sIGEgbWVhc3VyZSBvZiBob3cgd2VsbCBpdCBjb252ZXJnZWQu"></span></td>
+<td style="text-align: left;"><span class="math inline">\mathord{2.80954\times 10^{-9}}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Applied screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCB1c2VkIGluIHRoZSBsYXN0IGl0ZXJhdGlvbiB0byBzZXQgdGhlIGV4Y2hhbmdlIGZyYWN0aW9uICRcYWxwaGE9MS9cdmFyZXBzaWxvbl9zJC4="></span></td>
+<td style="text-align: left;">2.16664</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Evaluated screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCBldmFsdWF0ZWQgZnJvbSB0aGUgZmluYWwgZWxlY3Ryb25pYyByZXNwb25zZTsgd2hlbiBpdCBtYXRjaGVzIHRoZSBhcHBsaWVkIHZhbHVlLCB0aGUgc2NyZWVuaW5nIGlzIHNlbGYtY29uc2lzdGVudC4="></span></td>
+<td style="text-align: left;">2.16664</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HOMO energy <span class="math inline">\epsilon_{\mathrm{HOMO}}</span><span class="quantity-info" data-description="RW5lcmd5ICRcZXBzaWxvbl97XG1hdGhybXtIT01PfX0kIG9mIHRoZSBoaWdoZXN0IG9jY3VwaWVkIG1vbGVjdWxhciBvcmJpdGFsIChIT01PKSwgYW4gYXBwcm94aW1hdGlvbiB0byBtaW51cyB0aGUgaW9uaXphdGlvbiBlbmVyZ3kgdGhhdCBkZXBlbmRzIHN0cm9uZ2x5IG9uIHRoZSBleGFjdC1leGNoYW5nZSBmcmFjdGlvbi4="></span></td>
+<td style="text-align: left;"><span class="math inline">-7.3882\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LUMO energy <span class="math inline">\epsilon_{\mathrm{LUMO}}</span><span class="quantity-info" data-description="RW5lcmd5ICRcZXBzaWxvbl97XG1hdGhybXtMVU1PfX0kIG9mIHRoZSBsb3dlc3QgdW5vY2N1cGllZCBtb2xlY3VsYXIgb3JiaXRhbCAoTFVNTyku"></span></td>
+<td style="text-align: left;"><span class="math inline">1.44075\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HOMO–LUMO gap <span class="math inline">\Delta\epsilon=\epsilon_{\mathrm{LUMO}}-\epsilon_{\mathrm{HOMO}}</span><span class="quantity-info" data-description="RGlmZmVyZW5jZSBvZiB0aGUgZnJvbnRpZXIgb3JiaXRhbCBlbmVyZ2llcywgbm90IGFuIG9wdGljYWwgZXhjaXRhdGlvbiBlbmVyZ3ku"></span></td>
+<td style="text-align: left;"><span class="math inline">8.82895\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hartree–Fock exchange weight <span class="math inline">\alpha</span></td>
+<td style="text-align: left;">0.461544</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B88 exchange weight <span class="math inline">1-\alpha</span></td>
+<td style="text-align: left;">0.538456</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LYP correlation weight <span class="math inline">c=\sqrt{1-\alpha}</span></td>
+<td style="text-align: left;">0.733795</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Screening uses molecular polarizability and volume, not bulk-liquid permittivity.</p>
+<ul>
+<li><span class="math inline">i\in\mathcal O</span> and <span class="math inline">a\in\mathcal V</span> index occupied and virtual orbitals.</li>
+<li>The volume <span class="math inline">V</span> encloses density above <span class="math inline">0.001\,a_0^{-3}</span>.</li>
+</ul>
+<p>For a doubly occupied reference, the isotropic part of the uncoupled (zeroth-order) polarizability <span class="math inline">\boldsymbol{\alpha}^{(0)}</span> averages three Cartesian components:</p>
+<p><span class="math display">
+\bar{\alpha}^{(0)}=\frac{1}{3}\operatorname{tr}\boldsymbol{\alpha}^{(0)}
+=\frac{4}{3}\sum_{i\in\mathcal O}\sum_{a\in\mathcal V}
+\frac{\left\lVert\langle\phi_i|\mathbf r|\phi_a\rangle\right\rVert^2}{\epsilon_a-\epsilon_i}
+</span></p>
+<p>The squared norm sums Cartesian components. Screening divides polarizability by molecular volume:</p>
+<p><span class="math display">
+\varepsilon_s=1+\frac{4\pi}{V}\,\bar{\alpha}^{(0)}
+</span></p>
+<p>Self-consistent screening repeats the SCF until the applied and evaluated <span class="math inline">\varepsilon_s</span> agree:</p>
+<p><span class="math display">
+E_{\mathrm{XC}}=\alpha\,E_{\mathrm{X}}^{\mathrm{HF}}+(1-\alpha)\,E_{\mathrm{X}}^{\mathrm{B88}}+\sqrt{1-\alpha}\,E_{\mathrm{C}}^{\mathrm{LYP}},\qquad \alpha=\frac{1}{\varepsilon_s}
+</span></p>
+</section>
+<section id="Energy_components" class="level3">
+<h3 class="anchored" data-anchor-id="Energy_components">Energy components</h3>
+<p>Coulomb, weighted exact exchange, and density-functional exchange–correlation contributions.</p>
+<div id="85069f60" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 92%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Electron Coulomb repulsion <span class="math inline">J</span><span class="quantity-info" data-description="Q2xhc3NpY2FsIGVsZWN0cm9u4oCTZWxlY3Ryb24gQ291bG9tYiBlbmVyZ3kgJEo9XGZyYWMxMlxpaW50XHJobyhcbWF0aGJmIHIpXHJobyhcbWF0aGJmIHJccHJpbWUpL3xcbWF0aGJmIHItXG1hdGhiZiByXHByaW1lfFwsXG1hdGhybSBkXG1hdGhiZiByXCxcbWF0aHJtIGRcbWF0aGJmIHJccHJpbWUkLiBFeGNsdWRlcyBleGNoYW5nZSBhbmQgY29ycmVsYXRpb24u"></span></td>
+<td style="text-align: left;"><span class="math inline">8516.41173174\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exact-exchange contribution <span class="math inline">c_{\mathrm{HF}}E_{\mathrm X}^{\mathrm{HF}}</span><span class="quantity-info" data-description="RXhhY3QtZXhjaGFuZ2UgY29udHJpYnV0aW9uIHdpdGggd2VpZ2h0cyBhbHJlYWR5IGFwcGxpZWQsIGluY2x1ZGluZyBnbG9iYWwgYW5kIG5vbmxvY2FsIHNob3J0LXJhbmdlIGV4Y2hhbmdlLiBEbyBub3QgbXVsdGlwbHkgYnkgdGhlIHdlaWdodHMgYWdhaW4u"></span></td>
+<td style="text-align: left;"><span class="math inline">-417.286168286\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Density-functional contribution <span class="math inline">E_{\mathrm X}^{\mathrm{DFT}}+E_{\mathrm C}^{\mathrm{DFT}}</span><span class="quantity-info" data-description="V2VpZ2h0ZWQgZGVuc2l0eS1mdW5jdGlvbmFsIGV4Y2hhbmdlIGFuZCBjb3JyZWxhdGlvbiwgcmVwb3J0ZWQgdG9nZXRoZXIu"></span></td>
+<td style="text-align: left;"><span class="math inline">-515.173392626\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Environment contribution<span class="quantity-info" data-description="T3B0aW9uYWwgYGVudmAgY29udHJpYnV0aW9uLCBkaXN0aW5jdCBmcm9tIGVsZWN0cm9u4oCTZWxlY3Ryb24gQ291bG9tYiBlbmVyZ3ku"></span></td>
+<td style="text-align: left;"><span class="math inline">0\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Projection contribution<span class="quantity-info" data-description="T3B0aW9uYWwgYHByb2pgIGNvbnRyaWJ1dGlvbjsgaXQgaXMgbm90IGFzc2lnbmVkIHRvIGEgY2hlbWljYWwgYm9uZC4="></span></td>
+<td style="text-align: left;"><span class="math inline">0\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Electronic energy <span class="math inline">E_{\mathrm{el}}</span><span class="quantity-info" data-description="RWxlY3Ryb25pYyBlbmVyZ3kgb2YgdGhlIGNvbnZlcmdlZCBzb2x1dGlvbiwgaW5jbHVkaW5nIG51Y2xlYXIgcmVwdWxzaW9uLCBub3QgdGhlIHN1bSBvZiB0aGUgcGFydGlhbCBjb21wb25lbnRzIGFib3ZlLg=="></span></td>
+<td style="text-align: left;"><span class="math inline">-6306.01644858\,\mathrm{eV}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>These components omit kinetic, electron–nuclear and nuclear-repulsion terms; density-functional exchange and correlation remain combined.</p>
+</section>
+<section id="SCF_convergence" class="level3">
+<h3 class="anchored" data-anchor-id="SCF_convergence">SCF convergence</h3>
+<p>Energy and density change by recorded SCF step:</p>
+<ul>
+<li>Displayed step numbers start at one.</li>
+<li>Lotus numbers its initial step zero.</li>
+</ul>
+<div id="5b92ba68" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"724c5c5118ae4ac0b9f1b1f5c04768d1","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"83be975014834f4582ecd49d424b0648","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+</section>
+<section id="Orbital_gap_per_iteration" class="level3">
+<h3 class="anchored" data-anchor-id="Orbital_gap_per_iteration">Orbital gap per iteration</h3>
+<p>The frontier orbital gap at each recorded step, numbered from one.</p>
+<div id="f69afa6e" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"dc5eb39352d14f43abae1a0307b63343","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+</section>
+<section id="Screening_convergence" class="level3">
+<h3 class="anchored" data-anchor-id="Screening_convergence">Screening convergence</h3>
+<p>The screening applied at each outer step, numbered from one, as it converges to the evaluated value.</p>
+<div id="9a599880" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8974c34453bd4f3e87ef23e1b0ecbdfe","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="Technical_details" class="level2">
+<h2 class="anchored" data-anchor-id="Technical_details">Technical details</h2>
+<p>The program, the resources and the timing of the calculation.</p>
+<div id="52ab9d82" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 88%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Program<span class="quantity-info" data-description="UHJvZ3JhbSB3aG9zZSBvdXRwdXQgYW5kIHJlY29yZHMgdGhlIHBhZ2UgcGFyc2VzLCBHYXVzc2lhbiAxNiBvciBMb3R1cy4="></span></td>
+<td style="text-align: left;">Lotus</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested wall time<span class="quantity-info" data-description="V2FsbC10aW1lIGxpbWl0IHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">06:00:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested memory<span class="quantity-info" data-description="TWVtb3J5IHBlciBub2RlIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIsIGluIGJpbmFyeSB1bml0cyBvZiBieXRlcy4="></span></td>
+<td style="text-align: left;">12 GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested CPUs per task<span class="quantity-info" data-description="UHJvY2Vzc29yIGNvcmVzIHBlciB0YXNrIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested nodes<span class="quantity-info" data-description="Tm9kZXMgcmVxdWVzdGVkIGZyb20gdGhlIHNjaGVkdWxlci4="></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested tasks<span class="quantity-info" data-description="VGFza3MsIG9uZSBwcm9jZXNzIGVhY2gsIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested partitions<span class="quantity-info" data-description="U2NoZWR1bGVyIHBhcnRpdGlvbnMgdGhlIGpvYiBtYXkgcnVuIG9uLCBpbiB0aGUgb3JkZXIgdGhlIHJlcXVlc3QgbmFtZXMgdGhlbS4="></span></td>
+<td style="text-align: left;">r01, r02, r03, r04, r05, r06, r07, r08, r09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Program terminated normally<span class="quantity-info" data-description="V2hldGhlciB0aGUgcHJvZ3JhbSByZWFjaGVkIGl0cyBub3JtYWwgY29tcGxldGlvbiByZWNvcmQ7IGEgdGljayBtYXJrcyBhIGNvbXBsZXRlIG91dHB1dCwgYSBjcm9zcyBhbiBlcnJvciB0ZXJtaW5hdGlvbiwgYW5kIGFuIGhvdXJnbGFzcyBhbiBvdXRwdXQgc3RpbGwgcnVubmluZywgcGVuZGluZyBvciBvdGhlcndpc2UgdW5maW5pc2hlZC4="></span></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Slurm job<span class="quantity-info" data-description="U2NoZWR1bGVyIGpvYiBpZGVudGlmaWVyLCBhcyB0aGUgcnVuJ3Mgb3duIHJlY29yZHMgcmVwb3J0IGl0Lg=="></span></td>
+<td style="text-align: left;">197661</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Execution interval<span class="quantity-info" data-description="Rmlyc3QgYW5kIGxhc3QgcmVjb3JkZWQgaW5zdGFudCBvZiB0aGUgcnVuLCBpbiBKYXBhbiBTdGFuZGFyZCBUaW1lOyB0aGUgbGFzdCBpcyB0aGUgcmVuZGVyIHRpbWUgd2hpbGUgdGhlIGpvYiBjb250aW51ZXMu"></span></td>
+<td style="text-align: left;">30 Oct 2026, 00:18:16 – 00:19:09 JST</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wall time<span class="quantity-info" data-description="RWxhcHNlZCByZWFsIHRpbWUgb2YgdGhlIGpvYiBmcm9tIHN0YXJ0IHRvIGVuZC4="></span></td>
+<td style="text-align: left;">0:00:53</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="application/vnd.jupyter.widget-state+json">{"state": {"06f27d4137ac4cc2afcabfdb3d2c2279": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "37a2ff69349b42fc8abd9be29666f1f7": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6c11df35320a4b90a75cf58f94699d16": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../site_libs/shared-4e09ee5d99bd9aa4/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-2.8497269999999997, -3.182301, -0.7000099999999999], [2.8497269999999997, 3.182301, 0.7000069999999999]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_37a2ff69349b42fc8abd9be29666f1f7", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhANVz0rugAAAA8gEAAA4AAAB0cmFqZWN0b3J5Lnh5en2QzQ7CIAyA73sKXqCk7ZCfs5ddfAhjiJeZJYsefHthoNYMIYG06dd+APFwWuZ4ecznVV3jcov39TkcFWrMy6StSI/BorE5hlKgfCQMSDOGkqceGzyyLfHW7xoYFI4OgrOVk1roeBvzWt797fbWqWbsc4W18Tx+BuNbmjBgTSY4duVP2NA27Mu5H464PiKD1kvQV1CKoWOWYuiYpfiv9wVQSwECFAMUAAAACAAAACEAbQ3ruscAAABsAQAACgAAAAAAAAAAAAAAgAEAAAAAaW5kZXgubXZzalBLAQIUAxQAAAAIAAAAIQDVc9K7oAAAAPIBAAAOAAAAAAAAAAAAAACAAe8AAAB0cmFqZWN0b3J5Lnh5elBLBQYAAAAAAgACAHQAAAC7AQAAAAA=", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}, "724c5c5118ae4ac0b9f1b1f5c04768d1": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_06f27d4137ac4cc2afcabfdb3d2c2279", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-ae3d5d4d5885fcd0cee97515708cdc89": [{"calculation_density_change": null, "calculation_energy": -6156.43422890657, "calculation_iteration": 1, "calculation_native_iteration": 0, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.025878510484469635, "calculation_energy": -6309.1163645983825, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.00243702704802846, "calculation_energy": -6309.230967078585, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0011351299381591178, "calculation_energy": -6309.309103457984, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.00019265557389610695, "calculation_energy": -6306.67739402853, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Electronic energy"}, {"calculation_density_change": 4.496081579466993e-05, "calculation_energy": -6306.673326287914, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0005207759620320417, "calculation_energy": -6306.467402902351, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0009351457060486556, "calculation_energy": -6306.088697052554, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.00011044832285001816, "calculation_energy": -6306.020664303227, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.1626617888038696e-05, "calculation_energy": -6306.016245458244, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.606265138147868e-07, "calculation_energy": -6306.016300258421, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Electronic energy"}, {"calculation_density_change": 4.240574246600363e-07, "calculation_energy": -6306.016476322093, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Electronic energy"}, {"calculation_density_change": 9.606121347048943e-08, "calculation_energy": -6306.016438526995, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Electronic energy"}, {"calculation_density_change": 2.6095930435208147e-08, "calculation_energy": -6306.016448580778, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Electronic energy"}]}, "layer": [{"data": {"name": "data-ae3d5d4d5885fcd0cee97515708cdc89"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-ae3d5d4d5885fcd0cee97515708cdc89"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-ae3d5d4d5885fcd0cee97515708cdc89"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "810dd2cd2ab444139db17c38e9011159": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "83be975014834f4582ecd49d424b0648": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_e3350aa918114ab8aedbcf246c490ea2", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-739868fb724d9c448eaaef656ca60a3a": [{"calculation_density_change": 0.025878510484469635, "calculation_energy": -6309.1163645983825, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Density change"}, {"calculation_density_change": 0.00243702704802846, "calculation_energy": -6309.230967078585, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Density change"}, {"calculation_density_change": 0.0011351299381591178, "calculation_energy": -6309.309103457984, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Density change"}, {"calculation_density_change": 0.00019265557389610695, "calculation_energy": -6306.67739402853, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Density change"}, {"calculation_density_change": 4.496081579466993e-05, "calculation_energy": -6306.673326287914, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Density change"}, {"calculation_density_change": 0.0005207759620320417, "calculation_energy": -6306.467402902351, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Density change"}, {"calculation_density_change": 0.0009351457060486556, "calculation_energy": -6306.088697052554, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Density change"}, {"calculation_density_change": 0.00011044832285001816, "calculation_energy": -6306.020664303227, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Density change"}, {"calculation_density_change": 1.1626617888038696e-05, "calculation_energy": -6306.016245458244, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Density change"}, {"calculation_density_change": 1.606265138147868e-07, "calculation_energy": -6306.016300258421, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Density change"}, {"calculation_density_change": 4.240574246600363e-07, "calculation_energy": -6306.016476322093, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Density change"}, {"calculation_density_change": 9.606121347048943e-08, "calculation_energy": -6306.016438526995, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Density change"}, {"calculation_density_change": 2.6095930435208147e-08, "calculation_energy": -6306.016448580778, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Density change"}]}, "layer": [{"data": {"name": "data-739868fb724d9c448eaaef656ca60a3a"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-739868fb724d9c448eaaef656ca60a3a"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-739868fb724d9c448eaaef656ca60a3a"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "8974c34453bd4f3e87ef23e1b0ecbdfe": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_810dd2cd2ab444139db17c38e9011159", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-4d1650e1f222d41655fbf15019b63d5a": [{"calculation_epsilon": 2.2920376404428393, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.2914289629094196, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.2499415178043805, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.1793308900609256, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.167373785604198, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.1666034556883744, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.1666130332642153, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.166643707327026, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.1666371310743404, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Applied screening"}, {"calculation_epsilon": 2.1666388826464664, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Applied screening"}]}, "layer": [{"data": {"name": "data-4d1650e1f222d41655fbf15019b63d5a"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-4d1650e1f222d41655fbf15019b63d5a"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-4d1650e1f222d41655fbf15019b63d5a"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "dc5eb39352d14f43abae1a0307b63343": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_e7ff993e19414d31ad96e1635496c76b", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-f5cb5c209b4fec60efe4ed3da0de0bb7": [{"calculation_gap": 7.916498675063904, "calculation_iteration": 1, "calculation_native_iteration": 0, "calculation_series": "Orbital gap"}, {"calculation_gap": 7.789738658687962, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Orbital gap"}, {"calculation_gap": 7.845910791648752, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Orbital gap"}, {"calculation_gap": 7.834645148434794, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Orbital gap"}, {"calculation_gap": 7.804078315032759, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.131548744730226, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.749161263143083, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.82201146037603, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.829296397523008, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.829182635480294, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.828898747542409, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.828960348514565, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.82894391806527, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Orbital gap"}, {"calculation_gap": 8.828945812916833, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Orbital gap"}]}, "layer": [{"data": {"name": "data-f5cb5c209b4fec60efe4ed3da0de0bb7"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-f5cb5c209b4fec60efe4ed3da0de0bb7"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-f5cb5c209b4fec60efe4ed3da0de0bb7"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "e3350aa918114ab8aedbcf246c490ea2": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "e7ff993e19414d31ad96e1635496c76b": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}}, "version_major": 2, "version_minor": 0}</script>
+<script id="quarto-html-after-body" type="application/javascript" src="../../../site_libs/shared-7d5abf28cd7b432e/script.js"></script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<!-- Fold sections: a ::: {.fold} div opening with a heading, which Pandoc renders as
+     section.fold; the heading becomes the summary of a collapsible block, so it stays a
+     real heading and appears in the TOC. -->
+<link rel="stylesheet" href="../../../site_libs/shared-9a662a47e7ec3305/style.css">
+<script src="../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
+<script src="../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
+
+
+
+
+</body></html>

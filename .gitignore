@@ -1,0 +1,10 @@
+# Native Quarto execution caches and generated per-page ignore files.
+.quarto/
+**/.gitignore
+!/.gitignore
+
+/.quarto/
+# Generated page sources render here but are not published.
+*.qmd
+
+**/*.quarto_ipynb
