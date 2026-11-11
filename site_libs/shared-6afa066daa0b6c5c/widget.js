@@ -47,18 +47,37 @@ function decodeField(buffer) {
 // again is rebuilt, its field read from the browser's cache.
 const KEPT_SNAPSHOTS = 6;
 
-// Data kept in the store is its address, which names its content, so the browser's cache keeps it for good.
+// Data kept in the store is its address, which names its content, so the browser's cache keeps it for good. A viewer's
+// fields are packed into a few files: an address ending in #start-end names those bytes of one, which is fetched whole,
+// once at a time, and kept for the next fields among the few files used last.
 const isStored = text => /^https:\/\//.test(text);
-async function fetchStored(address) {
-    const response = await fetch(address);
-    if (!response.ok) throw new Error(`Viewer data could not be loaded (HTTP ${response.status}).`);
-    return response;
+const storedFiles = new Map();
+function storedFile(url) {
+    let file = storedFiles.get(url);
+    if (!file) {
+        file = fetch(url).then(response => {
+            if (!response.ok) throw new Error(`Viewer data could not be loaded (HTTP ${response.status}).`);
+            return response.arrayBuffer();
+        });
+        file.catch(() => storedFiles.delete(url));
+    }
+    storedFiles.delete(url);
+    storedFiles.set(url, file);
+    while (storedFiles.size > 4) storedFiles.delete(storedFiles.keys().next().value);
+    return file;
+}
+async function readStored(address) {
+    const [url, range] = address.split('#');
+    const file = await storedFile(url);
+    if (!range) return file;
+    const [start, end] = range.split('-').map(Number);
+    return file.slice(start, end);
 }
 
-// An encoded field as cube text, inflated as a stream: fetched from the store, or base64 the page carries, decoded
+// An encoded field as cube text, inflated as a stream: read from the store, or base64 the page carries, decoded
 // through a data URL.
 async function readField(text) {
-    const encoded = isStored(text) ? await fetchStored(text) : await fetch('data:application/gzip;base64,' + text);
+    const encoded = isStored(text) ? new Response(await readStored(text)) : await fetch('data:application/gzip;base64,' + text);
     return decodeField(await new Response(encoded.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer());
 }
 
@@ -1632,8 +1651,7 @@ function installAxisAlignment(container, viewer) {
                         const plugin = viewer.plugin;
                         if (!loaded) {
                             const scene = model.get('scene');
-                            await viewer.loadMvsData(isStored(scene)
-                                ? new Uint8Array(await (await fetchStored(scene)).arrayBuffer()) : scene, 'mvsx');
+                            await viewer.loadMvsData(isStored(scene) ? new Uint8Array(await readStored(scene)) : scene, 'mvsx');
                             // A snapshot may name its field by its own symbol, such as one atom's part of an orbital.
                             installLabels(plugin, model, () => {
                                     const symbol = (model.get('snapshot_fields') || [])[currentSnapshot()]?.symbol;

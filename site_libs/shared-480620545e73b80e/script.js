@@ -9,6 +9,25 @@ restoreRequireDefine();
 mermaid.registerLayoutLoaders(elk);
 mermaid.initialize({ startOnLoad: false, securityLevel: "loose" });
 const container = document.querySelector(".calculations-diagram");
+// A calculation page carries no copy of its workflow's overview rows and status boxes: they are read, while the diagram
+// draws, from the workflow page's copy, with their links made relative to this page, and kept hidden as on that page.
+const details = container.dataset.details && fetch(container.dataset.details)
+  .then(response => (response.ok ? response.text() : ""))
+  .then(text => {
+    const base = container.dataset.details.replace(/[^/]*$/, "");
+    const local = value => (/^([a-z][a-z0-9+.-]*:|\/|#)/i.test(value) ? value : base + value);
+    const holder = document.createElement("div");
+    holder.className = "diagram-details";
+    holder.append(...new DOMParser().parseFromString(text, "text/html").body.childNodes);
+    for (const element of holder.querySelectorAll("[href], [src]")) {
+      for (const attribute of ["href", "src"]) {
+        if (element.hasAttribute(attribute)) element.setAttribute(attribute, local(element.getAttribute(attribute)));
+      }
+    }
+    for (const element of holder.querySelectorAll("[data-calculation]")) element.dataset.calculation = local(element.dataset.calculation);
+    container.after(holder);
+  })
+  .catch(error => console.error("Workflow details could not be read:", error));
 while (!globalThis.katex) await new Promise(resolve => setTimeout(resolve, 50));
 // Typeset each formula here; Mermaid labels are double-quoted, so the HTML uses single quotes.
 const source = container.querySelector("pre").textContent.replace(/\$\$(.+?)\$\$/g,
@@ -105,6 +124,7 @@ const remember = choice => {
     else sessionStorage.removeItem(key);
   } catch {}
 };
+await details;
 const rows = [...document.querySelectorAll(".calculations-table tbody tr")];
 const trace = choice => {
   selected = choice;
