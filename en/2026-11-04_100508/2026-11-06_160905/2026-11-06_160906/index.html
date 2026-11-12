@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Giovanni Gravili">
+<meta name="dcterms.date" content="2026-11-06">
+
+<title>Optimize the TS from every approach geometry</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html-fd12455ea9a5/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html-fd12455ea9a5/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
+<script>window.requireJsDefine = window.define;</script>
+<!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
+<script src="../../../../site_libs/shared-ceab9ae74975b28a/script.js"></script>
+<!-- Match visible KaTeX glyph heights to the surrounding text without rounding small canvas measurements. -->
+<script src="../../../../site_libs/shared-a3a28c948f20a597/script.js"></script>
+<script>
+// GitHub Pages serves every page also under its folder's index.html; show the folder's own URL instead.
+if (location.pathname.endsWith("/index.html")) {
+    history.replaceState(history.state, "", location.pathname.slice(0, -"index.html".length) + location.search + location.hash);
+}
+</script>
+<!-- KaTeX and its mhchem extension, so \ce{...} renders on every page, load here, once and before the page parses on. Quarto's own loader starts it only when the page has
+     parsed and shields it from the widgets' RequireJS only if that loader is visible then, so KaTeX could register
+     as an AMD module instead of a global and leave the math raw until a reload. RequireJS's define, saved by mathml.html, is hidden for
+     this one script alone. These pages give Quarto's loader an empty script as KaTeX, so its render runs on this
+     global KaTeX once the empty script has loaded. -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+<script>window.define = undefined;</script>
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script>
+<script>window.define = window.requireJsDefine; delete window.requireJsDefine;</script>
+<!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
+     the viewers' own request of the same URL. -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../../site_libs/shared-4186f095b6f8d716/style.css">
+<script src="../../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<script>
+// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
+// default scales; the browser's context menu is suppressed only over the plot itself.
+document.addEventListener('contextmenu', event => {
+    const plot = event.target.closest?.('.vega-embed');
+    if (!plot || event.target.closest('.vega-actions')) return;
+    event.preventDefault();
+    event.target.dispatchEvent(new MouseEvent('dblclick', {
+        bubbles: true, cancelable: true, composed: true, view: window,
+        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
+    }));
+});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+<script>
+// Quarto's hover popovers copy a bibliography entry's raw math spans, which are typeset on display. The popovers of
+// links and calculations copy spans that KaTeX has typeset already, whose text is the MathML and HTML renderings
+// joined, not TeX, so a span that holds KaTeX output is never typeset again: its content decides, whichever popover
+// made it.
+new MutationObserver(() => {
+    if (!globalThis.katex) return;
+    for (const span of document.querySelectorAll('.tippy-box span.math:not([data-typeset])')) {
+        span.dataset.typeset = 'true';
+        if (span.querySelector('.katex, .katex-display, math')) continue;
+        katex.render(span.textContent.replace(/^\\[(\[]|\\[)\]]$/g, ''), span,
+                     {throwOnError: false, displayMode: span.classList.contains('display')});
+    }
+}).observe(document.documentElement, {childList: true, subtree: true});
+</script>
+<script src="../../../../site_libs/shared-8727be5863cdcdab/script.js"></script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+
+  <script defer="" src="data:text/javascript,//katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="data:text/javascript,//katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../site_libs/shared-6ebb7daf2f043e36/styles.css">
+</head>
+
+<body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#Goal" id="toc-Goal" class="nav-link active" data-scroll-target="#Goal">Goal</a></li>
+  <li><a href="#Runs" id="toc-Runs" class="nav-link" data-scroll-target="#Runs">Runs</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Optimize the TS from every approach geometry</h1>
+</div>
+
+
+<!-- Quarto title metadata for authors, dates and scientific document details. -->
+
+<div class="quarto-title-meta has-remote-link">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Giovanni Gravili <a href="https://orcid.org/0009-0001-0115-359X" class="quarto-title-author-orcid" aria-label="ORCID profile for Giovanni Gravili"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 6, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 12, 2026</p>
+    </div>
+  </div>
+    
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">Open remote</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-06_160905/2026-11-06_160906/README.md:1" title="Open this page’s remote README in Visual Studio Code">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
+  </div>
+  
+
+
+</header>
+
+
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../../../">Homepage</a><span class="sep">/</span><a href="../../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><a href="../">TS outcome map</a><span class="sep">/</span><span class="current">Optimize the TS from every approach geometry</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-06_160905/2026-11-06_160906/README.md:1" class="remote-readme-link" title="Open this page’s remote README in Visual Studio Code">Open remote</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Language" aria-label="Language"><i class="bi bi-translate" aria-hidden="true"></i>English</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item active" href="../../../../en/2026-11-04_100508/2026-11-06_160905/2026-11-06_160906/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a class="dropdown-item" href="../../../../ja/2026-11-04_100508/2026-11-06_160905/2026-11-06_160906/" hreflang="ja" lang="ja">日本語</a></li></ul></span></span>
+</div>
+<div class="status-caveats callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Caveats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Caveats (49 runs)</li>
+<li>Accepted (41 runs)</li>
+</ul>
+</div>
+</div>
+<section id="Goal" class="level2">
+<h2 class="anchored" data-anchor-id="Goal">Goal</h2>
+<ul>
+<li>Map which approach geometries of ethene around s-cis-1,3-butadiene reach the concerted <span class="math inline">[4+2]</span> saddle, interpolating between the coplanar and the parallel-plane arrangements at several distances.</li>
+<li>Test whether those outcomes depend on where the diene’s four terminal hydrogens start, by repeating the same grid at fixed rotations of its methylene groups.</li>
+</ul>
+<p>The runs of this scan, with the scripts and <code>scans.yaml</code> that generated them, belong to the <a href="../">TS outcome map</a> workflow, whose README gives their method.</p>
+<div class="calculations-diagram compact" data-workflow="2026-11-04_100508/2026-11-06_160905" data-current="Map1" data-edges="[[&quot;Start3&quot;, &quot;Input5&quot;], [&quot;Start3&quot;, &quot;Input6&quot;], [&quot;Input5&quot;, &quot;Map1&quot;], [&quot;Input6&quot;, &quot;Map1&quot;], [&quot;Map1&quot;, &quot;Check1&quot;], [&quot;Input6&quot;, &quot;Check1&quot;], [&quot;Check1&quot;, &quot;Output3Map&quot;], [&quot;Output3Map&quot;, &quot;End3&quot;]]" data-details="../details.html"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph Sweep["&lt;span&gt;Approach geometries&lt;/span&gt;"]
+        %% description: One independent TS optimization from each ethene position and methylene rotation, classified by where it ends.
+        direction TB
+        Map1["&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Optimize the TS from every approach geometry"]
+    end
+    subgraph Checks["&lt;span&gt;Classification check&lt;/span&gt;"]
+        %% description: The outcome of every start checked against its log before the map is read.
+        direction TB
+        Check1["&lt;a href='../2026-11-12_002942/'&gt;Check every start's classification&lt;/a&gt;"]
+    end
+
+    Start3(( ))
+    Input5[/"&lt;span&gt;Rigid fragments at $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;"/]
+    Input6[/"&lt;span&gt;Verified saddle reference&lt;/span&gt;"/]
+    Output3Map[/"&lt;span&gt;Optimization outcome at each $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;"/]
+    End3((( )))
+
+    Start3 --&gt; Input5
+    Start3 --&gt; Input6
+    Input5 --&gt; Map1
+    Input6 --&gt; Map1
+    Map1 --&gt; Check1
+    Input6 --&gt; Check1
+    Check1 --&gt; Output3Map
+    Output3Map --&gt; End3
+
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    classDef success stroke:#198754,stroke-width:2px;
+    classDef failed stroke:#dc3545,stroke-width:2px;
+    classDef problems stroke:#e0a800,stroke-width:2px;
+    class Map1,Input5,Input6,Start3 problems;
+    class End3,Output3Map,Check1 pending;
+    class Check1 verification;
+    linkStyle 0 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 1 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 2 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 3 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 4 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 5 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-f94a3cc2e01630e9/script.js"></script>
+</section>
+<section id="Runs" class="level2">
+<h2 class="anchored" data-anchor-id="Runs">Runs</h2>
+<p>Every run of the scan, placed by the settings it varies; hovering a cell lists its runs with their pages.</p>
+<div class="scan-matrix"><script src="../../../../site_libs/shared-419491de962c2fab/data.js"></script><div class="scan-icons" hidden=""><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" alt="Succeeded" data-status="succeeded" class="workflow-status"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" alt="Problems" data-status="problems" class="workflow-status"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" alt="Failed" data-status="failed" class="workflow-status"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" alt="Submitted" data-status="submitted" class="workflow-status"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" alt="Accepted" data-status="accepted" class="workflow-status"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" alt="Caveats" data-status="caveats" class="workflow-status"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" alt="Rejected" data-status="rejected" class="workflow-status"></div></div>
+<p>The outcome of each start is one of:</p>
+<ul>
+<li><strong>Forming saddle</strong>: One imaginary mode stretching both forming bonds in phase, matching the verified saddle.</li>
+<li><strong>Other saddle</strong>: One imaginary mode that fails those tests.</li>
+<li><strong>Higher-order saddle</strong>: More than one imaginary mode.</li>
+<li><strong>Minimum</strong>: No imaginary mode.</li>
+<li><strong>Not converged</strong>: The optimization or its harmonic analysis did not finish.</li>
+</ul>
+<script src="../../../../site_libs/shared-0474cb947d66892a/script.js"></script>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript" src="../../../../site_libs/shared-7d5abf28cd7b432e/script.js"></script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<!-- Fold sections: a ::: {.fold} div opening with a heading, which Pandoc renders as
+     section.fold; the heading becomes the summary of a collapsible block, so it stays a
+     real heading and appears in the TOC. -->
+<link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
+<script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
+<script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
+
+
+
+
+</body></html>

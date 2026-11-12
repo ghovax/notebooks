@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Giovanni Gravili">
+<meta name="keywords" content="ベンゼン, 電子的スクリーニング, DD-DFT">
+
+<title>ベンゼンのスクリーニング</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html-fd12455ea9a5/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html-fd12455ea9a5/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+<!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
+<script>window.requireJsDefine = window.define;</script>
+<!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
+<script src="../../../site_libs/shared-ceab9ae74975b28a/script.js"></script>
+<!-- Match visible KaTeX glyph heights to the surrounding text without rounding small canvas measurements. -->
+<script src="../../../site_libs/shared-a3a28c948f20a597/script.js"></script>
+<script>
+// GitHub Pages serves every page also under its folder's index.html; show the folder's own URL instead.
+if (location.pathname.endsWith("/index.html")) {
+    history.replaceState(history.state, "", location.pathname.slice(0, -"index.html".length) + location.search + location.hash);
+}
+</script>
+<!-- KaTeX and its mhchem extension, so \ce{...} renders on every page, load here, once and before the page parses on. Quarto's own loader starts it only when the page has
+     parsed and shields it from the widgets' RequireJS only if that loader is visible then, so KaTeX could register
+     as an AMD module instead of a global and leave the math raw until a reload. RequireJS's define, saved by mathml.html, is hidden for
+     this one script alone. These pages give Quarto's loader an empty script as KaTeX, so its render runs on this
+     global KaTeX once the empty script has loaded. -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+<script>window.define = undefined;</script>
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script>
+<script>window.define = window.requireJsDefine; delete window.requireJsDefine;</script>
+<!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
+     the viewers' own request of the same URL. -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../site_libs/shared-4186f095b6f8d716/style.css">
+<script src="../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<script>
+// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
+// default scales; the browser's context menu is suppressed only over the plot itself.
+document.addEventListener('contextmenu', event => {
+    const plot = event.target.closest?.('.vega-embed');
+    if (!plot || event.target.closest('.vega-actions')) return;
+    event.preventDefault();
+    event.target.dispatchEvent(new MouseEvent('dblclick', {
+        bubbles: true, cancelable: true, composed: true, view: window,
+        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
+    }));
+});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+<script>
+// Quarto's hover popovers copy a bibliography entry's raw math spans, which are typeset on display. The popovers of
+// links and calculations copy spans that KaTeX has typeset already, whose text is the MathML and HTML renderings
+// joined, not TeX, so a span that holds KaTeX output is never typeset again: its content decides, whichever popover
+// made it.
+new MutationObserver(() => {
+    if (!globalThis.katex) return;
+    for (const span of document.querySelectorAll('.tippy-box span.math:not([data-typeset])')) {
+        span.dataset.typeset = 'true';
+        if (span.querySelector('.katex, .katex-display, math')) continue;
+        katex.render(span.textContent.replace(/^\\[(\[]|\\[)\]]$/g, ''), span,
+                     {throwOnError: false, displayMode: span.classList.contains('display')});
+    }
+}).observe(document.documentElement, {childList: true, subtree: true});
+</script>
+<script src="../../../site_libs/shared-8727be5863cdcdab/script.js"></script>
+
+  <script defer="" src="data:text/javascript,//katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="data:text/javascript,//katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../site_libs/shared-6ebb7daf2f043e36/styles.css">
+</head>
+
+<body class="quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#Model" id="toc-Model" class="nav-link active" data-scroll-target="#Model">モデル</a></li>
+  <li><a href="#Molecular_geometry" id="toc-Molecular_geometry" class="nav-link" data-scroll-target="#Molecular_geometry">分子の構造</a></li>
+  <li><a href="#Screening_convergence" id="toc-Screening_convergence" class="nav-link" data-scroll-target="#Screening_convergence">スクリーニングの収束</a></li>
+  <li><a href="#Remaining_screening_difference" id="toc-Remaining_screening_difference" class="nav-link" data-scroll-target="#Remaining_screening_difference">残るスクリーニングの差</a></li>
+  <li><a href="#Converged_result" id="toc-Converged_result" class="nav-link" data-scroll-target="#Converged_result">収束した結果</a></li>
+  <li><a href="#Electronic_iterations" id="toc-Electronic_iterations" class="nav-link" data-scroll-target="#Electronic_iterations">電子の反復</a></li>
+  <li><a href="#Calculations" id="toc-Calculations" class="nav-link" data-scroll-target="#Calculations">計算</a>
+  <ul class="collapse">
+  <li><a href="#自己無撞着なスクリーニング_varepsilon_s" id="toc-自己無撞着なスクリーニング_varepsilon_s" class="nav-link" data-scroll-target="#自己無撞着なスクリーニング_varepsilon_s">自己無撞着なスクリーニング <span class="math inline">\varepsilon_s</span></a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ベンゼンの電子的スクリーニング <span class="math inline">\varepsilon_s</span></h1>
+</div>
+
+
+<!-- Quarto title metadata for authors, dates and scientific document details. -->
+
+<div class="quarto-title-meta has-remote-link">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>Giovanni Gravili <a href="https://orcid.org/0009-0001-0115-359X" class="quarto-title-author-orcid" aria-label="Giovanni Gravili の ORCID プロフィール"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">公開</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月17日</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">更新日</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026年11月12日</p>
+    </div>
+  </div>
+    
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">リモートで開く</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-17_122144/README.md:1" title="このページのリモート README を Visual Studio Code で開きます">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">概要</div>
+    <p>ベンゼンの電子は互いの電荷を遮蔽します。この電子的スクリーニング <span class="math inline">\varepsilon_s</span> を一つの固定した構造で計算し、収束したことを確かめます。</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">キーワード</div>
+    <p>ベンゼン, 電子的スクリーニング, DD-DFT</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">分子のスクリーニング <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 励起</a><span class="sep">/</span><span class="current">ベンゼンの電子的スクリーニング <span class="math inline">\varepsilon_s</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-17_122144/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-10-21_164930/2026-10-17_122144/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-10-21_164930/2026-10-17_122144/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+</div>
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ヒント</span>承認
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>自己無撞着なスクリーニングとその数値的な整合性のチェックは合格しました。</p>
+<p>核の構造を固定し、30 回の電子の反復で <span class="math inline">\varepsilon_s=2.1279013914</span> になりました。最後の密度変化は <span class="math inline">\mathord{1.30\times 10^{-10}}</span>、スクリーニングの不一致は <span class="math inline">\mathord{3.31\times 10^{-9}}</span> で、どちらも定めた数値の判定を満たします。基底、求積グリッド、密度等値面への依存性はまだ調べておらず、この分子のスクリーニングは液体ベンゼンの誘電率ではありません。</p>
+</div>
+</div>
+<div id="8e01e4e7" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<script src="../../../site_libs/shared-69c94f285fbb9a87/data.js"></script><script src="../../../site_libs/shared-f651b702e45e0409/data.js"></script>
+</div>
+</div>
+<p>Lotus は、構造を固定した中性一重項のベンゼンについて、分子の電子的スクリーニングのパラメータ <span class="math inline">\varepsilon_s</span> を自己無撞着に求めます。この分子の応答は液体ベンゼンの誘電率ではありません。</p>
+<section id="Model" class="level2">
+<h2 class="anchored" data-anchor-id="Model">モデル</h2>
+<ul>
+<li>デカルト型の <span class="math inline">6\text{-}31\mathrm{G}</span> 基底と付属の <code>ds_svwn</code> モデルを使います。これは誘電率に依存する厳密交換を含む遮蔽した Slater 交換と、VWN-RPA 相関です。</li>
+<li><span class="math inline">\varepsilon_s</span> の初期値は 3 です。密度等値面の体積には <span class="math inline">\rho=0.001\,a_0^{-3}</span> を、軌道の応答には <span class="math inline">q=0.001\,a_0^{-1}</span> を使います。</li>
+<li>密度変化による停止のしきい値は <span class="math inline">10^{-9}</span> で、電子の反復は最大 200 回、スクリーニングの一致は <span class="math inline">10^{-6}</span> 以内とします。</li>
+</ul>
+</section>
+<section id="Molecular_geometry" class="level2">
+<h2 class="anchored" data-anchor-id="Molecular_geometry">分子の構造</h2>
+<p>炭素と水素の座標は、電子の計算を通して固定したままです（<a href="#Figure_1" class="quarto-xref">図&nbsp;1</a>）。</p>
+<div id="cell-fig-1" class="cell" data-execution_count="4">
+<div id="Figure_1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"f3a7f450943245489860a9f872e2ed98","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;1. 自己無撞着な電子の応答に使った、固定したベンゼンの構造。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="Screening_convergence" class="level2">
+<h2 class="anchored" data-anchor-id="Screening_convergence">スクリーニングの収束</h2>
+<p>スクリーニングの更新は次の番号の電子の反復の前に行われ、SCF の途中でときどき起こります。各段は更新ごとに適用したパラメータを示し、最終的な分子の応答は下に示します（<a href="#Figure_2" class="quarto-xref">図&nbsp;2</a>）。</p>
+<div id="cell-fig-2" class="cell" data-execution_count="5">
+<div id="Figure_2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"110266a1d8ea4a1dbac58242c1c7a110","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2. 電子の反復の間のスクリーニングの収束。
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="185a7a0b" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\varepsilon_s^{(N)}=2.1279013914</span></p>
+</div>
+</div>
+</section>
+<section id="Remaining_screening_difference" class="level2">
+<h2 class="anchored" data-anchor-id="Remaining_screening_difference">残るスクリーニングの差</h2>
+<p>最終的な応答との差の絶対値は、スクリーニングの合格しきい値 <span class="math inline">10^{-6}</span> を下回るまで減ります。この数値の一致は、基底や求積グリッドについての収束を調べるものではありません（<a href="#Figure_3" class="quarto-xref">図&nbsp;3</a>）。</p>
+<div id="cell-fig-3" class="cell" data-execution_count="7">
+<div id="Figure_3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"5432e5b9b6294d0bb81c1fcb9fc19e80","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3. 電子の反復の間に残るスクリーニングの差。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="Converged_result" class="level2">
+<h2 class="anchored" data-anchor-id="Converged_result">収束した結果</h2>
+<p>この入力について、電子とスクリーニングのチェックは合格しました。基底、求積グリッド、密度等値面への依存性はまだ調べていません。</p>
+<p>計算の記録は入力とモデルの仮定を説明し、ローカルの保管庫にある <em>Lotus</em> のノートはモデルを説明します（<a href="#Table_1" class="quarto-xref">表&nbsp;1</a>）。</p>
+<div class="cell" data-execution_count="8">
+<div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;1. 核の構造を固定したときの、収束した分子のスクリーニングと電子の応答の指標。
+</figcaption>
+<div aria-describedby="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\varepsilon_s^{(N)}</span><span class="quantity-info" data-description="5pyA5b6M44Gu5Y+N5b6pICROJCDjgafmsYLjgoHjgZ/liIblrZDjga7lj47mnZ/jgZfjgZ/pm7vlrZDnmoTjgrnjgq/jg6rjg7zjg4vjg7PjgrAgJFx2YXJlcHNpbG9uX3NeeyhOKX0k44CC"></span></th>
+<th style="text-align: right;"><span class="math inline">\varepsilon_s^{(n)}</span><span class="quantity-info" data-description="5Y+N5b6pICRuJCDjgafkuqTmj5vjga7libLlkIjjgpLmsbrjgoHjgovjga7jgavpgannlKjjgZfjgZ/jgrnjgq/jg6rjg7zjg4vjg7PjgrAgJFx2YXJlcHNpbG9uX3NeeyhuKX0k44CC"></span></th>
+<th style="text-align: right;">電子エネルギー <span class="math inline">E_{\mathrm{el}}</span><span class="quantity-info" data-description="5Y+O5p2f44GX44Gf6Kej44Gu6Zu75a2Q44Ko44ON44Or44Ku44O844CC5qC46ZaT5Y+N55m644KS5ZCr44KA44CC6LuM6YGT44Ko44ON44Or44Ku44O844Gu5ZKM44Gn44KC44CBcG9zdC1IYXJ0cmVl4oCTRm9jayDjga7nm7jplqLoo5zmraPjgafjgoLjgarjgYTjgII="></span></th>
+<th style="text-align: right;"><span class="math inline">V_\rho\;[a_0^{3}]</span><span class="quantity-info" data-description="44K544Kv44Oq44O844OL44Oz44Kw44Oi44OH44Or44Gn5YiG5a2Q44Gu5aSn44GN44GV44KS5a6a44KB44KL5a+G5bqm562J5YCk6Z2i44Gr5Zuy44G+44KM44Gf5L2T56mN44CC"></span></th>
+<th style="text-align: right;"><span class="math inline">\max\lvert\Delta P\rvert</span><span class="quantity-info" data-description="5Y+N5b6p6ZaT44Gn44Gu5a+G5bqm6KGM5YiX6KaB57Sg44Gu5pyA5aSn44Gu5aSJ5YyWICRcbWF4X3tcbXVcbnV9XGx2ZXJ0IFBeeyhuKX1fe1xtdVxudX0tUF57KG4tMSl9X3tcbXVcbnV9XHJ2ZXJ0JOOAgg=="></span></th>
+<th style="text-align: right;"><span class="math inline">\lvert\Delta\varepsilon_s\rvert</span><span class="quantity-info" data-description="5Y+N5b6p6ZaT44Gn44Gu44K544Kv44Oq44O844OL44Oz44Kw44Gu5aSJ5YyWICRcbHZlcnRcdmFyZXBzaWxvbl9zXnsobil9LVx2YXJlcHNpbG9uX3NeeyhuLTEpfVxydmVydCTjgII="></span></th>
+<th style="text-align: right;"><span class="math inline">\Delta\epsilon\;[\mathrm{eV}]</span><span class="quantity-info" data-description="SE9NT+KAk0xVTU8g44Ku44Oj44OD44OXICRcRGVsdGFcZXBzaWxvbj1cZXBzaWxvbl97XG1hdGhybXtMVU1PfX0tXGVwc2lsb25fe1xtYXRocm17SE9NT319JOOAguWFieWtpueahOOBquWKsei1t+OCqOODjeODq+OCruODvOOBp+OBr+OBquOBj+i7jOmBk+OCqOODjeODq+OCruODvOOBruW3ruOAgg=="></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2.1279</td>
+<td style="text-align: right;">2.1279</td>
+<td style="text-align: right;">-5977.3</td>
+<td style="text-align: right;">833.71</td>
+<td style="text-align: right;"><span class="scientific-number"><span class="math inline">\mathord{1.2957\times 10^{-10}}</span></span></td>
+<td style="text-align: right;"><span class="scientific-number"><span class="math inline">\mathord{3.3084\times 10^{-9}}</span></span></td>
+<td style="text-align: right;">8.9253</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="Electronic_iterations" class="level2">
+<h2 class="anchored" data-anchor-id="Electronic_iterations">電子の反復</h2>
+<div class="cell" data-execution_count="9">
+<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;2. スクリーニングの最初と最後の更新。
+</figcaption>
+<div aria-describedby="tbl-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 27%">
+<col style="width: 22%">
+<col style="width: 16%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">i</span><span class="quantity-info" data-description="44K544Kt44Oj44Oz44G+44Gf44Gv57WM6Lev44Gr5rK/44Gj44Gf54K544Gu55Wq5Y+344CC"></span></th>
+<th style="text-align: right;"><span class="math inline">n_{\mathrm{SCF}}</span><span class="quantity-info" data-description="6Ieq5bex54Sh5pKe552A5aC044Gu5Y+N5b6pICRuJOOBp+OAgeWJjeOBruWvhuW6puOBi+OCiSBGb2NrIOOBvuOBn+OBryBLb2hu4oCTU2hhbSDooYzliJcgJFxtYXRoYmZ7Rn1bXG1hdGhiZntEfV97bi0xfV0kIOOCkuS9nOOBo+OBpuWvvuinkuWMluOBl+OAgSRcbWF0aGJme0R9X24kIOOBjOWkieOCj+OCieOBquOBj+OBquOCi+OBvuOBp+e2muOBkeOCi+OAgg=="></span></th>
+<th style="text-align: right;"><span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="5YiG5a2Q44Gu6Zu75a2Q55qE44K544Kv44Oq44O844OL44Oz44KwICRcdmFyZXBzaWxvbl9zJCDjga/oqpjpm7vnjofkvp3lrZggREZUIOOBpyAkXGFscGhhPTEvXHZhcmVwc2lsb25fcyQg44KS5rG644KB44KL44CC44OQ44Or44Kv5ray5L2T44Gu6KqY6Zu7546H44Gn44Gv44Gq44GE44CC"></span></th>
+<th style="text-align: right;"><span class="math inline">V_\rho\;[a_0^{3}]</span><span class="quantity-info" data-description="44K544Kv44Oq44O844OL44Oz44Kw44Oi44OH44Or44Gn5YiG5a2Q44Gu5aSn44GN44GV44KS5a6a44KB44KL5a+G5bqm562J5YCk6Z2i44Gr5Zuy44G+44KM44Gf5L2T56mN44CC"></span></th>
+<th style="text-align: right;"><span class="math inline">\lvert\varepsilon_s^{(n)}-\varepsilon_s^{(N)}\rvert</span><span class="quantity-info" data-description="5Y+N5b6pICRuJCDjga7jgrnjgq/jg6rjg7zjg4vjg7PjgrDjgajmnIDlvozjga7lj43lvqkgJE4kIOOBp+OBruWPjuadn+WApOOBqOOBruW3riAkXGx2ZXJ0XHZhcmVwc2lsb25fc157KG4pfS1cdmFyZXBzaWxvbl9zXnsoTil9XHJ2ZXJ0JOOAgg=="></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">0.8721</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.2302</td>
+<td style="text-align: right;">778.82</td>
+<td style="text-align: right;">0.1023</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.2239</td>
+<td style="text-align: right;">782.8</td>
+<td style="text-align: right;">0.096046</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">2.1279</td>
+<td style="text-align: right;">833.71</td>
+<td style="text-align: right;"><span class="scientific-number"><span class="math inline">\mathord{6.7473\times 10^{-7}}</span></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">2.1279</td>
+<td style="text-align: right;">833.71</td>
+<td style="text-align: right;"><span class="scientific-number"><span class="math inline">\mathord{9.968\times 10^{-8}}</span></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2.1279</td>
+<td style="text-align: right;">833.71</td>
+<td style="text-align: right;"><span class="scientific-number"><span class="math inline">\mathord{3.3084\times 10^{-9}}</span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<!-- Generated by researchsite.pages from the calculation folders; do not edit. -->
+</section>
+<section id="Calculations" class="level2">
+<h2 class="anchored" data-anchor-id="Calculations">計算</h2>
+<p>このワークフローのすべての計算を、図と同じまとまりで示します。スキャンの各計算はスキャンのページにあります。計算を選ぶとそのページが開きます。</p>
+<div class="calculations-diagram" data-workflow="2026-10-21_164930/2026-10-17_122144" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;Converge1&quot;], [&quot;Converge1&quot;, &quot;Analysis1&quot;], [&quot;Analysis1&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph Response["&lt;span&gt;自己無撞着なスクリーニング $$\varepsilon_s$$&lt;/span&gt;"]
+        %% description: 密度と分子の電子的スクリーニング $\varepsilon_s$ を同時に反復し、密度の収束と応答の整合性を確かめます。
+        direction TB
+        Converge1["&lt;a href='2026-10-17_122145/'&gt;ベンゼンの遮蔽 Slater/VWN-RPA $$\varepsilon_s$$ の収束&lt;/a&gt;"]
+    end
+
+    Start1(( ))
+    Input1[/"&lt;span&gt;固定したベンゼンの構造と $$\varepsilon_s$$ の初期値&lt;/span&gt;"/]
+    Analysis1[/"&lt;span&gt;収束した分子の $$\varepsilon_s$$&lt;/span&gt;"/]
+    End1((( )))
+
+    Start1 --&gt; Input1
+    Input1 --&gt; Converge1
+    Converge1 --&gt; Analysis1
+    Analysis1 --&gt; End1
+
+    classDef complete stroke:#198754,stroke-width:2px;
+    classDef warning stroke:#e0a800,stroke-width:2px;
+    classDef serious stroke:#fd7e14,stroke-width:2px;
+    classDef blocked stroke:#dc3545,stroke-width:2px;
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef success stroke:#198754,stroke-width:2px;
+    class Converge1,Input1,Start1 success;
+    class Analysis1,End1 pending;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 3 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-f94a3cc2e01630e9/script.js"></script>
+<section id="自己無撞着なスクリーニング_varepsilon_s" class="level3">
+<h3 class="anchored" data-anchor-id="自己無撞着なスクリーニング_varepsilon_s">自己無撞着なスクリーニング <span class="math inline">\varepsilon_s</span></h3>
+<p>密度と分子の電子的スクリーニング <span class="math inline">\varepsilon_s</span> を同時に反復し、密度の収束と応答の整合性を確かめます。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="2026-10-17_122145/">ベンゼンの遮蔽 Slater/VWN-RPA <span class="math inline">\varepsilon_s</span> の収束</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月17日 23:31:39 JST</td>
+<td>0:00:40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="diagram-details">
+<div class="diagram-detail" data-calculation="2026-10-17_122145/">
+<div class="status-accepted callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ヒント</span>成功
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</div>
+<div class="link-details">
+<div class="link-detail" data-href="../2026-10-21_164931/">
+<div class="status-rejected callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">重要</span>却下
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked.</li>
+<li>A calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable.</li>
+<li>The runs are kept as history.</li>
+<li>Superseded by the <a href="../2026-10-29_183718/">independent-guess rebuild</a>.</li>
+</ul>
+</div>
+</div>
+<section id="Reference_S_0_geometry" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Reference_S_0_geometry">Reference <span class="math inline">S_0</span> geometry</h3>
+<p>Establish the <span class="math inline">S_0</span> reference geometry and verify its curvature before using it in the electronic-response branches.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164932/">Optimize the B3LYP <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td>2026年10月22日 17:14:26 JST</td>
+<td>0:00:57</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164933/">Verify the B3LYP <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq</td>
+<td>2026年10月22日 17:16:20 JST</td>
+<td>0:00:58</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption">B3LYP <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
+<p>Evaluate B3LYP molecular screening and vertical absorption at the reference geometry; where included, relax and verify the <span class="math inline">S_1</span> structure.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164934/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td>Lotus</td>
+<td>スクリーニング</td>
+<td>2026年10月22日 18:35:46 JST</td>
+<td>0:00:55</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164935/">Calculate B3LYP vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>TD, SP</td>
+<td>2026年10月22日 18:34:31 JST</td>
+<td>0:01:07</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption">DD-DFT <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
+<p>Use molecular screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then compare DD-DFT geometry, response and absorption with the conventional branch.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164936/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月22日 18:35:46 JST</td>
+<td>0:01:05</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164937/">Optimize the DD-DFT <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td>2026年10月22日 20:14:46 JST</td>
+<td>0:00:53</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164938/">Verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq</td>
+<td>2026年10月23日 13:01:15 JST</td>
+<td>0:00:36</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164939/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月23日 13:10:52 JST</td>
+<td>0:00:39</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164940/">Calculate DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>TD, SP</td>
+<td>2026年10月23日 13:22:55 JST</td>
+<td>0:00:32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<div class="link-detail" data-href="../2026-10-21_164940/">
+<div class="status-rejected callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">重要</span>却下
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked.</li>
+<li>A calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable.</li>
+<li>The runs are kept as history.</li>
+<li>Superseded by the independent-guess rebuild.</li>
+</ul>
+</div>
+</div>
+<section id="Reference_S_0_geometry_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Reference_S_0_geometry_2">Reference <span class="math inline">S_0</span> geometry</h3>
+<p>Establish the <span class="math inline">S_0</span> reference geometry and verify its curvature before using it in the electronic-response branches.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164941/">Optimize the B3LYP <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td>2026年10月23日 23:47:59 JST</td>
+<td>1:33:31</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164942/">Verify the B3LYP <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq</td>
+<td>2026年10月24日 08:08:20 JST</td>
+<td>0:18:28</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation">B3LYP <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h3>
+<p>Evaluate B3LYP molecular screening and vertical absorption at the reference geometry; where included, relax and verify the <span class="math inline">S_1</span> structure.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164943/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td>Lotus</td>
+<td>スクリーニング</td>
+<td>2026年10月24日 08:31:17 JST</td>
+<td>0:29:19</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164944/">Calculate B3LYP vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>TD, SP</td>
+<td>2026年10月24日 08:32:14 JST</td>
+<td>0:07:29</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164945/">Optimize the B3LYP <span class="math inline">S_1</span> geometry</a></td>
+<td>Gaussian</td>
+<td>TD Opt</td>
+<td>2026年10月24日 12:51:24 JST</td>
+<td>7:12:08</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164946/">Verify the B3LYP <span class="math inline">S_1</span> minimum</a></td>
+<td>Gaussian</td>
+<td>TD Freq</td>
+<td>2026年10月25日 23:36:41 JST</td>
+<td>0:55:52</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation">DD-DFT <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h3>
+<p>Use molecular screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then compare DD-DFT geometry, response and absorption with the conventional branch.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164947/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月24日 08:32:29 JST</td>
+<td>0:34:52</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164948/">Optimize the DD-DFT <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td>2026年10月24日 12:51:31 JST</td>
+<td>0:35:19</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164949/">Verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq</td>
+<td>2026年10月25日 23:36:45 JST</td>
+<td>0:19:48</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164950/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月26日 07:35:38 JST</td>
+<td>0:26:55</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164951/">Calculate DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>TD, SP</td>
+<td>2026年10月26日 08:09:13 JST</td>
+<td>0:09:41</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164952/">Optimize the DD-DFT <span class="math inline">S_1</span> geometry</a></td>
+<td>Gaussian</td>
+<td>TD Opt</td>
+<td>2026年10月26日 08:28:05 JST</td>
+<td>5:43:04</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164953/">Verify the DD-DFT <span class="math inline">S_1</span> minimum</a></td>
+<td>Gaussian</td>
+<td>TD Freq</td>
+<td>2026年10月26日 16:43:18 JST</td>
+<td>0:54:59</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<div class="link-detail" data-href="../2026-10-29_183718/">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ヒント</span>承認
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The first-cycle B3LYP and DD-DFT spectra reproduce the checkpoint-chained results within <span class="math inline">3</span> and <span class="math inline">1\,\mathrm{meV}</span>, respectively, so no appreciable checkpoint-induced change is found for benzene at this precision.</li>
+<li>A second geometry/screening cycle reproduces the four-decimal Gaussian weights at a geometry satisfying the default optimization criteria.</li>
+<li>That cycle moves the spectrum by at most <span class="math inline">2.7\,\mathrm{meV}</span>.</li>
+<li>Supersedes the <a href="../2026-10-21_164931/">checkpoint-chained workflow</a>, rebuilt without checkpoint reuse.</li>
+</ul>
+</div>
+</div>
+<section id="Reference_S_0_geometry_3" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Reference_S_0_geometry_3">Reference <span class="math inline">S_0</span> geometry</h3>
+<p>Establish the <span class="math inline">S_0</span> reference geometry and verify its curvature before using it in the electronic-response branches.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183719/">Optimize the B3LYP <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td>2026年10月29日 18:41:01 JST</td>
+<td>0:00:07</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183720/">Check stability and verify the B3LYP <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Stable, Freq</td>
+<td>2026年10月29日 18:48:57 JST</td>
+<td>0:00:43</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption_2">B3LYP <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
+<p>Evaluate B3LYP molecular screening and vertical <span class="math inline">S_0\rightarrow S_n</span> absorption at the verified <span class="math inline">S_0</span> geometry.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183721/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td>Lotus</td>
+<td>スクリーニング</td>
+<td>2026年10月30日 00:18:16 JST</td>
+<td>0:00:40</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183722/">Calculate B3LYP vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>Stable, TD</td>
+<td>2026年10月30日 00:17:26 JST</td>
+<td>0:00:33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption_2">DD-DFT <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
+<p>Use molecular screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then compare DD-DFT geometry, response and absorption with the conventional branch.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183723/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月30日 00:18:16 JST</td>
+<td>0:00:53</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183724/">Optimize the DD-DFT <span class="math inline">S_0</span> geometry</a></td>
+<td>Gaussian</td>
+<td>Stable, Opt</td>
+<td>2026年10月30日 17:32:30 JST</td>
+<td>0:00:28</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183725/">Check stability and verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Stable, Freq</td>
+<td>2026年10月30日 17:33:02 JST</td>
+<td>0:00:26</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183726/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月30日 17:33:36 JST</td>
+<td>0:00:46</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
+<td><a href="../2026-10-29_183718/2026-10-29_183727/">Calculate DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>Stable, TD</td>
+<td>2026年10月30日 17:33:31 JST</td>
+<td>0:00:20</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-29_183718/2026-10-30_232951/">Optimize the <span class="math inline">S_0</span> geometry, rechecked weights</a></td>
+<td>Gaussian</td>
+<td>Stable, Opt</td>
+<td>2026年10月30日 23:32:18 JST</td>
+<td>0:00:14</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-29_183718/2026-10-30_232952/">Check stability and verify the rechecked <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Stable, Freq</td>
+<td>2026年10月30日 23:32:36 JST</td>
+<td>0:00:27</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
+<td><a href="../2026-10-29_183718/2026-10-30_232953/">Recheck <span class="math inline">\varepsilon_s</span> at the rechecked DD-DFT geometry</a></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年10月30日 23:33:07 JST</td>
+<td>0:00:39</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="../2026-10-29_183718/2026-10-30_232954/">Calculate <span class="math inline">S_0\rightarrow S_n</span> excitations, self-consistent weights</a></td>
+<td>Gaussian</td>
+<td>Stable, TD</td>
+<td>2026年10月30日 23:33:48 JST</td>
+<td>0:00:21</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+<script src="../../../site_libs/shared-215cc95d0a744a5a/script.js"></script>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="application/vnd.jupyter.widget-state+json">{"state": {"110266a1d8ea4a1dbac58242c1c7a110": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_536a835745b3445a9ecb8c589e54bfce", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-0e7848d55147c22d9c92c7f24bb2c02c": [{"epsilon": 3, "iteration": 0, "line": null, "point": 1, "residual": 0.8720986086046052, "volume": null}, {"epsilon": 2.2302037125974805, "iteration": 3, "line": 40, "point": 2, "residual": 0.10230232120208571, "volume": 778.8162823272966}, {"epsilon": 2.2239477430690204, "iteration": 4, "line": 53, "point": 3, "residual": 0.09604635167362563, "volume": 782.797153657176}, {"epsilon": 2.237586786698574, "iteration": 5, "line": 66, "point": 4, "residual": 0.10968539530317933, "volume": 782.797153657176}, {"epsilon": 2.224334643500913, "iteration": 6, "line": 79, "point": 5, "residual": 0.09643325210551801, "volume": 782.2653830904861}, {"epsilon": 2.1934910293171654, "iteration": 7, "line": 92, "point": 6, "residual": 0.06558963792177064, "volume": 782.797153657176}, {"epsilon": 1.9493890625868322, "iteration": 11, "line": 138, "point": 7, "residual": 0.1785123288085626, "volume": 815.204897502422}, {"epsilon": 2.0893158068478304, "iteration": 14, "line": 173, "point": 8, "residual": 0.038585584547564444, "volume": 832.4190658887062}, {"epsilon": 2.0962567805140324, "iteration": 15, "line": 186, "point": 9, "residual": 0.03164461088136239, "volume": 831.5157539052544}, {"epsilon": 2.087407247914803, "iteration": 16, "line": 199, "point": 10, "residual": 0.04049414348059166, "volume": 832.4190658887062}, {"epsilon": 2.1217855960205316, "iteration": 18, "line": 223, "point": 11, "residual": 0.0061157953748631755, "volume": 833.5789763990392}, {"epsilon": 2.1243551616666068, "iteration": 19, "line": 236, "point": 12, "residual": 0.0035462297287880418, "volume": 833.5792332527626}, {"epsilon": 2.125821544860676, "iteration": 20, "line": 249, "point": 13, "residual": 0.002079846534718932, "volume": 833.5794366945338}, {"epsilon": 2.1277718405709543, "iteration": 21, "line": 262, "point": 14, "residual": 0.00012955082444054966, "volume": 833.5794366945338}, {"epsilon": 2.127548633403129, "iteration": 22, "line": 275, "point": 15, "residual": 0.0003527579922657509, "volume": 833.7123478942301}, {"epsilon": 2.1277795595007047, "iteration": 23, "line": 288, "point": 16, "residual": 0.00012183189469006095, "volume": 833.7123478942301}, {"epsilon": 2.127907067017963, "iteration": 24, "line": 301, "point": 17, "residual": 5.67562256836851e-06, "volume": 833.7123478942301}, {"epsilon": 2.1279033405739325, "iteration": 25, "line": 314, "point": 18, "residual": 1.949178537685725e-06, "volume": 833.7123478942301}, {"epsilon": 2.1279020661242916, "iteration": 26, "line": 327, "point": 19, "residual": 6.747288967545728e-07, "volume": 833.7123478942301}, {"epsilon": 2.1279014910756247, "iteration": 27, "line": 340, "point": 20, "residual": 9.96802298480759e-08, "volume": 833.7123478942301}, {"epsilon": 2.1279013880870172, "iteration": 28, "line": 353, "point": 21, "residual": 3.308377571897836e-09, "volume": 833.7123478942301}]}, "layer": [{"data": {"name": "data-0e7848d55147c22d9c92c7f24bb2c02c"}, "encoding": {"tooltip": [{"field": "iteration", "title": "Iteration"}, {"field": "epsilon", "title": "Epsilon"}, {"field": "line", "title": "Line"}, {"field": "volume", "title": "Volume"}, {"field": "point", "title": "Point"}, {"field": "residual", "title": "Residual"}], "x": {"field": "iteration", "scale": {"zero": false}, "type": "quantitative"}, "y": {"field": "epsilon", "scale": {"domainMax": 3.0525305468706585}, "type": "quantitative"}}, "mark": {"clip": true, "interpolate": "step-after", "type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-0e7848d55147c22d9c92c7f24bb2c02c"}, "encoding": {"tooltip": [{"field": "iteration", "title": "Iteration"}, {"field": "epsilon", "title": "Epsilon"}, {"field": "line", "title": "Line"}, {"field": "volume", "title": "Volume"}, {"field": "point", "title": "Point"}, {"field": "residual", "title": "Residual"}], "x": {"field": "iteration", "scale": {"zero": false}, "type": "quantitative"}, "y": {"field": "epsilon", "scale": {"domainMax": 3.0525305468706585}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "sort": [{"field": "iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-0e7848d55147c22d9c92c7f24bb2c02c"}, "encoding": {"tooltip": [{"field": "iteration", "title": "Iteration"}, {"field": "epsilon", "title": "Epsilon"}, {"field": "line", "title": "Line"}, {"field": "volume", "title": "Volume"}, {"field": "point", "title": "Point"}, {"field": "residual", "title": "Residual"}], "x": {"field": "iteration", "scale": {"zero": false}, "type": "quantitative"}, "y": {"field": "epsilon", "scale": {"domainMax": 3.0525305468706585}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "sort": [{"field": "iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "536a835745b3445a9ecb8c589e54bfce": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "5432e5b9b6294d0bb81c1fcb9fc19e80": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_903a2a6b771548f283d74dffb8f1bd8c", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-0e7848d55147c22d9c92c7f24bb2c02c": [{"epsilon": 3, "iteration": 0, "line": null, "point": 1, "residual": 0.8720986086046052, "volume": null}, {"epsilon": 2.2302037125974805, "iteration": 3, "line": 40, "point": 2, "residual": 0.10230232120208571, "volume": 778.8162823272966}, {"epsilon": 2.2239477430690204, "iteration": 4, "line": 53, "point": 3, "residual": 0.09604635167362563, "volume": 782.797153657176}, {"epsilon": 2.237586786698574, "iteration": 5, "line": 66, "point": 4, "residual": 0.10968539530317933, "volume": 782.797153657176}, {"epsilon": 2.224334643500913, "iteration": 6, "line": 79, "point": 5, "residual": 0.09643325210551801, "volume": 782.2653830904861}, {"epsilon": 2.1934910293171654, "iteration": 7, "line": 92, "point": 6, "residual": 0.06558963792177064, "volume": 782.797153657176}, {"epsilon": 1.9493890625868322, "iteration": 11, "line": 138, "point": 7, "residual": 0.1785123288085626, "volume": 815.204897502422}, {"epsilon": 2.0893158068478304, "iteration": 14, "line": 173, "point": 8, "residual": 0.038585584547564444, "volume": 832.4190658887062}, {"epsilon": 2.0962567805140324, "iteration": 15, "line": 186, "point": 9, "residual": 0.03164461088136239, "volume": 831.5157539052544}, {"epsilon": 2.087407247914803, "iteration": 16, "line": 199, "point": 10, "residual": 0.04049414348059166, "volume": 832.4190658887062}, {"epsilon": 2.1217855960205316, "iteration": 18, "line": 223, "point": 11, "residual": 0.0061157953748631755, "volume": 833.5789763990392}, {"epsilon": 2.1243551616666068, "iteration": 19, "line": 236, "point": 12, "residual": 0.0035462297287880418, "volume": 833.5792332527626}, {"epsilon": 2.125821544860676, "iteration": 20, "line": 249, "point": 13, "residual": 0.002079846534718932, "volume": 833.5794366945338}, {"epsilon": 2.1277718405709543, "iteration": 21, "line": 262, "point": 14, "residual": 0.00012955082444054966, "volume": 833.5794366945338}, {"epsilon": 2.127548633403129, "iteration": 22, "line": 275, "point": 15, "residual": 0.0003527579922657509, "volume": 833.7123478942301}, {"epsilon": 2.1277795595007047, "iteration": 23, "line": 288, "point": 16, "residual": 0.00012183189469006095, "volume": 833.7123478942301}, {"epsilon": 2.127907067017963, "iteration": 24, "line": 301, "point": 17, "residual": 5.67562256836851e-06, "volume": 833.7123478942301}, {"epsilon": 2.1279033405739325, "iteration": 25, "line": 314, "point": 18, "residual": 1.949178537685725e-06, "volume": 833.7123478942301}, {"epsilon": 2.1279020661242916, "iteration": 26, "line": 327, "point": 19, "residual": 6.747288967545728e-07, "volume": 833.7123478942301}, {"epsilon": 2.1279014910756247, "iteration": 27, "line": 340, "point": 20, "residual": 9.96802298480759e-08, "volume": 833.7123478942301}, {"epsilon": 2.1279013880870172, "iteration": 28, "line": 353, "point": 21, "residual": 3.308377571897836e-09, "volume": 833.7123478942301}]}, "layer": [{"data": {"name": "data-0e7848d55147c22d9c92c7f24bb2c02c"}, "encoding": {"tooltip": [{"field": "iteration", "title": "Iteration"}, {"field": "epsilon", "title": "Epsilon"}, {"field": "line", "title": "Line"}, {"field": "volume", "title": "Volume"}, {"field": "point", "title": "Point"}, {"field": "residual", "title": "Residual"}], "x": {"field": "iteration", "scale": {"zero": false}, "type": "quantitative"}, "y": {"field": "residual", "scale": {"domainMax": 2.2993925497525027, "type": "log"}, "type": "quantitative"}}, "mark": {"clip": true, "type": "line"}, "params": [{"bind": "scales", "name": "param_1e9efca18e7a2868", "select": {"encodings": ["x", "y"], "type": "interval"}}]}, {"data": {"name": "data-0e7848d55147c22d9c92c7f24bb2c02c"}, "encoding": {"tooltip": [{"field": "iteration", "title": "Iteration"}, {"field": "epsilon", "title": "Epsilon"}, {"field": "line", "title": "Line"}, {"field": "volume", "title": "Volume"}, {"field": "point", "title": "Point"}, {"field": "residual", "title": "Residual"}], "x": {"field": "iteration", "scale": {"zero": false}, "type": "quantitative"}, "y": {"field": "residual", "scale": {"domainMax": 2.2993925497525027, "type": "log"}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "sort": [{"field": "iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-0e7848d55147c22d9c92c7f24bb2c02c"}, "encoding": {"tooltip": [{"field": "iteration", "title": "Iteration"}, {"field": "epsilon", "title": "Epsilon"}, {"field": "line", "title": "Line"}, {"field": "volume", "title": "Volume"}, {"field": "point", "title": "Point"}, {"field": "residual", "title": "Residual"}], "x": {"field": "iteration", "scale": {"zero": false}, "type": "quantitative"}, "y": {"field": "residual", "scale": {"domainMax": 2.2993925497525027, "type": "log"}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "sort": [{"field": "iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "903a2a6b771548f283d74dffb8f1bd8c": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "e26e0996450f4761a5ecbf5f990075a7": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f3a7f450943245489860a9f872e2ed98": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-3.1475809999999997, -3.0377460000000003, -0.7001649999999999], [3.1475809999999997, 3.0377460000000003, 0.7000569999999999]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_e26e0996450f4761a5ecbf5f990075a7", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhAATmyggFAQAAKAMAAA4AAAB0cmFqZWN0b3J5Lnh5epWSwW7DIAyG732KiHNANhgIuU6T9hZV12RLpbaZQrZVmvbuc5e0ChqTWm6/4cOfEahXX+LQjl3fiFo0cR0/Po+iFM+buItccdLgK+f2Le72/VHURkEp4nYdt8PjSdTj8N6W4rA5ceFF1Bp4d+yGNnb9vplqoGBe+L16KP4sUORtoArgnFAZtNq63yQnljjlSD7rPVTTWb5HkyV3TWfSQJ4EFQBR26kLKnDBe1ySOt9TzrbhQt5sKxNbeYetTGyLf22fcnNWZKsw2RZaGVagpS06mye1Ih60unYh4zQlPa3Pk6gcoA14eSF2J6+XJOVJmdjKO2xlYitnW7jBVia2RdaWf+bqB1BLAQIUAxQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAAAAAAAAAAACAAQAAAABpbmRleC5tdnNqUEsBAhQDFAAAAAgAAAAhAATmyggFAQAAKAMAAA4AAAAAAAAAAAAAAIAB7wAAAHRyYWplY3RvcnkueHl6UEsFBgAAAAACAAIAdAAAACACAAAAAA==", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}}, "version_major": 2, "version_minor": 0}</script>
+<script id="quarto-html-after-body" type="application/javascript" src="../../../site_libs/shared-1d9d6cb5641f4609/script.js"></script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"スクロール可能なコード","output":"スクロール可能な出力"};
+  </script>
+</div> <!-- /content -->
+<!-- Hand-drawn highlighter strokes over spans marked [text]{.hl}, or in red over [text]{.hl-fail} for
+     what could not be done or found, drawn as each scrolls into view. -->
+<style>
+  /* Strokes draw outside the SVG (overflow: visible); a 1 px box keeps table and
+     output containers from gaining scrollbars (a zero-size SVG is not rendered). */
+  svg.rough-annotation { width: 1px !important; height: 1px !important; }
+  /* Shrink a highlighted display equation to the formula's width; it stays centred. */
+  span.hl .katex-display > .katex, span.hl-fail .katex-display > .katex { display: inline-block; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
+<script src="../../../site_libs/shared-adeddb5784cecf8c/script.js"></script>
+<!-- Fold sections: a ::: {.fold} div opening with a heading, which Pandoc renders as
+     section.fold; the heading becomes the summary of a collapsible block, so it stays a
+     real heading and appears in the TOC. -->
+<link rel="stylesheet" href="../../../site_libs/shared-9a662a47e7ec3305/style.css">
+<script src="../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+
+
+
+
+</body></html>

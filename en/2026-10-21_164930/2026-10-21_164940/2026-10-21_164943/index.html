@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Giovanni Gravili">
+<meta name="dcterms.date" content="2026-10-21">
+
+<title>Evaluate B3LYP screening dielectric constant (chelate 1)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html-fd12455ea9a5/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html-fd12455ea9a5/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+<!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
+<script>window.requireJsDefine = window.define;</script>
+<!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
+<script src="../../../../site_libs/shared-ceab9ae74975b28a/script.js"></script>
+<!-- Match visible KaTeX glyph heights to the surrounding text without rounding small canvas measurements. -->
+<script src="../../../../site_libs/shared-a3a28c948f20a597/script.js"></script>
+<script>
+// GitHub Pages serves every page also under its folder's index.html; show the folder's own URL instead.
+if (location.pathname.endsWith("/index.html")) {
+    history.replaceState(history.state, "", location.pathname.slice(0, -"index.html".length) + location.search + location.hash);
+}
+</script>
+<!-- KaTeX and its mhchem extension, so \ce{...} renders on every page, load here, once and before the page parses on. Quarto's own loader starts it only when the page has
+     parsed and shields it from the widgets' RequireJS only if that loader is visible then, so KaTeX could register
+     as an AMD module instead of a global and leave the math raw until a reload. RequireJS's define, saved by mathml.html, is hidden for
+     this one script alone. These pages give Quarto's loader an empty script as KaTeX, so its render runs on this
+     global KaTeX once the empty script has loaded. -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+<script>window.define = undefined;</script>
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script>
+<script>window.define = window.requireJsDefine; delete window.requireJsDefine;</script>
+<!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
+     the viewers' own request of the same URL. -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../../site_libs/shared-4186f095b6f8d716/style.css">
+<script src="../../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<script>
+// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
+// default scales; the browser's context menu is suppressed only over the plot itself.
+document.addEventListener('contextmenu', event => {
+    const plot = event.target.closest?.('.vega-embed');
+    if (!plot || event.target.closest('.vega-actions')) return;
+    event.preventDefault();
+    event.target.dispatchEvent(new MouseEvent('dblclick', {
+        bubbles: true, cancelable: true, composed: true, view: window,
+        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
+    }));
+});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+<script>
+// Quarto's hover popovers copy a bibliography entry's raw math spans, which are typeset on display. The popovers of
+// links and calculations copy spans that KaTeX has typeset already, whose text is the MathML and HTML renderings
+// joined, not TeX, so a span that holds KaTeX output is never typeset again: its content decides, whichever popover
+// made it.
+new MutationObserver(() => {
+    if (!globalThis.katex) return;
+    for (const span of document.querySelectorAll('.tippy-box span.math:not([data-typeset])')) {
+        span.dataset.typeset = 'true';
+        if (span.querySelector('.katex, .katex-display, math')) continue;
+        katex.render(span.textContent.replace(/^\\[(\[]|\\[)\]]$/g, ''), span,
+                     {throwOnError: false, displayMode: span.classList.contains('display')});
+    }
+}).observe(document.documentElement, {childList: true, subtree: true});
+</script>
+<script src="../../../../site_libs/shared-8727be5863cdcdab/script.js"></script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+
+  <script defer="" src="data:text/javascript,//katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="data:text/javascript,//katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../site_libs/shared-6ebb7daf2f043e36/styles.css">
+</head>
+
+<body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#Input" id="toc-Input" class="nav-link active" data-scroll-target="#Input">Input</a>
+  <ul>
+  <li><a href="#Settings" id="toc-Settings" class="nav-link" data-scroll-target="#Settings">Settings</a></li>
+  <li><a href="#Starting_geometry" id="toc-Starting_geometry" class="nav-link" data-scroll-target="#Starting_geometry">Starting geometry</a></li>
+  </ul></li>
+  <li><a href="#Output" id="toc-Output" class="nav-link" data-scroll-target="#Output">Output</a>
+  <ul>
+  <li><a href="#Electronic_structure_and_screening" id="toc-Electronic_structure_and_screening" class="nav-link" data-scroll-target="#Electronic_structure_and_screening">Electronic structure and screening</a></li>
+  <li><a href="#Energy_components" id="toc-Energy_components" class="nav-link" data-scroll-target="#Energy_components">Energy components</a></li>
+  <li><a href="#SCF_convergence" id="toc-SCF_convergence" class="nav-link" data-scroll-target="#SCF_convergence">SCF convergence</a></li>
+  <li><a href="#Orbital_gap_per_iteration" id="toc-Orbital_gap_per_iteration" class="nav-link" data-scroll-target="#Orbital_gap_per_iteration">Orbital gap per iteration</a></li>
+  <li><a href="#Screening_convergence" id="toc-Screening_convergence" class="nav-link" data-scroll-target="#Screening_convergence">Screening convergence</a></li>
+  </ul></li>
+  <li><a href="#Technical_details" id="toc-Technical_details" class="nav-link" data-scroll-target="#Technical_details">Technical details</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Evaluate screening <span class="math inline">\varepsilon_s</span></h1>
+</div>
+
+
+<!-- Quarto title metadata for authors, dates and scientific document details. -->
+
+<div class="quarto-title-meta has-remote-link">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Giovanni Gravili <a href="https://orcid.org/0009-0001-0115-359X" class="quarto-title-author-orcid" aria-label="ORCID profile for Giovanni Gravili"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 21, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 12, 2026</p>
+    </div>
+  </div>
+    
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">Open remote</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-21_164940/2026-10-21_164943/README.md:1" title="Open this page’s remote README in Visual Studio Code">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
+  </div>
+  
+
+
+</header>
+
+
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../../../">Homepage</a><span class="sep">/</span><a href="../../">Molecular screening <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> excitations</a><span class="sep">/</span><a href="../">Methoxy chelate (1) with chained guesses</a><span class="sep">/</span><span class="current">Evaluate screening <span class="math inline">\varepsilon_s</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-21_164940/2026-10-21_164943/README.md:1" class="remote-readme-link" title="Open this page’s remote README in Visual Studio Code">Open remote</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Language" aria-label="Language"><i class="bi bi-translate" aria-hidden="true"></i>English</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item active" href="../../../../en/2026-10-21_164930/2026-10-21_164940/2026-10-21_164943/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a class="dropdown-item" href="../../../../ja/2026-10-21_164930/2026-10-21_164940/2026-10-21_164943/" hreflang="ja" lang="ja">日本語</a></li></ul></span></span>
+</div>
+<div class="status-accepted callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Succeeded
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="calculations-diagram compact" data-workflow="2026-10-21_164930/2026-10-21_164940" data-current="Evaluate2" data-edges="[[&quot;Optimize3&quot;, &quot;Verify3&quot;], [&quot;Verify3&quot;, &quot;Evaluate2&quot;], [&quot;Verify3&quot;, &quot;Converge2&quot;], [&quot;Verify3&quot;, &quot;Excitations3&quot;], [&quot;Converge2&quot;, &quot;Optimize5&quot;], [&quot;Optimize5&quot;, &quot;Verify5&quot;], [&quot;Verify5&quot;, &quot;Recheck2&quot;], [&quot;Recheck2&quot;, &quot;Excitations4&quot;], [&quot;Excitations3&quot;, &quot;Optimize4&quot;], [&quot;Excitations4&quot;, &quot;Optimize6&quot;], [&quot;Optimize4&quot;, &quot;Verify4&quot;], [&quot;Optimize6&quot;, &quot;Verify6&quot;], [&quot;Start2&quot;, &quot;Input2&quot;], [&quot;Input2&quot;, &quot;Optimize3&quot;], [&quot;Evaluate2&quot;, &quot;Output2Screening&quot;], [&quot;Converge2&quot;, &quot;Output2Screening&quot;], [&quot;Recheck2&quot;, &quot;Output2Screening&quot;], [&quot;Output2Screening&quot;, &quot;End2&quot;], [&quot;Excitations3&quot;, &quot;Output2Excitations&quot;], [&quot;Excitations4&quot;, &quot;Output2Excitations&quot;], [&quot;Output2Excitations&quot;, &quot;End2&quot;], [&quot;Verify3&quot;, &quot;Output2Geometry&quot;], [&quot;Verify5&quot;, &quot;Output2Geometry&quot;], [&quot;Verify4&quot;, &quot;Output2Geometry&quot;], [&quot;Verify6&quot;, &quot;Output2Geometry&quot;], [&quot;Output2Geometry&quot;, &quot;End2&quot;]]" data-details="../details.html"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph MethoxyReference["&lt;span&gt;Reference $$S_0$$ geometry&lt;/span&gt;"]
+        %% description: Establish the $S_0$ reference geometry and verify its curvature before using it in the electronic-response branches.
+        direction TB
+        Optimize3["&lt;a href='../2026-10-21_164941/'&gt;Optimize the B3LYP $$S_0$$ geometry&lt;/a&gt;"]
+        Verify3["&lt;a href='../2026-10-21_164942/'&gt;Verify the B3LYP $$S_0$$ minimum&lt;/a&gt;"]
+    end
+
+    subgraph MethoxyConventional["&lt;span&gt;B3LYP $$\varepsilon_s$$, absorption and $$S_1$$ relaxation&lt;/span&gt;"]
+
+        %% description: Evaluate B3LYP molecular screening and vertical absorption at the reference geometry; where included, relax and verify the $S_1$ structure.
+        direction TB
+        Evaluate2["Evaluate screening $$\varepsilon_s$$"]
+        Excitations3["&lt;a href='../2026-10-21_164944/'&gt;Calculate B3LYP vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
+        Optimize4["&lt;a href='../2026-10-21_164945/'&gt;Optimize the B3LYP $$S_1$$ geometry&lt;/a&gt;"]
+        Verify4["&lt;a href='../2026-10-21_164946/'&gt;Verify the B3LYP $$S_1$$ minimum&lt;/a&gt;"]
+    end
+
+    subgraph MethoxyDielectric["&lt;span&gt;DD-DFT $$\varepsilon_s$$, absorption and $$S_1$$ relaxation&lt;/span&gt;"]
+
+        %% description: Use molecular screening to set $\alpha=1/\varepsilon_s$, then compare DD-DFT geometry, response and absorption with the conventional branch.
+        direction TB
+        Converge2["&lt;a href='../2026-10-21_164947/'&gt;Converge $$\varepsilon_s$$ and weights&lt;/a&gt;"]
+        Optimize5["&lt;a href='../2026-10-21_164948/'&gt;Optimize the DD-DFT $$S_0$$ geometry&lt;/a&gt;"]
+        Verify5["&lt;a href='../2026-10-21_164949/'&gt;Verify the DD-DFT $$S_0$$ minimum&lt;/a&gt;"]
+        Recheck2["&lt;a href='../2026-10-21_164950/'&gt;Recheck $$\varepsilon_s$$ at the DD-DFT geometry&lt;/a&gt;"]
+        Excitations4["&lt;a href='../2026-10-21_164951/'&gt;Calculate DD-DFT vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
+        Optimize6["&lt;a href='../2026-10-21_164952/'&gt;Optimize the DD-DFT $$S_1$$ geometry&lt;/a&gt;"]
+        Verify6["&lt;a href='../2026-10-21_164953/'&gt;Verify the DD-DFT $$S_1$$ minimum&lt;/a&gt;"]
+    end
+
+    Optimize3 --&gt; Verify3
+    Verify3 --&gt; Evaluate2
+    Verify3 --&gt; Converge2
+    Verify3 --&gt; Excitations3
+    Converge2 --&gt; Optimize5
+    Optimize5 --&gt; Verify5
+    Verify5 --&gt; Recheck2
+    Recheck2 --&gt; Excitations4
+    Excitations3 --&gt; Optimize4
+    Excitations4 --&gt; Optimize6
+    Optimize4 --&gt; Verify4
+    Optimize6 --&gt; Verify6
+
+    Start2(( ))
+    Input2[/"Methoxy chelate (1) starting geometry"/]
+    Output2Screening[/"&lt;span&gt;Molecular screening $$\varepsilon_s$$&lt;/span&gt;"/]
+    Output2Excitations[/"&lt;span&gt;Vertical $$S_0\rightarrow S_n$$ excitations&lt;/span&gt;"/]
+    Output2Geometry[/"&lt;span&gt;Verified $$S_0$$ and $$S_1$$ geometries&lt;/span&gt;"/]
+    End2((( )))
+
+    Start2 --&gt; Input2
+    Input2 --&gt; Optimize3
+
+    Evaluate2 --&gt; Output2Screening
+    Converge2 --&gt; Output2Screening
+    Recheck2 --&gt; Output2Screening
+    Output2Screening --&gt; End2
+    Excitations3 --&gt; Output2Excitations
+    Excitations4 --&gt; Output2Excitations
+    Output2Excitations --&gt; End2
+    Verify3 --&gt; Output2Geometry
+    Verify5 --&gt; Output2Geometry
+    Verify4 --&gt; Output2Geometry
+    Verify6 --&gt; Output2Geometry
+    Output2Geometry --&gt; End2
+
+    classDef complete stroke:#198754,stroke-width:2px;
+    classDef warning stroke:#e0a800,stroke-width:2px;
+    classDef serious stroke:#fd7e14,stroke-width:2px;
+    classDef blocked stroke:#dc3545,stroke-width:2px;
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    classDef success stroke:#198754,stroke-width:2px;
+    classDef problems stroke:#e0a800,stroke-width:2px;
+    class Start2,Input2,Optimize3,Evaluate2,Converge2,Optimize5,Verify3,Excitations3,Optimize4,Verify5,Verify4 success;
+    class End2,Output2Geometry,Output2Screening,Output2Excitations,Verify6,Optimize6,Recheck2,Excitations4 problems;
+    class Recheck2,Verify3,Verify4,Verify5,Verify6 verification;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 6 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 7 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 9 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 10 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 11 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 12 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 13 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 14 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 16 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 17 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 19 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 20 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+    linkStyle 21 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 22 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 23 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 24 stroke:#e0a800,color:#e0a800,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 25 stroke:#e0a800,color:#e0a800,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-f94a3cc2e01630e9/script.js"></script>
+<div id="fa3ed051" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<script src="../../../../site_libs/shared-a53d843440cb955d/data.js"></script><script src="../../../../site_libs/shared-21043a32e2f4c52d/data.js"></script>
+</div>
+</div>
+<section id="Input" class="level2 step">
+<h2 class="step anchored" data-anchor-id="Input">Input</h2>
+<section id="Settings" class="level3">
+<h3 class="anchored" data-anchor-id="Settings">Settings</h3>
+<p>Settings from the XYZ comment line.</p>
+<div class="cell" data-execution_count="3">
+<div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;1.</strong> Settings from the XYZ comment line.
+</figcaption>
+<div aria-describedby="tbl-settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 77%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Method<span class="quantity-info" data-description="VGhyZWUtcGFyYW1ldGVyIGh5YnJpZCBleGNoYW5nZSB3aXRoIExlZeKAk1lhbmfigJNQYXJyIGNvcnJlbGF0aW9uLg=="></span></td>
+<td style="text-align: left;">B3LYP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Basis set<span class="quantity-info" data-description="UG9wbGUgc3BsaXQtdmFsZW5jZSBkb3VibGUtemV0YSBiYXNpcyB3aXRoICRkJCBwb2xhcml6YXRpb24gZnVuY3Rpb25zIG9uIGhlYXZ5IGF0b21zIGFuZCAkcCQgZnVuY3Rpb25zIG9uIGh5ZHJvZ2VuOyBhbHNvIHdyaXR0ZW4gYDYtMzFHKipgLg=="></span></td>
+<td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}(d,p)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spin multiplicity <span class="math inline">2S+1</span><span class="quantity-info" data-description="VGhlIHNwaW4gbXVsdGlwbGljaXR5ICQyUysxJCwgd2hpY2ggaXMgJDEkIGZvciBhIHNpbmdsZXQsICQyJCBmb3IgYSBkb3VibGV0IGFuZCAkMyQgZm9yIGEgdHJpcGxldC4gU2luZ2xldHMgbmVlZCBub3QgYmUgY2xvc2VkIHNoZWxsLg=="></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Charge <span class="math inline">q</span><span class="quantity-info" data-description="VGhlIG5ldCBtb2xlY3VsYXIgY2hhcmdlIGluIGVsZW1lbnRhcnkgY2hhcmdlcyBpcyAkcT1cc3VtX0EgWl9BLU4kLCB0aGUgdG90YWwgbnVjbGVhciBjaGFyZ2UgbWludXMgdGhlIG51bWJlciBvZiBlbGVjdHJvbnMu"></span></td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Initial screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCB0aGUgZmlyc3QgaXRlcmF0aW9uIHVzZXMgdG8gc2V0IHRoZSBleGNoYW5nZSBmcmFjdGlvbiAkXGFscGhhPTEvXHZhcmVwc2lsb25fcyQsIGJlZm9yZSB0aGUgbW9sZWN1bGUncyBvd24gcmVzcG9uc2UgcmVwbGFjZXMgaXQu"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Screening iterated to self-consistency<span class="quantity-info" data-description="V2hldGhlciB0aGUgc2NyZWVuaW5nIGlzIHVwZGF0ZWQgZnJvbSBlYWNoIGl0ZXJhdGlvbidzIGVsZWN0cm9uaWMgcmVzcG9uc2UgdW50aWwgJFx2YXJlcHNpbG9uX3MkIGFuZCB0aGUgZGVuc2l0eSBhZ3JlZSwgcmF0aGVyIHRoYW4ga2VwdCBmaXhlZC4="></span></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maximum SCF iterations<span class="quantity-info" data-description="TW9zdCBzZWxmLWNvbnNpc3RlbnQtZmllbGQgaXRlcmF0aW9ucyBhbGxvd2VkIGJlZm9yZSB0aGUgcHJvZ3JhbSBzdG9wcyB3aXRob3V0IGNvbnZlcmdlbmNlLg=="></span></td>
+<td style="text-align: left;">300</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCF convergence threshold<span class="quantity-info" data-description="TGFyZ2VzdCBjaGFuZ2Ugb2YgdGhlIGRlbnNpdHksIG9yIG9mIHRoZSBlbmVyZ3ksIGJldHdlZW4gaXRlcmF0aW9ucyBhdCB3aGljaCB0aGUgU0NGIGNvdW50cyBhcyBjb252ZXJnZWQu"></span></td>
+<td style="text-align: left;"><span class="math inline">\mathord{1\times 10^{-8}}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="Starting_geometry" class="level3">
+<h3 class="anchored" data-anchor-id="Starting_geometry">Starting geometry</h3>
+<p>The structure the calculation starts from.</p>
+<div id="cell-fig-starting-geometry" class="cell" data-execution_count="4">
+<div id="Figure_1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"9553224ed8d045528a6c0d1c352eb7d2","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;1.</strong> Starting geometry.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="Output" class="level2 step">
+<h2 class="step anchored" data-anchor-id="Output">Output</h2>
+<section id="Electronic_structure_and_screening" class="level3">
+<h3 class="anchored" data-anchor-id="Electronic_structure_and_screening">Electronic structure and screening</h3>
+<div class="cell" data-execution_count="5">
+<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lotus-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;2.</strong> Electronic structure and screening of the final density.
+</figcaption>
+<div aria-describedby="tbl-lotus-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 90%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Method<span class="quantity-info" data-description="VGhyZWUtcGFyYW1ldGVyIGh5YnJpZCBleGNoYW5nZSB3aXRoIExlZeKAk1lhbmfigJNQYXJyIGNvcnJlbGF0aW9uLg=="></span></td>
+<td style="text-align: left;">B3LYP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCF iterations<span class="quantity-info" data-description="TnVtYmVyIG9mIHNlbGYtY29uc2lzdGVudC1maWVsZCBpdGVyYXRpb25zIHRoZSBwcm9ncmFtIG5lZWRlZC4="></span></td>
+<td style="text-align: left;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Final density change<span class="quantity-info" data-description="Q2hhbmdlIG9mIHRoZSBkZW5zaXR5IGluIHRoZSBsYXN0IFNDRiBpdGVyYXRpb24sIGEgbWVhc3VyZSBvZiBob3cgd2VsbCBpdCBjb252ZXJnZWQu"></span></td>
+<td style="text-align: left;"><span class="math inline">\mathord{3.80042\times 10^{-9}}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Applied screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCB1c2VkIGluIHRoZSBsYXN0IGl0ZXJhdGlvbiB0byBzZXQgdGhlIGV4Y2hhbmdlIGZyYWN0aW9uICRcYWxwaGE9MS9cdmFyZXBzaWxvbl9zJC4="></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Evaluated screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCBldmFsdWF0ZWQgZnJvbSB0aGUgZmluYWwgZWxlY3Ryb25pYyByZXNwb25zZTsgd2hlbiBpdCBtYXRjaGVzIHRoZSBhcHBsaWVkIHZhbHVlLCB0aGUgc2NyZWVuaW5nIGlzIHNlbGYtY29uc2lzdGVudC4="></span></td>
+<td style="text-align: left;">2.78862</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HOMO energy <span class="math inline">\epsilon_{\mathrm{HOMO}}</span><span class="quantity-info" data-description="RW5lcmd5ICRcZXBzaWxvbl97XG1hdGhybXtIT01PfX0kIG9mIHRoZSBoaWdoZXN0IG9jY3VwaWVkIG1vbGVjdWxhciBvcmJpdGFsIChIT01PKSwgYW4gYXBwcm94aW1hdGlvbiB0byBtaW51cyB0aGUgaW9uaXphdGlvbiBlbmVyZ3kgdGhhdCBkZXBlbmRzIHN0cm9uZ2x5IG9uIHRoZSBleGFjdC1leGNoYW5nZSBmcmFjdGlvbi4="></span></td>
+<td style="text-align: left;"><span class="math inline">-6.47715\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LUMO energy <span class="math inline">\epsilon_{\mathrm{LUMO}}</span><span class="quantity-info" data-description="RW5lcmd5ICRcZXBzaWxvbl97XG1hdGhybXtMVU1PfX0kIG9mIHRoZSBsb3dlc3QgdW5vY2N1cGllZCBtb2xlY3VsYXIgb3JiaXRhbCAoTFVNTyku"></span></td>
+<td style="text-align: left;"><span class="math inline">-2.76549\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HOMO–LUMO gap <span class="math inline">\Delta\epsilon=\epsilon_{\mathrm{LUMO}}-\epsilon_{\mathrm{HOMO}}</span><span class="quantity-info" data-description="RGlmZmVyZW5jZSBvZiB0aGUgZnJvbnRpZXIgb3JiaXRhbCBlbmVyZ2llcywgbm90IGFuIG9wdGljYWwgZXhjaXRhdGlvbiBlbmVyZ3ku"></span></td>
+<td style="text-align: left;"><span class="math inline">3.71165\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hartree–Fock exchange weight <span class="math inline">\alpha</span></td>
+<td style="text-align: left;">0.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Screening uses molecular polarizability and volume, not bulk-liquid permittivity.</p>
+<ul>
+<li><span class="math inline">i\in\mathcal O</span> and <span class="math inline">a\in\mathcal V</span> index occupied and virtual orbitals.</li>
+<li>The volume <span class="math inline">V</span> encloses density above <span class="math inline">0.001\,a_0^{-3}</span>.</li>
+</ul>
+<p>For a doubly occupied reference, the isotropic part of the uncoupled (zeroth-order) polarizability <span class="math inline">\boldsymbol{\alpha}^{(0)}</span> averages three Cartesian components:</p>
+<p><span class="math display">
+\bar{\alpha}^{(0)}=\frac{1}{3}\operatorname{tr}\boldsymbol{\alpha}^{(0)}
+=\frac{4}{3}\sum_{i\in\mathcal O}\sum_{a\in\mathcal V}
+\frac{\left\lVert\langle\phi_i|\mathbf r|\phi_a\rangle\right\rVert^2}{\epsilon_a-\epsilon_i}
+</span></p>
+<p>The squared norm sums Cartesian components. Screening divides polarizability by molecular volume:</p>
+<p><span class="math display">
+\varepsilon_s=1+\frac{4\pi}{V}\,\bar{\alpha}^{(0)}
+</span></p>
+</section>
+<section id="Energy_components" class="level3">
+<h3 class="anchored" data-anchor-id="Energy_components">Energy components</h3>
+<p>Coulomb, weighted exact exchange, and density-functional exchange–correlation contributions.</p>
+<div class="cell" data-execution_count="6">
+<div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-energy-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;3.</strong> Coulomb, weighted exact-exchange and exchange–correlation energies.
+</figcaption>
+<div aria-describedby="tbl-energy-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 92%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Electron Coulomb repulsion <span class="math inline">J</span><span class="quantity-info" data-description="Q2xhc3NpY2FsIGVsZWN0cm9u4oCTZWxlY3Ryb24gQ291bG9tYiBlbmVyZ3kgJEo9XGZyYWMxMlxpaW50XHJobyhcbWF0aGJmIHIpXHJobyhcbWF0aGJmIHJccHJpbWUpL3xcbWF0aGJmIHItXG1hdGhiZiByXHByaW1lfFwsXG1hdGhybSBkXG1hdGhiZiByXCxcbWF0aHJtIGRcbWF0aGJmIHJccHJpbWUkLiBFeGNsdWRlcyBleGNoYW5nZSBhbmQgY29ycmVsYXRpb24u"></span></td>
+<td style="text-align: left;"><span class="math inline">70246.3405503\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exact-exchange contribution <span class="math inline">c_{\mathrm{HF}}E_{\mathrm X}^{\mathrm{HF}}</span><span class="quantity-info" data-description="RXhhY3QtZXhjaGFuZ2UgY29udHJpYnV0aW9uIHdpdGggd2VpZ2h0cyBhbHJlYWR5IGFwcGxpZWQsIGluY2x1ZGluZyBnbG9iYWwgYW5kIG5vbmxvY2FsIHNob3J0LXJhbmdlIGV4Y2hhbmdlLiBEbyBub3QgbXVsdGlwbHkgYnkgdGhlIHdlaWdodHMgYWdhaW4u"></span></td>
+<td style="text-align: left;"><span class="math inline">-855.404675192\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Density-functional contribution <span class="math inline">E_{\mathrm X}^{\mathrm{DFT}}+E_{\mathrm C}^{\mathrm{DFT}}</span><span class="quantity-info" data-description="V2VpZ2h0ZWQgZGVuc2l0eS1mdW5jdGlvbmFsIGV4Y2hhbmdlIGFuZCBjb3JyZWxhdGlvbiwgcmVwb3J0ZWQgdG9nZXRoZXIu"></span></td>
+<td style="text-align: left;"><span class="math inline">-3616.62936167\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Environment contribution<span class="quantity-info" data-description="T3B0aW9uYWwgYGVudmAgY29udHJpYnV0aW9uLCBkaXN0aW5jdCBmcm9tIGVsZWN0cm9u4oCTZWxlY3Ryb24gQ291bG9tYiBlbmVyZ3ku"></span></td>
+<td style="text-align: left;"><span class="math inline">0\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Projection contribution<span class="quantity-info" data-description="T3B0aW9uYWwgYHByb2pgIGNvbnRyaWJ1dGlvbjsgaXQgaXMgbm90IGFzc2lnbmVkIHRvIGEgY2hlbWljYWwgYm9uZC4="></span></td>
+<td style="text-align: left;"><span class="math inline">0\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Electronic energy <span class="math inline">E_{\mathrm{el}}</span><span class="quantity-info" data-description="RWxlY3Ryb25pYyBlbmVyZ3kgb2YgdGhlIGNvbnZlcmdlZCBzb2x1dGlvbiwgaW5jbHVkaW5nIG51Y2xlYXIgcmVwdWxzaW9uLCBub3QgdGhlIHN1bSBvZiB0aGUgcGFydGlhbCBjb21wb25lbnRzIGFib3ZlLg=="></span></td>
+<td style="text-align: left;"><span class="math inline">-33850.1166552\,\mathrm{eV}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>These components omit kinetic, electron–nuclear and nuclear-repulsion terms; density-functional exchange and correlation remain combined.</p>
+</section>
+<section id="SCF_convergence" class="level3">
+<h3 class="anchored" data-anchor-id="SCF_convergence">SCF convergence</h3>
+<p>Energy and density change by recorded SCF step:</p>
+<ul>
+<li>Displayed step numbers start at one.</li>
+<li>Lotus numbers its initial step zero.</li>
+</ul>
+<div id="cell-fig-scf-energy" class="cell" data-execution_count="8">
+<div id="Figure_2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scf-energy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"657d76cf24264469ac4072e720cb7d42","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scf-energy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;2.</strong> Energy by SCF step.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="cell-fig-scf-change" class="cell" data-execution_count="9">
+<div id="Figure_3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scf-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"85e3579773d4412bbef1574805901da1","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scf-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;3.</strong> Density change by SCF step.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="Orbital_gap_per_iteration" class="level3">
+<h3 class="anchored" data-anchor-id="Orbital_gap_per_iteration">Orbital gap per iteration</h3>
+<p>The frontier orbital gap at each recorded step, numbered from one.</p>
+<div id="cell-fig-gap-steps" class="cell" data-execution_count="10">
+<div id="Figure_4" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gap-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"1e49faad7607457dbed9d0ca3d1e963e","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gap-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;4.</strong> Frontier orbital gap at each step.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="Screening_convergence" class="level3">
+<h3 class="anchored" data-anchor-id="Screening_convergence">Screening convergence</h3>
+<p>The screening applied at each outer step, numbered from one, as it converges to the evaluated value.</p>
+<div id="cell-fig-screening-steps" class="cell" data-execution_count="11">
+<div id="Figure_5" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-screening-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"7b67637415d9426b8589ab8c857ce379","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screening-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;5.</strong> Screening applied at each outer step.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="Technical_details" class="level2">
+<h2 class="anchored" data-anchor-id="Technical_details">Technical details</h2>
+<p>The program, the resources and the timing of the calculation.</p>
+<div class="cell" data-execution_count="12">
+<div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="12">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;4.</strong> Program, resources and timing of the calculation.
+</figcaption>
+<div aria-describedby="tbl-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 88%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Program<span class="quantity-info" data-description="UHJvZ3JhbSB3aG9zZSBvdXRwdXQgYW5kIHJlY29yZHMgdGhlIHBhZ2UgcGFyc2VzLCBHYXVzc2lhbiAxNiBvciBMb3R1cy4="></span></td>
+<td style="text-align: left;">Lotus</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested wall time<span class="quantity-info" data-description="V2FsbC10aW1lIGxpbWl0IHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">24:00:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested memory<span class="quantity-info" data-description="TWVtb3J5IHBlciBub2RlIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIsIGluIGJpbmFyeSB1bml0cyBvZiBieXRlcy4="></span></td>
+<td style="text-align: left;">12 GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested CPUs per task<span class="quantity-info" data-description="UHJvY2Vzc29yIGNvcmVzIHBlciB0YXNrIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested nodes<span class="quantity-info" data-description="Tm9kZXMgcmVxdWVzdGVkIGZyb20gdGhlIHNjaGVkdWxlci4="></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested tasks<span class="quantity-info" data-description="VGFza3MsIG9uZSBwcm9jZXNzIGVhY2gsIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested partitions<span class="quantity-info" data-description="U2NoZWR1bGVyIHBhcnRpdGlvbnMgdGhlIGpvYiBtYXkgcnVuIG9uLCBpbiB0aGUgb3JkZXIgdGhlIHJlcXVlc3QgbmFtZXMgdGhlbS4="></span></td>
+<td style="text-align: left;">r01, r02, r03, r04, r05, r06, r07, r08, r09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Program terminated normally<span class="quantity-info" data-description="V2hldGhlciB0aGUgcHJvZ3JhbSByZWFjaGVkIGl0cyBub3JtYWwgY29tcGxldGlvbiByZWNvcmQ7IGEgdGljayBtYXJrcyBhIGNvbXBsZXRlIG91dHB1dCwgYSBjcm9zcyBhbiBlcnJvciB0ZXJtaW5hdGlvbiwgYW5kIGFuIGhvdXJnbGFzcyBhbiBvdXRwdXQgc3RpbGwgcnVubmluZywgcGVuZGluZyBvciBvdGhlcndpc2UgdW5maW5pc2hlZC4="></span></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Slurm job<span class="quantity-info" data-description="U2NoZWR1bGVyIGpvYiBpZGVudGlmaWVyLCBhcyB0aGUgcnVuJ3Mgb3duIHJlY29yZHMgcmVwb3J0IGl0Lg=="></span></td>
+<td style="text-align: left;">197324</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Execution interval<span class="quantity-info" data-description="Rmlyc3QgYW5kIGxhc3QgcmVjb3JkZWQgaW5zdGFudCBvZiB0aGUgcnVuLCBpbiBKYXBhbiBTdGFuZGFyZCBUaW1lOyB0aGUgbGFzdCBpcyB0aGUgcmVuZGVyIHRpbWUgd2hpbGUgdGhlIGpvYiBjb250aW51ZXMu"></span></td>
+<td style="text-align: left;">24 Oct 2026, 08:31:17 – 09:00:36 JST</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wall time<span class="quantity-info" data-description="RWxhcHNlZCByZWFsIHRpbWUgb2YgdGhlIGpvYiBmcm9tIHN0YXJ0IHRvIGVuZC4="></span></td>
+<td style="text-align: left;">0:29:19</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="application/vnd.jupyter.widget-state+json">{"state": {"1e49faad7607457dbed9d0ca3d1e963e": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_ab6ad9e5810d4fc8a24b050258c42e48", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-bb3bf246be172f7bd5eba0a470251513": [{"calculation_gap": 0.27471156131033336, "calculation_iteration": 1, "calculation_native_iteration": 0, "calculation_series": "Orbital gap"}, {"calculation_gap": 0.1539373377324055, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Orbital gap"}, {"calculation_gap": 0.35785774256500885, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Orbital gap"}, {"calculation_gap": 0.429885369693947, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Orbital gap"}, {"calculation_gap": 0.5215370342974579, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Orbital gap"}, {"calculation_gap": 2.4395602773591842, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.6593157815414266, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.610584576992289, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.675514795510798, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7185064193467614, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7036338186389184, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7111609839134467, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7115733138788087, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7115958232932114, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7115637373138073, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7116639008882717, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.711635164859809, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.711651160118595, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.711653125762735, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.7116535136448623, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.711653759712367, "calculation_iteration": 21, "calculation_native_iteration": 20, "calculation_series": "Orbital gap"}]}, "layer": [{"data": {"name": "data-bb3bf246be172f7bd5eba0a470251513"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-bb3bf246be172f7bd5eba0a470251513"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-bb3bf246be172f7bd5eba0a470251513"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "657d76cf24264469ac4072e720cb7d42": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_798eb9e19a1a4a15bedbe35e75cdf62a", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-212661d2f7b46f8c023c517d1d0183d0": [{"calculation_density_change": null, "calculation_energy": -33182.49932801282, "calculation_iteration": 1, "calculation_native_iteration": 0, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0282430187930927, "calculation_energy": -33353.04806258659, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.08513119858848732, "calculation_energy": -25579.53703669013, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.08226638210821886, "calculation_energy": -33575.26310882276, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.033254647674099476, "calculation_energy": -33257.88060923534, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.028951091998504482, "calculation_energy": -33836.369284831555, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.005749773342625279, "calculation_energy": -33842.68737859186, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.002867820161200015, "calculation_energy": -33849.40706809537, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0009849394544098834, "calculation_energy": -33849.99037094015, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0004142591258692202, "calculation_energy": -33850.097753436516, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.00014498783721742273, "calculation_energy": -33850.11472797641, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Electronic energy"}, {"calculation_density_change": 5.0557064404349926e-05, "calculation_energy": -33850.11641924807, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.8702155306932643e-05, "calculation_energy": -33850.11662142821, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Electronic energy"}, {"calculation_density_change": 5.957982601189836e-06, "calculation_energy": -33850.11665265433, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.9804502424265256e-06, "calculation_energy": -33850.116654414414, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Electronic energy"}, {"calculation_density_change": 7.715923565962826e-07, "calculation_energy": -33850.11665513406, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Electronic energy"}, {"calculation_density_change": 2.8601979636001946e-07, "calculation_energy": -33850.116655080805, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.3856717180848528e-07, "calculation_energy": -33850.11665520336, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Electronic energy"}, {"calculation_density_change": 4.9598790771813323e-08, "calculation_energy": -33850.11665515488, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Electronic energy"}, {"calculation_density_change": 2.5085668377805282e-08, "calculation_energy": -33850.1166551606, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.0384223591430234e-08, "calculation_energy": -33850.11665515734, "calculation_iteration": 21, "calculation_native_iteration": 20, "calculation_series": "Electronic energy"}]}, "layer": [{"data": {"name": "data-212661d2f7b46f8c023c517d1d0183d0"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-212661d2f7b46f8c023c517d1d0183d0"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-212661d2f7b46f8c023c517d1d0183d0"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "798eb9e19a1a4a15bedbe35e75cdf62a": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "7b67637415d9426b8589ab8c857ce379": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_f7e70abfb20d48d48888f0de1e0862e6", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-4ec6c1290bf96007e0c4517e2c1bc6d1": [{"calculation_epsilon": 1, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Applied screening"}]}, "layer": [{"data": {"name": "data-4ec6c1290bf96007e0c4517e2c1bc6d1"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-4ec6c1290bf96007e0c4517e2c1bc6d1"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-4ec6c1290bf96007e0c4517e2c1bc6d1"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "85e3579773d4412bbef1574805901da1": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_c8f77ac3cd4b40eeb4ef7e70c0a35c10", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-92b9df72ca680ac4e17e70878a7f7578": [{"calculation_density_change": 0.0282430187930927, "calculation_energy": -33353.04806258659, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Density change"}, {"calculation_density_change": 0.08513119858848732, "calculation_energy": -25579.53703669013, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Density change"}, {"calculation_density_change": 0.08226638210821886, "calculation_energy": -33575.26310882276, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Density change"}, {"calculation_density_change": 0.033254647674099476, "calculation_energy": -33257.88060923534, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Density change"}, {"calculation_density_change": 0.028951091998504482, "calculation_energy": -33836.369284831555, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Density change"}, {"calculation_density_change": 0.005749773342625279, "calculation_energy": -33842.68737859186, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Density change"}, {"calculation_density_change": 0.002867820161200015, "calculation_energy": -33849.40706809537, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Density change"}, {"calculation_density_change": 0.0009849394544098834, "calculation_energy": -33849.99037094015, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Density change"}, {"calculation_density_change": 0.0004142591258692202, "calculation_energy": -33850.097753436516, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Density change"}, {"calculation_density_change": 0.00014498783721742273, "calculation_energy": -33850.11472797641, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Density change"}, {"calculation_density_change": 5.0557064404349926e-05, "calculation_energy": -33850.11641924807, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Density change"}, {"calculation_density_change": 1.8702155306932643e-05, "calculation_energy": -33850.11662142821, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Density change"}, {"calculation_density_change": 5.957982601189836e-06, "calculation_energy": -33850.11665265433, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Density change"}, {"calculation_density_change": 1.9804502424265256e-06, "calculation_energy": -33850.116654414414, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Density change"}, {"calculation_density_change": 7.715923565962826e-07, "calculation_energy": -33850.11665513406, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Density change"}, {"calculation_density_change": 2.8601979636001946e-07, "calculation_energy": -33850.116655080805, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Density change"}, {"calculation_density_change": 1.3856717180848528e-07, "calculation_energy": -33850.11665520336, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Density change"}, {"calculation_density_change": 4.9598790771813323e-08, "calculation_energy": -33850.11665515488, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Density change"}, {"calculation_density_change": 2.5085668377805282e-08, "calculation_energy": -33850.1166551606, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Density change"}, {"calculation_density_change": 1.0384223591430234e-08, "calculation_energy": -33850.11665515734, "calculation_iteration": 21, "calculation_native_iteration": 20, "calculation_series": "Density change"}]}, "layer": [{"data": {"name": "data-92b9df72ca680ac4e17e70878a7f7578"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-92b9df72ca680ac4e17e70878a7f7578"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-92b9df72ca680ac4e17e70878a7f7578"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "9553224ed8d045528a6c0d1c352eb7d2": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-8.467146999999999, -4.582195, -1.965301], [8.766933, 3.830922, 2.124911]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_a80e728865104030b9259d354d5b59ad", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhALAIC5qVAgAAHAYAAA4AAAB0cmFqZWN0b3J5Lnh5ek1US64UORDcv1P0BbqU/892kBCb0ZwBoafZMEJCsJjbEy6nG3ZVcjgyMzLC2m9/f/v6/uXn18/fH/++f/vv/cf3/98+PPJSoaoiogdfxiJ2fz8JB1yd+Hn75xEXuUTHOpKLUml/AybmpLxgHx52tWSFbDaV9OADU06RA6tudpojyrDyg6sgGzq9Iov0VEoNszy4cF6whZPLgvPVONpp0fnh8ijdOL6ExF6dZ1LWucRe6blxiwNs+jrLKLsJV7MiNXWfi9DabHD4YjuDkISSb/kAZCvh3bxADE39LSB+7w7/Aj+javjgur3thWPhXqXePi6cmeYurFeBu/clXsoo8cGJK7Y6uFBebPd2iHbjqz9caqbuKUse3XJskE13oTWwXB72x9nadY0w7UU9OJRyypTTkmfoCCjYTRwcDGMceUySbl62cTCB+izu6WtzkUMRgnVPWdXFsNV7BgzDvitB8mbJHjbsOmZawNrgCtluNmxJJwD4yBjPP/PCN2/H0eXkvJ29dqt1L3rPwBT0ilC51BRl7R2tLV0x2W1tHK3Nug8bvGF5rOyMqJ0EZccrJgz7V59kJKZrmjxaFv9hZIRrwT4h3YYt+ExQypp5VgIFXDasLoroLRvMuaY58VGuvB242RINDVtiUxGjjfHtiYVyzImYHosgppUvNozvtnHLIknc00+tx+ZkR0m3G4FbI3H4KQsy4xFRV5oPTPEIQGwdDytcZrMHhSQ27cFKq3OmqWsuLuMlT9c8fIHYE+/3C7uTmt3hCqryKAyTuEn369Ek3gZaP4ajGI1hEwRTdPjcU/wkx6v20/NpdQSyPhZGUOL3UwaMjHp8Oby1HxtcCWTgwPA0i8cRGa6vvIdVOIhazmIY79OG/QJQSwECFAMUAAAACAAAACEAbQ3ruscAAABsAQAACgAAAAAAAAAAAAAAgAEAAAAAaW5kZXgubXZzalBLAQIUAxQAAAAIAAAAIQCwCAualQIAABwGAAAOAAAAAAAAAAAAAACAAe8AAAB0cmFqZWN0b3J5Lnh5elBLBQYAAAAAAgACAHQAAACwAwAAAAA=", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}, "a80e728865104030b9259d354d5b59ad": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ab6ad9e5810d4fc8a24b050258c42e48": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "c8f77ac3cd4b40eeb4ef7e70c0a35c10": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "f7e70abfb20d48d48888f0de1e0862e6": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}}, "version_major": 2, "version_minor": 0}</script>
+<script id="quarto-html-after-body" type="application/javascript" src="../../../../site_libs/shared-7d5abf28cd7b432e/script.js"></script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<!-- Fold sections: a ::: {.fold} div opening with a heading, which Pandoc renders as
+     section.fold; the heading becomes the summary of a collapsible block, so it stays a
+     real heading and appears in the TOC. -->
+<link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
+<script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
+<script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
+
+
+
+
+</body></html>

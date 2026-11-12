@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Giovanni Gravili">
+
+<title>Follow both PM6 proton-transfer IRC branches (indigo)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html-fd12455ea9a5/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html-fd12455ea9a5/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html-fd12455ea9a5/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+<!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
+<script>window.requireJsDefine = window.define;</script>
+<!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
+<script src="../../../../site_libs/shared-ceab9ae74975b28a/script.js"></script>
+<!-- Match visible KaTeX glyph heights to the surrounding text without rounding small canvas measurements. -->
+<script src="../../../../site_libs/shared-a3a28c948f20a597/script.js"></script>
+<script>
+// GitHub Pages serves every page also under its folder's index.html; show the folder's own URL instead.
+if (location.pathname.endsWith("/index.html")) {
+    history.replaceState(history.state, "", location.pathname.slice(0, -"index.html".length) + location.search + location.hash);
+}
+</script>
+<!-- KaTeX and its mhchem extension, so \ce{...} renders on every page, load here, once and before the page parses on. Quarto's own loader starts it only when the page has
+     parsed and shields it from the widgets' RequireJS only if that loader is visible then, so KaTeX could register
+     as an AMD module instead of a global and leave the math raw until a reload. RequireJS's define, saved by mathml.html, is hidden for
+     this one script alone. These pages give Quarto's loader an empty script as KaTeX, so its render runs on this
+     global KaTeX once the empty script has loaded. -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+<script>window.define = undefined;</script>
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script>
+<script>window.define = window.requireJsDefine; delete window.requireJsDefine;</script>
+<!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
+     the viewers' own request of the same URL. -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../../site_libs/shared-4186f095b6f8d716/style.css">
+<script src="../../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<script>
+// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
+// default scales; the browser's context menu is suppressed only over the plot itself.
+document.addEventListener('contextmenu', event => {
+    const plot = event.target.closest?.('.vega-embed');
+    if (!plot || event.target.closest('.vega-actions')) return;
+    event.preventDefault();
+    event.target.dispatchEvent(new MouseEvent('dblclick', {
+        bubbles: true, cancelable: true, composed: true, view: window,
+        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
+    }));
+});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+<script>
+// Quarto's hover popovers copy a bibliography entry's raw math spans, which are typeset on display. The popovers of
+// links and calculations copy spans that KaTeX has typeset already, whose text is the MathML and HTML renderings
+// joined, not TeX, so a span that holds KaTeX output is never typeset again: its content decides, whichever popover
+// made it.
+new MutationObserver(() => {
+    if (!globalThis.katex) return;
+    for (const span of document.querySelectorAll('.tippy-box span.math:not([data-typeset])')) {
+        span.dataset.typeset = 'true';
+        if (span.querySelector('.katex, .katex-display, math')) continue;
+        katex.render(span.textContent.replace(/^\\[(\[]|\\[)\]]$/g, ''), span,
+                     {throwOnError: false, displayMode: span.classList.contains('display')});
+    }
+}).observe(document.documentElement, {childList: true, subtree: true});
+</script>
+<script src="../../../../site_libs/shared-8727be5863cdcdab/script.js"></script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+
+  <script defer="" src="data:text/javascript,//katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="data:text/javascript,//katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../site_libs/shared-6ebb7daf2f043e36/styles.css">
+</head>
+
+<body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#系" id="toc-系" class="nav-link active" data-scroll-target="#系">系</a></li>
+  <li><a href="#入力" id="toc-入力" class="nav-link" data-scroll-target="#入力">入力</a>
+  <ul>
+  <li><a href="#Link_0_コマンド" id="toc-Link_0_コマンド" class="nav-link" data-scroll-target="#Link_0_コマンド">Link 0 コマンド</a></li>
+  <li><a href="#ルートキーワードとオプション" id="toc-ルートキーワードとオプション" class="nav-link" data-scroll-target="#ルートキーワードとオプション">ルートキーワードとオプション</a></li>
+  <li><a href="#分子の指定" id="toc-分子の指定" class="nav-link" data-scroll-target="#分子の指定">分子の指定</a></li>
+  <li><a href="#初期構造" id="toc-初期構造" class="nav-link" data-scroll-target="#初期構造">初期構造</a></li>
+  </ul></li>
+  <li><a href="#出力" id="toc-出力" class="nav-link" data-scroll-target="#出力">出力</a>
+  <ul>
+  <li><a href="#SCF_収束" id="toc-SCF_収束" class="nav-link" data-scroll-target="#SCF_収束">SCF 収束</a></li>
+  <li><a href="#計算に沿った力" id="toc-計算に沿った力" class="nav-link" data-scroll-target="#計算に沿った力">計算に沿った力</a></li>
+  <li><a href="#ジョブに沿った構造" id="toc-ジョブに沿った構造" class="nav-link" data-scroll-target="#ジョブに沿った構造">ジョブに沿った構造</a></li>
+  <li><a href="#反応経路" id="toc-反応経路" class="nav-link" data-scroll-target="#反応経路">反応経路</a></li>
+  <li><a href="#フロンティア軌道" id="toc-フロンティア軌道" class="nav-link" data-scroll-target="#フロンティア軌道">フロンティア軌道</a></li>
+  <li><a href="#チェックポイント" id="toc-チェックポイント" class="nav-link" data-scroll-target="#チェックポイント">チェックポイント</a>
+  <ul class="collapse">
+  <li><a href="#チェックポイントの構造" id="toc-チェックポイントの構造" class="nav-link" data-scroll-target="#チェックポイントの構造">チェックポイントの構造</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#技術的な詳細" id="toc-技術的な詳細" class="nav-link" data-scroll-target="#技術的な詳細">技術的な詳細</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Follow the PM6 proton-transfer IRC along <span class="math inline">\pm s</span></h1>
+</div>
+
+
+<!-- Quarto title metadata for authors, dates and scientific document details. -->
+
+<div class="quarto-title-meta has-remote-link">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>Giovanni Gravili <a href="https://orcid.org/0009-0001-0115-359X" class="quarto-title-author-orcid" aria-label="Giovanni Gravili の ORCID プロフィール"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">公開</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年10月15日</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">更新日</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026年11月12日</p>
+    </div>
+  </div>
+    
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">リモートで開く</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-15_203846/2026-10-15_203847/2026-10-15_210001/README.md:1" title="このページのリモート README を Visual Studio Code で開きます">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
+  </div>
+  
+
+
+</header>
+
+
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">Indigo and epindolidione proton transfer</a><span class="sep">/</span><a href="../">Indigo proton transfer</a><span class="sep">/</span><span class="current">Follow the PM6 proton-transfer IRC along <span class="math inline">\pm s</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-15_203846/2026-10-15_203847/2026-10-15_210001/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-10-15_203846/2026-10-15_203847/2026-10-15_210001/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-10-15_203846/2026-10-15_203847/2026-10-15_210001/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+</div>
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ヒント</span>承認
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Both PM6 IRC directions were followed from the saddle; separate endpoint optimizations test the resulting structures. The path does not establish B3LYP stationarity or a B3LYP reaction barrier.</li>
+</ul>
+</div>
+</div>
+<div class="calculations-diagram compact" data-workflow="2026-10-15_203846/2026-10-15_203847" data-current="IRC1" data-edges="[[&quot;Optimize1&quot;, &quot;Scan1&quot;], [&quot;Scan1&quot;, &quot;Refine1&quot;], [&quot;Refine1&quot;, &quot;IRC1&quot;], [&quot;IRC1&quot;, &quot;Optimize2&quot;], [&quot;IRC1&quot;, &quot;Optimize3&quot;], [&quot;Optimize2&quot;, &quot;Evaluate1&quot;], [&quot;Refine1&quot;, &quot;Evaluate2&quot;], [&quot;Optimize3&quot;, &quot;Evaluate3&quot;], [&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;Optimize1&quot;], [&quot;Scan1&quot;, &quot;Output1Energy&quot;], [&quot;IRC1&quot;, &quot;Output1Energy&quot;], [&quot;Output1Energy&quot;, &quot;End1&quot;], [&quot;Refine1&quot;, &quot;Output1Modes&quot;], [&quot;Optimize2&quot;, &quot;Output1Modes&quot;], [&quot;Optimize3&quot;, &quot;Output1Modes&quot;], [&quot;Output1Modes&quot;, &quot;End1&quot;], [&quot;Evaluate1&quot;, &quot;Output1Fields&quot;], [&quot;Evaluate2&quot;, &quot;Output1Fields&quot;], [&quot;Evaluate3&quot;, &quot;Output1Fields&quot;], [&quot;Output1Fields&quot;, &quot;End1&quot;]]" data-details="../details.html"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph Sampling["&lt;span&gt;Minimum and proton-transfer $$q$$ sampling&lt;/span&gt;"]
+        %% description: Relax the remaining coordinates while sampling the transfer coordinate $q$ to locate a candidate barrier region for saddle refinement.
+        direction TB
+        Optimize1["&lt;a href='../2026-10-15_203848/'&gt;Optimize the PM6 $$S_0$$ geometry&lt;/a&gt;"]
+        Scan1["&lt;a href='../2026-10-15_203849/'&gt;Scan the relaxed PM6 proton-transfer coordinate&lt;/a&gt;"]
+    end
+
+    subgraph Path["Saddle and reaction path"]
+
+        %% description: Refine the saddle, check its negative-curvature mode and follow the intrinsic reaction coordinate to establish which endpoint regions it connects.
+        direction TB
+        Refine1["&lt;a href='../2026-10-15_203850/'&gt;Refine and verify the PM6 proton-transfer TS&lt;/a&gt;"]
+        IRC1["Follow the PM6 proton-transfer IRC along $$\pm s$$"]
+    end
+
+    subgraph Minima["Endpoint minima"]
+
+        %% description: Optimize each IRC endpoint separately and check its harmonic frequencies to distinguish stationary minima from points where path following stopped.
+        direction TB
+        Optimize2["&lt;a href='../2026-10-15_210002/'&gt;Optimize and verify the PM6 N–H endpoint&lt;/a&gt;"]
+        Optimize3["&lt;a href='../2026-10-15_210003/'&gt;Optimize and verify the PM6 O–H endpoint&lt;/a&gt;"]
+    end
+
+    subgraph Fields["&lt;span&gt;Electron density $$\rho$$ and ESP $$V$$&lt;/span&gt;"]
+
+        %% description: Compare electron density $\rho$ and electrostatic potential $V$ at the selected geometries using a common surface and potential scale.
+        direction TB
+        Evaluate1["&lt;a href='../2026-10-16_094543/'&gt;Evaluate B3LYP fields at the N–H minimum&lt;/a&gt;"]
+        Evaluate2["&lt;a href='../2026-10-16_094544/'&gt;Evaluate B3LYP fields at the proton-transfer TS&lt;/a&gt;"]
+        Evaluate3["&lt;a href='../2026-10-16_094545/'&gt;Evaluate B3LYP fields at the O–H minimum&lt;/a&gt;"]
+    end
+
+    Optimize1 --&gt; Scan1
+    Scan1 --&gt; Refine1
+    Refine1 --&gt; IRC1
+    IRC1 --&gt; Optimize2
+    IRC1 --&gt; Optimize3
+    Optimize2 --&gt; Evaluate1
+    Refine1 --&gt; Evaluate2
+    Optimize3 --&gt; Evaluate3
+
+    Start1(( ))
+    Input1[/"Indigo N–H starting geometry"/]
+    Output1Energy[/"&lt;span&gt;Proton-transfer profiles $$\Delta E$$&lt;/span&gt;"/]
+    Output1Modes[/"&lt;span&gt;Stationary-point modes $$\nu_i$$&lt;/span&gt;"/]
+    Output1Fields[/"&lt;span&gt;Density $$\rho$$ and ESP $$V$$&lt;/span&gt;"/]
+    End1((( )))
+
+    Start1 --&gt; Input1
+    Input1 --&gt; Optimize1
+
+    Scan1 --&gt; Output1Energy
+    IRC1 --&gt; Output1Energy
+    Output1Energy --&gt; End1
+    Refine1 --&gt; Output1Modes
+    Optimize2 --&gt; Output1Modes
+    Optimize3 --&gt; Output1Modes
+    Output1Modes --&gt; End1
+    Evaluate1 --&gt; Output1Fields
+    Evaluate2 --&gt; Output1Fields
+    Evaluate3 --&gt; Output1Fields
+    Output1Fields --&gt; End1
+
+    classDef complete stroke:#198754,stroke-width:2px;
+    classDef warning stroke:#e0a800,stroke-width:2px;
+    classDef serious stroke:#fd7e14,stroke-width:2px;
+    classDef blocked stroke:#dc3545,stroke-width:2px;
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    classDef success stroke:#198754,stroke-width:2px;
+    classDef problems stroke:#e0a800,stroke-width:2px;
+    class Optimize1,Scan1,Input1,Start1,IRC1,Evaluate1,Evaluate2,Evaluate3,Output1Energy,Output1Fields,Refine1,Optimize2,Optimize3,End1,Output1Modes success;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 6 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 7 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 9 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 10 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 11 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 12 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 13 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 14 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 16 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 17 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 19 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 20 stroke:#198754,color:#198754,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-f94a3cc2e01630e9/script.js"></script>
+<div id="faae40a9" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<script src="../../../../site_libs/shared-2ca02f32230db106/data.js"></script><script src="../../../../site_libs/shared-c00d40ea6ec121e8/data.js"></script>
+</div>
+</div>
+<section id="系" class="level2">
+<h2 class="anchored" data-anchor-id="系">系</h2>
+<p>このジョブが扱った系、その対称性と電子。手法と基底関数は上の入力のものです。</p>
+<ul>
+<li><span class="math inline">N_\alpha</span> と <span class="math inline">N_\beta</span> は上向きスピンと下向きスピンの電子数で、その和は核電荷 <span class="math inline">Z_A</span> の和から電荷 <span class="math inline">q</span> を引いたものです。</li>
+<li>その差がスピン射影 <span class="math inline">M_S=(N_\alpha-N_\beta)/2</span> を決め、通常の最高重み入力では <span class="math inline">S=M_S</span> です。</li>
+<li>閉殻では軌道が二重占有されています。スピン数が等しいことだけでは閉殻とは言えません。</li>
+</ul>
+<p><span class="math display">
+N_\alpha+N_\beta=\sum_A Z_A-q,\qquad 2S+1=N_\alpha-N_\beta+1
+</span></p>
+<div class="cell" data-execution_count="3">
+<div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-system-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;1. 系の電子、電荷、スピン、対称性。
+</figcaption>
+<div aria-describedby="tbl-system-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">量</th>
+<th style="text-align: left;">値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">電荷 <span class="math inline">q</span><span class="quantity-info" data-description="6Zu75rCX57Sg6YeP5Y2Y5L2N44Gn44Gu5YiG5a2Q44Gu5q2j5ZGz44Gu6Zu76I23ICRxPVxzdW1fQSBaX0EtTiTjgILljp/lrZDmoLjjga7pm7vojbfjga7lkIjoqIjjgYvjgonpm7vlrZDmlbDjgpLlvJXjgYTjgZ/jgoLjga7jgII="></span></td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">スピン多重度 <span class="math inline">2S+1</span><span class="quantity-info" data-description="44K544OU44Oz5aSa6YeN5bqmICQyUysxJOOBp+OAgeS4gOmHjemgheOBryAkMlMrMT0xJOOAgeS6jOmHjemgheOBryAkMiTjgIHkuInph43poIXjga8gJDMk44CC5LiA6YeN6aCF44GM6ZaJ5q6744Go44Gv6ZmQ44KJ44Gq44GE44CC"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">原子数<span class="quantity-info" data-description="5Y6f5a2Q44Gu5pWw44CC"></span></td>
+<td style="text-align: left;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gaussian が使った点群<span class="quantity-info" data-description="R2F1c3NpYW4g44GM6Kix5a656Kqk5beu5YaF44Gn5qSc5Ye644GX44Gf54K5576k44CC5Ye65Yqb44GV44KM44KL54q25oWL44Gu44Op44OZ44Or44Gv44Gd44Gu5pyA5aSn44Gu44Ki44O844OZ44Or6YOo5YiG576k44Gr44KI44KL44CC"></span></td>
+<td style="text-align: left;"><span class="math inline">C_{1}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">構造の点群<span class="quantity-info" data-description="JDAuMDJcLGFfMCQg5Lul5YaF44Gu5bqn5qiZ44GL44KJ5rGC44KB44Gf5a6M5YWo44Gq54K5576k44CC6LuM6YGT44Go54q25oWL44Gu44Op44OZ44Or44Gv44GT44Gu576k44Gr44KI44KL44CC"></span></td>
+<td style="text-align: left;"><span class="math inline">C_{s}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">基底関数<span class="quantity-info" data-description="5YiG5a2Q6LuM6YGTICRccHNpX2k9XHN1bV9cbXUgY197XG11IGl9XGNoaV9cbXUkIOOCkue1hOOBv+eri+OBpuOCi+WOn+WtkOS4reW/g+mWouaVsCAkXGNoaV9cbXUkIOOBruaVsOOAgg=="></span></td>
+<td style="text-align: left;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">独立な関数<span class="quantity-info" data-description="6L+R5Ly855qE44Gq5LiA5qyh5b6T5bGe44KS6Zmk44GE44Gf5b6M44Gr5q6L44KL5Z+65bqV6Zai5pWw44Gu5LiA5qyh54us56uL44Gq57WE44G/5ZCI44KP44Gb44Gu5pWw44CC5YiG5a2Q6LuM6YGT44Gu5pWw44Gr562J44GX44GE44CC"></span></td>
+<td style="text-align: left;">90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">α 電子数 <span class="math inline">N_\alpha</span><span class="quantity-info" data-description="zrEg44K544OU44Oz44Gu6Zu75a2Q5pWwICROX1xhbHBoYSTjgIIkTV9TPShOX1xhbHBoYS1OX1xiZXRhKS8yJOOAgg=="></span></td>
+<td style="text-align: left;">48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">β 電子数 <span class="math inline">N_\beta</span><span class="quantity-info" data-description="zrIg44K544OU44Oz44Gu6Zu75a2Q5pWwICROX1xiZXRhJOOAgiRNX1M9KE5fXGFscGhhLU5fXGJldGEpLzIk44CC"></span></td>
+<td style="text-align: left;">48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">閉殻<span class="quantity-info" data-description="5LqM6YeN5Y2g5pyJ44Gu6LuM6YGT44Gr44KI44KL5Yi26ZmQ5Y+C54Wn44Gv6ZaJ5q6744CC44K544OU44Oz44Gu5pWw44GM562J44GX44GE44Gg44GR44Gn44Gv6ZaJ5q6744Go44Gv6KiA44GI44Gq44GE44CC"></span></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="入力" class="level2 step">
+<h2 class="step anchored" data-anchor-id="入力">入力</h2>
+<section id="Link_0_コマンド" class="level3">
+<h3 class="anchored" data-anchor-id="Link_0_コマンド">Link 0 コマンド</h3>
+<p>Link 0 はメモリ、プロセッサ、ファイルを設定します。</p>
+<div class="cell" data-execution_count="4">
+<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-link0-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;2. ジョブの Link 0 コマンド。
+</figcaption>
+<div aria-describedby="tbl-link0-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">コマンド</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">意味</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
+<td style="text-align: left;">前の計算のデータを読み込むために、開始時にこのジョブのチェックポイントにコピーするチェックポイントファイル。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Chk</code></a></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
+<td style="text-align: left;">このジョブが書き出すチェックポイントファイル。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a></td>
+<td style="text-align: left;">512 MB</td>
+<td style="text-align: left;">Gaussian が使える動的メモリ。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">共有メモリ並列実行で使うプロセッサの数。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="ルートキーワードとオプション" class="level3">
+<h3 class="anchored" data-anchor-id="ルートキーワードとオプション">ルートキーワードとオプション</h3>
+<p>ルートは手法、基底関数、ジョブの種類を指定します。</p>
+<div class="cell" data-execution_count="5">
+<div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-route-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;3. ルートキーワードとそのオプション。
+</figcaption>
+<div aria-describedby="tbl-route-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="subtables cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th rowspan="2" style="text-align: left;" data-quarto-table-cell-role="th"><p>キーワード</p></th>
+<th rowspan="2" style="text-align: left;" data-quarto-table-cell-role="th"><p>意味</p></th>
+<th colspan="3" style="text-align: center;" data-quarto-table-cell-role="th"><p>オプション</p></th>
+</tr>
+<tr class="subheader even">
+<th style="text-align: left;" data-quarto-table-cell-role="th"><p>オプション</p></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"><p>値</p></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"><p>意味</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="group-start group-odd odd">
+<td style="text-align: left;"><p><a href="https://gaussian.com/semiempirical/"><code>PM6</code></a></p></td>
+<td style="text-align: left;"><p>PM6 半経験的方法。</p></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="group-start group-even even">
+<td rowspan="4" style="text-align: left;"><p><a href="https://gaussian.com/irc/"><code>IRC</code></a></p></td>
+<td rowspan="4" style="text-align: left;"><p>遷移状態から出発して、固有反応座標に沿って反応経路を追跡する。</p></td>
+<td class="sub-odd" style="text-align: left;"><p><code>RCFC</code></p></td>
+<td class="sub-odd" style="text-align: left;"></td>
+<td class="sub-odd" style="text-align: left;"><p>デカルト座標での力の定数をチェックポイントファイルから読み込み、変換する。</p></td>
+</tr>
+<tr class="group-row group-even odd">
+<td class="sub-even" style="text-align: left;"><p><code>MaxPoints</code></p></td>
+<td class="sub-even" style="text-align: left;"><p>100</p></td>
+<td class="sub-even" style="text-align: left;"><p>各方向の経路上の点は最大 <span class="math inline">100</span> 個。</p></td>
+</tr>
+<tr class="group-row group-even even">
+<td class="sub-odd" style="text-align: left;"><p><code>StepSize</code></p></td>
+<td class="sub-odd" style="text-align: left;"><p>10</p></td>
+<td class="sub-odd" style="text-align: left;"><p>経路に沿ったステップ幅は <span class="math inline">10\times 0.01\,a_0</span>。</p></td>
+</tr>
+<tr class="group-row group-even odd">
+<td class="sub-even" style="text-align: left;"><p><code>Phase</code></p></td>
+<td class="sub-even" style="text-align: left;"><p>13, 25</p></td>
+<td class="sub-even" style="text-align: left;"><p>遷移ベクトルに沿った順方向の動きで、原子 <span class="math inline">13, 25</span> が定める内部座標が増加する。</p></td>
+</tr>
+<tr class="group-start group-odd even">
+<td rowspan="2" style="text-align: left;"><p><a href="https://gaussian.com/scf/"><code>SCF</code></a></p></td>
+<td rowspan="2" style="text-align: left;"><p>自己無撞着場の手順の制御。</p></td>
+<td class="sub-odd" style="text-align: left;"><p><code>Tight</code></p></td>
+<td class="sub-odd" style="text-align: left;"></td>
+<td class="sub-odd" style="text-align: left;"><p>厳しい SCF の収束。既定。</p></td>
+</tr>
+<tr class="group-row group-odd odd">
+<td class="sub-even" style="text-align: left;"><p><code>MaxCycle</code></p></td>
+<td class="sub-even" style="text-align: left;"><p>128</p></td>
+<td class="sub-even" style="text-align: left;"><p>SCF は最大 <span class="math inline">128</span> サイクル。</p></td>
+</tr>
+<tr class="group-start group-even even">
+<td style="text-align: left;"><p><a href="https://gaussian.com/geom/"><code>Geom</code></a></p></td>
+<td style="text-align: left;"><p>分子の指定の取得元と扱い。</p></td>
+<td class="sub-odd" style="text-align: left;"><p><code>AllCheck</code></p></td>
+<td class="sub-odd" style="text-align: left;"></td>
+<td class="sub-odd" style="text-align: left;"><p>構造、電荷、スピン多重度、タイトルをチェックポイントファイルから取る。</p></td>
+</tr>
+<tr class="group-start group-odd odd">
+<td style="text-align: left;"><p><a href="https://gaussian.com/guess/"><code>Guess</code></a></p></td>
+<td style="text-align: left;"><p>SCF 波動関数の初期推定。</p></td>
+<td class="sub-odd" style="text-align: left;"><p><code>Read</code></p></td>
+<td class="sub-odd" style="text-align: left;"></td>
+<td class="sub-odd" style="text-align: left;"><p>初期推定をチェックポイントファイルから読み込む。</p></td>
+</tr>
+<tr class="group-start group-even even">
+<td style="text-align: left;"><p><a href="https://gaussian.com/symmetry/"><code>NoSymm</code></a></p></td>
+<td style="text-align: left;"><p>入力の向きを保ち、分子の対称性を使わない。</p></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="分子の指定" class="level3">
+<h3 class="anchored" data-anchor-id="分子の指定">分子の指定</h3>
+<p>ジョブのタイトル、電荷とスピン多重度、そして Gaussian が構造をどこから読み込んだか。</p>
+<div class="cell" data-execution_count="6">
+<div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;4. ジョブのタイトル、電荷、スピン多重度、構造の出所。
+</figcaption>
+<div aria-describedby="tbl-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 91%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">量</th>
+<th style="text-align: left;">値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">電荷 <span class="math inline">q</span><span class="quantity-info" data-description="6Zu75rCX57Sg6YeP5Y2Y5L2N44Gn44Gu5YiG5a2Q44Gu5q2j5ZGz44Gu6Zu76I23ICRxPVxzdW1fQSBaX0EtTiTjgILljp/lrZDmoLjjga7pm7vojbfjga7lkIjoqIjjgYvjgonpm7vlrZDmlbDjgpLlvJXjgYTjgZ/jgoLjga7jgII="></span></td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">スピン多重度 <span class="math inline">2S+1</span><span class="quantity-info" data-description="44K544OU44Oz5aSa6YeN5bqmICQyUysxJOOBp+OAgeS4gOmHjemgheOBryAkMlMrMT0xJOOAgeS6jOmHjemgheOBryAkMiTjgIHkuInph43poIXjga8gJDMk44CC5LiA6YeN6aCF44GM6ZaJ5q6744Go44Gv6ZmQ44KJ44Gq44GE44CC"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">構造の出所<span class="quantity-info" data-description="44K444On44OW44GM6ZaL5aeL5qeL6YCg44KS5Y+W44KL5aC05omA44Gn44CB5YWl5Yqb44OV44Kh44Kk44Or44Gu5bqn5qiZ44CB44G+44Gf44Gv5Lul5YmN44Gu44K444On44OW44GM44OB44Kn44OD44Kv44Od44Kk44Oz44OI44Gr5L+d5a2Y44GX44Gf5bqn5qiZ44CC"></span></td>
+<td style="text-align: left;">チェックポイントファイル</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="初期構造" class="level3">
+<h3 class="anchored" data-anchor-id="初期構造">初期構造</h3>
+<p>計算の出発点となる構造です。</p>
+<div id="cell-fig-starting-geometry" class="cell" data-execution_count="7">
+<div id="Figure_1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"4c47769d504d4b6c9650c9e89d74be23","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;1. 初期構造。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="出力" class="level2 step">
+<h2 class="step anchored" data-anchor-id="出力">出力</h2>
+<section id="SCF_収束" class="level3">
+<h3 class="anchored" data-anchor-id="SCF_収束">SCF 収束</h3>
+<p>このジョブは自己無撞着場の解を 113 個記録しました。複数ある場合は、評価した構造または状態ごとに一つです。 図は各 SCF に要したサイクル数をその番号に対して示します。</p>
+<div id="cell-fig-scf-1" class="cell" data-execution_count="8">
+<div id="Figure_2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scf-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"08174d94f88d45dbac40283e89970c2f","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scf-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2. 各 SCF 解に要したサイクル数（番号順）。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="計算に沿った力" class="level3">
+<h3 class="anchored" data-anchor-id="計算に沿った力">計算に沿った力</h3>
+<p>記録された各 SCF 解における最大およびRMS のデカルト力。</p>
+<ul>
+<li>反応経路の補正ステップがあれば、それも含みます。</li>
+<li>これらは構造最適化の収束判定ではありません。</li>
+</ul>
+<div id="cell-fig-forces-1" class="cell" data-execution_count="9">
+<div id="Figure_3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forces-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"31c83437e0f5435692feb767c6945e7d","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forces-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3. 各 SCF 解における最大および RMS のデカルト力。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="ジョブに沿った構造" class="level3">
+<h3 class="anchored" data-anchor-id="ジョブに沿った構造">ジョブに沿った構造</h3>
+<p>出力された構造を順に示します。薄いフレームは直前の構造です。</p>
+<div id="cell-fig-geometries-1" class="cell" data-execution_count="10">
+<div id="Figure_4" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geometries-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"d0dfb1a7ffa84747bf787aa9abd09c8f","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometries-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4. ジョブに沿って出力された構造（順番どおり）。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="反応経路" class="level3">
+<h3 class="anchored" data-anchor-id="反応経路">反応経路</h3>
+<p>このジョブは 108 点の反応経路点を記録しました。</p>
+<ul>
+<li>エネルギーは、出発点の鞍点のエネルギーが得られる場合はそれからの相対値です。</li>
+<li>破線は鞍点を示します。</li>
+</ul>
+<div id="cell-fig-irc-1" class="cell" data-execution_count="11">
+<div id="Figure_5" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-irc-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"41269ade9beb4581b5f5bcfa01023ca7","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-irc-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5. 反応経路に沿ったエネルギー。破線は鞍点を示します。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="フロンティア軌道" class="level3">
+<h3 class="anchored" data-anchor-id="フロンティア軌道">フロンティア軌道</h3>
+<p>最高被占準位と最低空準位、そしてそのギャップ。ギャップは光学励起エネルギーではありません。</p>
+<p><span class="math display">
+\Delta\epsilon=\epsilon_{\mathrm{LUMO}}-\epsilon_{\mathrm{HOMO}}
+</span></p>
+<div class="cell" data-execution_count="12">
+<div id="Table_5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="12">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-frontier-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;5. HOMO と LUMO のエネルギーと軌道ギャップ <span class="math inline">\Delta\epsilon</span>。
+</figcaption>
+<div aria-describedby="tbl-frontier-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 71%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">量</th>
+<th style="text-align: right;">エネルギー <span class="math inline">[\mathrm{eV}]</span><span class="quantity-info" data-description="6Zu75a2Q44Oc44Or44OI44Gr5o+b566X44GX44Gf44Ko44ON44Or44Ku44O844CC"></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">HOMO のエネルギー <span class="math inline">\epsilon_{\mathrm{HOMO}}</span>、<span class="math inline">11a''</span><span class="quantity-info" data-description="5pyA6auY6KKr5Y2g6LuM6YGT77yISE9NT++8ieOBruOCqOODjeODq+OCruODvCAkXGVwc2lsb25fe1xtYXRocm17SE9NT319JOOAguOCpOOCquODs+WMluOCqOODjeODq+OCruODvOOBruespuWPt+OCkuWkieOBiOOBn+WApOOBrui/keS8vOOBp+OAgeWOs+WvhuS6pOaPm+OBruWJsuWQiOOBq+W8t+OBj+S+neWtmOOBmeOCi+OAgg=="></span></td>
+<td style="text-align: right;">-8.28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LUMO のエネルギー <span class="math inline">\epsilon_{\mathrm{LUMO}}</span>、<span class="math inline">12a''</span><span class="quantity-info" data-description="5pyA5L2O56m66LuM6YGT77yITFVNT++8ieOBruOCqOODjeODq+OCruODvCAkXGVwc2lsb25fe1xtYXRocm17TFVNT319JOOAgg=="></span></td>
+<td style="text-align: right;">-1.6501</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HOMO–LUMO ギャップ <span class="math inline">\Delta\epsilon</span><span class="quantity-info" data-description="44OV44Ot44Oz44OG44Kj44Ki6LuM6YGT57WE44Gu6ZaT44GuIEhPTU/igJNMVU1PIOOCruODo+ODg+ODlyAkXERlbHRhXGVwc2lsb249XGVwc2lsb25fe1xtYXRocm17TFVNT319LVxlcHNpbG9uX3tcbWF0aHJte0hPTU99fSTjgILlhYnlrabnmoTjgarlirHotbfjgqjjg43jg6vjgq7jg7zjgafjga/jgarjgY/ou4zpgZPjgqjjg43jg6vjgq7jg7zjga7lt67jgII="></span></td>
+<td style="text-align: right;">6.6299</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>ギャップ付近の準位。対称性ごとに一列です。</p>
+<ul>
+<li>準位にカーソルを合わせると名前を表示し、クリックすると強調します。</li>
+<li>ラベルは <span class="math inline">C_{s}</span> 対称性によります。軌道は小文字、状態は大文字です。</li>
+<li>Gaussian は <span class="math inline">C_{1}</span> で計算したため、出力されたラベルはその群に属します。</li>
+</ul>
+<div id="cell-fig-levels-1" class="cell" data-execution_count="13">
+<div id="Figure_6" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-levels-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ddd6e50c81af4380b5798b716a6c747e","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-levels-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;6. ギャップ付近の軌道エネルギー準位（対称性ごと）。
+</figcaption>
+</figure>
+</div>
+</div>
+<p>ドロップダウンで選ぶ、空間内の軌道。</p>
+<ul>
+<li>赤い面は <span class="math inline">\psi&lt;-\psi_0</span>、青い面は <span class="math inline">\psi&gt;+\psi_0</span> を囲みます。準位 <span class="math inline">\psi_0</span> は、面が軌道の密度 <span class="math inline">\int\psi^2\,\mathrm{d}V</span> の <span class="math inline">85\,\%</span> を含む値で、設定で表示・変更できます。</li>
+</ul>
+<div id="cell-fig-frontier-orbitals-1" class="cell" data-execution_count="14">
+<div id="Figure_7" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-frontier-orbitals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"f02e4e95f18b450a8214a200dcd168ba","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frontier-orbitals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;7. ドロップダウンで選ぶ、空間内のフロンティア軌道。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="チェックポイント" class="level3">
+<h3 class="anchored" data-anchor-id="チェックポイント">チェックポイント</h3>
+<p>保存されたチェックポイントと、そのエネルギーとフロンティアギャップ（読み書きした順）。</p>
+<div class="cell" data-execution_count="16">
+<div id="Table_6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="16">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-checkpoints-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;6. 保存されたチェックポイントとそのエネルギー、フロンティアギャップ。
+</figcaption>
+<div aria-describedby="tbl-checkpoints-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 13%">
+<col style="width: 30%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">チェックポイント</th>
+<th style="text-align: right;">原子数<span class="quantity-info" data-description="5Y6f5a2Q44Gu5pWw44CC"></span></th>
+<th style="text-align: left;"><span class="math inline">E\;[\mathrm{eV}]</span><span class="quantity-info" data-description="5qC46ZaT5Y+N55m644KS5ZCr44KAIFNDRiDop6Pjga7lhajpm7vlrZDmp4vpgKDjgqjjg43jg6vjgq7jg7wgJEVfe1xtYXRocm17ZWx9fSTjgII="></span></th>
+<th style="text-align: right;"><span class="math inline">\Delta\epsilon\;[\mathrm{eV}]</span><span class="quantity-info" data-description="SE9NT+KAk0xVTU8g44Ku44Oj44OD44OXICRcRGVsdGFcZXBzaWxvbj1cZXBzaWxvbl97XG1hdGhybXtMVU1PfX0tXGVwc2lsb25fe1xtYXRocm17SE9NT319JOOAguWFieWtpueahOOBquWKsei1t+OCqOODjeODq+OCruODvOOBp+OBr+OBquOBj+i7jOmBk+OCqOODjeODq+OCruODvOOBruW3ruOAgg=="></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: left;">1.448202834</td>
+<td style="text-align: right;">6.402</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: left;">0.5687687508</td>
+<td style="text-align: right;">6.6299</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<section id="チェックポイントの構造" class="level4">
+<h4 class="anchored" data-anchor-id="チェックポイントの構造">チェックポイントの構造</h4>
+<p>保存された構造を、チェックポイントごとに1フレームとして順に示します。</p>
+<div id="cell-fig-checkpoint-geometries" class="cell" data-execution_count="17">
+<div id="Figure_8" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-checkpoint-geometries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"909a0bd5cb6b4763b8d5e7bf9d2b05fa","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-checkpoint-geometries-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;8. 保存された構造（チェックポイントごとに1フレーム）。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="技術的な詳細" class="level2">
+<h2 class="anchored" data-anchor-id="技術的な詳細">技術的な詳細</h2>
+<p>計算のプログラム、資源、所要時間。</p>
+<div class="cell" data-execution_count="18">
+<div id="Table_7" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="18">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;7. 計算のプログラム、資源、所要時間。
+</figcaption>
+<div aria-describedby="tbl-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 80%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">量</th>
+<th style="text-align: left;">値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">プログラム<span class="quantity-info" data-description="44Oa44O844K444GM6Kej5p6Q44GZ44KL5Ye65Yqb44Go6KiY6Yyy44Gu44OX44Ot44Kw44Op44Og44CCR2F1c3NpYW4gMTYg44G+44Gf44GvIExvdHVz44CC"></span></td>
+<td style="text-align: left;">Gaussian</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">要求した経過時間<span class="quantity-info" data-description="44K544Kx44K444Ol44O844Op44Gr6KaB5rGC44GX44Gf57WM6YGO5pmC6ZaT44Gu5LiK6ZmQ44CC"></span></td>
+<td style="text-align: left;">01:00:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">要求したメモリ<span class="quantity-info" data-description="44K544Kx44K444Ol44O844Op44Gr6KaB5rGC44GX44Gf44OO44O844OJ44GC44Gf44KK44Gu44Oh44Oi44Oq77yIMiDpgLLmjqXpoK3ovp7jga7jg5DjgqTjg4jljZjkvY3vvInjgII="></span></td>
+<td style="text-align: left;">1 GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">要求したタスクあたりの CPU 数<span class="quantity-info" data-description="44K544Kx44K444Ol44O844Op44Gr6KaB5rGC44GX44Gf44K/44K544Kv44GC44Gf44KK44Gu44OX44Ot44K744OD44K144Kz44Ki5pWw44CC"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">要求したノード数<span class="quantity-info" data-description="44K544Kx44K444Ol44O844Op44Gr6KaB5rGC44GX44Gf44OO44O844OJ5pWw44CC"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">要求したタスク数<span class="quantity-info" data-description="44K544Kx44K444Ol44O844Op44Gr6KaB5rGC44GX44Gf44K/44K544Kv5pWw44CC5ZCE44K/44K544Kv44GvIDEg44OX44Ot44K744K544CC"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">要求したパーティション<span class="quantity-info" data-description="44K444On44OW44KS5a6f6KGM44Gn44GN44KL44K544Kx44K444Ol44O844Op44Gu44OR44O844OG44Kj44K344On44Oz44CC6KaB5rGC44Gr5pu444GE44Gf6aCG44CC"></span></td>
+<td style="text-align: left;">r01, r02, r03, r04, r05, r06, r07, r08, r09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">プログラムの正常終了<span class="quantity-info" data-description="44OX44Ot44Kw44Op44Og44GM5q2j5bi457WC5LqG44Gu6KiY6Yyy44Gr6YGU44GX44Gf44GL44Gp44GG44GL44CC44OB44Kn44OD44Kv44Gv5a6M5LqG44GX44Gf5Ye65Yqb44CB44OQ44OE44Gv44Ko44Op44O857WC5LqG44CB56CC5pmC6KiI44Gv5a6f6KGM5Lit44O75b6F5qmf5Lit44O744Gd44Gu5LuW5pyq5a6M5LqG44Gu5Ye65Yqb44KS6KGo44GZ44CC"></span></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gaussian のバージョン<span class="quantity-info" data-description="5Ye65Yqb44Gr6KGo56S644GV44KM44GfIEdhdXNzaWFuIOOBruODquODk+OCuOODp+ODs+OBqOODk+ODq+ODieaXpeOAgg=="></span></td>
+<td style="text-align: left;">ES64L-G16RevB.01 20-Dec-2017</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">連結ジョブ<span class="quantity-info" data-description="5YWl5Yqb44Gn6YCj57WQ44GV44KM44GfIEdhdXNzaWFuIOOCuOODp+ODluOBruaVsOOAguOBneOCjOOBnuOCjOOBjOiHquWIhuOBruODq+ODvOODiOOCu+OCr+OCt+ODp+ODs+OCkuWun+ihjOOBmeOCi+OAgg=="></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">プロセッサ数<span class="quantity-info" data-description="44K444On44OW44KS5a6f6KGM44GX44Gf44OX44Ot44K744OD44K144Kz44Ki44Gu5pWw44CC"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">経過時間<span class="quantity-info" data-description="44K444On44OW44Gu6ZaL5aeL44GL44KJ57WC5LqG44G+44Gn44Gu5a6f5pmC6ZaT44CC"></span></td>
+<td style="text-align: left;">0:01:16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CPU 時間<span class="quantity-info" data-description="5YWo44Kz44Ki44Gn5ZCI6KiI44GX44Gf44OX44Ot44K744OD44K15pmC6ZaT44CC5Lim5YiX5a6f6KGM44GX44Gf44K444On44OW44Gn44Gv57WM6YGO5pmC6ZaT44KI44KK6ZW344GP44Gq44KL44CC"></span></td>
+<td style="text-align: left;">0:01:13</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="application/vnd.jupyter.widget-state+json">{"state": {"08174d94f88d45dbac40283e89970c2f": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_08f061e3649c444dbdcfc52c41577e64", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-449f37a0910d92d54b894c8facc1fada": [{"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 1}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 3}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 4}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 5}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 6}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 8}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 15}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 16}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 17}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 18}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 19}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 20}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 21}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 22}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 23}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 24}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 25}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 30}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 31}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 32}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 33}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 34}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 35}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 36}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 37}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 38}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 39}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 40}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 41}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 42}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 63}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 69}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 70}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 71}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 20, "calculation_scf": 80}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 81}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 87}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 92}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 93}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 95}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 98}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 99}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 101}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 102}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 103}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 104}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 106}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 107}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 108}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 109}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 110}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 111}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 113}], "data-83854996d45f53826d7d32e0556689c3": [{"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 1, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 2, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 2, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 3, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 3, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 4, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 4, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 5, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 5, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 6, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 6, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 7, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 7, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 8, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 8, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 9, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 9, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 10, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 10, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 11, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 11, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 12, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 12, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 13, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 13, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 14, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 14, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 15, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 15, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 16, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 16, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 17, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 17, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 18, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 18, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 19, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 19, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 20, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 20, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 21, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 21, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 22, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 22, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 23, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 23, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 24, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 24, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 25, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 25, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 26, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 26, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 27, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 27, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 28, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 28, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 29, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 29, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 30, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 30, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 31, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 31, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 32, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 32, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 33, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 33, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 34, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 34, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 35, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 35, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 36, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 36, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 37, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 37, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 38, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 38, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 39, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 39, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 40, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 40, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 41, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 41, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 42, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 42, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 43, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 43, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 44, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 44, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 45, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 45, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 46, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 46, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 47, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 47, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 48, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 48, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 49, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 49, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 50, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 50, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 51, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 51, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 52, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 52, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 53, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 53, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 54, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 54, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 55, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 55, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 56, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 56, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 57, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 57, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 58, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 58, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 59, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 59, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 60, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 60, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 61, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 61, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 62, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 62, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 63, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 63, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 64, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 64, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 65, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 65, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 66, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 66, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 67, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 67, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 68, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 68, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 69, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 69, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 70, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 70, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 71, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 71, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 72, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 72, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 73, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 73, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 74, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 74, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 75, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 75, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 76, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 76, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 77, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 77, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 78, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 78, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 79, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 79, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 80, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 20, "calculation_scf": 80, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 20, "calculation_scf": 81, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 81, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 82, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 82, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 83, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 83, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 84, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 84, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 85, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 85, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 86, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 86, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 17, "calculation_scf": 87, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 87, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 88, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 88, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 89, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 89, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 90, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 90, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 91, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 91, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 16, "calculation_scf": 92, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 92, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 15, "calculation_scf": 93, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 93, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 94, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 94, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 95, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 95, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 96, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 96, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 97, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 97, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 98, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 98, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 99, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 99, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 100, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 100, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 101, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 101, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 102, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 102, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 103, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 103, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 104, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 104, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 105, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 105, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 106, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 106, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 107, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 107, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 108, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 108, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 109, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 109, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 110, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 110, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 12, "calculation_scf": 111, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 111, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 112, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 112, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 13, "calculation_scf": 113, "calculation_segment": 0}, {"calculation_convergence": "\u53ce\u675f", "calculation_cycles": 14, "calculation_scf": 113, "calculation_segment": 0}]}, "layer": [{"data": {"name": "data-83854996d45f53826d7d32e0556689c3"}, "encoding": {"color": {"field": "calculation_convergence", "scale": {"domain": ["\u53ce\u675f", "\u672a\u53ce\u675f", "\u4e0d\u660e"], "range": ["#198754", "#dc3545", "#6c757d"]}, "type": "nominal"}, "detail": {"field": "calculation_segment", "type": "nominal"}, "tooltip": [{"field": "calculation_scf", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_cycles", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_convergence", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_scf", "scale": {"padding": 10, "zero": false}, "title": "calculation_scf", "type": "quantitative"}, "y": {"axis": {"tickMinStep": 1}, "field": "calculation_cycles", "title": "calculation_cycles", "type": "quantitative"}}, "mark": {"strokeWidth": 2, "type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-449f37a0910d92d54b894c8facc1fada"}, "encoding": {"color": {"field": "calculation_convergence", "scale": {"domain": ["\u53ce\u675f", "\u672a\u53ce\u675f", "\u4e0d\u660e"], "range": ["#198754", "#dc3545", "#6c757d"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_scf", "type": "quantitative"}, {"field": "calculation_cycles", "type": "quantitative"}, {"field": "calculation_convergence", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_scf", "scale": {"padding": 10, "zero": false}, "title": "calculation_scf", "type": "quantitative"}, "y": {"axis": {"tickMinStep": 1}, "field": "calculation_cycles", "title": "calculation_cycles", "type": "quantitative"}}, "mark": {"filled": true, "size": 50, "type": "point"}}], "width": "container"}, "tabbable": null, "tooltip": null}}, "08f061e3649c444dbdcfc52c41577e64": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "107bef402d50491fa75e4d9d76050777": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "150af4650083414e9a64af23be84829c": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "1ba95a427a1a4f9392540693e52e9ada": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "31c83437e0f5435692feb767c6945e7d": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_150af4650083414e9a64af23be84829c", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-025318f13b2ee0ad1eb5fab8923b3dc9": [{"calculation_evaluation_force": 0.18257888437289513, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 1}, {"calculation_evaluation_force": 0.03835021799538742, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 1}, {"calculation_evaluation_force": 0.3257034161168022, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 2}, {"calculation_evaluation_force": 0.05921806432244887, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 2}, {"calculation_evaluation_force": 0.2568359494038074, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 3}, {"calculation_evaluation_force": 0.051424947146990065, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 3}, {"calculation_evaluation_force": 0.46823870238909826, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 4}, {"calculation_evaluation_force": 0.0675685967097292, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 4}, {"calculation_evaluation_force": 0.39155708687503255, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 5}, {"calculation_evaluation_force": 0.060302350037990234, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 5}, {"calculation_evaluation_force": 0.4836422341341486, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 6}, {"calculation_evaluation_force": 0.06545700092944888, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 6}, {"calculation_evaluation_force": 0.4573256541115318, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 7}, {"calculation_evaluation_force": 0.06133557364049297, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 7}, {"calculation_evaluation_force": 0.44390079210224537, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 8}, {"calculation_evaluation_force": 0.058489105093409974, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 8}, {"calculation_evaluation_force": 0.4017665784249106, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 9}, {"calculation_evaluation_force": 0.05360200321921214, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 9}, {"calculation_evaluation_force": 0.3762639068868613, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 10}, {"calculation_evaluation_force": 0.0500635993316983, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 10}, {"calculation_evaluation_force": 0.3311890708568305, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 11}, {"calculation_evaluation_force": 0.045182256729061725, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 11}, {"calculation_evaluation_force": 0.30863123828101313, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 12}, {"calculation_evaluation_force": 0.042053326765139655, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 12}, {"calculation_evaluation_force": 0.25997603795637936, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 13}, {"calculation_evaluation_force": 0.03727153728520478, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 13}, {"calculation_evaluation_force": 0.25015483443827846, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 14}, {"calculation_evaluation_force": 0.03533966163087615, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 14}, {"calculation_evaluation_force": 0.18951474426087458, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 15}, {"calculation_evaluation_force": 0.03041610151081287, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 15}, {"calculation_evaluation_force": 0.21322489394755065, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 16}, {"calculation_evaluation_force": 0.031113230480062336, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 16}, {"calculation_evaluation_force": 0.11421813071315579, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 17}, {"calculation_evaluation_force": 0.025430217844926002, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 17}, {"calculation_evaluation_force": 0.2191304612908755, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 18}, {"calculation_evaluation_force": 0.03202900608036947, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 18}, {"calculation_evaluation_force": 0.12177434642359045, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 19}, {"calculation_evaluation_force": 0.024609881601919677, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 19}, {"calculation_evaluation_force": 0.08406685285002563, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 20}, {"calculation_evaluation_force": 0.022904263044640372, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 20}, {"calculation_evaluation_force": 0.12531583563515494, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 21}, {"calculation_evaluation_force": 0.023655847983384208, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 21}, {"calculation_evaluation_force": 0.07092450367964574, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 22}, {"calculation_evaluation_force": 0.021014039264995826, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 22}, {"calculation_evaluation_force": 0.11687582885040511, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 23}, {"calculation_evaluation_force": 0.02294792037995739, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 23}, {"calculation_evaluation_force": 0.06744240695605669, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 24}, {"calculation_evaluation_force": 0.020181310303719297, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 24}, {"calculation_evaluation_force": 0.11041634299584953, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 25}, {"calculation_evaluation_force": 0.02253016750349632, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 25}, {"calculation_evaluation_force": 0.06484842076045373, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 26}, {"calculation_evaluation_force": 0.01972519656489487, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 26}, {"calculation_evaluation_force": 0.10097766823796449, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 27}, {"calculation_evaluation_force": 0.02172258393323278, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 27}, {"calculation_evaluation_force": 0.060424888824869454, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 28}, {"calculation_evaluation_force": 0.019034958152691905, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 28}, {"calculation_evaluation_force": 0.0868343371014114, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 29}, {"calculation_evaluation_force": 0.0203386618303036, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 29}, {"calculation_evaluation_force": 0.05466088643340296, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 30}, {"calculation_evaluation_force": 0.01813630610086601, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 30}, {"calculation_evaluation_force": 0.07275322666654689, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 31}, {"calculation_evaluation_force": 0.018931034154251753, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 31}, {"calculation_evaluation_force": 0.0493502209891153, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 32}, {"calculation_evaluation_force": 0.017317563941952534, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 32}, {"calculation_evaluation_force": 0.06174432765513957, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 33}, {"calculation_evaluation_force": 0.017791675404405887, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 33}, {"calculation_evaluation_force": 0.046823134903344416, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 34}, {"calculation_evaluation_force": 0.016623417452618718, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 34}, {"calculation_evaluation_force": 0.053841270099341795, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 35}, {"calculation_evaluation_force": 0.01688145338738997, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 35}, {"calculation_evaluation_force": 0.045754892872866555, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 36}, {"calculation_evaluation_force": 0.015997662313074812, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 36}, {"calculation_evaluation_force": 0.04820186337745497, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 37}, {"calculation_evaluation_force": 0.016107911225818842, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 37}, {"calculation_evaluation_force": 0.04442208430504352, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 38}, {"calculation_evaluation_force": 0.0153989551810418, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 38}, {"calculation_evaluation_force": 0.044073905485925116, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 39}, {"calculation_evaluation_force": 0.015408673951801418, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 39}, {"calculation_evaluation_force": 0.04290847574785107, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 40}, {"calculation_evaluation_force": 0.014808115625338004, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 40}, {"calculation_evaluation_force": 0.04245858407919549, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 41}, {"calculation_evaluation_force": 0.01474928878010518, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 41}, {"calculation_evaluation_force": 0.04127063147555154, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 42}, {"calculation_evaluation_force": 0.014217327491701718, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 42}, {"calculation_evaluation_force": 0.04075178281436343, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 43}, {"calculation_evaluation_force": 0.014111398032628626, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 43}, {"calculation_evaluation_force": 0.039546912350508286, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 44}, {"calculation_evaluation_force": 0.013623556878149784, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 44}, {"calculation_evaluation_force": 0.03898317222438289, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 45}, {"calculation_evaluation_force": 0.013485077250342096, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 45}, {"calculation_evaluation_force": 0.037763235094746966, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 46}, {"calculation_evaluation_force": 0.013025826765399484, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 46}, {"calculation_evaluation_force": 0.03717290975971828, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 47}, {"calculation_evaluation_force": 0.012864824272021886, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 47}, {"calculation_evaluation_force": 0.035936363302276224, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 48}, {"calculation_evaluation_force": 0.012423622932775711, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 48}, {"calculation_evaluation_force": 0.03533421089171997, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 49}, {"calculation_evaluation_force": 0.012247399507414795, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 49}, {"calculation_evaluation_force": 0.03407709560727343, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 50}, {"calculation_evaluation_force": 0.011816996802345974, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 50}, {"calculation_evaluation_force": 0.03347571452772983, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 51}, {"calculation_evaluation_force": 0.01163105460622544, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 51}, {"calculation_evaluation_force": 0.032191808346109956, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 52}, {"calculation_evaluation_force": 0.01120589695204276, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 52}, {"calculation_evaluation_force": 0.031603025673106605, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 53}, {"calculation_evaluation_force": 0.01101496681537364, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 53}, {"calculation_evaluation_force": 0.030284049641444082, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 54}, {"calculation_evaluation_force": 0.010590837602541184, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 54}, {"calculation_evaluation_force": 0.029720155249116156, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 55}, {"calculation_evaluation_force": 0.010399290401061929, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 55}, {"calculation_evaluation_force": 0.028355773531841242, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 56}, {"calculation_evaluation_force": 0.009972692928988934, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 56}, {"calculation_evaluation_force": 0.027829931469471613, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 57}, {"calculation_evaluation_force": 0.009785362337045599, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 57}, {"calculation_evaluation_force": 0.026407442815909024, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 58}, {"calculation_evaluation_force": 0.009353622658221485, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 58}, {"calculation_evaluation_force": 0.025934925437548526, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 59}, {"calculation_evaluation_force": 0.00917657647978039, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 59}, {"calculation_evaluation_force": 0.024439571714322553, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 60}, {"calculation_evaluation_force": 0.008738049088044797, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 60}, {"calculation_evaluation_force": 0.024037142613979826, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 61}, {"calculation_evaluation_force": 0.008579874808380317, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 61}, {"calculation_evaluation_force": 0.0224534457787696, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 62}, {"calculation_evaluation_force": 0.008135228190610888, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 62}, {"calculation_evaluation_force": 0.022429843049781954, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 63}, {"calculation_evaluation_force": 0.008009141281073403, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 63}, {"calculation_evaluation_force": 0.02201599825045174, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 64}, {"calculation_evaluation_force": 0.00756423755296642, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 64}, {"calculation_evaluation_force": 0.02170895708534231, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 65}, {"calculation_evaluation_force": 0.007491629593640591, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 65}, {"calculation_evaluation_force": 0.02197172385032459, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 66}, {"calculation_evaluation_force": 0.0070636437257447955, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 66}, {"calculation_evaluation_force": 0.024549717782931562, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 67}, {"calculation_evaluation_force": 0.00707958456667327, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 67}, {"calculation_evaluation_force": 0.022454628486322358, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 68}, {"calculation_evaluation_force": 0.0067063632006769125, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 68}, {"calculation_evaluation_force": 0.028805202401889208, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 69}, {"calculation_evaluation_force": 0.0068611436238856524, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 69}, {"calculation_evaluation_force": 0.023590284847307415, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 70}, {"calculation_evaluation_force": 0.006606090169030053, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 70}, {"calculation_evaluation_force": 0.034651017302766034, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 71}, {"calculation_evaluation_force": 0.006944087418781233, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 71}, {"calculation_evaluation_force": 0.025527765506994763, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 72}, {"calculation_evaluation_force": 0.006863149084518589, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 72}, {"calculation_evaluation_force": 0.041557258079859015, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 73}, {"calculation_evaluation_force": 0.00735171014794259, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 73}, {"calculation_evaluation_force": 0.034199891504490196, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 74}, {"calculation_evaluation_force": 0.0074007153782807734, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 74}, {"calculation_evaluation_force": 0.04762362222829141, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 75}, {"calculation_evaluation_force": 0.007860017285290895, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 75}, {"calculation_evaluation_force": 0.04071563310090305, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 76}, {"calculation_evaluation_force": 0.007856623428835157, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 76}, {"calculation_evaluation_force": 0.05016150694823965, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 77}, {"calculation_evaluation_force": 0.008061180413394747, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 77}, {"calculation_evaluation_force": 0.04283627916506533, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 78}, {"calculation_evaluation_force": 0.007858166090860493, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 78}, {"calculation_evaluation_force": 0.048124216055513036, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 79}, {"calculation_evaluation_force": 0.007774810919424822, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 79}, {"calculation_evaluation_force": 0.23386540331414504, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 80}, {"calculation_evaluation_force": 0.05053056312676759, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 80}, {"calculation_evaluation_force": 0.5611718509635416, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 81}, {"calculation_evaluation_force": 0.11851634707021524, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 81}, {"calculation_evaluation_force": 0.9255821485359891, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 82}, {"calculation_evaluation_force": 0.19379557995911528, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 82}, {"calculation_evaluation_force": 1.25748403209266, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 83}, {"calculation_evaluation_force": 0.2614940173893103, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 83}, {"calculation_evaluation_force": 1.486033319223361, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 84}, {"calculation_evaluation_force": 0.3106814875347526, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 84}, {"calculation_evaluation_force": 1.5747955724799028, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 85}, {"calculation_evaluation_force": 0.33484733958371293, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 85}, {"calculation_evaluation_force": 1.5844103678190136, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 86}, {"calculation_evaluation_force": 0.3326729574590015, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 86}, {"calculation_evaluation_force": 1.45274730070268, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 87}, {"calculation_evaluation_force": 0.3076956137626467, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 87}, {"calculation_evaluation_force": 1.185070088227552, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 88}, {"calculation_evaluation_force": 0.26593277025687784, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 88}, {"calculation_evaluation_force": 1.01955998783399, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 89}, {"calculation_evaluation_force": 0.2137730017651526, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 89}, {"calculation_evaluation_force": 0.9239957263312006, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 90}, {"calculation_evaluation_force": 0.15994237603378564, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 90}, {"calculation_evaluation_force": 0.713185664096044, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 91}, {"calculation_evaluation_force": 0.1147774485414752, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 91}, {"calculation_evaluation_force": 0.46430445142588317, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 92}, {"calculation_evaluation_force": 0.08265094622110448, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 92}, {"calculation_evaluation_force": 0.3500289851074524, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 93}, {"calculation_evaluation_force": 0.06292909209059784, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 93}, {"calculation_evaluation_force": 0.2981749722291488, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 94}, {"calculation_evaluation_force": 0.05068935447124221, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 94}, {"calculation_evaluation_force": 0.2528715651090307, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 95}, {"calculation_evaluation_force": 0.04309925161831765, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 95}, {"calculation_evaluation_force": 0.21346997152130906, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 96}, {"calculation_evaluation_force": 0.03750432498482802, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 96}, {"calculation_evaluation_force": 0.17963795348779407, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 97}, {"calculation_evaluation_force": 0.03389737548132175, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 97}, {"calculation_evaluation_force": 0.15317266084593492, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 98}, {"calculation_evaluation_force": 0.03357645035798429, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 98}, {"calculation_evaluation_force": 0.15320839918285523, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 99}, {"calculation_evaluation_force": 0.031037125820145745, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 99}, {"calculation_evaluation_force": 0.12812831419561305, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 100}, {"calculation_evaluation_force": 0.02868137806332222, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 100}, {"calculation_evaluation_force": 0.11159807352932465, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 101}, {"calculation_evaluation_force": 0.02590463783978442, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 101}, {"calculation_evaluation_force": 0.09052644154871625, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 102}, {"calculation_evaluation_force": 0.024795309577365098, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 102}, {"calculation_evaluation_force": 0.11086093819155143, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 103}, {"calculation_evaluation_force": 0.026453465566331557, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 103}, {"calculation_evaluation_force": 0.08650898968026799, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 104}, {"calculation_evaluation_force": 0.026030673327254394, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 104}, {"calculation_evaluation_force": 0.07162142696062516, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 105}, {"calculation_evaluation_force": 0.02319711171911671, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 105}, {"calculation_evaluation_force": 0.0867196144687939, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 106}, {"calculation_evaluation_force": 0.023248070988020317, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 106}, {"calculation_evaluation_force": 0.05992177531633977, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 107}, {"calculation_evaluation_force": 0.02017539676595551, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 107}, {"calculation_evaluation_force": 0.06811757870247886, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 108}, {"calculation_evaluation_force": 0.020773692521448433, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 108}, {"calculation_evaluation_force": 0.06676744089790455, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 109}, {"calculation_evaluation_force": 0.0195202796258627, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 109}, {"calculation_evaluation_force": 0.06986711170541275, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 110}, {"calculation_evaluation_force": 0.020165009508318246, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 110}, {"calculation_evaluation_force": 0.0827992474638068, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 111}, {"calculation_evaluation_force": 0.01957591830290983, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 111}, {"calculation_evaluation_force": 0.0778007653913797, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 112}, {"calculation_evaluation_force": 0.020860030172799752, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 112}, {"calculation_evaluation_force": 0.116625249115423, "calculation_force_statistic": "\u6700\u5927 $F_{\\max}$", "calculation_scf": 113}, {"calculation_evaluation_force": 0.021714767778971075, "calculation_force_statistic": "RMS $F_{\\mathrm{RMS}}$", "calculation_scf": 113}]}, "layer": [{"data": {"name": "data-025318f13b2ee0ad1eb5fab8923b3dc9"}, "encoding": {"color": {"field": "calculation_force_statistic", "type": "nominal"}, "tooltip": [{"field": "calculation_scf", "type": "quantitative"}, {"field": "calculation_force_statistic", "type": "nominal"}, {"field": "calculation_evaluation_force", "format": ".6~g", "type": "quantitative"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_scf", "scale": {"padding": 10, "zero": false}, "title": "calculation_scf", "type": "quantitative"}, "y": {"field": "calculation_evaluation_force", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_1e9efca18e7a2868", "select": {"encodings": ["x", "y"], "type": "interval"}}]}, {"data": {"name": "data-025318f13b2ee0ad1eb5fab8923b3dc9"}, "encoding": {"color": {"field": "calculation_force_statistic", "type": "nominal"}, "tooltip": [{"field": "calculation_scf", "type": "quantitative"}, {"field": "calculation_force_statistic", "type": "nominal"}, {"field": "calculation_evaluation_force", "format": ".6~g", "type": "quantitative"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_scf", "scale": {"padding": 10, "zero": false}, "title": "calculation_scf", "type": "quantitative"}, "y": {"field": "calculation_evaluation_force", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_force_statistic"], "sort": [{"field": "calculation_scf", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-025318f13b2ee0ad1eb5fab8923b3dc9"}, "encoding": {"color": {"field": "calculation_force_statistic", "type": "nominal"}, "tooltip": [{"field": "calculation_scf", "type": "quantitative"}, {"field": "calculation_force_statistic", "type": "nominal"}, {"field": "calculation_evaluation_force", "format": ".6~g", "type": "quantitative"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_scf", "scale": {"padding": 10, "zero": false}, "title": "calculation_scf", "type": "quantitative"}, "y": {"field": "calculation_evaluation_force", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_force_statistic"], "sort": [{"field": "calculation_scf", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "41269ade9beb4581b5f5bcfa01023ca7": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_bd9002a080d3488f945a718e828d99d0", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-4f34f09fed4114ba65a496d2cd4460a1": [{"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -0.47847909410367806, "calculation_point_index": 1, "calculation_reaction_coordinate": 0.11188, "calculation_reverse_relative_energy": 84.37276989247611}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -1.4985161430339573, "calculation_point_index": 2, "calculation_reaction_coordinate": 0.22375, "calculation_reverse_relative_energy": 83.35273284354584}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -2.5833089388279875, "calculation_point_index": 3, "calculation_reaction_coordinate": 0.33541, "calculation_reverse_relative_energy": 82.26794004775181}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -3.6071166765177227, "calculation_point_index": 4, "calculation_reaction_coordinate": 0.44733, "calculation_reverse_relative_energy": 81.24413231006207}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -4.577693187477674, "calculation_point_index": 5, "calculation_reaction_coordinate": 0.55948, "calculation_reverse_relative_energy": 80.27355579910211}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -5.477093994789235, "calculation_point_index": 6, "calculation_reaction_coordinate": 0.67166, "calculation_reverse_relative_energy": 79.37415499179056}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -6.311958022957167, "calculation_point_index": 7, "calculation_reaction_coordinate": 0.78387, "calculation_reverse_relative_energy": 78.53929096362262}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -7.080817646300944, "calculation_point_index": 8, "calculation_reaction_coordinate": 0.89608, "calculation_reverse_relative_energy": 77.77043134027885}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -7.786957026967766, "calculation_point_index": 9, "calculation_reaction_coordinate": 1.00829, "calculation_reverse_relative_energy": 77.06429195961202}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -8.43216752865885, "calculation_point_index": 10, "calculation_reaction_coordinate": 1.12049, "calculation_reverse_relative_energy": 76.41908145792094}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -9.02123995333889, "calculation_point_index": 11, "calculation_reaction_coordinate": 1.23269, "calculation_reverse_relative_energy": 75.8300090332409}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -9.557966854403253, "calculation_point_index": 12, "calculation_reaction_coordinate": 1.34486, "calculation_reverse_relative_energy": 75.29328213217654}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -10.048887799836427, "calculation_point_index": 13, "calculation_reaction_coordinate": 1.45701, "calculation_reverse_relative_energy": 74.80236118674337}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -10.497793860939227, "calculation_point_index": 14, "calculation_reaction_coordinate": 1.56909, "calculation_reverse_relative_energy": 74.35345512564056}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -10.912714140120931, "calculation_point_index": 15, "calculation_reaction_coordinate": 1.68105, "calculation_reverse_relative_energy": 73.93853484645886}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -11.306237079282628, "calculation_point_index": 16, "calculation_reaction_coordinate": 1.79301, "calculation_reverse_relative_energy": 73.54501190729717}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -11.671846575842865, "calculation_point_index": 17, "calculation_reaction_coordinate": 1.90506, "calculation_reverse_relative_energy": 73.17940241073693}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -12.027956570998015, "calculation_point_index": 18, "calculation_reaction_coordinate": 2.0172, "calculation_reverse_relative_energy": 72.82329241558178}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -12.365157422906043, "calculation_point_index": 19, "calculation_reaction_coordinate": 2.12932, "calculation_reverse_relative_energy": 72.48609156367375}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -12.692108205811493, "calculation_point_index": 20, "calculation_reaction_coordinate": 2.24143, "calculation_reverse_relative_energy": 72.1591407807683}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -13.01065362910493, "calculation_point_index": 21, "calculation_reaction_coordinate": 2.35353, "calculation_reverse_relative_energy": 71.84059535747485}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -13.320510908621785, "calculation_point_index": 22, "calculation_reaction_coordinate": 2.46561, "calculation_reverse_relative_energy": 71.530738077958}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -13.62581805653665, "calculation_point_index": 23, "calculation_reaction_coordinate": 2.57769, "calculation_reverse_relative_energy": 71.22543093004315}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -13.924088943132496, "calculation_point_index": 24, "calculation_reaction_coordinate": 2.68978, "calculation_reverse_relative_energy": 70.92716004344729}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -14.218871473022388, "calculation_point_index": 25, "calculation_reaction_coordinate": 2.80189, "calculation_reverse_relative_energy": 70.6323775135574}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -14.507563253064085, "calculation_point_index": 26, "calculation_reaction_coordinate": 2.91402, "calculation_reverse_relative_energy": 70.34368573351571}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -14.792074119741981, "calculation_point_index": 27, "calculation_reaction_coordinate": 3.02619, "calculation_reverse_relative_energy": 70.05917486683781}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -15.071059087614326, "calculation_point_index": 28, "calculation_reaction_coordinate": 3.13837, "calculation_reverse_relative_energy": 69.78018989896546}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -15.345387423379831, "calculation_point_index": 29, "calculation_reaction_coordinate": 3.25057, "calculation_reverse_relative_energy": 69.50586156319996}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -15.614613635935395, "calculation_point_index": 30, "calculation_reaction_coordinate": 3.36278, "calculation_reverse_relative_energy": 69.23663535064439}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -15.879101261675446, "calculation_point_index": 31, "calculation_reaction_coordinate": 3.475, "calculation_reverse_relative_energy": 68.97214772490435}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -16.13872022862194, "calculation_point_index": 32, "calculation_reaction_coordinate": 3.58722, "calculation_reverse_relative_energy": 68.71252875795786}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -16.39361554390759, "calculation_point_index": 33, "calculation_reaction_coordinate": 3.69945, "calculation_reverse_relative_energy": 68.4576334426722}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -16.6437459987403, "calculation_point_index": 34, "calculation_reaction_coordinate": 3.81169, "calculation_reverse_relative_energy": 68.20750298783949}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -16.88916723454625, "calculation_point_index": 35, "calculation_reaction_coordinate": 3.92392, "calculation_reverse_relative_energy": 67.96208175203354}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -17.1298628566555, "calculation_point_index": 36, "calculation_reaction_coordinate": 4.03616, "calculation_reverse_relative_energy": 67.7213861299243}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -17.365851231225673, "calculation_point_index": 37, "calculation_reaction_coordinate": 4.1484, "calculation_reverse_relative_energy": 67.48539775535411}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -17.59712329739496, "calculation_point_index": 38, "calculation_reaction_coordinate": 4.26064, "calculation_reverse_relative_energy": 67.25412568918483}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -17.823680166799928, "calculation_point_index": 39, "calculation_reaction_coordinate": 4.37288, "calculation_reverse_relative_energy": 67.02756881977986}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -18.045514768444924, "calculation_point_index": 40, "calculation_reaction_coordinate": 4.48512, "calculation_reverse_relative_energy": 66.80573421813486}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -18.262619339515176, "calculation_point_index": 41, "calculation_reaction_coordinate": 4.59736, "calculation_reverse_relative_energy": 66.58862964706461}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -18.47498663363168, "calculation_point_index": 42, "calculation_reaction_coordinate": 4.7096, "calculation_reverse_relative_energy": 66.37626235294812}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -18.682603405673866, "calculation_point_index": 43, "calculation_reaction_coordinate": 4.82184, "calculation_reverse_relative_energy": 66.16864558090592}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -18.88546158590601, "calculation_point_index": 44, "calculation_reaction_coordinate": 4.93408, "calculation_reverse_relative_energy": 65.96578740067378}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -19.083543792995417, "calculation_point_index": 45, "calculation_reaction_coordinate": 5.04632, "calculation_reverse_relative_energy": 65.76770519358438}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -19.276840763391714, "calculation_point_index": 46, "calculation_reaction_coordinate": 5.15857, "calculation_reverse_relative_energy": 65.57440822318807}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -19.465331677407868, "calculation_point_index": 47, "calculation_reaction_coordinate": 5.27081, "calculation_reverse_relative_energy": 65.38591730917193}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -19.649005887855168, "calculation_point_index": 48, "calculation_reaction_coordinate": 5.38305, "calculation_reverse_relative_energy": 65.20224309872462}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -19.827839342268884, "calculation_point_index": 49, "calculation_reaction_coordinate": 5.49529, "calculation_reverse_relative_energy": 65.0234096443109}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -20.00182010722803, "calculation_point_index": 50, "calculation_reaction_coordinate": 5.60753, "calculation_reverse_relative_energy": 64.84942887935176}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -20.170920839204094, "calculation_point_index": 51, "calculation_reaction_coordinate": 5.71977, "calculation_reverse_relative_energy": 64.68032814737569}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -20.335128442467393, "calculation_point_index": 52, "calculation_reaction_coordinate": 5.83201, "calculation_reverse_relative_energy": 64.5161205441124}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -20.494412087613536, "calculation_point_index": 53, "calculation_reaction_coordinate": 5.94425, "calculation_reverse_relative_energy": 64.35683689896625}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -20.648757761300743, "calculation_point_index": 54, "calculation_reaction_coordinate": 6.0565, "calculation_reverse_relative_energy": 64.20249122527905}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -20.798130777003067, "calculation_point_index": 55, "calculation_reaction_coordinate": 6.16874, "calculation_reverse_relative_energy": 64.05311820957672}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -20.942516415644437, "calculation_point_index": 56, "calculation_reaction_coordinate": 6.28098, "calculation_reverse_relative_energy": 63.908732570935356}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.081875667288646, "calculation_point_index": 57, "calculation_reaction_coordinate": 6.39321, "calculation_reverse_relative_energy": 63.76937331929115}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.21619333239321, "calculation_point_index": 58, "calculation_reaction_coordinate": 6.50545, "calculation_reverse_relative_energy": 63.63505565418658}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.34542537003948, "calculation_point_index": 59, "calculation_reaction_coordinate": 6.61769, "calculation_reverse_relative_energy": 63.50582361654031}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.469556125948465, "calculation_point_index": 60, "calculation_reaction_coordinate": 6.72993, "calculation_reverse_relative_energy": 63.381692860631325}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.588535596954376, "calculation_point_index": 61, "calculation_reaction_coordinate": 6.84216, "calculation_reverse_relative_energy": 63.26271338962542}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.70234741910564, "calculation_point_index": 62, "calculation_reaction_coordinate": 6.95439, "calculation_reverse_relative_energy": 63.148901567474155}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.81093428903477, "calculation_point_index": 63, "calculation_reaction_coordinate": 7.06662, "calculation_reverse_relative_energy": 63.04031469754502}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -21.914278179011042, "calculation_point_index": 64, "calculation_reaction_coordinate": 7.17884, "calculation_reverse_relative_energy": 62.93697080756875}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.01231370122848, "calculation_point_index": 65, "calculation_reaction_coordinate": 7.29105, "calculation_reverse_relative_energy": 62.83893528535131}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.10502001762154, "calculation_point_index": 66, "calculation_reaction_coordinate": 7.40325, "calculation_reverse_relative_energy": 62.74622896895825}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.192325455200685, "calculation_point_index": 67, "calculation_reaction_coordinate": 7.51544, "calculation_reverse_relative_energy": 62.6589235313791}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.274210022098885, "calculation_point_index": 68, "calculation_reaction_coordinate": 7.62762, "calculation_reverse_relative_energy": 62.577038964480906}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.350605719713357, "calculation_point_index": 69, "calculation_reaction_coordinate": 7.73977, "calculation_reverse_relative_energy": 62.50064326686643}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.421514127019563, "calculation_point_index": 70, "calculation_reaction_coordinate": 7.85191, "calculation_reverse_relative_energy": 62.42973485956023}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.48689007045836, "calculation_point_index": 71, "calculation_reaction_coordinate": 7.96402, "calculation_reverse_relative_energy": 62.36435891612143}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.546783693397153, "calculation_point_index": 72, "calculation_reaction_coordinate": 8.07611, "calculation_reverse_relative_energy": 62.30446529318264}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.601163064509347, "calculation_point_index": 73, "calculation_reaction_coordinate": 8.18819, "calculation_reverse_relative_energy": 62.25008592207044}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.65007858104814, "calculation_point_index": 74, "calculation_reaction_coordinate": 8.30026, "calculation_reverse_relative_energy": 62.20117040553165}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.69345715645502, "calculation_point_index": 75, "calculation_reaction_coordinate": 8.41234, "calculation_reverse_relative_energy": 62.15779183012477}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -22.73125108592658, "calculation_point_index": 76, "calculation_reaction_coordinate": 8.52442, "calculation_reverse_relative_energy": 62.11999790065321}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -0.743921961153659, "calculation_point_index": 1, "calculation_reaction_coordinate": -0.11215, "calculation_reverse_relative_energy": 84.10732702542613}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -3.451166897377545, "calculation_point_index": 2, "calculation_reaction_coordinate": -0.22433, "calculation_reverse_relative_energy": 81.40008208920224}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -8.5674504752465, "calculation_point_index": 3, "calculation_reaction_coordinate": -0.33654, "calculation_reverse_relative_energy": 76.28379851133329}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -16.052895151446766, "calculation_point_index": 4, "calculation_reaction_coordinate": -0.44877, "calculation_reverse_relative_energy": 68.79835383513303}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -25.39187512403358, "calculation_point_index": 5, "calculation_reaction_coordinate": -0.56099, "calculation_reverse_relative_energy": 59.459373862546215}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -35.69003674302017, "calculation_point_index": 6, "calculation_reaction_coordinate": -0.67321, "calculation_reverse_relative_energy": 49.16121224355962}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -45.891074518546695, "calculation_point_index": 7, "calculation_reaction_coordinate": -0.7854, "calculation_reverse_relative_energy": 38.960174468033095}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -55.04420274720836, "calculation_point_index": 8, "calculation_reaction_coordinate": -0.89753, "calculation_reverse_relative_energy": 29.80704623937143}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -62.54792928306955, "calculation_point_index": 9, "calculation_reaction_coordinate": -1.00958, "calculation_reverse_relative_energy": 22.30331970351024}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -68.23138650851122, "calculation_point_index": 10, "calculation_reaction_coordinate": -1.12156, "calculation_reverse_relative_energy": 16.61986247806857}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -72.20444835486867, "calculation_point_index": 11, "calculation_reaction_coordinate": -1.23342, "calculation_reverse_relative_energy": 12.646800631711116}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -74.7460998769183, "calculation_point_index": 12, "calculation_reaction_coordinate": -1.34478, "calculation_reverse_relative_energy": 10.105149109661497}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -76.31777546448674, "calculation_point_index": 13, "calculation_reaction_coordinate": -1.45558, "calculation_reverse_relative_energy": 8.533473522093047}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -77.39221170442597, "calculation_point_index": 14, "calculation_reaction_coordinate": -1.56691, "calculation_reverse_relative_energy": 7.459037282153815}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -78.22238290823711, "calculation_point_index": 15, "calculation_reaction_coordinate": -1.67863, "calculation_reverse_relative_energy": 6.628866078342682}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -78.90919795465736, "calculation_point_index": 16, "calculation_reaction_coordinate": -1.79055, "calculation_reverse_relative_energy": 5.942051031922432}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -79.50340938556627, "calculation_point_index": 17, "calculation_reaction_coordinate": -1.90257, "calculation_reverse_relative_energy": 5.3478396010135185}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -80.02891314077401, "calculation_point_index": 18, "calculation_reaction_coordinate": -2.01458, "calculation_reverse_relative_energy": 4.822335845805782}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -80.50579411162563, "calculation_point_index": 19, "calculation_reaction_coordinate": -2.12667, "calculation_reverse_relative_energy": 4.345454874954157}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -80.9438130123232, "calculation_point_index": 20, "calculation_reaction_coordinate": -2.23872, "calculation_reverse_relative_energy": 3.907435974256586}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -81.35641364524514, "calculation_point_index": 21, "calculation_reaction_coordinate": -2.35086, "calculation_reverse_relative_energy": 3.4948353413346496}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -81.73516598578561, "calculation_point_index": 22, "calculation_reaction_coordinate": -2.46291, "calculation_reverse_relative_energy": 3.116083000794177}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -82.09190825192609, "calculation_point_index": 23, "calculation_reaction_coordinate": -2.57486, "calculation_reverse_relative_energy": 2.759340734653705}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -82.4462292930636, "calculation_point_index": 24, "calculation_reaction_coordinate": -2.68695, "calculation_reverse_relative_energy": 2.405019693516195}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -82.77749799919368, "calculation_point_index": 25, "calculation_reaction_coordinate": -2.79904, "calculation_reverse_relative_energy": 2.0737509873861057}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -83.10594493462091, "calculation_point_index": 26, "calculation_reaction_coordinate": -2.91123, "calculation_reverse_relative_energy": 1.7453040519588825}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -83.41723798830684, "calculation_point_index": 27, "calculation_reaction_coordinate": -3.02341, "calculation_reverse_relative_energy": 1.434010998272953}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -83.72142132680783, "calculation_point_index": 28, "calculation_reaction_coordinate": -3.13558, "calculation_reverse_relative_energy": 1.129827659771962}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -84.01591251576727, "calculation_point_index": 29, "calculation_reaction_coordinate": -3.24773, "calculation_reverse_relative_energy": 0.8353364708125213}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -84.3028119391438, "calculation_point_index": 30, "calculation_reaction_coordinate": -3.35984, "calculation_reverse_relative_energy": 0.5484370474359963}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -84.58083472546046, "calculation_point_index": 31, "calculation_reaction_coordinate": -3.4719, "calculation_reverse_relative_energy": 0.27041426111932765}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": -84.85124898657979, "calculation_point_index": 32, "calculation_reaction_coordinate": -3.58386, "calculation_reverse_relative_energy": 0}, {"calculation_branch": "\u9806\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": 0, "calculation_point_index": null, "calculation_reaction_coordinate": 0, "calculation_reverse_relative_energy": 84.85124898657979}, {"calculation_branch": "\u9006\u65b9\u5411\u306e\u7d4c\u8def", "calculation_path_energy": 0, "calculation_point_index": null, "calculation_reaction_coordinate": 0, "calculation_reverse_relative_energy": 84.85124898657979}], "data-8ab1c50fec814882a8810dc4019c886a": [{"calculation_reaction_coordinate": 0}]}, "layer": [{"data": {"name": "data-8ab1c50fec814882a8810dc4019c886a"}, "encoding": {"x": {"field": "calculation_reaction_coordinate", "type": "quantitative"}}, "mark": {"clip": true, "color": "#595959", "strokeDash": [5, 4], "strokeWidth": 1.5, "type": "rule"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"layer": [{"data": {"name": "data-4f34f09fed4114ba65a496d2cd4460a1"}, "encoding": {"color": {"field": "calculation_branch", "type": "nominal"}, "tooltip": [{"field": "calculation_reaction_coordinate", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_reverse_relative_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_branch", "type": "nominal"}], "x": {"field": "calculation_reaction_coordinate", "type": "quantitative"}, "y": {"field": "calculation_reverse_relative_energy", "type": "quantitative"}}, "mark": {"type": "line"}}, {"data": {"name": "data-4f34f09fed4114ba65a496d2cd4460a1"}, "encoding": {"color": {"field": "calculation_branch", "type": "nominal"}, "tooltip": [{"field": "calculation_reaction_coordinate", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_reverse_relative_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_branch", "type": "nominal"}], "x": {"field": "calculation_reaction_coordinate", "type": "quantitative"}, "y": {"field": "calculation_reverse_relative_energy", "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_branch"], "sort": [{"field": "calculation_reaction_coordinate", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-4f34f09fed4114ba65a496d2cd4460a1"}, "encoding": {"color": {"field": "calculation_branch", "type": "nominal"}, "tooltip": [{"field": "calculation_reaction_coordinate", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_reverse_relative_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_branch", "type": "nominal"}], "x": {"field": "calculation_reaction_coordinate", "type": "quantitative"}, "y": {"field": "calculation_reverse_relative_energy", "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_branch"], "sort": [{"field": "calculation_reaction_coordinate", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "4c47769d504d4b6c9650c9e89d74be23": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-7.06421, -3.4102810000000003, -0.7233339999999999], [6.9948310000000005, 3.264025, 0.722803]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_7e965ae2e3494de8a18fddfd311c64bb", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhAKhMFzHrAQAAtgQAAA4AAAB0cmFqZWN0b3J5Lnh5ek2TOW5cQQxE83+KucA0uC+xEye2zmAIAyUyBAh24NubvY6yGfT7LLJYZLh+fLw/Xv++//q8vT0+fj/+fP67Xm7QIlmNAeB2p0ZAAtT/QANgi/77+nbDJsouE8MGpIyyMVWAiUFzJEudL4ThZJsi1ZjUHZq5isrGDKfmfXJgi8NmAW7e37BxpqEfzgSwcy+d45SEUY+a1gvp4UoWVz1qGQLjb+lWn0ynHlYPm5NGgcI8ddGZ3Q6nIbs/bczDujmHIHIeLhWfHHiy03IPGYfuAoMPyK2mFYkF9hE5DsjCdCZxSoz9VqUpT4uQY21w/RzWELvut3QmOtIgJjLBLuYoy2pKJTybU7flTBlIDLz2Wzsk4kUh6PZPyjI99gmWiG5K0mRSZR6W6+v7spHmcod3NDI1KBJnOINmxc6eWMaWBOZtag8raHzRTNn9h3iOPkcKEyy+DjCw7z0AEhi5AkWizvsbQPN5FcVZY5NRrpfQTJxTd46YedfTlljVdbUXtUk7CSWkUb2D3MrsSFjn6BXKeCrX1W3lilu3LBcIWXk42euhzwnW/qvgPNyaxMh1DwwyoE5V4EtnHhq18iun49M9WbWsciExnagUA3lsiqpubArLINqzsrJiHiyAJ8YtLWxGqQbQuuCD9ZT0Xq7/UEsBAhQDFAAAAAgAAAAhAG0N67rHAAAAbAEAAAoAAAAAAAAAAAAAAIABAAAAAGluZGV4Lm12c2pQSwECFAMUAAAACAAAACEAqEwXMesBAAC2BAAADgAAAAAAAAAAAAAAgAHvAAAAdHJhamVjdG9yeS54eXpQSwUGAAAAAAIAAgB0AAAABgMAAAAA", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}, "7e965ae2e3494de8a18fddfd311c64bb": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "909a0bd5cb6b4763b8d5e7bf9d2b05fa": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-7.110578726, -3.39600993, -0.723532057], [6.97815324, 3.324571303, 0.722996307]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 2, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_107bef402d50491fa75e4d9d76050777", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhANj/veOKBAAAbAkAAA4AAAB0cmFqZWN0b3J5Lnh5enWWTY5kRQyE932KvgBP6f/0ms1sgDMgNGIDQkKw4PZ8znzDDnWru0oVz2lHhCPL1scPf/z29Ze/f/v5z89fv/7x+9e//vzn46fP9WyP3uIan9/pI7ZNwmzzwVrm1bLk4/tPeXyVrrVzfX63ns6929auAwtburcCW0+mO7VMeK17udfWdVBqYWoFigIlXbLXOrDiYWuJ+QBcUl17cPKU8mOdMh3QpwknX1zytl2ZAZy7eK1c/alPqkeJLbu4qGpVm3r2LO30XWtaqghL61UHJ6ISvB2cP0ZT1lbFuWqW2ua3nuRys/LBxWNbM3zF8AULq2FPLo4BeUYuTjRiR00NeVatCv74Be4Qbd23wVECoioHGEWRZfoC6XbGGqA+RbFov6xlrnLmyQuEVwaIjx+niGUDNL/C0d7ijHW58W07sgHKk1Bqqkt5bZHSoq9y1DVZybn67Mqy0hzhqFMObQc1fRoSgXLG3a4CtyNblcje7gflBcc9w8ajaZCXNS7KXrE49jhKeIPufVGU1l166C/m39vKLoxJu4YQe3onOq1Rk/53wwYCvGc2NvTbP3z77jiUIuvmVO9vA2TX+vgyBgil7Y1mPGMrxWLnfg3QVVt0cPm40Crd5cyAIzWzL+74nQ8HF2wMzu2M014VUgYEXyCS7x0xQBv3CjXirGM6DQbC35NZBRxwgNgNlzSz7AGymTF7coGwwukQ82W0NGQWvD2TqO0cHx1d3VolBRSKbQmSoBaoyBXa3fKyF8vX1MpHnW1GtVlH4b+NOINS/I3N8qCELUWJ4ZjtaW1E8n1hbA/bBwzFVIbJ2VPFJXu2wuubSzbL+WH/k1rskCIeNj80YbyNK7PvWFLKXCe1YrHuM/20whKOK95wwx7SUTe1cFIXKvBaShz31s02JkZTu6mVsS0wzIyM+aaAyptakOn+pha4cMKz7ioVZKq+qWUCcW9q8Vn6/A7pqhzEYW9qETLueXe9EbqwgZ1WYUlx/ZtalFRoOqmlJwRY6EmtlfOMvrjYJNqdg9QiBAzGxrQ2wVcS/aYWI8pNQVJrDLJJ85tapRz8zYtM6HkHJrXCGYs4OtMriaXyX2rRRfp6U2vjLLbgZG4Bau4V+ZZakC1+U4tgYzZceY6Ws5lab2rNa403tTCq99ozcijUsJBX3yTzYp2tbz3RFnFin9VE4JtHXF4G9Te1iF6ipycBucUkuBFePxI5dW44yBPPTaCNCbiolmKIuymcIsTjTS12caTwO6jN8sbNmfYMOanlz+KWGbPLnTmHmnXPBKOwdfuf4pZ1koVDWSepfQfgKoW5m1rukNMbH7MUiAKqX70ybfLnppbhjVQ8eww1AUMuvKnFfZGocHBrjDMSndTCXCzMe23NbakE3ptaTTEEWie1mu1vvh+8qdXQsPWmFjG9J+6OU+aCHVnfG510muduap39JtJnEpSjfL2p5dyr8qbWqDJfC84CbYdbQvVNLbrQm1rENVnscxtN5JDnl2PiqKafi2K1MXv1Sa0ama7IwLrTVp0jFzs1op3Y5RbHgPcGgyp6zsqPfwFQSwECFAMUAAAACAAAACEAbQ3ruscAAABsAQAACgAAAAAAAAAAAAAAgAEAAAAAaW5kZXgubXZzalBLAQIUAxQAAAAIAAAAIQDY/73jigQAAGwJAAAOAAAAAAAAAAAAAACAAe8AAAB0cmFqZWN0b3J5Lnh5elBLBQYAAAAAAgACAHQAAAClBQAAAAA=", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": true, "trail_density": 1, "trail_frames": [[0, 1]]}}, "9c7b6b62380f4322b8a7cbdd38668513": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bd9002a080d3488f945a718e828d99d0": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "c802397558764e34a9356753f687da57": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "d0dfb1a7ffa84747bf787aa9abd09c8f": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-7.090694, -3.41845, -0.723443], [6.9963120000000005, 3.333202, 0.723162]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 109, "frame_labels": [{"frame": 1, "label": "\u9006\u65b9\u5411\u306e\u7d42\u70b9"}, {"frame": 33, "label": "\u9077\u79fb\u72b6\u614b"}, {"frame": 109, "label": "\u9806\u65b9\u5411\u306e\u7d42\u70b9"}], "height": 440, "layout": "IPY_MODEL_9c7b6b62380f4322b8a7cbdd38668513", "markers": [], "readouts": [], "requested": 1, "scene": "https://notebook-fields.ghovax.workers.dev/747611326f2d8123fee3be3c6228cf23ece26ae0381f516b201870e7199cfd93", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": true, "trail_density": 1, "trail_frames": [[0, 16, 22, 25, 27, 29, 31, 32, 36, 41, 47, 58, 74, 90, 106, 108]]}}, "ddd6e50c81af4380b5798b716a6c747e": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_c802397558764e34a9356753f687da57", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "data": {"name": "data-77d321d8b03041b9cc5e1c7d6f04aa3d"}, "datasets": {"data-77d321d8b03041b9cc5e1c7d6f04aa3d": [{"calculation_character": "$\\sigma$", "calculation_column": 0, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 0.36, "calculation_frontier_level": "$\\mathrm{HOMO}_{3}$", "calculation_left": -0.36, "calculation_level": 0, "calculation_linked": "|0|", "calculation_occupation": "\u88ab\u5360", "calculation_orbital": "$37a'$", "calculation_orbital_energy": -10.329118757226093, "calculation_right": 0.36, "calculation_start": -0.36}, {"calculation_character": "$\\pi$", "calculation_column": 1, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 1.3599999999999999, "calculation_frontier_level": "$\\mathrm{HOMO}_{2}$", "calculation_left": 0.64, "calculation_level": 1, "calculation_linked": "|1|", "calculation_occupation": "\u88ab\u5360", "calculation_orbital": "$9a''$", "calculation_orbital_energy": -10.267802986850002, "calculation_right": 1.3599999999999999, "calculation_start": 0.64}, {"calculation_character": "$\\pi$", "calculation_column": 1, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 1.3599999999999999, "calculation_frontier_level": "$\\mathrm{HOMO}_{1}$", "calculation_left": 0.64, "calculation_level": 2, "calculation_linked": "|2|", "calculation_occupation": "\u88ab\u5360", "calculation_orbital": "$10a''$", "calculation_orbital_energy": -9.250622293793473, "calculation_right": 1.3599999999999999, "calculation_start": 0.64}, {"calculation_character": "$\\pi$", "calculation_column": 1, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 1.3599999999999999, "calculation_frontier_level": "$\\mathrm{HOMO}$", "calculation_left": 0.64, "calculation_level": 3, "calculation_linked": "|3|", "calculation_occupation": "\u88ab\u5360", "calculation_orbital": "$11a''$", "calculation_orbital_energy": -8.27997576514481, "calculation_right": 1.3599999999999999, "calculation_start": 0.64}, {"calculation_character": "$\\pi^{*}$", "calculation_column": 1, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 1.3599999999999999, "calculation_frontier_level": "$\\mathrm{LUMO}$", "calculation_left": 0.64, "calculation_level": 4, "calculation_linked": "|4|", "calculation_occupation": "\u7a7a", "calculation_orbital": "$12a''$", "calculation_orbital_energy": -1.650080679315378, "calculation_right": 1.3599999999999999, "calculation_start": 0.64}, {"calculation_character": "$\\pi^{*}$", "calculation_column": 1, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 1.3599999999999999, "calculation_frontier_level": "$\\mathrm{LUMO}_{1}$", "calculation_left": 0.64, "calculation_level": 5, "calculation_linked": "|5|", "calculation_occupation": "\u7a7a", "calculation_orbital": "$13a''$", "calculation_orbital_energy": -0.6312688677387989, "calculation_right": 1.3599999999999999, "calculation_start": 0.64}, {"calculation_character": "$\\pi^{*}$", "calculation_column": 1, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 0.98, "calculation_frontier_level": "$\\mathrm{LUMO}_{2}$", "calculation_left": 0.64, "calculation_level": 6, "calculation_linked": "|6|", "calculation_occupation": "\u7a7a", "calculation_orbital": "$14a''$", "calculation_orbital_energy": -0.20073490783688533, "calculation_right": 0.98, "calculation_start": 0.64}, {"calculation_character": "$\\pi^{*}$", "calculation_column": 1, "calculation_components": 1, "calculation_degeneracy": 1, "calculation_end": 1.3599999999999999, "calculation_frontier_level": "$\\mathrm{LUMO}_{3}$", "calculation_left": 1.02, "calculation_level": 7, "calculation_linked": "|7|", "calculation_occupation": "\u7a7a", "calculation_orbital": "$15a''$", "calculation_orbital_energy": 0.11504960880067064, "calculation_right": 1.3599999999999999, "calculation_start": 1.02}]}, "layer": [{"encoding": {"color": {"field": "calculation_occupation", "scale": {"domain": ["\u88ab\u5360", "\u7a7a"]}, "type": "nominal"}, "opacity": {"condition": {"test": "!isValid(level_pick.calculation_level) || indexof(datum.calculation_linked, '|' + level_pick.calculation_level[0] + '|') >= 0", "value": 1}, "value": 0.2}, "tooltip": [{"field": "calculation_frontier_level", "type": "nominal"}, {"field": "calculation_orbital", "type": "nominal"}, {"field": "calculation_character", "type": "nominal"}, {"field": "calculation_occupation", "type": "nominal"}, {"field": "calculation_degeneracy", "type": "quantitative"}, {"field": "calculation_orbital_energy", "format": ".4f", "type": "quantitative"}], "x": {"axis": {"grid": false, "labelExpr": "[\"$a'$\", \"$a''$\"][datum.value]", "labelLimit": 0, "labelOverlap": false, "title": null, "values": [0, 1]}, "field": "calculation_start", "scale": {"domain": [-0.5, 1.5], "nice": false, "zero": false}, "type": "quantitative"}, "x2": {"field": "calculation_end"}, "y": {"field": "calculation_orbital_energy", "scale": {"domain": [-10.829118757226093, 0.6150496088006706], "nice": false, "zero": false}, "title": "calculation_orbital_energy", "type": "quantitative"}}, "mark": {"clip": true, "strokeWidth": 3, "type": "rule"}, "params": [{"bind": "scales", "name": "param_e9b61157fc812227", "select": {"encodings": ["y"], "type": "interval"}}]}, {"encoding": {"color": {"field": "calculation_occupation", "scale": {"domain": ["\u88ab\u5360", "\u7a7a"]}, "type": "nominal"}, "opacity": {"value": 0}, "tooltip": [{"field": "calculation_frontier_level", "type": "nominal"}, {"field": "calculation_orbital", "type": "nominal"}, {"field": "calculation_character", "type": "nominal"}, {"field": "calculation_occupation", "type": "nominal"}, {"field": "calculation_degeneracy", "type": "quantitative"}, {"field": "calculation_orbital_energy", "format": ".4f", "type": "quantitative"}], "x": {"axis": {"grid": false, "labelExpr": "[\"$a'$\", \"$a''$\"][datum.value]", "labelLimit": 0, "labelOverlap": false, "title": null, "values": [0, 1]}, "field": "calculation_start", "scale": {"domain": [-0.5, 1.5], "nice": false, "zero": false}, "type": "quantitative"}, "x2": {"field": "calculation_end"}, "y": {"field": "calculation_orbital_energy", "scale": {"domain": [-10.829118757226093, 0.6150496088006706], "nice": false, "zero": false}, "title": "calculation_orbital_energy", "type": "quantitative"}}, "mark": {"clip": true, "strokeWidth": 12, "type": "rule"}, "name": "view_c8c5ee6f26fca70d_1"}], "params": [{"name": "level_pick", "select": {"fields": ["calculation_level"], "on": "click", "type": "point"}, "views": ["view_c8c5ee6f26fca70d_1"]}], "resolve": {"scale": {"opacity": "independent"}}, "width": "container"}, "tabbable": null, "tooltip": null}}, "f02e4e95f18b450a8214a200dcd168ba": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.volume.VolumeViewer", "_css": "../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "atom_scale": {}, "bounds": [[-7.4271166639317565, -3.648528908752003, -2.669255666704496], [7.389845231296962, 3.6541165967535796, 2.6225164387343316]], "choices": [], "color_description": "", "color_label": "", "color_range": [], "colors": [], "distances": [], "error": "", "fit_atoms": true, "frame": 0, "frame_count": 4, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_1ba95a427a1a4f9392540693e52e9ada", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhAJMOhY6AAgAA2BIAAA4AAAB0cmFqZWN0b3J5Lnh5eu1UO25VQQzt3yreBjLy/1PT0ABrQCiiCYqEoGD3HM9kGSOleNGca/t8bKXHl/e31x9/377/fv58ff/1+uf3v8e3Jy+SkCZWf77IErVKzegnLSLjFOF4fALMKayKGTBeLJ7uqbVhnsztCRitaKZOqXnhZCuTzI0SfC6hQL0A5qXupDSw5ikgPA+D0zbrwfHg3NRQgpd6pHSLHFwoc6iAw8t+C5u/pywXQSM0Ozh8r2ZDAvw6u9JZdY+abtKpG8eMkqI0OFuSBoIOHXgJxXwjHzgvyTo8HH2ZFIoF6mEeARPvg2tQZO2Dww/hEtcZljIFjfHRBoKhxSGsC/+Alrdt9qIAstgBKqYIo8Mky6XDoQzeEqA2yiMhb7HZHl+niLGDGxfv1iygTZJHG5vf4gCiGXW3NdVQdoE0TH78DTXy6QsBYaEI+bykkygMtudu6qqQHihbbKLc1IJaZphA2HcKEAjNrEFBPLYorpoQRAkJAsEbhS6ckRsFljFW2CGqoJDeB2bhnLpbUiE2GYemcYw0dHoCI1DrzD/FNbJ2CmElhMo6BBIjkzw+TwDMIE4XcoylgClA9YdfEVpQfnCxFNkIQWZ3oJAsPB6cqEYHXNg4muCMRTPehAsLQ8dXaBPiXQNUFEExGERjMgoQbMGa7M7SkKH2hLS6AtpX7aQ0VB1b6/iqkAnfAYjV2PsdiDyYwDmUTz3rbaxIG1BwbFzBELoXqAzashzHMGtsWQJrUezIJKEud6ZSHI1FICnmOSisNsKePZNJjk3HZMC6Qyl3S8JOjWk1TJ0SAYz8cAwzR8ZD79W6V+terXu17tW6V+terXu17tW6V+terXu17tW6V2tfrf9QSwECFAMUAAAACAAAACEAbQ3ruscAAABsAQAACgAAAAAAAAAAAAAAgAEAAAAAaW5kZXgubXZzalBLAQIUAxQAAAAIAAAAIQCTDoWOgAIAANgSAAAOAAAAAAAAAAAAAACAAe8AAAB0cmFqZWN0b3J5Lnh5elBLBQYAAAAAAgACAHQAAACbAwAAAAA=", "segments": [], "snapshot_atoms": [], "snapshot_choices": [], "snapshot_fields": [], "snapshots": ["$\\mathrm{HOMO}_{1}$, $10a''$, $\\pi$, $\\epsilon={-9.251}\\,\\mathrm{eV}$", "$\\mathrm{HOMO}$, $11a''$, $\\pi$, $\\epsilon={-8.280}\\,\\mathrm{eV}$", "$\\mathrm{LUMO}$, $12a''$, $\\pi^{*}$, $\\epsilon={-1.650}\\,\\mathrm{eV}$", "$\\mathrm{LUMO}_{1}$, $13a''$, $\\pi^{*}$, $\\epsilon={-0.631}\\,\\mathrm{eV}$"], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": [], "views": [{"color_description": "\u30b9\u30ca\u30c3\u30d7\u30b7\u30e7\u30c3\u30c8\u9078\u629e\u3067\u9078\u3093\u3060\u8ecc\u9053\u306e\u632f\u5e45 $\\psi$\u3002\u4fdd\u5b58\u3055\u308c\u305f\u4fc2\u6570\u304b\u3089\u8a55\u4fa1\u3059\u308b\u3002\u8d64\u3044\u66f2\u9762\u306f\u8ca0\u306e\u5024\u3001\u9752\u3044\u66f2\u9762\u306f\u6b63\u306e\u5024\u3092\u56f2\u3080\u3002\u8ecc\u9053\u5168\u4f53\u306e\u7b26\u53f7\u306f\u4efb\u610f\u3002", "color_field": "", "color_fields": ["", "", "", ""], "color_label": "$\\psi\\;[a_0^{\\frac{-3}{2}}]$", "color_range": [-0.02, 0.02], "colors": ["#d7301f", "#2b6cb0"], "field": "", "field_name": "\u8ecc\u9053\u632f\u5e45", "field_scale": 0.000138702392578125, "field_symbol": "\\psi", "field_unit": "a_0^{\\frac{-3}{2}}", "fields": ["https://notebook-fields.ghovax.workers.dev/7dca4a63cb0be2430922f7380b5241fd79702906063ed90b338b34f3672e5b4b#0-378518", "https://notebook-fields.ghovax.workers.dev/7dca4a63cb0be2430922f7380b5241fd79702906063ed90b338b34f3672e5b4b#378518-772974", "https://notebook-fields.ghovax.workers.dev/1bdb4cf099cb5c9a4af0f9fdf7abdaca30616c31e7af5838180b36339d88056f#0-382354", "https://notebook-fields.ghovax.workers.dev/1bdb4cf099cb5c9a4af0f9fdf7abdaca30616c31e7af5838180b36339d88056f#382354-775365"], "isovalue": 200, "level_range": [25, 2782.3429228998853], "opacity": 0.85, "signed": true, "title": ""}]}}}, "version_major": 2, "version_minor": 0}</script>
+<script id="quarto-html-after-body" type="application/javascript" src="../../../../site_libs/shared-1d9d6cb5641f4609/script.js"></script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"スクロール可能なコード","output":"スクロール可能な出力"};
+  </script>
+</div> <!-- /content -->
+<!-- Fold sections: a ::: {.fold} div opening with a heading, which Pandoc renders as
+     section.fold; the heading becomes the summary of a collapsible block, so it stays a
+     real heading and appears in the TOC. -->
+<link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
+<script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
+<script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
+
+
+
+
+</body></html>
