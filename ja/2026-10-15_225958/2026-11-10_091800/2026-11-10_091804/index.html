@@ -8,7 +8,7 @@
 
 <meta name="author" content="Giovanni Gravili">
 
-<title>Carbon exchange B3LYP fields at the unconstrained TS</title>
+<title>拘束のない TS での炭素交換の B3LYP の場</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -188,7 +188,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Evaluate B3LYP fields at the TS</h1>
+<h1 class="title">TS での B3LYP の場の評価</h1>
 </div>
 
 
@@ -232,7 +232,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">Carbon exchange and central-bond torsion</a><span class="sep">/</span><a href="../">Unconstrained carbon exchange of indigo and epindolidione</a><span class="sep">/</span><span class="current">Evaluate B3LYP fields at the TS</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-15_225958/2026-11-10_091800/2026-11-10_091804/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-10-15_225958/2026-11-10_091800/2026-11-10_091804/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-10-15_225958/2026-11-10_091800/2026-11-10_091804/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">炭素の交換と中心結合のねじれ</a><span class="sep">/</span><a href="../">インジゴとエピンドリジオンの拘束のない炭素交換</a><span class="sep">/</span><span class="current">TS での B3LYP の場の評価</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-15_225958/2026-11-10_091800/2026-11-10_091804/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-10-15_225958/2026-11-10_091800/2026-11-10_091804/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-10-15_225958/2026-11-10_091800/2026-11-10_091804/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -245,7 +245,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>This run has been prepared but not submitted, so it has no outcome yet.</li>
+<li>この計算は準備済みで投入していないので、まだ結果はありません。</li>
 </ul>
 </div>
 </div>
@@ -282,31 +282,31 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Searches["Unconstrained TS search"]
-        %% description: Release every coordinate at the sampled maximum of the planar scan and require a converged first-order saddle, which the planar results could not provide.
+    subgraph Searches["拘束のない TS 探索"]
+        %% description: 平面スキャンのサンプリングした極大ですべての座標を解放し、平面での結果では得られなかった、収束した一次の鞍点を求めます。
         direction TB
-        Search1["&lt;a href='../2026-11-10_091801/'&gt;TS search from the scan maximum&lt;/a&gt;"]
+        Search1["&lt;a href='../2026-11-10_091801/'&gt;スキャンの極大からの TS 探索&lt;/a&gt;"]
     end
 
-    subgraph Paths["Reaction path"]
-        %% description: Follow the converged saddle along $\pm s$ without a planar restriction, to learn which molecules it connects.
+    subgraph Paths["反応経路"]
+        %% description: 収束した鞍点を平面の制限なしに $\pm s$ に沿ってたどり、それがどの分子をつなぐかを調べます。
         direction TB
-        Path1["&lt;a href='../2026-11-10_091802/'&gt;IRC along $$\pm s$$ from the TS&lt;/a&gt;"]
+        Path1["&lt;a href='../2026-11-10_091802/'&gt;TS から $$\pm s$$ に沿った IRC&lt;/a&gt;"]
     end
 
-    subgraph Fields["&lt;span&gt;Electron density $$\rho$$ and ESP $$V$$&lt;/span&gt;"]
-        %% description: Compare the density and potential at the saddle and both path ends on one grid and potential scale, without reoptimizing at the higher level.
+    subgraph Fields["&lt;span&gt;電子密度 $$\rho$$ と ESP $$V$$&lt;/span&gt;"]
+        %% description: 鞍点と経路の両端での密度とポテンシャルを、一つのグリッドとポテンシャルの尺度で比べます。より高い水準での再最適化はしません。
         direction TB
-        Fields1["&lt;a href='../2026-11-10_091803/'&gt;Evaluate B3LYP fields at $$s_\mathrm{R}$$&lt;/a&gt;"]
-        Fields2["Evaluate B3LYP fields at the TS"]
-        Fields3["&lt;a href='../2026-11-10_091805/'&gt;Evaluate B3LYP fields at $$s_\mathrm{F}$$&lt;/a&gt;"]
+        Fields1["&lt;a href='../2026-11-10_091803/'&gt;$$s_\mathrm{R}$$ での B3LYP の場を評価&lt;/a&gt;"]
+        Fields2["TS での B3LYP の場を評価"]
+        Fields3["&lt;a href='../2026-11-10_091805/'&gt;$$s_\mathrm{F}$$ での B3LYP の場を評価&lt;/a&gt;"]
     end
 
     Start1(( ))
-    Input1[/"Sampled maximum of the planar scan"/]
-    Output1[/"&lt;span&gt;Saddle curvature $$\nu_i$$ and stationarity&lt;/span&gt;"/]
-    Output2[/"&lt;span&gt;Unconstrained IRC $$E(s)$$&lt;/span&gt;"/]
-    Output3[/"&lt;span&gt;Density $$\rho$$ and ESP $$V$$&lt;/span&gt;"/]
+    Input1[/"平面スキャンのサンプリングした極大"/]
+    Output1[/"&lt;span&gt;鞍点の曲率 $$\nu_i$$ と停留性&lt;/span&gt;"/]
+    Output2[/"&lt;span&gt;拘束のない IRC $$E(s)$$&lt;/span&gt;"/]
+    Output3[/"&lt;span&gt;密度 $$\rho$$ と ESP $$V$$&lt;/span&gt;"/]
     End1((( )))
 
     Start1 --&gt; Input1
@@ -358,9 +358,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
-<li>Evaluate B3LYP electron-density and electrostatic-potential fields at the unconstrained TS, at its fixed PM6-D3 geometry.</li>
+<li>拘束のない TS で、固定した PM6-D3 構造について B3LYP の電子密度と静電ポテンシャルの場を評価する。</li>
 </ul>
-<div id="e37383fd" class="cell" data-execution_count="2">
+<div id="ef2d5d19" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-2ca02f32230db106/data.js"></script><script src="../../../../site_libs/shared-c00d40ea6ec121e8/data.js"></script>
 </div>

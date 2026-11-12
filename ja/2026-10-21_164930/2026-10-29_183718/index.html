@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Giovanni Gravili">
-<meta name="keywords" content="benzene, independent guesses, molecular screening, vertical absorption">
+<meta name="keywords" content="ベンゼン, 独立な初期推定, 分子のスクリーニング, 垂直吸収">
 
-<title>Benzene with independent guesses</title>
+<title>独立な初期推定によるベンゼン</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -162,15 +162,15 @@ window.Quarto = {
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#Comparison_with_the_checkpoint-chained_workflow" id="toc-Comparison_with_the_checkpoint-chained_workflow" class="nav-link active" data-scroll-target="#Comparison_with_the_checkpoint-chained_workflow">Comparison with the checkpoint-chained workflow</a>
+  <li><a href="#チェックポイントをつないだワークフローとの比較" id="toc-チェックポイントをつないだワークフローとの比較" class="nav-link active" data-scroll-target="#チェックポイントをつないだワークフローとの比較">チェックポイントをつないだワークフローとの比較</a>
   <ul class="collapse">
-  <li><a href="#Orbital_eigenvalues_printed_after_the_natural_transition_orbitals" id="toc-Orbital_eigenvalues_printed_after_the_natural_transition_orbitals" class="nav-link" data-scroll-target="#Orbital_eigenvalues_printed_after_the_natural_transition_orbitals">Orbital eigenvalues printed after the natural transition orbitals</a></li>
+  <li><a href="#自然遷移軌道の後に出力される軌道固有値" id="toc-自然遷移軌道の後に出力される軌道固有値" class="nav-link" data-scroll-target="#自然遷移軌道の後に出力される軌道固有値">自然遷移軌道の後に出力される軌道固有値</a></li>
   </ul></li>
   <li><a href="#Calculations" id="toc-Calculations" class="nav-link" data-scroll-target="#Calculations">計算</a>
   <ul class="collapse">
-  <li><a href="#Reference_S_0_geometry" id="toc-Reference_S_0_geometry" class="nav-link" data-scroll-target="#Reference_S_0_geometry">Reference <span class="math inline">S_0</span> geometry</a></li>
-  <li><a href="#B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption" id="toc-B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption" class="nav-link" data-scroll-target="#B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption">B3LYP <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</a></li>
-  <li><a href="#DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption" id="toc-DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption" class="nav-link" data-scroll-target="#DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption">DD-DFT <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</a></li>
+  <li><a href="#基準となる_S_0_構造" id="toc-基準となる_S_0_構造" class="nav-link" data-scroll-target="#基準となる_S_0_構造">基準となる <span class="math inline">S_0</span> 構造</a></li>
+  <li><a href="#B3LYP_の_varepsilon_s_と_S_0rightarrow_S_n_吸収" id="toc-B3LYP_の_varepsilon_s_と_S_0rightarrow_S_n_吸収" class="nav-link" data-scroll-target="#B3LYP_の_varepsilon_s_と_S_0rightarrow_S_n_吸収">B3LYP の <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 吸収</a></li>
+  <li><a href="#DD-DFT_の_varepsilon_s_と_S_0rightarrow_S_n_吸収" id="toc-DD-DFT_の_varepsilon_s_と_S_0rightarrow_S_n_吸収" class="nav-link" data-scroll-target="#DD-DFT_の_varepsilon_s_と_S_0rightarrow_S_n_吸収">DD-DFT の <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 吸収</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -179,7 +179,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Benzene with independent guesses</h1>
+<h1 class="title">独立な初期推定によるベンゼン</h1>
 </div>
 
 
@@ -220,14 +220,14 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">概要</div>
-    <p>B3LYP and DD-DFT molecular screening and vertical absorption of benzene, with a fresh electronic guess for each Gaussian calculation.</p>
+    <p>ベンゼンの B3LYP と DD-DFT による分子のスクリーニングと垂直吸収を、Gaussian の計算ごとに新しい電子の初期推定で求めます。</p>
   </div>
 </div>
 
 <div>
   <div class="keywords">
     <div class="block-title">キーワード</div>
-    <p>benzene, independent guesses, molecular screening, vertical absorption</p>
+    <p>ベンゼン, 独立な初期推定, 分子のスクリーニング, 垂直吸収</p>
   </div>
 </div>
 
@@ -235,7 +235,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">分子のスクリーニング <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 励起</a><span class="sep">/</span><span class="current">Benzene with independent guesses</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-29_183718/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-10-21_164930/2026-10-29_183718/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-10-21_164930/2026-10-29_183718/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">分子のスクリーニング <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 励起</a><span class="sep">/</span><span class="current">独立な初期推定によるベンゼン</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-21_164930/2026-10-29_183718/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-10-21_164930/2026-10-29_183718/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-10-21_164930/2026-10-29_183718/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="status-accepted callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -248,26 +248,26 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The first-cycle B3LYP and DD-DFT spectra reproduce the checkpoint-chained results within <span class="math inline">3</span> and <span class="math inline">1\,\mathrm{meV}</span>, respectively, so no appreciable checkpoint-induced change is found for benzene at this precision.</li>
-<li>A second geometry/screening cycle reproduces the four-decimal Gaussian weights at a geometry satisfying the default optimization criteria.</li>
-<li>That cycle moves the spectrum by at most <span class="math inline">2.7\,\mathrm{meV}</span>.</li>
-<li>Supersedes the <a href="../2026-10-21_164931/">checkpoint-chained comparison</a>, using independently generated electronic guesses.</li>
+<li>最初のサイクルの B3LYP と DD-DFT のスペクトルは、チェックポイントをつないだ結果をそれぞれ <span class="math inline">3</span> と <span class="math inline">1\,\mathrm{meV}</span> 以内で再現するので、この精度ではベンゼンにチェックポイントによる目立った変化は見られません。</li>
+<li>構造とスクリーニングの 2 回目のサイクルは、既定の最適化基準を満たす構造で、小数第 4 位までの Gaussian の重みを再現します。</li>
+<li>そのサイクルによるスペクトルの変化は、最大でも <span class="math inline">2.7\,\mathrm{meV}</span> です。</li>
+<li>独立に作った電子の初期推定を使い、<a href="../2026-10-21_164931/">チェックポイントをつないだ比較</a>に代わるものです。</li>
 </ul>
 </div>
 </div>
-<section id="Comparison_with_the_checkpoint-chained_workflow" class="level2">
-<h2 class="anchored" data-anchor-id="Comparison_with_the_checkpoint-chained_workflow">Comparison with the checkpoint-chained workflow</h2>
-<p><span class="hl">Rerunning benzene without checkpoint reuse reproduces the checkpoint-chained results</span>. In <a href="#Table_1" class="quarto-xref">表&nbsp;1</a> and <a href="#Table_2" class="quarto-xref">表&nbsp;2</a>:</p>
+<section id="チェックポイントをつないだワークフローとの比較" class="level2">
+<h2 class="anchored" data-anchor-id="チェックポイントをつないだワークフローとの比較">チェックポイントをつないだワークフローとの比較</h2>
+<p><span class="hl">チェックポイントを再利用せずにベンゼンをやり直すと、チェックポイントをつないだ結果が再現されます</span>。<a href="#Table_1" class="quarto-xref">表&nbsp;1</a> と <a href="#Table_2" class="quarto-xref">表&nbsp;2</a> では、次のようになっています。</p>
 <ul>
-<li>The B3LYP total energies differ by <span class="math inline">0.03\,\mathrm{meV}</span>.</li>
-<li>The DD-DFT total energies differ by <span class="math inline">12\,\mathrm{meV}</span>, because the two optimizations stop at slightly different geometries.</li>
-<li>The gaps <span class="math inline">\Delta\epsilon</span> are about <span class="math inline">6.79\,\mathrm{eV}</span> for B3LYP and <span class="math inline">8.86\,\mathrm{eV}</span> for DD-DFT in both workflows.</li>
+<li>B3LYP の全エネルギーの差は <span class="math inline">0.03\,\mathrm{meV}</span> です。</li>
+<li>DD-DFT の全エネルギーの差は <span class="math inline">12\,\mathrm{meV}</span> で、二つの最適化がわずかに異なる構造で止まるためです。</li>
+<li>ギャップ <span class="math inline">\Delta\epsilon</span> は、どちらのワークフローでも B3LYP で約 <span class="math inline">6.79\,\mathrm{eV}</span>、DD-DFT で約 <span class="math inline">8.86\,\mathrm{eV}</span> です。</li>
 </ul>
 <div class="cell" data-execution_count="3">
 <div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ground-b3lyp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;1. B3LYP total energy, frontier orbital energies and HOMO–LUMO gap of the ground state the vertical excitations start from.
+表&nbsp;1. 垂直励起の出発点となる基底状態の、B3LYP の全エネルギー、フロンティア軌道のエネルギー、HOMO–LUMO ギャップ。
 </figcaption>
 <div aria-describedby="tbl-ground-b3lyp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -307,7 +307,7 @@ window.Quarto = {
 <div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ground-dd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;2. DD-DFT total energy, frontier orbital energies and HOMO–LUMO gap of the ground state the vertical excitations start from.
+表&nbsp;2. 垂直励起の出発点となる基底状態の、DD-DFT の全エネルギー、フロンティア軌道のエネルギー、HOMO–LUMO ギャップ。
 </figcaption>
 <div aria-describedby="tbl-ground-dd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -343,16 +343,16 @@ window.Quarto = {
 </figure>
 </div>
 </div>
-<p>In <a href="#Table_3" class="quarto-xref">表&nbsp;3</a> and <a href="#Table_4" class="quarto-xref">表&nbsp;4</a>, the shift <span class="math inline">\delta\Delta E_{S_n}</span> is <span class="math inline">\Delta E_{S_n}</span> with independent guesses minus <span class="math inline">\Delta E_{S_n}</span> with chained guesses:</p>
+<p><a href="#Table_3" class="quarto-xref">表&nbsp;3</a> と <a href="#Table_4" class="quarto-xref">表&nbsp;4</a> のシフト <span class="math inline">\delta\Delta E_{S_n}</span> は、独立な初期推定での <span class="math inline">\Delta E_{S_n}</span> から、つないだ初期推定での <span class="math inline">\Delta E_{S_n}</span> を引いた値です。</p>
 <ul>
-<li>Both workflows give a dark <span class="math inline">S_1</span> and a degenerate bright <span class="math inline">S_3/S_4</span> pair.</li>
-<li>Every <span class="math inline">\delta\Delta E_{S_n}</span> is at most a few milli-electronvolts.</li>
+<li>どちらのワークフローでも、<span class="math inline">S_1</span> は暗く、<span class="math inline">S_3/S_4</span> は縮退した明るい対になります。</li>
+<li>どの <span class="math inline">\delta\Delta E_{S_n}</span> も、せいぜい数ミリ電子ボルトです。</li>
 </ul>
 <div class="cell" data-execution_count="5">
 <div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-spectrum-b3lyp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;3. B3LYP vertical singlet excitation energies and oscillator strengths of both workflows, with the shift <span class="math inline">\delta\Delta E_{S_n}</span> between them.
+表&nbsp;3. 両方のワークフローでの B3LYP の垂直一重項励起エネルギーと振動子強度、およびその間のシフト <span class="math inline">\delta\Delta E_{S_n}</span>。
 </figcaption>
 <div aria-describedby="tbl-spectrum-b3lyp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -411,7 +411,7 @@ window.Quarto = {
 <div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-spectrum-dd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;4. DD-DFT vertical singlet excitation energies and oscillator strengths of both workflows, with the shift <span class="math inline">\delta\Delta E_{S_n}</span> between them.
+表&nbsp;4. 両方のワークフローでの DD-DFT の垂直一重項励起エネルギーと振動子強度、およびその間のシフト <span class="math inline">\delta\Delta E_{S_n}</span>。
 </figcaption>
 <div aria-describedby="tbl-spectrum-dd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -466,16 +466,16 @@ window.Quarto = {
 </figure>
 </div>
 </div>
-<p>In <a href="#Table_5" class="quarto-xref">表&nbsp;5</a>, the shift <span class="math inline">\delta\varepsilon_s/\varepsilon_s</span> is <span class="math inline">\varepsilon_s</span> with independent guesses divided by <span class="math inline">\varepsilon_s</span> with chained guesses, minus one:</p>
+<p><a href="#Table_5" class="quarto-xref">表&nbsp;5</a> のシフト <span class="math inline">\delta\varepsilon_s/\varepsilon_s</span> は、独立な初期推定での <span class="math inline">\varepsilon_s</span> を、つないだ初期推定での <span class="math inline">\varepsilon_s</span> で割って 1 を引いた値です。</p>
 <ul>
-<li>The DD-DFT screening <span class="math inline">\varepsilon_s</span> changes by <span class="math inline">-0.10\,\mathrm{\%}</span> at the B3LYP geometry.</li>
-<li>It changes by <span class="math inline">-0.08\,\mathrm{\%}</span> at the DD-DFT geometry.</li>
+<li>DD-DFT のスクリーニング <span class="math inline">\varepsilon_s</span> は、B3LYP 構造で <span class="math inline">-0.10\,\mathrm{\%}</span> 変化します。</li>
+<li>DD-DFT 構造では <span class="math inline">-0.08\,\mathrm{\%}</span> 変化します。</li>
 </ul>
 <div class="cell" data-execution_count="7">
 <div id="Table_5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-screening-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;5. DD-DFT screening <span class="math inline">\varepsilon_s</span> at the B3LYP geometry, where it sets the weights, and rechecked at the DD-DFT geometry.
+表&nbsp;5. 重みを定める B3LYP 構造での DD-DFT のスクリーニング <span class="math inline">\varepsilon_s</span> と、DD-DFT 構造で再確認した値。
 </figcaption>
 <div aria-describedby="tbl-screening-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -483,8 +483,8 @@ window.Quarto = {
 <thead>
 <tr class="header">
 <th style="text-align: left;">Workflow</th>
-<th style="text-align: right;"><span class="math inline">\varepsilon_s</span> at the B3LYP geometry</th>
-<th style="text-align: right;"><span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</th>
+<th style="text-align: right;">B3LYP 構造での <span class="math inline">\varepsilon_s</span></th>
+<th style="text-align: right;">DD-DFT 構造での <span class="math inline">\varepsilon_s</span></th>
 </tr>
 </thead>
 <tbody>
@@ -505,16 +505,16 @@ window.Quarto = {
 </figure>
 </div>
 </div>
-<section id="Orbital_eigenvalues_printed_after_the_natural_transition_orbitals" class="level3">
-<h3 class="anchored" data-anchor-id="Orbital_eigenvalues_printed_after_the_natural_transition_orbitals">Orbital eigenvalues printed after the natural transition orbitals</h3>
-<p>The checkpoint-chained excitation logs show a “no gap” pattern that is not an orbital gap:</p>
+<section id="自然遷移軌道の後に出力される軌道固有値" class="level3">
+<h3 class="anchored" data-anchor-id="自然遷移軌道の後に出力される軌道固有値">自然遷移軌道の後に出力される軌道固有値</h3>
+<p>チェックポイントをつないだ励起のログには、軌道ギャップではない「ギャップなし」のパターンが現れます。</p>
 <ul>
-<li>Their last job requests natural transition orbitals (<code>Guess=Only Density=(Check,Transition=1) Pop=SaveNTO</code>).</li>
-<li>Gaussian prints its weights under the headings <code>Alpha  occ. eigenvalues</code> and <code>Alpha virt. eigenvalues</code>.</li>
-<li><span class="hl">These are transition-density eigenvalues, not orbital energies</span>.</li>
-<li>The occupied block ends at <span class="math inline">0.49968</span> for B3LYP and <span class="math inline">0.50073</span> for DD-DFT, and the virtual block starts at the same values.</li>
-<li>The SCF orbital energies printed earlier keep the gaps of <a href="#Table_1" class="quarto-xref">表&nbsp;1</a> and <a href="#Table_2" class="quarto-xref">表&nbsp;2</a>.</li>
-<li>The independent-guess logs request no natural transition orbitals, so they carry no such block.</li>
+<li>その最後のジョブは、自然遷移軌道（<code>Guess=Only Density=(Check,Transition=1) Pop=SaveNTO</code>）を求めます。</li>
+<li>Gaussian は、その重みを <code>Alpha  occ. eigenvalues</code> と <code>Alpha virt. eigenvalues</code> の見出しの下に出力します。</li>
+<li><span class="hl">これらは遷移密度の固有値であり、軌道エネルギーではありません</span>。</li>
+<li>占有側のブロックは B3LYP で <span class="math inline">0.49968</span>、DD-DFT で <span class="math inline">0.50073</span> で終わり、空軌道側のブロックも同じ値から始まります。</li>
+<li>それより前に出力される SCF の軌道エネルギーは、<a href="#Table_1" class="quarto-xref">表&nbsp;1</a> と <a href="#Table_2" class="quarto-xref">表&nbsp;2</a> のギャップを保っています。</li>
+<li>独立な初期推定のログは自然遷移軌道を求めないので、そのようなブロックはありません。</li>
 </ul>
 <!-- Generated by researchsite.pages from the calculation folders; do not edit. -->
 </section>
@@ -555,34 +555,34 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph IndependentBenzeneReference["&lt;span&gt;Reference $$S_0$$ geometry&lt;/span&gt;"]
-        %% description: Establish the $S_0$ reference geometry and verify its curvature before using it in the electronic-response branches.
+    subgraph IndependentBenzeneReference["&lt;span&gt;基準となる $$S_0$$ 構造&lt;/span&gt;"]
+        %% description: $S_0$ の基準構造を確立し、電子応答の枝で使う前に曲率を検証します。
         direction TB
-        Optimize15["&lt;a href='2026-10-29_183719/'&gt;Optimize the B3LYP $$S_0$$ geometry&lt;/a&gt;"]
-        Verify15["&lt;a href='2026-10-29_183720/'&gt;Check stability and verify the B3LYP $$S_0$$ minimum&lt;/a&gt;"]
+        Optimize15["&lt;a href='2026-10-29_183719/'&gt;B3LYP $$S_0$$ 構造の最適化&lt;/a&gt;"]
+        Verify15["&lt;a href='2026-10-29_183720/'&gt;安定性のチェックと B3LYP $$S_0$$ の極小の検証&lt;/a&gt;"]
     end
 
-    subgraph IndependentBenzeneConventional["&lt;span&gt;B3LYP $$\varepsilon_s$$ and $$S_0\rightarrow S_n$$ absorption&lt;/span&gt;"]
+    subgraph IndependentBenzeneConventional["&lt;span&gt;B3LYP の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;"]
 
-        %% description: Evaluate B3LYP molecular screening and vertical $S_0\rightarrow S_n$ absorption at the verified $S_0$ geometry.
+        %% description: 検証した $S_0$ 構造で、B3LYP の分子のスクリーニングと垂直 $S_0\rightarrow S_n$ 吸収を評価します。
         direction TB
-        Evaluate5["&lt;a href='2026-10-29_183721/'&gt;Evaluate screening $$\varepsilon_s$$&lt;/a&gt;"]
-        Excitations9["&lt;a href='2026-10-29_183722/'&gt;Calculate B3LYP vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
+        Evaluate5["&lt;a href='2026-10-29_183721/'&gt;スクリーニング $$\varepsilon_s$$ の評価&lt;/a&gt;"]
+        Excitations9["&lt;a href='2026-10-29_183722/'&gt;B3LYP の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;"]
     end
 
-    subgraph IndependentBenzeneDielectric["&lt;span&gt;DD-DFT $$\varepsilon_s$$ and $$S_0\rightarrow S_n$$ absorption&lt;/span&gt;"]
+    subgraph IndependentBenzeneDielectric["&lt;span&gt;DD-DFT の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;"]
 
-        %% description: Use molecular screening to set $\alpha=1/\varepsilon_s$, then compare DD-DFT geometry, response and absorption with the conventional branch.
+        %% description: 分子のスクリーニングから $\alpha=1/\varepsilon_s$ を定め、DD-DFT の構造、応答、吸収を従来の枝と比べます。
         direction TB
-        Converge5["&lt;a href='2026-10-29_183723/'&gt;Converge $$\varepsilon_s$$ and weights&lt;/a&gt;"]
-        Optimize16["&lt;a href='2026-10-29_183724/'&gt;Optimize the DD-DFT $$S_0$$ geometry&lt;/a&gt;"]
-        Verify16["&lt;a href='2026-10-29_183725/'&gt;Check stability and verify the DD-DFT $$S_0$$ minimum&lt;/a&gt;"]
-        Recheck5["&lt;a href='2026-10-29_183726/'&gt;Recheck $$\varepsilon_s$$ at the DD-DFT geometry&lt;/a&gt;"]
-        Excitations10["&lt;a href='2026-10-29_183727/'&gt;Calculate DD-DFT vertical $$S_0\rightarrow S_n$$ excitations&lt;/a&gt;"]
-        Optimize17["&lt;a href='2026-10-30_232951/'&gt;Optimize the $$S_0$$ geometry, rechecked weights&lt;/a&gt;"]
-        Verify17["&lt;a href='2026-10-30_232952/'&gt;Check stability and verify the rechecked $$S_0$$ minimum&lt;/a&gt;"]
-        Recheck6["&lt;a href='2026-10-30_232953/'&gt;Recheck $$\varepsilon_s$$ at the rechecked DD-DFT geometry&lt;/a&gt;"]
-        Excitations11["&lt;a href='2026-10-30_232954/'&gt;Calculate $$S_0\rightarrow S_n$$ excitations, self-consistent weights&lt;/a&gt;"]
+        Converge5["&lt;a href='2026-10-29_183723/'&gt;$$\varepsilon_s$$ と重みの収束&lt;/a&gt;"]
+        Optimize16["&lt;a href='2026-10-29_183724/'&gt;DD-DFT $$S_0$$ 構造の最適化&lt;/a&gt;"]
+        Verify16["&lt;a href='2026-10-29_183725/'&gt;安定性のチェックと DD-DFT $$S_0$$ の極小の検証&lt;/a&gt;"]
+        Recheck5["&lt;a href='2026-10-29_183726/'&gt;DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;"]
+        Excitations10["&lt;a href='2026-10-29_183727/'&gt;DD-DFT の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;"]
+        Optimize17["&lt;a href='2026-10-30_232951/'&gt;再確認した重みでの $$S_0$$ 構造の最適化&lt;/a&gt;"]
+        Verify17["&lt;a href='2026-10-30_232952/'&gt;安定性のチェックと再確認した $$S_0$$ の極小の検証&lt;/a&gt;"]
+        Recheck6["&lt;a href='2026-10-30_232953/'&gt;再確認した DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;"]
+        Excitations11["&lt;a href='2026-10-30_232954/'&gt;自己無撞着な重みでの $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;"]
     end
 
     Optimize15 --&gt; Verify15
@@ -595,10 +595,10 @@ flowchart TB
     Verify16 --&gt; Excitations10
 
     Start5(( ))
-    Input5[/"Benzene starting geometry"/]
-    Output5Screening[/"&lt;span&gt;Molecular screening $$\varepsilon_s$$&lt;/span&gt;"/]
-    Output5Excitations[/"&lt;span&gt;Vertical $$S_0\rightarrow S_n$$ excitations&lt;/span&gt;"/]
-    Output5Geometry[/"&lt;span&gt;Verified $$S_0$$ geometries&lt;/span&gt;"/]
+    Input5[/"ベンゼンの初期構造"/]
+    Output5Screening[/"&lt;span&gt;分子のスクリーニング $$\varepsilon_s$$&lt;/span&gt;"/]
+    Output5Excitations[/"&lt;span&gt;垂直 $$S_0\rightarrow S_n$$ 励起&lt;/span&gt;"/]
+    Output5Geometry[/"&lt;span&gt;検証した $$S_0$$ 構造&lt;/span&gt;"/]
     End5((( )))
 
     Start5 --&gt; Input5
@@ -669,9 +669,9 @@ window.restoreRequireDefine = () => {
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
 <script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-f94a3cc2e01630e9/script.js"></script>
-<section id="Reference_S_0_geometry" class="level3">
-<h3 class="anchored" data-anchor-id="Reference_S_0_geometry">Reference <span class="math inline">S_0</span> geometry</h3>
-<p>Establish the <span class="math inline">S_0</span> reference geometry and verify its curvature before using it in the electronic-response branches.</p>
+<section id="基準となる_S_0_構造" class="level3">
+<h3 class="anchored" data-anchor-id="基準となる_S_0_構造">基準となる <span class="math inline">S_0</span> 構造</h3>
+<p><span class="math inline">S_0</span> の基準構造を確立し、電子応答の枝で使う前に曲率を検証します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -687,7 +687,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="2026-10-29_183719/">Optimize the B3LYP <span class="math inline">S_0</span> geometry</a></td>
+<td><a href="2026-10-29_183719/">B3LYP <span class="math inline">S_0</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td>2026年10月29日 18:41:01 JST</td>
@@ -695,7 +695,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="2026-10-29_183720/">Check stability and verify the B3LYP <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="2026-10-29_183720/">安定性のチェックと B3LYP <span class="math inline">S_0</span> の極小の検証</a></td>
 <td>Gaussian</td>
 <td>Stable, Freq</td>
 <td>2026年10月29日 18:48:57 JST</td>
@@ -705,9 +705,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption" class="level3">
-<h3 class="anchored" data-anchor-id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption">B3LYP <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
-<p>Evaluate B3LYP molecular screening and vertical <span class="math inline">S_0\rightarrow S_n</span> absorption at the verified <span class="math inline">S_0</span> geometry.</p>
+<section id="B3LYP_の_varepsilon_s_と_S_0rightarrow_S_n_吸収" class="level3">
+<h3 class="anchored" data-anchor-id="B3LYP_の_varepsilon_s_と_S_0rightarrow_S_n_吸収">B3LYP の <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 吸収</h3>
+<p>検証した <span class="math inline">S_0</span> 構造で、B3LYP の分子のスクリーニングと垂直 <span class="math inline">S_0\rightarrow S_n</span> 吸収を評価します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -723,7 +723,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="2026-10-29_183721/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td><a href="2026-10-29_183721/">スクリーニング <span class="math inline">\varepsilon_s</span> の評価</a></td>
 <td>Lotus</td>
 <td>スクリーニング</td>
 <td>2026年10月30日 00:18:16 JST</td>
@@ -731,7 +731,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="2026-10-29_183722/">Calculate B3LYP vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td><a href="2026-10-29_183722/">B3LYP の垂直 <span class="math inline">S_0\rightarrow S_n</span> 励起の計算</a></td>
 <td>Gaussian</td>
 <td>Stable, TD</td>
 <td>2026年10月30日 00:17:26 JST</td>
@@ -741,9 +741,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption" class="level3">
-<h3 class="anchored" data-anchor-id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption">DD-DFT <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
-<p>Use molecular screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then compare DD-DFT geometry, response and absorption with the conventional branch.</p>
+<section id="DD-DFT_の_varepsilon_s_と_S_0rightarrow_S_n_吸収" class="level3">
+<h3 class="anchored" data-anchor-id="DD-DFT_の_varepsilon_s_と_S_0rightarrow_S_n_吸収">DD-DFT の <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 吸収</h3>
+<p>分子のスクリーニングから <span class="math inline">\alpha=1/\varepsilon_s</span> を定め、DD-DFT の構造、応答、吸収を従来の枝と比べます。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -759,7 +759,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="2026-10-29_183723/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td><a href="2026-10-29_183723/"><span class="math inline">\varepsilon_s</span> と重みの収束</a></td>
 <td>Lotus</td>
 <td>自己無撞着スクリーニング</td>
 <td>2026年10月30日 00:18:16 JST</td>
@@ -767,7 +767,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="2026-10-29_183724/">Optimize the DD-DFT <span class="math inline">S_0</span> geometry</a></td>
+<td><a href="2026-10-29_183724/">DD-DFT <span class="math inline">S_0</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>Stable, Opt</td>
 <td>2026年10月30日 17:32:30 JST</td>
@@ -775,7 +775,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="2026-10-29_183725/">Check stability and verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="2026-10-29_183725/">安定性のチェックと DD-DFT <span class="math inline">S_0</span> の極小の検証</a></td>
 <td>Gaussian</td>
 <td>Stable, Freq</td>
 <td>2026年10月30日 17:33:02 JST</td>
@@ -783,7 +783,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="2026-10-29_183726/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td><a href="2026-10-29_183726/">DD-DFT 構造での <span class="math inline">\varepsilon_s</span> の再確認</a></td>
 <td>Lotus</td>
 <td>自己無撞着スクリーニング</td>
 <td>2026年10月30日 17:33:36 JST</td>
@@ -791,7 +791,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="2026-10-29_183727/">Calculate DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td><a href="2026-10-29_183727/">DD-DFT の垂直 <span class="math inline">S_0\rightarrow S_n</span> 励起の計算</a></td>
 <td>Gaussian</td>
 <td>Stable, TD</td>
 <td>2026年10月30日 17:33:31 JST</td>
@@ -799,7 +799,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="2026-10-30_232951/">Optimize the <span class="math inline">S_0</span> geometry, rechecked weights</a></td>
+<td><a href="2026-10-30_232951/">再確認した重みでの <span class="math inline">S_0</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>Stable, Opt</td>
 <td>2026年10月30日 23:32:18 JST</td>
@@ -807,7 +807,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="2026-10-30_232952/">Check stability and verify the rechecked <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="2026-10-30_232952/">安定性のチェックと再確認した <span class="math inline">S_0</span> の極小の検証</a></td>
 <td>Gaussian</td>
 <td>Stable, Freq</td>
 <td>2026年10月30日 23:32:36 JST</td>
@@ -815,7 +815,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="2026-10-30_232953/">Recheck <span class="math inline">\varepsilon_s</span> at the rechecked DD-DFT geometry</a></td>
+<td><a href="2026-10-30_232953/">再確認した DD-DFT 構造での <span class="math inline">\varepsilon_s</span> の再確認</a></td>
 <td>Lotus</td>
 <td>自己無撞着スクリーニング</td>
 <td>2026年10月30日 23:33:07 JST</td>
@@ -823,7 +823,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="2026-10-30_232954/">Calculate <span class="math inline">S_0\rightarrow S_n</span> excitations, self-consistent weights</a></td>
+<td><a href="2026-10-30_232954/">自己無撞着な重みでの <span class="math inline">S_0\rightarrow S_n</span> 励起の計算</a></td>
 <td>Gaussian</td>
 <td>Stable, TD</td>
 <td>2026年10月30日 23:33:48 JST</td>
@@ -845,7 +845,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The <a href="2026-10-29_183719/">B3LYP <span class="math inline">S_0</span> optimization</a> converged normally at <span class="math inline">E_{\mathrm{SCF}}=-6320.06765194\,\mathrm{eV}</span>, and the <a href="2026-10-29_183720/">stability and minimum check</a> found a stable wavefunction and 30 real frequencies.</li>
+<li><a href="2026-10-29_183719/">B3LYP <span class="math inline">S_0</span> 構造の最適化</a>は <span class="math inline">E_{\mathrm{SCF}}=-6320.06765194\,\mathrm{eV}</span> で正常に収束し、<a href="2026-10-29_183720/">安定性と極小のチェック</a>は安定な波動関数と 30 個の実振動数を見いだしました。</li>
 </ul>
 </div>
 </div>
@@ -861,7 +861,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Accepted for the stated stability and minimum checks: the wavefunction is stable and all 30 harmonic frequencies are real. The reported basis sensitivity and thermochemistry limitations remain relevant to those separate uses of the calculation.</p>
+<p>示した安定性と極小のチェックについては合格です。波動関数は安定で、30 個の調和振動数はすべて実数です。報告した基底への依存性と熱化学の制約は、この計算を別の用途に使う場合には依然として関係します。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -899,7 +899,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The <a href="2026-10-29_183721/">B3LYP screening</a> gives <span class="math inline">\varepsilon_s=2.44559</span>, and the self-consistent <a href="2026-10-29_183723/">DD-DFT screening</a> <span class="math inline">\varepsilon_s=2.166639</span>, <span class="math inline">\alpha=0.461544</span>; the differences from the checkpoint-chained values are about <span class="math inline">0.11\%</span> and <span class="math inline">0.10\%</span>, respectively.</li>
+<li><a href="2026-10-29_183721/">B3LYP のスクリーニング</a>は <span class="math inline">\varepsilon_s=2.44559</span>、自己無撞着な <a href="2026-10-29_183723/">DD-DFT のスクリーニング</a>は <span class="math inline">\varepsilon_s=2.166639</span>、<span class="math inline">\alpha=0.461544</span> を与えます。チェックポイントをつないだ値との差は、それぞれ約 <span class="math inline">0.11\%</span> と <span class="math inline">0.10\%</span> です。</li>
 </ul>
 </div>
 </div>
@@ -915,7 +915,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All ten requested excitations converged on a stable reference. The documented basis and model limitations remain relevant to quantitative comparison with experiment.</p>
+<p>要求した 10 個の励起はすべて、安定な基準状態で収束しました。文書化した基底とモデルの制約は、実験との定量的な比較には依然として関係します。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -949,7 +949,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The <a href="2026-10-29_183721/">B3LYP screening</a> gives <span class="math inline">\varepsilon_s=2.44559</span>, and the self-consistent <a href="2026-10-29_183723/">DD-DFT screening</a> <span class="math inline">\varepsilon_s=2.166639</span>, <span class="math inline">\alpha=0.461544</span>; the differences from the checkpoint-chained values are about <span class="math inline">0.11\%</span> and <span class="math inline">0.10\%</span>, respectively.</li>
+<li><a href="2026-10-29_183721/">B3LYP のスクリーニング</a>は <span class="math inline">\varepsilon_s=2.44559</span>、自己無撞着な <a href="2026-10-29_183723/">DD-DFT のスクリーニング</a>は <span class="math inline">\varepsilon_s=2.166639</span>、<span class="math inline">\alpha=0.461544</span> を与えます。チェックポイントをつないだ値との差は、それぞれ約 <span class="math inline">0.11\%</span> と <span class="math inline">0.10\%</span> です。</li>
 </ul>
 </div>
 </div>
@@ -965,7 +965,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The fixed-weight optimization converged from a stable reference. The separate screening recheck tests whether the chosen weights remain self-consistent at the relaxed geometry.</p>
+<p>固定した重みでの最適化は、安定な基準状態から収束しました。選んだ重みが、緩和した構造でも自己無撞着のままかどうかは、別のスクリーニングの再確認で調べます。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -998,7 +998,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Accepted for the stated fixed-weight stability and minimum checks: the wavefunction is stable and all 30 harmonic frequencies are real. The documented basis and thermochemistry limitations remain relevant to those separate uses.</p>
+<p>示した重み固定の安定性と極小のチェックについては合格です。波動関数は安定で、30 個の調和振動数はすべて実数です。文書化した基底と熱化学の制約は、それらを別の用途に使う場合には依然として関係します。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1035,7 +1035,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point.</p>
+<p>電子的スクリーニングは収束しましたが、緩和によって丸めた汎関数の重みが変わりました。この構造とその元の重みは、まだ共通の不動点ではありません。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1068,7 +1068,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All ten excitations converged on a stable reference for the stated fixed-weight model. The screening recheck changed the weights, so the spectrum is preliminary.</p>
+<p>要求した 10 個の励起はすべて、示した重み固定のモデルの安定な基準状態で収束しました。スクリーニングの再確認で重みが変わったので、このスペクトルは暫定的なものです。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1101,7 +1101,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The rechecked-weight optimization converged on a stable reference. Its small geometry change is below the default optimization thresholds. - The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</p>
+<p>再確認した重みでの最適化は、安定な基準状態から収束しました。構造の小さな変化は、既定の最適化しきい値より小さくなります。 - 電子的スクリーニングは収束しましたが、緩和によって丸めた汎関数の重みが変わりました。この構造とその元の重みは、まだ共通の不動点ではありません。 これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1134,7 +1134,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Accepted for the stated fixed-weight stability and minimum checks: the wavefunction is stable and all 30 harmonic frequencies are real. The documented basis and thermochemistry limitations remain relevant to those separate uses. - The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</p>
+<p>示した重み固定の安定性と極小のチェックについては合格です。波動関数は安定で、30 個の調和振動数はすべて実数です。文書化した基底と熱化学の制約は、それらを別の用途に使う場合には依然として関係します。 - 電子的スクリーニングは収束しましたが、緩和によって丸めた汎関数の重みが変わりました。この構造とその元の重みは、まだ共通の不動点ではありません。 これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1172,8 +1172,8 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The <a href="2026-10-30_232953/"><span class="math inline">\varepsilon_s</span> recheck</a> there gives <span class="math inline">\varepsilon_s=2.161399</span> again and reproduces the four-decimal weights, so geometry and weights are self-consistent.</li>
-<li>The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</li>
+<li>そこでの <a href="2026-10-30_232953/"><span class="math inline">\varepsilon_s</span> の再確認</a>は再び <span class="math inline">\varepsilon_s=2.161399</span> を与え、小数第 4 位までの重みを再現するので、構造と重みは自己無撞着です。</li>
+<li>電子的スクリーニングは収束しましたが、緩和によって丸めた汎関数の重みが変わりました。この構造とその元の重みは、まだ共通の不動点ではありません。 これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</li>
 </ul>
 </div>
 </div>
@@ -1189,7 +1189,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All ten requested roots converged on a stable reference, and the screening recheck reproduced the functional weights. Basis and model limitations remain relevant to quantitative comparison. - The electronic screening converged, but relaxation changed the rounded functional weights; this geometry and its original weights are not yet a joint fixed point. これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</p>
+<p>要求した 10 個の根はすべて、安定な基準状態で収束し、スクリーニングの再確認は汎関数の重みを再現しました。基底とモデルの制約は、定量的な比較には依然として関係します。 - 電子的スクリーニングは収束しましたが、緩和によって丸めた汎関数の重みが変わりました。この構造とその元の重みは、まだ共通の不動点ではありません。 これは<a href="2026-10-29_183726/">上流の計算</a>に由来します。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1268,16 +1268,16 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked.</li>
-<li>A calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable.</li>
-<li>The runs are kept as history.</li>
-<li>Superseded by the <a href="../2026-10-29_183718/">independent-guess rebuild</a>.</li>
+<li>B3LYP の結果には疑いがあります。全エネルギーと HOMO–LUMO ギャップは一度も確認されていません。</li>
+<li>チェックポイントから再開した計算が誤った電子状態に収束したようで、B3LYP と DD-DFT の比較は信頼できません。</li>
+<li>計算は履歴として残してあります。</li>
+<li><a href="../2026-10-29_183718/">独立な初期推定による作り直し</a>に置き換えられました。</li>
 </ul>
 </div>
 </div>
-<section id="Reference_S_0_geometry_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Reference_S_0_geometry_2">Reference <span class="math inline">S_0</span> geometry</h3>
-<p>Establish the <span class="math inline">S_0</span> reference geometry and verify its curvature before using it in the electronic-response branches.</p>
+<section id="参照_S_0_構造" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="参照_S_0_構造">参照 <span class="math inline">S_0</span> 構造</h3>
+<p><span class="math inline">S_0</span> の参照構造を確立し、電子応答の枝で使う前にその曲率を検証します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -1293,7 +1293,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164932/">Optimize the B3LYP <span class="math inline">S_0</span> geometry</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164932/">B3LYP の <span class="math inline">S_0</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td>2026年10月22日 17:14:26 JST</td>
@@ -1301,7 +1301,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164933/">Verify the B3LYP <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164933/">B3LYP の <span class="math inline">S_0</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq</td>
 <td>2026年10月22日 17:16:20 JST</td>
@@ -1311,9 +1311,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="B3LYP_varepsilon_s_and_S_0rightarrow_S_n_absorption_2">B3LYP <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
-<p>Evaluate B3LYP molecular screening and vertical absorption at the reference geometry; where included, relax and verify the <span class="math inline">S_1</span> structure.</p>
+<section id="B3LYP_の_varepsilon_s_と_S_0rightarrow_S_n_吸収_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="B3LYP_の_varepsilon_s_と_S_0rightarrow_S_n_吸収_2">B3LYP の <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 吸収</h3>
+<p>参照構造で B3LYP の分子のスクリーニングと垂直吸収を評価します。含める場合は <span class="math inline">S_1</span> 構造を緩和して検証します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -1329,7 +1329,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164934/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164934/">スクリーニング <span class="math inline">\varepsilon_s</span> の評価</a></td>
 <td>Lotus</td>
 <td>スクリーニング</td>
 <td>2026年10月22日 18:35:46 JST</td>
@@ -1337,7 +1337,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164935/">Calculate B3LYP vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164935/">B3LYP の垂直 <span class="math inline">S_0\rightarrow S_n</span> 励起の計算</a></td>
 <td>Gaussian</td>
 <td>TD, SP</td>
 <td>2026年10月22日 18:34:31 JST</td>
@@ -1347,9 +1347,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="DD-DFT_varepsilon_s_and_S_0rightarrow_S_n_absorption_2">DD-DFT <span class="math inline">\varepsilon_s</span> and <span class="math inline">S_0\rightarrow S_n</span> absorption</h3>
-<p>Use molecular screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then compare DD-DFT geometry, response and absorption with the conventional branch.</p>
+<section id="DD-DFT_の_varepsilon_s_と_S_0rightarrow_S_n_吸収_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="DD-DFT_の_varepsilon_s_と_S_0rightarrow_S_n_吸収_2">DD-DFT の <span class="math inline">\varepsilon_s</span> と <span class="math inline">S_0\rightarrow S_n</span> 吸収</h3>
+<p>分子のスクリーニングで <span class="math inline">\alpha=1/\varepsilon_s</span> を定め、DD-DFT の構造、応答、吸収を従来の枝と比べます。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -1365,7 +1365,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164936/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164936/"><span class="math inline">\varepsilon_s</span> と重みの収束</a></td>
 <td>Lotus</td>
 <td>自己無撞着スクリーニング</td>
 <td>2026年10月22日 18:35:46 JST</td>
@@ -1373,7 +1373,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164937/">Optimize the DD-DFT <span class="math inline">S_0</span> geometry</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164937/">DD-DFT の <span class="math inline">S_0</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td>2026年10月22日 20:14:46 JST</td>
@@ -1381,7 +1381,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164938/">Verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164938/">DD-DFT の <span class="math inline">S_0</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq</td>
 <td>2026年10月23日 13:01:15 JST</td>
@@ -1389,7 +1389,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164939/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164939/">DD-DFT 構造での <span class="math inline">\varepsilon_s</span> の再確認</a></td>
 <td>Lotus</td>
 <td>自己無撞着スクリーニング</td>
 <td>2026年10月23日 13:10:52 JST</td>
@@ -1397,7 +1397,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-10-21_164931/2026-10-21_164940/">Calculate DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td><a href="../2026-10-21_164931/2026-10-21_164940/">DD-DFT の垂直 <span class="math inline">S_0\rightarrow S_n</span> 励起の計算</a></td>
 <td>Gaussian</td>
 <td>TD, SP</td>
 <td>2026年10月23日 13:22:55 JST</td>
@@ -1420,16 +1420,16 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Its B3LYP results are suspect: total energies and HOMO–LUMO gaps were never checked.</li>
-<li>A calculation restarted from a checkpoint appears to have converged to a wrong electronic solution, so the B3LYP and DD-DFT comparison is not reliable.</li>
-<li>The runs are kept as history.</li>
-<li>Superseded by the independent-guess rebuild.</li>
+<li>B3LYP の結果には疑いがあります。全エネルギーと HOMO–LUMO ギャップは一度も確認されていません。</li>
+<li>チェックポイントから再開した計算が誤った電子状態に収束したようで、B3LYP と DD-DFT の比較は信頼できません。</li>
+<li>計算は履歴として残してあります。</li>
+<li>独立な初期推定による作り直しに置き換えられました。</li>
 </ul>
 </div>
 </div>
-<section id="Reference_S_0_geometry_3" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Reference_S_0_geometry_3">Reference <span class="math inline">S_0</span> geometry</h3>
-<p>Establish the <span class="math inline">S_0</span> reference geometry and verify its curvature before using it in the electronic-response branches.</p>
+<section id="参照_S_0_構造_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="参照_S_0_構造_2">参照 <span class="math inline">S_0</span> 構造</h3>
+<p><span class="math inline">S_0</span> の参照構造を確立し、電子応答の枝で使う前にその曲率を検証します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -1445,7 +1445,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164941/">Optimize the B3LYP <span class="math inline">S_0</span> geometry</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164941/">B3LYP の <span class="math inline">S_0</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td>2026年10月23日 23:47:59 JST</td>
@@ -1453,7 +1453,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164942/">Verify the B3LYP <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164942/">B3LYP の <span class="math inline">S_0</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq</td>
 <td>2026年10月24日 08:08:20 JST</td>
@@ -1463,9 +1463,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation">B3LYP <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h3>
-<p>Evaluate B3LYP molecular screening and vertical absorption at the reference geometry; where included, relax and verify the <span class="math inline">S_1</span> structure.</p>
+<section id="B3LYP_の_varepsilon_s_吸収_S_1_緩和" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="B3LYP_の_varepsilon_s_吸収_S_1_緩和">B3LYP の <span class="math inline">\varepsilon_s</span>、吸収、<span class="math inline">S_1</span> 緩和</h3>
+<p>参照構造で B3LYP の分子のスクリーニングと垂直吸収を評価します。含める場合は <span class="math inline">S_1</span> 構造を緩和して検証します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -1481,7 +1481,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164943/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164943/">スクリーニング <span class="math inline">\varepsilon_s</span> の評価</a></td>
 <td>Lotus</td>
 <td>スクリーニング</td>
 <td>2026年10月24日 08:31:17 JST</td>
@@ -1489,7 +1489,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164944/">Calculate B3LYP vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164944/">B3LYP の垂直 <span class="math inline">S_0\rightarrow S_n</span> 励起の計算</a></td>
 <td>Gaussian</td>
 <td>TD, SP</td>
 <td>2026年10月24日 08:32:14 JST</td>
@@ -1497,7 +1497,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164945/">Optimize the B3LYP <span class="math inline">S_1</span> geometry</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164945/">B3LYP の <span class="math inline">S_1</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>TD Opt</td>
 <td>2026年10月24日 12:51:24 JST</td>
@@ -1505,7 +1505,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164946/">Verify the B3LYP <span class="math inline">S_1</span> minimum</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164946/">B3LYP の <span class="math inline">S_1</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>TD Freq</td>
 <td>2026年10月25日 23:36:41 JST</td>
@@ -1515,9 +1515,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation">DD-DFT <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h3>
-<p>Use molecular screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then compare DD-DFT geometry, response and absorption with the conventional branch.</p>
+<section id="DD-DFT_の_varepsilon_s_吸収_S_1_緩和" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="DD-DFT_の_varepsilon_s_吸収_S_1_緩和">DD-DFT の <span class="math inline">\varepsilon_s</span>、吸収、<span class="math inline">S_1</span> 緩和</h3>
+<p>分子のスクリーニングで <span class="math inline">\alpha=1/\varepsilon_s</span> を定め、DD-DFT の構造、応答、吸収を従来の枝と比べます。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -1533,7 +1533,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164947/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164947/"><span class="math inline">\varepsilon_s</span> と重みの収束</a></td>
 <td>Lotus</td>
 <td>自己無撞着スクリーニング</td>
 <td>2026年10月24日 08:32:29 JST</td>
@@ -1541,7 +1541,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="成功"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164948/">Optimize the DD-DFT <span class="math inline">S_0</span> geometry</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164948/">DD-DFT の <span class="math inline">S_0</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td>2026年10月24日 12:51:31 JST</td>
@@ -1549,7 +1549,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164949/">Verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164949/">DD-DFT の <span class="math inline">S_0</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq</td>
 <td>2026年10月25日 23:36:45 JST</td>
@@ -1557,7 +1557,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164950/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164950/">DD-DFT 構造での <span class="math inline">\varepsilon_s</span> の再確認</a></td>
 <td>Lotus</td>
 <td>自己無撞着スクリーニング</td>
 <td>2026年10月26日 07:35:38 JST</td>
@@ -1565,7 +1565,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164951/">Calculate DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164951/">DD-DFT の垂直 <span class="math inline">S_0\rightarrow S_n</span> 励起の計算</a></td>
 <td>Gaussian</td>
 <td>TD, SP</td>
 <td>2026年10月26日 08:09:13 JST</td>
@@ -1573,7 +1573,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164952/">Optimize the DD-DFT <span class="math inline">S_1</span> geometry</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164952/">DD-DFT の <span class="math inline">S_1</span> 構造の最適化</a></td>
 <td>Gaussian</td>
 <td>TD Opt</td>
 <td>2026年10月26日 08:28:05 JST</td>
@@ -1581,7 +1581,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-10-21_164940/2026-10-21_164953/">Verify the DD-DFT <span class="math inline">S_1</span> minimum</a></td>
+<td><a href="../2026-10-21_164940/2026-10-21_164953/">DD-DFT の <span class="math inline">S_1</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>TD Freq</td>
 <td>2026年10月26日 16:43:18 JST</td>

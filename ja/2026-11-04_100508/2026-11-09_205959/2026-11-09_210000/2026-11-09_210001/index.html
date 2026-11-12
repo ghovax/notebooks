@@ -8,7 +8,7 @@
 
 <meta name="author" content="Giovanni Gravili">
 
-<title>Diels-Alder start energy at 1.29 angstrom, 0 and minus 45 degrees</title>
+<title>1.29 オングストローム、0 度、マイナス 45 度での Diels-Alder 初期構造のエネルギー</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -190,7 +190,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Start energy at <span class="math inline">r=1.29\,\mathrm{\AA}</span>, <span class="math inline">\theta=0^\circ</span>, <span class="math inline">\tau=-45^\circ</span></h1>
+<h1 class="title"><span class="math inline">r=1.29\,\mathrm{\AA}</span>、<span class="math inline">\theta=0^\circ</span>、<span class="math inline">\tau=-45^\circ</span> での初期構造のエネルギー</h1>
 </div>
 
 
@@ -234,7 +234,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../../../">ホーム</a><span class="sep">/</span><a href="../../../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><a href="../../">Energies of the outcome-map starts</a><span class="sep">/</span><a href="../">Calculate the energy of every start</a><span class="sep">/</span><span class="current">Start energy at <span class="math inline">r=1.29\,\mathrm{\AA}</span>, <span class="math inline">\theta=0^\circ</span>, <span class="math inline">\tau=-45^\circ</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_205959/2026-11-09_210000/2026-11-09_210001/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../../en/2026-11-04_100508/2026-11-09_205959/2026-11-09_210000/2026-11-09_210001/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../../ja/2026-11-04_100508/2026-11-09_205959/2026-11-09_210000/2026-11-09_210001/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../../../">ホーム</a><span class="sep">/</span><a href="../../../">ブタジエンとエテンの Diels–Alder 反応</a><span class="sep">/</span><a href="../../">結果マップの初期構造のエネルギー</a><span class="sep">/</span><a href="../">すべての初期構造のエネルギーの計算</a><span class="sep">/</span><span class="current"><span class="math inline">r=1.29\,\mathrm{\AA}</span>、<span class="math inline">\theta=0^\circ</span>、<span class="math inline">\tau=-45^\circ</span> での初期構造のエネルギー</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_205959/2026-11-09_210000/2026-11-09_210001/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../../en/2026-11-04_100508/2026-11-09_205959/2026-11-09_210000/2026-11-09_210001/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../../ja/2026-11-04_100508/2026-11-09_205959/2026-11-09_210000/2026-11-09_210001/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -247,7 +247,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>This run has been prepared but not submitted, so it has no outcome yet.</li>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
 </ul>
 </div>
 </div>
@@ -284,16 +284,16 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Energies["&lt;span&gt;Start energies&lt;/span&gt;"]
-        %% description: One single point at each distinct start geometry of the TS outcome map.
+    subgraph Energies["&lt;span&gt;初期構造のエネルギー&lt;/span&gt;"]
+        %% description: TS 結果マップの互いに異なる各初期構造で、一点計算を 1 回ずつ行います。
         direction TB
-        Map1["&lt;a href='../../2026-11-09_210000/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;Calculate the energy of every start&lt;/a&gt;"]
+        Map1["&lt;a href='../../2026-11-09_210000/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;すべての初期構造のエネルギーを計算する&lt;/a&gt;"]
     end
 
     Start1(( ))
-    Input1[/"&lt;span&gt;Start geometries of the TS outcome map&lt;/span&gt;"/]
-    Input2[/"&lt;span&gt;Verified saddle reference&lt;/span&gt;"/]
-    Output1[/"&lt;span&gt;Start energy $$E-E_{\mathrm{TS}}$$&lt;/span&gt;"/]
+    Input1[/"&lt;span&gt;TS 結果マップの初期構造&lt;/span&gt;"/]
+    Input2[/"&lt;span&gt;検証した鞍点の参照&lt;/span&gt;"/]
+    Output1[/"&lt;span&gt;初期構造のエネルギー $$E-E_{\mathrm{TS}}$$&lt;/span&gt;"/]
     End1((( )))
 
     Start1 --&gt; Input1
@@ -330,9 +330,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
-<li>Calculate the energy of the start of the <a href="../../../2026-11-06_160905/2026-11-06_160906/2026-11-06_160922/">TS outcome map</a> at <span class="math inline">r=1.29\,\mathrm{\AA}</span>, <span class="math inline">\theta=0^\circ</span>, <span class="math inline">\tau=-45^\circ</span>, to place it above the verified saddle as <span class="math inline">E-E_{\mathrm{TS}}</span>.</li>
+<li><a href="../../../2026-11-06_160905/2026-11-06_160906/2026-11-06_160922/">TS の結果マップ</a>の初期構造のうち、<span class="math inline">r=1.29\,\mathrm{\AA}</span>、<span class="math inline">\theta=0^\circ</span>、<span class="math inline">\tau=-45^\circ</span> にあるもののエネルギーを計算し、検証した鞍点より上の <span class="math inline">E-E_{\mathrm{TS}}</span> として位置づける。</li>
 </ul>
-<div id="be4fa4a0" class="cell" data-execution_count="2">
+<div id="6d7f7fa1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../../site_libs/shared-2ca02f32230db106/data.js"></script><script src="../../../../../site_libs/shared-c00d40ea6ec121e8/data.js"></script>
 </div>
@@ -485,7 +485,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"1b9e24e136334c4fa2c2c057407c5c4d","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"f766c91eaa4c454cab2f3d5e5ccb1d89","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -499,7 +499,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 
 </main>
 <!-- /main column -->
-<script type="application/vnd.jupyter.widget-state+json">{"state": {"1b9e24e136334c4fa2c2c057407c5c4d": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-2.8449999999999998, -2.585058, -1.621652], [3.6559999999999997, 2.585058, 1.5478]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_974c1b6d69f14cae87430b6f9c84793b", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhAK7JckakAAAAiAIAAA4AAAB0cmFqZWN0b3J5Lnh5eo2QMQ7CMAxF956iF4gVu3HizCxdOARCFUtRpQoGbk+rNiEIHDWb5Zf384O+OU/jcH2Ol7m9DdN9eMyv5tQaCzad1iC4PBSLlUMgzJyFcISrYGWsnkrAxUaTlZT6tH6ZSDgw7k1F2LLsdyKhZ9o4Q4COP19C7r/vi9OxMraSShDZZxlK5CQTFyTJNMromDlmMxXdMokT7vLKb73XbiF0HH8xjXoDUEsBAhQDFAAAAAgAAAAhAG0N67rHAAAAbAEAAAoAAAAAAAAAAAAAAIABAAAAAGluZGV4Lm12c2pQSwECFAMUAAAACAAAACEArslyRqQAAACIAgAADgAAAAAAAAAAAAAAgAHvAAAAdHJhamVjdG9yeS54eXpQSwUGAAAAAAIAAgB0AAAAvwEAAAAA", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}, "974c1b6d69f14cae87430b6f9c84793b": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}</script>
+<script type="application/vnd.jupyter.widget-state+json">{"state": {"5aedb3e1d67b4bf7ba0cedc12acd9b0b": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f766c91eaa4c454cab2f3d5e5ccb1d89": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-2.8449999999999998, -2.585058, -1.621652], [3.6559999999999997, 2.585058, 1.5478]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_5aedb3e1d67b4bf7ba0cedc12acd9b0b", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhAK7JckakAAAAiAIAAA4AAAB0cmFqZWN0b3J5Lnh5eo2QMQ7CMAxF956iF4gVu3HizCxdOARCFUtRpQoGbk+rNiEIHDWb5Zf384O+OU/jcH2Ol7m9DdN9eMyv5tQaCzad1iC4PBSLlUMgzJyFcISrYGWsnkrAxUaTlZT6tH6ZSDgw7k1F2LLsdyKhZ9o4Q4COP19C7r/vi9OxMraSShDZZxlK5CQTFyTJNMromDlmMxXdMokT7vLKb73XbiF0HH8xjXoDUEsBAhQDFAAAAAgAAAAhAG0N67rHAAAAbAEAAAoAAAAAAAAAAAAAAIABAAAAAGluZGV4Lm12c2pQSwECFAMUAAAACAAAACEArslyRqQAAACIAgAADgAAAAAAAAAAAAAAgAHvAAAAdHJhamVjdG9yeS54eXpQSwUGAAAAAAIAAgB0AAAAvwEAAAAA", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}}, "version_major": 2, "version_minor": 0}</script>
 <script id="quarto-html-after-body" type="application/javascript" src="../../../../../site_libs/shared-1d9d6cb5641f4609/script.js"></script>
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"スクロール可能なコード","output":"スクロール可能な出力"};

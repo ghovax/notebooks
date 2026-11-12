@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Giovanni Gravili">
-<meta name="keywords" content="Diels–Alder, relaxed scan, transition state">
+<meta name="keywords" content="Diels–Alder, 緩和スキャン, 遷移状態">
 
-<title>Relaxed scans of both Diels-Alder forming bonds</title>
+<title>Diels-Alder の形成中の二つの結合の緩和スキャン</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,7 +164,7 @@ window.Quarto = {
   <ul>
   <li><a href="#Calculations" id="toc-Calculations" class="nav-link active" data-scroll-target="#Calculations">計算</a>
   <ul class="collapse">
-  <li><a href="#Relaxed_scans" id="toc-Relaxed_scans" class="nav-link" data-scroll-target="#Relaxed_scans">Relaxed scans</a></li>
+  <li><a href="#緩和スキャン" id="toc-緩和スキャン" class="nav-link" data-scroll-target="#緩和スキャン">緩和スキャン</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -173,7 +173,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Relaxed scans of both forming bonds</h1>
+<h1 class="title">二つの形成中の結合の緩和スキャン</h1>
 </div>
 
 
@@ -214,14 +214,14 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">概要</div>
-    <p>The relaxed energy and methylene rotation along the Diels–Alder path as both forming bonds shorten together, from two starts of the TS outcome map.</p>
+    <p>TS の結果マップの二つの初期構造から、二つの形成中の結合を一緒に縮めたときの、Diels–Alder の経路に沿った緩和エネルギーとメチレン基の回転です。</p>
   </div>
 </div>
 
 <div>
   <div class="keywords">
     <div class="block-title">キーワード</div>
-    <p>Diels–Alder, relaxed scan, transition state</p>
+    <p>Diels–Alder, 緩和スキャン, 遷移状態</p>
   </div>
 </div>
 
@@ -229,7 +229,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><span class="current">Relaxed scans of both forming bonds</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_210100/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-11-04_100508/2026-11-09_210100/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-11-04_100508/2026-11-09_210100/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">ブタジエンとエテンの Diels–Alder 反応</a><span class="sep">/</span><span class="current">二つの形成中の結合の緩和スキャン</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_210100/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-11-04_100508/2026-11-09_210100/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-11-04_100508/2026-11-09_210100/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="status-prepared callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -242,7 +242,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The two scans are prepared and none is submitted.</li>
+<li>二つのスキャンを準備しましたが、どちらも投入していません。</li>
 </ul>
 </div>
 </div>
@@ -283,16 +283,16 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Scans["&lt;span&gt;Relaxed scans&lt;/span&gt;"]
-        %% description: Shorten both forming bonds together from a start that reached the saddle, with everything else relaxed, once without and once with the methylene rotation of the closed ring.
+    subgraph Scans["&lt;span&gt;緩和スキャン&lt;/span&gt;"]
+        %% description: 鞍点に達した初期構造から二つの形成中の結合を一緒に縮め、それ以外はすべて緩和します。閉環した構造のメチレン基の回転を含めない場合と含める場合の、二回です。
         direction TB
-        Scan1["&lt;a href='2026-11-09_210101/'&gt;Forming-bond scan from $$\tau=0^\circ$$&lt;/a&gt;"]
-        Scan2["&lt;a href='2026-11-09_210102/'&gt;Forming-bond scan from $$\tau=45^\circ$$&lt;/a&gt;"]
+        Scan1["&lt;a href='2026-11-09_210101/'&gt;$$\tau=0^\circ$$ からの形成中の結合のスキャン&lt;/a&gt;"]
+        Scan2["&lt;a href='2026-11-09_210102/'&gt;$$\tau=45^\circ$$ からの形成中の結合のスキャン&lt;/a&gt;"]
     end
 
     Start1(( ))
-    Input1[/"&lt;span&gt;Starts at $$r=2.55\,\mathrm{\AA}$$ and $$\theta=90^\circ$$&lt;/span&gt;"/]
-    Output1[/"&lt;span&gt;Relaxed energy $$E(r)$$ and methylene rotation $$\tau(r)$$&lt;/span&gt;"/]
+    Input1[/"&lt;span&gt;$$r=2.55\,\mathrm{\AA}$$ と $$\theta=90^\circ$$ の初期構造&lt;/span&gt;"/]
+    Output1[/"&lt;span&gt;緩和エネルギー $$E(r)$$ とメチレン基の回転 $$\tau(r)$$&lt;/span&gt;"/]
     End1((( )))
 
     Start1 --&gt; Input1
@@ -325,9 +325,9 @@ window.restoreRequireDefine = () => {
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
 <script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-f94a3cc2e01630e9/script.js"></script>
-<section id="Relaxed_scans" class="level3">
-<h3 class="anchored" data-anchor-id="Relaxed_scans">Relaxed scans</h3>
-<p>Shorten both forming bonds together from a start that reached the saddle, with everything else relaxed, once without and once with the methylene rotation of the closed ring.</p>
+<section id="緩和スキャン" class="level3">
+<h3 class="anchored" data-anchor-id="緩和スキャン">緩和スキャン</h3>
+<p>鞍点に達した初期構造から二つの形成中の結合を一緒に縮め、それ以外はすべて緩和します。閉環した構造のメチレン基の回転を含めない場合と含める場合の、二回です。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -343,7 +343,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td></td>
-<td><a href="2026-11-09_210101/">Forming-bond scan from <span class="math inline">\tau=0^\circ</span></a></td>
+<td><a href="2026-11-09_210101/"><span class="math inline">\tau=0^\circ</span> からの形成中の結合のスキャン</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -351,7 +351,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td></td>
-<td><a href="2026-11-09_210102/">Forming-bond scan from <span class="math inline">\tau=45^\circ</span></a></td>
+<td><a href="2026-11-09_210102/"><span class="math inline">\tau=45^\circ</span> からの形成中の結合のスキャン</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -373,7 +373,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>This run has been prepared but not submitted, so it has no outcome yet.</li>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
 </ul>
 </div>
 </div>
@@ -390,7 +390,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>This run has been prepared but not submitted, so it has no outcome yet.</li>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
 </ul>
 </div>
 </div>
@@ -409,16 +409,16 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>鞍点の精密化は、虚振動 1 つ（<span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span>）をもつ一次の鞍点に収束しました。形成中の C–C 結合は <span class="math inline">2.2675\,\mathrm{\AA}</span> で、閉殻の波動関数は安定です。</li>
-<li>IRC は <span class="math inline">\pm s</span> の両方向に進みました。一方の端は鞍点より <span class="math inline">76.6\,\mathrm{kJ\,mol^{-1}}</span> 低く、分子が離れています。もう一方の端は <span class="math inline">246.0\,\mathrm{kJ\,mol^{-1}}</span> 低く、環が閉じています。</li>
-<li>逆方向の端は舟形のシクロヘキセンに収束しましたが、<span class="math inline">30.6556i\,\mathrm{cm}^{-1}</span> の虚振動が 1 つ残り、極小ではありません。順方向の端の反応物の最適化は、分子が離れていくまま 100 ステップの上限で止まりました。どちらの端も検証済みの極小ではありません。</li>
-<li><a href="../2026-11-04_100514/">共平面の推定構造のワークフロー</a>の変形です。</li>
+<li>鞍点の精密化は、虚振動 <span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span> を一つ持つ一次の鞍点に収束し、形成中の C–C 結合は <span class="math inline">2.2675\,\mathrm{\AA}</span> で、閉殻の波動関数は安定でした。</li>
+<li>IRC の分枝は <span class="math inline">\pm s</span> に沿って進み、フラグメントが分離した端は鞍点より <span class="math inline">76.6\,\mathrm{kJ\,mol^{-1}}</span> 低く、環が閉じた端は <span class="math inline">246.0\,\mathrm{kJ\,mol^{-1}}</span> 低くなりました。</li>
+<li>逆向きの端点は、<span class="math inline">30.6556i\,\mathrm{cm}^{-1}</span> の振動を一つ持つボート形のシクロヘキセンに収束したので極小ではなく、順方向の端点の反応物の最適化は、フラグメントが離れていく状態で 100 ステップの上限で止まりました。したがって、どちらの端点も検証した極小ではありません。</li>
+<li><a href="../2026-11-04_100514/">同一平面の初期推定のワークフロー</a>の変形です。</li>
 </ul>
 </div>
 </div>
 <section id="鞍点と反応経路" class="level3 unlisted">
 <h3 class="unlisted anchored" data-anchor-id="鞍点と反応経路">鞍点と反応経路</h3>
-<p>組み立てた <span class="math inline">[4+2]</span> の推定構造を一次の鞍点に精密化し、閉殻一重項の波動関数を確かめ、<span class="math inline">\pm s</span> の IRC をたどります。</p>
+<p>組み立てた <span class="math inline">[4+2]</span> の初期推定を一次の鞍点に精密化し、その閉殻一重項の波動関数を調べて、<span class="math inline">\pm s</span> の IRC 分枝をたどります。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -434,7 +434,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
-<td><a href="../2026-11-04_100509/2026-11-04_100510/">Optimize and verify the TS</a></td>
+<td><a href="../2026-11-04_100509/2026-11-04_100510/">TS の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>TS Opt Freq, Stable</td>
 <td>2026年11月4日 18:55:17 JST</td>
@@ -442,7 +442,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-11-04_100509/2026-11-04_100511/">Follow the IRC along <span class="math inline">\pm s</span></a></td>
+<td><a href="../2026-11-04_100509/2026-11-04_100511/"><span class="math inline">\pm s</span> に沿った IRC の追跡</a></td>
 <td>Gaussian</td>
 <td>IRC</td>
 <td>2026年11月5日 14:49:23 JST</td>
@@ -452,9 +452,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="端の極小" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="端の極小">端の極小</h3>
-<p>IRC の各端を最適化して調和振動数を確かめます。形成中の結合の距離から、離れた反応物とシクロヘキセンの極小を割り当てます。</p>
+<section id="端点の極小" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="端点の極小">端点の極小</h3>
+<p>各 IRC の端点を最適化して調和振動数を調べます。形成中の結合の距離から、分離した反応物とシクロヘキセンの極小を割り当てます。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -470,7 +470,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="失敗"></td>
-<td><a href="../2026-11-04_100509/2026-11-04_100512/">反応物側の端点の最適化と検証</a></td>
+<td><a href="../2026-11-04_100509/2026-11-04_100512/">反応物の端点の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>Opt Freq</td>
 <td>2026年11月6日 16:12:21 JST</td>
@@ -478,7 +478,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-11-04_100509/2026-11-04_100513/">Optimize and verify the cyclohexene endpoint</a></td>
+<td><a href="../2026-11-04_100509/2026-11-04_100513/">シクロヘキセンの端点の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>Opt Freq</td>
 <td>2026年11月6日 16:12:21 JST</td>
@@ -501,14 +501,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The coplanar guess relaxed to a closed cyclohexene-like ring with a soft <span class="math inline">33.3985i\,\mathrm{cm}^{-1}</span> mode instead of the concerted <span class="math inline">[4+2]</span> saddle, so this workflow does not verify a shared path.</li>
-<li>Variant of <a href="../2026-11-04_100509/">the offset-plane workflow</a>.</li>
+<li>同一平面の初期推定は、協奏的な <span class="math inline">[4+2]</span> 鞍点ではなく、柔らかい <span class="math inline">33.3985i\,\mathrm{cm}^{-1}</span> の振動を持つ、閉じたシクロヘキセン状の環に緩和したので、このワークフローは共通の経路を検証しません。</li>
+<li><a href="../2026-11-04_100509/">オフセットした平面のワークフロー</a>の変形です。</li>
 </ul>
 </div>
 </div>
-<section id="Saddle_and_reaction_path" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Saddle_and_reaction_path">Saddle and reaction path</h3>
-<p>Refine the constructed <span class="math inline">[4+2]</span> guess to a first-order saddle, check its closed-shell singlet wavefunction and follow the <span class="math inline">\pm s</span> IRC branches.</p>
+<section id="鞍点と反応経路_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="鞍点と反応経路_2">鞍点と反応経路</h3>
+<p>組み立てた <span class="math inline">[4+2]</span> の初期推定を一次の鞍点に精密化し、その閉殻一重項の波動関数を調べて、<span class="math inline">\pm s</span> の IRC 分枝をたどります。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -524,7 +524,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="却下"></td>
-<td><a href="../2026-11-04_100514/2026-11-04_100515/">Optimize and verify the TS</a></td>
+<td><a href="../2026-11-04_100514/2026-11-04_100515/">TS の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>TS Opt Freq, Stable</td>
 <td>2026年11月4日 18:55:17 JST</td>
@@ -532,7 +532,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td></td>
-<td><a href="../2026-11-04_100514/2026-11-04_100516/">Follow the IRC along <span class="math inline">\pm s</span></a></td>
+<td><a href="../2026-11-04_100514/2026-11-04_100516/"><span class="math inline">\pm s</span> に沿った IRC の追跡</a></td>
 <td>Gaussian</td>
 <td>IRC</td>
 <td></td>
@@ -542,9 +542,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="Endpoint_minima" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Endpoint_minima">Endpoint minima</h3>
-<p>Optimize each IRC terminus and check its harmonic frequencies; the forming-bond distances assign the separated-reactant and cyclohexene minima.</p>
+<section id="端点の極小_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="端点の極小_2">端点の極小</h3>
+<p>各 IRC の端点を最適化して調和振動数を調べます。形成中の結合の距離から、分離した反応物とシクロヘキセンの極小を割り当てます。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -560,7 +560,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td></td>
-<td><a href="../2026-11-04_100514/2026-11-04_100517/">Optimize and verify the reactant endpoint</a></td>
+<td><a href="../2026-11-04_100514/2026-11-04_100517/">反応物の端点の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>Opt Freq</td>
 <td></td>
@@ -568,7 +568,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td></td>
-<td><a href="../2026-11-04_100514/2026-11-04_100518/">Optimize and verify the cyclohexene endpoint</a></td>
+<td><a href="../2026-11-04_100514/2026-11-04_100518/">シクロヘキセンの端点の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>Opt Freq</td>
 <td></td>
@@ -591,15 +591,15 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>All 90 starts have run: 41 reached the verified saddle, within <span class="math inline">0.1\,\mathrm{kJ\,mol^{-1}}</span> of its energy, and the other 49 stopped at the optimizer’s step limit.</li>
-<li>Rotating the methylene groups toward the closed ring’s twist lets coplanar starts reach the saddle, while rotating them toward ethene does not.</li>
-<li>A non-converged start shows only where this optimizer stops, not that the surface lacks a path.</li>
+<li>90 の初期構造すべてを実行しました。41 は検証した鞍点に達し、そのエネルギーとの差は <span class="math inline">0.1\,\mathrm{kJ\,mol^{-1}}</span> 以内で、残りの 49 は最適化法のステップ上限で止まりました。</li>
+<li>メチレン基を閉じた環のねじれの向きに回すと同一平面の初期構造は鞍点に達しますが、エテンの向きに回すと達しません。</li>
+<li>収束しなかった初期構造が示すのは、この最適化法が止まる場所だけであり、ポテンシャル面に経路がないということではありません。</li>
 </ul>
 </div>
 </div>
-<section id="Approach_geometries" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Approach_geometries">Approach geometries</h3>
-<p>One independent TS optimization from each ethene position and methylene rotation, classified by where it ends.</p>
+<section id="接近構造" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="接近構造">接近構造</h3>
+<p>エテンの各位置とメチレンの回転から独立に 1 回ずつ TS を最適化し、どこで終わるかで分類します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -615,7 +615,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
-<td><a href="../2026-11-06_160905/2026-11-06_160906/" class="scan-title" data-node="Map1">Optimize the TS from every approach geometry</a></td>
+<td><a href="../2026-11-06_160905/2026-11-06_160906/" class="scan-title" data-node="Map1">すべての接近構造から TS を最適化する</a></td>
 <td>Gaussian</td>
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" class="workflow-status scan-icon img-fluid" alt="Scan"> TS Opt Freq, Stable</td>
 <td>2026年11月6日 18:08:19 JST</td>
@@ -625,9 +625,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="Classification_check" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Classification_check">Classification check</h3>
-<p>The outcome of every start checked against its log before the map is read.</p>
+<section id="分類の確認" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="分類の確認">分類の確認</h3>
+<p>結果マップを読む前に、すべての初期構造の結果をそのログと照合します。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -643,7 +643,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td></td>
-<td><a href="../2026-11-06_160905/2026-11-12_002942/">Check every start’s classification</a></td>
+<td><a href="../2026-11-06_160905/2026-11-12_002942/">すべての初期構造の分類を確認する</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -666,14 +666,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The 72 distinct starts are prepared as single points and none is submitted.</li>
-<li>Their energies <span class="math inline">E-E_{\mathrm{TS}}</span> above the verified saddle will show whether the starts that did not reach it are the strained ones.</li>
+<li>互いに異なる 72 の初期構造を一点計算として準備しましたが、まだどれも投入していません。</li>
+<li>検証した鞍点より上のエネルギー <span class="math inline">E-E_{\mathrm{TS}}</span> から、鞍点に達しなかった初期構造が歪んだものかどうかがわかります。</li>
 </ul>
 </div>
 </div>
-<section id="Start_energies" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Start_energies">Start energies</h3>
-<p>One single point at each distinct start geometry of the TS outcome map.</p>
+<section id="初期構造のエネルギー" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="初期構造のエネルギー">初期構造のエネルギー</h3>
+<p>TS 結果マップの互いに異なる各初期構造で、一点計算を 1 回ずつ行います。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -689,7 +689,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td></td>
-<td><a href="../2026-11-09_205959/2026-11-09_210000/" class="scan-title" data-node="Map1">Calculate the energy of every start</a></td>
+<td><a href="../2026-11-09_205959/2026-11-09_210000/" class="scan-title" data-node="Map1">すべての初期構造のエネルギーの計算</a></td>
 <td>Gaussian</td>
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" class="workflow-status scan-icon img-fluid" alt="Scan"> SP</td>
 <td></td>
@@ -735,7 +735,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td></td>
-<td><a href="../2026-11-09_210159/2026-11-09_210200/" class="scan-title" data-node="Map1">収束しなかったすべての出発点の TS 最適化の再実行</a></td>
+<td><a href="../2026-11-09_210159/2026-11-09_210200/" class="scan-title" data-node="Map1">収束しなかったすべての初期構造の TS 最適化の再実行</a></td>
 <td>Gaussian</td>
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" class="workflow-status scan-icon img-fluid" alt="Scan"> TS Opt Freq, Stable</td>
 <td></td>

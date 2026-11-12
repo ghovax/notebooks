@@ -8,7 +8,7 @@
 
 <meta name="author" content="Giovanni Gravili">
 
-<title>収束しなかったすべての出発点の TS 最適化の再実行</title>
+<title>収束しなかったすべての初期構造の TS 最適化の再実行</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">収束しなかったすべての出発点の TS 最適化の再実行</h1>
+<h1 class="title">収束しなかったすべての初期構造の TS 最適化の再実行</h1>
 </div>
 
 
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><a href="../">ステップ上限を広げた TS の再最適化</a><span class="sep">/</span><span class="current">収束しなかったすべての出発点の TS 最適化の再実行</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_210159/2026-11-09_210200/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-09_210159/2026-11-09_210200/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-09_210159/2026-11-09_210200/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">ブタジエンとエテンの Diels–Alder 反応</a><span class="sep">/</span><a href="../">ステップ上限を広げた TS の再最適化</a><span class="sep">/</span><span class="current">収束しなかったすべての初期構造の TS 最適化の再実行</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_210159/2026-11-09_210200/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-09_210159/2026-11-09_210200/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-09_210159/2026-11-09_210200/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
-<li>最適化の手法とポテンシャル面の性質を切り分ける。そのために、<a href="../../2026-11-06_160905/">TS 結果マップ</a>で収束しなかった出発点を、より大きなステップ上限でやり直し、どこに行き着くかを分類する。</li>
+<li>最適化の手法とポテンシャル面の性質を切り分ける。そのために、<a href="../../2026-11-06_160905/">TS 結果マップ</a>で収束しなかった初期構造を、より大きなステップ上限でやり直し、どこに行き着くかを分類する。</li>
 </ul>
 <p>このスキャンの実行と、それを生成したスクリプトと <code>scans.yaml</code> は、<a href="../">ステップ上限を上げた TS の再試行</a>のワークフローに属し、その README に手法があります。</p>
 <div class="calculations-diagram compact" data-workflow="2026-11-04_100508/2026-11-09_210159" data-current="Map1" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Start1&quot;, &quot;Input2&quot;], [&quot;Input1&quot;, &quot;Map1&quot;], [&quot;Input2&quot;, &quot;Map1&quot;], [&quot;Map1&quot;, &quot;Output1&quot;], [&quot;Output1&quot;, &quot;End1&quot;]]" data-details="../details.html"><pre class="diagram-source">---

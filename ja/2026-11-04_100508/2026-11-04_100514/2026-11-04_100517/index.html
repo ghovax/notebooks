@@ -8,7 +8,7 @@
 
 <meta name="author" content="Giovanni Gravili">
 
-<title>Optimize and verify the reactant endpoint (coplanar guess)</title>
+<title>反応物の端点の最適化と検証（同一平面の初期推定）</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -188,7 +188,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Optimize and verify the reactant endpoint</h1>
+<h1 class="title">反応物の端点の最適化と検証</h1>
 </div>
 
 
@@ -232,7 +232,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><a href="../">Path from a coplanar guess</a><span class="sep">/</span><span class="current">Optimize and verify the reactant endpoint</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-04_100514/2026-11-04_100517/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-04_100514/2026-11-04_100517/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-04_100514/2026-11-04_100517/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">ブタジエンとエテンの Diels–Alder 反応</a><span class="sep">/</span><a href="../">同一平面の初期推定からの経路</a><span class="sep">/</span><span class="current">反応物の端点の最適化と検証</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-04_100514/2026-11-04_100517/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-04_100514/2026-11-04_100517/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-04_100514/2026-11-04_100517/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="calculations-diagram compact" data-workflow="2026-11-04_100508/2026-11-04_100514" data-current="Optimize4" data-edges="[[&quot;Refine2&quot;, &quot;IRC2&quot;], [&quot;IRC2&quot;, &quot;Optimize4&quot;], [&quot;IRC2&quot;, &quot;Optimize5&quot;], [&quot;Start2&quot;, &quot;Input3&quot;], [&quot;Start2&quot;, &quot;Input4&quot;], [&quot;Input3&quot;, &quot;Refine2&quot;], [&quot;Input4&quot;, &quot;Refine2&quot;], [&quot;Refine2&quot;, &quot;Output2Energy&quot;], [&quot;Optimize4&quot;, &quot;Output2Energy&quot;], [&quot;Optimize5&quot;, &quot;Output2Energy&quot;], [&quot;Output2Energy&quot;, &quot;End2&quot;], [&quot;IRC2&quot;, &quot;Output2Path&quot;], [&quot;Output2Path&quot;, &quot;End2&quot;], [&quot;Refine2&quot;, &quot;Output2Modes&quot;], [&quot;Optimize4&quot;, &quot;Output2Modes&quot;], [&quot;Optimize5&quot;, &quot;Output2Modes&quot;], [&quot;Output2Modes&quot;, &quot;End2&quot;]]" data-details="../details.html"><pre class="diagram-source">---
 config:
@@ -267,18 +267,18 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Path2["&lt;span&gt;Saddle and reaction path&lt;/span&gt;"]
-        %% description: Refine the constructed $[4+2]$ guess to a first-order saddle, check its closed-shell singlet wavefunction and follow the $\pm s$ IRC branches.
+    subgraph Path2["&lt;span&gt;鞍点と反応経路&lt;/span&gt;"]
+        %% description: 組み立てた $[4+2]$ の初期推定を一次の鞍点に精密化し、その閉殻一重項の波動関数を調べて、$\pm s$ の IRC 分枝をたどります。
         direction TB
-        Refine2["&lt;a href='../2026-11-04_100515/'&gt;Optimize and verify the TS&lt;/a&gt;"]
-        IRC2["&lt;a href='../2026-11-04_100516/'&gt;Follow the IRC along $$\pm s$$&lt;/a&gt;"]
+        Refine2["&lt;a href='../2026-11-04_100515/'&gt;TS の最適化と検証&lt;/a&gt;"]
+        IRC2["&lt;a href='../2026-11-04_100516/'&gt;$$\pm s$$ に沿った IRC の追跡&lt;/a&gt;"]
     end
 
-    subgraph Minima2["&lt;span&gt;Endpoint minima&lt;/span&gt;"]
-        %% description: Optimize each IRC terminus and check its harmonic frequencies; the forming-bond distances assign the separated-reactant and cyclohexene minima.
+    subgraph Minima2["&lt;span&gt;端点の極小&lt;/span&gt;"]
+        %% description: 各 IRC の端点を最適化して調和振動数を調べます。形成中の結合の距離から、分離した反応物とシクロヘキセンの極小を割り当てます。
         direction TB
-        Optimize4["Optimize and verify the reactant endpoint"]
-        Optimize5["&lt;a href='../2026-11-04_100518/'&gt;Optimize and verify the cyclohexene endpoint&lt;/a&gt;"]
+        Optimize4["反応物の端点の最適化と検証"]
+        Optimize5["&lt;a href='../2026-11-04_100518/'&gt;シクロヘキセンの端点の最適化と検証&lt;/a&gt;"]
     end
 
     Refine2 --&gt; IRC2
@@ -286,11 +286,11 @@ flowchart TB
     IRC2 --&gt; Optimize5
 
     Start2(( ))
-    Input3[/"s-cis-Butadiene and ethene"/]
-    Input4[/"Concerted $$[4+2]$$ TS guess"/]
-    Output2Energy[/"&lt;span&gt;Barrier $$\Delta E^{\ddagger}$$ and reaction energy $$\Delta E$$&lt;/span&gt;"/]
-    Output2Path[/"&lt;span&gt;IRC path and forming-bond distances&lt;/span&gt;"/]
-    Output2Modes[/"&lt;span&gt;Stationary-point frequencies $$\nu_i$$&lt;/span&gt;"/]
+    Input3[/"s-cis-ブタジエンとエテン"/]
+    Input4[/"協奏的な $$[4+2]$$ の TS の初期推定"/]
+    Output2Energy[/"&lt;span&gt;障壁 $$\Delta E^{\ddagger}$$ と反応エネルギー $$\Delta E$$&lt;/span&gt;"/]
+    Output2Path[/"&lt;span&gt;IRC の経路と形成中の結合の距離&lt;/span&gt;"/]
+    Output2Modes[/"&lt;span&gt;停留点の振動数 $$\nu_i$$&lt;/span&gt;"/]
     End2((( )))
 
     Start2 --&gt; Input3
@@ -346,9 +346,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
-<li>Relax the IRC terminus with the separated diene and dienophile fragments and verify that it is a minimum.</li>
+<li>ジエンとジエノフィルのフラグメントが分離した IRC の端点を緩和し、それが極小であることを検証する。</li>
 </ul>
-<div id="b79656a7" class="cell" data-execution_count="2">
+<div id="4865b792" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-2ca02f32230db106/data.js"></script><script src="../../../../site_libs/shared-c00d40ea6ec121e8/data.js"></script>
 </div>

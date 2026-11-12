@@ -8,7 +8,7 @@
 
 <meta name="author" content="Giovanni Gravili">
 
-<title>Diels-Alder TS outcome map check of every classification</title>
+<title>Diels-Alder TS の結果マップにあるすべての分類の確認</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Check every start’s classification</h1>
+<h1 class="title">すべての初期構造の分類を確認する</h1>
 </div>
 
 
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><a href="../">TS outcome map</a><span class="sep">/</span><span class="current">Check every start’s classification</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-06_160905/2026-11-12_002942/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-06_160905/2026-11-12_002942/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-06_160905/2026-11-12_002942/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">ブタジエンとエテンの Diels–Alder 反応</a><span class="sep">/</span><a href="../">TS の結果マップ</a><span class="sep">/</span><span class="current">すべての初期構造の分類を確認する</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-06_160905/2026-11-12_002942/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-06_160905/2026-11-12_002942/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-06_160905/2026-11-12_002942/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Not submitted.</li>
+<li>投入していません。</li>
 </ul>
 </div>
 </div>
@@ -231,21 +231,21 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Sweep["&lt;span&gt;Approach geometries&lt;/span&gt;"]
-        %% description: One independent TS optimization from each ethene position and methylene rotation, classified by where it ends.
+    subgraph Sweep["&lt;span&gt;接近構造&lt;/span&gt;"]
+        %% description: エテンの各位置とメチレンの回転から独立に 1 回ずつ TS を最適化し、どこで終わるかで分類します。
         direction TB
-        Map1["&lt;a href='../2026-11-06_160906/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;Optimize the TS from every approach geometry&lt;/a&gt;"]
+        Map1["&lt;a href='../2026-11-06_160906/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;すべての接近構造から TS を最適化する&lt;/a&gt;"]
     end
-    subgraph Checks["&lt;span&gt;Classification check&lt;/span&gt;"]
-        %% description: The outcome of every start checked against its log before the map is read.
+    subgraph Checks["&lt;span&gt;分類の確認&lt;/span&gt;"]
+        %% description: 結果マップを読む前に、すべての初期構造の結果をそのログと照合します。
         direction TB
-        Check1["Check every start's classification"]
+        Check1["すべての初期構造の分類を確認する"]
     end
 
     Start3(( ))
-    Input5[/"&lt;span&gt;Rigid fragments at $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;"/]
-    Input6[/"&lt;span&gt;Verified saddle reference&lt;/span&gt;"/]
-    Output3Map[/"&lt;span&gt;Optimization outcome at each $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;"/]
+    Input5[/"&lt;span&gt;$$r$$、$$\theta$$、$$\tau$$ での剛体フラグメント&lt;/span&gt;"/]
+    Input6[/"&lt;span&gt;検証した鞍点の参照&lt;/span&gt;"/]
+    Output3Map[/"&lt;span&gt;各 $$r$$、$$\theta$$、$$\tau$$ での最適化の結果&lt;/span&gt;"/]
     End3((( )))
 
     Start3 --&gt; Input5
@@ -288,9 +288,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
-<li>Confirm, before the outcome map is read, that each of the 90 starts carries the outcome its log supports: a forming saddle matches the <a href="../../2026-11-04_100509/2026-11-04_100510/">verified saddle</a> in energy and forming-bond length, and a non-converged start stopped at the optimizer’s step limit.</li>
+<li>結果マップを読む前に、90 の初期構造のそれぞれが、そのログの裏づける結果を持っていることを確かめる。形成する鞍点は、エネルギーと形成する結合の長さが<a href="../../2026-11-04_100509/2026-11-04_100510/">検証した鞍点</a>に一致し、収束しなかった初期構造は最適化法のステップ上限で止まっている。</li>
 </ul>
-<div id="5417c655" class="cell" data-execution_count="2">
+<div id="4194dec5" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-2ca02f32230db106/data.js"></script><script src="../../../../site_libs/shared-c00d40ea6ec121e8/data.js"></script>
 </div>

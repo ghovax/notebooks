@@ -8,7 +8,7 @@
 
 <meta name="author" content="Giovanni Gravili">
 
-<title>Diels-Alder forming-bond scan, rotation 45 degrees</title>
+<title>Diels-Alder の形成中の結合のスキャン、回転 45 度</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -191,7 +191,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Forming-bond scan from <span class="math inline">\tau=45^\circ</span></h1>
+<h1 class="title"><span class="math inline">\tau=45^\circ</span> からの形成中の結合のスキャン</h1>
 </div>
 
 
@@ -235,7 +235,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">Diels–Alder reaction of butadiene and ethene</a><span class="sep">/</span><a href="../">Relaxed scans of both forming bonds</a><span class="sep">/</span><span class="current">Forming-bond scan from <span class="math inline">\tau=45^\circ</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_210100/2026-11-09_210102/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-09_210100/2026-11-09_210102/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-09_210100/2026-11-09_210102/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">ブタジエンとエテンの Diels–Alder 反応</a><span class="sep">/</span><a href="../">二つの形成中の結合の緩和スキャン</a><span class="sep">/</span><span class="current"><span class="math inline">\tau=45^\circ</span> からの形成中の結合のスキャン</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-04_100508/2026-11-09_210100/2026-11-09_210102/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-04_100508/2026-11-09_210100/2026-11-09_210102/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-04_100508/2026-11-09_210100/2026-11-09_210102/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -248,7 +248,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>This run has been prepared but not submitted, so it has no outcome yet.</li>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
 </ul>
 </div>
 </div>
@@ -285,16 +285,16 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Scans["&lt;span&gt;Relaxed scans&lt;/span&gt;"]
-        %% description: Shorten both forming bonds together from a start that reached the saddle, with everything else relaxed, once without and once with the methylene rotation of the closed ring.
+    subgraph Scans["&lt;span&gt;緩和スキャン&lt;/span&gt;"]
+        %% description: 鞍点に達した初期構造から二つの形成中の結合を一緒に縮め、それ以外はすべて緩和します。閉環した構造のメチレン基の回転を含めない場合と含める場合の、二回です。
         direction TB
-        Scan1["&lt;a href='../2026-11-09_210101/'&gt;Forming-bond scan from $$\tau=0^\circ$$&lt;/a&gt;"]
-        Scan2["Forming-bond scan from $$\tau=45^\circ$$"]
+        Scan1["&lt;a href='../2026-11-09_210101/'&gt;$$\tau=0^\circ$$ からの形成中の結合のスキャン&lt;/a&gt;"]
+        Scan2["$$\tau=45^\circ$$ からの形成中の結合のスキャン"]
     end
 
     Start1(( ))
-    Input1[/"&lt;span&gt;Starts at $$r=2.55\,\mathrm{\AA}$$ and $$\theta=90^\circ$$&lt;/span&gt;"/]
-    Output1[/"&lt;span&gt;Relaxed energy $$E(r)$$ and methylene rotation $$\tau(r)$$&lt;/span&gt;"/]
+    Input1[/"&lt;span&gt;$$r=2.55\,\mathrm{\AA}$$ と $$\theta=90^\circ$$ の初期構造&lt;/span&gt;"/]
+    Output1[/"&lt;span&gt;緩和エネルギー $$E(r)$$ とメチレン基の回転 $$\tau(r)$$&lt;/span&gt;"/]
     End1((( )))
 
     Start1 --&gt; Input1
@@ -330,9 +330,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
-<li>Follow the relaxed energy <span class="math inline">E(r)</span> and the relaxed methylene rotation <span class="math inline">\tau(r)</span> as both forming bonds shorten together from the start at <span class="math inline">r=2.55\,\mathrm{\AA}</span>, <span class="math inline">\theta=90^\circ</span>, <span class="math inline">\tau=45^\circ</span>.</li>
+<li><span class="math inline">r=2.55\,\mathrm{\AA}</span>、<span class="math inline">\theta=90^\circ</span>、<span class="math inline">\tau=45^\circ</span> の初期構造から、二つの形成中の結合を一緒に縮めたときの緩和エネルギー <span class="math inline">E(r)</span> と緩和したメチレン基の回転 <span class="math inline">\tau(r)</span> をたどる。</li>
 </ul>
-<div id="83801b74" class="cell" data-execution_count="2">
+<div id="5740013d" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-2ca02f32230db106/data.js"></script><script src="../../../../site_libs/shared-c00d40ea6ec121e8/data.js"></script>
 </div>
@@ -597,7 +597,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"a90493c4643346bf97b9a46937dc8054","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"897df8e105b643919406d96ede268ba2","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -611,7 +611,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 
 </main>
 <!-- /main column -->
-<script type="application/vnd.jupyter.widget-state+json">{"state": {"a90493c4643346bf97b9a46937dc8054": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [{"atoms": [], "centers": [[0.605, -1.0499999999999998, 1.275]], "offset": [0, 0], "size": 0.28, "text": "$r_{1,6}=2.91\\,\\mathrm{\\AA}$", "texts": ["$r_{1,6}=2.91\\,\\mathrm{\\AA}$"]}, {"atoms": [], "centers": [[0.605, 1.0499999999999998, 1.275]], "offset": [0, 0], "size": 0.28, "text": "$r_{4,5}=2.91\\,\\mathrm{\\AA}$", "texts": ["$r_{4,5}=2.91\\,\\mathrm{\\AA}$"]}], "atom_colors": [], "atom_details": [], "bounds": [[-2.8449999999999998, -3.143261, -1.6222409999999998], [2.7577999999999996, 3.143261, 3.7059999999999995]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [[1, 6], [4, 5]], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_d4f48090f9864c94851ef0bfd3fd4fef", "markers": [], "readouts": [{"atoms": [1, 6], "kind": "distance"}, {"atoms": [4, 5], "kind": "distance"}], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhAG8rhAaqAAAAiAIAAA4AAAB0cmFqZWN0b3J5Lnh5eo3SPQ7CMAwF4L2nyAVixS+J3c4sLBwCoYqlqFIFA7cHWlLCT0qzRfn0nmWFpdr1XXu4dPvBHNv+1J6Ha7Ux1pFLx1imMF+yh4djAs/Oka5xCyyvLbeWwkAx/la2xLZjp1dWGR0oBA/hKRoqqsmBOMTXSpCmexvuwy2wvLbc6sgLkMK4bqZk4+9hMoeBXNT6n8qz7LqwBeYoCjcQl35IkOifu24ABP52RXYDUEsBAhQDFAAAAAgAAAAhAG0N67rHAAAAbAEAAAoAAAAAAAAAAAAAAIABAAAAAGluZGV4Lm12c2pQSwECFAMUAAAACAAAACEAbyuEBqoAAACIAgAADgAAAAAAAAAAAAAAgAHvAAAAdHJhamVjdG9yeS54eXpQSwUGAAAAAAIAAgB0AAAAxQEAAAAA", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}, "d4f48090f9864c94851ef0bfd3fd4fef": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}</script>
+<script type="application/vnd.jupyter.widget-state+json">{"state": {"897df8e105b643919406d96ede268ba2": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../site_libs/shared-31f0fab9cee75962/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-de91ca1e84313c7d/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [{"atoms": [], "centers": [[0.605, -1.0499999999999998, 1.275]], "offset": [0, 0], "size": 0.28, "text": "$r_{1,6}=2.91\\,\\mathrm{\\AA}$", "texts": ["$r_{1,6}=2.91\\,\\mathrm{\\AA}$"]}, {"atoms": [], "centers": [[0.605, 1.0499999999999998, 1.275]], "offset": [0, 0], "size": 0.28, "text": "$r_{4,5}=2.91\\,\\mathrm{\\AA}$", "texts": ["$r_{4,5}=2.91\\,\\mathrm{\\AA}$"]}], "atom_colors": [], "atom_details": [], "bounds": [[-2.8449999999999998, -3.143261, -1.6222409999999998], [2.7577999999999996, 3.143261, 3.7059999999999995]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "distances": [[1, 6], [4, 5]], "error": "", "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_b85bad3c51954259a8217788910571a1", "markers": [], "readouts": [{"atoms": [1, 6], "kind": "distance"}, {"atoms": [4, 5], "kind": "distance"}], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhAG8rhAaqAAAAiAIAAA4AAAB0cmFqZWN0b3J5Lnh5eo3SPQ7CMAwF4L2nyAVixS+J3c4sLBwCoYqlqFIFA7cHWlLCT0qzRfn0nmWFpdr1XXu4dPvBHNv+1J6Ha7Ux1pFLx1imMF+yh4djAs/Oka5xCyyvLbeWwkAx/la2xLZjp1dWGR0oBA/hKRoqqsmBOMTXSpCmexvuwy2wvLbc6sgLkMK4bqZk4+9hMoeBXNT6n8qz7LqwBeYoCjcQl35IkOifu24ABP52RXYDUEsBAhQDFAAAAAgAAAAhAG0N67rHAAAAbAEAAAoAAAAAAAAAAAAAAIABAAAAAGluZGV4Lm12c2pQSwECFAMUAAAACAAAACEAbyuEBqoAAACIAgAADgAAAAAAAAAAAAAAgAHvAAAAdHJhamVjdG9yeS54eXpQSwUGAAAAAAIAAgB0AAAAxQEAAAAA", "segments": [], "snapshot_choices": [], "snapshots": [], "tabbable": null, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": []}}, "b85bad3c51954259a8217788910571a1": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}</script>
 <script id="quarto-html-after-body" type="application/javascript" src="../../../../site_libs/shared-1d9d6cb5641f4609/script.js"></script>
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"スクロール可能なコード","output":"スクロール可能な出力"};
