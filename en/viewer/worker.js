@@ -9,7 +9,7 @@ import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyod
 // Python packages it does not provide come precompiled in python.zip, under site-packages. SciPy, the largest, is
 // needed only to draw orbitals and densities from a formatted checkpoint, so it is loaded when one is first dropped.
 const BUILT = ["numpy", "pandas", "pyyaml", "tzdata", "ipython", "pydantic", "jsonschema", "jinja2", "narwhals",
-  "packaging", "platformdirs", "typing-extensions"];
+  "packaging", "platformdirs", "typing-extensions", "networkx"];
 const ON_DEMAND = { scipy: /\.fchk?$/i };
 const ROOT = "/home/pyodide/viewer";
 // The language the page asks its sections in, from the worker's address; English when it names none.

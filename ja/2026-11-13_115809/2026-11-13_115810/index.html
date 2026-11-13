@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Giovanni Gravili">
+<meta name="keywords" content="TICT, ジフルオロボロンキレート, 緩和スキャン, 電荷移動">
+
+<title>B3LYP によるアセトニトリル中のメトキシキレートとジメチルアミノキレート</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html-fd12455ea9a5/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html-fd12455ea9a5/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html-fd12455ea9a5/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
+<script>window.requireJsDefine = window.define;</script>
+<!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
+<script src="../../../site_libs/shared-ceab9ae74975b28a/script.js"></script>
+<!-- Match visible KaTeX glyph heights to the surrounding text without rounding small canvas measurements. -->
+<script src="../../../site_libs/shared-a3a28c948f20a597/script.js"></script>
+<script>
+// GitHub Pages serves every page also under its folder's index.html; show the folder's own URL instead.
+if (location.pathname.endsWith("/index.html")) {
+    history.replaceState(history.state, "", location.pathname.slice(0, -"index.html".length) + location.search + location.hash);
+}
+</script>
+<!-- KaTeX and its mhchem extension, so \ce{...} renders on every page, load here, once and before the page parses on. Quarto's own loader starts it only when the page has
+     parsed and shields it from the widgets' RequireJS only if that loader is visible then, so KaTeX could register
+     as an AMD module instead of a global and leave the math raw until a reload. RequireJS's define, saved by mathml.html, is hidden for
+     this one script alone. These pages give Quarto's loader an empty script as KaTeX, so its render runs on this
+     global KaTeX once the empty script has loaded. -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
+<script>window.define = undefined;</script>
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script>
+<script>window.define = window.requireJsDefine; delete window.requireJsDefine;</script>
+<!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
+     the viewers' own request of the same URL. -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../site_libs/shared-4186f095b6f8d716/style.css">
+<script src="../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<script>
+// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
+// default scales; the browser's context menu is suppressed only over the plot itself.
+document.addEventListener('contextmenu', event => {
+    const plot = event.target.closest?.('.vega-embed');
+    if (!plot || event.target.closest('.vega-actions')) return;
+    event.preventDefault();
+    event.target.dispatchEvent(new MouseEvent('dblclick', {
+        bubbles: true, cancelable: true, composed: true, view: window,
+        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
+    }));
+});
+</script>
+<script>
+// The breadcrumb is written as the first block of the page; show it above the title block.
+document.addEventListener('DOMContentLoaded', () => {
+    const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
+    if (crumbs && title) title.before(crumbs);
+});
+</script>
+<script>
+// Quarto's hover popovers copy a bibliography entry's raw math spans, which are typeset on display. The popovers of
+// links and calculations copy spans that KaTeX has typeset already, whose text is the MathML and HTML renderings
+// joined, not TeX, so a span that holds KaTeX output is never typeset again: its content decides, whichever popover
+// made it.
+new MutationObserver(() => {
+    if (!globalThis.katex) return;
+    for (const span of document.querySelectorAll('.tippy-box span.math:not([data-typeset])')) {
+        span.dataset.typeset = 'true';
+        if (span.querySelector('.katex, .katex-display, math')) continue;
+        katex.render(span.textContent.replace(/^\\[(\[]|\\[)\]]$/g, ''), span,
+                     {throwOnError: false, displayMode: span.classList.contains('display')});
+    }
+}).observe(document.documentElement, {childList: true, subtree: true});
+</script>
+<script src="../../../site_libs/shared-8727be5863cdcdab/script.js"></script>
+
+  <script defer="" src="data:text/javascript,//katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="data:text/javascript,//katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../site_libs/shared-fc446dee7426ec83/styles.css">
+</head>
+
+<body class="quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#ねじれに沿ったエネルギー" id="toc-ねじれに沿ったエネルギー" class="nav-link active" data-scroll-target="#ねじれに沿ったエネルギー">ねじれに沿ったエネルギー</a></li>
+  <li><a href="#二つのねじれの基底状態マップ" id="toc-二つのねじれの基底状態マップ" class="nav-link" data-scroll-target="#二つのねじれの基底状態マップ">二つのねじれの基底状態マップ</a></li>
+  <li><a href="#Calculations" id="toc-Calculations" class="nav-link" data-scroll-target="#Calculations">計算</a>
+  <ul class="collapse">
+  <li><a href="#メトキシキレート_mathbf1" id="toc-メトキシキレート_mathbf1" class="nav-link" data-scroll-target="#メトキシキレート_mathbf1">メトキシキレート (<span class="math inline">\mathbf{1}</span>)</a></li>
+  <li><a href="#ジメチルアミノキレート_mathbf3" id="toc-ジメチルアミノキレート_mathbf3" class="nav-link" data-scroll-target="#ジメチルアミノキレート_mathbf3">ジメチルアミノキレート (<span class="math inline">\mathbf{3}</span>)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">アセトニトリル中のメトキシキレートとジメチルアミノキレート</h1>
+</div>
+
+
+<!-- Quarto title metadata for authors, dates and scientific document details. -->
+
+<div class="quarto-title-meta has-remote-link">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>Giovanni Gravili <a href="https://orcid.org/0009-0001-0115-359X" class="quarto-title-author-orcid" aria-label="Giovanni Gravili の ORCID プロフィール"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">公開</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年11月13日</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">更新日</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026年11月13日</p>
+    </div>
+  </div>
+    
+    <div class="remote-readme-meta">
+    <div class="quarto-title-meta-heading">リモートで開く</div>
+    <div class="quarto-title-meta-contents">
+      <p><a class="remote-readme-link" href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115810/README.md:1" title="このページのリモート README を Visual Studio Code で開きます">Visual Studio Code</a></p>
+    </div>
+  </div>
+  
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">概要</div>
+    <p>ねじれた分子内電荷移動を調べるために準備した、アセトニトリル中のメトキシとジメチルアミノのジフルオロボロンキレートの極小、ねじれのスキャンとねじれのマップです。</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">キーワード</div>
+    <p>TICT, ジフルオロボロンキレート, 緩和スキャン, 電荷移動</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="header-breadcrumb has-remote-link">
+<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">ジフルオロボロン色素のねじれと電荷移動</a><span class="sep">/</span><span class="current">アセトニトリル中のメトキシキレートとジメチルアミノキレート</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115810/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-11-13_115809/2026-11-13_115810/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-11-13_115809/2026-11-13_115810/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+</div>
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>計算を準備しましたが、どれも投入していません。</li>
+</ul>
+</div>
+</div>
+<div id="6975de88" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<script class="quarto-plot-labels" type="application/json">{"twist_angle": "\u306d\u3058\u308c\u89d2 $\\theta$ $[{}^\\circ]$", "relative_energy": "\u30a8\u30cd\u30eb\u30ae\u30fc $E-E_{S_0}$ $[\\mathrm{eV}]$", "curve": "\u66f2\u7dda", "twist_a": "$\\theta_\\mathrm{A}$ $[{}^\\circ]$", "twist_b1": "$\\theta_{\\mathrm{B}_1}$ $[{}^\\circ]$", "Twist angle": "\u306d\u3058\u308c\u89d2 $\\theta$ $[{}^\\circ]$", "Relative energy": "\u30a8\u30cd\u30eb\u30ae\u30fc $E-E_{S_0}$ $[\\mathrm{eV}]$", "Curve": "\u66f2\u7dda", "Twist a": "$\\theta_\\mathrm{A}$ $[{}^\\circ]$", "Twist b1": "$\\theta_{\\mathrm{B}_1}$ $[{}^\\circ]$"}</script><script src="../../../site_libs/shared-223402a3561e11d3/data.js"></script>
+</div>
+</div>
+<section id="ねじれに沿ったエネルギー" class="level2">
+<h2 class="anchored" data-anchor-id="ねじれに沿ったエネルギー">ねじれに沿ったエネルギー</h2>
+<div id="cell-fig-twist-profiles" class="cell" data-execution_count="3">
+<div id="Figure_1" class="cell-output cell-output-display cell-output-markdown quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-twist-profiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p>まだどのスキャンも実行していません。</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-twist-profiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;1. 二つのキレートの各ねじれに沿ったエネルギーで、<span class="math inline">S_0</span> 極小を基準とします。緩和 <span class="math inline">S_0</span> スキャン、その点での垂直 <span class="math inline">S_1</span> エネルギー、緩和 <span class="math inline">S_1</span> スキャンです。
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="二つのねじれの基底状態マップ" class="level2">
+<h2 class="anchored" data-anchor-id="二つのねじれの基底状態マップ">二つのねじれの基底状態マップ</h2>
+<div id="cell-fig-torsion-map" class="cell" data-execution_count="4">
+<div id="Figure_2" class="cell-output cell-output-display cell-output-markdown quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-torsion-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p>まだどのスキャンも実行していません。</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-torsion-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2. <span class="math inline">\mathrm{A}</span> と <span class="math inline">\mathrm{B}_1</span> まわりのねじれにわたる緩和 <span class="math inline">S_0</span> エネルギーで、<span class="math inline">S_0</span> 極小を基準とします。
+</figcaption>
+</figure>
+</div>
+</div>
+<!-- Generated by researchsite.pages from the calculation folders; do not edit. -->
+</section>
+<section id="Calculations" class="level2">
+<h2 class="anchored" data-anchor-id="Calculations">計算</h2>
+<p>このワークフローのすべての計算を、図と同じまとまりで示します。スキャンの各計算はスキャンのページにあります。計算を選ぶとそのページが開きます。</p>
+<div class="calculations-diagram" data-workflow="2026-11-13_115809/2026-11-13_115810" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;S0Opt1&quot;], [&quot;S0Opt1&quot;, &quot;S0Props1&quot;], [&quot;S0Opt1&quot;, &quot;S1Opt1&quot;], [&quot;S1Opt1&quot;, &quot;S1Props1&quot;], [&quot;S0Opt1&quot;, &quot;S0ScanB11&quot;], [&quot;S0ScanB11&quot;, &quot;S0ScanB1Td1&quot;], [&quot;S1Opt1&quot;, &quot;S1ScanB11&quot;], [&quot;S0Opt1&quot;, &quot;S0ScanA1&quot;], [&quot;S0ScanA1&quot;, &quot;S0ScanATd1&quot;], [&quot;S1Opt1&quot;, &quot;S1ScanA1&quot;], [&quot;S0Opt1&quot;, &quot;S0Map1&quot;], [&quot;S0Map1&quot;, &quot;S0MapTd1&quot;], [&quot;S0Props1&quot;, &quot;Output1&quot;], [&quot;S1Props1&quot;, &quot;Output1&quot;], [&quot;S0ScanB1Td1&quot;, &quot;Output1&quot;], [&quot;S1ScanB11&quot;, &quot;Output1&quot;], [&quot;S0ScanATd1&quot;, &quot;Output1&quot;], [&quot;S1ScanA1&quot;, &quot;Output1&quot;], [&quot;S0MapTd1&quot;, &quot;Output1&quot;], [&quot;Output1&quot;, &quot;End1&quot;], [&quot;Start1&quot;, &quot;Input2&quot;], [&quot;Input2&quot;, &quot;S0Opt2&quot;], [&quot;S0Opt2&quot;, &quot;S0Props2&quot;], [&quot;S0Opt2&quot;, &quot;S1Opt2&quot;], [&quot;S1Opt2&quot;, &quot;S1Props2&quot;], [&quot;S0Opt2&quot;, &quot;S0ScanB12&quot;], [&quot;S0ScanB12&quot;, &quot;S0ScanB1Td2&quot;], [&quot;S1Opt2&quot;, &quot;S1ScanB12&quot;], [&quot;S0Opt2&quot;, &quot;S0ScanA2&quot;], [&quot;S0ScanA2&quot;, &quot;S0ScanATd2&quot;], [&quot;S1Opt2&quot;, &quot;S1ScanA2&quot;], [&quot;S0Opt2&quot;, &quot;S0Map2&quot;], [&quot;S0Map2&quot;, &quot;S0MapTd2&quot;], [&quot;S0Props2&quot;, &quot;Output2&quot;], [&quot;S1Props2&quot;, &quot;Output2&quot;], [&quot;S0ScanB1Td2&quot;, &quot;Output2&quot;], [&quot;S1ScanB12&quot;, &quot;Output2&quot;], [&quot;S0ScanATd2&quot;, &quot;Output2&quot;], [&quot;S1ScanA2&quot;, &quot;Output2&quot;], [&quot;S0MapTd2&quot;, &quot;Output2&quot;], [&quot;Output2&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    Start1(( ))
+    subgraph Chelate1["&lt;span&gt;メトキシキレート ($$\mathbf{1}$$)&lt;/span&gt;"]
+        %% description: アセトニトリル中のメトキシキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。
+        direction TB
+        Input1[/"&lt;span&gt;$$\mathbf{1}$$ の分子スクリーニングの構造&lt;/span&gt;"/]
+        S0Opt1["&lt;a href='2026-11-13_115811/'&gt;$$\mathbf{1}$$ の $$S_0$$ の最適化と検証&lt;/a&gt;"]
+        S0Props1["&lt;a href='2026-11-13_115812/'&gt;$$\mathbf{1}$$ の $$S_0$$ 極小での吸収の性質&lt;/a&gt;"]
+        S1Opt1["&lt;a href='2026-11-13_115813/'&gt;$$\mathbf{1}$$ の $$S_1$$ の最適化と検証&lt;/a&gt;"]
+        S1Props1["&lt;a href='2026-11-13_115814/'&gt;$$\mathbf{1}$$ の $$S_1$$ 極小での発光の性質&lt;/a&gt;"]
+        S0ScanB11["&lt;a href='2026-11-13_115815/'&gt;$$\mathbf{1}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
+        S0ScanB1Td1["&lt;a href='2026-11-13_115816/'&gt;$$\mathbf{1}$$ の $$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
+        S1ScanB11["&lt;a href='2026-11-13_115817/'&gt;$$\mathbf{1}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
+        S0ScanA1["&lt;a href='2026-11-13_115818/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
+        S0ScanATd1["&lt;a href='2026-11-13_115819/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
+        S1ScanA1["&lt;a href='2026-11-13_115820/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
+        S0Map1["&lt;a href='2026-11-13_115821/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ と $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ マップ&lt;/a&gt;"]
+        S0MapTd1["&lt;a href='2026-11-13_115822/'&gt;$$\mathbf{1}$$ の $$S_0$$ マップ上の垂直励起&lt;/a&gt;"]
+        Output1[/"&lt;span&gt;$$\mathbf{1}$$ の $$E(\theta)$$、$$\Delta\mu$$ と電荷移動&lt;/span&gt;"/]
+    end
+    subgraph Chelate2["&lt;span&gt;ジメチルアミノキレート ($$\mathbf{3}$$)&lt;/span&gt;"]
+        %% description: アセトニトリル中のジメチルアミノキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。
+        direction TB
+        Input2[/"&lt;span&gt;$$\mathbf{3}$$ の分子スクリーニングの構造&lt;/span&gt;"/]
+        S0Opt2["&lt;a href='2026-11-13_115823/'&gt;$$\mathbf{3}$$ の $$S_0$$ の最適化と検証&lt;/a&gt;"]
+        S0Props2["&lt;a href='2026-11-13_115824/'&gt;$$\mathbf{3}$$ の $$S_0$$ 極小での吸収の性質&lt;/a&gt;"]
+        S1Opt2["&lt;a href='2026-11-13_115825/'&gt;$$\mathbf{3}$$ の $$S_1$$ の最適化と検証&lt;/a&gt;"]
+        S1Props2["&lt;a href='2026-11-13_115826/'&gt;$$\mathbf{3}$$ の $$S_1$$ 極小での発光の性質&lt;/a&gt;"]
+        S0ScanB12["&lt;a href='2026-11-13_115827/'&gt;$$\mathbf{3}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
+        S0ScanB1Td2["&lt;a href='2026-11-13_115828/'&gt;$$\mathbf{3}$$ の $$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
+        S1ScanB12["&lt;a href='2026-11-13_115829/'&gt;$$\mathbf{3}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
+        S0ScanA2["&lt;a href='2026-11-13_115830/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
+        S0ScanATd2["&lt;a href='2026-11-13_115831/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
+        S1ScanA2["&lt;a href='2026-11-13_115832/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
+        S0Map2["&lt;a href='2026-11-13_115833/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ と $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ マップ&lt;/a&gt;"]
+        S0MapTd2["&lt;a href='2026-11-13_115834/'&gt;$$\mathbf{3}$$ の $$S_0$$ マップ上の垂直励起&lt;/a&gt;"]
+        Output2[/"&lt;span&gt;$$\mathbf{3}$$ の $$E(\theta)$$、$$\Delta\mu$$ と電荷移動&lt;/span&gt;"/]
+    end
+    End1((( )))
+
+    Start1 --&gt; Input1
+    Input1 --&gt; S0Opt1
+    S0Opt1 --&gt; S0Props1
+    S0Opt1 --&gt; S1Opt1
+    S1Opt1 --&gt; S1Props1
+    S0Opt1 --&gt; S0ScanB11
+    S0ScanB11 --&gt; S0ScanB1Td1
+    S1Opt1 --&gt; S1ScanB11
+    S0Opt1 --&gt; S0ScanA1
+    S0ScanA1 --&gt; S0ScanATd1
+    S1Opt1 --&gt; S1ScanA1
+    S0Opt1 --&gt; S0Map1
+    S0Map1 --&gt; S0MapTd1
+    S0Props1 --&gt; Output1
+    S1Props1 --&gt; Output1
+    S0ScanB1Td1 --&gt; Output1
+    S1ScanB11 --&gt; Output1
+    S0ScanATd1 --&gt; Output1
+    S1ScanA1 --&gt; Output1
+    S0MapTd1 --&gt; Output1
+    Output1 --&gt; End1
+    Start1 --&gt; Input2
+    Input2 --&gt; S0Opt2
+    S0Opt2 --&gt; S0Props2
+    S0Opt2 --&gt; S1Opt2
+    S1Opt2 --&gt; S1Props2
+    S0Opt2 --&gt; S0ScanB12
+    S0ScanB12 --&gt; S0ScanB1Td2
+    S1Opt2 --&gt; S1ScanB12
+    S0Opt2 --&gt; S0ScanA2
+    S0ScanA2 --&gt; S0ScanATd2
+    S1Opt2 --&gt; S1ScanA2
+    S0Opt2 --&gt; S0Map2
+    S0Map2 --&gt; S0MapTd2
+    S0Props2 --&gt; Output2
+    S1Props2 --&gt; Output2
+    S0ScanB1Td2 --&gt; Output2
+    S1ScanB12 --&gt; Output2
+    S0ScanATd2 --&gt; Output2
+    S1ScanA2 --&gt; Output2
+    S0MapTd2 --&gt; Output2
+    Output2 --&gt; End1
+
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    classDef success stroke:#198754,stroke-width:2px;
+    classDef failed stroke:#dc3545,stroke-width:2px;
+    classDef problems stroke:#e0a800,stroke-width:2px;
+    class Start1,Input1,S0Opt1,S0Props1,S1Opt1,S1Props1,S0ScanB11,S0ScanB1Td1,S1ScanB11,S0ScanA1,S0ScanATd1,S1ScanA1,S0Map1,S0MapTd1,Output1,Input2,S0Opt2,S0Props2,S1Opt2,S1Props2,S0ScanB12,S0ScanB1Td2,S1ScanB12,S0ScanA2,S0ScanATd2,S1ScanA2,S0Map2,S0MapTd2,Output2,End1 pending;
+    linkStyle 0 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 1 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 2 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 3 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 4 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 5 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 8 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 11 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 12 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 15 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 16 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 17 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 18 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 19 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 20 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 21 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 22 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 23 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 27 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 28 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 31 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 32 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 36 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 37 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 38 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 39 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 40 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 41 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-992dc7666676db38/script.js"></script>
+<section id="メトキシキレート_mathbf1" class="level3">
+<h3 class="anchored" data-anchor-id="メトキシキレート_mathbf1">メトキシキレート (<span class="math inline">\mathbf{1}</span>)</h3>
+<p>アセトニトリル中のメトキシキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115811/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_0</span> の最適化と検証</a></td>
+<td>Gaussian</td>
+<td>Opt, Freq; Stable</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115812/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_0</span> 極小での吸収の性質</a></td>
+<td>Gaussian</td>
+<td>SP; SP（TD）; SP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115813/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_1</span> の最適化と検証</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）, Freq（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115814/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_1</span> 極小での発光の性質</a></td>
+<td>Gaussian</td>
+<td>SP; SP（TD）; SP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115815/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115816/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115817/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115818/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115819/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115820/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115821/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> と <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> マップ</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115822/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_0</span> マップ上の垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ジメチルアミノキレート_mathbf3" class="level3">
+<h3 class="anchored" data-anchor-id="ジメチルアミノキレート_mathbf3">ジメチルアミノキレート (<span class="math inline">\mathbf{3}</span>)</h3>
+<p>アセトニトリル中のジメチルアミノキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115823/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> の最適化と検証</a></td>
+<td>Gaussian</td>
+<td>Opt, Freq; Stable</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115824/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> 極小での吸収の性質</a></td>
+<td>Gaussian</td>
+<td>SP; SP（TD）; SP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115825/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_1</span> の最適化と検証</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）, Freq（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115826/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_1</span> 極小での発光の性質</a></td>
+<td>Gaussian</td>
+<td>SP; SP（TD）; SP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115827/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115828/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115829/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115830/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115831/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115832/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="2026-11-13_115833/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> と <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> マップ</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="2026-11-13_115834/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> マップ上の垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="diagram-details">
+<div class="diagram-detail" data-calculation="2026-11-13_115811/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115812/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115813/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115814/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115815/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115816/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115817/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115818/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115819/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115820/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115821/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115822/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115823/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115824/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115825/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115826/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115827/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115828/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115829/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115830/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115831/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115832/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115833/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="diagram-detail" data-calculation="2026-11-13_115834/">
+<div class="status-prepared callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>準備済み
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript" src="../../../site_libs/shared-1d9d6cb5641f4609/script.js"></script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"スクロール可能なコード","output":"スクロール可能な出力"};
+  </script>
+</div> <!-- /content -->
+<!-- Hand-drawn highlighter strokes over spans marked [text]{.hl}, or in red over [text]{.hl-fail} for
+     what could not be done or found, drawn as each scrolls into view. -->
+<style>
+  /* Strokes draw outside the SVG (overflow: visible); a 1 px box keeps table and
+     output containers from gaining scrollbars (a zero-size SVG is not rendered). */
+  svg.rough-annotation { width: 1px !important; height: 1px !important; }
+  /* Shrink a highlighted display equation to the formula's width; it stays centred. */
+  span.hl .katex-display > .katex, span.hl-fail .katex-display > .katex { display: inline-block; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
+<script src="../../../site_libs/shared-adeddb5784cecf8c/script.js"></script>
+<!-- Fold sections: a ::: {.fold} div opening with a heading, which Pandoc renders as
+     section.fold; the heading becomes the summary of a collapsible block, so it stays a
+     real heading and appears in the TOC. -->
+<link rel="stylesheet" href="../../../site_libs/shared-9a662a47e7ec3305/style.css">
+<script src="../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+
+
+
+
+</body></html>
