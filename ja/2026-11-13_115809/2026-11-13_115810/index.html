@@ -9,7 +9,7 @@
 <meta name="author" content="Giovanni Gravili">
 <meta name="keywords" content="TICT, ジフルオロボロンキレート, 緩和スキャン, 電荷移動">
 
-<title>B3LYP によるアセトニトリル中のメトキシキレートとジメチルアミノキレート</title>
+<title>B3LYP によるアセトニトリル中のメトキシキレート</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
+<script src="../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -43,9 +43,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
 <script>window.requireJsDefine = window.define;</script>
 <!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
@@ -165,12 +162,12 @@ window.Quarto = {
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#ねじれに沿ったエネルギー" id="toc-ねじれに沿ったエネルギー" class="nav-link active" data-scroll-target="#ねじれに沿ったエネルギー">ねじれに沿ったエネルギー</a></li>
-  <li><a href="#二つのねじれの基底状態マップ" id="toc-二つのねじれの基底状態マップ" class="nav-link" data-scroll-target="#二つのねじれの基底状態マップ">二つのねじれの基底状態マップ</a></li>
-  <li><a href="#Calculations" id="toc-Calculations" class="nav-link" data-scroll-target="#Calculations">計算</a>
+  <li><a href="#Calculations" id="toc-Calculations" class="nav-link active" data-scroll-target="#Calculations">計算</a>
   <ul class="collapse">
-  <li><a href="#メトキシキレート_mathbf1" id="toc-メトキシキレート_mathbf1" class="nav-link" data-scroll-target="#メトキシキレート_mathbf1">メトキシキレート (<span class="math inline">\mathbf{1}</span>)</a></li>
-  <li><a href="#ジメチルアミノキレート_mathbf3" id="toc-ジメチルアミノキレート_mathbf3" class="nav-link" data-scroll-target="#ジメチルアミノキレート_mathbf3">ジメチルアミノキレート (<span class="math inline">\mathbf{3}</span>)</a></li>
+  <li><a href="#極小と状態の性質" id="toc-極小と状態の性質" class="nav-link" data-scroll-target="#極小と状態の性質">極小と状態の性質</a></li>
+  <li><a href="#MathrmB_1_まわりのねじれ" id="toc-MathrmB_1_まわりのねじれ" class="nav-link" data-scroll-target="#MathrmB_1_まわりのねじれ"><span class="math inline">\mathrm{B}_1</span> まわりのねじれ</a></li>
+  <li><a href="#MathrmA_まわりのねじれ" id="toc-MathrmA_まわりのねじれ" class="nav-link" data-scroll-target="#MathrmA_まわりのねじれ"><span class="math inline">\mathrm{A}</span> まわりのねじれ</a></li>
+  <li><a href="#二つのねじれのマップ" id="toc-二つのねじれのマップ" class="nav-link" data-scroll-target="#二つのねじれのマップ">二つのねじれのマップ</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -179,7 +176,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">アセトニトリル中のメトキシキレートとジメチルアミノキレート</h1>
+<h1 class="title">アセトニトリル中のメトキシキレート</h1>
 </div>
 
 
@@ -204,7 +201,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月13日</p>
+      <p class="date-modified">2026年11月14日</p>
     </div>
   </div>
     
@@ -220,7 +217,7 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">概要</div>
-    <p>ねじれた分子内電荷移動を調べるために準備した、アセトニトリル中のメトキシとジメチルアミノのジフルオロボロンキレートの極小、ねじれのスキャンとねじれのマップです。</p>
+    <p>対照とするアセトニトリル中のメトキシキレート <span class="math inline">\mathbf{1}</span> です。<span class="math inline">S_0</span> と <span class="math inline">S_1</span> の極小、両方の状態での結合 <span class="math inline">\mathrm{A}</span> と <span class="math inline">\mathrm{B}_1</span> まわりのねじれ、二つのねじれの <span class="math inline">S_0</span> マップを求めます。</p>
   </div>
 </div>
 
@@ -235,7 +232,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">ジフルオロボロン色素のねじれと電荷移動</a><span class="sep">/</span><span class="current">アセトニトリル中のメトキシキレートとジメチルアミノキレート</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115810/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-11-13_115809/2026-11-13_115810/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-11-13_115809/2026-11-13_115810/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../">ホーム</a><span class="sep">/</span><a href="../">ジフルオロボロン色素のねじれと電荷移動</a><span class="sep">/</span><span class="current">アセトニトリル中のメトキシキレート</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115810/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../en/2026-11-13_115809/2026-11-13_115810/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../ja/2026-11-13_115809/2026-11-13_115810/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
 <div class="status-prepared callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -252,46 +249,21 @@ window.Quarto = {
 </ul>
 </div>
 </div>
-<div id="6975de88" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<script class="quarto-plot-labels" type="application/json">{"twist_angle": "\u306d\u3058\u308c\u89d2 $\\theta$ $[{}^\\circ]$", "relative_energy": "\u30a8\u30cd\u30eb\u30ae\u30fc $E-E_{S_0}$ $[\\mathrm{eV}]$", "curve": "\u66f2\u7dda", "twist_a": "$\\theta_\\mathrm{A}$ $[{}^\\circ]$", "twist_b1": "$\\theta_{\\mathrm{B}_1}$ $[{}^\\circ]$", "Twist angle": "\u306d\u3058\u308c\u89d2 $\\theta$ $[{}^\\circ]$", "Relative energy": "\u30a8\u30cd\u30eb\u30ae\u30fc $E-E_{S_0}$ $[\\mathrm{eV}]$", "Curve": "\u66f2\u7dda", "Twist a": "$\\theta_\\mathrm{A}$ $[{}^\\circ]$", "Twist b1": "$\\theta_{\\mathrm{B}_1}$ $[{}^\\circ]$"}</script><script src="../../../site_libs/shared-223402a3561e11d3/data.js"></script>
-</div>
-</div>
-<section id="ねじれに沿ったエネルギー" class="level2">
-<h2 class="anchored" data-anchor-id="ねじれに沿ったエネルギー">ねじれに沿ったエネルギー</h2>
-<div id="cell-fig-twist-profiles" class="cell" data-execution_count="3">
-<div id="Figure_1" class="cell-output cell-output-display cell-output-markdown quarto-float quarto-figure quarto-figure-center anchored">
+<div id="Figure_1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-twist-profiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p>まだどのスキャンも実行していません。</p>
+<div aria-describedby="fig-chelate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../site_libs/shared-6b54f0353ec3fa15/methoxy-chelate-parts.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-twist-profiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;1. 二つのキレートの各ねじれに沿ったエネルギーで、<span class="math inline">S_0</span> 極小を基準とします。緩和 <span class="math inline">S_0</span> スキャン、その点での垂直 <span class="math inline">S_1</span> エネルギー、緩和 <span class="math inline">S_1</span> スキャンです。
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chelate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;1. 部分、部位 <span class="math inline">\mathrm{X}</span>、<span class="math inline">\mathrm{Y}</span>、<span class="math inline">\mathrm{Z}</span> と結合 <span class="math inline">\mathrm{A}</span>、<span class="math inline">\mathrm{B}_1</span>、<span class="math inline">\mathrm{B}_2</span>、<span class="math inline">\mathrm{C}</span> を示した、メトキシジフルオロボロンキレート <span class="math inline">\mathbf{1}</span>。
 </figcaption>
 </figure>
-</div>
-</div>
-</section>
-<section id="二つのねじれの基底状態マップ" class="level2">
-<h2 class="anchored" data-anchor-id="二つのねじれの基底状態マップ">二つのねじれの基底状態マップ</h2>
-<div id="cell-fig-torsion-map" class="cell" data-execution_count="4">
-<div id="Figure_2" class="cell-output cell-output-display cell-output-markdown quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-torsion-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p>まだどのスキャンも実行していません。</p>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-torsion-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2. <span class="math inline">\mathrm{A}</span> と <span class="math inline">\mathrm{B}_1</span> まわりのねじれにわたる緩和 <span class="math inline">S_0</span> エネルギーで、<span class="math inline">S_0</span> 極小を基準とします。
-</figcaption>
-</figure>
-</div>
 </div>
 <!-- Generated by researchsite.pages from the calculation folders; do not edit. -->
-</section>
 <section id="Calculations" class="level2">
 <h2 class="anchored" data-anchor-id="Calculations">計算</h2>
 <p>このワークフローのすべての計算を、図と同じまとまりで示します。スキャンの各計算はスキャンのページにあります。計算を選ぶとそのページが開きます。</p>
-<div class="calculations-diagram" data-workflow="2026-11-13_115809/2026-11-13_115810" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;S0Opt1&quot;], [&quot;S0Opt1&quot;, &quot;S0Props1&quot;], [&quot;S0Opt1&quot;, &quot;S1Opt1&quot;], [&quot;S1Opt1&quot;, &quot;S1Props1&quot;], [&quot;S0Opt1&quot;, &quot;S0ScanB11&quot;], [&quot;S0ScanB11&quot;, &quot;S0ScanB1Td1&quot;], [&quot;S1Opt1&quot;, &quot;S1ScanB11&quot;], [&quot;S0Opt1&quot;, &quot;S0ScanA1&quot;], [&quot;S0ScanA1&quot;, &quot;S0ScanATd1&quot;], [&quot;S1Opt1&quot;, &quot;S1ScanA1&quot;], [&quot;S0Opt1&quot;, &quot;S0Map1&quot;], [&quot;S0Map1&quot;, &quot;S0MapTd1&quot;], [&quot;S0Props1&quot;, &quot;Output1&quot;], [&quot;S1Props1&quot;, &quot;Output1&quot;], [&quot;S0ScanB1Td1&quot;, &quot;Output1&quot;], [&quot;S1ScanB11&quot;, &quot;Output1&quot;], [&quot;S0ScanATd1&quot;, &quot;Output1&quot;], [&quot;S1ScanA1&quot;, &quot;Output1&quot;], [&quot;S0MapTd1&quot;, &quot;Output1&quot;], [&quot;Output1&quot;, &quot;End1&quot;], [&quot;Start1&quot;, &quot;Input2&quot;], [&quot;Input2&quot;, &quot;S0Opt2&quot;], [&quot;S0Opt2&quot;, &quot;S0Props2&quot;], [&quot;S0Opt2&quot;, &quot;S1Opt2&quot;], [&quot;S1Opt2&quot;, &quot;S1Props2&quot;], [&quot;S0Opt2&quot;, &quot;S0ScanB12&quot;], [&quot;S0ScanB12&quot;, &quot;S0ScanB1Td2&quot;], [&quot;S1Opt2&quot;, &quot;S1ScanB12&quot;], [&quot;S0Opt2&quot;, &quot;S0ScanA2&quot;], [&quot;S0ScanA2&quot;, &quot;S0ScanATd2&quot;], [&quot;S1Opt2&quot;, &quot;S1ScanA2&quot;], [&quot;S0Opt2&quot;, &quot;S0Map2&quot;], [&quot;S0Map2&quot;, &quot;S0MapTd2&quot;], [&quot;S0Props2&quot;, &quot;Output2&quot;], [&quot;S1Props2&quot;, &quot;Output2&quot;], [&quot;S0ScanB1Td2&quot;, &quot;Output2&quot;], [&quot;S1ScanB12&quot;, &quot;Output2&quot;], [&quot;S0ScanATd2&quot;, &quot;Output2&quot;], [&quot;S1ScanA2&quot;, &quot;Output2&quot;], [&quot;S0MapTd2&quot;, &quot;Output2&quot;], [&quot;Output2&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
+<div class="calculations-diagram" data-workflow="2026-11-13_115809/2026-11-13_115810" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;S0Opt&quot;], [&quot;S0Opt&quot;, &quot;S0Props&quot;], [&quot;S0Opt&quot;, &quot;S1Opt&quot;], [&quot;S1Opt&quot;, &quot;S1Props&quot;], [&quot;S0Opt&quot;, &quot;S0ScanB1&quot;], [&quot;S0ScanB1&quot;, &quot;S0ScanB1Td&quot;], [&quot;S1Opt&quot;, &quot;S1ScanB1&quot;], [&quot;S0Opt&quot;, &quot;S0ScanA&quot;], [&quot;S0ScanA&quot;, &quot;S0ScanATd&quot;], [&quot;S1Opt&quot;, &quot;S1ScanA&quot;], [&quot;S0Opt&quot;, &quot;S0Map&quot;], [&quot;S0Map&quot;, &quot;S0MapTd&quot;], [&quot;S0Props&quot;, &quot;Output1&quot;], [&quot;S1Props&quot;, &quot;Output1&quot;], [&quot;S0ScanB1Td&quot;, &quot;Output1&quot;], [&quot;S1ScanB1&quot;, &quot;Output1&quot;], [&quot;S0ScanATd&quot;, &quot;Output1&quot;], [&quot;S1ScanA&quot;, &quot;Output1&quot;], [&quot;S0MapTd&quot;, &quot;Output1&quot;], [&quot;Output1&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
 config:
   markdownAutoWrap: false
   themeVariables:
@@ -325,86 +297,59 @@ config:
 ---
 flowchart TB
     Start1(( ))
-    subgraph Chelate1["&lt;span&gt;メトキシキレート ($$\mathbf{1}$$)&lt;/span&gt;"]
-        %% description: アセトニトリル中のメトキシキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。
+    Input1[/"&lt;span&gt;$$\mathbf{1}$$ の分子スクリーニングの構造&lt;/span&gt;"/]
+    subgraph Minima["&lt;span&gt;極小と状態の性質&lt;/span&gt;"]
+        %% description: $S_0$ と $S_1$ を最適化して検証し、各極小で電荷、双極子と垂直遷移を求めます。
         direction TB
-        Input1[/"&lt;span&gt;$$\mathbf{1}$$ の分子スクリーニングの構造&lt;/span&gt;"/]
-        S0Opt1["&lt;a href='2026-11-13_115811/'&gt;$$\mathbf{1}$$ の $$S_0$$ の最適化と検証&lt;/a&gt;"]
-        S0Props1["&lt;a href='2026-11-13_115812/'&gt;$$\mathbf{1}$$ の $$S_0$$ 極小での吸収の性質&lt;/a&gt;"]
-        S1Opt1["&lt;a href='2026-11-13_115813/'&gt;$$\mathbf{1}$$ の $$S_1$$ の最適化と検証&lt;/a&gt;"]
-        S1Props1["&lt;a href='2026-11-13_115814/'&gt;$$\mathbf{1}$$ の $$S_1$$ 極小での発光の性質&lt;/a&gt;"]
-        S0ScanB11["&lt;a href='2026-11-13_115815/'&gt;$$\mathbf{1}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
-        S0ScanB1Td1["&lt;a href='2026-11-13_115816/'&gt;$$\mathbf{1}$$ の $$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
-        S1ScanB11["&lt;a href='2026-11-13_115817/'&gt;$$\mathbf{1}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
-        S0ScanA1["&lt;a href='2026-11-13_115818/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
-        S0ScanATd1["&lt;a href='2026-11-13_115819/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
-        S1ScanA1["&lt;a href='2026-11-13_115820/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
-        S0Map1["&lt;a href='2026-11-13_115821/'&gt;$$\mathbf{1}$$ の $$\theta_\mathrm{A}$$ と $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ マップ&lt;/a&gt;"]
-        S0MapTd1["&lt;a href='2026-11-13_115822/'&gt;$$\mathbf{1}$$ の $$S_0$$ マップ上の垂直励起&lt;/a&gt;"]
-        Output1[/"&lt;span&gt;$$\mathbf{1}$$ の $$E(\theta)$$、$$\Delta\mu$$ と電荷移動&lt;/span&gt;"/]
+        S0Opt["&lt;a href='2026-11-13_115811/'&gt;$$S_0$$ の最適化と検証&lt;/a&gt;"]
+        S0Props["&lt;a href='2026-11-13_115812/'&gt;$$S_0$$ 極小での吸収の性質&lt;/a&gt;"]
+        S1Opt["&lt;a href='2026-11-13_115813/'&gt;$$S_1$$ の最適化と検証&lt;/a&gt;"]
+        S1Props["&lt;a href='2026-11-13_115814/'&gt;$$S_1$$ 極小での発光の性質&lt;/a&gt;"]
     end
-    subgraph Chelate2["&lt;span&gt;ジメチルアミノキレート ($$\mathbf{3}$$)&lt;/span&gt;"]
-        %% description: アセトニトリル中のジメチルアミノキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。
+    subgraph TwistB1["&lt;span&gt;$$\mathrm{B}_1$$ まわりのねじれ&lt;/span&gt;"]
+        %% description: ドナー側のフェニル環を核に対して $S_0$ と $S_1$ で回し、$S_0$ のスキャンに沿って垂直励起を求めます。
         direction TB
-        Input2[/"&lt;span&gt;$$\mathbf{3}$$ の分子スクリーニングの構造&lt;/span&gt;"/]
-        S0Opt2["&lt;a href='2026-11-13_115823/'&gt;$$\mathbf{3}$$ の $$S_0$$ の最適化と検証&lt;/a&gt;"]
-        S0Props2["&lt;a href='2026-11-13_115824/'&gt;$$\mathbf{3}$$ の $$S_0$$ 極小での吸収の性質&lt;/a&gt;"]
-        S1Opt2["&lt;a href='2026-11-13_115825/'&gt;$$\mathbf{3}$$ の $$S_1$$ の最適化と検証&lt;/a&gt;"]
-        S1Props2["&lt;a href='2026-11-13_115826/'&gt;$$\mathbf{3}$$ の $$S_1$$ 極小での発光の性質&lt;/a&gt;"]
-        S0ScanB12["&lt;a href='2026-11-13_115827/'&gt;$$\mathbf{3}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
-        S0ScanB1Td2["&lt;a href='2026-11-13_115828/'&gt;$$\mathbf{3}$$ の $$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
-        S1ScanB12["&lt;a href='2026-11-13_115829/'&gt;$$\mathbf{3}$$ の $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
-        S0ScanA2["&lt;a href='2026-11-13_115830/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
-        S0ScanATd2["&lt;a href='2026-11-13_115831/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
-        S1ScanA2["&lt;a href='2026-11-13_115832/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
-        S0Map2["&lt;a href='2026-11-13_115833/'&gt;$$\mathbf{3}$$ の $$\theta_\mathrm{A}$$ と $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ マップ&lt;/a&gt;"]
-        S0MapTd2["&lt;a href='2026-11-13_115834/'&gt;$$\mathbf{3}$$ の $$S_0$$ マップ上の垂直励起&lt;/a&gt;"]
-        Output2[/"&lt;span&gt;$$\mathbf{3}$$ の $$E(\theta)$$、$$\Delta\mu$$ と電荷移動&lt;/span&gt;"/]
+        S0ScanB1["&lt;a href='2026-11-13_115815/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
+        S0ScanB1Td["&lt;a href='2026-11-13_115816/'&gt;$$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
+        S1ScanB1["&lt;a href='2026-11-13_115817/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
     end
+    subgraph TwistA["&lt;span&gt;$$\mathrm{A}$$ まわりのねじれ&lt;/span&gt;"]
+        %% description: ドナーをそのフェニル環に対して $S_0$ と $S_1$ で回し、$S_0$ のスキャンに沿って垂直励起を求めます。
+        direction TB
+        S0ScanA["&lt;a href='2026-11-13_115818/'&gt;$$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
+        S0ScanATd["&lt;a href='2026-11-13_115819/'&gt;$$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
+        S1ScanA["&lt;a href='2026-11-13_115820/'&gt;$$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
+    end
+    subgraph TorsionMap["&lt;span&gt;二つのねじれのマップ&lt;/span&gt;"]
+        %% description: 二つのねじれをまとめて $30^\circ$ の格子で $S_0$ を緩和し、収束した各点で垂直励起を求めます。
+        direction TB
+        S0Map["&lt;a href='2026-11-13_115821/'&gt;$$\theta_\mathrm{A}$$ と $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ マップ&lt;/a&gt;"]
+        S0MapTd["&lt;a href='2026-11-13_115822/'&gt;$$S_0$$ マップ上の垂直励起&lt;/a&gt;"]
+    end
+    Output1[/"&lt;span&gt;$$\mathbf{1}$$ の $$E(\theta)$$、$$\Delta\mu$$ と電荷移動&lt;/span&gt;"/]
     End1((( )))
 
     Start1 --&gt; Input1
-    Input1 --&gt; S0Opt1
-    S0Opt1 --&gt; S0Props1
-    S0Opt1 --&gt; S1Opt1
-    S1Opt1 --&gt; S1Props1
-    S0Opt1 --&gt; S0ScanB11
-    S0ScanB11 --&gt; S0ScanB1Td1
-    S1Opt1 --&gt; S1ScanB11
-    S0Opt1 --&gt; S0ScanA1
-    S0ScanA1 --&gt; S0ScanATd1
-    S1Opt1 --&gt; S1ScanA1
-    S0Opt1 --&gt; S0Map1
-    S0Map1 --&gt; S0MapTd1
-    S0Props1 --&gt; Output1
-    S1Props1 --&gt; Output1
-    S0ScanB1Td1 --&gt; Output1
-    S1ScanB11 --&gt; Output1
-    S0ScanATd1 --&gt; Output1
-    S1ScanA1 --&gt; Output1
-    S0MapTd1 --&gt; Output1
+    Input1 --&gt; S0Opt
+    S0Opt --&gt; S0Props
+    S0Opt --&gt; S1Opt
+    S1Opt --&gt; S1Props
+    S0Opt --&gt; S0ScanB1
+    S0ScanB1 --&gt; S0ScanB1Td
+    S1Opt --&gt; S1ScanB1
+    S0Opt --&gt; S0ScanA
+    S0ScanA --&gt; S0ScanATd
+    S1Opt --&gt; S1ScanA
+    S0Opt --&gt; S0Map
+    S0Map --&gt; S0MapTd
+    S0Props --&gt; Output1
+    S1Props --&gt; Output1
+    S0ScanB1Td --&gt; Output1
+    S1ScanB1 --&gt; Output1
+    S0ScanATd --&gt; Output1
+    S1ScanA --&gt; Output1
+    S0MapTd --&gt; Output1
     Output1 --&gt; End1
-    Start1 --&gt; Input2
-    Input2 --&gt; S0Opt2
-    S0Opt2 --&gt; S0Props2
-    S0Opt2 --&gt; S1Opt2
-    S1Opt2 --&gt; S1Props2
-    S0Opt2 --&gt; S0ScanB12
-    S0ScanB12 --&gt; S0ScanB1Td2
-    S1Opt2 --&gt; S1ScanB12
-    S0Opt2 --&gt; S0ScanA2
-    S0ScanA2 --&gt; S0ScanATd2
-    S1Opt2 --&gt; S1ScanA2
-    S0Opt2 --&gt; S0Map2
-    S0Map2 --&gt; S0MapTd2
-    S0Props2 --&gt; Output2
-    S1Props2 --&gt; Output2
-    S0ScanB1Td2 --&gt; Output2
-    S1ScanB12 --&gt; Output2
-    S0ScanATd2 --&gt; Output2
-    S1ScanA2 --&gt; Output2
-    S0MapTd2 --&gt; Output2
-    Output2 --&gt; End1
 
     classDef pending stroke:#adb5bd,stroke-width:2px;
     classDef running stroke:#0d6efd,stroke-width:2px;
@@ -412,7 +357,7 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt1,S0Props1,S1Opt1,S1Props1,S0ScanB11,S0ScanB1Td1,S1ScanB11,S0ScanA1,S0ScanATd1,S1ScanA1,S0Map1,S0MapTd1,Output1,Input2,S0Opt2,S0Props2,S1Opt2,S1Props2,S0ScanB12,S0ScanB1Td2,S1ScanB12,S0ScanA2,S0ScanATd2,S1ScanA2,S0Map2,S0MapTd2,Output2,End1 pending;
+    class Start1,Input1,S0Opt,S0Props,S1Opt,S1Props,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,Output1,End1 pending;
     linkStyle 0 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 1 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 2 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
@@ -434,27 +379,6 @@ flowchart TB
     linkStyle 18 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 19 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 20 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 21 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 22 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 23 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 27 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 28 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 31 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 32 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 36 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 37 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 38 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 39 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 40 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 41 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
 </pre></div>
 <script>
 window.requireDefine = window.define;
@@ -465,9 +389,9 @@ window.restoreRequireDefine = () => {
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
 <script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-992dc7666676db38/script.js"></script>
-<section id="メトキシキレート_mathbf1" class="level3">
-<h3 class="anchored" data-anchor-id="メトキシキレート_mathbf1">メトキシキレート (<span class="math inline">\mathbf{1}</span>)</h3>
-<p>アセトニトリル中のメトキシキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。</p>
+<section id="極小と状態の性質" class="level3">
+<h3 class="anchored" data-anchor-id="極小と状態の性質">極小と状態の性質</h3>
+<p><span class="math inline">S_0</span> と <span class="math inline">S_1</span> を最適化して検証し、各極小で電荷、双極子と垂直遷移を求めます。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -482,98 +406,34 @@ window.addEventListener("load", window.restoreRequireDefine);
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115811/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_0</span> の最適化と検証</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115811/"><span class="math inline">S_0</span> の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>Opt, Freq; Stable</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td></td>
-<td><a href="2026-11-13_115812/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_0</span> 極小での吸収の性質</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115812/"><span class="math inline">S_0</span> 極小での吸収の性質</a></td>
 <td>Gaussian</td>
 <td>SP; SP（TD）; SP</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115813/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_1</span> の最適化と検証</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115813/"><span class="math inline">S_1</span> の最適化と検証</a></td>
 <td>Gaussian</td>
 <td>Opt（TD）, Freq（TD）</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td></td>
-<td><a href="2026-11-13_115814/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_1</span> 極小での発光の性質</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115814/"><span class="math inline">S_1</span> 極小での発光の性質</a></td>
 <td>Gaussian</td>
 <td>SP; SP（TD）; SP</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115815/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
-<td>Gaussian</td>
-<td>Opt</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115816/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
-<td>Gaussian</td>
-<td>SP（TD）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115817/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
-<td>Gaussian</td>
-<td>Opt（TD）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115818/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
-<td>Gaussian</td>
-<td>Opt</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115819/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
-<td>Gaussian</td>
-<td>SP（TD）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115820/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
-<td>Gaussian</td>
-<td>Opt（TD）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115821/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">\theta_\mathrm{A}</span> と <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> マップ</a></td>
-<td>Gaussian</td>
-<td>Opt</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115822/"><span class="math inline">\mathbf{1}</span> の <span class="math inline">S_0</span> マップ上の垂直励起</a></td>
-<td>Gaussian</td>
-<td>SP（TD）</td>
 <td></td>
 <td></td>
 </tr>
@@ -581,9 +441,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="ジメチルアミノキレート_mathbf3" class="level3">
-<h3 class="anchored" data-anchor-id="ジメチルアミノキレート_mathbf3">ジメチルアミノキレート (<span class="math inline">\mathbf{3}</span>)</h3>
-<p>アセトニトリル中のジメチルアミノキレートの極小、状態の性質、ねじれのスキャンとねじれのマップです。</p>
+<section id="MathrmB_1_まわりのねじれ" class="level3">
+<h3 class="anchored" data-anchor-id="MathrmB_1_まわりのねじれ"><span class="math inline">\mathrm{B}_1</span> まわりのねじれ</h3>
+<p>ドナー側のフェニル環を核に対して <span class="math inline">S_0</span> と <span class="math inline">S_1</span> で回し、<span class="math inline">S_0</span> のスキャンに沿って垂直励起を求めます。</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -598,96 +458,104 @@ window.addEventListener("load", window.restoreRequireDefine);
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115823/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> の最適化と検証</a></td>
-<td>Gaussian</td>
-<td>Opt, Freq; Stable</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115824/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> 極小での吸収の性質</a></td>
-<td>Gaussian</td>
-<td>SP; SP（TD）; SP</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115825/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_1</span> の最適化と検証</a></td>
-<td>Gaussian</td>
-<td>Opt（TD）, Freq（TD）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115826/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_1</span> 極小での発光の性質</a></td>
-<td>Gaussian</td>
-<td>SP; SP（TD）; SP</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115827/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115815/"><span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td></td>
-<td><a href="2026-11-13_115828/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115816/"><span class="math inline">\theta_{\mathrm{B}_1}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
 <td>Gaussian</td>
 <td>SP（TD）</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115829/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115817/"><span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
 <td>Gaussian</td>
 <td>Opt（TD）</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115830/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+</tbody>
+</table>
+</div>
+</section>
+<section id="MathrmA_まわりのねじれ" class="level3">
+<h3 class="anchored" data-anchor-id="MathrmA_まわりのねじれ"><span class="math inline">\mathrm{A}</span> まわりのねじれ</h3>
+<p>ドナーをそのフェニル環に対して <span class="math inline">S_0</span> と <span class="math inline">S_1</span> で回し、<span class="math inline">S_0</span> のスキャンに沿って垂直励起を求めます。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115818/"><span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115831/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115819/"><span class="math inline">\theta_\mathrm{A}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
 <td>Gaussian</td>
 <td>SP（TD）</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
-<td></td>
-<td><a href="2026-11-13_115832/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115820/"><span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
 <td>Gaussian</td>
 <td>Opt（TD）</td>
 <td></td>
 <td></td>
 </tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="二つのねじれのマップ" class="level3">
+<h3 class="anchored" data-anchor-id="二つのねじれのマップ">二つのねじれのマップ</h3>
+<p>二つのねじれをまとめて <span class="math inline">30^\circ</span> の格子で <span class="math inline">S_0</span> を緩和し、収束した各点で垂直励起を求めます。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
-<td></td>
-<td><a href="2026-11-13_115833/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">\theta_\mathrm{A}</span> と <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> マップ</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115821/"><span class="math inline">\theta_\mathrm{A}</span> と <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> マップ</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td></td>
-<td><a href="2026-11-13_115834/"><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> マップ上の垂直励起</a></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="2026-11-13_115822/"><span class="math inline">S_0</span> マップ上の垂直励起</a></td>
 <td>Gaussian</td>
 <td>SP（TD）</td>
 <td></td>
@@ -901,7 +769,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 </div>
-<div class="diagram-detail" data-calculation="2026-11-13_115823/">
+</div>
+<div class="link-details">
+<div class="link-detail" data-href="../2026-11-13_115835/">
 <div class="status-prepared callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -913,199 +783,190 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
+<li>12 の計算を準備しましたが、どれも投入していません。</li>
+<li>状態の性質を求める二つの極小、二つの状態での二つのねじれの緩和スキャン、緩和したねじれのマップがあります。</li>
 </ul>
 </div>
 </div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115824/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115825/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115826/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115827/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115828/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115829/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115830/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115831/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115832/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115833/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="diagram-detail" data-calculation="2026-11-13_115834/">
-<div class="status-prepared callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>この計算は準備しただけで投入していないので、まだ結果はありません。</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+<section id="極小と状態の性質_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="極小と状態の性質_2">極小と状態の性質</h3>
+<p><span class="math inline">S_0</span> と <span class="math inline">S_1</span> を最適化して検証し、各極小で電荷、双極子と垂直遷移を求めます。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115836/"><span class="math inline">S_0</span> の最適化と検証</a></td>
+<td>Gaussian</td>
+<td>Opt, Freq; Stable</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115837/"><span class="math inline">S_0</span> 極小での吸収の性質</a></td>
+<td>Gaussian</td>
+<td>SP; SP（TD）; SP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115838/"><span class="math inline">S_1</span> の最適化と検証</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）, Freq（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115839/"><span class="math inline">S_1</span> 極小での発光の性質</a></td>
+<td>Gaussian</td>
+<td>SP; SP（TD）; SP</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="MathrmB_1_まわりのねじれ_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="MathrmB_1_まわりのねじれ_2"><span class="math inline">\mathrm{B}_1</span> まわりのねじれ</h3>
+<p>ドナー側のフェニル環を核に対して <span class="math inline">S_0</span> と <span class="math inline">S_1</span> で回し、<span class="math inline">S_0</span> のスキャンに沿って垂直励起を求めます。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115840/"><span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115841/"><span class="math inline">\theta_{\mathrm{B}_1}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115842/"><span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="MathrmA_まわりのねじれ_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="MathrmA_まわりのねじれ_2"><span class="math inline">\mathrm{A}</span> まわりのねじれ</h3>
+<p>ドナーをそのフェニル環に対して <span class="math inline">S_0</span> と <span class="math inline">S_1</span> で回し、<span class="math inline">S_0</span> のスキャンに沿って垂直励起を求めます。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115843/"><span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_0</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115844/"><span class="math inline">\theta_\mathrm{A}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115845/"><span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
+<td>Gaussian</td>
+<td>Opt（TD）</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="二つのねじれのマップ_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="二つのねじれのマップ_2">二つのねじれのマップ</h3>
+<p>二つのねじれをまとめて <span class="math inline">30^\circ</span> の格子で <span class="math inline">S_0</span> を緩和し、収束した各点で垂直励起を求めます。</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>プログラム</th>
+<th>ジョブ</th>
+<th>計算開始</th>
+<th>経過時間</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115846/"><span class="math inline">\theta_\mathrm{A}</span> と <span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_0</span> マップ</a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115847/"><span class="math inline">S_0</span> マップ上の垂直励起</a></td>
+<td>Gaussian</td>
+<td>SP（TD）</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+<script src="../../../site_libs/shared-215cc95d0a744a5a/script.js"></script>
 </section>
 </section>
 

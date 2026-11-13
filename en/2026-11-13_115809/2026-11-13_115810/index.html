@@ -165,7 +165,10 @@ window.Quarto = {
   <ul>
   <li><a href="#Calculations" id="toc-Calculations" class="nav-link active" data-scroll-target="#Calculations">Calculations</a>
   <ul class="collapse">
-  <li><a href="#Methoxy_chelate_mathbf1" id="toc-Methoxy_chelate_mathbf1" class="nav-link" data-scroll-target="#Methoxy_chelate_mathbf1">Methoxy chelate (<span class="math inline">\mathbf{1}</span>)</a></li>
+  <li><a href="#Minima_and_state_properties" id="toc-Minima_and_state_properties" class="nav-link" data-scroll-target="#Minima_and_state_properties">Minima and state properties</a></li>
+  <li><a href="#Twist_about_mathrmB_1" id="toc-Twist_about_mathrmB_1" class="nav-link" data-scroll-target="#Twist_about_mathrmB_1">Twist about <span class="math inline">\mathrm{B}_1</span></a></li>
+  <li><a href="#Twist_about_mathrmA" id="toc-Twist_about_mathrmA" class="nav-link" data-scroll-target="#Twist_about_mathrmA">Twist about <span class="math inline">\mathrm{A}</span></a></li>
+  <li><a href="#Map_of_both_twists" id="toc-Map_of_both_twists" class="nav-link" data-scroll-target="#Map_of_both_twists">Map of both twists</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -199,7 +202,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 13, 2026</p>
+      <p class="date-modified">November 14, 2026</p>
     </div>
   </div>
     
@@ -215,7 +218,7 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>Minima, twist scans and torsion map of the methoxy chelate <span class="math inline">\mathbf{1}</span> in acetonitrile, the control whose donor is not expected to twist in the excited state.</p>
+    <p>The methoxy chelate <span class="math inline">\mathbf{1}</span> in acetonitrile, the control: its <span class="math inline">S_0</span> and <span class="math inline">S_1</span> minima, its twists about bonds <span class="math inline">\mathrm{A}</span> and <span class="math inline">\mathrm{B}_1</span> in both states, and the <span class="math inline">S_0</span> map of both twists.</p>
   </div>
 </div>
 
@@ -250,7 +253,7 @@ window.Quarto = {
 <div id="Figure_1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-chelate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../../site_libs/shared-13e0dd97a36a3d40/methoxy-chelate-parts.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+<img src="../../../site_libs/shared-6b54f0353ec3fa15/methoxy-chelate-parts.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chelate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <strong>Figure&nbsp;1.</strong> Methoxy difluoroboron chelate <span class="math inline">\mathbf{1}</span>, with its parts, the sites <span class="math inline">\mathrm{X}</span>, <span class="math inline">\mathrm{Y}</span> and <span class="math inline">\mathrm{Z}</span> and the bonds <span class="math inline">\mathrm{A}</span>, <span class="math inline">\mathrm{B}_1</span>, <span class="math inline">\mathrm{B}_2</span> and <span class="math inline">\mathrm{C}</span>.
@@ -261,7 +264,7 @@ window.Quarto = {
 <section id="Calculations" class="level2">
 <h2 class="anchored" data-anchor-id="Calculations">Calculations</h2>
 <p>Every calculation of this workflow, grouped as in the diagram. A scan’s runs are on the scan’s page. Select a calculation to open its page.</p>
-<div class="calculations-diagram" data-workflow="2026-11-13_115809/2026-11-13_115810" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;S0Opt1&quot;], [&quot;S0Opt1&quot;, &quot;S0Props1&quot;], [&quot;S0Opt1&quot;, &quot;S1Opt1&quot;], [&quot;S1Opt1&quot;, &quot;S1Props1&quot;], [&quot;S0Opt1&quot;, &quot;S0ScanB11&quot;], [&quot;S0ScanB11&quot;, &quot;S0ScanB1Td1&quot;], [&quot;S1Opt1&quot;, &quot;S1ScanB11&quot;], [&quot;S0Opt1&quot;, &quot;S0ScanA1&quot;], [&quot;S0ScanA1&quot;, &quot;S0ScanATd1&quot;], [&quot;S1Opt1&quot;, &quot;S1ScanA1&quot;], [&quot;S0Opt1&quot;, &quot;S0Map1&quot;], [&quot;S0Map1&quot;, &quot;S0MapTd1&quot;], [&quot;S0Props1&quot;, &quot;Output1&quot;], [&quot;S1Props1&quot;, &quot;Output1&quot;], [&quot;S0ScanB1Td1&quot;, &quot;Output1&quot;], [&quot;S1ScanB11&quot;, &quot;Output1&quot;], [&quot;S0ScanATd1&quot;, &quot;Output1&quot;], [&quot;S1ScanA1&quot;, &quot;Output1&quot;], [&quot;S0MapTd1&quot;, &quot;Output1&quot;], [&quot;Output1&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
+<div class="calculations-diagram" data-workflow="2026-11-13_115809/2026-11-13_115810" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;S0Opt&quot;], [&quot;S0Opt&quot;, &quot;S0Props&quot;], [&quot;S0Opt&quot;, &quot;S1Opt&quot;], [&quot;S1Opt&quot;, &quot;S1Props&quot;], [&quot;S0Opt&quot;, &quot;S0ScanB1&quot;], [&quot;S0ScanB1&quot;, &quot;S0ScanB1Td&quot;], [&quot;S1Opt&quot;, &quot;S1ScanB1&quot;], [&quot;S0Opt&quot;, &quot;S0ScanA&quot;], [&quot;S0ScanA&quot;, &quot;S0ScanATd&quot;], [&quot;S1Opt&quot;, &quot;S1ScanA&quot;], [&quot;S0Opt&quot;, &quot;S0Map&quot;], [&quot;S0Map&quot;, &quot;S0MapTd&quot;], [&quot;S0Props&quot;, &quot;Output1&quot;], [&quot;S1Props&quot;, &quot;Output1&quot;], [&quot;S0ScanB1Td&quot;, &quot;Output1&quot;], [&quot;S1ScanB1&quot;, &quot;Output1&quot;], [&quot;S0ScanATd&quot;, &quot;Output1&quot;], [&quot;S1ScanA&quot;, &quot;Output1&quot;], [&quot;S0MapTd&quot;, &quot;Output1&quot;], [&quot;Output1&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
 config:
   markdownAutoWrap: false
   themeVariables:
@@ -295,46 +298,58 @@ config:
 ---
 flowchart TB
     Start1(( ))
-    subgraph Chelate1["&lt;span&gt;Methoxy chelate ($$\mathbf{1}$$)&lt;/span&gt;"]
-        %% description: Each calculation of the control chelate, from its two minima to the scans and the map.
+    Input1[/"&lt;span&gt;Molecular-screening geometry of $$\mathbf{1}$$&lt;/span&gt;"/]
+    subgraph Minima["&lt;span&gt;Minima and state properties&lt;/span&gt;"]
+        %% description: Optimize and verify $S_0$ and $S_1$, then compute the charges, dipole and vertical transition at each minimum.
         direction TB
-        Input1[/"&lt;span&gt;Molecular-screening geometry of $$\mathbf{1}$$&lt;/span&gt;"/]
-        S0Opt1["&lt;a href='2026-11-13_115811/'&gt;Optimize and verify $$S_0$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S0Props1["&lt;a href='2026-11-13_115812/'&gt;Absorption properties at the $$S_0$$ minimum of $$\mathbf{1}$$&lt;/a&gt;"]
-        S1Opt1["&lt;a href='2026-11-13_115813/'&gt;Optimize and verify $$S_1$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S1Props1["&lt;a href='2026-11-13_115814/'&gt;Emission properties at the $$S_1$$ minimum of $$\mathbf{1}$$&lt;/a&gt;"]
-        S0ScanB11["&lt;a href='2026-11-13_115815/'&gt;Relaxed $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S0ScanB1Td1["&lt;a href='2026-11-13_115816/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S1ScanB11["&lt;a href='2026-11-13_115817/'&gt;Relaxed $$S_1$$ scan of $$\theta_{\mathrm{B}_1}$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S0ScanA1["&lt;a href='2026-11-13_115818/'&gt;Relaxed $$S_0$$ scan of $$\theta_\mathrm{A}$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S0ScanATd1["&lt;a href='2026-11-13_115819/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_\mathrm{A}$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S1ScanA1["&lt;a href='2026-11-13_115820/'&gt;Relaxed $$S_1$$ scan of $$\theta_\mathrm{A}$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S0Map1["&lt;a href='2026-11-13_115821/'&gt;Relaxed $$S_0$$ map of $$\theta_\mathrm{A}$$ and $$\theta_{\mathrm{B}_1}$$ of $$\mathbf{1}$$&lt;/a&gt;"]
-        S0MapTd1["&lt;a href='2026-11-13_115822/'&gt;Vertical excitations over the $$S_0$$ map of $$\mathbf{1}$$&lt;/a&gt;"]
-        Output1[/"&lt;span&gt;$$E(\theta)$$, $$\Delta\mu$$ and charge transfer of $$\mathbf{1}$$&lt;/span&gt;"/]
+        S0Opt["&lt;a href='2026-11-13_115811/'&gt;Optimize and verify $$S_0$$&lt;/a&gt;"]
+        S0Props["&lt;a href='2026-11-13_115812/'&gt;Absorption properties at the $$S_0$$ minimum&lt;/a&gt;"]
+        S1Opt["&lt;a href='2026-11-13_115813/'&gt;Optimize and verify $$S_1$$&lt;/a&gt;"]
+        S1Props["&lt;a href='2026-11-13_115814/'&gt;Emission properties at the $$S_1$$ minimum&lt;/a&gt;"]
     end
+    subgraph TwistB1["&lt;span&gt;Twist about $$\mathrm{B}_1$$&lt;/span&gt;"]
+        %% description: Turn the donor-side phenyl ring against the core in $S_0$ and $S_1$, with the vertical excitations along the $S_0$ scan.
+        direction TB
+        S0ScanB1["&lt;a href='2026-11-13_115815/'&gt;Relaxed $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;"]
+        S0ScanB1Td["&lt;a href='2026-11-13_115816/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;"]
+        S1ScanB1["&lt;a href='2026-11-13_115817/'&gt;Relaxed $$S_1$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;"]
+    end
+    subgraph TwistA["&lt;span&gt;Twist about $$\mathrm{A}$$&lt;/span&gt;"]
+        %% description: Turn the donor against its phenyl ring in $S_0$ and $S_1$, with the vertical excitations along the $S_0$ scan.
+        direction TB
+        S0ScanA["&lt;a href='2026-11-13_115818/'&gt;Relaxed $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;"]
+        S0ScanATd["&lt;a href='2026-11-13_115819/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;"]
+        S1ScanA["&lt;a href='2026-11-13_115820/'&gt;Relaxed $$S_1$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;"]
+    end
+    subgraph TorsionMap["&lt;span&gt;Map of both twists&lt;/span&gt;"]
+        %% description: Relax $S_0$ over both twists together on a $30^\circ$ grid, with the vertical excitations at each converged point.
+        direction TB
+        S0Map["&lt;a href='2026-11-13_115821/'&gt;Relaxed $$S_0$$ map of $$\theta_\mathrm{A}$$ and $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;"]
+        S0MapTd["&lt;a href='2026-11-13_115822/'&gt;Vertical excitations over the $$S_0$$ map&lt;/a&gt;"]
+    end
+    Output1[/"&lt;span&gt;$$E(\theta)$$, $$\Delta\mu$$ and charge transfer of $$\mathbf{1}$$&lt;/span&gt;"/]
     End1((( )))
 
     Start1 --&gt; Input1
-    Input1 --&gt; S0Opt1
-    S0Opt1 --&gt; S0Props1
-    S0Opt1 --&gt; S1Opt1
-    S1Opt1 --&gt; S1Props1
-    S0Opt1 --&gt; S0ScanB11
-    S0ScanB11 --&gt; S0ScanB1Td1
-    S1Opt1 --&gt; S1ScanB11
-    S0Opt1 --&gt; S0ScanA1
-    S0ScanA1 --&gt; S0ScanATd1
-    S1Opt1 --&gt; S1ScanA1
-    S0Opt1 --&gt; S0Map1
-    S0Map1 --&gt; S0MapTd1
-    S0Props1 --&gt; Output1
-    S1Props1 --&gt; Output1
-    S0ScanB1Td1 --&gt; Output1
-    S1ScanB11 --&gt; Output1
-    S0ScanATd1 --&gt; Output1
-    S1ScanA1 --&gt; Output1
-    S0MapTd1 --&gt; Output1
+    Input1 --&gt; S0Opt
+    S0Opt --&gt; S0Props
+    S0Opt --&gt; S1Opt
+    S1Opt --&gt; S1Props
+    S0Opt --&gt; S0ScanB1
+    S0ScanB1 --&gt; S0ScanB1Td
+    S1Opt --&gt; S1ScanB1
+    S0Opt --&gt; S0ScanA
+    S0ScanA --&gt; S0ScanATd
+    S1Opt --&gt; S1ScanA
+    S0Opt --&gt; S0Map
+    S0Map --&gt; S0MapTd
+    S0Props --&gt; Output1
+    S1Props --&gt; Output1
+    S0ScanB1Td --&gt; Output1
+    S1ScanB1 --&gt; Output1
+    S0ScanATd --&gt; Output1
+    S1ScanA --&gt; Output1
+    S0MapTd --&gt; Output1
     Output1 --&gt; End1
 
     classDef pending stroke:#adb5bd,stroke-width:2px;
@@ -343,7 +358,7 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt1,S0Props1,S1Opt1,S1Props1,S0ScanB11,S0ScanB1Td1,S1ScanB11,S0ScanA1,S0ScanATd1,S1ScanA1,S0Map1,S0MapTd1,Output1,End1 pending;
+    class Start1,Input1,S0Opt,S0Props,S1Opt,S1Props,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,Output1,End1 pending;
     linkStyle 0 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 1 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 2 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
@@ -375,9 +390,9 @@ window.restoreRequireDefine = () => {
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
 <script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-992dc7666676db38/script.js"></script>
-<section id="Methoxy_chelate_mathbf1" class="level3">
-<h3 class="anchored" data-anchor-id="Methoxy_chelate_mathbf1">Methoxy chelate (<span class="math inline">\mathbf{1}</span>)</h3>
-<p>Each calculation of the control chelate, from its two minima to the scans and the map.</p>
+<section id="Minima_and_state_properties" class="level3">
+<h3 class="anchored" data-anchor-id="Minima_and_state_properties">Minima and state properties</h3>
+<p>Optimize and verify <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, then compute the charges, dipole and vertical transition at each minimum.</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -393,7 +408,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115811/">Optimize and verify <span class="math inline">S_0</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115811/">Optimize and verify <span class="math inline">S_0</span></a></td>
 <td>Gaussian</td>
 <td>Opt, Freq; Stable</td>
 <td></td>
@@ -401,7 +416,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115812/">Absorption properties at the <span class="math inline">S_0</span> minimum of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115812/">Absorption properties at the <span class="math inline">S_0</span> minimum</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
@@ -409,7 +424,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115813/">Optimize and verify <span class="math inline">S_1</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115813/">Optimize and verify <span class="math inline">S_1</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD), Freq (TD)</td>
 <td></td>
@@ -417,15 +432,35 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115814/">Emission properties at the <span class="math inline">S_1</span> minimum of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115814/">Emission properties at the <span class="math inline">S_1</span> minimum</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
 <td></td>
 </tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="Twist_about_mathrmB_1" class="level3">
+<h3 class="anchored" data-anchor-id="Twist_about_mathrmB_1">Twist about <span class="math inline">\mathrm{B}_1</span></h3>
+<p>Turn the donor-side phenyl ring against the core in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115815/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115815/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -433,7 +468,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115816/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115816/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -441,39 +476,79 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115817/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115817/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+</tbody>
+</table>
+</div>
+</section>
+<section id="Twist_about_mathrmA" class="level3">
+<h3 class="anchored" data-anchor-id="Twist_about_mathrmA">Twist about <span class="math inline">\mathrm{A}</span></h3>
+<p>Turn the donor against its phenyl ring in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115818/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115818/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115819/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115819/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115820/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115820/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
 <td></td>
 </tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="Map_of_both_twists" class="level3">
+<h3 class="anchored" data-anchor-id="Map_of_both_twists">Map of both twists</h3>
+<p>Relax <span class="math inline">S_0</span> over both twists together on a <span class="math inline">30^\circ</span> grid, with the vertical excitations at each converged point.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115821/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115821/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -481,7 +556,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115822/">Vertical excitations over the <span class="math inline">S_0</span> map of <span class="math inline">\mathbf{1}</span></a></td>
+<td><a href="2026-11-13_115822/">Vertical excitations over the <span class="math inline">S_0</span> map</a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -714,9 +789,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 </ul>
 </div>
 </div>
-<section id="Dimethylamino_chelate_mathbf3" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Dimethylamino_chelate_mathbf3">Dimethylamino chelate (<span class="math inline">\mathbf{3}</span>)</h3>
-<p>The TICT candidate’s calculations: where its donor and phenyl bonds turn, in the ground and the excited state.</p>
+<section id="Minima_and_state_properties_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Minima_and_state_properties_2">Minima and state properties</h3>
+<p>Optimize and verify <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, then compute the charges, dipole and vertical transition at each minimum.</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -732,7 +807,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115836/">Optimize and verify <span class="math inline">S_0</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115836/">Optimize and verify <span class="math inline">S_0</span></a></td>
 <td>Gaussian</td>
 <td>Opt, Freq; Stable</td>
 <td></td>
@@ -740,7 +815,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115837/">Absorption properties at the <span class="math inline">S_0</span> minimum of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115837/">Absorption properties at the <span class="math inline">S_0</span> minimum</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
@@ -748,7 +823,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115838/">Optimize and verify <span class="math inline">S_1</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115838/">Optimize and verify <span class="math inline">S_1</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD), Freq (TD)</td>
 <td></td>
@@ -756,15 +831,35 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115839/">Emission properties at the <span class="math inline">S_1</span> minimum of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115839/">Emission properties at the <span class="math inline">S_1</span> minimum</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
 <td></td>
 </tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="Twist_about_mathrmB_1_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Twist_about_mathrmB_1_2">Twist about <span class="math inline">\mathrm{B}_1</span></h3>
+<p>Turn the donor-side phenyl ring against the core in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115840/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115840/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -772,7 +867,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115841/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115841/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -780,39 +875,79 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115842/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115842/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+</tbody>
+</table>
+</div>
+</section>
+<section id="Twist_about_mathrmA_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Twist_about_mathrmA_2">Twist about <span class="math inline">\mathrm{A}</span></h3>
+<p>Turn the donor against its phenyl ring in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115843/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115843/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115844/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115844/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115845/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115845/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
 <td></td>
 </tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="Map_of_both_twists_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Map_of_both_twists_2">Map of both twists</h3>
+<p>Relax <span class="math inline">S_0</span> over both twists together on a <span class="math inline">30^\circ</span> grid, with the vertical excitations at each converged point.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115846/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span> of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115846/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -820,7 +955,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="../2026-11-13_115835/2026-11-13_115847/">Vertical excitations over the <span class="math inline">S_0</span> map of <span class="math inline">\mathbf{3}</span></a></td>
+<td><a href="../2026-11-13_115835/2026-11-13_115847/">Vertical excitations over the <span class="math inline">S_0</span> map</a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>

@@ -28,7 +28,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
@@ -166,6 +185,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#自然遷移軌道の後に出力される軌道固有値" id="toc-自然遷移軌道の後に出力される軌道固有値" class="nav-link" data-scroll-target="#自然遷移軌道の後に出力される軌道固有値">自然遷移軌道の後に出力される軌道固有値</a></li>
   </ul></li>
+  <li><a href="#公表されているベンゼンのスクリーニングとの比較" id="toc-公表されているベンゼンのスクリーニングとの比較" class="nav-link" data-scroll-target="#公表されているベンゼンのスクリーニングとの比較">公表されているベンゼンのスクリーニングとの比較</a></li>
   <li><a href="#Calculations" id="toc-Calculations" class="nav-link" data-scroll-target="#Calculations">計算</a>
   <ul class="collapse">
   <li><a href="#基準となる_S_0_構造" id="toc-基準となる_S_0_構造" class="nav-link" data-scroll-target="#基準となる_S_0_構造">基準となる <span class="math inline">S_0</span> 構造</a></li>
@@ -204,7 +224,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月13日</p>
+      <p class="date-modified">2026年11月14日</p>
     </div>
   </div>
     
@@ -274,7 +294,7 @@ window.Quarto = {
 <table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Workflow</th>
+<th style="text-align: left;">ワークフロー</th>
 <th style="text-align: right;"><span class="math inline">E\;[\mathrm{eV}]</span></th>
 <th style="text-align: right;"><span class="math inline">\epsilon_{\mathrm{HOMO}}\;[\mathrm{eV}]</span></th>
 <th style="text-align: right;"><span class="math inline">\epsilon_{\mathrm{LUMO}}\;[\mathrm{eV}]</span></th>
@@ -283,15 +303,15 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="../2026-10-21_164931/">Checkpoint-chained guesses</a></td>
+<td style="text-align: left;"><a href="../2026-10-21_164931/">チェックポイントをつないだ初期推定</a></td>
 <td style="text-align: right;">-6320.0677</td>
 <td style="text-align: right;">-6.7184913</td>
 <td style="text-align: right;">0.071565946</td>
 <td style="text-align: right;">6.7900572</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="../2026-10-29_183718/">Independent guesses</a></td>
-<td style="text-align: right;">-6320.0677</td>
+<td style="text-align: left;"><a href="../2026-10-29_183718/">独立な初期推定</a></td>
+<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
 <td style="text-align: right;">-6.7195797</td>
 <td style="text-align: right;">0.073470743</td>
 <td style="text-align: right;">6.7930505</td>
@@ -314,7 +334,7 @@ window.Quarto = {
 <table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Workflow</th>
+<th style="text-align: left;">ワークフロー</th>
 <th style="text-align: right;"><span class="math inline">E\;[\mathrm{eV}]</span></th>
 <th style="text-align: right;"><span class="math inline">\epsilon_{\mathrm{HOMO}}\;[\mathrm{eV}]</span></th>
 <th style="text-align: right;"><span class="math inline">\epsilon_{\mathrm{LUMO}}\;[\mathrm{eV}]</span></th>
@@ -323,14 +343,14 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="../2026-10-21_164931/">Checkpoint-chained guesses</a></td>
+<td style="text-align: left;"><a href="../2026-10-21_164931/">チェックポイントをつないだ初期推定</a></td>
 <td style="text-align: right;">-6306.0328</td>
 <td style="text-align: right;">-7.4055788</td>
 <td style="text-align: right;">1.4590745</td>
 <td style="text-align: right;">8.8646533</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="../2026-10-29_183718/">Independent guesses</a></td>
+<td style="text-align: left;"><a href="../2026-10-29_183718/">独立な初期推定</a></td>
 <td style="text-align: right;">-6306.021</td>
 <td style="text-align: right;">-7.4069393</td>
 <td style="text-align: right;">1.4609793</td>
@@ -358,21 +378,21 @@ window.Quarto = {
 <div class="cell-output cell-output-display cell-output-markdown">
 <table class="cell caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 3%">
-<col style="width: 24%">
-<col style="width: 26%">
-<col style="width: 23%">
-<col style="width: 9%">
-<col style="width: 11%">
+<col style="width: 2%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: right;"><span class="math inline">n</span></th>
-<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> chained <span class="math inline">[\mathrm{eV}]</span></th>
-<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> independent <span class="math inline">[\mathrm{eV}]</span></th>
+<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> 連鎖 <span class="math inline">[\mathrm{eV}]</span></th>
+<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> 独立 <span class="math inline">[\mathrm{eV}]</span></th>
 <th style="text-align: right;"><span class="math inline">\delta\Delta E_{S_n}\;[\mathrm{meV}]</span></th>
-<th style="text-align: right;"><span class="math inline">f_n</span> chained</th>
-<th style="text-align: right;"><span class="math inline">f_n</span> independent</th>
+<th style="text-align: right;"><span class="math inline">f_n</span> 連鎖</th>
+<th style="text-align: right;"><span class="math inline">f_n</span> 独立</th>
 </tr>
 </thead>
 <tbody>
@@ -388,9 +408,9 @@ window.Quarto = {
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">6.3008</td>
 <td style="text-align: right;">6.3034</td>
-<td style="text-align: right;">2.6</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
@@ -417,21 +437,21 @@ window.Quarto = {
 <div class="cell-output cell-output-display cell-output-markdown">
 <table class="cell caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 3%">
-<col style="width: 24%">
-<col style="width: 26%">
-<col style="width: 23%">
-<col style="width: 9%">
-<col style="width: 11%">
+<col style="width: 2%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 22%">
+<col style="width: 22%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: right;"><span class="math inline">n</span></th>
-<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> chained <span class="math inline">[\mathrm{eV}]</span></th>
-<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> independent <span class="math inline">[\mathrm{eV}]</span></th>
+<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> 連鎖 <span class="math inline">[\mathrm{eV}]</span></th>
+<th style="text-align: right;"><span class="math inline">\Delta E_{S_n}</span> 独立 <span class="math inline">[\mathrm{eV}]</span></th>
 <th style="text-align: right;"><span class="math inline">\delta\Delta E_{S_n}\;[\mathrm{meV}]</span></th>
-<th style="text-align: right;"><span class="math inline">f_n</span> chained</th>
-<th style="text-align: right;"><span class="math inline">f_n</span> independent</th>
+<th style="text-align: right;"><span class="math inline">f_n</span> 連鎖</th>
+<th style="text-align: right;"><span class="math inline">f_n</span> 独立</th>
 </tr>
 </thead>
 <tbody>
@@ -448,8 +468,8 @@ window.Quarto = {
 <td style="text-align: right;">6.3865</td>
 <td style="text-align: right;">6.3866</td>
 <td style="text-align: right;">0.1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
@@ -482,19 +502,19 @@ window.Quarto = {
 <table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Workflow</th>
+<th style="text-align: left;">ワークフロー</th>
 <th style="text-align: right;">B3LYP 構造での <span class="math inline">\varepsilon_s</span></th>
 <th style="text-align: right;">DD-DFT 構造での <span class="math inline">\varepsilon_s</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="../2026-10-21_164931/">Checkpoint-chained guesses</a></td>
+<td style="text-align: left;"><a href="../2026-10-21_164931/">チェックポイントをつないだ初期推定</a></td>
 <td style="text-align: right;">2.16872</td>
 <td style="text-align: right;">2.1631</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="../2026-10-29_183718/">Independent guesses</a></td>
+<td style="text-align: left;"><a href="../2026-10-29_183718/">独立な初期推定</a></td>
 <td style="text-align: right;">2.16664</td>
 <td style="text-align: right;">2.1614</td>
 </tr>
@@ -516,8 +536,140 @@ window.Quarto = {
 <li>それより前に出力される SCF の軌道エネルギーは、<a href="#Table_1" class="quarto-xref">表&nbsp;1</a> と <a href="#Table_2" class="quarto-xref">表&nbsp;2</a> のギャップを保っています。</li>
 <li>独立な初期推定のログは自然遷移軌道を求めないので、そのようなブロックはありません。</li>
 </ul>
-<!-- Generated by researchsite.pages from the calculation folders; do not edit. -->
 </section>
+</section>
+<section id="公表されているベンゼンのスクリーニングとの比較" class="level2">
+<h2 class="anchored" data-anchor-id="公表されているベンゼンのスクリーニングとの比較">公表されているベンゼンのスクリーニングとの比較</h2>
+<p>Shimazaki らはベンゼンの分子スクリーニングを二つの論文 <span class="citation" data-cites="shimazaki2016">(<a href="#ref-shimazaki2016">Shimazaki と Nakajima 2016年</a>, Table 1)</span> と <span class="citation" data-cites="shimazaki2022">(<a href="#ref-shimazaki2022">Shimazaki と Tachikawa 2022年</a>, Table 1)</span> で報告しています。TTz の論文 <span class="citation" data-cites="shimazaki2021">(<a href="#ref-shimazaki2021">Shimazaki と Tachikawa 2021年</a>)</span> は HOMO–LUMO ギャップだけを表に示し、HF の割合 <span class="math inline">1/\varepsilon_s</span> を Fig. 1c に示しています。<a href="#Table_6" class="quarto-xref">表&nbsp;6</a> はそれらをこのワークフローの値と並べています。</p>
+<ul>
+<li>ここでの B3LYP のスクリーニング <span class="math inline">\varepsilon_s=2\.4456</span> (<span class="math inline">6\text{-}31\mathrm{G}(d,p)</span>) は、公表されている B3LYP の値、<span class="math inline">6\text{-}31\mathrm{G}(d)</span> の <span class="math inline">2.43</span> と <span class="math inline">6\text{-}311\mathrm{G}(d)</span> の <span class="math inline">2.49</span> の間にあります <span class="citation" data-cites="shimazaki2016">(<a href="#ref-shimazaki2016">Shimazaki と Nakajima 2016年</a>)</span>。</li>
+<li>ここでの自己無撞着な DD-DFT のスクリーニング <span class="math inline">\varepsilon_s=2\.1614</span> は、最も近い基底での公表された局所交換の値、<span class="math inline">6\text{-}31\mathrm{G}(d)</span> での式 (3) の <span class="math inline">2.17</span> に最も近い値です <span class="citation" data-cites="shimazaki2016">(<a href="#ref-shimazaki2016">Shimazaki と Nakajima 2016年</a>)</span>。</li>
+<li>公表されている誘電率依存の値そのものは、交換の形と基底によって <span class="math inline">2\.17</span> から <span class="math inline">2\.43</span> にわたり、その幅は私たちの値と最も近い値との差より広くなっています。</li>
+</ul>
+<p>値は同じ方法で計算されていないので、この一致は整合性の確認であり、再現ではありません。</p>
+<ul>
+<li><strong>基底：</strong>ここでは <span class="math inline">6\text{-}31\mathrm{G}(d,p)</span>、2016 年は <span class="math inline">6\text{-}31\mathrm{G}(d)</span> と <span class="math inline">6\text{-}311\mathrm{G}(d)</span>、2022 年は <span class="math inline">6\text{-}31{+}\mathrm{G}(d)</span> です。2022 年の分散関数は分子を分極しやすくし、その値が最も大きくなっています。</li>
+<li><strong>汎関数の形：</strong>ここでの DD-DFT は B88 交換を <span class="math inline">1-\alpha</span> 倍、LYP 相関を <span class="math inline">\sqrt{1-\alpha}</span> 倍し、<span class="math inline">\alpha=1/\varepsilon_s</span> です。2016 年の式 (3) は VWN 相関を伴う Slater 交換、式 (1.1) と 2022 年の式 (3) は非局所の短距離遮蔽交換、2022 年の式 (4) は局所 Slater 交換を用います。</li>
+<li><strong>構造：</strong>ここでは B3LYP/<span class="math inline">6\text{-}31\mathrm{G}(d,p)</span> の構造を DD-DFT の重みで緩和しています。2016 年は B3LYP/<span class="math inline">6\text{-}31\mathrm{G}(d)</span>、2022 年は B3LYP のスクリーニングを用いた Gaussian 09 の最適化です。</li>
+<li><strong>スクリーニングのモデル：</strong>どの研究も密度の等値面 <span class="math inline">0.001\,a_0^{-3}</span> の内側の体積で同じ応答の式を評価しますが、実装、求積、<span class="math inline">\beta</span> などのモデル定数は異なります。Lotus は書き直されたプログラムであり、論文のプログラムではありません。</li>
+<li><strong>ギャップ：</strong>HOMO–LUMO ギャップ <span class="math inline">\Delta\epsilon</span> は交換の割合に従うので、誘電率依存のギャップは形によって最大で約 <span class="math inline">2.5\,\mathrm{eV}</span> 異なります。これは軌道エネルギーの差であり、励起エネルギーではありません。</li>
+</ul>
+<div class="cell" data-execution_count="9">
+<div id="Table_6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-literature-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+表&nbsp;6. ベンゼンの分子スクリーニング <span class="math inline">\varepsilon_s</span> と HOMO–LUMO ギャップ <span class="math inline">\Delta\epsilon</span> の公表値とこのワークフローの値、および同じ種類の汎関数でのこのワークフローの値に対する各値の相対差。
+</figcaption>
+<div aria-describedby="tbl-literature-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">出典</th>
+<th style="text-align: left;">汎関数</th>
+<th style="text-align: left;">基底</th>
+<th style="text-align: right;"><span class="math inline">\varepsilon_s</span></th>
+<th style="text-align: right;"><span class="math inline">\Delta\epsilon\;[\mathrm{eV}]</span></th>
+<th style="text-align: right;"><span class="math inline">\Delta\varepsilon_s/\varepsilon_s\;[\mathrm{\%}]</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="shimazaki2016"><a href="#ref-shimazaki2016" role="doc-biblioref">Shimazaki と Nakajima (2016年)</a></span></td>
+<td style="text-align: left;">B3LYP、SCF 後のスクリーニング</td>
+<td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}^{*}</span></td>
+<td style="text-align: right;">2.43</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">-0.6376</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;"><span class="math inline">6\text{-}311\mathrm{G}^{*}</span></td>
+<td style="text-align: right;">2.49</td>
+<td style="text-align: right;">6.71</td>
+<td style="text-align: right;">1.816</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;">式 (1.1)、非局所遮蔽交換</td>
+<td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}^{*}</span></td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">8.52</td>
+<td style="text-align: right;">1.786</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;">式 (3)、VWN を伴う局所 Slater 交換</td>
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: right;">2.17</td>
+<td style="text-align: right;">8.84</td>
+<td style="text-align: right;">0.3979</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;">式 (1.1)、非局所遮蔽交換</td>
+<td style="text-align: left;"><span class="math inline">6\text{-}311\mathrm{G}^{*}</span></td>
+<td style="text-align: right;">2.23</td>
+<td style="text-align: right;">8.72</td>
+<td style="text-align: right;">3.174</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;">式 (3)、VWN を伴う局所 Slater 交換</td>
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: right;">2.24</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">3.637</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="shimazaki2022"><a href="#ref-shimazaki2022" role="doc-biblioref">Shimazaki と Tachikawa (2022年)</a></span></td>
+<td style="text-align: left;">式 (3)、erfc 短距離交換</td>
+<td style="text-align: left;"><span class="math inline">6\text{-}31{+}\mathrm{G}^{*}</span></td>
+<td style="text-align: right;">2.43</td>
+<td style="text-align: right;">6.83</td>
+<td style="text-align: right;">12.43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;">式 (4)、局所 Slater 交換</td>
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: right;">2.33</td>
+<td style="text-align: right;">8.31</td>
+<td style="text-align: right;">7.801</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">このワークフロー</td>
+<td style="text-align: left;">B3LYP、SCF 後のスクリーニング</td>
+<td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}^{**}</span></td>
+<td style="text-align: right;">2.446</td>
+<td style="text-align: right;">6.793</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;">DD-DFT、スクリーニングで重み付けした B88 と LYP</td>
+<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: right;">2.161</td>
+<td style="text-align: right;">8.868</td>
+<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<!-- Generated by researchsite.pages from the calculation folders; do not edit. -->
 </section>
 <section id="Calculations" class="level2">
 <h2 class="anchored" data-anchor-id="Calculations">計算</h2>
@@ -668,7 +820,7 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-f94a3cc2e01630e9/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-992dc7666676db38/script.js"></script>
 <section id="基準となる_S_0_構造" class="level3">
 <h3 class="anchored" data-anchor-id="基準となる_S_0_構造">基準となる <span class="math inline">S_0</span> 構造</h3>
 <p><span class="math inline">S_0</span> の基準構造を確立し、電子応答の枝で使う前に曲率を検証します。</p>
@@ -1593,10 +1745,21 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <script src="../../../site_libs/shared-215cc95d0a744a5a/script.js"></script>
+
 </section>
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">参考文献</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-shimazaki2016" class="csl-entry" role="listitem">
+Shimazaki, Tomomi, と Takahito Nakajima. 2016年. <span>「Application of the dielectric-dependent screened exchange potential approach to organic photocell materials」</span>. <em>Physical Chemistry Chemical Physics</em> 18: 27554–63. <a href="https://doi.org/10.1039/c6cp04863c">https://doi.org/10.1039/c6cp04863c</a>.
+</div>
+<div id="ref-shimazaki2021" class="csl-entry" role="listitem">
+Shimazaki, Tomomi, と Masanori Tachikawa. 2021年. <span>「A theoretical study on solvatofluorochromic asymmetric thiazolothiazole (<span>TTz</span>) dyes using dielectric-dependent density functional theory」</span>. <em>Physical Chemistry Chemical Physics</em> 23: 21078–86. <a href="https://doi.org/10.1039/d1cp02047a">https://doi.org/10.1039/d1cp02047a</a>.
+</div>
+<div id="ref-shimazaki2022" class="csl-entry" role="listitem">
+Shimazaki, Tomomi, と Masanori Tachikawa. 2022年. <span>「Theoretical study of the effect of nonlocal short-range exchange on calculations of molecular excitation energies in the dielectric screened-exchange method」</span>. <em>Chemical Physics Letters</em> 802: 139740. <a href="https://doi.org/10.1016/j.cplett.2022.139740">https://doi.org/10.1016/j.cplett.2022.139740</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript" src="../../../site_libs/shared-1d9d6cb5641f4609/script.js"></script>
   <script type="application/javascript">
