@@ -1,0 +1,329 @@
+/* Figure captions follow the centered figures; table captions remain above tables. */
+figcaption.quarto-float-fig {
+    text-align: center;
+}
+
+/* A table-of-contents entry too long for the margin, such as a long file or field name, ends in an ellipsis instead
+   of being cut off; its full text shows on hover. */
+nav#TOC a.nav-link { overflow: hidden; text-overflow: ellipsis; }
+/* Keep subsection entries quieter than the main TOC headings. */
+nav#TOC ul ul > li > a:not(.active):not(:hover) {
+    color: var(--bs-secondary-color, #6c757d);
+}
+
+/* Keep normal-text mantissas and their mathematical powers on one baseline. */
+.scientific-number { white-space: nowrap; }
+.scientific-number .katex { font-size: 1em; }
+
+/* Breadcrumb above the title: Homepage / project / notebook. */
+.header-breadcrumb { font-size: 0.9rem; margin-bottom: 0.75rem; color: var(--bs-secondary-color, #6c757d);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+/* One line; a breadcrumb too long for it ends in an ellipsis rather than being cut off. */
+.header-breadcrumb p { margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.header-breadcrumb a { color: inherit; text-decoration: none; }
+.header-breadcrumb a:hover { text-decoration: underline; }
+.header-breadcrumb .sep { margin: 0 0.45em; opacity: 0.6; }
+.header-breadcrumb .current { color: var(--bs-body-color, #212529); }
+.header-breadcrumb .katex { font-size: 1em; }
+
+/* Tabs stack their panels in one grid cell and hide the inactive ones instead of removing them
+   from layout, so molecular viewers keep their size and are not rebuilt when a tab is selected. */
+.panel-tabset .tab-content { display: grid; grid-template-columns: minmax(0, 1fr); }
+/* Quarto hides inactive panes with display: none !important, so this override needs the same weight. */
+/* Grid items default to their content's minimum width; at zero a wide table can no longer widen the pane beyond
+   the column, so it scrolls in its own output instead of running under the table of contents. */
+.panel-tabset .tab-content > .tab-pane { display: block !important; grid-area: 1 / 1; visibility: hidden; opacity: 1; min-width: 0; }
+
+/* The body column never grows to fit its content, and a table wider than the column scrolls sideways within its
+   output. */
+main.content { min-width: 0; }
+
+/* Pandoc estimates Markdown column widths from source text, including hidden base64 metadata in headers; every
+   table sizes its columns from the rendered content instead. */
+main table col { width: auto !important; }
+/* Every table on a page, a cell's output or one the page writes itself such as a workflow's overview tables, sits in
+   a block that scrolls sideways when the table is wider than the column, so no table ever runs under the table of
+   contents. */
+main :is(div, section):has(> table) { overflow-x: auto; }
+/* An inactive pane takes no height, so the tabset is as tall as its open tab; it keeps its width, so molecular viewers
+   in it keep their size. */
+.panel-tabset .tab-content > .tab-pane:not(.active) { height: 0; overflow: hidden; }
+/* A tabset after a table or text gets the space a heading gets above it, so it does not sit on the table's last row;
+   the first heading inside a tab starts at the tab's top, as the tab's border already sets it apart. */
+main .panel-tabset { margin-top: 1.5rem; }
+.tab-pane > section:first-child > .anchored:first-child,
+.tab-pane > section:first-child > section:first-child > .anchored:first-child { margin-top: 0; }
+/* An active pane inherits its visibility, so one inside an inactive pane, as a step's within a hidden calculation,
+   stays hidden with it. */
+.panel-tabset .tab-content > .tab-pane.active { visibility: inherit; }
+
+/* Rows of molecule figures on the index pages are centred. */
+.molecules p { text-align: center; }
+
+/* Workflow and project status icons (Font Awesome SVGs from projects/icons) sized to the text;
+   rejected workflows and failed projects are greyed out. */
+img.workflow-status { width: 1em; height: 1em; vertical-align: -0.125em; margin: 0; }
+/* An image alone in a table cell gets Quarto's figure-img class, whose bottom margin would make its row taller. */
+td img.figure-img, th img.figure-img { margin-bottom: 0; }
+/* The viewer's files, one table per calculation, share one set of column widths so their columns line up. */
+#viewer-file-list table { table-layout: fixed; width: 100%; }
+#viewer-file-list :is(th, td):nth-child(1) { width: 4.5rem; }
+#viewer-file-list :is(th, td):nth-child(2) { width: 30%; overflow-wrap: anywhere; }
+#viewer-file-list :is(th, td):nth-child(3) { width: 6rem; }
+#viewer-file-list :is(th, td):nth-child(4) { width: 13rem; }
+#viewer-file-list :is(th, td):nth-child(6) { width: 2.5rem; }
+/* A spinner in place of a status icon: the same box, its ring drawn thinner to suit the size. */
+.spinner-border.workflow-status { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; --bs-spinner-border-width: 0.15em; }
+.rejected, .rejected a { color: var(--bs-secondary-color, #6c757d); }
+
+/* Callouts are ordinary boxes: a thin border of the callout's colour on every side and rounded corners,
+   instead of Quarto's thick left bar. Quarto sets the border per side with high specificity. */
+div.callout { border: 1px solid var(--callout-edge, #dee2e6) !important; border-radius: 0.375rem; overflow: hidden; }
+div.callout-note { --callout-edge: #9ec5fe; }
+div.callout-tip { --callout-edge: #a3cfbb; }
+div.callout-warning { --callout-edge: #ffe69c; }
+div.callout-caution { --callout-edge: #fecba1; }
+div.callout-important { --callout-edge: #f1aeb5; }
+
+/* Callout headers get room to breathe: the icon is centred beside the title, with even padding in the
+   header and body. Icons are Font Awesome Free's own solid SVGs (fontawesomefree 6.6.0) with only a fill
+   colour added, by callout type; a workflow's status note uses its status icon from projects/icons, as in the status tables. */
+/* Quarto pulls the header 2.88px into the body's border and the title 1px up; a status box without a body would
+   lose the header's lower edge, and the title would sit off the icon's centre. */
+div.callout .callout-header { padding: 0.4rem 0.55rem !important; margin: 0 !important; align-items: center; gap: 0.5rem; }
+div.callout .callout-icon-container { padding: 0 !important; display: flex; align-items: center; }
+div.callout .callout-icon { display: flex; align-items: center; }
+div.callout .callout-icon::before { display: block; width: 1rem !important; height: 1rem !important; margin: 0 !important;
+    background-size: contain !important; background-repeat: no-repeat; background-position: center; }
+div.callout .callout-title-container { line-height: 1.5; margin: 0 !important; }
+/* A status box with nothing beyond its title shows only its header. */
+div.callout:not(:has(.callout-body-container > *)) .callout-body-container { display: none; }
+/* The icon sits as far from the header's left edge as from its top and bottom; the body text starts under the
+   icon and has equal space above and below. */
+div.callout .callout-body-container { padding: 0.55rem !important; }
+/* Quarto pads paragraphs inside callouts too; the body padding alone sets the spacing. */
+div.callout .callout-body-container p { padding: 0 !important; }
+div.callout .callout-body-container > :first-child { margin-top: 0 !important; }
+div.callout .callout-body-container > :last-child { margin-bottom: 0 !important; }
+div.callout-note .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%230d6efd%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z%22/%3E%3C/svg%3E") !important; }
+div.callout-tip .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%23198754%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 384 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M272 384c9.6-31.9 29.5-59.1 49.2-86.2c0 0 0 0 0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4c0 0 0 0 0 0c19.8 27.1 39.7 54.4 49.2 86.2l160 0zM192 512c44.2 0 80-35.8 80-80l0-16-160 0 0 16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z%22/%3E%3C/svg%3E") !important; }
+div.callout-warning .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%23e0a800%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z%22/%3E%3C/svg%3E") !important; }
+div.callout-caution .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%23fd7e14%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z%22/%3E%3C/svg%3E") !important; }
+div.callout-important .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%23dc3545%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z%22/%3E%3C/svg%3E") !important; }
+div.callout.status-accepted .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%23198754%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z%22/%3E%3C/svg%3E") !important; }
+div.callout.status-caveats .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%23e0a800%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z%22/%3E%3C/svg%3E") !important; }
+div.callout.status-ongoing .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%230d6efd%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 384 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64l0 11c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437l0 11c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 256 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-11c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1l0-11c17.7 0 32-14.3 32-32s-14.3-32-32-32L320 0 64 0 32 0zM96 75l0-11 192 0 0 11c0 19-5.6 37.4-16 53L112 128c-10.3-15.6-16-34-16-53zm16 309c3.5-5.3 7.6-10.3 12.1-14.9L192 301.3l67.9 67.9c4.6 4.6 8.6 9.6 12.1 14.9L112 384z%22/%3E%3C/svg%3E") !important; }
+div.callout.status-rejected .callout-icon::before { background-image: url("data:image/svg+xml,%3Csvg fill=%22%23dc3545%22 xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z%22/%3E%3C/svg%3E") !important; }
+
+/* The method-grouped workflow tables of a project page share column widths, so they line up. */
+.workflow-tables table { table-layout: fixed; width: 100%; }
+/* Pandoc fixes column widths for long source rows; here the header widths below decide. */
+.workflow-tables col { width: auto !important; }
+.workflow-tables th:nth-child(1) { width: 4.5rem; }
+.workflow-tables th:nth-child(2) { width: 8.5rem; }
+.workflow-tables th:nth-child(3) { width: 30%; }
+
+/* Calculations pages. The notebook breadcrumb links to them at its right end, with Font Awesome's
+   diagram-project icon in the link colour. */
+.header-breadcrumb .calculations-link { float: right; }
+.header-breadcrumb .calculations-link a { color: var(--bs-link-color, #0d6efd); display: inline-flex; align-items: center; gap: 0.35em; }
+.header-breadcrumb .calculations-link a::before { content: ""; width: 1.1em; height: 1em; background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M0 80C0 53.5 21.5 32 48 32l96 0c26.5 0 48 21.5 48 48l0 16 192 0 0-16c0-26.5 21.5-48 48-48l96 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-96 0c-26.5 0-48-21.5-48-48l0-16-192 0 0 16c0 1.7-.1 3.4-.3 5L272 288l96 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-96 0c-26.5 0-48-21.5-48-48l0-96c0-1.7 .1-3.4 .3-5L144 224l-96 0c-26.5 0-48-21.5-48-48L0 80z%22/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free %28Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License%29 Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M0 80C0 53.5 21.5 32 48 32l96 0c26.5 0 48 21.5 48 48l0 16 192 0 0-16c0-26.5 21.5-48 48-48l96 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-96 0c-26.5 0-48-21.5-48-48l0-16-192 0 0 16c0 1.7-.1 3.4-.3 5L272 288l96 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-96 0c-26.5 0-48-21.5-48-48l0-96c0-1.7 .1-3.4 .3-5L144 224l-96 0c-26.5 0-48-21.5-48-48L0 80z%22/%3E%3C/svg%3E") center / contain no-repeat; }
+/* The workflow diagram scrolls sideways rather than shrinking its text; Mermaid's node tooltip. */
+.calculations-diagram { overflow-x: auto; margin: 1rem 0 1.5rem; text-align: center; }
+.calculations-diagram pre.diagram-source { display: none; }
+.calculations-diagram svg { max-width: none !important; }
+/* On a calculation page the diagram keeps its scale in a smaller framed view of its own that scrolls both ways; the
+   current calculation's label is plain text rather than a link. */
+.calculations-diagram.compact { max-height: 22rem; overflow: auto; border: 1px solid #dee2e6; border-radius: 0.375rem; margin-top: 0; }
+/* A label linked to its calculation page reads as a link, underlined on hover, as in the README. */
+.calculations-diagram .nodeLabel a, .calculations-diagram .nodeLabel a * { color: var(--bs-link-color) !important; text-decoration: none; }
+.calculations-diagram .nodeLabel a:hover { text-decoration: underline; }
+/* The calculation whose page is open glows in its compact workflow diagram, like a selection, in the node's own
+   border colour, which the diagram script reads into the node's colour property. */
+.calculations-diagram svg g.node.current-calculation {
+    filter: drop-shadow(0 0 2px color-mix(in srgb, currentColor 45%, transparent))
+            drop-shadow(0 0 5px color-mix(in srgb, currentColor 22%, transparent));
+}
+/* A clicked link shows no focus ring; the click opens its page. A scan's node and its row title are focusable for their
+   popover, and a click on one traces its paths, so they show none either, or the browser draws a blue ring around it. */
+.calculations-diagram a:is(:focus, :focus-visible, :active),
+.calculations-diagram svg :is(g.node, g.node *):is(:focus, :focus-visible, :active),
+.calculations-table .scan-title:is(:focus, :focus-visible, :active) { outline: none; }
+/* The overview table keeps its short columns on one line, the status, program, start and wall time, and lets the job,
+   such as "Self-consistent screening", wrap with the titles, so it fits the column. */
+.calculations-table table { width: 100%; }
+.calculations-table :is(th, td):is(:nth-child(1), :nth-child(3), :nth-child(5), :nth-child(6)) { white-space: nowrap; }
+.calculations-table :is(th, td):nth-child(2) { width: 34%; }
+/* A scan is one matrix of bordered cells with labelled axes. A cell links to its run, or opens the runs inside it as dots or a donut. */
+/* Dots and pie share one scale, and the pie keeps one size at every level: the height of the three rows that twelve dots make. */
+.scan-matrix { --scan-dot: 0.5rem; --scan-dot-gap: 2px; --scan-pie: calc(3 * var(--scan-dot) + 2 * var(--scan-dot-gap)); margin: 0.5rem 0 1rem; }
+.scan-controls { display: grid; gap: 0.75rem; margin-bottom: 1rem; font-size: 0.875rem; }
+/* The axes drawn, the other axes and the filters share one row, which wraps onto new rows only where it must. */
+.scan-control-band { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; }
+.scan-control-band > .scan-control { flex: 0 0 14rem; max-width: 100%; }
+/* A scan matrix and the outcomes listed under it read left to right, even where a figure or output would centre them. */
+.cell-output-display:has(.scan-matrix) { text-align: left; }
+/* A fixed label height, so a label holding math leaves its dropdown in line with the others. */
+.scan-label { height: 1.375rem; line-height: 1.375rem; white-space: nowrap; font-weight: 700; margin-bottom: 0.25rem; }
+.scan-select { position: relative; }
+.scan-select > button { display: block; width: 100%; min-height: 2rem; text-align: left; user-select: none; }
+/* Bootstrap's focus ring is for keyboard users: a mouse click, or the script returning focus after a choice, leaves none. */
+.scan-select > button:focus:not(:focus-visible) { border-color: var(--bs-border-color, #dee2e6); box-shadow: none; transition: none; }
+.scan-select .dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 100%; max-height: 16rem; overflow-y: auto; margin-top: 0.125rem; font-size: 0.875rem; z-index: 1050; }
+.scan-select .dropdown-item { white-space: nowrap; user-select: none; }
+.scan-select .dropdown-item:focus { outline: none; }
+.scan-select .dropdown-item:focus-visible { outline: 2px solid var(--bs-secondary-color, #6c757d); outline-offset: -2px; }
+/* Pressing an entry turns it blue as in Bootstrap's own dropdowns; the current entry is dim. */
+.scan-select .dropdown-item .quantity-info-icon { margin-left: 0.35em; }
+.scan-select .dropdown-item.scan-current, .scan-select .dropdown-item.scan-current:is(:hover, :focus, :active) { color: var(--bs-secondary-color, #6c757d); background: transparent; opacity: 0.6; cursor: default; }
+.scan-matrices { overflow-x: auto; }
+/* A chart's bindings, drawn as the scan dropdowns above it; Vega's own are kept hidden, as the dropdowns drive them. */
+.chart-controls { margin-bottom: 0.75rem; font-size: 0.875rem; }
+.chart-controls > .scan-control { flex: 0 0 16rem; }
+.chart-controls > .scan-control.chart-control-narrow { flex: 0 0 7rem; }
+.chart-controls > .scan-control[hidden] { display: none; }
+.vega-embed.bindings-restyled .vega-bindings { display: none; }
+.scan-view { display: inline-grid; grid-template-columns: auto max-content; font-size: 0.875rem; }
+.scan-row-title { grid-column: 1; position: relative; margin-right: 0.75rem; font-weight: 600; }
+.scan-row-title > span { position: absolute; top: 50%; left: 50%; text-align: center; line-height: 1.25; transform: translate(-50%, -50%) rotate(-90deg); }
+.scan-area { grid-column: 2; display: grid; gap: 1.5rem 2rem; }
+.scan-column-title { grid-column: 2; font-weight: 600; text-align: center; margin-top: 0.75rem; }
+.scan-grid { display: inline-grid; grid-auto-rows: auto; grid-auto-columns: auto; padding: 1px; }
+.scan-row-tick { display: flex; align-items: center; justify-content: flex-end; padding-right: 0.5rem; }
+.scan-column-tick { text-align: center; padding-top: 0.375rem; }
+.scan-cell { display: flex; flex-direction: column; width: 3.25rem; min-height: 2.25rem; margin: 0 -1px -1px 0; border: 1px solid var(--bs-border-color, #dee2e6); background: var(--bs-body-bg, #ffffff); }
+.scan-cell.scan-unselected { background: var(--bs-tertiary-bg, #f8f9fa); }
+.scan-cell.scan-void { visibility: hidden; }
+.scan-cell :is(a, .scan-open) { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.125rem; padding: 0.25rem; text-align: center; text-decoration: none; line-height: 1.2; }
+.scan-cell :is(a, .scan-open):is(:hover, :focus) { background: var(--bs-tertiary-bg, #f8f9fa); box-shadow: inset 0 0 0 2px var(--bs-primary, #0d6efd); }
+.scan-open { width: 100%; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.scan-dots { display: grid; grid-template-columns: repeat(4, var(--scan-dot)); gap: var(--scan-dot-gap); }
+.scan-dot { display: inline-block; width: var(--scan-dot); height: var(--scan-dot); border-radius: 50%; }
+.scan-dot.scan-hollow { background: var(--bs-body-bg, #ffffff); border: 1.5px solid #adb5bd; }
+.scan-pie { width: var(--scan-pie); height: var(--scan-pie); }
+/* Back and Forward are Bootstrap's own small outline buttons in a group, each with its Font Awesome angle. */
+.scan-history { margin-bottom: 1rem; }
+.scan-history .btn { display: inline-flex; align-items: center; gap: 0.375rem; }
+.scan-history-icon { width: 0.625em; height: 1em; }
+/* Hovering a cell of several runs: the status and outcome tally, in the same popover as a single run. */
+.scan-popover { min-width: 14rem; font-size: 0.875rem; }
+.scan-popover p { margin: 0 0 0.25rem; }
+.scan-popover p:not(:first-child) { margin-top: 0.75rem; }
+.scan-popover .table { margin-bottom: 0; }
+.scan-popover .scan-icon-cell { width: 1.5rem; padding-right: 0; }
+.scan-popover img { width: 1rem; height: 1rem; vertical-align: -0.125em; }
+/* Mermaid's own tooltip box is unused. */
+.mermaidTooltip { display: none !important; }
+/* Clicking a node or an arrow traces the paths through it: the rest of the diagram fades, and so do the overview-table
+   rows of the calculations off the trace. */
+.calculations-diagram svg g.node { cursor: pointer; }
+.calculations-diagram svg :is(g.node, path[data-id], g.cluster-label) { transition: opacity 0.15s; }
+.calculations-diagram svg.traced :is(g.node, path[data-id], g.cluster-label):not(.on-trace) { opacity: 0.25; }
+.calculations-diagram svg .edge-hit { fill: none; stroke: transparent; stroke-width: 14px; pointer-events: stroke; cursor: pointer; }
+.calculations-table tbody tr > td { transition: opacity 0.15s; }
+.calculations-table tbody tr.off-trace > td { opacity: 0.35; }
+/* A scan's job cell starts with the scan icon, and its row names it without a link. */
+.scan-icon { margin-right: 0.4em; }
+.diagram-popover .scan-matrix { margin: 0.75rem 0 0; }
+/* A calculation's popover holds its status box with the workflow's assessment, a diagram label's overview-table row
+   and its findings table; the hidden source of the box and findings follows the overview tables. In the row only the
+   title wraps. */
+.diagram-details, .link-details { display: none; }
+/* Group titles, repainted above the arrows, hide the arrows behind them with the group's background. */
+.calculations-diagram .cluster-labels foreignObject > div { background: #f8f9fa; }
+.diagram-popover { max-width: min(90vw, 760px); font-size: 0.875rem; }
+.diagram-popover table { margin: 0; font-size: 0.875rem; }
+.diagram-popover .popover-row :is(th, td) { white-space: nowrap; }
+.diagram-popover .popover-row :is(th, td):nth-child(2) { white-space: normal; min-width: 12rem; }
+.diagram-popover ul { margin: 0.5rem 0; padding-left: 1.2rem; }
+.diagram-popover table + table, .diagram-popover ul + table { margin-top: 0.25rem; }
+/* The findings table sizes its columns to their content rather than Pandoc's equal widths; the message wraps. */
+.diagram-popover table:not(.popover-row) col { width: auto !important; }
+/* A status box opens the popover flush with its top edge; Quarto's callout margins would leave a gap above and below. */
+.diagram-popover > .callout { margin: 0 0 0.5rem; }
+.diagram-popover table:not(.popover-row) :is(th, td):not(:last-child) { white-space: nowrap; width: 1%; }
+.diagram-popover :is(th, td) { padding: 0.25rem 0.5rem; }
+
+/* Tables with subtables: each outer row spans its subtable's rows, under a spanning heading with the subtable's
+   own column names below it. A rule starts each outer row and none divides its subtable rows; striping is off,
+   so each outer row reads as one block, its spanning cells at the top. */
+table.subtables tbody :is(tr, td) { background: none !important; --bs-table-bg-type: transparent !important;
+  --bs-table-accent-bg: transparent !important; box-shadow: none !important; }
+/* Cell content arrives as a parsed div holding a paragraph, whose margins would double each row's height. */
+table.subtables :is(td, th) > :is(p, div > p) { margin: 0; }
+table.subtables tbody td { vertical-align: top; }
+/* A cell of running text keeps a readable width however many columns share the page; short values stay narrow.
+   A table cell's own min-width is not honoured, so the width is on the content inside it. */
+table.subtables td.prose > :is(div, p) { min-width: 9rem; }
+
+/* A table that ends a cell's output has no bottom margin, so a paragraph after it gets the space a
+   paragraph leaves before a table. */
+:is(.cell:has(table), table) + p { margin-top: 1rem; }
+
+/* Quarto spaces headings down to level 4 above; level 5 and 6 headings, as in folds deep in a calculation, get the
+   level-4 space too, so they do not sit on the table or text before them. */
+main :is(h5, h6).anchored { margin-top: 1.5rem; }
+
+/* Match KaTeX math to the surrounding text using measured letter and digit heights. */
+html .katex { font-size: calc(var(--math-scale, 1) * 1em) !important; }
+/* Keep KaTeX’s accessible MathML within the clipping context of hidden tabs. */
+.katex { position: relative; }
+
+/* Optional remote shortcut is a fourth metadata column and a header action. */
+@media (min-width: 768px) {
+    #title-block-header.quarto-title-block.default .quarto-title-meta.has-remote-link {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+.header-breadcrumb.has-remote-link { display: flex; align-items: center; gap: 1rem; line-height: 1.5; }
+.header-breadcrumb .breadcrumb-path { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.header-breadcrumb .header-actions { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: 1rem; }
+.header-breadcrumb .header-actions .calculations-link { float: none; display: inline-flex; align-items: center; }
+.header-breadcrumb .header-actions a { color: var(--bs-link-color, #0d6efd); display: inline-flex; align-items: center; gap: 0.35em; line-height: inherit; }
+/* Match the action icons' boxes so they cannot shift either text baseline. */
+.header-breadcrumb .header-actions a::before { flex: none; align-self: center; }
+.header-breadcrumb .header-actions .remote-readme-link::before {
+    content: "";
+    width: 1.1em;
+    height: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20576%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%206.6.0%20by%20%40fontawesome%20-%20https%3A%2F%2Ffontawesome.com%20License%20-%20https%3A%2F%2Ffontawesome.com%2Flicense%2Ffree%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202024%20Fonticons%2C%20Inc.%20--%3E%3Cpath%20d%3D%22M9.4%2086.6C-3.1%2074.1-3.1%2053.9%209.4%2041.4s32.8-12.5%2045.3%200l192%20192c12.5%2012.5%2012.5%2032.8%200%2045.3l-192%20192c-12.5%2012.5-32.8%2012.5-45.3%200s-12.5-32.8%200-45.3L178.7%20256%209.4%2086.6zM256%20416l288%200c17.7%200%2032%2014.3%2032%2032s-14.3%2032-32%2032l-288%200c-17.7%200-32-14.3-32-32s14.3-32%2032-32z%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20576%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%206.6.0%20by%20%40fontawesome%20-%20https%3A%2F%2Ffontawesome.com%20License%20-%20https%3A%2F%2Ffontawesome.com%2Flicense%2Ffree%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202024%20Fonticons%2C%20Inc.%20--%3E%3Cpath%20d%3D%22M9.4%2086.6C-3.1%2074.1-3.1%2053.9%209.4%2041.4s32.8-12.5%2045.3%200l192%20192c12.5%2012.5%2012.5%2032.8%200%2045.3l-192%20192c-12.5%2012.5-32.8%2012.5-45.3%200s-12.5-32.8%200-45.3L178.7%20256%209.4%2086.6zM256%20416l288%200c17.7%200%2032%2014.3%2032%2032s-14.3%2032-32%2032l-288%200c-17.7%200-32-14.3-32-32s14.3-32%2032-32z%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+}
+/* The language menu: its icon, the current language and Bootstrap's caret, in the header actions' link colour. */
+.header-breadcrumb .header-actions .language-menu .dropdown-toggle { gap: 0.35em; }
+.header-breadcrumb .header-actions .language-menu .dropdown-toggle::before { content: none; }
+.header-breadcrumb .header-actions .language-menu .bi { font-size: 1em; line-height: 1; }
+.header-breadcrumb .language-menu .dropdown-menu { font-size: 0.875rem; min-width: 8rem; }
+.header-breadcrumb .language-menu .dropdown-item { color: var(--bs-body-color, #212529); display: block; }
+.header-breadcrumb .language-menu .dropdown-item.active { color: var(--bs-dropdown-link-active-color, #fff); }
+/* The homepage's link to the calculation viewer, with Font Awesome Free's file-import icon (fontawesomefree 6.6.0). */
+.header-breadcrumb .header-actions .viewer-link a::before {
+    content: "";
+    width: 1.1em;
+    height: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M128 64c0-35.3 28.7-64 64-64L352 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64l-256 0c-35.3 0-64-28.7-64-64l0-112 174.1 0-39 39c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l39 39L128 288l0-224zm0 224l0 48L24 336c-13.3 0-24-10.7-24-24s10.7-24 24-24l104 0zM512 128l-128 0L384 0 512 128z%22/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3C%21--%21 Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --%3E%3Cpath d=%22M128 64c0-35.3 28.7-64 64-64L352 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64l-256 0c-35.3 0-64-28.7-64-64l0-112 174.1 0-39 39c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l39 39L128 288l0-224zm0 224l0 48L24 336c-13.3 0-24-10.7-24-24s10.7-24 24-24l104 0zM512 128l-128 0L384 0 512 128z%22/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Every Markdown and generated table uses the compact style of the link popovers: 0.875rem text, 0.3125rem by
+   0.5rem cells and unstriped rows. Bootstrap paints its stripes through --bs-table-bg-type on odd rows. */
+main table { font-size: 0.875rem; line-height: 1.4; }
+main table > :not(caption) > * > * { padding: 0.3125rem 0.5rem !important; }
+main table.table-striped > tbody > tr > * {
+    --bs-table-bg-type: transparent !important;
+    --bs-table-bg-state: transparent !important;
+    --bs-table-accent-bg: transparent !important;
+}
+
+/* Code, inline or in blocks, sits on the page background, set apart by its font and colour alone. */
+code, pre, div.sourceCode, pre.sourceCode { background: none !important; background-color: transparent !important; }
+:not(pre) > code { padding: 0 !important; border-radius: 0; }
+/* A captioned table sits in Quarto's centred float, which would centre every cell; cells keep their own alignment. */
+.quarto-float-tbl table { text-align: start; }
+/* The scan icon before a scan's node label in a workflow diagram, at the size of the label's text; Mermaid styles every
+   label image as a full-width block, so this overrides its inline style; the link is a baseline-aligned flex row, in
+   which the icon is centred on the text. */
+.nodeLabel img.diagram-scan-icon { display: inline-block !important; width: 1em !important; height: 1em; flex: none; align-self: center; vertical-align: middle; margin-right: 0.3em; }

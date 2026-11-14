@@ -1250,6 +1250,41 @@ function installMenu(container, label, titles, onSelect) {
     return {show, dispose:() => { watcher.disconnect(); document.removeEventListener('click', close); menu.remove(); }};
 }
 
+// The controls that open a row of the viewer's top bar: each child of a wrapping row whose top lies below the one
+// before it, or the first, as rows wrap when the dropdowns do not fit. Returns the children, in order.
+function rowStarts(row) {
+    const shown = [...row.children].filter(child => child.offsetParent !== null && getComputedStyle(child).display !== 'none');
+    // The bar orders its children with CSS order, so they are taken in the order they are drawn.
+    shown.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
+        || a.getBoundingClientRect().left - b.getBoundingClientRect().left);
+    return shown.filter((child, index) => index === 0
+        || child.getBoundingClientRect().top > shown[index - 1].getBoundingClientRect().top + 1);
+}
+
+// Keeps the thin rule before each dropdown only where a control stands before it on its row: a dropdown that wraps to
+// open a new row loses its rule, which would otherwise hang at the row's left edge. Follows every resize of the bar or
+// its dropdowns and every rebuild of Molstar's controls. Returns the disposer.
+function installRowRules(container) {
+    const resize = new ResizeObserver(() => mark());
+    let watched = null;
+    const mark = () => {
+        const row = container.querySelector('.msp-state-snapshot-viewport-controls');
+        if (row !== watched) {
+            resize.disconnect();
+            watched = row;
+            if (row) resize.observe(row);
+        }
+        if (!row) return;
+        for (const child of row.children) resize.observe(child);
+        const starts = new Set(rowStarts(row));
+        for (const child of row.children) child.classList.toggle('molstarview-row-start', starts.has(child));
+    };
+    const watcher = new MutationObserver(() => mark());
+    watcher.observe(container, {childList:true, subtree:true});
+    mark();
+    return () => { watcher.disconnect(); resize.disconnect(); };
+}
+
 function installAxisAlignment(container, viewer) {
     const controller = new AbortController();
     const wrapper = document.createElement('div');
@@ -1310,8 +1345,19 @@ function installAxisAlignment(container, viewer) {
 
 // The pinned RDKit.js build, the release of the Python RDKit that lays out the depictions.
 const RDKIT = 'https://cdn.jsdelivr.net/npm/@rdkit/rdkit@2026.9.1/dist/';
-// Colours of measurements and groups, in order: Tableau 10, as the pages' charts use it.
-const DEPICTION_MARKS = ['#4e79a7', '#f28e2b', '#59a14f', '#e15759', '#b07aa1', '#76b7b2', '#edc948', '#9c755f'];
+// A mark's highlight colour as RGB fractions: its own, as a notebook gives a group the colour its figure gives the
+// same part, or else the shared style's colour of its place (molstarview.drawing), the colours the figures use.
+function depictionMarkColor(data, number) {
+    if (data.marks[number]?.color) return data.marks[number].color;
+    const colors = data.drawing?.colors || [[0.8, 0.8, 0.8]];
+    return colors[number % colors.length];
+}
+
+// A colour of RGB fractions as CSS, for a legend swatch.
+function depictionCSS(color) {
+    return `rgb(${color.map(value => Math.round(255 * value)).join(', ')})`;
+}
+
 // The LaTeX unit of each kind of measurement, and the decimals its value is shown with.
 const DEPICTION_UNITS = {distance:['\\,\\text{\\AA}', 3], angle:['^\\circ', 1], dihedral:['^\\circ', 1]};
 
@@ -1337,18 +1383,20 @@ function depictionRGB(hex) {
     return [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
 }
 
-// RDKit.js drawing options for one frame: every coloured atom highlighted in its colour, then each mark's bonds (and
-// its atoms not already coloured) in the mark's colour. `colors` holds one #rrggbb or empty per viewer atom.
-function depictionDetails(data, drawing, colors, width, height, sizes = {}) {
-    const atoms = [], atomColors = {}, bonds = [], bondColors = {}, radii = {};
+// RDKit.js drawing options for one frame: the shared style's options (molstarview.drawing), the same RDKit options the
+// site's figures are drawn with, then every coloured atom highlighted in its colour and each mark's bonds and atoms in
+// the mark's colour, as a figure highlights its parts; where anything is highlighted the style's highlighted options,
+// black atom labels, are added, as in a figure. `colors` holds one #rrggbb or empty per viewer atom.
+function depictionDetails(data, drawing, colors, width, height) {
+    const atoms = [], atomColors = {}, bonds = [], bondColors = {};
     data.atoms.forEach((atom, index) => {
         const color = colors[atom];
-        if (color) { atoms.push(index); atomColors[index] = depictionRGB(color); radii[index] = Math.max(0.4, sizes[index] || 0); }
+        if (color) { atoms.push(index); atomColors[index] = depictionRGB(color); }
     });
     const pairs = data.bonds[drawing];
     const bondOf = (a, b) => pairs.findIndex(([x, y]) => (x === a && y === b) || (x === b && y === a));
     data.marks.forEach((mark, number) => {
-        const color = depictionRGB(DEPICTION_MARKS[number % DEPICTION_MARKS.length]);
+        const color = depictionMarkColor(data, number);
         const members = mark.atoms;
         const links = mark.kind === 'group'
             ? members.flatMap((a, i) => members.slice(i + 1).map(b => [a, b]))
@@ -1358,21 +1406,20 @@ function depictionDetails(data, drawing, colors, width, height, sizes = {}) {
             if (bond >= 0 && !(bond in bondColors)) { bonds.push(bond); bondColors[bond] = color; }
         }
         for (const atom of members) {
-            if (!(atom in atomColors)) { atoms.push(atom); atomColors[atom] = color; radii[atom] = Math.max(0.3, sizes[atom] || 0); }
+            if (!(atom in atomColors)) { atoms.push(atom); atomColors[atom] = color; }
         }
     });
-    // A highlight is a circle on the atom itself, not an ellipse over its whole label, so the hydrogens written in an
-    // NH3 or OH label are not coloured as if they were measured.
-    return {width, height, atoms, bonds, highlightAtomColors:atomColors, highlightBondColors:bondColors,
-        highlightAtomRadii:radii, atomHighlightsAreCircles:true, clearBackground:false, addStereoAnnotation:false,
-        standardColoursForHighlightedAtoms:true};
+    const style = data.drawing || {};
+    const highlighted = atoms.length || bonds.length ? style.highlighted : {};
+    return {...style.options, ...highlighted, width, height, atoms, bonds, highlightAtomColors:atomColors,
+        highlightBondColors:bondColors};
 }
 
 // Legend entries of the marks at one frame: a colour and a label, for a measurement one LaTeX expression of its
 // symbol, value and unit, such as $r_{1,6}=2.596\,\text{\AA}$; for a group its own Markdown label.
 function depictionLegend(data, frame) {
     return data.marks.map((mark, number) => {
-        const color = DEPICTION_MARKS[number % DEPICTION_MARKS.length];
+        const color = depictionCSS(depictionMarkColor(data, number));
         if (!mark.values) return {color, label:mark.label};
         const [unit, digits] = DEPICTION_UNITS[mark.kind];
         const value = mark.values[Math.min(frame, mark.values.length - 1)];
@@ -1410,22 +1457,36 @@ function molblockLayout(block) {
 // - a bond end at an atom without a label lies on that atom;
 // - every end of a single or dative bond lies on the line through its two atoms, even where RDKit stops the bond short
 //   of a label, so drawings whose atoms all carry labels, such as a metal complex, are placed exactly too.
-// - a highlighted atom's circle, which RDKit draws centred on the atom with the radius asked, `radii` in layout units,
-//   times the drawing's scale, so it fixes the atom's place and the scale at once, as for a metal whose bonds all meet
-//   at it.
+// - an unlabelled atom's highlight, which RDKit draws centred on the atom; a labelled atom's is fitted around its
+//   label instead, off the atom, and is not used.
 // Where the drawing alone does not fix them, as for lone molecules, `prior`, the places Python's RDKit found on the
 // same canvas in the SVG's units, joins the fit with a small weight: the drawing still decides every direction it
-// fixes, and the prior only the rest.
+// fixes, and the prior only the rest. `known`, the pixels per layout unit of an earlier drawing of the same molecule,
+// joins the same way: RDKit keeps a molecule's scale as it turns, so a metal whose bonds all meet at it, whose lines
+// fix its place but not the scale, is still placed exactly at every turn.
 // Returns the places and the length of a 1.5-unit bond on the drawing, or null when nothing fixes them.
-function depictionPlaces(svg, layout, prior = null, radii = {}) {
-    // RDKit.js writes attributes in single quotes, a browser serializing the drawing in double quotes.
-    const labelled = new Set([...svg.matchAll(/class=["']atom-(\d+)["']/g)].map(match => +match[1]));
+function depictionPlaces(svg, layout, prior = null, known = null) {
+    // Atoms drawn with a label: RDKit writes each label glyph as a path of the atom's class alone; a highlight ellipse
+    // carries the same class but is no label. RDKit.js writes attributes in single quotes, a browser serializing the
+    // drawing in double quotes.
+    const labelled = new Set([...svg.matchAll(/<path class=["']atom-(\d+)["']/g)].map(match => +match[1]));
     const kind = (a, b) => layout.bonds.find(([x, y]) => (x === a && y === b) || (x === b && y === a))?.[2];
     // Rows of the least-squares system in (s, p, q), with their right-hand sides.
     const rows = [], sides = [];
-    for (const match of svg.matchAll(/class=["']bond-\d+ atom-(\d+) atom-(\d+)["'] d=["']M ([-\d.]+),([-\d.]+) L ([-\d.]+),([-\d.]+)["']/g)) {
-        const [a, b] = [+match[1], +match[2]];
-        const ends = [[a, +match[3], +match[4]], [b, +match[5], +match[6]]];
+    // Each bond's segments in drawing order. RDKit draws a bond between two elements as two halves, each in its atom's
+    // colour, both written from the first atom to the second under the same class: the first half starts at the first
+    // atom, the last ends at the second, and the point they share is the bond's middle, on the line but at neither atom.
+    const segments = new Map();
+    for (const match of svg.matchAll(/class=["']bond-(\d+) atom-(\d+) atom-(\d+)["'] d=["']M ([-\d.]+),([-\d.]+) L ([-\d.]+),([-\d.]+)["']/g)) {
+        const [, bond, a, b, ...ends] = match.map(Number);
+        if (!segments.has(bond)) segments.set(bond, {a, b, points:[]});
+        segments.get(bond).points.push(ends);
+    }
+    for (const {a, b, points} of segments.values()) {
+        // The bond's two ends, then every other end of its segments, which lie on its line only.
+        const [first, last] = [points[0], points[points.length - 1]];
+        const ends = [[a, first[0], first[1]], [b, last[2], last[3]],
+            ...points.flatMap(([u0, v0, u1, v1], index) => [index ? [null, u0, v0] : null, index < points.length - 1 ? [null, u1, v1] : null]).filter(Boolean)];
         const type = kind(a, b);
         if (type !== 1 && type !== 9) continue;
         const [xa, ya] = layout.points[a], [xb, yb] = layout.points[b];
@@ -1436,7 +1497,7 @@ function depictionPlaces(svg, layout, prior = null, radii = {}) {
         for (const [atom, u, v] of ends) {
             // On the line: n . (u, v) = s n . (xa, -ya) + nx p + ny q.
             rows.push([nx * xa - ny * ya, nx, ny]); sides.push(nx * u + ny * v);
-            if (!labelled.has(atom)) {
+            if (atom !== null && !labelled.has(atom)) {
                 // On the atom, weighted above the line rows, which it implies.
                 const [x, y] = layout.points[atom];
                 rows.push([10 * x, 10, 0]); sides.push(10 * u);
@@ -1447,12 +1508,12 @@ function depictionPlaces(svg, layout, prior = null, radii = {}) {
     for (const tag of svg.matchAll(/<ellipse\b[^>]*>/g)) {
         const read = name => parseFloat((tag[0].match(new RegExp(`\\b${name}=["']([-\\d.]+)["']`)) || [])[1]);
         const atom = parseInt((tag[0].match(/class=["']atom-(\d+)["']/) || [])[1]);
-        const [u, v, reach] = [read('cx'), read('cy'), read('rx')];
-        if (!Number.isFinite(atom) || !layout.points[atom] || ![u, v].every(Number.isFinite)) continue;
+        const [u, v] = [read('cx'), read('cy')];
+        // RDKit fits a labelled atom's highlight around its label, so only an unlabelled atom's is centred on it.
+        if (!Number.isFinite(atom) || labelled.has(atom) || !layout.points[atom] || ![u, v].every(Number.isFinite)) continue;
         const [x, y] = layout.points[atom];
         rows.push([10 * x, 10, 0]); sides.push(10 * u);
         rows.push([-10 * y, 0, 10]); sides.push(10 * v);
-        if (radii[atom] > 0 && Number.isFinite(reach)) { rows.push([10 * radii[atom], 0, 0]); sides.push(10 * reach); }
     }
     if (prior) {
         prior.forEach(([u, v], atom) => {
@@ -1461,6 +1522,7 @@ function depictionPlaces(svg, layout, prior = null, radii = {}) {
             rows.push([-1e-3 * y, 0, 1e-3]); sides.push(1e-3 * v);
         });
     }
+    if (known > 0) { rows.push([1e-3, 0, 0]); sides.push(1e-3 * known); }
     // Normal equations of the least squares, solved by Cramer's rule; a near-singular system fixes nothing.
     const normal = [0, 1, 2].map(i => [0, 1, 2].map(j => rows.reduce((sum, row) => sum + row[i] * row[j], 0)));
     const right = [0, 1, 2].map(i => rows.reduce((sum, row, k) => sum + row[i] * sides[k], 0));
@@ -1592,32 +1654,39 @@ function placedBlock(block, points) {
     return lines.join('\n');
 }
 
-// RDKit's similarity map of a drawing, computed in the drawing's own frame: a Gaussian of each atom's weight at the
-// atom's drawn place, of RDKit's width for a map (`settings.width` layout units, to the drawing's scale), evaluated on
-// a grid over the atoms and three widths past them, so the field fades out instead of stopping at an edge. Returns the
-// grid's corner and step in drawing pixels, its size, and its values, row by row.
+// A map in the drawing's own frame: around each atom a Gaussian of RDKit's width for a similarity map
+// (`settings.width` layout units, to the drawing's scale), evaluated on a grid over the atoms and three widths past
+// them. Each point holds the atoms' coverage, the sum of their Gaussians, and the value they give it, their values
+// averaged with those Gaussians as weights: at an atom its own value, between atoms a blend, never a sum of
+// neighbours, so the map's colour at an atom is the colour the viewer gives that atom. It also holds RDKit's own
+// similarity-map field, each atom's value times its Gaussian summed, which the contour lines follow as RDKit's do: it
+// equals an atom's value at the atom, its neighbours adding under half a percent, and falls to zero away from them.
+// Returns the grid's corner and step in drawing pixels, its size, and the coverage, value and field of each point, row
+// by row.
 function fieldGrid(places, bond, weights, settings) {
     const sigma = settings.width * bond / 1.5, reach = 3.2 * sigma, step = sigma / 4;
     const xs = places.map(([x]) => x), ys = places.map(([, y]) => y);
     const left = Math.min(...xs) - reach, top = Math.min(...ys) - reach;
     const columns = Math.ceil((Math.max(...xs) + reach - left) / step) + 1;
     const rows = Math.ceil((Math.max(...ys) + reach - top) / step) + 1;
-    const values = new Float64Array(columns * rows), spread = 2 * sigma * sigma;
+    const cover = new Float64Array(columns * rows), sums = new Float64Array(columns * rows), spread = 2 * sigma * sigma;
     places.forEach(([x, y], atom) => {
         const weight = weights[atom];
-        if (!weight) return;
+        if (!Number.isFinite(weight)) return;
         // Each atom reaches only the cells within its three widths.
         const [c0, c1] = [Math.max(0, Math.floor((x - reach - left) / step)), Math.min(columns - 1, Math.ceil((x + reach - left) / step))];
         const [r0, r1] = [Math.max(0, Math.floor((y - reach - top) / step)), Math.min(rows - 1, Math.ceil((y + reach - top) / step))];
         for (let row = r0; row <= r1; row++) {
             const dy = top + row * step - y;
             for (let column = c0; column <= c1; column++) {
-                const dx = left + column * step - x;
-                values[row * columns + column] += weight * Math.exp(-(dx * dx + dy * dy) / spread);
+                const dx = left + column * step - x, gauss = Math.exp(-(dx * dx + dy * dy) / spread);
+                cover[row * columns + column] += gauss;
+                sums[row * columns + column] += weight * gauss;
             }
         }
     });
-    return {left, top, step, columns, rows, values};
+    const values = sums.map((sum, index) => cover[index] > 0 ? sum / cover[index] : 0);
+    return {left, top, step, columns, rows, cover, values, field:sums};
 }
 
 // RGB of a #rrggbb colour, 0 to 255.
@@ -1625,21 +1694,27 @@ function fieldRGB(hex) {
     return [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
 }
 
-// The field drawn under a drawing of `size` pixels: a canvas laid over the drawing's frame, reaching past it where the
-// field does. Each value shows the colour of its end of the viewer's scale with an opacity of its fraction of the
-// scale, so on the page it looks as RDKit's map does over white, and the field fades into the page where it is zero.
+// The colour the viewer gives a value: the value's place between the ends of `range`, clipped to them, on the colours
+// spaced evenly from the lower to the upper end, as molstarview.validation.color_atoms colours the atoms in 3D.
+function scaleColor(value, range, colors) {
+    const stops = colors.map(fieldRGB);
+    const position = Math.max(0, Math.min(1, (value - range[0]) / (range[1] - range[0]))) * (stops.length - 1);
+    const below = Math.min(Math.floor(position), stops.length - 2), part = position - below;
+    return stops[below].map((channel, i) => channel + part * (stops[below + 1][i] - channel));
+}
+
+// The map drawn under a drawing of `size` pixels: a canvas laid over the drawing's frame, reaching past it where the
+// map does. Each point takes the viewer's colour of its value (scaleColor), opaque where the atoms cover it and fading
+// into the page past them, so each atom shows exactly its 3D colour whatever the scale's colours or range.
 function depictionField(places, bond, weights, range, colors, settings, size) {
     const grid = fieldGrid(places, bond, weights, settings);
-    const bound = Math.max(Math.abs(range[0]), Math.abs(range[1])) || 1, signed = range[0] < 0;
-    const [low, high] = [fieldRGB(colors[0]), fieldRGB(colors[colors.length - 1])];
     // The values as an image of one pixel per grid point, drawn smoothed onto a canvas of four pixels per drawing pixel.
     const coarse = document.createElement('canvas');
     coarse.width = grid.columns; coarse.height = grid.rows;
     const image = coarse.getContext('2d').createImageData(grid.columns, grid.rows);
     grid.values.forEach((value, index) => {
-        const fraction = Math.max(-1, Math.min(1, value / bound));
-        const [r, g, b] = fraction < 0 && signed ? low : high;
-        image.data.set([r, g, b, Math.round(255 * Math.abs(signed ? fraction : Math.max(0, fraction)))], 4 * index);
+        const [r, g, b] = scaleColor(value, range, colors);
+        image.data.set([Math.round(r), Math.round(g), Math.round(b), Math.round(255 * Math.min(1, grid.cover[index]))], 4 * index);
     });
     coarse.getContext('2d').putImageData(image, 0, 0);
     const scale = 4, canvas = document.createElement('canvas');
@@ -1652,41 +1727,256 @@ function depictionField(places, bond, weights, range, colors, settings, size) {
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = 'high';
     context.drawImage(coarse, 0, 0, canvas.width, canvas.height);
+    if (settings.contours) {
+        // Contour lines at every round value inside the scale (depictionContours), each marked by a tick on the scale.
+        const levels = depictionContours(range);
+        // The molecule's own frame on the drawing, so each line's dashes start at the same place on the molecule
+        // whatever its turn.
+        const frame = moleculeFrame(places);
+        context.lineWidth = settings['contour-width'] * scale;
+        context.strokeStyle = 'rgba(0, 0, 0, 0.45)';
+        for (const level of levels.filter(value => value > range[0] && value < range[1])) {
+            // Every line dashed, as contour maps are traditionally drawn, a negative level's finer than a positive one's.
+            context.setLineDash(settings[level < 0 ? 'contour-dash-negative' : 'contour-dash'].map(length => length * scale));
+            // Each line is stroked as one path, its segments joined, so the dashes run along it instead of starting
+            // again at every grid cell.
+            context.beginPath();
+            for (const line of contourLines(fieldContour(grid, level)).map(line => anchoredLine(line, frame))) {
+                line.forEach(([x, y], index) => context[index ? 'lineTo' : 'moveTo']((x - grid.left) * scale, (y - grid.top) * scale));
+            }
+            context.stroke();
+        }
+    }
     return canvas;
 }
 
-// The highlight radius, in layout units, that wraps each labelled atom's element symbol in a drawing: the circle about
-// the atom's place that holds the symbol's glyphs, with a margin of a twentieth of a bond. RDKit draws a label as one
-// glyph per character; the symbol's are the full-height glyphs nearest the place, as many as its letters, so the
-// hydrogens and charges written beside it, and the subscripts, stay outside. The glyphs scale with the drawing, so the
-// radius holds whatever its size or turn. `found` gives the atoms' places, as depictionPlaces returns them.
-function labelSizes(svg, layout, found) {
-    const glyphs = new Map();
-    for (const match of svg.matchAll(/<path class=["']atom-(\d+)["'] d=["']([^"']*)["']/g)) {
-        // A glyph's outline as RDKit writes it, 'M 48.2 136.8 Q 48.2 134.8, 49.1 133.7 ...': its numbers in pairs.
-        const values = (match[2].match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
-        const numbers = values.flatMap((value, index) => index % 2 ? [] : [[value, values[index + 1]]]).filter(([, y]) => Number.isFinite(y));
-        if (!numbers.length) continue;
-        const xs = numbers.map(([x]) => x), ys = numbers.map(([, y]) => y);
-        const box = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
-        const atom = +match[1];
-        if (!glyphs.has(atom)) glyphs.set(atom, []);
-        glyphs.get(atom).push(box);
+// Two directions fixed to the molecule on its drawing, which turn and mirror with it: `along`, from the atoms' centre
+// towards the first atom away from it, and `across`, the part of the direction to the next such atom square to it.
+// Null for fewer than two atoms apart from the centre.
+function moleculeFrame(places) {
+    const centre = places.reduce(([x, y], [u, v]) => [x + u / places.length, y + v / places.length], [0, 0]);
+    const offsets = places.map(([x, y]) => [x - centre[0], y - centre[1]]);
+    const size = ([x, y]) => Math.hypot(x, y), scale = Math.max(...offsets.map(size)) || 1;
+    const first = offsets.find(offset => size(offset) > 1e-3 * scale);
+    if (!first) return null;
+    const along = first.map(value => value / size(first));
+    for (const offset of offsets) {
+        const dot = offset[0] * along[0] + offset[1] * along[1];
+        const square = [offset[0] - dot * along[0], offset[1] - dot * along[1]];
+        if (size(square) > 1e-3 * scale) return {centre, along, across:square.map(value => value / size(square))};
     }
-    const sizes = {}, unit = found.bond / 1.5;
-    for (const [atom, boxes] of glyphs) {
-        const place = found.places[atom], letters = (layout.symbols?.[atom] || 'X').length;
-        if (!place) continue;
-        const tallest = Math.max(...boxes.map(([, top, , bottom]) => bottom - top));
-        const centre = ([left, top, right, bottom]) => [(left + right) / 2, (top + bottom) / 2];
-        const symbol = boxes.filter(([, top, , bottom]) => bottom - top > 0.75 * tallest)
-            .sort((a, b) => Math.hypot(...centre(a).map((v, i) => v - place[i])) - Math.hypot(...centre(b).map((v, i) => v - place[i])))
-            .slice(0, letters);
-        const reach = Math.max(...symbol.flatMap(([left, top, right, bottom]) =>
-            [[left, top], [right, top], [left, bottom], [right, bottom]].map(([x, y]) => Math.hypot(x - place[0], y - place[1]))));
-        if (Number.isFinite(reach)) sizes[atom] = reach / unit + 0.075;
+    // A straight molecule: across is the perpendicular, which still turns with it but cannot tell a mirror.
+    return {centre, along, across:[-along[1], along[0]]};
+}
+
+// A contour line started and run in the molecule's own frame, so its dashes keep their place on the molecule as the
+// drawing turns: a ring starts exactly where it crosses the ray from its own centre along `frame.along`, a point
+// interpolated on the line rather than one of its traced vertices, and runs on towards `frame.across`; an open line
+// starts at its end furthest along. The line's shape is unchanged.
+function anchoredLine(line, frame) {
+    if (!frame || line.length < 3) return line;
+    const reach = ([x, y]) => (x - frame.centre[0]) * frame.along[0] + (y - frame.centre[1]) * frame.along[1];
+    const closed = Math.hypot(line[0][0] - line[line.length - 1][0], line[0][1] - line[line.length - 1][1]) < 1e-3;
+    if (!closed) return reach(line[0]) >= reach(line[line.length - 1]) ? line : [...line].reverse();
+    const ring = line.slice(0, -1);
+    const centre = ring.reduce(([x, y], [u, v]) => [x + u / ring.length, y + v / ring.length], [0, 0]);
+    const [dx, dy] = frame.along;
+    // The ray centre + r (dx, dy), r > 0, meets each edge a + t (b - a), 0 <= t < 1, where the cross products agree.
+    let best = null;
+    ring.forEach((a, index) => {
+        const b = ring[(index + 1) % ring.length], [ex, ey] = [b[0] - a[0], b[1] - a[1]];
+        const denominator = dx * ey - dy * ex;
+        if (Math.abs(denominator) < 1e-12) return;
+        const [ax, ay] = [a[0] - centre[0], a[1] - centre[1]];
+        const r = (ax * ey - ay * ex) / denominator, s = (ax * dy - ay * dx) / denominator;
+        if (r > 0 && s >= 0 && s < 1 && (!best || r > best.r)) best = {r, index, point:[a[0] + s * ex, a[1] + s * ey]};
+    });
+    if (!best) return line;
+    // From the crossing round the ring and back to it, in the direction that heads towards `across`.
+    const after = [...ring.slice(best.index + 1), ...ring.slice(0, best.index + 1)];
+    let turned = [best.point, ...after, best.point];
+    const side = ([x, y]) => (x - best.point[0]) * frame.across[0] + (y - best.point[1]) * frame.across[1];
+    if (side(turned[1]) < side(turned[turned.length - 2])) turned = [...turned].reverse();
+    return turned;
+}
+
+// The segments of a contour joined into lines: chains of segments that meet end to end, a closed ring returning to its
+// first point. Ends meet when they agree to a thousandth of a pixel, as the two cells beside a grid edge place its
+// crossing alike up to rounding. Returns each line as its points in order.
+function contourLines(segments) {
+    const key = ([x, y]) => `${Math.round(x * 1000)},${Math.round(y * 1000)}`;
+    const ends = new Map();
+    segments.forEach((segment, index) => segment.forEach(point => {
+        const name = key(point);
+        if (!ends.has(name)) ends.set(name, []);
+        ends.get(name).push(index);
+    }));
+    const used = new Set(), lines = [];
+    // From a point, the unused segment there and its other end.
+    const next = point => {
+        const index = (ends.get(key(point)) || []).find(other => !used.has(other));
+        if (index === undefined) return null;
+        used.add(index);
+        const [a, b] = segments[index];
+        return key(a) === key(point) ? b : a;
+    };
+    // Open lines start at an end only one segment reaches, then rings anywhere.
+    const order = [...segments.keys()].sort((a, b) => Math.min(...segments[a].map(p => ends.get(key(p)).length))
+        - Math.min(...segments[b].map(p => ends.get(key(p)).length)));
+    for (const start of order) {
+        if (used.has(start)) continue;
+        used.add(start);
+        let [first, last] = segments[start];
+        if (ends.get(key(last)).length === 1) [first, last] = [last, first];
+        const line = [first, last];
+        for (let point = next(last); point; point = next(point)) line.push(point);
+        lines.push(line);
     }
-    return sizes;
+    return lines;
+}
+
+// The segments of the contour of a map's similarity-map field at `level`, by marching squares on its grid with each
+// crossing placed by linear interpolation along the cell's edge, in drawing pixels: a ring around each atom whose value
+// passes the level, as RDKit's similarity maps draw their contour lines; the caller dashes them. A saddle cell is split by its centre's value.
+function fieldContour(grid, level) {
+    const segments = [], {columns, rows, step, left, top} = grid, values = grid.field;
+    const point = (row, column) => [left + column * step, top + row * step];
+    const cross = (a, b, va, vb) => {
+        const t = (level - va) / (vb - va);
+        return [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])];
+    };
+    for (let row = 0; row < rows - 1; row++) {
+        for (let column = 0; column < columns - 1; column++) {
+            const indices = [row * columns + column, row * columns + column + 1, (row + 1) * columns + column + 1, (row + 1) * columns + column];
+            const v = indices.map(index => values[index]);
+            const corners = [point(row, column), point(row, column + 1), point(row + 1, column + 1), point(row + 1, column)];
+            // The crossings on the four edges, top, right, bottom, left, where the level lies between their ends.
+            const edges = [0, 1, 2, 3].map(edge => {
+                const [a, b] = [edge, (edge + 1) % 4];
+                return (v[a] < level) !== (v[b] < level) ? cross(corners[a], corners[b], v[a], v[b]) : null;
+            });
+            const found = [0, 1, 2, 3].filter(edge => edges[edge]);
+            if (found.length === 2) segments.push([edges[found[0]], edges[found[1]]]);
+            else if (found.length === 4) {
+                // A saddle: the centre's side of the level decides which corners the lines cut off.
+                const centre = (v[0] + v[1] + v[2] + v[3]) / 4;
+                const pairs = (centre < level) === (v[0] < level) ? [[0, 1], [2, 3]] : [[3, 0], [1, 2]];
+                for (const [a, b] of pairs) segments.push([edges[a], edges[b]]);
+            }
+        }
+    }
+    return segments;
+}
+
+// Values a gradient legend labels between `low` and `high`, as Vega labels a scale: about `count` round steps of one,
+// two or five times a power of ten, d3's rule, so the 2D map's scale reads as the pages' Altair legends do. Returns the
+// values and the decimals that write the step.
+function depictionTicks(low, high, count = 5) {
+    const rough = (high - low) / count;
+    if (!(rough > 0)) return {values:[low], decimals:0};
+    const power = Math.floor(Math.log10(rough)), error = rough / 10 ** power;
+    const step = (error >= Math.sqrt(50) ? 10 : error >= Math.sqrt(10) ? 5 : error >= Math.sqrt(2) ? 2 : 1) * 10 ** power;
+    const values = [];
+    for (let k = Math.ceil(low / step - 1e-9); k * step <= high + 1e-9 * step; k++) values.push(k * step);
+    return {values, decimals:Math.max(0, -Math.floor(Math.log10(step) + 1e-9))};
+}
+
+// The 2D map's colour scale: its bar's length in pixels, the font of its labels, as the pages' Altair legends set them,
+// and the least gap between two labels.
+const DEPICTION_SCALE = {length:200, font:'14px system-ui', gap:6};
+
+// The width in pixels of a scale label in the scale's font, measured on a canvas as the page draws it; an estimate of
+// eight pixels a character where no canvas can measure, as outside a browser.
+function depictionTextWidth(text) {
+    try {
+        depictionTextWidth.context ||= document.createElement('canvas').getContext('2d');
+        depictionTextWidth.context.font = DEPICTION_SCALE.font;
+        return depictionTextWidth.context.measureText(text).width;
+    } catch {
+        return 8 * text.length;
+    }
+}
+
+// A round value written as the scale writes it between its ends: with the step's decimals and d3's minus sign.
+function depictionRound(value, decimals) {
+    return (Math.abs(value) < 1e-12 ? 0 : value).toFixed(decimals).replace('-', '−');
+}
+
+// The levels of a 2D map's contour lines: every round value of depictionTicks strictly inside the scale's range, so a
+// map keeps its lines however few labels fit on its scale, which marks each with a tick. Zero is no level: the field
+// falls to zero everywhere away from the atoms, so its zero contour is only noise.
+function depictionContours(range) {
+    return Array.from(depictionTicks(range[0], range[1]).values)
+        .filter(value => value > range[0] && value < range[1] && Math.abs(value) > 1e-12);
+}
+
+// The round values a 2D map's scale labels between its exact ends: each value of
+// depictionTicks whose label, measured in the scale's font, fits on the bar clear of the end labels, flush with the
+// bar's ends, and of the labels already kept by DEPICTION_SCALE.gap, zero first, as Vega drops overlapping legend labels.
+function depictionLevels(range) {
+    const [low, high] = range, {values, decimals} = depictionTicks(low, high);
+    const {length, gap} = DEPICTION_SCALE;
+    const taken = [[0, depictionTextWidth(depictionEnd(low)) + gap],
+        [length - depictionTextWidth(depictionEnd(high)) - gap, length]];
+    const kept = [];
+    for (const value of [...values].sort((a, b) => (Math.abs(a) > 1e-12) - (Math.abs(b) > 1e-12))) {
+        const x = (value - low) / (high - low) * length, half = depictionTextWidth(depictionRound(value, decimals)) / 2;
+        const span = [x - half - gap, x + half + gap];
+        if (x - half < 0 || x + half > length || taken.some(([a, b]) => span[0] < b && span[1] > a)) continue;
+        taken.push(span);
+        kept.push(value);
+    }
+    return {values:kept.sort((a, b) => a - b), decimals};
+}
+
+// A scale end written as the 3D view's colour scale writes it, to three significant figures with a true minus sign, so
+// the two scales show the same limits in the same digits.
+function depictionEnd(value) {
+    return Math.abs(value) < 1e-12 ? '0' : Number(value.toPrecision(3)).toString().replace('-', '\u2212');
+}
+
+// The colour scale of a 2D map, drawn as Vega-Lite draws a gradient legend at the bottom of the pages' Altair charts:
+// the quantity above in bold, a bar 16 pixels high as long as DEPICTION_SCALE sets, its labels below, the end ones flush with the bar,
+// in the charts' font and 14-pixel text. The bar is the map's own scale, the viewer's colours spaced evenly over its
+// range, the same the 3D view colours by, and its ends are labelled with the 3D scale's exact limits; each contour
+// level has a tick under the bar, and its round value is written where it fits. `label` is the quantity and unit,
+// $...$ LaTeX allowed.
+function depictionScale(label, range, colors) {
+    const [low, high] = range;
+    const scale = document.createElement('div');
+    scale.className = 'molstarview-depiction-scale';
+    const title = document.createElement('div');
+    title.className = 'molstarview-depiction-scale-title';
+    title.innerHTML = richHTML(label || '');
+    const bar = document.createElement('div');
+    bar.className = 'molstarview-depiction-scale-bar';
+    bar.style.background = `linear-gradient(to right, ${colors.map((color, i) => `${color} ${(100 * i / (colors.length - 1)).toFixed(3)}%`).join(', ')})`;
+    const labels = document.createElement('div');
+    labels.className = 'molstarview-depiction-scale-labels';
+    const {values, decimals} = depictionLevels(range);
+    // The exact ends, then the round values that fit between them.
+    const marks = [[low, depictionEnd(low)], ...values.map(value => [value, depictionRound(value, decimals)]),
+        [high, depictionEnd(high)]];
+    bar.style.width = labels.style.width = `${DEPICTION_SCALE.length}px`;
+    for (const [value, written] of marks) {
+        const fraction = (value - low) / (high - low);
+        const text = document.createElement('span');
+        text.textContent = written;
+        text.style.left = `${100 * fraction}%`;
+        text.style.transform = fraction < 1e-9 ? 'none' : fraction > 1 - 1e-9 ? 'translateX(-100%)' : 'translateX(-50%)';
+        labels.append(text);
+    }
+    // A tick under the bar at each contour level, so every line of the map has its place on the scale.
+    const ticks = document.createElement('div');
+    ticks.className = 'molstarview-depiction-scale-ticks';
+    ticks.style.width = `${DEPICTION_SCALE.length}px`;
+    for (const level of depictionContours(range)) {
+        const tick = document.createElement('span');
+        tick.style.left = `${100 * (level - low) / (high - low)}%`;
+        ticks.append(tick);
+    }
+    scale.append(...(label ? [title] : []), bar, ticks, labels);
+    return scale;
 }
 
 // The depicted atom nearest a point of the drawing, within half a bond, or -1.
@@ -1746,7 +2036,7 @@ function depictionWarning(text) {
 // `view.projected(atoms)` gives each viewer atom's place on the screen, x right and y up, and `view.listen(listener)`
 // calls the listener whenever the camera moves, returning its disposer. A new drawing is prepared
 // off screen, a map's image decoded first, and swapped in within one animation frame, so changing frames or
-// snapshots never shows an empty or half-drawn panel; the panel keeps its height between drawings.
+// snapshots never shows an empty or half-drawn panel; the panel's height follows the drawing shown.
 function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
     const data = model.get('depiction');
     if (!data || !data.molblocks || !data.molblocks.length) return () => {};
@@ -1756,21 +2046,30 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
     picture.className = 'molstarview-depiction-picture';
     const legend = document.createElement('div');
     legend.className = 'molstarview-depiction-legend';
-    panel.append(picture, legend);
+    // The colour scale of the map shown, if any, between the drawing and the legend of its marks.
+    const scaleBox = document.createElement('div');
+    panel.append(picture, scaleBox, legend);
     el.append(panel);
-    // RDKit.js molecules and parsed layouts, by drawing and its turn ('2:30m'), and the unturned layouts by drawing.
+    // The drawing a map is shown on: the depiction's own, or, for a map that draws some hydrogens besides, the variant
+    // Python built with them (molstarview.depiction), with the depiction's other keys; by its number, 0 for the own.
+    const variantOf = set => {
+        const number = data.map_variants?.[set] || 0;
+        return {number, look:number ? {...data, ...data.variants[number - 1]} : data};
+    };
+    // RDKit.js molecules and parsed layouts, by variant, drawing and turn ('1/2:30m'), and the unturned layouts by variant
+    // and drawing.
     const mols = {}, layouts = {};
-    // Per drawing, the highlight radius that wraps each labelled atom's symbol, in layout units, the same at every turn.
-    const sizesOf = {};
-    // The molfiles drawn; those of a depiction built without RDKit are replaced by their RDKit.js layout.
-    const blocks = [...data.molblocks];
+    // Per variant and drawing, its pixels per layout unit as last placed, which the next turn of it keeps.
+    const scaleOf = {};
+    // Per variant, the molfiles drawn; those of a depiction built without RDKit are replaced by their RDKit.js layout.
+    const blocksOf = {};
     let disposed = false, shown = null, rdkit = null, ticket = 0;
-    // The shown drawing's atom places and the viewer atom ringed in it.
-    let found = null, ringed = null;
+    // The shown drawing's atom places, the depiction or variant it draws, and the viewer atom ringed in it.
+    let found = null, current = data, ringed = null;
     const ring = () => {
         const svg = picture.querySelector('svg');
         svg?.querySelector('.molstarview-depiction-hover')?.remove();
-        const atom = ringed === null || !found ? -1 : depictedAtom(data, ringed);
+        const atom = ringed === null || !found ? -1 : depictedAtom(current, ringed);
         if (!svg || atom < 0) return;
         const [x, y] = found.places[atom];
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -1788,7 +2087,7 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
         if (!matrix) return;
         const spot = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix);
         const atom = depictionNearest(found, spot.x, spot.y);
-        const target = atom < 0 ? null : data.atoms[atom];
+        const target = atom < 0 ? null : current.atoms[atom];
         if (target === ringed) return;
         ringed = target;
         hover.show(target);
@@ -1798,8 +2097,8 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
     picture.addEventListener('pointermove', point);
     picture.addEventListener('pointerleave', leave);
     // Legend entries: a swatch, the label and the value at the shown frame.
-    const legendItems = index => {
-        const items = depictionLegend(data, index).map(entry => {
+    const legendItems = (look, index) => {
+        const items = depictionLegend(look, index).map(entry => {
             const item = document.createElement('span');
             item.className = 'molstarview-depiction-item';
             const swatch = document.createElement('span');
@@ -1812,39 +2111,42 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
         });
         // A frame whose bond orders RDKit could not assign, as for an open-shell structure, shows single bonds, and
         // the legend a warning sign that explains it on hover.
-        const drawing = data.frames.length ? data.frames[Math.min(index, data.frames.length - 1)] : 0;
-        if (data.orders && !data.orders[drawing]) {
-            items.push(depictionWarning(depictionText(data.layout === 'browser' ? 'browser-bonds' : 'single-bonds')));
+        const drawing = look.frames.length ? look.frames[Math.min(index, look.frames.length - 1)] : 0;
+        if (look.orders && !look.orders[drawing]) {
+            items.push(depictionWarning(depictionText(look.layout === 'browser' ? 'browser-bonds' : 'single-bonds')));
         }
         return items;
     };
     const draw = async () => {
         if (disposed) return;
         const index = frame();
-        const drawing = data.frames.length ? data.frames[Math.min(index, data.frames.length - 1)] : 0;
         const maps = data.maps || [];
         const set = maps.length > 1 ? snapshot() : 0;
+        const {number, look} = maps.length ? variantOf(set) : {number:0, look:data};
+        const drawing = look.frames.length ? look.frames[Math.min(index, look.frames.length - 1)] : 0;
+        const blocks = blocksOf[number] ||= [...look.molblocks];
+        const base = `${number}/${drawing}`;
         // A depiction Python built without RDKit, as in the calculation viewer, has each molfile laid out here once,
         // by RDKit.js's own 2D layout, before anything is drawn from it.
-        if (data.layout === 'browser' && !layouts[drawing]) {
+        if (look.layout === 'browser' && !layouts[base]) {
             if (!rdkit) return;
             const mol = rdkit.get_mol(blocks[drawing], JSON.stringify({removeHs:false, sanitize:false}));
             try { if (mol.set_new_coords()) blocks[drawing] = mol.get_molblock(); } finally { mol.delete(); }
         }
-        layouts[drawing] ||= molblockLayout(blocks[drawing]);
+        layouts[base] ||= molblockLayout(blocks[drawing]);
         // The drawing as the view now shows the molecule; until the camera is known, or for a molecule the view cannot
         // orient, Python's layout, which faces the initial view.
-        const turn = view ? viewLayout(layouts[drawing], view.projected(data.atoms) || []) : null;
+        const turn = view ? viewLayout(layouts[base], view.projected(look.atoms) || []) : null;
         // The drawing changes only when an atom moves by a tenth of a bond or more.
         const facing = turn ? turn.map(([x, y]) => `${Math.round(x * 10)},${Math.round(y * 10)}`).join(' ') : '';
-        const key = [drawing, index, set, maps[set] ? 'map' : snapshot(), facing].join(':');
+        const key = [number, drawing, index, set, maps[set] ? 'map' : snapshot(), facing].join(':');
         if (key === shown) return;
         const mine = ++ticket;
         if (!rdkit) return;
-        const which = `${drawing}:${facing}`;
+        const which = `${base}:${facing}`;
         if (!mols[which]) {
             // One turned molecule per drawing is kept: the one shown.
-            for (const old of Object.keys(mols)) if (old.startsWith(`${drawing}:`)) { mols[old].delete(); delete mols[old]; }
+            for (const old of Object.keys(mols)) if (old.startsWith(`${base}:`)) { mols[old].delete(); delete mols[old]; }
             const block = turn ? placedBlock(blocks[drawing], turn) : blocks[drawing];
             mols[which] = rdkit.get_mol(block, JSON.stringify({removeHs:false, sanitize:false}));
             layouts[which] = molblockLayout(block);
@@ -1854,20 +2156,12 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
         const colors = weights ? [] : shares?.colors || model.get('atom_colors') || [];
         // RDKit sizes the canvas to the drawing as it is turned, at its own scale, the one Python's natural size and
         // the site's figures use, so the molecule keeps its size at every turn.
-        const details = sizes => depictionDetails(data, drawing, colors, -1, -1, sizes);
-        const drawn = sizes => mols[which].get_svg_with_highlights(JSON.stringify(details(sizes)));
+        const details = depictionDetails(look, drawing, colors, -1, -1);
+        const text = mols[which].get_svg_with_highlights(JSON.stringify(details));
         // Python's places are those of its own turn, so they help only a drawing shown with that turn.
-        const placed = (text, sizes) => depictionPlaces(text, layouts[which], null, details(sizes).highlightAtomRadii)
-            || (turn ? null : depictionPlaces(text, layouts[which], depictionDrawn(data, drawing)?.places, details(sizes).highlightAtomRadii));
-        // The highlight of each labelled atom wraps its element symbol, measured on a first drawing of this molecule; a
-        // drawing that cannot be placed is measured again at the next turn.
-        if (!sizesOf[drawing]) {
-            const first = drawn({});
-            const found = placed(first, {});
-            if (found) sizesOf[drawing] = labelSizes(first, layouts[which], found);
-        }
-        const text = drawn(sizesOf[drawing] || {});
-        const places = placed(text, sizesOf[drawing] || {});
+        const places = depictionPlaces(text, layouts[which], null, scaleOf[base])
+            || (turn ? null : depictionPlaces(text, layouts[which], depictionDrawn(look, drawing)?.places, scaleOf[base]));
+        if (places) scaleOf[base] = places.bond / 1.5;
         // The drawing's canvas in pixels, as RDKit sized it.
         const size = (text.match(/viewBox=["']0 0 ([\d.]+) ([\d.]+)["']/) || [0, 1, 1]).slice(1).map(Number);
         const next = document.createElement('div');
@@ -1880,14 +2174,18 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
         }
         // Only the latest request is shown, whichever finishes preparing first.
         if (disposed || mine !== ticket) return;
-        const items = legendItems(index);
+        const items = legendItems(look, index);
+        const scale = weights ? [depictionScale(data.map_labels?.[set] || '', data.map_scales[set], data.map_colors)] : [];
         requestAnimationFrame(() => {
             if (disposed || mine !== ticket) return;
-            picture.style.minHeight = picture.offsetHeight ? picture.offsetHeight + 'px' : '';
+            // The new drawing is complete, so it replaces the old one within this frame without an empty moment; the
+            // panel then takes the new drawing's own height, shrinking again when a turn makes the drawing shorter.
             picture.replaceChildren(next);
+            scaleBox.replaceChildren(...scale);
             legend.replaceChildren(...items);
             shown = key;
             found = places;
+            current = look;
             ring();
         });
     };
@@ -1975,6 +2273,8 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
                 extensions: ['mvs']
             });
             const disposeAlignment = installAxisAlignment(container, viewer);
+            // The rule before a dropdown that wraps to open a row of the top bar is hidden.
+            const disposeRowRules = installRowRules(container);
             const disposeLabels = installControlLabels(container);
             // Secondary clicks are handled by the alignment and reset gestures, not Molstar's focus bindings. A click
             // neither moves the camera onto the clicked atoms nor focuses them: Molstar's focus draws its own copy of
@@ -2585,7 +2885,7 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
             await update(model.get('requested'));
             // The 2D structure below the viewer follows the shown frame, which every frame or snapshot change commits
             // to the model's index.
-            const disposeDepiction = installDepiction({model, el,
+            const depictionHooks = {
                 frame: () => viewer.plugin.state.data.cells.get(modelRef)?.transform.params.modelIndex ?? 0,
                 snapshot: currentSnapshot,
                 watch: listener => {
@@ -2644,7 +2944,17 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
                         if (atom === null || !structure) { highlights.clearHighlights(); return; }
                         highlights.highlightOnly({loci:atomLocations(structure)(atom)});
                     },
-                }});
+                }};
+            // A drawing displayed apart (MolstarViewer.parts) is told the hooks and follows them from its own output;
+            // otherwise the structure is drawn below the view.
+            const link = model.get('drawn_apart') ? viewerLink(model.get('uid')) : null;
+            if (link) {
+                link.hooks = depictionHooks;
+                link.listeners.forEach(listener => listener(depictionHooks));
+            }
+            const disposeDepiction = link
+                ? () => { link.hooks = null; link.listeners.forEach(listener => listener(null)); }
+                : installDepiction({model, el, ...depictionHooks});
             const disposeFrames = animated ? installFrameControls() : () => {};
             const disposeTrail = model.get('trail') ? installTrail() : () => {};
             let disposeField = installFieldControls();
@@ -3935,6 +4245,7 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
                 if (closeSnapshotMenu) document.removeEventListener('click', closeSnapshotMenu);
                 disposeWheel();
                 disposeAlignment();
+                disposeRowRules();
                 viewMenu?.dispose();
                 displayMenu?.dispose();
                 disposeLabels();
@@ -3950,7 +4261,51 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view}) {
 // The widget's entry point: viewers built as the page loads, stills for printing, Molstar fetched while idle.
 // Every viewer is built as soon as the page loads. Printing cannot draw WebGL, so just before the page prints,
 // each viewer leaves a still of its current view, which print styles show in its place.
+// A viewer and its drawing displayed apart (MolstarViewer.parts) meet here, by the viewer's uid, whichever of the two
+// the page builds first: the viewer leaves its model and how to start it, and once mounted the hooks the drawing follows
+// (frame, snapshot, watch, view, hover), announcing them, or null when it goes, to the drawing's listeners.
+function viewerLink(uid) {
+    const links = globalThis.molstarviewLinks ||= new Map();
+    if (!links.has(uid)) links.set(uid, {model:null, start:null, hooks:null, listeners:new Set()});
+    return links.get(uid);
+}
+
+// A viewer's 2D structure drawn as its own output: it asks its viewer to mount when it nears the viewport, draws with
+// the viewer's model once the viewer announces its hooks, and holds its expected height until the first drawing shows.
+function initializeDrawing({model, el}) {
+    el.style.minHeight = (model.get('height') || 0) + 'px';
+    const link = viewerLink(model.get('target'));
+    let dispose = () => {}, disposed = false;
+    const attach = hooks => {
+        dispose();
+        dispose = () => {};
+        if (!hooks || !link.model || disposed) return;
+        dispose = installDepiction({model:link.model, el, ...hooks});
+    };
+    link.listeners.add(attach);
+    if (link.hooks) attach(link.hooks);
+    // The reserved height goes once a drawing is shown, so the figure takes the drawing's own.
+    const shown = new MutationObserver(() => {
+        if (el.querySelector('.molstarview-depiction svg')) { el.style.minHeight = ''; shown.disconnect(); }
+    });
+    shown.observe(el, {childList:true, subtree:true});
+    const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) link.start?.();
+    }, {rootMargin:'200px'});
+    observer.observe(el);
+    return () => {
+        disposed = true;
+        observer.disconnect();
+        shown.disconnect();
+        link.listeners.delete(attach);
+        dispose();
+        el.replaceChildren();
+    };
+}
+
 function initialize({model, el}) {
+    // A Drawing widget names the viewer it draws.
+    if (model.get('target')) return initializeDrawing({model, el});
     el.style.minHeight = model.get('height') + 'px';
     if (!document.getElementById('molstar-print-styles')) {
         const styles = document.createElement('style');
@@ -3986,6 +4341,8 @@ function initialize({model, el}) {
         if (entries.some(entry => entry.isIntersecting)) void start();
     }, {rootMargin: '200px'});
     observer.observe(el);
+    // A viewer whose drawing is displayed apart lets the drawing start it too, when the drawing nears the viewport first.
+    if (model.get('drawn_apart')) Object.assign(viewerLink(model.get('uid')), {model, start});
     // Shader linking can block on the first draw when parallel shader compilation is unavailable. Warm one nearby,
     // visible-tab viewer during idle time; it populates the shared program cache before the user scrolls to it.
     // The lock prevents a page with many viewers from mounting them all at once.
