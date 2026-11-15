@@ -1,0 +1,26 @@
+
+/* Math axis labels may extend beyond Vega's native text bounds after zooming. */
+.cell-output.cell-output-display:has(.vega-embed) { overflow: visible; }
+/* A chart's redraw lays out only the chart, not the rest of the page. */
+.vega-embed { contain: layout style; }
+.vega-embed .role-axis-title > text { visibility: hidden; }
+.vega-embed .katex, #vg-tooltip-element .katex { font-size: 1em; }
+#vg-tooltip-element, #vg-tooltip-element td, #vg-tooltip-element th { font-size: 14px; font-family: system-ui; }
+/* The info button beside a described quantity, in a table header or a plot title, and the explanation it opens. */
+/* Its colours are its own wherever it sits: a host's id-scoped rules, such as Mermaid's for the spans and the node
+   shapes of a diagram, would otherwise outrank them. */
+.quantity-info-icon { display: inline-flex; vertical-align: -0.1em; margin-left: 0.3em; width: 0.9em; height: 0.9em;
+    color: #8c8c8c !important; cursor: help; pointer-events: auto; }
+.quantity-info-icon:hover { color: #333333 !important; }
+.quantity-info-icon svg { width: 100%; height: 100%; }
+.quantity-info-icon svg, .quantity-info-icon svg * { fill: currentColor !important; stroke: none !important; }
+/* The warning sign beside a value or label that needs care, its caveat opening in the same popover. */
+.quantity-warning-icon { display: inline-flex; vertical-align: -0.1em; margin-left: 0.3em; width: 0.9em; height: 0.9em;
+    color: #e0a800 !important; cursor: help; pointer-events: auto; }
+.quantity-warning-icon:hover { color: #b38600 !important; }
+.quantity-warning-icon svg { width: 100%; height: 100%; }
+.quantity-warning-icon svg, .quantity-warning-icon svg * { fill: currentColor !important; stroke: none !important; }
+.quantity-popover { max-width: 22rem; font-size: 0.875rem; line-height: 1.4; text-align: left; white-space: normal;
+    font-weight: normal; }
+.quantity-popover ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+.quantity-popover ul:first-child { margin-top: 0; }

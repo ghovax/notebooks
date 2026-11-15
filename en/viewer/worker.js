@@ -2,15 +2,27 @@
 //
 // The page sends the files dropped on it; they are written to Pyodide's in-memory file system and read there by
 // calcpages.browser, with the same runflow parsers and page sections as the calculation pages. Nothing is uploaded:
-// the network is used only to load Pyodide, its packages and python.zip, the viewer's own Python sources.
+// the network is used only to load Pyodide, its packages, RDKit's and PySCF's wheels and python.zip, the viewer's own
+// Python.
 import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyodide.mjs";
 
-// Pyodide's builds of the packages it provides, compiled to bytecode, loaded while Pyodide itself starts; the pure
-// Python packages it does not provide come precompiled in python.zip, under site-packages. SciPy, the largest, is
-// needed only to draw orbitals and densities from a formatted checkpoint, so it is loaded when one is first dropped.
+// Pyodide's builds of the packages it provides, compiled to bytecode, loaded while Pyodide itself starts; this
+// repository's libraries and the pure Python packages Pyodide does not provide come precompiled in python.zip, under
+// site-packages, as their wheels install them.
 const BUILT = ["numpy", "pandas", "pyyaml", "tzdata", "ipython", "pydantic", "jsonschema", "jinja2", "narwhals",
   "packaging", "platformdirs", "typing-extensions", "networkx"];
-const ON_DEMAND = { scipy: /\.fchk?$/i };
+// Pyodide does not build RDKit or PySCF: researchsite.pyodide_wheels builds their wheels, which sit beside the page.
+const WHEELS = {
+  rdkit: new URL("rdkit-2026.9.1-cp314-cp314-pyemscripten_2026_0_wasm32.whl", import.meta.url).href,
+  pyscf: new URL("pyscf-2.15.0-py3-none-pyemscripten_2026_0_wasm32.whl", import.meta.url).href,
+};
+// Packages loaded when a dropped file first needs them, each entry's stages in turn: RDKit, which draws every
+// structure, with the first file; PySCF, which evaluates a formatted checkpoint's orbitals and densities, with the
+// first checkpoint, after SciPy, h5py and OpenBLAS, since its libraries link OpenBLAS.
+const ON_DEMAND = [
+  [/./, [[WHEELS.rdkit]]],
+  [/\.fchk?$/i, [["scipy", "h5py", "libopenblas"], [WHEELS.pyscf]]],
+];
 const ROOT = "/home/pyodide/viewer";
 // The language the page asks its sections in, from the worker's address; English when it names none.
 const LANGUAGE = /^[a-z]{2}$/.test(new URL(import.meta.url).searchParams.get("language") || "")
@@ -29,19 +41,20 @@ async function start() {
   // is replaced by a bare module over the same folder, so its display and core modules import as they are.
   pyodide.runPython(`
 import importlib.util, sys, types
-for folder in ("site-packages", "library/runflow/src", "library/molstarview/src", "library/calcpages/src"):
-    sys.path.insert(0, "${ROOT}/" + folder)
+sys.path.insert(0, "${ROOT}/site-packages")
 spec = importlib.util.find_spec("IPython")
 package = types.ModuleType("IPython")
 package.__spec__, package.__path__, package.__file__ = spec, spec.submodule_search_locations, spec.origin
 package.get_ipython = lambda: None
 sys.modules["IPython"] = package
 import os
-os.environ["CALCPAGES_ICONS"] = "${ROOT}/projects/icons"
+# The pages built here link their icons as icons/, as a page's kernel runs in the page's folder.
+os.chdir("${ROOT}")
+os.environ["CALCPAGES_ICONS"] = "${ROOT}/icons"
 os.environ["CALCPAGES_LANGUAGE"] = "${LANGUAGE}"
 import calcpages.browser as viewer
 `);
-  pyodide.globals.get("viewer").set_zone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+  pyodide.globals.get("viewer").use_zone(Intl.DateTimeFormat().resolvedOptions().timeZone);
   return pyodide;
 }
 
@@ -81,8 +94,9 @@ async function handle(message) {
       try { FS.unlink(`${DROP}/${path}`); } catch { /* already gone */ }
     }
   }
-  for (const [name, pattern] of Object.entries(ON_DEMAND)) {
-    if (message.paths_now.some((path) => pattern.test(path))) await pyodide.loadPackage(name);
+  for (const [pattern, stages] of ON_DEMAND) {
+    if (!message.paths_now.some((path) => pattern.test(path))) continue;
+    for (const names of stages) await pyodide.loadPackage(names);
   }
   const update = pyodide.globals.get("viewer").update;
   const result = update(DROP, pyodide.toPy(message.paths_now)).toJs({ dict_converter: Object.fromEntries });

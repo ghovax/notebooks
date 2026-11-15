@@ -70,8 +70,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-4186f095b6f8d716/style.css">
-<script src="../../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-7cafd99a1fb1b759/style.css">
+<script src="../../../../site_libs/shared-9957e67b72ca22d6/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -214,7 +214,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月14日</p>
+      <p class="date-modified">2026年11月15日</p>
     </div>
   </div>
     
@@ -283,33 +283,33 @@ config:
 flowchart TB
     Start1(( ))
     Input1[/"&lt;span&gt;$$\mathbf{3}$$ の分子スクリーニングの構造&lt;/span&gt;"/]
-    subgraph Minima["&lt;span&gt;極小と状態の性質&lt;/span&gt;"]
+    subgraph Minima["&lt;span&gt;極小と状態の性質&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMCQg44GoICRTXzEkIOOCkuacgOmBqeWMluOBl+OBpuaknOiovOOBl+OAgeWQhOalteWwj+OBp+mbu+iNt+OAgeWPjOalteWtkOOBqOWeguebtOmBt+enu+OCkuaxguOCgeOBvuOBmeOAgg=='&gt;&lt;/span&gt;"]
         %% description: $S_0$ と $S_1$ を最適化して検証し、各極小で電荷、双極子と垂直遷移を求めます。
         direction TB
-        S0Opt["&lt;a href='../2026-11-13_115836/'&gt;$$S_0$$ の最適化と検証&lt;/a&gt;"]
-        S0Props["&lt;a href='../2026-11-13_115837/'&gt;$$S_0$$ 極小での吸収の性質&lt;/a&gt;"]
-        S1Opt["&lt;a href='../2026-11-13_115838/'&gt;$$S_1$$ の最適化と検証&lt;/a&gt;"]
-        S1Props["&lt;a href='../2026-11-13_115839/'&gt;$$S_1$$ 極小での発光の性質&lt;/a&gt;"]
+        S0Opt["&lt;a href='../2026-11-13_115836/'&gt;$$S_0$$ の最適化と検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='44Ki44K744OI44OL44OI44Oq44Or5Lit44GnICRcbWF0aGJmezN9JCDjga7ln7rlupXnirbmhYsgJFNfMCQg44KS57ep5ZKM44GX44CB5oyv5YuV5pWw44Gn5qW15bCP44KS56K644GL44KB44CB5rOi5YuV6Zai5pWw44Gu5a6J5a6a5oCn44KS6Kq/44G544KL44CC'&gt;&lt;/span&gt;"]
+        S0Props["&lt;a href='../2026-11-13_115837/'&gt;$$S_0$$ 極小での吸収の性質&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMCQg44GuIEhpcnNoZmVsZCDpm7vojbfjgaggQ001IOmbu+iNt+OBqOWPjOalteWtkOOAgemdnuW5s+ihoea6tuWqkuWSjOOBp+OBruWeguebtOWKsei1tyAkU18wXHJpZ2h0YXJyb3cgU19uJOOAgee3qeWSjOOBl+OBnyAkU18xJCDlr4bluqbjga7pm7vojbfjgajlj4zmpbXlrZDjgIEkU18wXHJpZ2h0YXJyb3cgU18xJCDjga4gTlRPIOOCkuaxguOCgeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        S1Opt["&lt;a href='../2026-11-13_115838/'&gt;$$S_1$$ の最適化と検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5bmz6KGh5rq25aqS5ZKM44GnICRcbWF0aGJmezN9JCDjga7nrKzkuIDlirHotbfnirbmhYsgJFNfMSQg44KS57ep5ZKM44GX44CB5oyv5YuV5pWw44Gn5qW15bCP44KS56K644GL44KB44CB44Gp44Gu57WQ5ZCI44GM44Gt44GY44KM44KL44GL44KS6KaL44KL44CC'&gt;&lt;/span&gt;"]
+        S1Props["&lt;a href='../2026-11-13_115839/'&gt;$$S_1$$ 極小での発光の性質&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMSQg5qW15bCP44Gn44CBJFNfMCQg44Go57ep5ZKM44GX44GfICRTXzEkIOWvhuW6puOBrumbu+iNt+OBqOWPjOalteWtkOOAgeW5s+ihoea6tuWqkuWSjOOBp+OBruWeguebtOOCqOODjeODq+OCruODvCAkU18xXHJpZ2h0YXJyb3cgU18wJOOAgU5UTyDjgpLmsYLjgoHjgovjgII='&gt;&lt;/span&gt;"]
     end
-    subgraph TwistB1["&lt;span&gt;$$\mathrm{B}_1$$ まわりのねじれ&lt;/span&gt;"]
+    subgraph TwistB1["&lt;span&gt;$$\mathrm{B}_1$$ まわりのねじれ&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='44OJ44OK44O85YG044Gu44OV44Kn44OL44Or55Kw44KS5qC444Gr5a++44GX44GmICRTXzAkIOOBqCAkU18xJCDjgaflm57jgZfjgIEkU18wJCDjga7jgrnjgq3jg6Pjg7Pjgavmsr/jgaPjgablnoLnm7TlirHotbfjgpLmsYLjgoHjgb7jgZnjgII='&gt;&lt;/span&gt;"]
         %% description: ドナー側のフェニル環を核に対して $S_0$ と $S_1$ で回し、$S_0$ のスキャンに沿って垂直励起を求めます。
         direction TB
-        S0ScanB1["&lt;a href='../2026-11-13_115840/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;"]
-        S0ScanB1Td["&lt;a href='../2026-11-13_115841/'&gt;$$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
-        S1ScanB1["&lt;a href='../2026-11-13_115842/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
+        S0ScanB1["&lt;a href='../2026-11-13_115840/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5LqM6Z2i6KeSICRcbWF0aHJte0R9X3s2LDcsOCw5fSQg44Gn44GC44KLICRcdGhldGFfe1xtYXRocm17Qn1fMX0kIOOCkuOAgSRTXzAkIOalteWwj+OBp+OBruWApOOBi+OCiSAxMCDluqbliLvjgb/jgafljYrlm57ou6LjgZXjgZvjgIHnt6nlkozjgZfjgZ8gJFNfMCQg44Ko44ON44Or44Ku44O8ICRFKFx0aGV0YSkkIOOCkuOBn+OBqeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        S0ScanB1Td["&lt;a href='../2026-11-13_115841/'&gt;$$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMCQg44K544Kt44Oj44Oz44Gu5Y+O5p2f44GX44Gf5ZCE54K544Gn44CB5Z6C55u044Ko44ON44Or44Ku44O8ICRTXzBccmlnaHRhcnJvdyBTX24k44CB5oyv5YuV5a2Q5by35bqm44CB57ep5ZKM44GX44GfICRTXzEkIOWvhuW6puOBrumbu+iNt+OCkuaxguOCgeOAgSRTXzEkIOOCkiAkU18wJCDjgajlkIzjgZggJFx0aGV0YSQg44Gu5LiK44Gr5o+P44GP44CC'&gt;&lt;/span&gt;"]
+        S1ScanB1["&lt;a href='../2026-11-13_115842/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMSQg5qW15bCP44GL44KJICRcdGhldGFfe1xtYXRocm17Qn1fMX0kIOOBq+ayv+OBo+OBpuOAgee3qeWSjOOBl+OBnyAkU18xJCDjgqjjg43jg6vjgq7jg7wgJEUoXHRoZXRhKSQg44KS44Gf44Gp44KL44CCJFNfMCQg44K544Kt44Oj44Oz44Gu5Yqx6LW354q25oWL54mI44Gn44GZ44CC'&gt;&lt;/span&gt;"]
     end
-    subgraph TwistA["&lt;span&gt;$$\mathrm{A}$$ まわりのねじれ&lt;/span&gt;"]
+    subgraph TwistA["&lt;span&gt;$$\mathrm{A}$$ まわりのねじれ&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='44OJ44OK44O844KS44Gd44Gu44OV44Kn44OL44Or55Kw44Gr5a++44GX44GmICRTXzAkIOOBqCAkU18xJCDjgaflm57jgZfjgIEkU18wJCDjga7jgrnjgq3jg6Pjg7Pjgavmsr/jgaPjgablnoLnm7TlirHotbfjgpLmsYLjgoHjgb7jgZnjgII='&gt;&lt;/span&gt;"]
         %% description: ドナーをそのフェニル環に対して $S_0$ と $S_1$ で回し、$S_0$ のスキャンに沿って垂直励起を求めます。
         direction TB
-        S0ScanA["$$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン"]
-        S0ScanATd["&lt;a href='../2026-11-13_115844/'&gt;$$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;"]
-        S1ScanA["&lt;a href='../2026-11-13_115845/'&gt;$$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;"]
+        S0ScanA["$$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5LqM6Z2i6KeSICRcbWF0aHJte0R9X3sxLDIsNCw1fSQg44Gn44GC44KLICRcdGhldGFfXG1hdGhybXtBfSQg44KS44CBJFNfMCQg5qW15bCP44Gn44Gu5YCk44GL44KJIDEwIOW6puWIu+OBv+OBp+WNiuWbnui7ouOBleOBm+OAgee3qeWSjOOBl+OBnyAkU18wJCDjgqjjg43jg6vjgq7jg7wgJEUoXHRoZXRhKSQg44KS44Gf44Gp44KL44CC'&gt;&lt;/span&gt;"]
+        S0ScanATd["&lt;a href='../2026-11-13_115844/'&gt;$$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMCQg44K544Kt44Oj44Oz44Gu5Y+O5p2f44GX44Gf5ZCE54K544Gn44CB5Z6C55u044Ko44ON44Or44Ku44O8ICRTXzBccmlnaHRhcnJvdyBTX24k44CB5oyv5YuV5a2Q5by35bqm44CB57ep5ZKM44GX44GfICRTXzEkIOWvhuW6puOBrumbu+iNt+OCkuaxguOCgeOAgSRTXzEkIOOCkiAkU18wJCDjgajlkIzjgZggJFx0aGV0YSQg44Gu5LiK44Gr5o+P44GP44CC'&gt;&lt;/span&gt;"]
+        S1ScanA["&lt;a href='../2026-11-13_115845/'&gt;$$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMSQg5qW15bCP44GL44KJICRcdGhldGFfXG1hdGhybXtBfSQg44Gr5rK/44Gj44Gm44CB57ep5ZKM44GX44GfICRTXzEkIOOCqOODjeODq+OCruODvCAkRShcdGhldGEpJCDjgpLjgZ/jganjgovjgIIkU18wJCDjgrnjgq3jg6Pjg7Pjga7lirHotbfnirbmhYvniYjjgafjgZnjgII='&gt;&lt;/span&gt;"]
     end
-    subgraph TorsionMap["&lt;span&gt;二つのねじれのマップ&lt;/span&gt;"]
+    subgraph TorsionMap["&lt;span&gt;二つのねじれのマップ&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5LqM44Gk44Gu44Gt44GY44KM44KS44G+44Go44KB44GmICQzMF5cY2lyYyQg44Gu5qC85a2Q44GnICRTXzAkIOOCkue3qeWSjOOBl+OAgeWPjuadn+OBl+OBn+WQhOeCueOBp+WeguebtOWKsei1t+OCkuaxguOCgeOBvuOBmeOAgg=='&gt;&lt;/span&gt;"]
         %% description: 二つのねじれをまとめて $30^\circ$ の格子で $S_0$ を緩和し、収束した各点で垂直励起を求めます。
         direction TB
-        S0Map["&lt;a href='../2026-11-13_115846/'&gt;$$\theta_\mathrm{A}$$ と $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ マップ&lt;/a&gt;"]
-        S0MapTd["&lt;a href='../2026-11-13_115847/'&gt;$$S_0$$ マップ上の垂直励起&lt;/a&gt;"]
+        S0Map["&lt;a href='../2026-11-13_115846/'&gt;$$\theta_\mathrm{A}$$ と $$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ マップ&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5LqM44Gk44Gu44Gt44GY44KM44Gr44KP44Gf44KL57ep5ZKMICRTXzAkIOOCqOODjeODq+OCruODvCAkRShcdGhldGFfXG1hdGhybXtBfSxcdGhldGFfe1xtYXRocm17Qn1fMX0pJCDjgpIgMzAg5bqm5Yi744G/44Gu5qC85a2Q44Gn5rGC44KB44KL44CC44K544Kt44Oj44Oz44GM44Gf44Gp44KL5pat6Z2i44KS5ZCr44KA44CB5LqM5qyh5YWD44Gu44Gt44GY44KM44Gu5puy6Z2i44Gn44GZ44CC'&gt;&lt;/span&gt;"]
+        S0MapTd["&lt;a href='../2026-11-13_115847/'&gt;$$S_0$$ マップ上の垂直励起&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='44Oe44OD44OX44Gu5Y+O5p2f44GX44Gf5ZCE54K544Gn5Z6C55u05Yqx6LW344Go57ep5ZKM44GX44GfICRTXzEkIOWvhuW6puOBrumbu+iNt+OCkuaxguOCgeOAgSRTXzEkIOOBruabsumdouOBqOOBneOBrumbu+iNt+enu+WLleOCkuWQjOOBmOS6jOOBpOOBruOBreOBmOOCjOOBruS4iuOBq+aPj+OBj+OAgg=='&gt;&lt;/span&gt;"]
     end
     Output1[/"&lt;span&gt;$$\mathbf{3}$$ の $$E(\theta)$$、$$\Delta\mu$$ と電荷移動&lt;/span&gt;"/]
     End1((( )))
@@ -373,15 +373,15 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-992dc7666676db38/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-a0cb10c0a013b18b/script.js"></script>
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
-<li>二面角 <span class="math inline">D(1,2,4,5)</span> である <span class="math inline">\theta_\mathrm{A}</span> を、<span class="math inline">S_0</span> 極小での値から 10 度刻みで半回転させ、緩和した <span class="math inline">S_0</span> エネルギー <span class="math inline">E(\theta)</span> をたどる。</li>
+<li>二面角 <span class="math inline">\mathrm{D}_{1,2,4,5}</span> である <span class="math inline">\theta_\mathrm{A}</span> を、<span class="math inline">S_0</span> 極小での値から 10 度刻みで半回転させ、緩和した <span class="math inline">S_0</span> エネルギー <span class="math inline">E(\theta)</span> をたどる。</li>
 </ul>
-<div id="ed616e6e" class="cell" data-execution_count="2">
+<div id="6d87498e" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../site_libs/shared-c1c26744d773a81e/data.js"></script><script src="../../../../site_libs/shared-afef8d7b07bdd06e/data.js"></script>
+<script src="../../../../site_libs/shared-002610e45d1ddf15/data.js"></script><script src="../../../../site_libs/shared-0bc168f855488813/data.js"></script>
 </div>
 </div>
 </section>
@@ -553,20 +553,20 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="subheader even">
 <th style="text-align: left;" data-quarto-table-cell-role="th"><p>オプション</p></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th"><p>値</p></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th"><p>値</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="group-start group-odd odd">
-<td rowspan="2" style="text-align: left;"><p><span class="math inline">D_{1,2,4,5}</span></p></td>
+<td rowspan="2" style="text-align: left;"><p><span class="math inline">\mathrm{D}_{1,2,4,5}</span></p></td>
 <td rowspan="2" style="text-align: left;"><p><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNDk1MDU3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTE0Mi45IDE0Mi45Yy0xNy41IDE3LjUtMzAuMSAzOC0zNy44IDU5LjhjLTUuOSAxNi43LTI0LjIgMjUuNC00MC44IDE5LjVzLTI1LjQtMjQuMi0xOS41LTQwLjhDNTUuNiAxNTAuNyA3My4yIDEyMiA5Ny42IDk3LjZjODcuMi04Ny4yIDIyOC4zLTg3LjUgMzE1LjgtMUw0NTUgNTVjNi45LTYuOSAxNy4yLTguOSAyNi4yLTUuMnMxNC44IDEyLjUgMTQuOCAyMi4ybDAgMTI4YzAgMTMuMy0xMC43IDI0LTI0IDI0bC04LjQgMGMwIDAgMCAwIDAgMEwzNDQgMjI0Yy05LjcgMC0xOC41LTUuOC0yMi4yLTE0LjhzLTEuNy0xOS4zIDUuMi0yNi4ybDQxLjEtNDEuMWMtNjIuNi02MS41LTE2My4xLTYxLjItMjI1LjMgMXpNMTYgMzEyYzAtMTMuMyAxMC43LTI0IDI0LTI0bDcuNiAwIC43IDBMMTY4IDI4OGM5LjcgMCAxOC41IDUuOCAyMi4yIDE0LjhzMS43IDE5LjMtNS4yIDI2LjJsLTQxLjEgNDEuMWM2Mi42IDYxLjUgMTYzLjEgNjEuMiAyMjUuMy0xYzE3LjUtMTcuNSAzMC4xLTM4IDM3LjgtNTkuOGM1LjktMTYuNyAyNC4yLTI1LjQgNDAuOC0xOS41czI1LjQgMjQuMiAxOS41IDQwLjhjLTEwLjggMzAuNi0yOC40IDU5LjMtNTIuOSA4My44Yy04Ny4yIDg3LjItMjI4LjMgODcuNS0zMTUuOCAxTDU3IDQ1N2MtNi45IDYuOS0xNy4yIDguOS0yNi4yIDUuMlMxNiA0NDkuNyAxNiA0NDBsMC0xMTkuNiAwLS43IDAtNy42eiIvPjwvc3ZnPg==" title="二面角" class="workflow-status img-fluid figure-img"> <span class="math inline">[{}^\circ]</span></p></td>
 <td rowspan="2" style="text-align: left;"><p><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" title="スキャン" class="workflow-status img-fluid figure-img">&nbsp;</p></td>
 <td class="sub-odd" style="text-align: left;"><p>ステップ数<span class="quantity-info" data-description="6ZaL5aeL54K544Gu5b6M44Gu44K544Kt44Oj44Oz44Gu44K544OG44OD44OX5pWw44CC44K544Kt44Oj44Oz44Gv5ZCE44K544OG44OD44OX44Gn5qeL6YCg44KS5pyA6YGp5YyW44GZ44KL44CC"></span></p></td>
-<td class="sub-odd" style="text-align: left;"><p>18</p></td>
+<td class="sub-odd" style="text-align: right;"><p>18</p></td>
 </tr>
 <tr class="group-row group-odd even">
 <td class="sub-even" style="text-align: left;"><p>ステップ幅<span class="quantity-info" data-description="6YCj57aa44GZ44KL44K544Kt44Oj44Oz54K544Gu6ZaT44Gn44Gu44K544Kt44Oj44Oz5bqn5qiZ44Gu5aSJ5YyW44CC5Y2Y5L2N44Gv44Gd44Gu6KGM44Gu5Y2Y5L2N44CC"></span></p></td>
-<td class="sub-even" style="text-align: left;"><p><span class="math inline">10</span></p></td>
+<td class="sub-even" style="text-align: right;"><p><span class="math inline">10</span></p></td>
 </tr>
 </tbody>
 </table>

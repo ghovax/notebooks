@@ -71,8 +71,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-4186f095b6f8d716/style.css">
-<script src="../../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-7cafd99a1fb1b759/style.css">
+<script src="../../../../site_libs/shared-9957e67b72ca22d6/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -215,7 +215,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 14, 2026</p>
+      <p class="date-modified">November 15, 2026</p>
     </div>
   </div>
     
@@ -284,33 +284,33 @@ config:
 flowchart TB
     Start1(( ))
     Input1[/"&lt;span&gt;Molecular-screening geometry of $$\mathbf{1}$$&lt;/span&gt;"/]
-    subgraph Minima["&lt;span&gt;Minima and state properties&lt;/span&gt;"]
+    subgraph Minima["&lt;span&gt;Minima and state properties&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='T3B0aW1pemUgYW5kIHZlcmlmeSAkU18wJCBhbmQgJFNfMSQsIHRoZW4gY29tcHV0ZSB0aGUgY2hhcmdlcywgZGlwb2xlIGFuZCB2ZXJ0aWNhbCB0cmFuc2l0aW9uIGF0IGVhY2ggbWluaW11bS4='&gt;&lt;/span&gt;"]
         %% description: Optimize and verify $S_0$ and $S_1$, then compute the charges, dipole and vertical transition at each minimum.
         direction TB
-        S0Opt["&lt;a href='../2026-11-13_115811/'&gt;Optimize and verify $$S_0$$&lt;/a&gt;"]
-        S0Props["&lt;a href='../2026-11-13_115812/'&gt;Absorption properties at the $$S_0$$ minimum&lt;/a&gt;"]
-        S1Opt["&lt;a href='../2026-11-13_115813/'&gt;Optimize and verify $$S_1$$&lt;/a&gt;"]
-        S1Props["&lt;a href='../2026-11-13_115814/'&gt;Emission properties at the $$S_1$$ minimum&lt;/a&gt;"]
+        S0Opt["&lt;a href='../2026-11-13_115811/'&gt;Optimize and verify $$S_0$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='UmVsYXggdGhlIGdyb3VuZCBzdGF0ZSAkU18wJCBvZiAkXG1hdGhiZnsxfSQgaW4gYWNldG9uaXRyaWxlLCB2ZXJpZnkgdGhlIG1pbmltdW0gYnkgaXRzIGZyZXF1ZW5jaWVzIGFuZCB0ZXN0IHRoZSBzdGFiaWxpdHkgb2YgaXRzIHdhdmVmdW5jdGlvbi4='&gt;&lt;/span&gt;"]
+        S0Props["&lt;a href='../2026-11-13_115812/'&gt;Absorption properties at the $$S_0$$ minimum&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='T2J0YWluIHRoZSAkU18wJCBIaXJzaGZlbGQgYW5kIENNNSBjaGFyZ2VzIGFuZCBkaXBvbGUsIHRoZSB2ZXJ0aWNhbCAkU18wXHJpZ2h0YXJyb3cgU19uJCBleGNpdGF0aW9ucyB3aXRoIG5vbi1lcXVpbGlicml1bSBzb2x2YXRpb24sIHRoZSByZWxheGVkICRTXzEkIGRlbnNpdHkncyBjaGFyZ2VzIGFuZCBkaXBvbGUsIGFuZCB0aGUgJFNfMFxyaWdodGFycm93IFNfMSQgTlRPcy4='&gt;&lt;/span&gt;"]
+        S1Opt["&lt;a href='../2026-11-13_115813/'&gt;Optimize and verify $$S_1$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='UmVsYXggdGhlIGZpcnN0IGV4Y2l0ZWQgc3RhdGUgJFNfMSQgb2YgJFxtYXRoYmZ7MX0kIHdpdGggZXF1aWxpYnJpdW0gc29sdmF0aW9uIGFuZCB2ZXJpZnkgdGhlIG1pbmltdW0gYnkgaXRzIGZyZXF1ZW5jaWVzLCB0byBzZWUgd2hpY2ggYm9uZCB0d2lzdHMu'&gt;&lt;/span&gt;"]
+        S1Props["&lt;a href='../2026-11-13_115814/'&gt;Emission properties at the $$S_1$$ minimum&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='T2J0YWluIHRoZSBjaGFyZ2VzIGFuZCBkaXBvbGVzIG9mICRTXzAkIGFuZCBvZiB0aGUgcmVsYXhlZCAkU18xJCBkZW5zaXR5LCB0aGUgdmVydGljYWwgJFNfMVxyaWdodGFycm93IFNfMCQgZW5lcmd5IHdpdGggZXF1aWxpYnJpdW0gc29sdmF0aW9uIGFuZCB0aGUgTlRPcyBhdCB0aGUgJFNfMSQgbWluaW11bS4='&gt;&lt;/span&gt;"]
     end
-    subgraph TwistB1["&lt;span&gt;Twist about $$\mathrm{B}_1$$&lt;/span&gt;"]
+    subgraph TwistB1["&lt;span&gt;Twist about $$\mathrm{B}_1$$&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='VHVybiB0aGUgZG9ub3Itc2lkZSBwaGVueWwgcmluZyBhZ2FpbnN0IHRoZSBjb3JlIGluICRTXzAkIGFuZCAkU18xJCwgd2l0aCB0aGUgdmVydGljYWwgZXhjaXRhdGlvbnMgYWxvbmcgdGhlICRTXzAkIHNjYW4u'&gt;&lt;/span&gt;"]
         %% description: Turn the donor-side phenyl ring against the core in $S_0$ and $S_1$, with the vertical excitations along the $S_0$ scan.
         direction TB
-        S0ScanB1["&lt;a href='../2026-11-13_115815/'&gt;Relaxed $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;"]
-        S0ScanB1Td["&lt;a href='../2026-11-13_115816/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;"]
-        S1ScanB1["&lt;a href='../2026-11-13_115817/'&gt;Relaxed $$S_1$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;"]
+        S0ScanB1["&lt;a href='../2026-11-13_115815/'&gt;Relaxed $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzAkIGVuZXJneSAkRShcdGhldGEpJCBhcyAkXHRoZXRhX3tcbWF0aHJte0J9XzF9JCwgdGhlIGRpaGVkcmFsICRcbWF0aHJte0R9X3s1LDYsNyw4fSQsIHR1cm5zIGhhbGYgYSByZXZvbHV0aW9uIGluIDEwLWRlZ3JlZSBzdGVwcyBmcm9tIGl0cyB2YWx1ZSBhdCB0aGUgJFNfMCQgbWluaW11bS4='&gt;&lt;/span&gt;"]
+        S0ScanB1Td["&lt;a href='../2026-11-13_115816/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Q2FsY3VsYXRlIHRoZSB2ZXJ0aWNhbCAkU18wXHJpZ2h0YXJyb3cgU19uJCBlbmVyZ2llcywgb3NjaWxsYXRvciBzdHJlbmd0aHMgYW5kIHRoZSByZWxheGVkICRTXzEkIGRlbnNpdHkncyBjaGFyZ2VzIGF0IGV2ZXJ5IGNvbnZlcmdlZCBwb2ludCBvZiB0aGUgJFNfMCQgc2Nhbiwgc28gJFNfMSQgaXMgZHJhd24gb3ZlciB0aGUgc2FtZSAkXHRoZXRhJCBhcyAkU18wJC4='&gt;&lt;/span&gt;"]
+        S1ScanB1["&lt;a href='../2026-11-13_115817/'&gt;Relaxed $$S_1$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzEkIGVuZXJneSAkRShcdGhldGEpJCBhbG9uZyAkXHRoZXRhX3tcbWF0aHJte0J9XzF9JCBmcm9tIHRoZSAkU18xJCBtaW5pbXVtLCB0aGUgZXhjaXRlZC1zdGF0ZSBjb3VudGVycGFydCBvZiB0aGUgJFNfMCQgc2Nhbi4='&gt;&lt;/span&gt;"]
     end
-    subgraph TwistA["&lt;span&gt;Twist about $$\mathrm{A}$$&lt;/span&gt;"]
+    subgraph TwistA["&lt;span&gt;Twist about $$\mathrm{A}$$&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='VHVybiB0aGUgZG9ub3IgYWdhaW5zdCBpdHMgcGhlbnlsIHJpbmcgaW4gJFNfMCQgYW5kICRTXzEkLCB3aXRoIHRoZSB2ZXJ0aWNhbCBleGNpdGF0aW9ucyBhbG9uZyB0aGUgJFNfMCQgc2Nhbi4='&gt;&lt;/span&gt;"]
         %% description: Turn the donor against its phenyl ring in $S_0$ and $S_1$, with the vertical excitations along the $S_0$ scan.
         direction TB
-        S0ScanA["&lt;a href='../2026-11-13_115818/'&gt;Relaxed $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;"]
-        S0ScanATd["&lt;a href='../2026-11-13_115819/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;"]
-        S1ScanA["&lt;a href='../2026-11-13_115820/'&gt;Relaxed $$S_1$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;"]
+        S0ScanA["&lt;a href='../2026-11-13_115818/'&gt;Relaxed $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzAkIGVuZXJneSAkRShcdGhldGEpJCBhcyAkXHRoZXRhX1xtYXRocm17QX0kLCB0aGUgZGloZWRyYWwgJFxtYXRocm17RH1fezEsMiwzLDR9JCwgdHVybnMgaGFsZiBhIHJldm9sdXRpb24gaW4gMTAtZGVncmVlIHN0ZXBzIGZyb20gaXRzIHZhbHVlIGF0IHRoZSAkU18wJCBtaW5pbXVtLg=='&gt;&lt;/span&gt;"]
+        S0ScanATd["&lt;a href='../2026-11-13_115819/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Q2FsY3VsYXRlIHRoZSB2ZXJ0aWNhbCAkU18wXHJpZ2h0YXJyb3cgU19uJCBlbmVyZ2llcywgb3NjaWxsYXRvciBzdHJlbmd0aHMgYW5kIHRoZSByZWxheGVkICRTXzEkIGRlbnNpdHkncyBjaGFyZ2VzIGF0IGV2ZXJ5IGNvbnZlcmdlZCBwb2ludCBvZiB0aGUgJFNfMCQgc2Nhbiwgc28gJFNfMSQgaXMgZHJhd24gb3ZlciB0aGUgc2FtZSAkXHRoZXRhJCBhcyAkU18wJC4='&gt;&lt;/span&gt;"]
+        S1ScanA["&lt;a href='../2026-11-13_115820/'&gt;Relaxed $$S_1$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzEkIGVuZXJneSAkRShcdGhldGEpJCBhbG9uZyAkXHRoZXRhX1xtYXRocm17QX0kIGZyb20gdGhlICRTXzEkIG1pbmltdW0sIHRoZSBleGNpdGVkLXN0YXRlIGNvdW50ZXJwYXJ0IG9mIHRoZSAkU18wJCBzY2FuLg=='&gt;&lt;/span&gt;"]
     end
-    subgraph TorsionMap["&lt;span&gt;Map of both twists&lt;/span&gt;"]
+    subgraph TorsionMap["&lt;span&gt;Map of both twists&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='UmVsYXggJFNfMCQgb3ZlciBib3RoIHR3aXN0cyB0b2dldGhlciBvbiBhICQzMF5cY2lyYyQgZ3JpZCwgd2l0aCB0aGUgdmVydGljYWwgZXhjaXRhdGlvbnMgYXQgZWFjaCBjb252ZXJnZWQgcG9pbnQu'&gt;&lt;/span&gt;"]
         %% description: Relax $S_0$ over both twists together on a $30^\circ$ grid, with the vertical excitations at each converged point.
         direction TB
-        S0Map["Relaxed $$S_0$$ map of $$\theta_\mathrm{A}$$ and $$\theta_{\mathrm{B}_1}$$"]
-        S0MapTd["&lt;a href='../2026-11-13_115822/'&gt;Vertical excitations over the $$S_0$$ map&lt;/a&gt;"]
+        S0Map["Relaxed $$S_0$$ map of $$\theta_\mathrm{A}$$ and $$\theta_{\mathrm{B}_1}$$&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='TWFwIHRoZSByZWxheGVkICRTXzAkIGVuZXJneSBvdmVyIGJvdGggdHdpc3RzLCAkRShcdGhldGFfXG1hdGhybXtBfSxcdGhldGFfe1xtYXRocm17Qn1fMX0pJCwgb24gYSAzMC1kZWdyZWUgZ3JpZCwgdGhlIHR3by1kaW1lbnNpb25hbCB0b3JzaW9uYWwgc3VyZmFjZSB3aG9zZSBjdXRzIHRoZSBzY2FucyBmb2xsb3cu'&gt;&lt;/span&gt;"]
+        S0MapTd["&lt;a href='../2026-11-13_115822/'&gt;Vertical excitations over the $$S_0$$ map&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Q2FsY3VsYXRlIHRoZSB2ZXJ0aWNhbCBleGNpdGF0aW9ucyBhbmQgdGhlIHJlbGF4ZWQgJFNfMSQgZGVuc2l0eSdzIGNoYXJnZXMgYXQgZXZlcnkgY29udmVyZ2VkIHBvaW50IG9mIHRoZSBtYXAsIHNvIHRoZSAkU18xJCBzdXJmYWNlIGFuZCBpdHMgY2hhcmdlIHRyYW5zZmVyIGFyZSBkcmF3biBvdmVyIHRoZSBzYW1lIHR3byB0d2lzdHMu'&gt;&lt;/span&gt;"]
     end
     Output1[/"&lt;span&gt;$$E(\theta)$$, $$\Delta\mu$$ and charge transfer of $$\mathbf{1}$$&lt;/span&gt;"/]
     End1((( )))
@@ -374,15 +374,15 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-992dc7666676db38/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-a0cb10c0a013b18b/script.js"></script>
 <section id="Goal" class="level2">
 <h2 class="anchored" data-anchor-id="Goal">Goal</h2>
 <ul>
 <li>Map the relaxed <span class="math inline">S_0</span> energy over both twists, <span class="math inline">E(\theta_\mathrm{A},\theta_{\mathrm{B}_1})</span>, on a 30-degree grid, the two-dimensional torsional surface whose cuts the scans follow.</li>
 </ul>
-<div id="197dec7c" class="cell" data-execution_count="2">
+<div id="47400114" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../site_libs/shared-71e36b8859ff3af1/data.js"></script><script src="../../../../site_libs/shared-77c8ac2ebc031f1a/data.js"></script>
+<script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-cac70884ffb28041/data.js"></script>
 </div>
 </div>
 </section>
@@ -533,31 +533,31 @@ window.addEventListener("load", window.restoreRequireDefine);
 </tr>
 <tr class="subheader even">
 <th style="text-align: left;" data-quarto-table-cell-role="th"><p>Option</p></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th"><p>Value</p></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th"><p>Value</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="group-start group-odd odd">
-<td rowspan="2" style="text-align: left;"><p><span class="math inline">D_{1,2,3,4}</span></p></td>
+<td rowspan="2" style="text-align: left;"><p><span class="math inline">\mathrm{D}_{1,2,3,4}</span></p></td>
 <td rowspan="2" class="prose" style="text-align: left;"><p><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNDk1MDU3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTE0Mi45IDE0Mi45Yy0xNy41IDE3LjUtMzAuMSAzOC0zNy44IDU5LjhjLTUuOSAxNi43LTI0LjIgMjUuNC00MC44IDE5LjVzLTI1LjQtMjQuMi0xOS41LTQwLjhDNTUuNiAxNTAuNyA3My4yIDEyMiA5Ny42IDk3LjZjODcuMi04Ny4yIDIyOC4zLTg3LjUgMzE1LjgtMUw0NTUgNTVjNi45LTYuOSAxNy4yLTguOSAyNi4yLTUuMnMxNC44IDEyLjUgMTQuOCAyMi4ybDAgMTI4YzAgMTMuMy0xMC43IDI0LTI0IDI0bC04LjQgMGMwIDAgMCAwIDAgMEwzNDQgMjI0Yy05LjcgMC0xOC41LTUuOC0yMi4yLTE0LjhzLTEuNy0xOS4zIDUuMi0yNi4ybDQxLjEtNDEuMWMtNjIuNi02MS41LTE2My4xLTYxLjItMjI1LjMgMXpNMTYgMzEyYzAtMTMuMyAxMC43LTI0IDI0LTI0bDcuNiAwIC43IDBMMTY4IDI4OGM5LjcgMCAxOC41IDUuOCAyMi4yIDE0LjhzMS43IDE5LjMtNS4yIDI2LjJsLTQxLjEgNDEuMWM2Mi42IDYxLjUgMTYzLjEgNjEuMiAyMjUuMy0xYzE3LjUtMTcuNSAzMC4xLTM4IDM3LjgtNTkuOGM1LjktMTYuNyAyNC4yLTI1LjQgNDAuOC0xOS41czI1LjQgMjQuMiAxOS41IDQwLjhjLTEwLjggMzAuNi0yOC40IDU5LjMtNTIuOSA4My44Yy04Ny4yIDg3LjItMjI4LjMgODcuNS0zMTUuOCAxTDU3IDQ1N2MtNi45IDYuOS0xNy4yIDguOS0yNi4yIDUuMlMxNiA0NDkuNyAxNiA0NDBsMC0xMTkuNiAwLS43IDAtNy42eiIvPjwvc3ZnPg==" title="Dihedral angle" class="workflow-status img-fluid figure-img"> <span class="math inline">[{}^\circ]</span></p></td>
 <td rowspan="2" style="text-align: left;"><p><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" title="Scanned" class="workflow-status img-fluid figure-img">&nbsp;</p></td>
 <td class="sub-odd" style="text-align: left;"><p>Steps<span class="quantity-info" data-description="TnVtYmVyIG9mIHNjYW4gc3RlcHMgYWZ0ZXIgdGhlIHN0YXJ0aW5nIHBvaW50OyB0aGUgc2NhbiBvcHRpbWl6ZXMgdGhlIHN0cnVjdHVyZSBhdCBlYWNoIG9mIHRoZW0u"></span></p></td>
-<td class="sub-odd" style="text-align: left;"><p>6</p></td>
+<td class="sub-odd" style="text-align: right;"><p>6</p></td>
 </tr>
 <tr class="group-row group-odd even">
 <td class="sub-even" style="text-align: left;"><p>Step size<span class="quantity-info" data-description="Q2hhbmdlIG9mIHRoZSBzY2FubmVkIGNvb3JkaW5hdGUgYmV0d2VlbiBjb25zZWN1dGl2ZSBzY2FuIHBvaW50cywgaW4gdGhlIHVuaXQgb2YgaXRzIHJvdy4="></span></p></td>
-<td class="sub-even" style="text-align: left;"><p><span class="math inline">30</span></p></td>
+<td class="sub-even" style="text-align: right;"><p><span class="math inline">30</span></p></td>
 </tr>
 <tr class="group-start group-even odd">
-<td rowspan="2" style="text-align: left;"><p><span class="math inline">D_{5,6,7,8}</span></p></td>
+<td rowspan="2" style="text-align: left;"><p><span class="math inline">\mathrm{D}_{5,6,7,8}</span></p></td>
 <td rowspan="2" class="prose" style="text-align: left;"><p><span class="ditto" title="Same as the row above">〃</span></p></td>
 <td rowspan="2" class="prose" style="text-align: left;"><p><span class="ditto" title="Same as the row above">〃</span></p></td>
 <td class="sub-odd" style="text-align: left;"><p>Steps<span class="quantity-info" data-description="TnVtYmVyIG9mIHNjYW4gc3RlcHMgYWZ0ZXIgdGhlIHN0YXJ0aW5nIHBvaW50OyB0aGUgc2NhbiBvcHRpbWl6ZXMgdGhlIHN0cnVjdHVyZSBhdCBlYWNoIG9mIHRoZW0u"></span></p></td>
-<td class="sub-odd" style="text-align: left;"><p>6</p></td>
+<td class="sub-odd" style="text-align: right;"><p>6</p></td>
 </tr>
 <tr class="group-row group-even even">
 <td class="sub-even" style="text-align: left;"><p>Step size<span class="quantity-info" data-description="Q2hhbmdlIG9mIHRoZSBzY2FubmVkIGNvb3JkaW5hdGUgYmV0d2VlbiBjb25zZWN1dGl2ZSBzY2FuIHBvaW50cywgaW4gdGhlIHVuaXQgb2YgaXRzIHJvdy4="></span></p></td>
-<td class="sub-even" style="text-align: left;"><p><span class="math inline">30</span></p></td>
+<td class="sub-even" style="text-align: right;"><p><span class="math inline">30</span></p></td>
 </tr>
 </tbody>
 </table>

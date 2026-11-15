@@ -68,8 +68,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../site_libs/shared-4186f095b6f8d716/style.css">
-<script src="../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<link rel="stylesheet" href="../../../site_libs/shared-7cafd99a1fb1b759/style.css">
+<script src="../../../site_libs/shared-9957e67b72ca22d6/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -199,7 +199,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月14日</p>
+      <p class="date-modified">2026年11月16日</p>
     </div>
   </div>
     
@@ -285,18 +285,18 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Path2["&lt;span&gt;鞍点と反応経路&lt;/span&gt;"]
+    subgraph Path2["&lt;span&gt;鞍点と反応経路&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='57WE44G/56uL44Gm44GfICRbNCsyXSQg44Gu5Yid5pyf5o6o5a6a44KS5LiA5qyh44Gu6Z6N54K544Gr57K+5a+G5YyW44GX44CB44Gd44Gu6ZaJ5q675LiA6YeN6aCF44Gu5rOi5YuV6Zai5pWw44KS6Kq/44G544Gm44CBJFxwbSBzJCDjga4gSVJDIOWIhuaeneOCkuOBn+OBqeOCiuOBvuOBmeOAgg=='&gt;&lt;/span&gt;"]
         %% description: 組み立てた $[4+2]$ の初期推定を一次の鞍点に精密化し、その閉殻一重項の波動関数を調べて、$\pm s$ の IRC 分枝をたどります。
         direction TB
-        Refine2["&lt;a href='2026-11-04_100515/'&gt;TS の最適化と検証&lt;/a&gt;"]
-        IRC2["&lt;a href='2026-11-04_100516/'&gt;$$\pm s$$ に沿った IRC の追跡&lt;/a&gt;"]
+        Refine2["&lt;a href='2026-11-04_100515/'&gt;TS の最適化と検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='LSDntYTjgb/nq4vjgabjgZ/ljZTlpY/nmoTjgaogJFs0KzJdJCDjga7liJ3mnJ/mjqjlrprjgpLkuIDmrKHjga7pno3ngrnjgavnsr7lr4bljJbjgZfjgIHlvaLmiJDkuK3jga7kuozjgaTjga4gQ+KAk0Mg57WQ5ZCI44Gr5rK/44Gj44Gf6Jma5oyv5YuV44GM5LiA44Gk44Gn44GC44KL44GT44Go44KS56K644GL44KB44KL44CCCi0g5pyA6YGp5YyW44GX44Gf6Z6N54K544Gn44CB6ZaJ5q675LiA6YeN6aCF44Gu5rOi5YuV6Zai5pWw44Gu5a6J5a6a5oCn44KS6Kq/44G544KL44CC'&gt;&lt;/span&gt;"]
+        IRC2["&lt;a href='2026-11-04_100516/'&gt;$$\pm s$$ に沿った IRC の追跡&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44Gf6Z6N54K544GL44KJ5LiL44KL5LqM44Gk44Gu5pa55ZCR44KS44Gp44Gh44KJ44KC44Gf44Gp44KK44CB56uv54K544Gu6aCY5Z+f44KS54m55a6a44GZ44KL44CC'&gt;&lt;/span&gt;"]
     end
 
-    subgraph Minima2["&lt;span&gt;端点の極小&lt;/span&gt;"]
+    subgraph Minima2["&lt;span&gt;端点の極小&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5ZCEIElSQyDjga7nq6/ngrnjgpLmnIDpganljJbjgZfjgaboqr/lkozmjK/li5XmlbDjgpLoqr/jgbnjgb7jgZnjgILlvaLmiJDkuK3jga7ntZDlkIjjga7ot53pm6LjgYvjgonjgIHliIbpm6LjgZfjgZ/lj43lv5znianjgajjgrfjgq/jg63jg5jjgq3jgrvjg7Pjga7mpbXlsI/jgpLlibLjgorlvZPjgabjgb7jgZnjgII='&gt;&lt;/span&gt;"]
         %% description: 各 IRC の端点を最適化して調和振動数を調べます。形成中の結合の距離から、分離した反応物とシクロヘキセンの極小を割り当てます。
         direction TB
-        Optimize4["&lt;a href='2026-11-04_100517/'&gt;反応物の端点の最適化と検証&lt;/a&gt;"]
-        Optimize5["&lt;a href='2026-11-04_100518/'&gt;シクロヘキセンの端点の最適化と検証&lt;/a&gt;"]
+        Optimize4["&lt;a href='2026-11-04_100517/'&gt;反応物の端点の最適化と検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='44K444Ko44Oz44Go44K444Ko44OO44OV44Kj44Or44Gu44OV44Op44Kw44Oh44Oz44OI44GM5YiG6Zui44GX44GfIElSQyDjga7nq6/ngrnjgpLnt6nlkozjgZfjgIHjgZ3jgozjgYzmpbXlsI/jgafjgYLjgovjgZPjgajjgpLmpJzoqLzjgZnjgovjgII='&gt;&lt;/span&gt;"]
+        Optimize5["&lt;a href='2026-11-04_100518/'&gt;シクロヘキセンの端点の最適化と検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5YWt5ZOh55Kw44GM6ZaJ44GY44GfIElSQyDjga7nq6/ngrnjgpLnt6nlkozjgZfjgIHjgrfjgq/jg63jg5jjgq3jgrvjg7Pjga7mpbXlsI/jgpLmpJzoqLzjgZnjgovjgII='&gt;&lt;/span&gt;"]
     end
 
     Refine2 --&gt; IRC2
@@ -360,7 +360,7 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-992dc7666676db38/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-a0cb10c0a013b18b/script.js"></script>
 <section id="鞍点と反応経路" class="level3">
 <h3 class="anchored" data-anchor-id="鞍点と反応経路">鞍点と反応経路</h3>
 <p>組み立てた <span class="math inline">[4+2]</span> の初期推定を一次の鞍点に精密化し、その閉殻一重項の波動関数を調べて、<span class="math inline">\pm s</span> の IRC 分枝をたどります。</p>
@@ -459,11 +459,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The smallest <span class="math inline">\alpha</span> <span class="math inline">\Delta\epsilon</span> is 0.0403827</td>
+<td>最小の <span class="math inline">\alpha</span> 軌道エネルギー差 <span class="math inline">\Delta\epsilon</span> は 0.0403827 <span class="math inline">E_h</span> で、SCF の収束を遅らせたり不安定にしたりするほど小さい値です。</td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>Explicit consideration of 4 degrees of freedom as vibrations may cause significant error</td>
+<td>4 個の低振動数の自由度を振動として扱うと、熱化学に大きな誤差が生じる可能性があります。</td>
 </tr>
 </tbody>
 </table>

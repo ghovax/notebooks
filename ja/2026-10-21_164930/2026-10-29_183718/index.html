@@ -88,8 +88,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../site_libs/shared-4186f095b6f8d716/style.css">
-<script src="../../../site_libs/shared-b56ce2086baa175b/script.js"></script>
+<link rel="stylesheet" href="../../../site_libs/shared-7cafd99a1fb1b759/style.css">
+<script src="../../../site_libs/shared-9957e67b72ca22d6/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -225,7 +225,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月14日</p>
+      <p class="date-modified">2026年11月16日</p>
     </div>
   </div>
     
@@ -708,34 +708,34 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph IndependentBenzeneReference["&lt;span&gt;基準となる $$S_0$$ 構造&lt;/span&gt;"]
+    subgraph IndependentBenzeneReference["&lt;span&gt;基準となる $$S_0$$ 構造&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMCQg44Gu5Z+65rqW5qeL6YCg44KS56K656uL44GX44CB6Zu75a2Q5b+c562U44Gu5p6d44Gn5L2/44GG5YmN44Gr5puy546H44KS5qSc6Ki844GX44G+44GZ44CC'&gt;&lt;/span&gt;"]
         %% description: $S_0$ の基準構造を確立し、電子応答の枝で使う前に曲率を検証します。
         direction TB
-        Optimize15["&lt;a href='2026-10-29_183719/'&gt;B3LYP $$S_0$$ 構造の最適化&lt;/a&gt;"]
-        Verify15["&lt;a href='2026-10-29_183720/'&gt;安定性のチェックと B3LYP $$S_0$$ の極小の検証&lt;/a&gt;"]
+        Optimize15["&lt;a href='2026-10-29_183719/'&gt;B3LYP $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5paw44GX44GE6Zu75a2Q44Gu5Yid5pyf5o6o5a6a44GL44KJ44CB5YWo5qC45bqn5qiZ44KS57ep5ZKM44GX44GmICRTXzAkIOani+mAoOOCkuaxguOCgeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Verify15["&lt;a href='2026-10-29_183720/'&gt;安定性のチェックと B3LYP $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5pyA6YGp5YyW44GX44GfICRTXzAkIOOBruazouWLlemWouaVsOOBjOWuieWumuOBp+OAgeani+mAoOOBjOalteWwj+OBp+OBguOCi+OBk+OBqOOCkueiuuOBi+OCgeOCi+OAgg=='&gt;&lt;/span&gt;"]
     end
 
-    subgraph IndependentBenzeneConventional["&lt;span&gt;B3LYP の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;"]
+    subgraph IndependentBenzeneConventional["&lt;span&gt;B3LYP の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgUIzTFlQIOOBruWIhuWtkOOBruOCueOCr+ODquODvOODi+ODs+OCsOOBqOWeguebtCAkU18wXHJpZ2h0YXJyb3cgU19uJCDlkLjlj47jgpLoqZXkvqHjgZfjgb7jgZnjgII='&gt;&lt;/span&gt;"]
 
         %% description: 検証した $S_0$ 構造で、B3LYP の分子のスクリーニングと垂直 $S_0\rightarrow S_n$ 吸収を評価します。
         direction TB
-        Evaluate5["&lt;a href='2026-10-29_183721/'&gt;スクリーニング $$\varepsilon_s$$ の評価&lt;/a&gt;"]
-        Excitations9["&lt;a href='2026-10-29_183722/'&gt;B3LYP の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;"]
+        Evaluate5["&lt;a href='2026-10-29_183721/'&gt;スクリーニング $$\varepsilon_s$$ の評価&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgeW+k+adpeOBriBCM0xZUCDjga7liIblrZDjga7pm7vlrZDlv5znrZQgJFx2YXJlcHNpbG9uX3MkIOOCkuipleS+oeOBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Excitations9["&lt;a href='2026-10-29_183722/'&gt;B3LYP の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgeacgOOCguS9juOBhCAxMCDlgIvjga7lnoLnm7QgJFNfMFxyaWdodGFycm93IFNfbiQg5Yqx6LW344KS6KiI566X44GZ44KL44CC'&gt;&lt;/span&gt;"]
     end
 
-    subgraph IndependentBenzeneDielectric["&lt;span&gt;DD-DFT の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;"]
+    subgraph IndependentBenzeneDielectric["&lt;span&gt;DD-DFT の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5YiG5a2Q44Gu44K544Kv44Oq44O844OL44Oz44Kw44GL44KJICRcYWxwaGE9MS9cdmFyZXBzaWxvbl9zJCDjgpLlrprjgoHjgIFERC1ERlQg44Gu5qeL6YCg44CB5b+c562U44CB5ZC45Y+O44KS5b6T5p2l44Gu5p6d44Go5q+U44G544G+44GZ44CC'&gt;&lt;/span&gt;"]
 
         %% description: 分子のスクリーニングから $\alpha=1/\varepsilon_s$ を定め、DD-DFT の構造、応答、吸収を従来の枝と比べます。
         direction TB
-        Converge5["&lt;a href='2026-10-29_183723/'&gt;$$\varepsilon_s$$ と重みの収束&lt;/a&gt;"]
-        Optimize16["&lt;a href='2026-10-29_183724/'&gt;DD-DFT $$S_0$$ 構造の最適化&lt;/a&gt;"]
-        Verify16["&lt;a href='2026-10-29_183725/'&gt;安定性のチェックと DD-DFT $$S_0$$ の極小の検証&lt;/a&gt;"]
-        Recheck5["&lt;a href='2026-10-29_183726/'&gt;DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;"]
-        Excitations10["&lt;a href='2026-10-29_183727/'&gt;DD-DFT の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;"]
-        Optimize17["&lt;a href='2026-10-30_232951/'&gt;再確認した重みでの $$S_0$$ 構造の最適化&lt;/a&gt;"]
-        Verify17["&lt;a href='2026-10-30_232952/'&gt;安定性のチェックと再確認した $$S_0$$ の極小の検証&lt;/a&gt;"]
-        Recheck6["&lt;a href='2026-10-30_232953/'&gt;再確認した DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;"]
-        Excitations11["&lt;a href='2026-10-30_232954/'&gt;自己無撞着な重みでの $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;"]
+        Converge5["&lt;a href='2026-10-29_183723/'&gt;$$\varepsilon_s$$ と重みの収束&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfIEIzTFlQICRTXzAkIOani+mAoOOBp+OAgURELURGVCDjga7jgrnjgq/jg6rjg7zjg4vjg7PjgrAgJFx2YXJlcHNpbG9uX3MkIOOBqOOAgeOBneOBruS6pOaPm+ODu+ebuOmWouOBrumHjeOBv+OCkuWPjuadn+OBleOBm+OCi+OAgg=='&gt;&lt;/span&gt;"]
+        Optimize16["&lt;a href='2026-10-29_183724/'&gt;DD-DFT $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5paw44GX44GE6Zu75a2Q44Gu5Yid5pyf5o6o5a6a44GL44KJ44CB5Zu65a6a44GX44GfIERELURGVCDjga7ph43jgb/jgacgJFNfMCQg44KS57ep5ZKM44GZ44KL44CC'&gt;&lt;/span&gt;"]
+        Verify16["&lt;a href='2026-10-29_183725/'&gt;安定性のチェックと DD-DFT $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='REQtREZUIOOBriAkU18wJCDms6Lli5XplqLmlbDjgYzlronlrprjgafjgIHmp4vpgKDjgYzmpbXlsI/jgafjgYLjgovjgZPjgajjgpLnorrjgYvjgoHjgovjgII='&gt;&lt;/span&gt;"]
+        Recheck5["&lt;a href='2026-10-29_183726/'&gt;DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='57ep5ZKM44GX44GfIERELURGVCDmp4vpgKDjgacgREQtREZUIOOBruOCueOCr+ODquODvOODi+ODs+OCsOOCkuWGjeeiuuiqjeOBl+OAgeOBneOBrumHjeOBv+OCkuS9v+OBo+OBn+mHjeOBv+OBqOavlOOBueOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Excitations10["&lt;a href='2026-10-29_183727/'&gt;DD-DFT の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfIERELURGVCAkU18wJCDmp4vpgKDjgafjgIHmnIDjgoLkvY7jgYQgMTAg5YCL44Gu5Z6C55u0ICRTXzBccmlnaHRhcnJvdyBTX24kIOWKsei1t+OCkuioiOeul+OBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Optimize17["&lt;a href='2026-10-30_232951/'&gt;再確認した重みでの $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5pyA5Yid44GuIERELURGVCDjga7mpbXlsI/jgaflho3norroqo3jgZfjgZ/ph43jgb/jgpLkvb/jgYTjgIHmrKHjga7mp4vpgKDjgajjgrnjgq/jg6rjg7zjg4vjg7PjgrDjga7jgrXjgqTjgq/jg6vjgajjgZfjgabjgIHmlrDjgZfjgYTpm7vlrZDjga7liJ3mnJ/mjqjlrprjgYvjgokgJFNfMCQg44KS44KC44GG5LiA5bqm57ep5ZKM44GZ44KL44CC'&gt;&lt;/span&gt;"]
+        Verify17["&lt;a href='2026-10-30_232952/'&gt;安定性のチェックと再確認した $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5YaN56K66KqN44GX44Gf6YeN44G/44Gn44GuIERELURGVCAkU18wJCDms6Lli5XplqLmlbDjgYzlronlrprjgafjgIHmp4vpgKDjgYzmpbXlsI/jgafjgYLjgovjgZPjgajjgpLnorrjgYvjgoHjgovjgII='&gt;&lt;/span&gt;"]
+        Recheck6["&lt;a href='2026-10-30_232953/'&gt;再確認した DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5paw44GX44GE5qW15bCP44GnIERELURGVCDjga7jgrnjgq/jg6rjg7zjg4vjg7PjgrDjgpLlho3norroqo3jgZfjgIHjgZ3jga7mp4vpgKDjgpLnlJ/jgpPjgaDkuLjjgoHjgZ/ph43jgb/jgpLlho3nj77jgZnjgovjgYvjganjgYbjgYvjgpLoqr/jgbnjgovjgII='&gt;&lt;/span&gt;"]
+        Excitations11["&lt;a href='2026-10-30_232954/'&gt;自己無撞着な重みでの $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='6YeN44G/44GM5qeL6YCg44Go6Ieq5bex54Sh5pKe552A44GqIERELURGVCAkU18wJCDmpbXlsI/jgafjgIHmnIDjgoLkvY7jgYQgMTAg5YCL44Gu5Z6C55u0ICRTXzBccmlnaHRhcnJvdyBTX24kIOWKsei1t+OCkuioiOeul+OBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
     end
 
     Optimize15 --&gt; Verify15
@@ -821,7 +821,7 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-992dc7666676db38/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-a0cb10c0a013b18b/script.js"></script>
 <section id="基準となる_S_0_構造" class="level3">
 <h3 class="anchored" data-anchor-id="基準となる_S_0_構造">基準となる <span class="math inline">S_0</span> 構造</h3>
 <p><span class="math inline">S_0</span> の基準構造を確立し、電子応答の枝で使う前に曲率を検証します。</p>
@@ -1029,11 +1029,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 10.7815</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 10.7815 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>Explicit consideration of 2 degrees of freedom as vibrations may cause significant error</td>
+<td>2 個の低振動数の自由度を振動として扱うと、熱化学に大きな誤差が生じる可能性があります。</td>
 </tr>
 </tbody>
 </table>
@@ -1083,7 +1083,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 10.7815</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 10.7815 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 </tbody>
 </table>
@@ -1133,7 +1133,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 10.8795</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 10.8795 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 </tbody>
 </table>
@@ -1166,11 +1166,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0834</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 11.0834 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>Explicit consideration of 2 degrees of freedom as vibrations may cause significant error</td>
+<td>2 個の低振動数の自由度を振動として扱うと、熱化学に大きな誤差が生じる可能性があります。</td>
 </tr>
 </tbody>
 </table>
@@ -1236,7 +1236,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0834</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 11.0834 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 </tbody>
 </table>
@@ -1269,7 +1269,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0838</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 11.0838 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 </tbody>
 </table>
@@ -1302,11 +1302,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0838</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 11.0838 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>Explicit consideration of 2 degrees of freedom as vibrations may cause significant error</td>
+<td>2 個の低振動数の自由度を振動として扱うと、熱化学に大きな誤差が生じる可能性があります。</td>
 </tr>
 </tbody>
 </table>
@@ -1356,7 +1356,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
-<td>The largest <span class="math inline">\alpha</span> MO coefficient is 11.0838</td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 11.0838 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
 </tr>
 </tbody>
 </table>
