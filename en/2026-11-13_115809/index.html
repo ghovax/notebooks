@@ -122,7 +122,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../site_libs/shared-6980664ff886bf51/styles.css">
+<link rel="stylesheet" href="../../site_libs/shared-94249f515da8445e/styles.css">
 </head>
 
 <body class="compact-tables fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -158,7 +158,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 14, 2026</p>
+      <p class="date-modified">November 16, 2026</p>
     </div>
   </div>
     
@@ -191,7 +191,7 @@ window.Quarto = {
 <div id="Figure_1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../site_libs/shared-92a206bd128ee3ea/chelate-substituents.svg" class="img-fluid figure-img" width="306">
+<img src="../../site_libs/shared-7aec6451e45dee96/chelate-substituents.svg" class="img-fluid figure-img" width="309">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <strong>Figure&nbsp;1.</strong> Scaffold of the difluoroboron chelates of <a href="https://doi.org/10.1002/cptc.202200271">Saito et al.&nbsp;(2023), Figure 3</a>, with the sites <span class="math inline">\mathrm{X}</span>, <span class="math inline">\mathrm{Y}</span> and <span class="math inline">\mathrm{Z}</span> and the bonds <span class="math inline">\mathrm{A}</span>, <span class="math inline">\mathrm{B}_1</span>, <span class="math inline">\mathrm{B}_2</span> and <span class="math inline">\mathrm{C}</span>.
@@ -203,9 +203,9 @@ window.Quarto = {
 </div>
 <section id="Workflows" class="level2">
 <h2 class="anchored" data-anchor-id="Workflows">Workflows</h2>
-<section id="B3LYP_with_IEFPCM_acetonitrile" class="level3 workflow-tables">
-<h3 class="anchored" data-anchor-id="B3LYP_with_IEFPCM_acetonitrile">B3LYP with IEFPCM acetonitrile</h3>
-<p>Conventional hybrid DFT in a polarizable continuum, without molecular screening.</p>
+<section id="B3LYP_and_DD-DFT_with_IEFPCM_acetonitrile" class="level3 workflow-tables">
+<h3 class="anchored" data-anchor-id="B3LYP_and_DD-DFT_with_IEFPCM_acetonitrile">B3LYP and DD-DFT with IEFPCM acetonitrile</h3>
+<p>Conventional hybrid DFT and its screening-weighted counterpart in a polarizable continuum.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -244,14 +244,17 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>12 calculations are prepared and none is submitted.</li>
-<li>The chelate has its two minima with their state properties, relaxed scans of both twists in both states and a relaxed torsion map.</li>
+<li>22 calculations are prepared and none is submitted.</li>
+<li>The excitations group finds and verifies the <span class="math inline">S_0</span> and <span class="math inline">S_1</span> minima with B3LYP and with DD-DFT; the twists group scans both twists in both states and maps them in <span class="math inline">S_0</span>.</li>
 </ul>
 </div>
 </div>
-<section id="Minima_and_state_properties" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Minima_and_state_properties">Minima and state properties</h3>
-<p>Optimize and verify <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, then compute the charges, dipole and vertical transition at each minimum.</p>
+<section id="Excitations_at_the_minima" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Excitations_at_the_minima">Excitations at the minima</h3>
+<p>Find and verify the <span class="math inline">S_0</span> and <span class="math inline">S_1</span> minima with B3LYP and with DD-DFT, with the screening <span class="math inline">\varepsilon_s</span>, the vertical absorption at <span class="math inline">S_0</span> and the emission properties at <span class="math inline">S_1</span>.</p>
+<section id="Reference_S_0_geometry" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Reference_S_0_geometry">Reference <span class="math inline">S_0</span> geometry</h4>
+<p>Optimize <span class="math inline">S_0</span> and verify its curvature and wavefunction before any later run uses the geometry.</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -267,15 +270,51 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115811/">Optimize and verify <span class="math inline">S_0</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115811/">Optimize <span class="math inline">S_0</span></a></td>
 <td>Gaussian</td>
-<td>Opt, Freq; Stable</td>
+<td>Opt</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115812/">Absorption properties at the <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115812/">Verify the <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq; Stable</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation">B3LYP <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h4>
+<p>Evaluate the B3LYP screening and the vertical absorption at the reference geometry, then relax and verify <span class="math inline">S_1</span> and compute its emission.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115813/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115814/">Vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
@@ -283,15 +322,23 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115813/">Optimize and verify <span class="math inline">S_1</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115815/">Optimize <span class="math inline">S_1</span></a></td>
 <td>Gaussian</td>
-<td>Opt (TD), Freq (TD)</td>
+<td>Opt (TD)</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115814/">Emission properties at the <span class="math inline">S_1</span> minimum</a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115816/">Verify the <span class="math inline">S_1</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq (TD)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115817/">Emission at the <span class="math inline">S_1</span> minimum</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
@@ -301,8 +348,88 @@ window.Quarto = {
 </table>
 </div>
 </section>
-<section id="Twist_about_mathrmB_1" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Twist_about_mathrmB_1">Twist about <span class="math inline">\mathrm{B}_1</span></h3>
+<section id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation">DD-DFT <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h4>
+<p>Use the converged screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then optimize, verify and excite with DD-BLYP to compare with the conventional branch.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115818/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115819/">Optimize the DD-DFT <span class="math inline">S_0</span></a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115820/">Verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq; Stable</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115821/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115822/">DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>SP; SP (TD); SP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115823/">Optimize the DD-DFT <span class="math inline">S_1</span></a></td>
+<td>Gaussian</td>
+<td>Opt (TD)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115810/2026-11-13_115824/">Verify the DD-DFT <span class="math inline">S_1</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq (TD)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="Twists_from_the_B3LYP_minima" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Twists_from_the_B3LYP_minima">Twists from the B3LYP minima</h3>
+<p>Scan the twists about <span class="math inline">\mathrm{A}</span> and <span class="math inline">\mathrm{B}_1</span> in <span class="math inline">S_0</span> and <span class="math inline">S_1</span> from the verified B3LYP minima, and map both in <span class="math inline">S_0</span>, with the vertical excitations along each ground-state scan.</p>
+<section id="Twist_about_mathrmB_1" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Twist_about_mathrmB_1">Twist about <span class="math inline">\mathrm{B}_1</span></h4>
 <p>Turn the donor-side phenyl ring against the core in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
 <div class="calculations-table">
 <table class="caption-top table">
@@ -319,7 +446,7 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115815/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115825/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -327,7 +454,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115816/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115826/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -335,7 +462,7 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115817/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115827/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
@@ -345,8 +472,8 @@ window.Quarto = {
 </table>
 </div>
 </section>
-<section id="Twist_about_mathrmA" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Twist_about_mathrmA">Twist about <span class="math inline">\mathrm{A}</span></h3>
+<section id="Twist_about_mathrmA" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Twist_about_mathrmA">Twist about <span class="math inline">\mathrm{A}</span></h4>
 <p>Turn the donor against its phenyl ring in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
 <div class="calculations-table">
 <table class="caption-top table">
@@ -363,7 +490,7 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115818/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115828/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -371,7 +498,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115819/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115829/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -379,7 +506,7 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115820/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115830/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
@@ -389,8 +516,8 @@ window.Quarto = {
 </table>
 </div>
 </section>
-<section id="Map_of_both_twists" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Map_of_both_twists">Map of both twists</h3>
+<section id="Map_of_both_twists" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Map_of_both_twists">Map of both twists</h4>
 <p>Relax <span class="math inline">S_0</span> over both twists together on a <span class="math inline">30^\circ</span> grid, with the vertical excitations at each converged point.</p>
 <div class="calculations-table">
 <table class="caption-top table">
@@ -407,7 +534,7 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115821/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115831/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -415,7 +542,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115810/2026-11-13_115822/">Vertical excitations over the <span class="math inline">S_0</span> map</a></td>
+<td><a href="2026-11-13_115810/2026-11-13_115832/">Vertical excitations over the <span class="math inline">S_0</span> map</a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -424,6 +551,7 @@ window.Quarto = {
 </tbody>
 </table>
 </div>
+</section>
 </section>
 </div>
 <div class="link-detail" data-href="2026-11-13_115835/">
@@ -438,14 +566,17 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>12 calculations are prepared and none is submitted.</li>
-<li>The chelate has its two minima with their state properties, relaxed scans of both twists in both states and a relaxed torsion map.</li>
+<li>22 calculations are prepared and none is submitted.</li>
+<li>The excitations group finds and verifies the <span class="math inline">S_0</span> and <span class="math inline">S_1</span> minima with B3LYP and with DD-DFT; the twists group scans both twists in both states and maps them in <span class="math inline">S_0</span>.</li>
 </ul>
 </div>
 </div>
-<section id="Minima_and_state_properties_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Minima_and_state_properties_2">Minima and state properties</h3>
-<p>Optimize and verify <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, then compute the charges, dipole and vertical transition at each minimum.</p>
+<section id="Excitations_at_the_minima_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Excitations_at_the_minima_2">Excitations at the minima</h3>
+<p>Find and verify the <span class="math inline">S_0</span> and <span class="math inline">S_1</span> minima with B3LYP and with DD-DFT, with the screening <span class="math inline">\varepsilon_s</span>, the vertical absorption at <span class="math inline">S_0</span> and the emission properties at <span class="math inline">S_1</span>.</p>
+<section id="Reference_S_0_geometry_2" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Reference_S_0_geometry_2">Reference <span class="math inline">S_0</span> geometry</h4>
+<p>Optimize <span class="math inline">S_0</span> and verify its curvature and wavefunction before any later run uses the geometry.</p>
 <div class="calculations-table">
 <table class="caption-top table">
 <thead>
@@ -461,15 +592,51 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115836/">Optimize and verify <span class="math inline">S_0</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115836/">Optimize <span class="math inline">S_0</span></a></td>
 <td>Gaussian</td>
-<td>Opt, Freq; Stable</td>
+<td>Opt</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115837/">Absorption properties at the <span class="math inline">S_0</span> minimum</a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115837/">Verify the <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq; Stable</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation_2" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="B3LYP_varepsilon_s_absorption_and_S_1_relaxation_2">B3LYP <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h4>
+<p>Evaluate the B3LYP screening and the vertical absorption at the reference geometry, then relax and verify <span class="math inline">S_1</span> and compute its emission.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115838/">Evaluate screening <span class="math inline">\varepsilon_s</span></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115839/">Vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
@@ -477,15 +644,23 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115838/">Optimize and verify <span class="math inline">S_1</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115840/">Optimize <span class="math inline">S_1</span></a></td>
 <td>Gaussian</td>
-<td>Opt (TD), Freq (TD)</td>
+<td>Opt (TD)</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115839/">Emission properties at the <span class="math inline">S_1</span> minimum</a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115841/">Verify the <span class="math inline">S_1</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq (TD)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115842/">Emission at the <span class="math inline">S_1</span> minimum</a></td>
 <td>Gaussian</td>
 <td>SP; SP (TD); SP</td>
 <td></td>
@@ -495,8 +670,88 @@ window.Quarto = {
 </table>
 </div>
 </section>
-<section id="Twist_about_mathrmB_1_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Twist_about_mathrmB_1_2">Twist about <span class="math inline">\mathrm{B}_1</span></h3>
+<section id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation_2" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="DD-DFT_varepsilon_s_absorption_and_S_1_relaxation_2">DD-DFT <span class="math inline">\varepsilon_s</span>, absorption and <span class="math inline">S_1</span> relaxation</h4>
+<p>Use the converged screening to set <span class="math inline">\alpha=1/\varepsilon_s</span>, then optimize, verify and excite with DD-BLYP to compare with the conventional branch.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115843/">Converge <span class="math inline">\varepsilon_s</span> and weights</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115844/">Optimize the DD-DFT <span class="math inline">S_0</span></a></td>
+<td>Gaussian</td>
+<td>Opt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115845/">Verify the DD-DFT <span class="math inline">S_0</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq; Stable</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115846/">Recheck <span class="math inline">\varepsilon_s</span> at the DD-DFT geometry</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115847/">DD-DFT vertical <span class="math inline">S_0\rightarrow S_n</span> excitations</a></td>
+<td>Gaussian</td>
+<td>SP; SP (TD); SP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115848/">Optimize the DD-DFT <span class="math inline">S_1</span></a></td>
+<td>Gaussian</td>
+<td>Opt (TD)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-13_115835/2026-11-13_115849/">Verify the DD-DFT <span class="math inline">S_1</span> minimum</a></td>
+<td>Gaussian</td>
+<td>Freq (TD)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="Twists_from_the_B3LYP_minima_2" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Twists_from_the_B3LYP_minima_2">Twists from the B3LYP minima</h3>
+<p>Scan the twists about <span class="math inline">\mathrm{A}</span> and <span class="math inline">\mathrm{B}_1</span> in <span class="math inline">S_0</span> and <span class="math inline">S_1</span> from the verified B3LYP minima, and map both in <span class="math inline">S_0</span>, with the vertical excitations along each ground-state scan.</p>
+<section id="Twist_about_mathrmB_1_2" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Twist_about_mathrmB_1_2">Twist about <span class="math inline">\mathrm{B}_1</span></h4>
 <p>Turn the donor-side phenyl ring against the core in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
 <div class="calculations-table">
 <table class="caption-top table">
@@ -513,7 +768,7 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115840/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115850/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -521,7 +776,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115841/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115851/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -529,7 +784,7 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115842/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115852/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
@@ -539,8 +794,8 @@ window.Quarto = {
 </table>
 </div>
 </section>
-<section id="Twist_about_mathrmA_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Twist_about_mathrmA_2">Twist about <span class="math inline">\mathrm{A}</span></h3>
+<section id="Twist_about_mathrmA_2" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Twist_about_mathrmA_2">Twist about <span class="math inline">\mathrm{A}</span></h4>
 <p>Turn the donor against its phenyl ring in <span class="math inline">S_0</span> and <span class="math inline">S_1</span>, with the vertical excitations along the <span class="math inline">S_0</span> scan.</p>
 <div class="calculations-table">
 <table class="caption-top table">
@@ -557,7 +812,7 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115843/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115853/">Relaxed <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -565,7 +820,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115844/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115854/">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -573,7 +828,7 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115845/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115855/">Relaxed <span class="math inline">S_1</span> scan of <span class="math inline">\theta_\mathrm{A}</span></a></td>
 <td>Gaussian</td>
 <td>Opt (TD)</td>
 <td></td>
@@ -583,8 +838,8 @@ window.Quarto = {
 </table>
 </div>
 </section>
-<section id="Map_of_both_twists_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Map_of_both_twists_2">Map of both twists</h3>
+<section id="Map_of_both_twists_2" class="level4 unlisted">
+<h4 class="unlisted anchored" data-anchor-id="Map_of_both_twists_2">Map of both twists</h4>
 <p>Relax <span class="math inline">S_0</span> over both twists together on a <span class="math inline">30^\circ</span> grid, with the vertical excitations at each converged point.</p>
 <div class="calculations-table">
 <table class="caption-top table">
@@ -601,7 +856,7 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115846/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115856/">Relaxed <span class="math inline">S_0</span> map of <span class="math inline">\theta_\mathrm{A}</span> and <span class="math inline">\theta_{\mathrm{B}_1}</span></a></td>
 <td>Gaussian</td>
 <td>Opt</td>
 <td></td>
@@ -609,7 +864,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-13_115835/2026-11-13_115847/">Vertical excitations over the <span class="math inline">S_0</span> map</a></td>
+<td><a href="2026-11-13_115835/2026-11-13_115857/">Vertical excitations over the <span class="math inline">S_0</span> map</a></td>
 <td>Gaussian</td>
 <td>SP (TD)</td>
 <td></td>
@@ -618,6 +873,7 @@ window.Quarto = {
 </tbody>
 </table>
 </div>
+</section>
 </section>
 </div>
 </div>

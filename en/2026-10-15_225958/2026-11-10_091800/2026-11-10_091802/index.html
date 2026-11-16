@@ -71,8 +71,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-7cafd99a1fb1b759/style.css">
-<script src="../../../../site_libs/shared-9957e67b72ca22d6/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-af6a450c23030404/style.css">
+<script src="../../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -161,7 +161,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-6980664ff886bf51/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-94249f515da8445e/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -281,24 +281,24 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Searches["Unconstrained TS search&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='UmVsZWFzZSBldmVyeSBjb29yZGluYXRlIGF0IHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIGFuZCByZXF1aXJlIGEgY29udmVyZ2VkIGZpcnN0LW9yZGVyIHNhZGRsZSwgd2hpY2ggdGhlIHBsYW5hciByZXN1bHRzIGNvdWxkIG5vdCBwcm92aWRlLg=='&gt;&lt;/span&gt;"]
+    subgraph Searches["Unconstrained TS search&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='UmVsZWFzZSBldmVyeSBjb29yZGluYXRlIGF0IHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIGFuZCByZXF1aXJlIGEgY29udmVyZ2VkIGZpcnN0LW9yZGVyIHNhZGRsZSwgd2hpY2ggdGhlIHBsYW5hciByZXN1bHRzIGNvdWxkIG5vdCBwcm92aWRlLg=='&gt;&lt;/span&gt;"]
         %% description: Release every coordinate at the sampled maximum of the planar scan and require a converged first-order saddle, which the planar results could not provide.
         direction TB
-        Search1["&lt;a href='../2026-11-10_091801/'&gt;TS search from the scan maximum&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='VGVzdCB3aGV0aGVyIHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIHJlbGF4ZXMgdG8gYSBmaXJzdC1vcmRlciBQTTYtRDMgc2FkZGxlIHdoZW4gbm8gY29vcmRpbmF0ZSBpcyBmcm96ZW4u'&gt;&lt;/span&gt;"]
+        Search1["&lt;a href='../2026-11-10_091801/'&gt;TS search from the scan maximum&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='VGVzdCB3aGV0aGVyIHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIHJlbGF4ZXMgdG8gYSBmaXJzdC1vcmRlciBQTTYtRDMgc2FkZGxlIHdoZW4gbm8gY29vcmRpbmF0ZSBpcyBmcm96ZW4u'&gt;&lt;/span&gt;"]
     end
 
-    subgraph Paths["Reaction path&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Rm9sbG93IHRoZSBjb252ZXJnZWQgc2FkZGxlIGFsb25nICRccG0gcyQgd2l0aG91dCBhIHBsYW5hciByZXN0cmljdGlvbiwgdG8gbGVhcm4gd2hpY2ggbW9sZWN1bGVzIGl0IGNvbm5lY3RzLg=='&gt;&lt;/span&gt;"]
+    subgraph Paths["Reaction path&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='Rm9sbG93IHRoZSBjb252ZXJnZWQgc2FkZGxlIGFsb25nICRccG0gcyQgd2l0aG91dCBhIHBsYW5hciByZXN0cmljdGlvbiwgdG8gbGVhcm4gd2hpY2ggbW9sZWN1bGVzIGl0IGNvbm5lY3RzLg=='&gt;&lt;/span&gt;"]
         %% description: Follow the converged saddle along $\pm s$ without a planar restriction, to learn which molecules it connects.
         direction TB
-        Path1["IRC along $$\pm s$$ from the TS&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Rm9sbG93IHRoZSByZWFjdGlvbiBwYXRoIGFsb25nICRccG0gcyQgZnJvbSB0aGUgdW5jb25zdHJhaW5lZCBzYWRkbGUsIHdpdGhvdXQgYW55IHBsYW5hcml0eSByZXN0cmljdGlvbiwgYW5kIGZpbmQgd2hpY2ggc3RydWN0dXJlcyBpdCBjb25uZWN0cy4='&gt;&lt;/span&gt;"]
+        Path1["IRC along $$\pm s$$ from the TS&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='Rm9sbG93IHRoZSByZWFjdGlvbiBwYXRoIGFsb25nICRccG0gcyQgZnJvbSB0aGUgdW5jb25zdHJhaW5lZCBzYWRkbGUsIHdpdGhvdXQgYW55IHBsYW5hcml0eSByZXN0cmljdGlvbiwgYW5kIGZpbmQgd2hpY2ggc3RydWN0dXJlcyBpdCBjb25uZWN0cy4='&gt;&lt;/span&gt;"]
     end
 
-    subgraph Fields["&lt;span&gt;Electron density $$\rho$$ and ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='Q29tcGFyZSB0aGUgZGVuc2l0eSBhbmQgcG90ZW50aWFsIGF0IHRoZSBzYWRkbGUgYW5kIGJvdGggcGF0aCBlbmRzIG9uIG9uZSBncmlkIGFuZCBwb3RlbnRpYWwgc2NhbGUsIHdpdGhvdXQgcmVvcHRpbWl6aW5nIGF0IHRoZSBoaWdoZXIgbGV2ZWwu'&gt;&lt;/span&gt;"]
+    subgraph Fields["&lt;span&gt;Electron density $$\rho$$ and ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='Q29tcGFyZSB0aGUgZGVuc2l0eSBhbmQgcG90ZW50aWFsIGF0IHRoZSBzYWRkbGUgYW5kIGJvdGggcGF0aCBlbmRzIG9uIG9uZSBncmlkIGFuZCBwb3RlbnRpYWwgc2NhbGUsIHdpdGhvdXQgcmVvcHRpbWl6aW5nIGF0IHRoZSBoaWdoZXIgbGV2ZWwu'&gt;&lt;/span&gt;"]
         %% description: Compare the density and potential at the saddle and both path ends on one grid and potential scale, without reoptimizing at the higher level.
         direction TB
-        Fields1["&lt;a href='../2026-11-10_091803/'&gt;Evaluate B3LYP fields at $$s_\mathrm{R}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIHJldmVyc2UgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Un0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
-        Fields2["&lt;a href='../2026-11-10_091804/'&gt;Evaluate B3LYP fields at the TS&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIFRTLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
-        Fields3["&lt;a href='../2026-11-10_091805/'&gt;Evaluate B3LYP fields at $$s_\mathrm{F}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIGZvcndhcmQgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Rn0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
+        Fields1["&lt;a href='../2026-11-10_091803/'&gt;Evaluate B3LYP fields at $$s_\mathrm{R}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIHJldmVyc2UgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Un0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
+        Fields2["&lt;a href='../2026-11-10_091804/'&gt;Evaluate B3LYP fields at the TS&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIFRTLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
+        Fields3["&lt;a href='../2026-11-10_091805/'&gt;Evaluate B3LYP fields at $$s_\mathrm{F}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIGZvcndhcmQgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Rn0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
     end
 
     Start1(( ))
@@ -353,15 +353,15 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-a0cb10c0a013b18b/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
 <section id="Goal" class="level2">
 <h2 class="anchored" data-anchor-id="Goal">Goal</h2>
 <ul>
 <li>Follow the reaction path along <span class="math inline">\pm s</span> from the unconstrained saddle, without any planarity restriction, and find which structures it connects.</li>
 </ul>
-<div id="736606e0" class="cell" data-execution_count="2">
+<div id="ad16f1dd" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-cac70884ffb28041/data.js"></script>
+<script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-51d00883c74d211e/data.js"></script>
 </div>
 </div>
 </section>
@@ -371,7 +371,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <h3 class="anchored" data-anchor-id="Gaussian_input">Gaussian input</h3>
 <section id="Link_0_commands" class="level4">
 <h4 class="anchored" data-anchor-id="Link_0_commands">Link 0 commands</h4>
-<p>Link 0 sets memory, processors and files.</p>
+<p>Link 0 is the part of each job before its route: it sets this job’s memory, processors and files. Every linked job has its own.</p>
 <div class="cell" data-execution_count="3">
 <div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
 <figure class="quarto-float quarto-float-tbl figure">

@@ -88,8 +88,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../site_libs/shared-7cafd99a1fb1b759/style.css">
-<script src="../../../site_libs/shared-9957e67b72ca22d6/script.js"></script>
+<link rel="stylesheet" href="../../../site_libs/shared-af6a450c23030404/style.css">
+<script src="../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -171,7 +171,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../site_libs/shared-6980664ff886bf51/styles.css">
+<link rel="stylesheet" href="../../../site_libs/shared-94249f515da8445e/styles.css">
 </head>
 
 <body class="quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
@@ -366,7 +366,7 @@ window.Quarto = {
 </div>
 <p><a href="#Table_3" class="quarto-xref">表&nbsp;3</a> と <a href="#Table_4" class="quarto-xref">表&nbsp;4</a> のシフト <span class="math inline">\delta\Delta E_{S_n}</span> は、独立な初期推定での <span class="math inline">\Delta E_{S_n}</span> から、つないだ初期推定での <span class="math inline">\Delta E_{S_n}</span> を引いた値です。</p>
 <ul>
-<li>どちらのワークフローでも、<span class="math inline">S_1</span> は暗く、<span class="math inline">S_3/S_4</span> は縮退した明るい対になります。</li>
+<li>どちらのワークフローでも、<span class="math inline">S_1</span> は暗く、<span class="math inline">\lbrace S_3,S_4\rbrace</span> は縮退した明るい対になります。</li>
 <li>どの <span class="math inline">\delta\Delta E_{S_n}</span> も、せいぜい数ミリ電子ボルトです。</li>
 </ul>
 <div class="cell" data-execution_count="5">
@@ -541,36 +541,26 @@ window.Quarto = {
 </section>
 <section id="公表されているベンゼンのスクリーニングとの比較" class="level2">
 <h2 class="anchored" data-anchor-id="公表されているベンゼンのスクリーニングとの比較">公表されているベンゼンのスクリーニングとの比較</h2>
-<p>Shimazaki らはベンゼンの分子スクリーニングを二つの論文 <span class="citation" data-cites="Reference_1"><a href="#Reference_1" role="doc-biblioref">[1, Table 1]</a></span> と <span class="citation" data-cites="Reference_2"><a href="#Reference_2" role="doc-biblioref">[2, Table 1]</a></span> で報告しています。TTz の論文 <span class="citation" data-cites="Reference_3"><a href="#Reference_3" role="doc-biblioref">[3]</a></span> は HOMO–LUMO ギャップだけを表に示し、HF の割合 <span class="math inline">1/\varepsilon_s</span> を Fig. 1c に示しています。<a href="#Table_6" class="quarto-xref">表&nbsp;6</a> はそれらをこのワークフローの値と並べています。</p>
+<p>Shimazaki らはベンゼンのスクリーニングを複数の汎関数と基底で報告しています <span class="citation" data-cites="Reference_1"><a href="#Reference_1" role="doc-biblioref">[1, Table 1]</a></span>。<a href="#Table_6" class="quarto-xref">表&nbsp;6</a> はそのうち最も近い値をこのワークフローの値と並べています。</p>
 <ul>
-<li>ここでの B3LYP のスクリーニング <span class="math inline">\varepsilon_s=2.4456</span> (<span class="math inline">6\text{-}31\mathrm{G}(d,p)</span>) は、公表されている B3LYP の値、<span class="math inline">6\text{-}31\mathrm{G}(d)</span> の <span class="math inline">2.43</span> と <span class="math inline">6\text{-}311\mathrm{G}(d)</span> の <span class="math inline">2.49</span> の間にあります <span class="citation" data-cites="Reference_1"><a href="#Reference_1" role="doc-biblioref">[1]</a></span>。</li>
-<li>ここでの自己無撞着な DD-DFT のスクリーニング <span class="math inline">\varepsilon_s=2.1614</span> は、最も近い基底での公表された局所交換の値、<span class="math inline">6\text{-}31\mathrm{G}(d)</span> での式 (3) の <span class="math inline">2.17</span> に最も近い値です <span class="citation" data-cites="Reference_1"><a href="#Reference_1" role="doc-biblioref">[1]</a></span>。</li>
-<li>公表されている誘電率依存の値そのものは、交換の形と基底によって <span class="math inline">2.17</span> から <span class="math inline">2.43</span> にわたり、その幅は私たちの値と最も近い値との差より広くなっています。</li>
-</ul>
-<p>値は同じ方法で計算されていないので、この一致は整合性の確認であり、再現ではありません。</p>
-<ul>
-<li><strong>基底：</strong>ここでは <span class="math inline">6\text{-}31\mathrm{G}(d,p)</span>、2016 年は <span class="math inline">6\text{-}31\mathrm{G}(d)</span> と <span class="math inline">6\text{-}311\mathrm{G}(d)</span>、2022 年は <span class="math inline">6\text{-}31{+}\mathrm{G}(d)</span> です。2022 年の分散関数は分子を分極しやすくし、その値が最も大きくなっています。</li>
-<li><strong>汎関数の形：</strong>ここでの DD-DFT は B88 交換を <span class="math inline">1-\alpha</span> 倍、LYP 相関を <span class="math inline">\sqrt{1-\alpha}</span> 倍し、<span class="math inline">\alpha=1/\varepsilon_s</span> です。2016 年の式 (3) は VWN 相関を伴う Slater 交換、式 (1.1) と 2022 年の式 (3) は非局所の短距離遮蔽交換、2022 年の式 (4) は局所 Slater 交換を用います。</li>
-<li><strong>構造：</strong>ここでは B3LYP/<span class="math inline">6\text{-}31\mathrm{G}(d,p)</span> の構造を DD-DFT の重みで緩和しています。2016 年は B3LYP/<span class="math inline">6\text{-}31\mathrm{G}(d)</span>、2022 年は B3LYP のスクリーニングを用いた Gaussian 09 の最適化です。</li>
-<li><strong>スクリーニングのモデル：</strong>どの研究も密度の等値面 <span class="math inline">0.001\,a_0^{-3}</span> の内側の体積で同じ応答の式を評価しますが、実装、求積、<span class="math inline">\beta</span> などのモデル定数は異なります。Lotus は書き直されたプログラムであり、論文のプログラムではありません。</li>
-<li><strong>ギャップ：</strong>HOMO–LUMO ギャップ <span class="math inline">\Delta\epsilon</span> は交換の割合に従うので、誘電率依存のギャップは形によって最大で約 <span class="math inline">2.5\,\mathrm{eV}</span> 異なります。これは軌道エネルギーの差であり、励起エネルギーではありません。</li>
+<li>ここでの B3LYP のスクリーニング <span class="math inline">\varepsilon_s=2.4456</span> は、公表値である <span class="math inline">6\text{-}31\mathrm{G}(d)</span> の <span class="math inline">2.43</span> と <span class="math inline">6\text{-}311\mathrm{G}(d)</span> の <span class="math inline">2.49</span> の間にあります。</li>
+<li>ここでの DD-DFT のスクリーニング <span class="math inline">\varepsilon_s=2.1614</span> は、VWN 相関を伴う局所 Slater 交換による <span class="math inline">6\text{-}31\mathrm{G}(d)</span> の公表値 <span class="math inline">2.17</span> に最も近い値です。</li>
+<li>基底、交換の形、構造、スクリーニングの実装が異なるので、この一致は整合性の確認であり、再現ではありません。</li>
 </ul>
 <div class="cell" data-execution_count="9">
 <div id="Table_6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-literature-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;6. ベンゼンの分子スクリーニング <span class="math inline">\varepsilon_s</span> と HOMO–LUMO ギャップ <span class="math inline">\Delta\epsilon</span> の公表値とこのワークフローの値、および同じ種類の汎関数でのこのワークフローの値に対する各値の相対差。
+表&nbsp;6. ベンゼンの分子スクリーニング <span class="math inline">\varepsilon_s</span> の公表値とこのワークフローの値。
 </figcaption>
 <div aria-describedby="tbl-literature-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
 <table class="cell caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 19%">
-<col style="width: 19%">
-<col style="width: 7%">
-<col style="width: 13%">
-<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 29%">
+<col style="width: 29%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -578,90 +568,38 @@ window.Quarto = {
 <th style="text-align: left;">汎関数</th>
 <th style="text-align: left;">基底</th>
 <th style="text-align: right;"><span class="math inline">\varepsilon_s</span></th>
-<th style="text-align: right;"><span class="math inline">\Delta\epsilon\;[\mathrm{eV}]</span></th>
-<th style="text-align: right;"><span class="math inline">\Delta\varepsilon_s/\varepsilon_s\;[\mathrm{\%}]</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><span class="citation" data-cites="Reference_1"><a href="#Reference_1" role="doc-biblioref">[1]</a></span></td>
-<td style="text-align: left;">B3LYP、SCF 後のスクリーニング</td>
+<td style="text-align: left;">B3LYP</td>
 <td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}^{*}</span></td>
 <td style="text-align: right;">2.43</td>
-<td style="text-align: right;">6.8</td>
-<td style="text-align: right;">-0.6376</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
 <td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
 <td style="text-align: left;"><span class="math inline">6\text{-}311\mathrm{G}^{*}</span></td>
 <td style="text-align: right;">2.49</td>
-<td style="text-align: right;">6.71</td>
-<td style="text-align: right;">1.816</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: left;">式 (1.1)、非局所遮蔽交換</td>
+<td style="text-align: left;">式 (3)、VWN を伴う局所 Slater 交換</td>
 <td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}^{*}</span></td>
-<td style="text-align: right;">2.2</td>
-<td style="text-align: right;">8.52</td>
-<td style="text-align: right;">1.786</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: left;">式 (3)、VWN を伴う局所 Slater 交換</td>
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
 <td style="text-align: right;">2.17</td>
-<td style="text-align: right;">8.84</td>
-<td style="text-align: right;">0.3979</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: left;">式 (1.1)、非局所遮蔽交換</td>
-<td style="text-align: left;"><span class="math inline">6\text{-}311\mathrm{G}^{*}</span></td>
-<td style="text-align: right;">2.23</td>
-<td style="text-align: right;">8.72</td>
-<td style="text-align: right;">3.174</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: left;">式 (3)、VWN を伴う局所 Slater 交換</td>
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: right;">2.24</td>
-<td style="text-align: right;">8.6</td>
-<td style="text-align: right;">3.637</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="citation" data-cites="Reference_2"><a href="#Reference_2" role="doc-biblioref">[2]</a></span></td>
-<td style="text-align: left;">式 (3)、erfc 短距離交換</td>
-<td style="text-align: left;"><span class="math inline">6\text{-}31{+}\mathrm{G}^{*}</span></td>
-<td style="text-align: right;">2.43</td>
-<td style="text-align: right;">6.83</td>
-<td style="text-align: right;">12.43</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: left;">式 (4)、局所 Slater 交換</td>
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: right;">2.33</td>
-<td style="text-align: right;">8.31</td>
-<td style="text-align: right;">7.801</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">このワークフロー</td>
-<td style="text-align: left;">B3LYP、SCF 後のスクリーニング</td>
+<td style="text-align: left;">B3LYP</td>
 <td style="text-align: left;"><span class="math inline">6\text{-}31\mathrm{G}^{**}</span></td>
 <td style="text-align: right;">2.446</td>
-<td style="text-align: right;">6.793</td>
-<td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: left;">DD-DFT、スクリーニングで重み付けした B88 と LYP</td>
+<td style="text-align: left;">DD-DFT</td>
 <td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
 <td style="text-align: right;">2.161</td>
-<td style="text-align: right;">8.868</td>
-<td style="text-align: right;"><span class="ditto" title="上の行と同じ">〃</span></td>
 </tr>
 </tbody>
 </table>
@@ -708,34 +646,34 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph IndependentBenzeneReference["&lt;span&gt;基準となる $$S_0$$ 構造&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='JFNfMCQg44Gu5Z+65rqW5qeL6YCg44KS56K656uL44GX44CB6Zu75a2Q5b+c562U44Gu5p6d44Gn5L2/44GG5YmN44Gr5puy546H44KS5qSc6Ki844GX44G+44GZ44CC'&gt;&lt;/span&gt;"]
+    subgraph IndependentBenzeneReference["&lt;span&gt;基準となる $$S_0$$ 構造&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='JFNfMCQg44Gu5Z+65rqW5qeL6YCg44KS56K656uL44GX44CB6Zu75a2Q5b+c562U44Gu5p6d44Gn5L2/44GG5YmN44Gr5puy546H44KS5qSc6Ki844GX44G+44GZ44CC'&gt;&lt;/span&gt;"]
         %% description: $S_0$ の基準構造を確立し、電子応答の枝で使う前に曲率を検証します。
         direction TB
-        Optimize15["&lt;a href='2026-10-29_183719/'&gt;B3LYP $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5paw44GX44GE6Zu75a2Q44Gu5Yid5pyf5o6o5a6a44GL44KJ44CB5YWo5qC45bqn5qiZ44KS57ep5ZKM44GX44GmICRTXzAkIOani+mAoOOCkuaxguOCgeOCi+OAgg=='&gt;&lt;/span&gt;"]
-        Verify15["&lt;a href='2026-10-29_183720/'&gt;安定性のチェックと B3LYP $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5pyA6YGp5YyW44GX44GfICRTXzAkIOOBruazouWLlemWouaVsOOBjOWuieWumuOBp+OAgeani+mAoOOBjOalteWwj+OBp+OBguOCi+OBk+OBqOOCkueiuuOBi+OCgeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Optimize15["&lt;a href='2026-10-29_183719/'&gt;B3LYP $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5paw44GX44GE6Zu75a2Q44Gu5Yid5pyf5o6o5a6a44GL44KJ44CB5YWo5qC45bqn5qiZ44KS57ep5ZKM44GX44GmICRTXzAkIOani+mAoOOCkuaxguOCgeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Verify15["&lt;a href='2026-10-29_183720/'&gt;安定性のチェックと B3LYP $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5pyA6YGp5YyW44GX44GfICRTXzAkIOOBruazouWLlemWouaVsOOBjOWuieWumuOBp+OAgeani+mAoOOBjOalteWwj+OBp+OBguOCi+OBk+OBqOOCkueiuuOBi+OCgeOCi+OAgg=='&gt;&lt;/span&gt;"]
     end
 
-    subgraph IndependentBenzeneConventional["&lt;span&gt;B3LYP の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgUIzTFlQIOOBruWIhuWtkOOBruOCueOCr+ODquODvOODi+ODs+OCsOOBqOWeguebtCAkU18wXHJpZ2h0YXJyb3cgU19uJCDlkLjlj47jgpLoqZXkvqHjgZfjgb7jgZnjgII='&gt;&lt;/span&gt;"]
+    subgraph IndependentBenzeneConventional["&lt;span&gt;B3LYP の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgUIzTFlQIOOBruWIhuWtkOOBruOCueOCr+ODquODvOODi+ODs+OCsOOBqOWeguebtCAkU18wXHJpZ2h0YXJyb3cgU19uJCDlkLjlj47jgpLoqZXkvqHjgZfjgb7jgZnjgII='&gt;&lt;/span&gt;"]
 
         %% description: 検証した $S_0$ 構造で、B3LYP の分子のスクリーニングと垂直 $S_0\rightarrow S_n$ 吸収を評価します。
         direction TB
-        Evaluate5["&lt;a href='2026-10-29_183721/'&gt;スクリーニング $$\varepsilon_s$$ の評価&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgeW+k+adpeOBriBCM0xZUCDjga7liIblrZDjga7pm7vlrZDlv5znrZQgJFx2YXJlcHNpbG9uX3MkIOOCkuipleS+oeOBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
-        Excitations9["&lt;a href='2026-10-29_183722/'&gt;B3LYP の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgeacgOOCguS9juOBhCAxMCDlgIvjga7lnoLnm7QgJFNfMFxyaWdodGFycm93IFNfbiQg5Yqx6LW344KS6KiI566X44GZ44KL44CC'&gt;&lt;/span&gt;"]
+        Evaluate5["&lt;a href='2026-10-29_183721/'&gt;スクリーニング $$\varepsilon_s$$ の評価&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgeW+k+adpeOBriBCM0xZUCDjga7liIblrZDjga7pm7vlrZDlv5znrZQgJFx2YXJlcHNpbG9uX3MkIOOCkuipleS+oeOBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Excitations9["&lt;a href='2026-10-29_183722/'&gt;B3LYP の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5qSc6Ki844GX44GfICRTXzAkIOani+mAoOOBp+OAgeacgOOCguS9juOBhCAxMCDlgIvjga7lnoLnm7QgJFNfMFxyaWdodGFycm93IFNfbiQg5Yqx6LW344KS6KiI566X44GZ44KL44CC'&gt;&lt;/span&gt;"]
     end
 
-    subgraph IndependentBenzeneDielectric["&lt;span&gt;DD-DFT の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5YiG5a2Q44Gu44K544Kv44Oq44O844OL44Oz44Kw44GL44KJICRcYWxwaGE9MS9cdmFyZXBzaWxvbl9zJCDjgpLlrprjgoHjgIFERC1ERlQg44Gu5qeL6YCg44CB5b+c562U44CB5ZC45Y+O44KS5b6T5p2l44Gu5p6d44Go5q+U44G544G+44GZ44CC'&gt;&lt;/span&gt;"]
+    subgraph IndependentBenzeneDielectric["&lt;span&gt;DD-DFT の $$\varepsilon_s$$ と $$S_0\rightarrow S_n$$ 吸収&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5YiG5a2Q44Gu44K544Kv44Oq44O844OL44Oz44Kw44GL44KJICRcYWxwaGE9MS9cdmFyZXBzaWxvbl9zJCDjgpLlrprjgoHjgIFERC1ERlQg44Gu5qeL6YCg44CB5b+c562U44CB5ZC45Y+O44KS5b6T5p2l44Gu5p6d44Go5q+U44G544G+44GZ44CC'&gt;&lt;/span&gt;"]
 
         %% description: 分子のスクリーニングから $\alpha=1/\varepsilon_s$ を定め、DD-DFT の構造、応答、吸収を従来の枝と比べます。
         direction TB
-        Converge5["&lt;a href='2026-10-29_183723/'&gt;$$\varepsilon_s$$ と重みの収束&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfIEIzTFlQICRTXzAkIOani+mAoOOBp+OAgURELURGVCDjga7jgrnjgq/jg6rjg7zjg4vjg7PjgrAgJFx2YXJlcHNpbG9uX3MkIOOBqOOAgeOBneOBruS6pOaPm+ODu+ebuOmWouOBrumHjeOBv+OCkuWPjuadn+OBleOBm+OCi+OAgg=='&gt;&lt;/span&gt;"]
-        Optimize16["&lt;a href='2026-10-29_183724/'&gt;DD-DFT $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5paw44GX44GE6Zu75a2Q44Gu5Yid5pyf5o6o5a6a44GL44KJ44CB5Zu65a6a44GX44GfIERELURGVCDjga7ph43jgb/jgacgJFNfMCQg44KS57ep5ZKM44GZ44KL44CC'&gt;&lt;/span&gt;"]
-        Verify16["&lt;a href='2026-10-29_183725/'&gt;安定性のチェックと DD-DFT $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='REQtREZUIOOBriAkU18wJCDms6Lli5XplqLmlbDjgYzlronlrprjgafjgIHmp4vpgKDjgYzmpbXlsI/jgafjgYLjgovjgZPjgajjgpLnorrjgYvjgoHjgovjgII='&gt;&lt;/span&gt;"]
-        Recheck5["&lt;a href='2026-10-29_183726/'&gt;DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='57ep5ZKM44GX44GfIERELURGVCDmp4vpgKDjgacgREQtREZUIOOBruOCueOCr+ODquODvOODi+ODs+OCsOOCkuWGjeeiuuiqjeOBl+OAgeOBneOBrumHjeOBv+OCkuS9v+OBo+OBn+mHjeOBv+OBqOavlOOBueOCi+OAgg=='&gt;&lt;/span&gt;"]
-        Excitations10["&lt;a href='2026-10-29_183727/'&gt;DD-DFT の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5qSc6Ki844GX44GfIERELURGVCAkU18wJCDmp4vpgKDjgafjgIHmnIDjgoLkvY7jgYQgMTAg5YCL44Gu5Z6C55u0ICRTXzBccmlnaHRhcnJvdyBTX24kIOWKsei1t+OCkuioiOeul+OBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
-        Optimize17["&lt;a href='2026-10-30_232951/'&gt;再確認した重みでの $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5pyA5Yid44GuIERELURGVCDjga7mpbXlsI/jgaflho3norroqo3jgZfjgZ/ph43jgb/jgpLkvb/jgYTjgIHmrKHjga7mp4vpgKDjgajjgrnjgq/jg6rjg7zjg4vjg7PjgrDjga7jgrXjgqTjgq/jg6vjgajjgZfjgabjgIHmlrDjgZfjgYTpm7vlrZDjga7liJ3mnJ/mjqjlrprjgYvjgokgJFNfMCQg44KS44KC44GG5LiA5bqm57ep5ZKM44GZ44KL44CC'&gt;&lt;/span&gt;"]
-        Verify17["&lt;a href='2026-10-30_232952/'&gt;安定性のチェックと再確認した $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5YaN56K66KqN44GX44Gf6YeN44G/44Gn44GuIERELURGVCAkU18wJCDms6Lli5XplqLmlbDjgYzlronlrprjgafjgIHmp4vpgKDjgYzmpbXlsI/jgafjgYLjgovjgZPjgajjgpLnorrjgYvjgoHjgovjgII='&gt;&lt;/span&gt;"]
-        Recheck6["&lt;a href='2026-10-30_232953/'&gt;再確認した DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='5paw44GX44GE5qW15bCP44GnIERELURGVCDjga7jgrnjgq/jg6rjg7zjg4vjg7PjgrDjgpLlho3norroqo3jgZfjgIHjgZ3jga7mp4vpgKDjgpLnlJ/jgpPjgaDkuLjjgoHjgZ/ph43jgb/jgpLlho3nj77jgZnjgovjgYvjganjgYbjgYvjgpLoqr/jgbnjgovjgII='&gt;&lt;/span&gt;"]
-        Excitations11["&lt;a href='2026-10-30_232954/'&gt;自己無撞着な重みでの $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='6YeN44G/44GM5qeL6YCg44Go6Ieq5bex54Sh5pKe552A44GqIERELURGVCAkU18wJCDmpbXlsI/jgafjgIHmnIDjgoLkvY7jgYQgMTAg5YCL44Gu5Z6C55u0ICRTXzBccmlnaHRhcnJvdyBTX24kIOWKsei1t+OCkuioiOeul+OBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Converge5["&lt;a href='2026-10-29_183723/'&gt;$$\varepsilon_s$$ と重みの収束&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5qSc6Ki844GX44GfIEIzTFlQICRTXzAkIOani+mAoOOBp+OAgURELURGVCDjga7jgrnjgq/jg6rjg7zjg4vjg7PjgrAgJFx2YXJlcHNpbG9uX3MkIOOBqOOAgeOBneOBruS6pOaPm+ODu+ebuOmWouOBrumHjeOBv+OCkuWPjuadn+OBleOBm+OCi+OAgg=='&gt;&lt;/span&gt;"]
+        Optimize16["&lt;a href='2026-10-29_183724/'&gt;DD-DFT $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5paw44GX44GE6Zu75a2Q44Gu5Yid5pyf5o6o5a6a44GL44KJ44CB5Zu65a6a44GX44GfIERELURGVCDjga7ph43jgb/jgacgJFNfMCQg44KS57ep5ZKM44GZ44KL44CC'&gt;&lt;/span&gt;"]
+        Verify16["&lt;a href='2026-10-29_183725/'&gt;安定性のチェックと DD-DFT $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='REQtREZUIOOBriAkU18wJCDms6Lli5XplqLmlbDjgYzlronlrprjgafjgIHmp4vpgKDjgYzmpbXlsI/jgafjgYLjgovjgZPjgajjgpLnorrjgYvjgoHjgovjgII='&gt;&lt;/span&gt;"]
+        Recheck5["&lt;a href='2026-10-29_183726/'&gt;DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='57ep5ZKM44GX44GfIERELURGVCDmp4vpgKDjgacgREQtREZUIOOBruOCueOCr+ODquODvOODi+ODs+OCsOOCkuWGjeeiuuiqjeOBl+OAgeOBneOBrumHjeOBv+OCkuS9v+OBo+OBn+mHjeOBv+OBqOavlOOBueOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Excitations10["&lt;a href='2026-10-29_183727/'&gt;DD-DFT の垂直 $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5qSc6Ki844GX44GfIERELURGVCAkU18wJCDmp4vpgKDjgafjgIHmnIDjgoLkvY7jgYQgMTAg5YCL44Gu5Z6C55u0ICRTXzBccmlnaHRhcnJvdyBTX24kIOWKsei1t+OCkuioiOeul+OBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Optimize17["&lt;a href='2026-10-30_232951/'&gt;再確認した重みでの $$S_0$$ 構造の最適化&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5pyA5Yid44GuIERELURGVCDjga7mpbXlsI/jgaflho3norroqo3jgZfjgZ/ph43jgb/jgpLkvb/jgYTjgIHmrKHjga7mp4vpgKDjgajjgrnjgq/jg6rjg7zjg4vjg7PjgrDjga7jgrXjgqTjgq/jg6vjgajjgZfjgabjgIHmlrDjgZfjgYTpm7vlrZDjga7liJ3mnJ/mjqjlrprjgYvjgokgJFNfMCQg44KS44KC44GG5LiA5bqm57ep5ZKM44GZ44KL44CC'&gt;&lt;/span&gt;"]
+        Verify17["&lt;a href='2026-10-30_232952/'&gt;安定性のチェックと再確認した $$S_0$$ の極小の検証&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5YaN56K66KqN44GX44Gf6YeN44G/44Gn44GuIERELURGVCAkU18wJCDms6Lli5XplqLmlbDjgYzlronlrprjgafjgIHmp4vpgKDjgYzmpbXlsI/jgafjgYLjgovjgZPjgajjgpLnorrjgYvjgoHjgovjgII='&gt;&lt;/span&gt;"]
+        Recheck6["&lt;a href='2026-10-30_232953/'&gt;再確認した DD-DFT 構造での $$\varepsilon_s$$ の再確認&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5paw44GX44GE5qW15bCP44GnIERELURGVCDjga7jgrnjgq/jg6rjg7zjg4vjg7PjgrDjgpLlho3norroqo3jgZfjgIHjgZ3jga7mp4vpgKDjgpLnlJ/jgpPjgaDkuLjjgoHjgZ/ph43jgb/jgpLlho3nj77jgZnjgovjgYvjganjgYbjgYvjgpLoqr/jgbnjgovjgII='&gt;&lt;/span&gt;"]
+        Excitations11["&lt;a href='2026-10-30_232954/'&gt;自己無撞着な重みでの $$S_0\rightarrow S_n$$ 励起の計算&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='6YeN44G/44GM5qeL6YCg44Go6Ieq5bex54Sh5pKe552A44GqIERELURGVCAkU18wJCDmpbXlsI/jgafjgIHmnIDjgoLkvY7jgYQgMTAg5YCL44Gu5Z6C55u0ICRTXzBccmlnaHRhcnJvdyBTX24kIOWKsei1t+OCkuioiOeul+OBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
     end
 
     Optimize15 --&gt; Verify15
@@ -821,7 +759,7 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-a0cb10c0a013b18b/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
 <section id="基準となる_S_0_構造" class="level3">
 <h3 class="anchored" data-anchor-id="基準となる_S_0_構造">基準となる <span class="math inline">S_0</span> 構造</h3>
 <p><span class="math inline">S_0</span> の基準構造を確立し、電子応答の枝で使う前に曲率を検証します。</p>
@@ -1749,12 +1687,6 @@ window.addEventListener("load", window.restoreRequireDefine);
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">参考文献</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="Reference_1" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">T. Shimazaki と T. Nakajima, <span>「Application of the dielectric-dependent screened exchange potential approach to organic photocell materials」</span>, <em>Physical Chemistry Chemical Physics</em>, vol. 18, pp. 27554–27563, 2016, doi: <a href="https://doi.org/10.1039/c6cp04863c">10.1039/c6cp04863c</a>.</div>
-</div>
-<div id="Reference_2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">T. Shimazaki と M. Tachikawa, <span>「Theoretical study of the effect of nonlocal short-range exchange on calculations of molecular excitation energies in the dielectric screened-exchange method」</span>, <em>Chemical Physics Letters</em>, vol. 802, p. 139740, 2022, doi: <a href="https://doi.org/10.1016/j.cplett.2022.139740">10.1016/j.cplett.2022.139740</a>.</div>
-</div>
-<div id="Reference_3" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">T. Shimazaki と M. Tachikawa, <span>「A theoretical study on solvatofluorochromic asymmetric thiazolothiazole (<span>TTz</span>) dyes using dielectric-dependent density functional theory」</span>, <em>Physical Chemistry Chemical Physics</em>, vol. 23, pp. 21078–21086, 2021, doi: <a href="https://doi.org/10.1039/d1cp02047a">10.1039/d1cp02047a</a>.</div>
 </div>
 </div></section></div></main>
 <!-- /main column -->

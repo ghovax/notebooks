@@ -68,8 +68,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-7cafd99a1fb1b759/style.css">
-<script src="../../../../site_libs/shared-9957e67b72ca22d6/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-af6a450c23030404/style.css">
+<script src="../../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -158,7 +158,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-6980664ff886bf51/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-94249f515da8445e/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -278,10 +278,10 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Energies["&lt;span&gt;Start energies&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='T25lIHNpbmdsZSBwb2ludCBhdCBlYWNoIGRpc3RpbmN0IHN0YXJ0IGdlb21ldHJ5IG9mIHRoZSBUUyBvdXRjb21lIG1hcC4='&gt;&lt;/span&gt;"]
+    subgraph Energies["&lt;span&gt;Start energies&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='T25lIHNpbmdsZSBwb2ludCBhdCBlYWNoIGRpc3RpbmN0IHN0YXJ0IGdlb21ldHJ5IG9mIHRoZSBUUyBvdXRjb21lIG1hcC4='&gt;&lt;/span&gt;"]
         %% description: One single point at each distinct start geometry of the TS outcome map.
         direction TB
-        Map1["&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Calculate the energy of every start&lt;span class='diagram-info' style='display:inline-block;width:1.2em' data-description='LSBUZWxsIHdoZXRoZXIgdGhlIHN0YXJ0cyBvZiB0aGUgW1RTIG91dGNvbWUgbWFwXSguLi8uLi8yMDI2LTExLTA2XzE2MDkwNS9SRUFETUUubWQpIHRoYXQgZGlkIG5vdCByZWFjaCB0aGUgc2FkZGxlIGFyZSB0aGUgc3RyYWluZWQgb25lcywgYnkgdGhlIGVuZXJneSAkRS1FX3tcbWF0aHJte1RTfX0kIG9mIGVhY2ggc3RhcnQgYWJvdmUgdGhlIHZlcmlmaWVkIHNhZGRsZS4KVGhlIFtFbmVyZ2llcyBvZiB0aGUgb3V0Y29tZS1tYXAgc3RhcnRzXSguLi9SRUFETUUubWQpIHdvcmtmbG93IGdpdmVzIHRoZSBtZXRob2Qgb2YgdGhlc2UgcnVucy4='&gt;&lt;/span&gt;"]
+        Map1["&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Calculate the energy of every start&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='LSBUZWxsIHdoZXRoZXIgdGhlIHN0YXJ0cyBvZiB0aGUgW1RTIG91dGNvbWUgbWFwXSguLi8uLi8yMDI2LTExLTA2XzE2MDkwNS9SRUFETUUubWQpIHRoYXQgZGlkIG5vdCByZWFjaCB0aGUgc2FkZGxlIGFyZSB0aGUgc3RyYWluZWQgb25lcywgYnkgdGhlIGVuZXJneSAkRS1FX3tcbWF0aHJte1RTfX0kIG9mIGVhY2ggc3RhcnQgYWJvdmUgdGhlIHZlcmlmaWVkIHNhZGRsZS4KVGhlIFtFbmVyZ2llcyBvZiB0aGUgb3V0Y29tZS1tYXAgc3RhcnRzXSguLi9SRUFETUUubWQpIHdvcmtmbG93IGdpdmVzIHRoZSBtZXRob2Qgb2YgdGhlc2UgcnVucy4='&gt;&lt;/span&gt;"]
     end
 
     Start1(( ))
@@ -319,7 +319,7 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-a0cb10c0a013b18b/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
 </section>
 <section id="Runs" class="level2">
 <h2 class="anchored" data-anchor-id="Runs">Runs</h2>
