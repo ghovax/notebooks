@@ -53,8 +53,9 @@ os.chdir("${ROOT}")
 os.environ["CALCPAGES_ICONS"] = "${ROOT}/icons"
 os.environ["CALCPAGES_LANGUAGE"] = "${LANGUAGE}"
 import calcpages.browser as viewer
+from calcpages.i18n import use_zone
 `);
-  pyodide.globals.get("viewer").use_zone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+  pyodide.globals.get("use_zone")(Intl.DateTimeFormat().resolvedOptions().timeZone);
   return pyodide;
 }
 

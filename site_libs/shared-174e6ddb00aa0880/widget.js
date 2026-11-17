@@ -99,6 +99,23 @@ async function readStored(address) {
     return file.slice(start, end);
 }
 
+// A volume viewer's stored files besides its opening snapshot's, fetched one at a time into the browser's cache once
+// that snapshot's file has arrived, so the next snapshot chosen reads its file from the cache; the store names files by
+// their content, so a cached copy is never stale.
+async function warmStored(views, opening) {
+    const all = views.flatMap(view => [view.field, view.color_field, ...(view.fields || []), ...(view.color_fields || [])]);
+    const first = views.flatMap(view => view.fields?.length
+        ? [view.fields[opening], view.color_fields?.[opening]] : [view.field, view.color_field]);
+    const stored = texts => texts.filter(text => text && isStored(text));
+    try { await Promise.all(stored(first).map(readStored)); } catch { return; }
+    const shown = new Set(stored(first).map(text => text.split('#')[0]));
+    for (const url of new Set(stored(all).map(text => text.split('#')[0]))) {
+        if (shown.has(url)) continue;
+        // A failure here is harmless: the file is asked for again when a snapshot needs it.
+        try { await (await fetch(url)).arrayBuffer(); } catch { /* asked again when needed */ }
+    }
+}
+
 // An encoded field as cube text, inflated as a stream: read from the store, or base64 the page carries, decoded
 // through a data URL.
 async function readField(text) {
@@ -2756,7 +2773,7 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view, mappe
             // A volume viewer's views of its field, each with its own fields, surfaces, colour scale and settings; ``view``
             // is the one shown. A molecule viewer has none.
             const views = model.get('views') || [];
-            let viewIndex = 0, view = views[0];
+            let viewIndex = 0, view = views[0], warming = false;
             const stylesheet = document.createElement('link');
             stylesheet.rel = 'stylesheet';
             stylesheet.href = 'https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.css';
@@ -3362,6 +3379,10 @@ function installDepiction({model, el, frame, snapshot, watch, hover, view, mappe
                             throw new Error('Unexpected native measurement count');
                         }
                         loaded = true;
+                        if (!warming && views.length) {
+                            warming = true;
+                            warmStored(views, model.get('start_snapshot') || 0);
+                        }
                         container.dataset.frame = target;
                         shownFrame = target - 1;
                         drawLabels();
