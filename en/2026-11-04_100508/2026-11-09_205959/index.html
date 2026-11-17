@@ -69,8 +69,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../site_libs/shared-af6a450c23030404/style.css">
-<script src="../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
+<link rel="stylesheet" href="../../../site_libs/shared-9d50a60f3f846fa4/style.css">
+<script src="../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -152,7 +152,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../site_libs/shared-94249f515da8445e/styles.css">
+<link rel="stylesheet" href="../../../site_libs/shared-87f5108f1740a448/styles.css">
 </head>
 
 <body class="quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -199,7 +199,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 16, 2026</p>
+      <p class="date-modified">November 17, 2026</p>
     </div>
   </div>
     
@@ -284,16 +284,19 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Energies["&lt;span&gt;Start energies&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='T25lIHNpbmdsZSBwb2ludCBhdCBlYWNoIGRpc3RpbmN0IHN0YXJ0IGdlb21ldHJ5IG9mIHRoZSBUUyBvdXRjb21lIG1hcC4='&gt;&lt;/span&gt;"]
+    subgraph Energies["&lt;span&gt;Start energies&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='T25lIHNpbmdsZSBwb2ludCBhdCBlYWNoIGRpc3RpbmN0IHN0YXJ0IGdlb21ldHJ5IG9mIHRoZSBUUyBvdXRjb21lIG1hcC4='&gt;&lt;/span&gt;"]
         %% description: One single point at each distinct start geometry of the TS outcome map.
         direction TB
-        Map1["&lt;a href='2026-11-09_210000/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Calculate the energy of every start&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='LSBUZWxsIHdoZXRoZXIgdGhlIHN0YXJ0cyBvZiB0aGUgW1RTIG91dGNvbWUgbWFwXSguLi8uLi8yMDI2LTExLTA2XzE2MDkwNS9SRUFETUUubWQpIHRoYXQgZGlkIG5vdCByZWFjaCB0aGUgc2FkZGxlIGFyZSB0aGUgc3RyYWluZWQgb25lcywgYnkgdGhlIGVuZXJneSAkRS1FX3tcbWF0aHJte1RTfX0kIG9mIGVhY2ggc3RhcnQgYWJvdmUgdGhlIHZlcmlmaWVkIHNhZGRsZS4KVGhlIFtFbmVyZ2llcyBvZiB0aGUgb3V0Y29tZS1tYXAgc3RhcnRzXSguLi9SRUFETUUubWQpIHdvcmtmbG93IGdpdmVzIHRoZSBtZXRob2Qgb2YgdGhlc2UgcnVucy4='&gt;&lt;/span&gt;"]
+        Map1["&lt;a href='2026-11-09_210000/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Calculate the energy of every start&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSBUZWxsIHdoZXRoZXIgdGhlIHN0YXJ0cyBvZiB0aGUgW1RTIG91dGNvbWUgbWFwXSguLi8uLi8yMDI2LTExLTA2XzE2MDkwNS9SRUFETUUubWQpIHRoYXQgZGlkIG5vdCByZWFjaCB0aGUgc2FkZGxlIGFyZSB0aGUgc3RyYWluZWQgb25lcywgYnkgdGhlIGVuZXJneSAkRS1FX3tcbWF0aHJte1RTfX0kIG9mIGVhY2ggc3RhcnQgYWJvdmUgdGhlIHZlcmlmaWVkIHNhZGRsZS4KVGhlIFtFbmVyZ2llcyBvZiB0aGUgb3V0Y29tZS1tYXAgc3RhcnRzXSguLi9SRUFETUUubWQpIHdvcmtmbG93IGdpdmVzIHRoZSBtZXRob2Qgb2YgdGhlc2UgcnVucy4='&gt;&lt;/span&gt;"]
     end
 
     Start1(( ))
-    Input1[/"&lt;span&gt;Start geometries of the TS outcome map&lt;/span&gt;"/]
-    Input2[/"&lt;span&gt;Verified saddle reference&lt;/span&gt;"/]
-    Output1[/"&lt;span&gt;Start energy $$E-E_{\mathrm{TS}}$$&lt;/span&gt;"/]
+    Input1[/"&lt;span&gt;Start geometries of the TS outcome map&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIFN0YXJ0IGdlb21ldHJpZXMgb2YgdGhlIFRTIG91dGNvbWUgbWFwLCByZWFkIGJ5ICJDYWxjdWxhdGUgdGhlIGVuZXJneSBvZiBldmVyeSBzdGFydCIu'&gt;&lt;/span&gt;"/]
+        %% description: The Start geometries of the TS outcome map, read by "Calculate the energy of every start".
+    Input2[/"&lt;span&gt;Verified saddle reference&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIHZlcmlmaWVkIHNhZGRsZSByZWZlcmVuY2UsIHJlYWQgYnkgIkNhbGN1bGF0ZSB0aGUgZW5lcmd5IG9mIGV2ZXJ5IHN0YXJ0Ii4='&gt;&lt;/span&gt;"/]
+        %% description: The verified saddle reference, read by "Calculate the energy of every start".
+    Output1[/"&lt;span&gt;Start energy $$E-E_{\mathrm{TS}}$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='U3RhcnQgZW5lcmd5ICRFLUVfe1xtYXRocm17VFN9fSQsIGZyb20gIkNhbGN1bGF0ZSB0aGUgZW5lcmd5IG9mIGV2ZXJ5IHN0YXJ0Ii4='&gt;&lt;/span&gt;"/]
+        %% description: Start energy $E-E_{\mathrm{TS}}$, from "Calculate the energy of every start".
     End1((( )))
 
     Start1 --&gt; Input1
@@ -325,7 +328,7 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
 <section id="Start_energies" class="level3">
 <h3 class="anchored" data-anchor-id="Start_energies">Start energies</h3>
 <p>One single point at each distinct start geometry of the TS outcome map.</p>

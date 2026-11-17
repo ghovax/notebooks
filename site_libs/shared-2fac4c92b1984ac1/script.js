@@ -55,11 +55,15 @@ const source = container.querySelector("pre").textContent.replace(/\$\$(.+?)\$\$
 const { svg, bindFunctions } = await mermaid.render("calculations-diagram", source);
 container.innerHTML = svg;
 bindFunctions?.(container);
-// Each group's title and each run's label end in a placeholder Mermaid sized them with; the page's info button takes
-// its place and opens the group's description or the run's goal in a hover popover, as a described table header's does.
+// Each group's title, input, output and run carries its explanation in a hidden marker. Hovering the title, input or
+// output itself opens it in the hover popover of a described table header, under the help cursor; a run's goal joins
+// the popover its link already opens, with its status.
 for (const marker of container.querySelectorAll(".diagram-info[data-description]")) {
   const text = new TextDecoder().decode(Uint8Array.from(atob(marker.dataset.description), c => c.charCodeAt(0)));
-  if (globalThis.quartoInfoButton) marker.replaceWith(globalThis.quartoInfoButton(text));
+  const label = marker.closest(".nodeLabel") ?? marker.parentElement;
+  marker.remove();
+  if (label.querySelector("a")) label.dataset.goal = text;
+  else globalThis.quartoInfoHover?.(label, text);
 }
 const drawing = container.querySelector("svg");
 // Mermaid shares one arrowhead marker between edges and ignores linkStyle for it; give each
@@ -240,6 +244,13 @@ const popover = (anchor, row, scan = null) => tippy(anchor, {
     box.className = "diagram-popover";
     const detail = scan ? null : detailOf(anchor);
     if (detail) box.append(...detail.cloneNode(true).childNodes);
+    const goal = anchor.closest?.(".nodeLabel")?.dataset.goal;
+    if (goal && globalThis.quartoExplanation) {
+      const aim = document.createElement("div");
+      aim.className = "diagram-goal";
+      aim.innerHTML = globalThis.quartoExplanation(goal);
+      box.prepend(aim);
+    }
     if (row) {
       const copy = document.createElement("table"), body = document.createElement("tbody");
       copy.className = "table table-sm popover-row";

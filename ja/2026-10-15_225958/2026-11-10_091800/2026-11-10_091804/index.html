@@ -70,8 +70,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-af6a450c23030404/style.css">
-<script src="../../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
+<script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -160,7 +160,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-94249f515da8445e/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
@@ -213,7 +213,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月16日</p>
+      <p class="date-modified">2026年11月17日</p>
     </div>
   </div>
     
@@ -280,31 +280,35 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Searches["拘束のない TS 探索&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5bmz6Z2i44K544Kt44Oj44Oz44Gu44K144Oz44OX44Oq44Oz44Kw44GX44Gf5qW15aSn44Gn44GZ44G544Gm44Gu5bqn5qiZ44KS6Kej5pS+44GX44CB5bmz6Z2i44Gn44Gu57WQ5p6c44Gn44Gv5b6X44KJ44KM44Gq44GL44Gj44Gf44CB5Y+O5p2f44GX44Gf5LiA5qyh44Gu6Z6N54K544KS5rGC44KB44G+44GZ44CC'&gt;&lt;/span&gt;"]
+    subgraph Searches["拘束のない TS 探索&lt;span class='diagram-info' style='display:none' data-description='5bmz6Z2i44K544Kt44Oj44Oz44Gu44K144Oz44OX44Oq44Oz44Kw44GX44Gf5qW15aSn44Gn44GZ44G544Gm44Gu5bqn5qiZ44KS6Kej5pS+44GX44CB5bmz6Z2i44Gn44Gu57WQ5p6c44Gn44Gv5b6X44KJ44KM44Gq44GL44Gj44Gf44CB5Y+O5p2f44GX44Gf5LiA5qyh44Gu6Z6N54K544KS5rGC44KB44G+44GZ44CC'&gt;&lt;/span&gt;"]
         %% description: 平面スキャンのサンプリングした極大ですべての座標を解放し、平面での結果では得られなかった、収束した一次の鞍点を求めます。
         direction TB
-        Search1["&lt;a href='../2026-11-10_091801/'&gt;スキャンの極大からの TS 探索&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='44Gp44Gu5bqn5qiZ44KC5Zu65a6a44GX44Gq44GE44Go44GN44CB5bmz6Z2i44K544Kt44Oj44Oz44Gu44K144Oz44OX44Oq44Oz44Kw44GX44Gf5qW15aSn44GM5LiA5qyh44GuIFBNNi1EMyDpno3ngrnjgavnt6nlkozjgZnjgovjgYvjganjgYbjgYvjgpLoqr/jgbnjgovjgII='&gt;&lt;/span&gt;"]
+        Search1["&lt;a href='../2026-11-10_091801/'&gt;スキャンの極大からの TS 探索&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='44Gp44Gu5bqn5qiZ44KC5Zu65a6a44GX44Gq44GE44Go44GN44CB5bmz6Z2i44K544Kt44Oj44Oz44Gu44K144Oz44OX44Oq44Oz44Kw44GX44Gf5qW15aSn44GM5LiA5qyh44GuIFBNNi1EMyDpno3ngrnjgavnt6nlkozjgZnjgovjgYvjganjgYbjgYvjgpLoqr/jgbnjgovjgII='&gt;&lt;/span&gt;"]
     end
 
-    subgraph Paths["反応経路&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5Y+O5p2f44GX44Gf6Z6N54K544KS5bmz6Z2i44Gu5Yi26ZmQ44Gq44GX44GrICRccG0gcyQg44Gr5rK/44Gj44Gm44Gf44Gp44KK44CB44Gd44KM44GM44Gp44Gu5YiG5a2Q44KS44Gk44Gq44GQ44GL44KS6Kq/44G544G+44GZ44CC'&gt;&lt;/span&gt;"]
+    subgraph Paths["反応経路&lt;span class='diagram-info' style='display:none' data-description='5Y+O5p2f44GX44Gf6Z6N54K544KS5bmz6Z2i44Gu5Yi26ZmQ44Gq44GX44GrICRccG0gcyQg44Gr5rK/44Gj44Gm44Gf44Gp44KK44CB44Gd44KM44GM44Gp44Gu5YiG5a2Q44KS44Gk44Gq44GQ44GL44KS6Kq/44G544G+44GZ44CC'&gt;&lt;/span&gt;"]
         %% description: 収束した鞍点を平面の制限なしに $\pm s$ に沿ってたどり、それがどの分子をつなぐかを調べます。
         direction TB
-        Path1["&lt;a href='../2026-11-10_091802/'&gt;TS から $$\pm s$$ に沿った IRC&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5ouY5p2f44Gu44Gq44GE6Z6N54K544GL44KJ44CB5bmz6Z2i5oCn44Gu5Yi26ZmQ44Gq44GX44Gr5Y+N5b+c57WM6Lev44KSICRccG0gcyQg44Gr5rK/44Gj44Gm44Gf44Gp44KK44CB44Gd44KM44GM44Gp44Gu5qeL6YCg44KS44Gk44Gq44GQ44GL44KS6Kq/44G544KL44CC'&gt;&lt;/span&gt;"]
+        Path1["&lt;a href='../2026-11-10_091802/'&gt;TS から $$\pm s$$ に沿った IRC&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5ouY5p2f44Gu44Gq44GE6Z6N54K544GL44KJ44CB5bmz6Z2i5oCn44Gu5Yi26ZmQ44Gq44GX44Gr5Y+N5b+c57WM6Lev44KSICRccG0gcyQg44Gr5rK/44Gj44Gm44Gf44Gp44KK44CB44Gd44KM44GM44Gp44Gu5qeL6YCg44KS44Gk44Gq44GQ44GL44KS6Kq/44G544KL44CC'&gt;&lt;/span&gt;"]
     end
 
-    subgraph Fields["&lt;span&gt;電子密度 $$\rho$$ と ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='6Z6N54K544Go57WM6Lev44Gu5Lih56uv44Gn44Gu5a+G5bqm44Go44Od44OG44Oz44K344Oj44Or44KS44CB5LiA44Gk44Gu44Kw44Oq44OD44OJ44Go44Od44OG44Oz44K344Oj44Or44Gu5bC65bqm44Gn5q+U44G544G+44GZ44CC44KI44KK6auY44GE5rC05rqW44Gn44Gu5YaN5pyA6YGp5YyW44Gv44GX44G+44Gb44KT44CC'&gt;&lt;/span&gt;"]
+    subgraph Fields["&lt;span&gt;電子密度 $$\rho$$ と ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='6Z6N54K544Go57WM6Lev44Gu5Lih56uv44Gn44Gu5a+G5bqm44Go44Od44OG44Oz44K344Oj44Or44KS44CB5LiA44Gk44Gu44Kw44Oq44OD44OJ44Go44Od44OG44Oz44K344Oj44Or44Gu5bC65bqm44Gn5q+U44G544G+44GZ44CC44KI44KK6auY44GE5rC05rqW44Gn44Gu5YaN5pyA6YGp5YyW44Gv44GX44G+44Gb44KT44CC'&gt;&lt;/span&gt;"]
         %% description: 鞍点と経路の両端での密度とポテンシャルを、一つのグリッドとポテンシャルの尺度で比べます。より高い水準での再最適化はしません。
         direction TB
-        Fields1["&lt;a href='../2026-11-10_091803/'&gt;$$s_\mathrm{R}$$ での B3LYP の場を評価&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5ouY5p2f44Gu44Gq44GE6YCG5pa55ZCR44GuIElSQyDnq6/ngrkgJHNfXG1hdGhybXtSfSQg44Gn44CB5Zu65a6a44GX44GfIFBNNi1EMyDmp4vpgKDjgavjgaTjgYTjgaYgQjNMWVAg44Gu6Zu75a2Q5a+G5bqm44Go6Z2Z6Zu744Od44OG44Oz44K344Oj44Or44Gu5aC044KS6KmV5L6h44GZ44KL44CC'&gt;&lt;/span&gt;"]
-        Fields2["TS での B3LYP の場を評価&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5ouY5p2f44Gu44Gq44GEIFRTIOOBp+OAgeWbuuWumuOBl+OBnyBQTTYtRDMg5qeL6YCg44Gr44Gk44GE44GmIEIzTFlQIOOBrumbu+WtkOWvhuW6puOBqOmdmembu+ODneODhuODs+OCt+ODo+ODq+OBruWgtOOCkuipleS+oeOBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
-        Fields3["&lt;a href='../2026-11-10_091805/'&gt;$$s_\mathrm{F}$$ での B3LYP の場を評価&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='5ouY5p2f44Gu44Gq44GE6aCG5pa55ZCR44GuIElSQyDnq6/ngrkgJHNfXG1hdGhybXtGfSQg44Gn44CB5Zu65a6a44GX44GfIFBNNi1EMyDmp4vpgKDjgavjgaTjgYTjgaYgQjNMWVAg44Gu6Zu75a2Q5a+G5bqm44Go6Z2Z6Zu744Od44OG44Oz44K344Oj44Or44Gu5aC044KS6KmV5L6h44GZ44KL44CC'&gt;&lt;/span&gt;"]
+        Fields1["&lt;a href='../2026-11-10_091803/'&gt;$$s_\mathrm{R}$$ での B3LYP の場を評価&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5ouY5p2f44Gu44Gq44GE6YCG5pa55ZCR44GuIElSQyDnq6/ngrkgJHNfXG1hdGhybXtSfSQg44Gn44CB5Zu65a6a44GX44GfIFBNNi1EMyDmp4vpgKDjgavjgaTjgYTjgaYgQjNMWVAg44Gu6Zu75a2Q5a+G5bqm44Go6Z2Z6Zu744Od44OG44Oz44K344Oj44Or44Gu5aC044KS6KmV5L6h44GZ44KL44CC'&gt;&lt;/span&gt;"]
+        Fields2["TS での B3LYP の場を評価&lt;span class='diagram-info' style='display:none' data-description='5ouY5p2f44Gu44Gq44GEIFRTIOOBp+OAgeWbuuWumuOBl+OBnyBQTTYtRDMg5qeL6YCg44Gr44Gk44GE44GmIEIzTFlQIOOBrumbu+WtkOWvhuW6puOBqOmdmembu+ODneODhuODs+OCt+ODo+ODq+OBruWgtOOCkuipleS+oeOBmeOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Fields3["&lt;a href='../2026-11-10_091805/'&gt;$$s_\mathrm{F}$$ での B3LYP の場を評価&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5ouY5p2f44Gu44Gq44GE6aCG5pa55ZCR44GuIElSQyDnq6/ngrkgJHNfXG1hdGhybXtGfSQg44Gn44CB5Zu65a6a44GX44GfIFBNNi1EMyDmp4vpgKDjgavjgaTjgYTjgaYgQjNMWVAg44Gu6Zu75a2Q5a+G5bqm44Go6Z2Z6Zu744Od44OG44Oz44K344Oj44Or44Gu5aC044KS6KmV5L6h44GZ44KL44CC'&gt;&lt;/span&gt;"]
     end
 
     Start1(( ))
-    Input1[/"平面スキャンのサンプリングした極大"/]
-    Output1[/"&lt;span&gt;鞍点の曲率 $$\nu_i$$ と停留性&lt;/span&gt;"/]
-    Output2[/"&lt;span&gt;拘束のない IRC $$E(s)$$&lt;/span&gt;"/]
-    Output3[/"&lt;span&gt;密度 $$\rho$$ と ESP $$V$$&lt;/span&gt;"/]
+    Input1[/"平面スキャンのサンプリングした極大&lt;span class='diagram-info' style='display:none' data-description='5bmz6Z2i44K544Kt44Oj44Oz44Gu44K144Oz44OX44Oq44Oz44Kw44GX44Gf5qW15aSn44KS44CB44CM44K544Kt44Oj44Oz44Gu5qW15aSn44GL44KJ44GuIFRTIOaOoue0ouOAjeOBjOiqreOBv+i+vOOBv+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"/]
+        %% description: 平面スキャンのサンプリングした極大を、「スキャンの極大からの TS 探索」が読み込みます。
+    Output1[/"&lt;span&gt;鞍点の曲率 $$\nu_i$$ と停留性&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='6Z6N54K544Gu5puy546HICRcbnVfaSQg44Go5YGc55WZ5oCn44CC44CM44K544Kt44Oj44Oz44Gu5qW15aSn44GL44KJ44GuIFRTIOaOoue0ouOAjeOBi+OCieW+l+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"/]
+        %% description: 鞍点の曲率 $\nu_i$ と停留性。「スキャンの極大からの TS 探索」から得ます。
+    Output2[/"&lt;span&gt;拘束のない IRC $$E(s)$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='5ouY5p2f44Gu44Gq44GEIElSQyAkRShzKSTjgILjgIxUUyDjgYvjgokgJFxwbSBzJCDjgavmsr/jgaPjgZ8gSVJD44CN44GL44KJ5b6X44G+44GZ44CC'&gt;&lt;/span&gt;"/]
+        %% description: 拘束のない IRC $E(s)$。「TS から $\pm s$ に沿った IRC」から得ます。
+    Output3[/"&lt;span&gt;密度 $$\rho$$ と ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='5a+G5bqmICRccmhvJCDjgaggRVNQICRWJOOAguOAjCRzX1xtYXRocm17Un0kIOOBp+OBriBCM0xZUCDjga7loLTjgpLoqZXkvqHjgI3jgIHjgIxUUyDjgafjga4gQjNMWVAg44Gu5aC044KS6KmV5L6h44CN44CB44CMJHNfXG1hdGhybXtGfSQg44Gn44GuIEIzTFlQIOOBruWgtOOCkuipleS+oeOAjeOBi+OCieW+l+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"/]
+        %% description: 密度 $\rho$ と ESP $V$。「$s_\mathrm{R}$ での B3LYP の場を評価」、「TS での B3LYP の場を評価」、「$s_\mathrm{F}$ での B3LYP の場を評価」から得ます。
     End1((( )))
 
     Start1 --&gt; Input1
@@ -352,13 +356,13 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
 <section id="目的" class="level2">
 <h2 class="anchored" data-anchor-id="目的">目的</h2>
 <ul>
 <li>拘束のない TS で、固定した PM6-D3 構造について B3LYP の電子密度と静電ポテンシャルの場を評価する。</li>
 </ul>
-<div id="1c131d2a" class="cell" data-execution_count="2">
+<div id="3a65aab1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-002610e45d1ddf15/data.js"></script><script src="../../../../site_libs/shared-b1e5338690da20c0/data.js"></script>
 </div>

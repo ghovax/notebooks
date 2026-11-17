@@ -12,6 +12,10 @@
 .quantity-info-icon { display: inline-flex; vertical-align: -0.1em; margin-left: 0.3em; width: 0.9em; height: 0.9em;
     color: #8c8c8c !important; cursor: help; pointer-events: auto; }
 .quantity-info-icon:hover { color: #333333 !important; }
+.info-hover { cursor: help; }
+/* In a diagram label the button centres on the lowercase letters, where the eye reads the text's middle, not on the
+   capitals, and the label's subscripts and formulas do not move it. */
+.calculations-diagram .quantity-info-icon { vertical-align: -0.2em !important; }
 .quantity-info-icon svg { width: 100%; height: 100%; }
 .quantity-info-icon svg, .quantity-info-icon svg * { fill: currentColor !important; stroke: none !important; }
 /* The warning sign beside a value or label that needs care, its caveat opening in the same popover. */

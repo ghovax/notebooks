@@ -67,8 +67,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-af6a450c23030404/style.css">
-<script src="../../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
+<script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -157,7 +157,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-94249f515da8445e/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
@@ -202,7 +202,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月16日</p>
+      <p class="date-modified">2026年11月17日</p>
     </div>
   </div>
     
@@ -282,21 +282,24 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Sweep["&lt;span&gt;接近構造&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='44Ko44OG44Oz44Gu5ZCE5L2N572u44Go44Oh44OB44Os44Oz44Gu5Zue6Lui44GL44KJ54us56uL44GrIDEg5Zue44Ga44GkIFRTIOOCkuacgOmBqeWMluOBl+OAgeOBqeOBk+OBp+e1guOCj+OCi+OBi+OBp+WIhumhnuOBl+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"]
+    subgraph Sweep["&lt;span&gt;接近構造&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='44Ko44OG44Oz44Gu5ZCE5L2N572u44Go44Oh44OB44Os44Oz44Gu5Zue6Lui44GL44KJ54us56uL44GrIDEg5Zue44Ga44GkIFRTIOOCkuacgOmBqeWMluOBl+OAgeOBqeOBk+OBp+e1guOCj+OCi+OBi+OBp+WIhumhnuOBl+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"]
         %% description: エテンの各位置とメチレンの回転から独立に 1 回ずつ TS を最適化し、どこで終わるかで分類します。
         direction TB
-        Map1["&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;すべての接近構造から TS を最適化する&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='LSDlkIzkuIDlubPpnaLjga7phY3nva7jgajlubPooYzlubPpnaLjga7phY3nva7jga7plpPjgpLoo5zplpPjgZfjgarjgYzjgonjgIHjgYTjgY/jgaTjgYvjga7ot53pm6LjgafjgIFzLWNpcy0xLDMt44OW44K/44K444Ko44Oz44Gu44G+44KP44KK44Gu44Ko44OG44Oz44Gu44Gp44Gu5o6l6L+R5qeL6YCg44GM5Y2U5aWP55qE44GqICRbNCsyXSQg44Gu6Z6N54K544Gr6YGU44GZ44KL44GL44KS6Kq/44G544KL44CCCi0g44K444Ko44Oz44GuIDQg44Gk44Gu5pyr56uv5rC057Sg44GM44Gp44GT44GL44KJ5aeL44G+44KL44GL44Gr44Gd44Gu57WQ5p6c44GM5L6d5a2Y44GZ44KL44GL44KS44CB44Oh44OB44Os44Oz5Z+644KS5Zu65a6a44GX44Gf6KeS5bqm44Gr5Zue44GX44Gm5ZCM44GY44Kw44Oq44OD44OJ44KS57mw44KK6L+U44GZ44GT44Go44Gn56K644GL44KB44KL44CCCuOBk+OCjOOCieOBruioiOeul+OBruaJi+azleOBryBbVFMg44Gu57WQ5p6c44Oe44OD44OXXSguLi9SRUFETUUubWQp44Gu44Ov44O844Kv44OV44Ot44O844Gr44GC44KK44G+44GZ44CC'&gt;&lt;/span&gt;"]
+        Map1["&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;すべての接近構造から TS を最適化する&lt;span class='diagram-info' style='display:none' data-description='LSDlkIzkuIDlubPpnaLjga7phY3nva7jgajlubPooYzlubPpnaLjga7phY3nva7jga7plpPjgpLoo5zplpPjgZfjgarjgYzjgonjgIHjgYTjgY/jgaTjgYvjga7ot53pm6LjgafjgIFzLWNpcy0xLDMt44OW44K/44K444Ko44Oz44Gu44G+44KP44KK44Gu44Ko44OG44Oz44Gu44Gp44Gu5o6l6L+R5qeL6YCg44GM5Y2U5aWP55qE44GqICRbNCsyXSQg44Gu6Z6N54K544Gr6YGU44GZ44KL44GL44KS6Kq/44G544KL44CCCi0g44K444Ko44Oz44GuIDQg44Gk44Gu5pyr56uv5rC057Sg44GM44Gp44GT44GL44KJ5aeL44G+44KL44GL44Gr44Gd44Gu57WQ5p6c44GM5L6d5a2Y44GZ44KL44GL44KS44CB44Oh44OB44Os44Oz5Z+644KS5Zu65a6a44GX44Gf6KeS5bqm44Gr5Zue44GX44Gm5ZCM44GY44Kw44Oq44OD44OJ44KS57mw44KK6L+U44GZ44GT44Go44Gn56K644GL44KB44KL44CCCuOBk+OCjOOCieOBruioiOeul+OBruaJi+azleOBryBbVFMg44Gu57WQ5p6c44Oe44OD44OXXSguLi9SRUFETUUubWQp44Gu44Ov44O844Kv44OV44Ot44O844Gr44GC44KK44G+44GZ44CC'&gt;&lt;/span&gt;"]
     end
-    subgraph Checks["&lt;span&gt;分類の確認&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='57WQ5p6c44Oe44OD44OX44KS6Kqt44KA5YmN44Gr44CB44GZ44G544Gm44Gu5Yid5pyf5qeL6YCg44Gu57WQ5p6c44KS44Gd44Gu44Ot44Kw44Go54Wn5ZCI44GX44G+44GZ44CC'&gt;&lt;/span&gt;"]
+    subgraph Checks["&lt;span&gt;分類の確認&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='57WQ5p6c44Oe44OD44OX44KS6Kqt44KA5YmN44Gr44CB44GZ44G544Gm44Gu5Yid5pyf5qeL6YCg44Gu57WQ5p6c44KS44Gd44Gu44Ot44Kw44Go54Wn5ZCI44GX44G+44GZ44CC'&gt;&lt;/span&gt;"]
         %% description: 結果マップを読む前に、すべての初期構造の結果をそのログと照合します。
         direction TB
-        Check1["&lt;a href='../2026-11-12_002942/'&gt;すべての初期構造の分類を確認する&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='57WQ5p6c44Oe44OD44OX44KS6Kqt44KA5YmN44Gr44CBOTAg44Gu5Yid5pyf5qeL6YCg44Gu44Gd44KM44Ge44KM44GM44CB44Gd44Gu44Ot44Kw44Gu6KOP44Gl44GR44KL57WQ5p6c44KS5oyB44Gj44Gm44GE44KL44GT44Go44KS56K644GL44KB44KL44CC5b2i5oiQ44GZ44KL6Z6N54K544Gv44CB44Ko44ON44Or44Ku44O844Go5b2i5oiQ44GZ44KL57WQ5ZCI44Gu6ZW344GV44GMW+aknOiovOOBl+OBn+mejeeCuV0oLi4vLi4vMjAyNi0xMS0wNF8xMDA1MDkvMjAyNi0xMS0wNF8xMDA1MTAvUkVBRE1FLm1kKeOBq+S4gOiHtOOBl+OAgeWPjuadn+OBl+OBquOBi+OBo+OBn+WIneacn+ani+mAoOOBr+acgOmBqeWMluazleOBruOCueODhuODg+ODl+S4iumZkOOBp+atouOBvuOBo+OBpuOBhOOCi+OAgg=='&gt;&lt;/span&gt;"]
+        Check1["&lt;a href='../2026-11-12_002942/'&gt;すべての初期構造の分類を確認する&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='57WQ5p6c44Oe44OD44OX44KS6Kqt44KA5YmN44Gr44CBOTAg44Gu5Yid5pyf5qeL6YCg44Gu44Gd44KM44Ge44KM44GM44CB44Gd44Gu44Ot44Kw44Gu6KOP44Gl44GR44KL57WQ5p6c44KS5oyB44Gj44Gm44GE44KL44GT44Go44KS56K644GL44KB44KL44CC5b2i5oiQ44GZ44KL6Z6N54K544Gv44CB44Ko44ON44Or44Ku44O844Go5b2i5oiQ44GZ44KL57WQ5ZCI44Gu6ZW344GV44GMW+aknOiovOOBl+OBn+mejeeCuV0oLi4vLi4vMjAyNi0xMS0wNF8xMDA1MDkvMjAyNi0xMS0wNF8xMDA1MTAvUkVBRE1FLm1kKeOBq+S4gOiHtOOBl+OAgeWPjuadn+OBl+OBquOBi+OBo+OBn+WIneacn+ani+mAoOOBr+acgOmBqeWMluazleOBruOCueODhuODg+ODl+S4iumZkOOBp+atouOBvuOBo+OBpuOBhOOCi+OAgg=='&gt;&lt;/span&gt;"]
     end
 
     Start3(( ))
-    Input5[/"&lt;span&gt;$$r$$、$$\theta$$、$$\tau$$ での剛体フラグメント&lt;/span&gt;"/]
-    Input6[/"&lt;span&gt;検証した鞍点の参照&lt;/span&gt;"/]
-    Output3Map[/"&lt;span&gt;各 $$r$$、$$\theta$$、$$\tau$$ での最適化の結果&lt;/span&gt;"/]
+    Input5[/"&lt;span&gt;$$r$$、$$\theta$$、$$\tau$$ での剛体フラグメント&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='JHIk44CBJFx0aGV0YSTjgIEkXHRhdSQg44Gn44Gu5Ymb5L2T44OV44Op44Kw44Oh44Oz44OI44KS44CB44CM44GZ44G544Gm44Gu5o6l6L+R5qeL6YCg44GL44KJIFRTIOOCkuacgOmBqeWMluOBmeOCi+OAjeOBjOiqreOBv+i+vOOBv+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"/]
+        %% description: $r$、$\theta$、$\tau$ での剛体フラグメントを、「すべての接近構造から TS を最適化する」が読み込みます。
+    Input6[/"&lt;span&gt;検証した鞍点の参照&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='5qSc6Ki844GX44Gf6Z6N54K544Gu5Y+C54Wn44KS44CB44CM44GZ44G544Gm44Gu5o6l6L+R5qeL6YCg44GL44KJIFRTIOOCkuacgOmBqeWMluOBmeOCi+OAjeOAgeOAjOOBmeOBueOBpuOBruWIneacn+ani+mAoOOBruWIhumhnuOCkueiuuiqjeOBmeOCi+OAjeOBjOiqreOBv+i+vOOBv+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"/]
+        %% description: 検証した鞍点の参照を、「すべての接近構造から TS を最適化する」、「すべての初期構造の分類を確認する」が読み込みます。
+    Output3Map[/"&lt;span&gt;各 $$r$$、$$\theta$$、$$\tau$$ での最適化の結果&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='5ZCEICRyJOOAgSRcdGhldGEk44CBJFx0YXUkIOOBp+OBruacgOmBqeWMluOBrue1kOaenOOAguOAjOOBmeOBueOBpuOBruWIneacn+ani+mAoOOBruWIhumhnuOCkueiuuiqjeOBmeOCi+OAjeOBi+OCieW+l+OBvuOBmeOAgg=='&gt;&lt;/span&gt;"/]
+        %% description: 各 $r$、$\theta$、$\tau$ での最適化の結果。「すべての初期構造の分類を確認する」から得ます。
     End3((( )))
 
     Start3 --&gt; Input5
@@ -334,7 +337,7 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
 </section>
 <section id="Runs" class="level2">
 <h2 class="anchored" data-anchor-id="Runs">実行</h2>

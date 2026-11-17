@@ -334,6 +334,8 @@ code, pre, div.sourceCode, pre.sourceCode { background: none !important; backgro
    which the icon is centred on the text. */
 .nodeLabel img.diagram-scan-icon { display: inline-block !important; width: 1em !important; height: 1em; flex: none; align-self: center; vertical-align: middle; margin-right: 0.3em; }
 /* A diagram's labels are set at 13 px; its info buttons keep the size the page's 16 px text gives them. */
-.calculations-diagram .quantity-info-icon { width: 1.1em; height: 1.1em; }
+/* A run's goal leads the popover its link opens, apart from the status below it. */
+.diagram-popover .diagram-goal { margin-bottom: 0.6rem; }
+
 /* A scheme's point opens its sentence above its calculations' overview-table rows. */
 .diagram-popover > .point-sentence { margin: 0 0 0.5rem; }

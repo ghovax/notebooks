@@ -60,7 +60,14 @@
         button.setAttribute('aria-label', 'Explanation');
         // Material "info" outline icon.
         button.innerHTML = '<svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>';
-        if (globalThis.tippy) tippy(button, {
+        attachInfo(button, description, calculations);
+        return button;
+    }
+    // The same popover opened by hovering any element, such as a label of a diagram or a scheme, which then shows the
+    // help cursor in place of a button beside it.
+    function attachInfo(target, description, calculations = null) {
+        target.classList.add('info-hover');
+        if (globalThis.tippy) tippy(target, {
             content: '',
             onShow(instance) {
                 const box = document.createElement('div');
@@ -79,7 +86,6 @@
             allowHTML: true, maxWidth: 'none', delay: 100, arrow: false, theme: 'quarto', placement: 'bottom',
             appendTo: () => document.body,
         });
-        return button;
     }
     // A warning sign, the repository's warning icon, whose caveat opens as an explanation does.
     function warningButton(caveat) {
@@ -91,6 +97,8 @@
     }
     // Viewers' colour scales open their quantity's explanation from the same button.
     globalThis.quartoInfoButton = infoButton;
+    globalThis.quartoInfoHover = attachInfo;
+    globalThis.quartoExplanation = explanation;
     // Cells and text that scientific_table or calcpages.notebook.warned gave an explanation or a caveat, a marker after
     // their label holding its Markdown source, get their info button or warning sign once.
     function describeHeaders() {

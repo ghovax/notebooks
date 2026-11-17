@@ -71,8 +71,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-af6a450c23030404/style.css">
-<script src="../../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
+<script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-<link rel="stylesheet" href="../../../../site_libs/shared-94249f515da8445e/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 16, 2026</p>
+      <p class="date-modified">November 17, 2026</p>
     </div>
   </div>
     
@@ -232,21 +232,24 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Sweep["&lt;span&gt;Approach geometries&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='T25lIGluZGVwZW5kZW50IFRTIG9wdGltaXphdGlvbiBmcm9tIGVhY2ggZXRoZW5lIHBvc2l0aW9uIGFuZCBtZXRoeWxlbmUgcm90YXRpb24sIGNsYXNzaWZpZWQgYnkgd2hlcmUgaXQgZW5kcy4='&gt;&lt;/span&gt;"]
+    subgraph Sweep["&lt;span&gt;Approach geometries&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='T25lIGluZGVwZW5kZW50IFRTIG9wdGltaXphdGlvbiBmcm9tIGVhY2ggZXRoZW5lIHBvc2l0aW9uIGFuZCBtZXRoeWxlbmUgcm90YXRpb24sIGNsYXNzaWZpZWQgYnkgd2hlcmUgaXQgZW5kcy4='&gt;&lt;/span&gt;"]
         %% description: One independent TS optimization from each ethene position and methylene rotation, classified by where it ends.
         direction TB
-        Map1["&lt;a href='../2026-11-06_160906/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Optimize the TS from every approach geometry&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='LSBNYXAgd2hpY2ggYXBwcm9hY2ggZ2VvbWV0cmllcyBvZiBldGhlbmUgYXJvdW5kIHMtY2lzLTEsMy1idXRhZGllbmUgcmVhY2ggdGhlIGNvbmNlcnRlZCAkWzQrMl0kIHNhZGRsZSwgaW50ZXJwb2xhdGluZyBiZXR3ZWVuIHRoZSBjb3BsYW5hciBhbmQgdGhlIHBhcmFsbGVsLXBsYW5lIGFycmFuZ2VtZW50cyBhdCBzZXZlcmFsIGRpc3RhbmNlcy4KLSBUZXN0IHdoZXRoZXIgdGhvc2Ugb3V0Y29tZXMgZGVwZW5kIG9uIHdoZXJlIHRoZSBkaWVuZSdzIGZvdXIgdGVybWluYWwgaHlkcm9nZW5zIHN0YXJ0LCBieSByZXBlYXRpbmcgdGhlIHNhbWUgZ3JpZCBhdCBmaXhlZCByb3RhdGlvbnMgb2YgaXRzIG1ldGh5bGVuZSBncm91cHMuClRoZSBbVFMgb3V0Y29tZSBtYXBdKC4uL1JFQURNRS5tZCkgd29ya2Zsb3cgZ2l2ZXMgdGhlIG1ldGhvZCBvZiB0aGVzZSBydW5zLg=='&gt;&lt;/span&gt;"]
+        Map1["&lt;a href='../2026-11-06_160906/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Optimize the TS from every approach geometry&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSBNYXAgd2hpY2ggYXBwcm9hY2ggZ2VvbWV0cmllcyBvZiBldGhlbmUgYXJvdW5kIHMtY2lzLTEsMy1idXRhZGllbmUgcmVhY2ggdGhlIGNvbmNlcnRlZCAkWzQrMl0kIHNhZGRsZSwgaW50ZXJwb2xhdGluZyBiZXR3ZWVuIHRoZSBjb3BsYW5hciBhbmQgdGhlIHBhcmFsbGVsLXBsYW5lIGFycmFuZ2VtZW50cyBhdCBzZXZlcmFsIGRpc3RhbmNlcy4KLSBUZXN0IHdoZXRoZXIgdGhvc2Ugb3V0Y29tZXMgZGVwZW5kIG9uIHdoZXJlIHRoZSBkaWVuZSdzIGZvdXIgdGVybWluYWwgaHlkcm9nZW5zIHN0YXJ0LCBieSByZXBlYXRpbmcgdGhlIHNhbWUgZ3JpZCBhdCBmaXhlZCByb3RhdGlvbnMgb2YgaXRzIG1ldGh5bGVuZSBncm91cHMuClRoZSBbVFMgb3V0Y29tZSBtYXBdKC4uL1JFQURNRS5tZCkgd29ya2Zsb3cgZ2l2ZXMgdGhlIG1ldGhvZCBvZiB0aGVzZSBydW5zLg=='&gt;&lt;/span&gt;"]
     end
-    subgraph Checks["&lt;span&gt;Classification check&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='VGhlIG91dGNvbWUgb2YgZXZlcnkgc3RhcnQgY2hlY2tlZCBhZ2FpbnN0IGl0cyBsb2cgYmVmb3JlIHRoZSBtYXAgaXMgcmVhZC4='&gt;&lt;/span&gt;"]
+    subgraph Checks["&lt;span&gt;Classification check&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIG91dGNvbWUgb2YgZXZlcnkgc3RhcnQgY2hlY2tlZCBhZ2FpbnN0IGl0cyBsb2cgYmVmb3JlIHRoZSBtYXAgaXMgcmVhZC4='&gt;&lt;/span&gt;"]
         %% description: The outcome of every start checked against its log before the map is read.
         direction TB
-        Check1["Check every start's classification&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='Q29uZmlybSwgYmVmb3JlIHRoZSBvdXRjb21lIG1hcCBpcyByZWFkLCB0aGF0IGVhY2ggb2YgdGhlIDkwIHN0YXJ0cyBjYXJyaWVzIHRoZSBvdXRjb21lIGl0cyBsb2cgc3VwcG9ydHM6IGEgZm9ybWluZyBzYWRkbGUgbWF0Y2hlcyB0aGUgW3ZlcmlmaWVkIHNhZGRsZV0oLi4vLi4vMjAyNi0xMS0wNF8xMDA1MDkvMjAyNi0xMS0wNF8xMDA1MTAvUkVBRE1FLm1kKSBpbiBlbmVyZ3kgYW5kIGZvcm1pbmctYm9uZCBsZW5ndGgsIGFuZCBhIG5vbi1jb252ZXJnZWQgc3RhcnQgc3RvcHBlZCBhdCB0aGUgb3B0aW1pemVyJ3Mgc3RlcCBsaW1pdC4='&gt;&lt;/span&gt;"]
+        Check1["Check every start's classification&lt;span class='diagram-info' style='display:none' data-description='Q29uZmlybSwgYmVmb3JlIHRoZSBvdXRjb21lIG1hcCBpcyByZWFkLCB0aGF0IGVhY2ggb2YgdGhlIDkwIHN0YXJ0cyBjYXJyaWVzIHRoZSBvdXRjb21lIGl0cyBsb2cgc3VwcG9ydHM6IGEgZm9ybWluZyBzYWRkbGUgbWF0Y2hlcyB0aGUgW3ZlcmlmaWVkIHNhZGRsZV0oLi4vLi4vMjAyNi0xMS0wNF8xMDA1MDkvMjAyNi0xMS0wNF8xMDA1MTAvUkVBRE1FLm1kKSBpbiBlbmVyZ3kgYW5kIGZvcm1pbmctYm9uZCBsZW5ndGgsIGFuZCBhIG5vbi1jb252ZXJnZWQgc3RhcnQgc3RvcHBlZCBhdCB0aGUgb3B0aW1pemVyJ3Mgc3RlcCBsaW1pdC4='&gt;&lt;/span&gt;"]
     end
 
     Start3(( ))
-    Input5[/"&lt;span&gt;Rigid fragments at $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;"/]
-    Input6[/"&lt;span&gt;Verified saddle reference&lt;/span&gt;"/]
-    Output3Map[/"&lt;span&gt;Optimization outcome at each $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;"/]
+    Input5[/"&lt;span&gt;Rigid fragments at $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIHJpZ2lkIGZyYWdtZW50cyBhdCAkciQsICRcdGhldGEkIGFuZCAkXHRhdSQsIHJlYWQgYnkgIk9wdGltaXplIHRoZSBUUyBmcm9tIGV2ZXJ5IGFwcHJvYWNoIGdlb21ldHJ5Ii4='&gt;&lt;/span&gt;"/]
+        %% description: The rigid fragments at $r$, $\theta$ and $\tau$, read by "Optimize the TS from every approach geometry".
+    Input6[/"&lt;span&gt;Verified saddle reference&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIHZlcmlmaWVkIHNhZGRsZSByZWZlcmVuY2UsIHJlYWQgYnkgIk9wdGltaXplIHRoZSBUUyBmcm9tIGV2ZXJ5IGFwcHJvYWNoIGdlb21ldHJ5IiBhbmQgIkNoZWNrIGV2ZXJ5IHN0YXJ0J3MgY2xhc3NpZmljYXRpb24iLg=='&gt;&lt;/span&gt;"/]
+        %% description: The verified saddle reference, read by "Optimize the TS from every approach geometry" and "Check every start's classification".
+    Output3Map[/"&lt;span&gt;Optimization outcome at each $$r$$, $$\theta$$ and $$\tau$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='T3B0aW1pemF0aW9uIG91dGNvbWUgYXQgZWFjaCAkciQsICRcdGhldGEkIGFuZCAkXHRhdSQsIGZyb20gIkNoZWNrIGV2ZXJ5IHN0YXJ0J3MgY2xhc3NpZmljYXRpb24iLg=='&gt;&lt;/span&gt;"/]
+        %% description: Optimization outcome at each $r$, $\theta$ and $\tau$, from "Check every start's classification".
     End3((( )))
 
     Start3 --&gt; Input5
@@ -284,14 +287,14 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
 <script src="../../../../site_libs/shared-0474cb947d66892a/script.js"></script>
 <section id="Goal" class="level2">
 <h2 class="anchored" data-anchor-id="Goal">Goal</h2>
 <ul>
 <li>Confirm, before the outcome map is read, that each of the 90 starts carries the outcome its log supports: a forming saddle matches the <a href="../../2026-11-04_100509/2026-11-04_100510/">verified saddle</a> in energy and forming-bond length, and a non-converged start stopped at the optimizer’s step limit.</li>
 </ul>
-<div id="5bd7c95b" class="cell" data-execution_count="2">
+<div id="1296bcdb" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-51d00883c74d211e/data.js"></script>
 </div>

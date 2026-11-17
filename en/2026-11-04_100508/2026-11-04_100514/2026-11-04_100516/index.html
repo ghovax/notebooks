@@ -71,8 +71,8 @@ if (location.pathname.endsWith("/index.html")) {
 <!-- Every page with this header has molecular viewers: fetch the pinned Molstar build while the page parses, for
      the viewers' own request of the same URL. -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/molstar@5.13.1/build/viewer/molstar.js" as="fetch" crossorigin="anonymous">
-<link rel="stylesheet" href="../../../../site_libs/shared-af6a450c23030404/style.css">
-<script src="../../../../site_libs/shared-528e6ff8ddf1c979/script.js"></script>
+<link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
+<script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
 // Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
 // default scales; the browser's context menu is suppressed only over the plot itself.
@@ -161,7 +161,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-94249f515da8445e/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -214,7 +214,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 16, 2026</p>
+      <p class="date-modified">November 17, 2026</p>
     </div>
   </div>
     
@@ -281,18 +281,18 @@ config:
   layout: elk
 ---
 flowchart TB
-    subgraph Path2["&lt;span&gt;Saddle and reaction path&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='UmVmaW5lIHRoZSBjb25zdHJ1Y3RlZCAkWzQrMl0kIGd1ZXNzIHRvIGEgZmlyc3Qtb3JkZXIgc2FkZGxlLCBjaGVjayBpdHMgY2xvc2VkLXNoZWxsIHNpbmdsZXQgd2F2ZWZ1bmN0aW9uIGFuZCBmb2xsb3cgdGhlICRccG0gcyQgSVJDIGJyYW5jaGVzLg=='&gt;&lt;/span&gt;"]
+    subgraph Path2["&lt;span&gt;Saddle and reaction path&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='UmVmaW5lIHRoZSBjb25zdHJ1Y3RlZCAkWzQrMl0kIGd1ZXNzIHRvIGEgZmlyc3Qtb3JkZXIgc2FkZGxlLCBjaGVjayBpdHMgY2xvc2VkLXNoZWxsIHNpbmdsZXQgd2F2ZWZ1bmN0aW9uIGFuZCBmb2xsb3cgdGhlICRccG0gcyQgSVJDIGJyYW5jaGVzLg=='&gt;&lt;/span&gt;"]
         %% description: Refine the constructed $[4+2]$ guess to a first-order saddle, check its closed-shell singlet wavefunction and follow the $\pm s$ IRC branches.
         direction TB
-        Refine2["&lt;a href='../2026-11-04_100515/'&gt;Optimize and verify the TS&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='LSBSZWZpbmUgdGhlIGNvbnN0cnVjdGVkIGNvbmNlcnRlZCAkWzQrMl0kIGd1ZXNzIHRvIGEgZmlyc3Qtb3JkZXIgc2FkZGxlIGFuZCBjb25maXJtIG9uZSBpbWFnaW5hcnkgbW9kZSBhbG9uZyB0aGUgdHdvIGZvcm1pbmcgQ+KAk0MgYm9uZHMuCi0gVGVzdCB0aGUgc3RhYmlsaXR5IG9mIHRoZSBjbG9zZWQtc2hlbGwgc2luZ2xldCB3YXZlZnVuY3Rpb24gYXQgdGhlIG9wdGltaXplZCBzYWRkbGUu'&gt;&lt;/span&gt;"]
-        IRC2["Follow the IRC along $$\pm s$$&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='Rm9sbG93IGJvdGggZG93bmhpbGwgZGlyZWN0aW9ucyBmcm9tIHRoZSB2ZXJpZmllZCBzYWRkbGUgYW5kIGlkZW50aWZ5IHRoZSBlbmRwb2ludCByZWdpb25zLg=='&gt;&lt;/span&gt;"]
+        Refine2["&lt;a href='../2026-11-04_100515/'&gt;Optimize and verify the TS&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSBSZWZpbmUgdGhlIGNvbnN0cnVjdGVkIGNvbmNlcnRlZCAkWzQrMl0kIGd1ZXNzIHRvIGEgZmlyc3Qtb3JkZXIgc2FkZGxlIGFuZCBjb25maXJtIG9uZSBpbWFnaW5hcnkgbW9kZSBhbG9uZyB0aGUgdHdvIGZvcm1pbmcgQ+KAk0MgYm9uZHMuCi0gVGVzdCB0aGUgc3RhYmlsaXR5IG9mIHRoZSBjbG9zZWQtc2hlbGwgc2luZ2xldCB3YXZlZnVuY3Rpb24gYXQgdGhlIG9wdGltaXplZCBzYWRkbGUu'&gt;&lt;/span&gt;"]
+        IRC2["Follow the IRC along $$\pm s$$&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IGJvdGggZG93bmhpbGwgZGlyZWN0aW9ucyBmcm9tIHRoZSB2ZXJpZmllZCBzYWRkbGUgYW5kIGlkZW50aWZ5IHRoZSBlbmRwb2ludCByZWdpb25zLg=='&gt;&lt;/span&gt;"]
     end
 
-    subgraph Minima2["&lt;span&gt;Endpoint minima&lt;/span&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='T3B0aW1pemUgZWFjaCBJUkMgdGVybWludXMgYW5kIGNoZWNrIGl0cyBoYXJtb25pYyBmcmVxdWVuY2llczsgdGhlIGZvcm1pbmctYm9uZCBkaXN0YW5jZXMgYXNzaWduIHRoZSBzZXBhcmF0ZWQtcmVhY3RhbnQgYW5kIGN5Y2xvaGV4ZW5lIG1pbmltYS4='&gt;&lt;/span&gt;"]
+    subgraph Minima2["&lt;span&gt;Endpoint minima&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='T3B0aW1pemUgZWFjaCBJUkMgdGVybWludXMgYW5kIGNoZWNrIGl0cyBoYXJtb25pYyBmcmVxdWVuY2llczsgdGhlIGZvcm1pbmctYm9uZCBkaXN0YW5jZXMgYXNzaWduIHRoZSBzZXBhcmF0ZWQtcmVhY3RhbnQgYW5kIGN5Y2xvaGV4ZW5lIG1pbmltYS4='&gt;&lt;/span&gt;"]
         %% description: Optimize each IRC terminus and check its harmonic frequencies; the forming-bond distances assign the separated-reactant and cyclohexene minima.
         direction TB
-        Optimize4["&lt;a href='../2026-11-04_100517/'&gt;Optimize and verify the reactant endpoint&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='UmVsYXggdGhlIElSQyB0ZXJtaW51cyB3aXRoIHRoZSBzZXBhcmF0ZWQgZGllbmUgYW5kIGRpZW5vcGhpbGUgZnJhZ21lbnRzIGFuZCB2ZXJpZnkgdGhhdCBpdCBpcyBhIG1pbmltdW0u'&gt;&lt;/span&gt;"]
-        Optimize5["&lt;a href='../2026-11-04_100518/'&gt;Optimize and verify the cyclohexene endpoint&lt;/a&gt;&lt;span class='diagram-info' style='display:inline-block;width:1.4em' data-description='UmVsYXggdGhlIElSQyB0ZXJtaW51cyB3aXRoIHRoZSBjbG9zZWQgc2l4LW1lbWJlcmVkIHJpbmcgYW5kIHZlcmlmeSB0aGUgY3ljbG9oZXhlbmUgbWluaW11bS4='&gt;&lt;/span&gt;"]
+        Optimize4["&lt;a href='../2026-11-04_100517/'&gt;Optimize and verify the reactant endpoint&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='UmVsYXggdGhlIElSQyB0ZXJtaW51cyB3aXRoIHRoZSBzZXBhcmF0ZWQgZGllbmUgYW5kIGRpZW5vcGhpbGUgZnJhZ21lbnRzIGFuZCB2ZXJpZnkgdGhhdCBpdCBpcyBhIG1pbmltdW0u'&gt;&lt;/span&gt;"]
+        Optimize5["&lt;a href='../2026-11-04_100518/'&gt;Optimize and verify the cyclohexene endpoint&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='UmVsYXggdGhlIElSQyB0ZXJtaW51cyB3aXRoIHRoZSBjbG9zZWQgc2l4LW1lbWJlcmVkIHJpbmcgYW5kIHZlcmlmeSB0aGUgY3ljbG9oZXhlbmUgbWluaW11bS4='&gt;&lt;/span&gt;"]
     end
 
     Refine2 --&gt; IRC2
@@ -300,11 +300,16 @@ flowchart TB
     IRC2 --&gt; Optimize5
 
     Start2(( ))
-    Input3[/"s-cis-Butadiene and ethene"/]
-    Input4[/"Concerted $$[4+2]$$ TS guess"/]
-    Output2Energy[/"&lt;span&gt;Barrier $$\Delta E^{\ddagger}$$ and reaction energy $$\Delta E$$&lt;/span&gt;"/]
-    Output2Path[/"&lt;span&gt;IRC path and forming-bond distances&lt;/span&gt;"/]
-    Output2Modes[/"&lt;span&gt;Stationary-point frequencies $$\nu_i$$&lt;/span&gt;"/]
+    Input3[/"s-cis-Butadiene and ethene&lt;span class='diagram-info' style='display:none' data-description='VGhlIHMtY2lzLWJ1dGFkaWVuZSBhbmQgZXRoZW5lLCByZWFkIGJ5ICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSBUUyIu'&gt;&lt;/span&gt;"/]
+        %% description: The s-cis-butadiene and ethene, read by "Optimize and verify the TS".
+    Input4[/"Concerted $$[4+2]$$ TS guess&lt;span class='diagram-info' style='display:none' data-description='VGhlIGNvbmNlcnRlZCAkWzQrMl0kIFRTIGd1ZXNzLCByZWFkIGJ5ICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSBUUyIu'&gt;&lt;/span&gt;"/]
+        %% description: The concerted $[4+2]$ TS guess, read by "Optimize and verify the TS".
+    Output2Energy[/"&lt;span&gt;Barrier $$\Delta E^{\ddagger}$$ and reaction energy $$\Delta E$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='QmFycmllciAkXERlbHRhIEVee1xkZGFnZ2VyfSQgYW5kIHJlYWN0aW9uIGVuZXJneSAkXERlbHRhIEUkLCBmcm9tICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSBUUyIsICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSByZWFjdGFudCBlbmRwb2ludCIgYW5kICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSBjeWNsb2hleGVuZSBlbmRwb2ludCIu'&gt;&lt;/span&gt;"/]
+        %% description: Barrier $\Delta E^{\ddagger}$ and reaction energy $\Delta E$, from "Optimize and verify the TS", "Optimize and verify the reactant endpoint" and "Optimize and verify the cyclohexene endpoint".
+    Output2Path[/"&lt;span&gt;IRC path and forming-bond distances&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='SVJDIHBhdGggYW5kIGZvcm1pbmctYm9uZCBkaXN0YW5jZXMsIGZyb20gIkZvbGxvdyB0aGUgSVJDIGFsb25nICRccG0gcyQiLg=='&gt;&lt;/span&gt;"/]
+        %% description: IRC path and forming-bond distances, from "Follow the IRC along $\pm s$".
+    Output2Modes[/"&lt;span&gt;Stationary-point frequencies $$\nu_i$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='U3RhdGlvbmFyeS1wb2ludCBmcmVxdWVuY2llcyAkXG51X2kkLCBmcm9tICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSBUUyIsICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSByZWFjdGFudCBlbmRwb2ludCIgYW5kICJPcHRpbWl6ZSBhbmQgdmVyaWZ5IHRoZSBjeWNsb2hleGVuZSBlbmRwb2ludCIu'&gt;&lt;/span&gt;"/]
+        %% description: Stationary-point frequencies $\nu_i$, from "Optimize and verify the TS", "Optimize and verify the reactant endpoint" and "Optimize and verify the cyclohexene endpoint".
     End2((( )))
 
     Start2 --&gt; Input3
@@ -356,13 +361,13 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-620d46c7b641e84e/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
 <section id="Goal" class="level2">
 <h2 class="anchored" data-anchor-id="Goal">Goal</h2>
 <ul>
 <li>Follow both downhill directions from the verified saddle and identify the endpoint regions.</li>
 </ul>
-<div id="d07a4da3" class="cell" data-execution_count="2">
+<div id="10eee4f3" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-51d00883c74d211e/data.js"></script>
 </div>
