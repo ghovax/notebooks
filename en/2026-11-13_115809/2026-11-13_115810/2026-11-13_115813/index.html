@@ -46,6 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 <!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
 <script>window.requireJsDefine = window.define;</script>
 <!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
@@ -172,11 +173,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#Goal" id="toc-Goal" class="nav-link active" data-scroll-target="#Goal">Goal</a></li>
-  <li><a href="#Input" id="toc-Input" class="nav-link" data-scroll-target="#Input">Input</a>
+  <li><a href="#Input" id="toc-Input" class="nav-link active" data-scroll-target="#Input">Input</a>
   <ul>
   <li><a href="#Settings" id="toc-Settings" class="nav-link" data-scroll-target="#Settings">Settings</a></li>
+  <li><a href="#Starting_geometry" id="toc-Starting_geometry" class="nav-link" data-scroll-target="#Starting_geometry">Starting geometry</a></li>
   </ul></li>
+  <li><a href="#Output" id="toc-Output" class="nav-link" data-scroll-target="#Output">Output</a>
+  <ul>
+  <li><a href="#Electronic_structure_and_screening" id="toc-Electronic_structure_and_screening" class="nav-link" data-scroll-target="#Electronic_structure_and_screening">Electronic structure and screening</a></li>
+  <li><a href="#Energy_components" id="toc-Energy_components" class="nav-link" data-scroll-target="#Energy_components">Energy components</a></li>
+  <li><a href="#SCF_convergence" id="toc-SCF_convergence" class="nav-link" data-scroll-target="#SCF_convergence">SCF convergence</a></li>
+  <li><a href="#Orbital_gap_per_iteration" id="toc-Orbital_gap_per_iteration" class="nav-link" data-scroll-target="#Orbital_gap_per_iteration">Orbital gap per iteration</a></li>
+  <li><a href="#Screening_convergence" id="toc-Screening_convergence" class="nav-link" data-scroll-target="#Screening_convergence">Screening convergence</a></li>
+  </ul></li>
+  <li><a href="#Technical_details" id="toc-Technical_details" class="nav-link" data-scroll-target="#Technical_details">Technical details</a></li>
   </ul>
 </nav>
 </div>
@@ -230,17 +240,19 @@ window.Quarto = {
 <div class="header-breadcrumb has-remote-link">
 <span class="breadcrumb-path"><a href="../../../">Homepage</a><span class="sep">/</span><a href="../../">Twisting and charge transfer in the difluoroboron dyes</a><span class="sep">/</span><a href="../">Methoxy chelate in acetonitrile</a><span class="sep">/</span><span class="current">Evaluate screening <span class="math inline">\varepsilon_s</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115810/2026-11-13_115813/README.md:1" class="remote-readme-link" title="Open this page’s remote README in Visual Studio Code">Open remote</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Language" aria-label="Language"><i class="bi bi-translate" aria-hidden="true"></i>English</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item active" href="../../../../en/2026-11-13_115809/2026-11-13_115810/2026-11-13_115813/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a class="dropdown-item" href="../../../../ja/2026-11-13_115809/2026-11-13_115810/2026-11-13_115813/" hreflang="ja" lang="ja">日本語</a></li></ul></span></span>
 </div>
-<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Prepared
+<span class="screen-reader-only">Tip</span>Accepted
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<ul>
+<li>The B3LYP screening of the verified <span class="math inline">S_0</span> minimum is <span class="math inline">\varepsilon_s=2.80</span>: the SCF converged, the solution is stationary and the saved arrays are consistent, so the value is the unscreened reference for the DD-DFT branch. It is the molecule’s own electronic response in vacuum, not the permittivity of acetonitrile.</li>
+</ul>
 </div>
 </div>
 <div class="calculations-diagram compact" data-workflow="2026-11-13_115809/2026-11-13_115810" data-current="S0Screening" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;S0Opt&quot;], [&quot;S0Opt&quot;, &quot;S0Verify&quot;], [&quot;S0Verify&quot;, &quot;S0Screening&quot;], [&quot;S0Verify&quot;, &quot;S0Absorption&quot;], [&quot;S0Absorption&quot;, &quot;S1Opt&quot;], [&quot;S1Opt&quot;, &quot;S1Verify&quot;], [&quot;S1Verify&quot;, &quot;S1Emission&quot;], [&quot;S0Verify&quot;, &quot;DdScreening&quot;], [&quot;DdScreening&quot;, &quot;DdS0Opt&quot;], [&quot;DdS0Opt&quot;, &quot;DdS0Verify&quot;], [&quot;DdS0Verify&quot;, &quot;DdRecheck&quot;], [&quot;DdS0Verify&quot;, &quot;DdS0Absorption&quot;], [&quot;DdS0Absorption&quot;, &quot;DdS1Opt&quot;], [&quot;DdS1Opt&quot;, &quot;DdS1Verify&quot;], [&quot;S0Verify&quot;, &quot;S0ScanB1&quot;], [&quot;S0ScanB1&quot;, &quot;S0ScanB1Td&quot;], [&quot;S1Verify&quot;, &quot;S1ScanB1&quot;], [&quot;S0Verify&quot;, &quot;S0ScanA&quot;], [&quot;S0ScanA&quot;, &quot;S0ScanATd&quot;], [&quot;S1Verify&quot;, &quot;S1ScanA&quot;], [&quot;S0Verify&quot;, &quot;S0Map&quot;], [&quot;S0Map&quot;, &quot;S0MapTd&quot;], [&quot;S0Screening&quot;, &quot;OutputScreening1&quot;], [&quot;DdScreening&quot;, &quot;OutputScreening1&quot;], [&quot;DdRecheck&quot;, &quot;OutputScreening1&quot;], [&quot;OutputScreening1&quot;, &quot;End1&quot;], [&quot;S0Absorption&quot;, &quot;OutputExcitations1&quot;], [&quot;S1Emission&quot;, &quot;OutputExcitations1&quot;], [&quot;DdS0Absorption&quot;, &quot;OutputExcitations1&quot;], [&quot;OutputExcitations1&quot;, &quot;End1&quot;], [&quot;S0Verify&quot;, &quot;OutputGeometries1&quot;], [&quot;S1Verify&quot;, &quot;OutputGeometries1&quot;], [&quot;DdS0Verify&quot;, &quot;OutputGeometries1&quot;], [&quot;DdS1Verify&quot;, &quot;OutputGeometries1&quot;], [&quot;OutputGeometries1&quot;, &quot;End1&quot;], [&quot;S0ScanB1Td&quot;, &quot;OutputTwists1&quot;], [&quot;S1ScanB1&quot;, &quot;OutputTwists1&quot;], [&quot;S0ScanATd&quot;, &quot;OutputTwists1&quot;], [&quot;S1ScanA&quot;, &quot;OutputTwists1&quot;], [&quot;S0MapTd&quot;, &quot;OutputTwists1&quot;], [&quot;OutputTwists1&quot;, &quot;End1&quot;]]" data-details="../details.html"><pre class="diagram-source">---
@@ -392,32 +404,33 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption,S1Opt,S1Verify,S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputScreening1,OutputExcitations1,OutputGeometries1,OutputTwists1,End1 pending;
+    class Start1,Input1,S0Opt,S0Verify,S0Screening success;
+    class S0Absorption,S1Opt,S1Verify,S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputScreening1,OutputExcitations1,OutputGeometries1,OutputTwists1,End1 pending;
     class DdRecheck,DdS0Verify,DdS1Verify,S0Verify,S1Verify verification;
-    linkStyle 0 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 1 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 2 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 3 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 4 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 5 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 8 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 11 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 12 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 15 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 16 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 17 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 18 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 19 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 20 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 21 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 21 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 22 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 23 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 23 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
@@ -425,7 +438,7 @@ flowchart TB
     linkStyle 28 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 31 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 31 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 32 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
@@ -446,17 +459,11 @@ window.restoreRequireDefine = () => {
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
 <script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
-<section id="Goal" class="level2">
-<h2 class="anchored" data-anchor-id="Goal">Goal</h2>
-<ul>
-<li>Evaluate the molecular electronic screening <span class="math inline">\varepsilon_s</span> of <span class="math inline">\mathbf{1}</span> from unscreened B3LYP orbitals at the verified <span class="math inline">S_0</span> minimum.</li>
-</ul>
-<div id="27717a1e" class="cell" data-execution_count="2">
+<div id="d3e3481d" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-51d00883c74d211e/data.js"></script>
 </div>
 </div>
-</section>
 <section id="Input" class="level2 step">
 <h2 class="step anchored" data-anchor-id="Input">Input</h2>
 <section id="Settings" class="level3">
@@ -522,10 +529,343 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 </section>
+<section id="Starting_geometry" class="level3">
+<h3 class="anchored" data-anchor-id="Starting_geometry">Starting geometry</h3>
+<p>The structure the calculation starts from.</p>
+<div id="fig-starting-geometry" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-starting-geometry" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="Figure_3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-starting-geometry-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"5998ffc10f884c6abc3a4a46e84973ff","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-starting-geometry-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Interactive 3D view of the molecule.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-starting-geometry" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="Figure_3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-starting-geometry-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"6f12e6e8bf5c43ffb884ca25730b7b73","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-starting-geometry-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Structure drawing following the 3D view, mapping what it shows.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-starting-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;1.</strong> Starting geometry.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="Output" class="level2 step">
+<h2 class="step anchored" data-anchor-id="Output">Output</h2>
+<section id="Electronic_structure_and_screening" class="level3">
+<h3 class="anchored" data-anchor-id="Electronic_structure_and_screening">Electronic structure and screening</h3>
+<div class="cell" data-execution_count="5">
+<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lotus-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;2.</strong> Electronic structure and screening of the final density.
+</figcaption>
+<div aria-describedby="tbl-lotus-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 90%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Method<span class="quantity-info" data-description="VGhyZWUtcGFyYW1ldGVyIGh5YnJpZCBleGNoYW5nZSB3aXRoIExlZeKAk1lhbmfigJNQYXJyIGNvcnJlbGF0aW9uLg=="></span></td>
+<td style="text-align: left;">B3LYP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCF iterations<span class="quantity-info" data-description="TnVtYmVyIG9mIHNlbGYtY29uc2lzdGVudC1maWVsZCBpdGVyYXRpb25zIHRoZSBwcm9ncmFtIG5lZWRlZC4="></span></td>
+<td style="text-align: left;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Final density change<span class="quantity-info" data-description="Q2hhbmdlIG9mIHRoZSBkZW5zaXR5IGluIHRoZSBsYXN0IFNDRiBpdGVyYXRpb24sIGEgbWVhc3VyZSBvZiBob3cgd2VsbCBpdCBjb252ZXJnZWQu"></span></td>
+<td style="text-align: left;"><span class="math inline">\mathord{5.55727\times 10^{-9}}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Applied screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCB1c2VkIGluIHRoZSBsYXN0IGl0ZXJhdGlvbiB0byBzZXQgdGhlIGV4Y2hhbmdlIGZyYWN0aW9uICRcYWxwaGE9MS9cdmFyZXBzaWxvbl9zJC4="></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Evaluated screening <span class="math inline">\varepsilon_s</span><span class="quantity-info" data-description="U2NyZWVuaW5nICRcdmFyZXBzaWxvbl9zJCBldmFsdWF0ZWQgZnJvbSB0aGUgZmluYWwgZWxlY3Ryb25pYyByZXNwb25zZTsgd2hlbiBpdCBtYXRjaGVzIHRoZSBhcHBsaWVkIHZhbHVlLCB0aGUgc2NyZWVuaW5nIGlzIHNlbGYtY29uc2lzdGVudC4="></span></td>
+<td style="text-align: left;">2.80116</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HOMO energy <span class="math inline">\epsilon_{\mathrm{HOMO}}</span><span class="quantity-info" data-description="RW5lcmd5ICRcZXBzaWxvbl97XG1hdGhybXtIT01PfX0kIG9mIHRoZSBoaWdoZXN0IG9jY3VwaWVkIG1vbGVjdWxhciBvcmJpdGFsIChIT01PKSwgYW4gYXBwcm94aW1hdGlvbiB0byBtaW51cyB0aGUgaW9uaXphdGlvbiBlbmVyZ3kgdGhhdCBkZXBlbmRzIHN0cm9uZ2x5IG9uIHRoZSBleGFjdC1leGNoYW5nZSBmcmFjdGlvbi4="></span></td>
+<td style="text-align: left;"><span class="math inline">-6.49702\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LUMO energy <span class="math inline">\epsilon_{\mathrm{LUMO}}</span><span class="quantity-info" data-description="RW5lcmd5ICRcZXBzaWxvbl97XG1hdGhybXtMVU1PfX0kIG9mIHRoZSBsb3dlc3QgdW5vY2N1cGllZCBtb2xlY3VsYXIgb3JiaXRhbCAoTFVNTyku"></span></td>
+<td style="text-align: left;"><span class="math inline">-2.81366\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HOMO–LUMO gap <span class="math inline">\Delta\epsilon=\epsilon_{\mathrm{LUMO}}-\epsilon_{\mathrm{HOMO}}</span><span class="quantity-info" data-description="RGlmZmVyZW5jZSBvZiB0aGUgZnJvbnRpZXIgb3JiaXRhbCBlbmVyZ2llcywgbm90IGFuIG9wdGljYWwgZXhjaXRhdGlvbiBlbmVyZ3ku"></span></td>
+<td style="text-align: left;"><span class="math inline">3.68336\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hartree–Fock exchange weight <span class="math inline">\alpha</span></td>
+<td style="text-align: left;">0.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Screening uses molecular polarizability and volume, not bulk-liquid permittivity.</p>
+<ul>
+<li><span class="math inline">i\in\mathcal O</span> and <span class="math inline">a\in\mathcal V</span> index occupied and virtual orbitals.</li>
+<li>The volume <span class="math inline">V</span> encloses density above <span class="math inline">0.001\,a_0^{-3}</span>.</li>
+</ul>
+<p>For a doubly occupied reference, the isotropic part of the uncoupled (zeroth-order) polarizability <span class="math inline">\boldsymbol{\alpha}^{(0)}</span> averages three Cartesian components:</p>
+<p><span class="math display">
+\bar{\alpha}^{(0)}=\frac{1}{3}\operatorname{tr}\boldsymbol{\alpha}^{(0)}
+=\frac{4}{3}\sum_{i\in\mathcal O}\sum_{a\in\mathcal V}
+\frac{\left\lVert\langle\phi_i|\mathbf r|\phi_a\rangle\right\rVert^2}{\epsilon_a-\epsilon_i}
+</span></p>
+<p>The squared norm sums Cartesian components. Screening divides polarizability by molecular volume:</p>
+<p><span class="math display">
+\varepsilon_s=1+\frac{4\pi}{V}\,\bar{\alpha}^{(0)}
+</span></p>
+</section>
+<section id="Energy_components" class="level3">
+<h3 class="anchored" data-anchor-id="Energy_components">Energy components</h3>
+<p>Coulomb, weighted exact exchange, and density-functional exchange–correlation contributions.</p>
+<div class="cell" data-execution_count="6">
+<div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-energy-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;3.</strong> Coulomb, weighted exact-exchange and exchange–correlation energies.
+</figcaption>
+<div aria-describedby="tbl-energy-components-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 85%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Electron Coulomb repulsion <span class="math inline">J</span><span class="quantity-info" data-description="Q2xhc3NpY2FsIGVsZWN0cm9u4oCTZWxlY3Ryb24gQ291bG9tYiBlbmVyZ3kgJEo9XGZyYWMxMlxpaW50XHJobyhcbWF0aGJmIHIpXHJobyhcbWF0aGJmIHJccHJpbWUpL3xcbWF0aGJmIHItXG1hdGhiZiByXHByaW1lfFwsXG1hdGhybSBkXG1hdGhiZiByXCxcbWF0aHJtIGRcbWF0aGJmIHJccHJpbWUkLiBFeGNsdWRlcyBleGNoYW5nZSBhbmQgY29ycmVsYXRpb24u"></span></td>
+<td style="text-align: left;"><span class="math inline">70180.2497481\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exact-exchange contribution <span class="math inline">c_{\mathrm{HF}}E_{\mathrm X}^{\mathrm{HF}}</span><span class="quantity-info" data-description="RXhhY3QtZXhjaGFuZ2UgY29udHJpYnV0aW9uIHdpdGggd2VpZ2h0cyBhbHJlYWR5IGFwcGxpZWQsIGluY2x1ZGluZyBnbG9iYWwgYW5kIG5vbmxvY2FsIHNob3J0LXJhbmdlIGV4Y2hhbmdlLiBEbyBub3QgbXVsdGlwbHkgYnkgdGhlIHdlaWdodHMgYWdhaW4u"></span></td>
+<td style="text-align: left;"><span class="math inline">-855.19519191\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Density-functional contribution <span class="math inline">E_{\mathrm X}^{\mathrm{DFT}}+E_{\mathrm C}^{\mathrm{DFT}}</span><span class="quantity-info" data-description="V2VpZ2h0ZWQgZGVuc2l0eS1mdW5jdGlvbmFsIGV4Y2hhbmdlIGFuZCBjb3JyZWxhdGlvbiwgcmVwb3J0ZWQgdG9nZXRoZXIu"></span></td>
+<td style="text-align: left;"><span class="math inline">-3615.85556814\,\mathrm{eV}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Environment contribution<span class="quantity-info" data-description="T3B0aW9uYWwgYGVudmAgY29udHJpYnV0aW9uLCBkaXN0aW5jdCBmcm9tIGVsZWN0cm9u4oCTZWxlY3Ryb24gQ291bG9tYiBlbmVyZ3ku"></span></td>
+<td style="text-align: left;"><span class="math inline">0\,\mathrm{eV}</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Projection contribution<span class="quantity-info" data-description="T3B0aW9uYWwgYHByb2pgIGNvbnRyaWJ1dGlvbjsgaXQgaXMgbm90IGFzc2lnbmVkIHRvIGEgY2hlbWljYWwgYm9uZC4="></span></td>
+<td style="text-align: left;"><span class="ditto" title="Same as the row above">〃</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Electronic energy <span class="math inline">E_{\mathrm{el}}</span><span class="quantity-info" data-description="RWxlY3Ryb25pYyBlbmVyZ3kgb2YgdGhlIGNvbnZlcmdlZCBzb2x1dGlvbiwgaW5jbHVkaW5nIG51Y2xlYXIgcmVwdWxzaW9uLCBub3QgdGhlIHN1bSBvZiB0aGUgcGFydGlhbCBjb21wb25lbnRzIGFib3ZlLg=="></span></td>
+<td style="text-align: left;"><span class="math inline">-33850.0667482\,\mathrm{eV}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>These components omit kinetic, electron–nuclear and nuclear-repulsion terms; density-functional exchange and correlation remain combined.</p>
+</section>
+<section id="SCF_convergence" class="level3">
+<h3 class="anchored" data-anchor-id="SCF_convergence">SCF convergence</h3>
+<p>Energy and density change by recorded SCF step:</p>
+<ul>
+<li>Displayed step numbers start at one.</li>
+<li>Lotus numbers its initial step zero.</li>
+</ul>
+<div id="cell-fig-scf-energy" class="cell" data-execution_count="8">
+<div id="Figure_2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scf-energy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"25701dbeb0e9438a9104b5ca7512a107","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scf-energy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;2.</strong> Energy by SCF step.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="cell-fig-scf-change" class="cell" data-execution_count="9">
+<div id="Figure_3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scf-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ce7a28a4cd0149bd845c1d6a45111714","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scf-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;3.</strong> Density change by SCF step.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="Orbital_gap_per_iteration" class="level3">
+<h3 class="anchored" data-anchor-id="Orbital_gap_per_iteration">Orbital gap per iteration</h3>
+<p>The frontier orbital gap at each recorded step, numbered from one.</p>
+<div id="cell-fig-gap-steps" class="cell" data-execution_count="10">
+<div id="Figure_4" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gap-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"30bd9346f3b64496813537fd6d4cb304","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gap-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;4.</strong> Frontier orbital gap at each step.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="Screening_convergence" class="level3">
+<h3 class="anchored" data-anchor-id="Screening_convergence">Screening convergence</h3>
+<p>The screening applied at each outer step, numbered from one, as it converges to the evaluated value.</p>
+<div id="cell-fig-screening-steps" class="cell" data-execution_count="11">
+<div id="Figure_5" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-screening-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"5f6d4aa3cc6f4e3583c8f289ce3a0982","version_major":2,"version_minor":1,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-screening-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Figure&nbsp;5.</strong> Screening applied at each outer step.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="Technical_details" class="level2">
+<h2 class="anchored" data-anchor-id="Technical_details">Technical details</h2>
+<p>The program, the resources and the timing of the calculation.</p>
+<div class="cell" data-execution_count="12">
+<div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="12">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;4.</strong> Program, resources and timing of the calculation.
+</figcaption>
+<div aria-describedby="tbl-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 84%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Program<span class="quantity-info" data-description="UHJvZ3JhbSB3aG9zZSBvdXRwdXQgYW5kIHJlY29yZHMgdGhlIHBhZ2UgcGFyc2VzLCBHYXVzc2lhbiAxNiBvciBMb3R1cy4="></span></td>
+<td style="text-align: left;">Lotus</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested wall time<span class="quantity-info" data-description="V2FsbC10aW1lIGxpbWl0IHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">06:00:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested memory<span class="quantity-info" data-description="TWVtb3J5IHBlciBub2RlIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIsIGluIGJpbmFyeSB1bml0cyBvZiBieXRlcy4="></span></td>
+<td style="text-align: left;">12 GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested CPUs per task<span class="quantity-info" data-description="UHJvY2Vzc29yIGNvcmVzIHBlciB0YXNrIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested nodes<span class="quantity-info" data-description="Tm9kZXMgcmVxdWVzdGVkIGZyb20gdGhlIHNjaGVkdWxlci4="></span></td>
+<td style="text-align: left;"><span class="ditto" title="Same as the row above">〃</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Requested tasks<span class="quantity-info" data-description="VGFza3MsIG9uZSBwcm9jZXNzIGVhY2gsIHJlcXVlc3RlZCBmcm9tIHRoZSBzY2hlZHVsZXIu"></span></td>
+<td style="text-align: left;"><span class="ditto" title="Same as the row above">〃</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Requested partitions<span class="quantity-info" data-description="U2NoZWR1bGVyIHBhcnRpdGlvbnMgdGhlIGpvYiBtYXkgcnVuIG9uLCBpbiB0aGUgb3JkZXIgdGhlIHJlcXVlc3QgbmFtZXMgdGhlbS4="></span></td>
+<td style="text-align: left;">r01, r02, r03, r04, r05, r06, r07, r08, r09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Program terminated normally<span class="quantity-info" data-description="V2hldGhlciB0aGUgcHJvZ3JhbSByZWFjaGVkIGl0cyBub3JtYWwgY29tcGxldGlvbiByZWNvcmQ7IGEgdGljayBtYXJrcyBhIGNvbXBsZXRlIG91dHB1dCwgYSBjcm9zcyBhbiBlcnJvciB0ZXJtaW5hdGlvbiwgYW5kIGFuIGhvdXJnbGFzcyBhbiBvdXRwdXQgc3RpbGwgcnVubmluZywgcGVuZGluZyBvciBvdGhlcndpc2UgdW5maW5pc2hlZC4="></span></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Slurm job<span class="quantity-info" data-description="U2NoZWR1bGVyIGpvYiBpZGVudGlmaWVyLCBhcyB0aGUgcnVuJ3Mgb3duIHJlY29yZHMgcmVwb3J0IGl0Lg=="></span></td>
+<td style="text-align: left;">198600</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Execution interval<span class="quantity-info" data-description="Rmlyc3QgYW5kIGxhc3QgcmVjb3JkZWQgaW5zdGFudCBvZiB0aGUgcnVuLCBpbiBKYXBhbiBTdGFuZGFyZCBUaW1lOyB0aGUgbGFzdCBpcyB0aGUgcmVuZGVyIHRpbWUgd2hpbGUgdGhlIGpvYiBjb250aW51ZXMu"></span></td>
+<td style="text-align: left;">17 Nov 2026, 15:59:26 – 16:17:00 JST</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wall time<span class="quantity-info" data-description="RWxhcHNlZCByZWFsIHRpbWUgb2YgdGhlIGpvYiBmcm9tIHN0YXJ0IHRvIGVuZC4="></span></td>
+<td style="text-align: left;">0:17:34</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
 </section>
 
 </main>
 <!-- /main column -->
+<script type="application/vnd.jupyter.widget-state+json">{"state": {"14696f7c2d2f43128c4ee617900738bc": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "22ff5f3e525d4a1a821c835c761ea1da": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "25701dbeb0e9438a9104b5ca7512a107": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_3037d90b8f894654a97fc357b8f3d190", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-ec79f49d9c3c8235df57a6765b0bc6e8": [{"calculation_density_change": null, "calculation_energy": -33183.02403536867, "calculation_iteration": 1, "calculation_native_iteration": 0, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0283878434674044, "calculation_energy": -33319.80735707853, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.08908373355595182, "calculation_energy": -24789.356863189943, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.08564219359155617, "calculation_energy": -33548.22793962857, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.03864841135990106, "calculation_energy": -33097.73994112887, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.03467376398160602, "calculation_energy": -33838.36375490822, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.005730920330436559, "calculation_energy": -33840.30475702243, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.003179704998844454, "calculation_energy": -33849.518088930534, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0010463215861473663, "calculation_energy": -33849.86085602846, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0005015412580474143, "calculation_energy": -33850.04339168859, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Electronic energy"}, {"calculation_density_change": 0.0001672600740465614, "calculation_energy": -33850.06383603067, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Electronic energy"}, {"calculation_density_change": 6.882386319827027e-05, "calculation_energy": -33850.066139507595, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Electronic energy"}, {"calculation_density_change": 2.675825034690969e-05, "calculation_energy": -33850.06667873622, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Electronic energy"}, {"calculation_density_change": 8.882084912855106e-06, "calculation_energy": -33850.06673980359, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Electronic energy"}, {"calculation_density_change": 3.2214357230355617e-06, "calculation_energy": -33850.06674715111, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.2141539362125017e-06, "calculation_energy": -33850.06674765423, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Electronic energy"}, {"calculation_density_change": 4.244005585771159e-07, "calculation_energy": -33850.06674807927, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Electronic energy"}, {"calculation_density_change": 2.1934860627865527e-07, "calculation_energy": -33850.06674811924, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Electronic energy"}, {"calculation_density_change": 8.36875584092365e-08, "calculation_energy": -33850.06674815207, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Electronic energy"}, {"calculation_density_change": 3.974917803310017e-08, "calculation_energy": -33850.06674822796, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Electronic energy"}, {"calculation_density_change": 1.779949024592878e-08, "calculation_energy": -33850.066748237, "calculation_iteration": 21, "calculation_native_iteration": 20, "calculation_series": "Electronic energy"}]}, "layer": [{"data": {"name": "data-ec79f49d9c3c8235df57a6765b0bc6e8"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-ec79f49d9c3c8235df57a6765b0bc6e8"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-ec79f49d9c3c8235df57a6765b0bc6e8"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Electronic energy"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_energy", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_energy", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "3037d90b8f894654a97fc357b8f3d190": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "30bd9346f3b64496813537fd6d4cb304": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_22ff5f3e525d4a1a821c835c761ea1da", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-9258356ffc19293e9ead242ad64ca10f": [{"calculation_gap": 0.29261337315115743, "calculation_iteration": 1, "calculation_native_iteration": 0, "calculation_series": "Orbital gap"}, {"calculation_gap": 0.09680313757959025, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Orbital gap"}, {"calculation_gap": 0.2558874966764484, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Orbital gap"}, {"calculation_gap": 0.1487200579867548, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Orbital gap"}, {"calculation_gap": 1.472979406772524, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Orbital gap"}, {"calculation_gap": 1.7640789450969865, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.618576634420643, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.516013908870867, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.6362605807665735, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.6852863198323975, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.670258659805491, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.683883986717186, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.683398446300163, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.6831055554216157, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.683303924792813, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.6833490040433556, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.683350019391529, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.6833573488354476, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.683361449770347, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.6833643812256955, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Orbital gap"}, {"calculation_gap": 3.683364041932061, "calculation_iteration": 21, "calculation_native_iteration": 20, "calculation_series": "Orbital gap"}]}, "layer": [{"data": {"name": "data-9258356ffc19293e9ead242ad64ca10f"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-9258356ffc19293e9ead242ad64ca10f"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-9258356ffc19293e9ead242ad64ca10f"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Orbital gap"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_gap", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_gap", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "5998ffc10f884c6abc3a4a46e84973ff": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.MolstarViewer", "_css": "../../../../site_libs/shared-ef52c6f216c29c2c/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-8eef3f2b169a2f7b/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "angles": [], "annotations": [], "atom_colors": [], "atom_details": [], "bounds": [[-8.477606999999999, -4.633713, -2.000639], [8.778509, 3.8283490000000002, 2.162623]], "choices": [], "color_description": "", "color_label": "", "color_range": [-1, 1], "colors": ["#d7301f", "#ffffff", "#2b6cb0"], "depiction": {"atoms": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "bonds": [[[0, 1], [1, 2], [2, 3], [2, 24], [3, 4], [4, 5], [5, 6], [5, 23], [6, 7], [6, 13], [7, 8], [8, 9], [8, 14], [9, 10], [10, 11], [10, 12], [10, 13], [14, 15], [14, 22], [15, 16], [16, 17], [17, 18], [17, 21], [18, 19], [18, 20], [21, 22], [23, 24]]], "drawing": {"colors": [[1, 0.78, 0.5], [0.62, 0.78, 1], [0.55, 0.88, 0.55], [0.93, 0.68, 0.9], [0.8, 0.8, 0.8], [1, 0.62, 0.62], [0.6, 0.88, 0.88], [1, 0.9, 0.5], [0.85, 0.75, 0.65]], "highlighted": {"atomColourPalette": {"0": [0, 0, 0], "1": [0, 0, 0], "2": [0, 0, 0], "3": [0, 0, 0], "4": [0, 0, 0], "5": [0, 0, 0], "6": [0, 0, 0], "7": [0, 0, 0], "8": [0, 0, 0], "9": [0, 0, 0], "10": [0, 0, 0], "11": [0, 0, 0], "12": [0, 0, 0], "13": [0, 0, 0], "14": [0, 0, 0], "15": [0, 0, 0], "16": [0, 0, 0], "17": [0, 0, 0], "18": [0, 0, 0], "19": [0, 0, 0], "20": [0, 0, 0], "21": [0, 0, 0], "22": [0, 0, 0], "23": [0, 0, 0], "24": [0, 0, 0], "25": [0, 0, 0], "26": [0, 0, 0], "27": [0, 0, 0], "28": [0, 0, 0], "29": [0, 0, 0], "30": [0, 0, 0], "31": [0, 0, 0], "32": [0, 0, 0], "33": [0, 0, 0], "34": [0, 0, 0], "35": [0, 0, 0], "36": [0, 0, 0], "37": [0, 0, 0], "38": [0, 0, 0], "39": [0, 0, 0], "40": [0, 0, 0], "41": [0, 0, 0], "42": [0, 0, 0], "43": [0, 0, 0], "44": [0, 0, 0], "45": [0, 0, 0], "46": [0, 0, 0], "47": [0, 0, 0], "48": [0, 0, 0], "49": [0, 0, 0], "50": [0, 0, 0], "51": [0, 0, 0], "52": [0, 0, 0], "53": [0, 0, 0], "54": [0, 0, 0], "55": [0, 0, 0], "56": [0, 0, 0], "57": [0, 0, 0], "58": [0, 0, 0], "59": [0, 0, 0], "60": [0, 0, 0], "61": [0, 0, 0], "62": [0, 0, 0], "63": [0, 0, 0], "64": [0, 0, 0], "65": [0, 0, 0], "66": [0, 0, 0], "67": [0, 0, 0], "68": [0, 0, 0], "69": [0, 0, 0], "70": [0, 0, 0], "71": [0, 0, 0], "72": [0, 0, 0], "73": [0, 0, 0], "74": [0, 0, 0], "75": [0, 0, 0], "76": [0, 0, 0], "77": [0, 0, 0], "78": [0, 0, 0], "79": [0, 0, 0], "80": [0, 0, 0], "81": [0, 0, 0], "82": [0, 0, 0], "83": [0, 0, 0], "84": [0, 0, 0], "85": [0, 0, 0], "86": [0, 0, 0], "87": [0, 0, 0], "88": [0, 0, 0], "89": [0, 0, 0], "90": [0, 0, 0], "91": [0, 0, 0], "92": [0, 0, 0], "93": [0, 0, 0], "94": [0, 0, 0], "95": [0, 0, 0], "96": [0, 0, 0], "97": [0, 0, 0], "98": [0, 0, 0], "99": [0, 0, 0], "100": [0, 0, 0], "101": [0, 0, 0], "102": [0, 0, 0], "103": [0, 0, 0], "104": [0, 0, 0], "105": [0, 0, 0], "106": [0, 0, 0], "107": [0, 0, 0], "108": [0, 0, 0], "109": [0, 0, 0], "110": [0, 0, 0], "111": [0, 0, 0], "112": [0, 0, 0], "113": [0, 0, 0], "114": [0, 0, 0], "115": [0, 0, 0], "116": [0, 0, 0], "117": [0, 0, 0], "118": [0, 0, 0], "-1": [0, 0, 0]}}, "options": {"clearBackground": false, "standardColoursForHighlightedAtoms": true}}, "frames": [], "hydrogens": [[25, 0], [26, 0], [27, 0], [28, 3], [29, 4], [30, 7], [31, 15], [32, 16], [33, 19], [34, 20], [35, 21], [36, 22], [37, 23], [38, 24]], "map": {"contour-dash": [4, 3], "contour-dash-negative": [2, 2], "contour-width": 1, "contours": true, "hydrogen-share": 0.1, "width": 0.45}, "marks": [], "molblocks": ["\n     RDKit          2D\n\n 25 27  0  0  0  0  0  0  0  0999 V2000\n    7.5863    1.8167    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    6.2335    2.4647    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    4.9959    1.6172    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    5.1110    0.1216    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.8734   -0.7259    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.5206   -0.0778    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.2830   -0.9253    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.0698   -0.2772    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.3074   -1.1248    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.1923   -2.6203    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.1605   -3.2684    0.0000 B   0  0  0  0  0  0  0  0  0  0  0  0\n    1.2100   -4.3401    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7126   -4.4881    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3981   -2.4209    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.6602   -0.4767    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -3.8978   -1.3242    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -5.2506   -0.6761    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -5.3658    0.8194    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -6.7186    1.4675    0.0000 B   0  0  0  0  0  0  0  0  0  0  0  0\n   -6.8337    2.9631    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -7.9562    0.6200    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -4.1281    1.6669    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.7754    1.0189    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.4055    1.4178    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.6431    2.2653    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  1  0\n  3  4  1  0\n  3 25  2  0\n  4  5  2  0\n  5  6  1  0\n  6  7  1  0\n  6 24  2  0\n  7  8  2  0\n  7 14  1  0\n  8  9  1  0\n  9 10  2  0\n  9 15  1  0\n 10 11  1  0\n 11 12  1  0\n 11 13  1  0\n 11 14  1  0\n 15 16  1  0\n 15 23  2  0\n 16 17  2  0\n 17 18  1  0\n 18 19  1  0\n 18 22  2  0\n 19 20  1  0\n 19 21  1  0\n 22 23  1  0\n 24 25  1  0\nM  CHG  2  10   1  11  -1\nM  END\n"], "orders": [true], "points": [[[336.2, 35.4], [309.6, 22.7], [285.2, 39.4], [287.5, 68.8], [263.1, 85.5], [236.5, 72.7], [212.2, 89.4], [185.6, 76.6], [161.2, 93.3], [163.5, 122.7], [190.1, 135.5], [210.7, 156.6], [172.9, 159.5], [214.4, 118.8], [134.6, 80.6], [110.2, 97.2], [83.6, 84.5], [81.4, 55.1], [54.8, 42.3], [52.5, 12.9], [30.4, 59], [105.7, 38.4], [132.3, 51.1], [234.3, 43.3], [258.6, 26.6]]], "size": [355, 173]}, "dihedrals": [], "distances": [], "drawn_apart": true, "error": "", "fit_bounds": [[[-8.777607, -4.933713, -2.3006390000000003], [9.078509, 4.128349, 2.462623]]], "fit_fill": 0.8, "frame": 0, "frame_count": 1, "frame_labels": [], "height": 440, "layout": "IPY_MODEL_d2c2da6aebe24ce9a5dec2a351b7e628", "markers": [], "readouts": [], "requested": 1, "scene": "base64,UEsDBBQAAAAIAAAAIQBtDeu6xwAAAGwBAAAKAAAAaW5kZXgubXZzan2QUWsDIQyA/0tedyvXt87fsbcxSqZZ66rmiLm2t+J/XyqscDCGQUm+fEa8wSmWAA5qLIdEMIAwK7jbb72nA/hjTEGogHt7II/ljNXghIK53qUP9KeD8FzC3nNisa7LMSpBa8PDC3wpiTGszFmSIRX8Iq8sy+a6fEP7e7BZlVb2J0tGezb8Y1WV2essa1OXiQxmDpQM9HNvAl3Bja2992V1Ugyo2JWYqSrmybzty258HrcWr+Poejz13e46k9TI5d612dkP/ABQSwMEFAAAAAgAAAAhALsi+QySAgAAHQYAAA4AAAB0cmFqZWN0b3J5Lnh5ekVUS6ocRxDczynmAq/J/2drgfHG+AzGPLyREQh74dsrqquyNYuZbiomMiMysrRfv3/7+vnXf1///P7++/PbP5//fv//9eWdl2q6BRG9+TIKa1nPH3RpaJHj5fXHOy6KMLJ1JHi2rD4wce/IBfvytqvBVrTZVJTUBoYDtwdGnkrniIo6fKqyV/fG6RUlVkORaEBi+ColDp9cFgng8Knl88IZnQfHl1Ba6/BFRU1dBnXKxi0OM+t+OBLdrxccdAofuR+L0Cynp9bWmG6JuSm2fQCyqdkuJjADih9njPv27PUL+FnrJ64zg+npwjlvZ35dOBfzPSpFYU3eslCpjEUGJ87Ug/OMYyfDdTDQ7g86qvafVlkMJzJnIIkycQTL5eGd4yB6rY5tDMP2GTBKhcPdPi2Jt5tunISo8MEhCb4Uz0Tgw332XnWZbiMWzi9hKK59FOKV51mVjGO79xErMHGH9r2MaNdTFdNccdzTCBgbHLLTrAWpfExx4hxYXgn/KTeDi5vxDNfQtT8imKrlVLXC5/yHE0Prx7uCIjnLgW8ZPQRmycky7DaeFUIDOvFikgqe1Ujlu7V7ISFPZm9ZJeUu+hvW28hZTnbLNGpigt/QA6uLEnJ6swl5PHurvtVsNqe1xpstEbO2Yy921nOjHDorfboOzConw4pxs2wcMoIGlE8/tcYzG6fYlj64JYlHK0SklNgMn6viwBRd8GQOY4VZPjhKcT04x+JnpZy6BoPjDMIphO3gAplLkZMS1HSeEccK8YHBlOjqZ5sLAZpROHTQ8RgxQTSFa/N5mNz2r5iwIbcHxldjwe7UoFQiJc+NjEuD/dDxFYx76Swz7k/VJ5y4DUjH5Ez27Z1eLAVff167el+nrx9QSwECFAMUAAAACAAAACEAbQ3ruscAAABsAQAACgAAAAAAAAAAAAAAgAEAAAAAaW5kZXgubXZzalBLAQIUAxQAAAAIAAAAIQC7IvkMkgIAAB0GAAAOAAAAAAAAAAAAAACAAe8AAAB0cmFqZWN0b3J5Lnh5elBLBQYAAAAAAgACAHQAAACtAwAAAAA=", "segments": [], "snapshot_choices": [], "snapshots": [], "start_snapshot": 0, "tabbable": null, "texts": {"en": {"align-axes": "Align to Nearest Coordinate Axes (Right-Click)", "choose-labelled-frame": "Choose Labelled Frame", "display-label": "Show", "display-shares": "Atom shares", "display-surfaces": "Surfaces", "first-frame": "First Frame", "frame-counter": "Frame %(frame)s / %(count)s", "loop-backward": "Loop Backward", "loop-bounce": "Back and Forth", "loop-forward": "Loop Forward", "molecular-viewer": "Molecular viewer", "next-frame": "Next Frame", "next-start": "Next Start", "pause": "Pause", "play-frames": "Play Frames", "play-through-starts": "Play Through Starts", "playback-speed": "Playback Speed", "previous-frame": "Previous Frame", "previous-start": "Previous Start", "show-isosurfaces": "Show Isosurfaces", "show-volume-rendering": "Show Volume Rendering", "single-bonds": "RDKit could not assign bond orders to this structure, so all of its bonds are drawn single.", "symmetry-antisymmetric": "$\\chi(R)=-\\chi(E)$", "symmetry-character": "Character $\\chi(R)$", "symmetry-character-description": "The trace $\\chi(R)$ of the chosen representation's matrix for an operation $R$ of the class, $\\chi(E)$ under the identity. Its icon reads it: equals where $\\chi(R)=\\chi(E)$, every function unchanged; opposed arrows where $\\chi(R)=-\\chi(E)$, every function reversed; crossing arrows otherwise, functions mixed.", "symmetry-class": "Class $R$", "symmetry-class-description": "A class of the point group: operations of one kind, counted, such as $3C_2'$ for three twofold rotations about axes across the principal one.", "symmetry-is-antisymmetric": "Antisymmetric", "symmetry-is-neither": "Neither", "symmetry-is-symmetric": "Symmetric", "symmetry-kind-improper": "Rotation-reflection", "symmetry-kind-reflection": "Reflection", "symmetry-kind-rotation": "Rotation", "symmetry-neither": "$|\\chi(R)|<\\chi(E)$", "symmetry-operation": "Operation", "symmetry-operation-description": "The kind of the class's operations: proper rotations $C_n$ with the identity $E$; rotation-reflections $S_n$ with the inversion $i=S_2$; reflections $\\sigma$ through mirror planes.", "symmetry-symmetric": "$\\chi(R)=\\chi(E)$", "toggle-motion-trail": "Toggle Motion Trail"}, "ja": {"align-axes": "\u6700\u3082\u8fd1\u3044\u5ea7\u6a19\u8ef8\u306b\u5408\u308f\u305b\u308b\uff08\u53f3\u30af\u30ea\u30c3\u30af\uff09", "choose-labelled-frame": "\u540d\u524d\u4ed8\u304d\u30d5\u30ec\u30fc\u30e0\u3092\u9078\u3076", "display-label": "\u8868\u793a", "display-shares": "\u539f\u5b50\u306e\u5bc4\u4e0e", "display-surfaces": "\u8868\u9762", "first-frame": "\u6700\u521d\u306e\u30d5\u30ec\u30fc\u30e0", "frame-counter": "\u30d5\u30ec\u30fc\u30e0 %(frame)s / %(count)s", "loop-backward": "\u9006\u65b9\u5411\u306b\u7e70\u308a\u8fd4\u3059", "loop-bounce": "\u5f80\u5fa9", "loop-forward": "\u9806\u65b9\u5411\u306b\u7e70\u308a\u8fd4\u3059", "molecular-viewer": "\u5206\u5b50\u30d3\u30e5\u30fc\u30a2\u30fc", "next-frame": "\u6b21\u306e\u30d5\u30ec\u30fc\u30e0", "next-start": "\u6b21\u306e\u958b\u59cb\u69cb\u9020", "pause": "\u4e00\u6642\u505c\u6b62", "play-frames": "\u30d5\u30ec\u30fc\u30e0\u3092\u518d\u751f", "play-through-starts": "\u958b\u59cb\u69cb\u9020\u3092\u9806\u306b\u518d\u751f", "playback-speed": "\u518d\u751f\u901f\u5ea6", "previous-frame": "\u524d\u306e\u30d5\u30ec\u30fc\u30e0", "previous-start": "\u524d\u306e\u958b\u59cb\u69cb\u9020", "show-isosurfaces": "\u7b49\u5024\u9762\u3092\u8868\u793a", "show-volume-rendering": "\u30dc\u30ea\u30e5\u30fc\u30e0\u30ec\u30f3\u30c0\u30ea\u30f3\u30b0\u3092\u8868\u793a", "single-bonds": "RDKit \u304c\u3053\u306e\u69cb\u9020\u306e\u7d50\u5408\u6b21\u6570\u3092\u6c7a\u3081\u3089\u308c\u306a\u304b\u3063\u305f\u305f\u3081\u3001\u7d50\u5408\u306f\u3059\u3079\u3066\u5358\u7d50\u5408\u3067\u63cf\u3044\u3066\u3044\u307e\u3059\u3002", "symmetry-antisymmetric": "$\\chi(R)=-\\chi(E)$", "symmetry-character": "\u6307\u6a19 $\\chi(R)$", "symmetry-character-description": "\u985e\u306e\u64cd\u4f5c $R$ \u306b\u5bfe\u3059\u308b\u3001\u9078\u3093\u3060\u8868\u73fe\u306e\u884c\u5217\u306e\u30c8\u30ec\u30fc\u30b9 $\\chi(R)$\u3002\u6052\u7b49\u64cd\u4f5c\u3067\u306f $\\chi(E)$ \u3067\u3059\u3002\u30a2\u30a4\u30b3\u30f3\u306f\u3001\u7b49\u53f7\u306a\u3089 $\\chi(R)=\\chi(E)$ \u3067\u3069\u306e\u95a2\u6570\u3082\u5909\u308f\u3089\u305a\u3001\u5411\u304b\u3044\u5408\u3046\u77e2\u5370\u306a\u3089 $\\chi(R)=-\\chi(E)$ \u3067\u3069\u306e\u95a2\u6570\u3082\u53cd\u8ee2\u3057\u3001\u4ea4\u5dee\u3059\u308b\u77e2\u5370\u306a\u3089\u305d\u308c\u4ee5\u5916\u3067\u95a2\u6570\u304c\u6df7\u3056\u308b\u3053\u3068\u3092\u793a\u3057\u307e\u3059\u3002", "symmetry-class": "\u985e $R$", "symmetry-class-description": "\u70b9\u7fa4\u306e\u985e\u3002\u540c\u3058\u7a2e\u985e\u306e\u64cd\u4f5c\u3092\u305d\u306e\u6570\u3068\u3068\u3082\u306b\u66f8\u304d\u3001$3C_2'$ \u306f\u4e3b\u8ef8\u3092\u6a2a\u5207\u308b3\u672c\u306e\u4e8c\u56de\u8ef8\u306e\u56de\u8ee2\u3092\u8868\u3057\u307e\u3059\u3002", "symmetry-is-antisymmetric": "\u53cd\u5bfe\u79f0", "symmetry-is-neither": "\u3069\u3061\u3089\u3067\u3082\u306a\u3044", "symmetry-is-symmetric": "\u5bfe\u79f0", "symmetry-kind-improper": "\u56de\u6620", "symmetry-kind-reflection": "\u93e1\u6620", "symmetry-kind-rotation": "\u56de\u8ee2", "symmetry-neither": "$|\\chi(R)|<\\chi(E)$", "symmetry-operation": "\u64cd\u4f5c", "symmetry-operation-description": "\u985e\u306e\u64cd\u4f5c\u306e\u7a2e\u985e\u3002\u6052\u7b49\u64cd\u4f5c $E$ \u3092\u542b\u3080\u56de\u8ee2 $C_n$\u3001\u53cd\u8ee2 $i=S_2$ \u3092\u542b\u3080\u56de\u6620 $S_n$\u3001\u93e1\u9762\u306b\u3088\u308b\u93e1\u6620 $\\sigma$ \u3067\u3059\u3002", "symmetry-symmetric": "$\\chi(R)=\\chi(E)$", "toggle-motion-trail": "\u52d5\u304d\u306e\u8ecc\u8de1\u3092\u5207\u308a\u66ff\u3048\u308b"}}, "tooltip": null, "trail": false, "trail_density": 1, "trail_frames": [], "uid": "5872e6d505fb4f6d993fc549d2f8b463"}}, "5f6d4aa3cc6f4e3583c8f289ce3a0982": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_14696f7c2d2f43128c4ee617900738bc", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-04c268f8d03a1e3985bd8be82fa60d83": [{"calculation_epsilon": 1, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Applied screening"}, {"calculation_epsilon": 1, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Applied screening"}]}, "layer": [{"data": {"name": "data-04c268f8d03a1e3985bd8be82fa60d83"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-04c268f8d03a1e3985bd8be82fa60d83"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-04c268f8d03a1e3985bd8be82fa60d83"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Applied screening"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_epsilon", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_epsilon", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "6f12e6e8bf5c43ffb884ca25730b7b73": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "molstarview.viewer.Drawing", "_css": "../../../../site_libs/shared-ef52c6f216c29c2c/widget.css", "_dom_classes": [], "_esm": "../../../../site_libs/shared-8eef3f2b169a2f7b/widget.js", "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "height": 173, "layout": "IPY_MODEL_b9e3ebac8bf54345b2bc3d078b93c553", "tabbable": null, "target": "5872e6d505fb4f6d993fc549d2f8b463", "tooltip": null}}, "b9e3ebac8bf54345b2bc3d078b93c553": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ce7a28a4cd0149bd845c1d6a45111714": {"model_module": "anywidget", "model_module_version": "~0.11.*", "model_name": "AnyModel", "state": {"_anywidget_id": "altair.jupyter.jupyter_chart.JupyterChart", "_css": "\n    .vega-embed {\n        /* Make sure action menu isn't cut off */\n        overflow: visible;\n    }\n    ", "_dom_classes": [], "_esm": "../../../../site_libs/shared-d4cdddb5b1c0344c/widget.js", "_js_to_py_updates": null, "_js_watch_plan": null, "_model_module": "anywidget", "_model_module_version": "~0.11.*", "_model_name": "AnyModel", "_params": {}, "_py_to_js_updates": null, "_view_count": null, "_view_module": "anywidget", "_view_module_version": "~0.11.*", "_view_name": "AnyView", "_vl_selections": {}, "debounce_wait": 10, "embed_options": {"actions": false}, "layout": "IPY_MODEL_dc526282a04c468e8f6d5f9f74633df6", "local_tz": null, "max_wait": true, "spec": {"$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "config": {"axis": {"format": ".5~g", "labelFontSize": 14, "titleFontSize": 14, "titlePadding": 8}, "axisX": {"labelAlign": "right", "labelAngle": -45, "labelBaseline": "middle", "labelOffset": 2.5, "labelOverlap": true, "labelPadding": 5, "maxExtent": 48, "minExtent": 48}, "axisY": {"maxExtent": 64, "minExtent": 64}, "font": "system-ui", "legend": {"labelFontSize": 14, "labelLimit": 0, "orient": "bottom", "titleFontSize": 14, "titleLimit": 0}, "mark": {"fillOpacity": 1, "opacity": 1, "strokeOpacity": 1}, "range": {"category": {"scheme": "tableau10"}}, "rule": {"strokeWidth": 2}, "view": {"continuousHeight": 300, "continuousWidth": 300}}, "datasets": {"data-09a70e57d00933630aac78a9d23c3a0f": [{"calculation_density_change": 0.0283878434674044, "calculation_energy": -33319.80735707853, "calculation_iteration": 2, "calculation_native_iteration": 1, "calculation_series": "Density change"}, {"calculation_density_change": 0.08908373355595182, "calculation_energy": -24789.356863189943, "calculation_iteration": 3, "calculation_native_iteration": 2, "calculation_series": "Density change"}, {"calculation_density_change": 0.08564219359155617, "calculation_energy": -33548.22793962857, "calculation_iteration": 4, "calculation_native_iteration": 3, "calculation_series": "Density change"}, {"calculation_density_change": 0.03864841135990106, "calculation_energy": -33097.73994112887, "calculation_iteration": 5, "calculation_native_iteration": 4, "calculation_series": "Density change"}, {"calculation_density_change": 0.03467376398160602, "calculation_energy": -33838.36375490822, "calculation_iteration": 6, "calculation_native_iteration": 5, "calculation_series": "Density change"}, {"calculation_density_change": 0.005730920330436559, "calculation_energy": -33840.30475702243, "calculation_iteration": 7, "calculation_native_iteration": 6, "calculation_series": "Density change"}, {"calculation_density_change": 0.003179704998844454, "calculation_energy": -33849.518088930534, "calculation_iteration": 8, "calculation_native_iteration": 7, "calculation_series": "Density change"}, {"calculation_density_change": 0.0010463215861473663, "calculation_energy": -33849.86085602846, "calculation_iteration": 9, "calculation_native_iteration": 8, "calculation_series": "Density change"}, {"calculation_density_change": 0.0005015412580474143, "calculation_energy": -33850.04339168859, "calculation_iteration": 10, "calculation_native_iteration": 9, "calculation_series": "Density change"}, {"calculation_density_change": 0.0001672600740465614, "calculation_energy": -33850.06383603067, "calculation_iteration": 11, "calculation_native_iteration": 10, "calculation_series": "Density change"}, {"calculation_density_change": 6.882386319827027e-05, "calculation_energy": -33850.066139507595, "calculation_iteration": 12, "calculation_native_iteration": 11, "calculation_series": "Density change"}, {"calculation_density_change": 2.675825034690969e-05, "calculation_energy": -33850.06667873622, "calculation_iteration": 13, "calculation_native_iteration": 12, "calculation_series": "Density change"}, {"calculation_density_change": 8.882084912855106e-06, "calculation_energy": -33850.06673980359, "calculation_iteration": 14, "calculation_native_iteration": 13, "calculation_series": "Density change"}, {"calculation_density_change": 3.2214357230355617e-06, "calculation_energy": -33850.06674715111, "calculation_iteration": 15, "calculation_native_iteration": 14, "calculation_series": "Density change"}, {"calculation_density_change": 1.2141539362125017e-06, "calculation_energy": -33850.06674765423, "calculation_iteration": 16, "calculation_native_iteration": 15, "calculation_series": "Density change"}, {"calculation_density_change": 4.244005585771159e-07, "calculation_energy": -33850.06674807927, "calculation_iteration": 17, "calculation_native_iteration": 16, "calculation_series": "Density change"}, {"calculation_density_change": 2.1934860627865527e-07, "calculation_energy": -33850.06674811924, "calculation_iteration": 18, "calculation_native_iteration": 17, "calculation_series": "Density change"}, {"calculation_density_change": 8.36875584092365e-08, "calculation_energy": -33850.06674815207, "calculation_iteration": 19, "calculation_native_iteration": 18, "calculation_series": "Density change"}, {"calculation_density_change": 3.974917803310017e-08, "calculation_energy": -33850.06674822796, "calculation_iteration": 20, "calculation_native_iteration": 19, "calculation_series": "Density change"}, {"calculation_density_change": 1.779949024592878e-08, "calculation_energy": -33850.066748237, "calculation_iteration": 21, "calculation_native_iteration": 20, "calculation_series": "Density change"}]}, "layer": [{"data": {"name": "data-09a70e57d00933630aac78a9d23c3a0f"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"type": "line"}, "params": [{"bind": "scales", "name": "param_db82be42624d4632", "select": {"encodings": ["x"], "type": "interval"}}]}, {"data": {"name": "data-09a70e57d00933630aac78a9d23c3a0f"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"opacity": 0, "size": 64, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 150 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(150, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(150, datum.__marker_count) - 1))"}]}, {"data": {"name": "data-09a70e57d00933630aac78a9d23c3a0f"}, "encoding": {"color": {"field": "calculation_series", "scale": {"domain": ["Density change"]}, "type": "nominal"}, "tooltip": [{"field": "calculation_iteration", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_density_change", "format": ".6~g", "type": "quantitative"}, {"field": "calculation_series", "type": "nominal"}], "x": {"axis": {"tickMinStep": 1}, "field": "calculation_iteration", "scale": {"padding": 10, "zero": false}, "type": "quantitative"}, "y": {"field": "calculation_density_change", "scale": {"type": "log"}, "type": "quantitative"}}, "mark": {"filled": true, "type": "point"}, "transform": [{"frame": [null, null], "groupby": ["calculation_series"], "sort": [{"field": "calculation_iteration", "order": "ascending"}], "window": [{"as": "__marker_index", "op": "row_number"}, {"as": "__marker_count", "op": "count"}]}, {"filter": "datum.__marker_count <= 40 || datum.__marker_index - 1 === round(round((datum.__marker_index - 1) * (min(40, datum.__marker_count) - 1) / (datum.__marker_count - 1)) * (datum.__marker_count - 1) / (min(40, datum.__marker_count) - 1))"}]}], "width": "container"}, "tabbable": null, "tooltip": null}}, "d2c2da6aebe24ce9a5dec2a351b7e628": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dc526282a04c468e8f6d5f9f74633df6": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}}, "version_major": 2, "version_minor": 0}</script>
 <script id="quarto-html-after-body" type="application/javascript" src="../../../../site_libs/shared-7d5abf28cd7b432e/script.js"></script>
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
