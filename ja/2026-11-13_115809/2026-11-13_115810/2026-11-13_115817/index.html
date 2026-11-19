@@ -160,7 +160,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-22ea6c7d4c1c388d/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
@@ -177,19 +177,18 @@ window.Quarto = {
   <li><a href="#連結ジョブ" id="toc-連結ジョブ" class="nav-link" data-scroll-target="#連結ジョブ">連結ジョブ</a></li>
   <li><a href="#一点計算" id="toc-一点計算" class="nav-link" data-scroll-target="#一点計算">一点計算</a>
   <ul class="collapse">
-  <li><a href="#Link_0_コマンド" id="toc-Link_0_コマンド" class="nav-link" data-scroll-target="#Link_0_コマンド">Link 0 コマンド</a></li>
   <li><a href="#ルートキーワードとオプション" id="toc-ルートキーワードとオプション" class="nav-link" data-scroll-target="#ルートキーワードとオプション">ルートキーワードとオプション</a></li>
   <li><a href="#分子の指定" id="toc-分子の指定" class="nav-link" data-scroll-target="#分子の指定">分子の指定</a></li>
   </ul></li>
   <li><a href="#励起状態" id="toc-励起状態" class="nav-link" data-scroll-target="#励起状態">励起状態</a>
   <ul class="collapse">
-  <li><a href="#Link_0_コマンド_2" id="toc-Link_0_コマンド_2" class="nav-link" data-scroll-target="#Link_0_コマンド_2">Link 0 コマンド</a></li>
+  <li><a href="#Link_0_コマンド" id="toc-Link_0_コマンド" class="nav-link" data-scroll-target="#Link_0_コマンド">Link 0 コマンド</a></li>
   <li><a href="#ルートキーワードとオプション_2" id="toc-ルートキーワードとオプション_2" class="nav-link" data-scroll-target="#ルートキーワードとオプション_2">ルートキーワードとオプション</a></li>
   <li><a href="#分子の指定_2" id="toc-分子の指定_2" class="nav-link" data-scroll-target="#分子の指定_2">分子の指定</a></li>
   </ul></li>
   <li><a href="#自然遷移軌道" id="toc-自然遷移軌道" class="nav-link" data-scroll-target="#自然遷移軌道">自然遷移軌道</a>
   <ul class="collapse">
-  <li><a href="#Link_0_コマンド_3" id="toc-Link_0_コマンド_3" class="nav-link" data-scroll-target="#Link_0_コマンド_3">Link 0 コマンド</a></li>
+  <li><a href="#Link_0_コマンド_2" id="toc-Link_0_コマンド_2" class="nav-link" data-scroll-target="#Link_0_コマンド_2">Link 0 コマンド</a></li>
   <li><a href="#ルートキーワードとオプション_3" id="toc-ルートキーワードとオプション_3" class="nav-link" data-scroll-target="#ルートキーワードとオプション_3">ルートキーワードとオプション</a></li>
   <li><a href="#分子の指定_3" id="toc-分子の指定_3" class="nav-link" data-scroll-target="#分子の指定_3">分子の指定</a></li>
   </ul></li>
@@ -226,7 +225,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月17日</p>
+      <p class="date-modified">2026年11月19日</p>
     </div>
   </div>
     
@@ -409,17 +408,18 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt,S0Verify,S0Screening success;
-    class S0Absorption,S1Opt,S1Verify,S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputScreening1,OutputExcitations1,OutputGeometries1,OutputTwists1,End1 pending;
+    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption success;
+    class S1Opt,S1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputTwists1 running;
+    class S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,OutputScreening1,OutputExcitations1,OutputGeometries1,End1 pending;
     class DdRecheck,DdS0Verify,DdS1Verify,S0Verify,S1Verify verification;
     linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 5 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 6 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 7 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
@@ -428,32 +428,32 @@ flowchart TB
     linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 16 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 17 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 16 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 17 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 19 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 20 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 19 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 20 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 21 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 22 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 22 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 23 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 27 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 27 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 28 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 31 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 32 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 32 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 36 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 37 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 38 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 39 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 40 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 41 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 36 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 37 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 38 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 39 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 40 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 41 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
 </pre></div>
 <script>
 window.requireDefine = window.define;
@@ -469,7 +469,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <ul>
 <li>検証した <span class="math inline">S_1</span> 極小で、<span class="math inline">S_0</span> と緩和した <span class="math inline">S_1</span> 密度の電荷と双極子、垂直エネルギー <span class="math inline">S_1\rightarrow S_0</span> と NTO を求める。</li>
 </ul>
-<div id="cda73287" class="cell" data-execution_count="2">
+<div id="cdd0bbc4" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-002610e45d1ddf15/data.js"></script><script src="../../../../site_libs/shared-b1e5338690da20c0/data.js"></script>
 </div>
@@ -486,62 +486,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </section>
 <section id="一点計算" class="level3 step">
 <h3 class="step anchored" data-anchor-id="一点計算">一点計算</h3>
-<section id="Link_0_コマンド" class="level4">
-<h4 class="anchored" data-anchor-id="Link_0_コマンド">Link 0 コマンド</h4>
-<p>Link 0 は各ジョブの経路の前の部分で、このジョブのメモリ、プロセッサ、ファイルを設定します。連結したどのジョブにも独自の Link 0 があります。</p>
-<div class="cell" data-execution_count="3">
-<div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-link0-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;1. ジョブの Link 0 コマンド。
-</figcaption>
-<div aria-describedby="tbl-link0-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="cell caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">コマンド</th>
-<th style="text-align: left;">値</th>
-<th style="text-align: left;">意味</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a></td>
-<td style="text-align: left;">8 GB</td>
-<td style="text-align: left;">Gaussian が使える動的メモリ。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a></td>
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">共有メモリ並列実行で使うプロセッサの数。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Chk</code></a></td>
-<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
-<td style="text-align: left;">このジョブが書き出すチェックポイントファイル。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a></td>
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
-<td style="text-align: left;">前の計算のデータを読み込むために、開始時にこのジョブのチェックポイントにコピーするチェックポイントファイル。</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-</section>
 <section id="ルートキーワードとオプション" class="level4">
 <h4 class="anchored" data-anchor-id="ルートキーワードとオプション">ルートキーワードとオプション</h4>
 <p>ルートは手法、基底関数、ジョブの種類を指定します。</p>
-<div class="cell" data-execution_count="4">
-<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="cell" data-execution_count="3">
+<div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-route-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;2. ルートキーワードとそのオプション。
+表&nbsp;1. ルートキーワードとそのオプション。
 </figcaption>
 <div aria-describedby="tbl-route-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -617,11 +569,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="分子の指定" class="level4">
 <h4 class="anchored" data-anchor-id="分子の指定">分子の指定</h4>
 <p>ジョブのタイトル、電荷とスピン多重度、そして Gaussian が構造をどこから読み込んだか。</p>
-<div class="cell" data-execution_count="5">
-<div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<div class="cell" data-execution_count="4">
+<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;3. ジョブのタイトル、電荷、スピン多重度、構造の出所。
+表&nbsp;2. ジョブのタイトル、電荷、スピン多重度、構造の出所。
 </figcaption>
 <div aria-describedby="tbl-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -664,14 +616,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </section>
 <section id="励起状態" class="level3 step">
 <h3 class="step anchored" data-anchor-id="励起状態">励起状態</h3>
-<section id="Link_0_コマンド_2" class="level4">
-<h4 class="anchored" data-anchor-id="Link_0_コマンド_2">Link 0 コマンド</h4>
+<section id="Link_0_コマンド" class="level4">
+<h4 class="anchored" data-anchor-id="Link_0_コマンド">Link 0 コマンド</h4>
 <p>Link 0 は各ジョブの経路の前の部分で、このジョブのメモリ、プロセッサ、ファイルを設定します。連結したどのジョブにも独自の Link 0 があります。</p>
-<div class="cell" data-execution_count="6">
-<div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<div class="cell" data-execution_count="5">
+<div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-link0-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;4. ジョブの Link 0 コマンド。
+表&nbsp;3. ジョブの Link 0 コマンド。
 </figcaption>
 <div aria-describedby="tbl-link0-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -690,16 +642,6 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td style="text-align: left;">このジョブが書き出すチェックポイントファイル。</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a></td>
-<td style="text-align: left;">8 GB</td>
-<td style="text-align: left;">Gaussian が使える動的メモリ。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a></td>
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">共有メモリ並列実行で使うプロセッサの数。</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a></td>
 <td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
 <td style="text-align: left;">前の計算のデータを読み込むために、開始時にこのジョブのチェックポイントにコピーするチェックポイントファイル。</td>
@@ -715,11 +657,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="ルートキーワードとオプション_2" class="level4">
 <h4 class="anchored" data-anchor-id="ルートキーワードとオプション_2">ルートキーワードとオプション</h4>
 <p>ルートは手法、基底関数、ジョブの種類を指定します。</p>
-<div class="cell" data-execution_count="7">
-<div id="Table_5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<div class="cell" data-execution_count="6">
+<div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-route-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;5. ルートキーワードとそのオプション。
+表&nbsp;4. ルートキーワードとそのオプション。
 </figcaption>
 <div aria-describedby="tbl-route-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -819,11 +761,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="分子の指定_2" class="level4">
 <h4 class="anchored" data-anchor-id="分子の指定_2">分子の指定</h4>
 <p>ジョブのタイトル、電荷とスピン多重度、そして Gaussian が構造をどこから読み込んだか。</p>
-<div class="cell" data-execution_count="8">
-<div id="Table_6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
+<div class="cell" data-execution_count="7">
+<div id="Table_5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-molecule-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;6. ジョブのタイトル、電荷、スピン多重度、構造の出所。
+表&nbsp;5. ジョブのタイトル、電荷、スピン多重度、構造の出所。
 </figcaption>
 <div aria-describedby="tbl-molecule-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -866,14 +808,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </section>
 <section id="自然遷移軌道" class="level3 step">
 <h3 class="step anchored" data-anchor-id="自然遷移軌道">自然遷移軌道</h3>
-<section id="Link_0_コマンド_3" class="level4">
-<h4 class="anchored" data-anchor-id="Link_0_コマンド_3">Link 0 コマンド</h4>
+<section id="Link_0_コマンド_2" class="level4">
+<h4 class="anchored" data-anchor-id="Link_0_コマンド_2">Link 0 コマンド</h4>
 <p>Link 0 は各ジョブの経路の前の部分で、このジョブのメモリ、プロセッサ、ファイルを設定します。連結したどのジョブにも独自の Link 0 があります。</p>
-<div class="cell" data-execution_count="9">
-<div id="Table_7" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
+<div class="cell" data-execution_count="8">
+<div id="Table_6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-link0-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;7. ジョブの Link 0 コマンド。
+表&nbsp;6. ジョブの Link 0 コマンド。
 </figcaption>
 <div aria-describedby="tbl-link0-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -892,16 +834,6 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td style="text-align: left;">このジョブが書き出すチェックポイントファイル。</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a></td>
-<td style="text-align: left;">8 GB</td>
-<td style="text-align: left;">Gaussian が使える動的メモリ。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a></td>
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">共有メモリ並列実行で使うプロセッサの数。</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a></td>
 <td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
 <td style="text-align: left;">前の計算のデータを読み込むために、開始時にこのジョブのチェックポイントにコピーするチェックポイントファイル。</td>
@@ -917,11 +849,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="ルートキーワードとオプション_3" class="level4">
 <h4 class="anchored" data-anchor-id="ルートキーワードとオプション_3">ルートキーワードとオプション</h4>
 <p>ルートは手法、基底関数、ジョブの種類を指定します。</p>
-<div class="cell" data-execution_count="10">
-<div id="Table_8" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
+<div class="cell" data-execution_count="9">
+<div id="Table_7" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-route-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;8. ルートキーワードとそのオプション。
+表&nbsp;7. ルートキーワードとそのオプション。
 </figcaption>
 <div aria-describedby="tbl-route-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -1021,11 +953,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="分子の指定_3" class="level4">
 <h4 class="anchored" data-anchor-id="分子の指定_3">分子の指定</h4>
 <p>ジョブのタイトル、電荷とスピン多重度、そして Gaussian が構造をどこから読み込んだか。</p>
-<div class="cell" data-execution_count="11">
-<div id="Table_9" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
+<div class="cell" data-execution_count="10">
+<div id="Table_8" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-molecule-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;9. ジョブのタイトル、電荷、スピン多重度、構造の出所。
+表&nbsp;8. ジョブのタイトル、電荷、スピン多重度、構造の出所。
 </figcaption>
 <div aria-describedby="tbl-molecule-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -1068,6 +1000,24 @@ window.addEventListener("load", window.restoreRequireDefine);
      real heading and appears in the TOC. -->
 <link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
 <script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<script>
+// Hovering a cross-reference to a figure opens Quarto's popover with a copy of the figure. A copied Mol* viewer is an
+// empty canvas, so the popover drops each panel cell holding one, and a row left empty with it: a figure of a viewer
+// and its structure drawing shows the drawing alone.
+if (globalThis.tippy) {
+  globalThis.tippy.setDefaultProps({
+    onShow(instance) {
+      if (!instance.reference.matches("a.quarto-xref")) return;
+      for (const viewer of instance.popper.querySelectorAll(".molstar-notebook-viewer")) {
+        const cell = viewer.closest(".quarto-layout-cell, .cell-output-display") ?? viewer;
+        const row = cell.closest(".quarto-layout-row");
+        cell.remove();
+        if (row && !row.querySelector(".quarto-layout-cell")) row.remove();
+      }
+    },
+  });
+}
+</script>
 <!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
 <script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
 

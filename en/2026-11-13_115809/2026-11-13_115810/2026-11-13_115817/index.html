@@ -161,7 +161,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-22ea6c7d4c1c388d/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -178,19 +178,18 @@ window.Quarto = {
   <li><a href="#Linked_jobs" id="toc-Linked_jobs" class="nav-link" data-scroll-target="#Linked_jobs">Linked jobs</a></li>
   <li><a href="#Input_Single_point" id="toc-Input_Single_point" class="nav-link" data-scroll-target="#Input_Single_point">Single point</a>
   <ul class="collapse">
-  <li><a href="#Link_0_commands" id="toc-Link_0_commands" class="nav-link" data-scroll-target="#Link_0_commands">Link 0 commands</a></li>
   <li><a href="#Route_keywords_and_options" id="toc-Route_keywords_and_options" class="nav-link" data-scroll-target="#Route_keywords_and_options">Route keywords and options</a></li>
   <li><a href="#Molecule_specification" id="toc-Molecule_specification" class="nav-link" data-scroll-target="#Molecule_specification">Molecule specification</a></li>
   </ul></li>
   <li><a href="#Input_Excited_states" id="toc-Input_Excited_states" class="nav-link" data-scroll-target="#Input_Excited_states">Excited states</a>
   <ul class="collapse">
-  <li><a href="#Link_0_commands_2" id="toc-Link_0_commands_2" class="nav-link" data-scroll-target="#Link_0_commands_2">Link 0 commands</a></li>
+  <li><a href="#Link_0_commands" id="toc-Link_0_commands" class="nav-link" data-scroll-target="#Link_0_commands">Link 0 commands</a></li>
   <li><a href="#Route_keywords_and_options_2" id="toc-Route_keywords_and_options_2" class="nav-link" data-scroll-target="#Route_keywords_and_options_2">Route keywords and options</a></li>
   <li><a href="#Molecule_specification_2" id="toc-Molecule_specification_2" class="nav-link" data-scroll-target="#Molecule_specification_2">Molecule specification</a></li>
   </ul></li>
   <li><a href="#Input_Natural_transition_orbitals" id="toc-Input_Natural_transition_orbitals" class="nav-link" data-scroll-target="#Input_Natural_transition_orbitals">Natural transition orbitals</a>
   <ul class="collapse">
-  <li><a href="#Link_0_commands_3" id="toc-Link_0_commands_3" class="nav-link" data-scroll-target="#Link_0_commands_3">Link 0 commands</a></li>
+  <li><a href="#Link_0_commands_2" id="toc-Link_0_commands_2" class="nav-link" data-scroll-target="#Link_0_commands_2">Link 0 commands</a></li>
   <li><a href="#Route_keywords_and_options_3" id="toc-Route_keywords_and_options_3" class="nav-link" data-scroll-target="#Route_keywords_and_options_3">Route keywords and options</a></li>
   <li><a href="#Molecule_specification_3" id="toc-Molecule_specification_3" class="nav-link" data-scroll-target="#Molecule_specification_3">Molecule specification</a></li>
   </ul></li>
@@ -227,7 +226,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 17, 2026</p>
+      <p class="date-modified">November 19, 2026</p>
     </div>
   </div>
     
@@ -410,17 +409,18 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt,S0Verify,S0Screening success;
-    class S0Absorption,S1Opt,S1Verify,S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputScreening1,OutputExcitations1,OutputGeometries1,OutputTwists1,End1 pending;
+    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption success;
+    class S1Opt,S1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputTwists1 running;
+    class S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,OutputScreening1,OutputExcitations1,OutputGeometries1,End1 pending;
     class DdRecheck,DdS0Verify,DdS1Verify,S0Verify,S1Verify verification;
     linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 5 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 6 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 7 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
@@ -429,32 +429,32 @@ flowchart TB
     linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 16 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 17 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 16 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 17 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 19 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 20 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 19 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 20 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 21 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 22 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 22 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 23 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 27 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 27 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 28 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 31 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 32 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 32 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 36 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 37 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 38 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 39 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 40 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 41 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 36 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 37 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 38 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 39 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 40 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 41 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
 </pre></div>
 <script>
 window.requireDefine = window.define;
@@ -470,7 +470,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <ul>
 <li>Obtain the charges and dipoles of <span class="math inline">S_0</span> and of the relaxed <span class="math inline">S_1</span> density, the vertical <span class="math inline">S_1\rightarrow S_0</span> energy and the NTOs at the verified <span class="math inline">S_1</span> minimum.</li>
 </ul>
-<div id="9b4ff394" class="cell" data-execution_count="2">
+<div id="3e1469d5" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-51d00883c74d211e/data.js"></script>
 </div>
@@ -487,57 +487,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </section>
 <section id="Input_Single_point" class="level3 step">
 <h3 class="step anchored" data-anchor-id="Input_Single_point">Single point</h3>
-<section id="Link_0_commands" class="level4">
-<h4 class="anchored" data-anchor-id="Link_0_commands">Link 0 commands</h4>
-<p>Link 0 is the part of each job before its route: it sets this job’s memory, processors and files. Every linked job has its own.</p>
-<div class="cell" data-execution_count="3">
-<div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-link0-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;1.</strong> Link 0 commands of the job.
-</figcaption>
-<div aria-describedby="tbl-link0-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="cell caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Command</th>
-<th style="text-align: left;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a><span class="quantity-info" data-description="RHluYW1pYyBtZW1vcnkgYXZhaWxhYmxlIHRvIEdhdXNzaWFuLg=="></span></td>
-<td style="text-align: left;">8 GB</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a><span class="quantity-info" data-description="TnVtYmVyIG9mIHByb2Nlc3NvcnMgdXNlZCBpbiBzaGFyZWQtbWVtb3J5IHBhcmFsbGVsIGV4ZWN1dGlvbi4="></span></td>
-<td style="text-align: left;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Chk</code></a><span class="quantity-info" data-description="Q2hlY2twb2ludCBmaWxlIHRoaXMgam9iIHdyaXRlcy4="></span></td>
-<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a><span class="quantity-info" data-description="Q2hlY2twb2ludCBmaWxlIGNvcGllZCBpbnRvIHRoaXMgam9iJ3MgY2hlY2twb2ludCBhdCB0aGUgc3RhcnQsIHRvIHJlYWQgZGF0YSBmcm9tIGEgcHJldmlvdXMgY2FsY3VsYXRpb24u"></span></td>
-<td style="text-align: left;"><span class="ditto" title="Same as the row above">〃</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-</section>
 <section id="Route_keywords_and_options" class="level4">
 <h4 class="anchored" data-anchor-id="Route_keywords_and_options">Route keywords and options</h4>
 <p>The route selects the method, basis and job type.</p>
-<div class="cell" data-execution_count="4">
-<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="cell" data-execution_count="3">
+<div id="Table_1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-route-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;2.</strong> Route keywords and their options.
+<strong>Table&nbsp;1.</strong> Route keywords and their options.
 </figcaption>
 <div aria-describedby="tbl-route-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -598,11 +555,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="Molecule_specification" class="level4">
 <h4 class="anchored" data-anchor-id="Molecule_specification">Molecule specification</h4>
 <p>The job’s title, charge and spin multiplicity, and where Gaussian took its geometry from.</p>
-<div class="cell" data-execution_count="5">
-<div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<div class="cell" data-execution_count="4">
+<div id="Table_2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;3.</strong> Title, charge, spin multiplicity and geometry source of the job.
+<strong>Table&nbsp;2.</strong> Title, charge, spin multiplicity and geometry source of the job.
 </figcaption>
 <div aria-describedby="tbl-molecule-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -645,14 +602,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </section>
 <section id="Input_Excited_states" class="level3 step">
 <h3 class="step anchored" data-anchor-id="Input_Excited_states">Excited states</h3>
-<section id="Link_0_commands_2" class="level4">
-<h4 class="anchored" data-anchor-id="Link_0_commands_2">Link 0 commands</h4>
+<section id="Link_0_commands" class="level4">
+<h4 class="anchored" data-anchor-id="Link_0_commands">Link 0 commands</h4>
 <p>Link 0 is the part of each job before its route: it sets this job’s memory, processors and files. Every linked job has its own.</p>
-<div class="cell" data-execution_count="6">
-<div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
+<div class="cell" data-execution_count="5">
+<div id="Table_3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-link0-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;4.</strong> Link 0 commands of the job.
+<strong>Table&nbsp;3.</strong> Link 0 commands of the job.
 </figcaption>
 <div aria-describedby="tbl-link0-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -669,14 +626,6 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a><span class="quantity-info" data-description="RHluYW1pYyBtZW1vcnkgYXZhaWxhYmxlIHRvIEdhdXNzaWFuLg=="></span></td>
-<td style="text-align: left;">8 GB</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a><span class="quantity-info" data-description="TnVtYmVyIG9mIHByb2Nlc3NvcnMgdXNlZCBpbiBzaGFyZWQtbWVtb3J5IHBhcmFsbGVsIGV4ZWN1dGlvbi4="></span></td>
-<td style="text-align: left;">8</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a><span class="quantity-info" data-description="Q2hlY2twb2ludCBmaWxlIGNvcGllZCBpbnRvIHRoaXMgam9iJ3MgY2hlY2twb2ludCBhdCB0aGUgc3RhcnQsIHRvIHJlYWQgZGF0YSBmcm9tIGEgcHJldmlvdXMgY2FsY3VsYXRpb24u"></span></td>
 <td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
 </tr>
@@ -691,11 +640,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="Route_keywords_and_options_2" class="level4">
 <h4 class="anchored" data-anchor-id="Route_keywords_and_options_2">Route keywords and options</h4>
 <p>The route selects the method, basis and job type.</p>
-<div class="cell" data-execution_count="7">
-<div id="Table_5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
+<div class="cell" data-execution_count="6">
+<div id="Table_4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-route-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;5.</strong> Route keywords and their options.
+<strong>Table&nbsp;4.</strong> Route keywords and their options.
 </figcaption>
 <div aria-describedby="tbl-route-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -774,11 +723,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="Molecule_specification_2" class="level4">
 <h4 class="anchored" data-anchor-id="Molecule_specification_2">Molecule specification</h4>
 <p>The job’s title, charge and spin multiplicity, and where Gaussian took its geometry from.</p>
-<div class="cell" data-execution_count="8">
-<div id="Table_6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
+<div class="cell" data-execution_count="7">
+<div id="Table_5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-molecule-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;6.</strong> Title, charge, spin multiplicity and geometry source of the job.
+<strong>Table&nbsp;5.</strong> Title, charge, spin multiplicity and geometry source of the job.
 </figcaption>
 <div aria-describedby="tbl-molecule-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -821,14 +770,14 @@ window.addEventListener("load", window.restoreRequireDefine);
 </section>
 <section id="Input_Natural_transition_orbitals" class="level3 step">
 <h3 class="step anchored" data-anchor-id="Input_Natural_transition_orbitals">Natural transition orbitals</h3>
-<section id="Link_0_commands_3" class="level4">
-<h4 class="anchored" data-anchor-id="Link_0_commands_3">Link 0 commands</h4>
+<section id="Link_0_commands_2" class="level4">
+<h4 class="anchored" data-anchor-id="Link_0_commands_2">Link 0 commands</h4>
 <p>Link 0 is the part of each job before its route: it sets this job’s memory, processors and files. Every linked job has its own.</p>
-<div class="cell" data-execution_count="9">
-<div id="Table_7" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
+<div class="cell" data-execution_count="8">
+<div id="Table_6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="8">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-link0-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;7.</strong> Link 0 commands of the job.
+<strong>Table&nbsp;6.</strong> Link 0 commands of the job.
 </figcaption>
 <div aria-describedby="tbl-link0-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -845,14 +794,6 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a><span class="quantity-info" data-description="RHluYW1pYyBtZW1vcnkgYXZhaWxhYmxlIHRvIEdhdXNzaWFuLg=="></span></td>
-<td style="text-align: left;">8 GB</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a><span class="quantity-info" data-description="TnVtYmVyIG9mIHByb2Nlc3NvcnMgdXNlZCBpbiBzaGFyZWQtbWVtb3J5IHBhcmFsbGVsIGV4ZWN1dGlvbi4="></span></td>
-<td style="text-align: left;">8</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a><span class="quantity-info" data-description="Q2hlY2twb2ludCBmaWxlIGNvcGllZCBpbnRvIHRoaXMgam9iJ3MgY2hlY2twb2ludCBhdCB0aGUgc3RhcnQsIHRvIHJlYWQgZGF0YSBmcm9tIGEgcHJldmlvdXMgY2FsY3VsYXRpb24u"></span></td>
 <td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
 </tr>
@@ -867,11 +808,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="Route_keywords_and_options_3" class="level4">
 <h4 class="anchored" data-anchor-id="Route_keywords_and_options_3">Route keywords and options</h4>
 <p>The route selects the method, basis and job type.</p>
-<div class="cell" data-execution_count="10">
-<div id="Table_8" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
+<div class="cell" data-execution_count="9">
+<div id="Table_7" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="9">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-route-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;8.</strong> Route keywords and their options.
+<strong>Table&nbsp;7.</strong> Route keywords and their options.
 </figcaption>
 <div aria-describedby="tbl-route-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -950,11 +891,11 @@ window.addEventListener("load", window.restoreRequireDefine);
 <section id="Molecule_specification_3" class="level4">
 <h4 class="anchored" data-anchor-id="Molecule_specification_3">Molecule specification</h4>
 <p>The job’s title, charge and spin multiplicity, and where Gaussian took its geometry from.</p>
-<div class="cell" data-execution_count="11">
-<div id="Table_9" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
+<div class="cell" data-execution_count="10">
+<div id="Table_8" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="10">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-molecule-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;9.</strong> Title, charge, spin multiplicity and geometry source of the job.
+<strong>Table&nbsp;8.</strong> Title, charge, spin multiplicity and geometry source of the job.
 </figcaption>
 <div aria-describedby="tbl-molecule-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -997,6 +938,24 @@ window.addEventListener("load", window.restoreRequireDefine);
      real heading and appears in the TOC. -->
 <link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
 <script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<script>
+// Hovering a cross-reference to a figure opens Quarto's popover with a copy of the figure. A copied Mol* viewer is an
+// empty canvas, so the popover drops each panel cell holding one, and a row left empty with it: a figure of a viewer
+// and its structure drawing shows the drawing alone.
+if (globalThis.tippy) {
+  globalThis.tippy.setDefaultProps({
+    onShow(instance) {
+      if (!instance.reference.matches("a.quarto-xref")) return;
+      for (const viewer of instance.popper.querySelectorAll(".molstar-notebook-viewer")) {
+        const cell = viewer.closest(".quarto-layout-cell, .cell-output-display") ?? viewer;
+        const row = cell.closest(".quarto-layout-row");
+        cell.remove();
+        if (row && !row.querySelector(".quarto-layout-cell")) row.remove();
+      }
+    },
+  });
+}
+</script>
 <!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
 <script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
 

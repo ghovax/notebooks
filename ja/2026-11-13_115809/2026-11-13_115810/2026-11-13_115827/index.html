@@ -160,7 +160,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-22ea6c7d4c1c388d/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
@@ -214,7 +214,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月17日</p>
+      <p class="date-modified">2026年11月19日</p>
     </div>
   </div>
     
@@ -235,13 +235,13 @@ window.Quarto = {
 <div class="header-breadcrumb has-remote-link">
 <span class="breadcrumb-path"><a href="../../../">ホーム</a><span class="sep">/</span><a href="../../">ジフルオロボロン色素のねじれと電荷移動</a><span class="sep">/</span><a href="../">アセトニトリル中のメトキシキレート</a><span class="sep">/</span><span class="current"><span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115810/2026-11-13_115827/README.md:1" class="remote-readme-link" title="このページのリモート README を Visual Studio Code で開きます">リモートで開く</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="言語" aria-label="言語"><i class="bi bi-translate" aria-hidden="true"></i>日本語</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="../../../../en/2026-11-13_115809/2026-11-13_115810/2026-11-13_115827/" hreflang="en" lang="en">English</a></li><li><a class="dropdown-item active" href="../../../../ja/2026-11-13_115809/2026-11-13_115810/2026-11-13_115827/" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></span></span>
 </div>
-<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>準備済み
+<span class="screen-reader-only">ノート</span>進行中
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -397,17 +397,18 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt,S0Verify,S0Screening success;
-    class S0Absorption,S1Opt,S1Verify,S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputScreening1,OutputExcitations1,OutputGeometries1,OutputTwists1,End1 pending;
+    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption success;
+    class S1Opt,S1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputTwists1 running;
+    class S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,OutputScreening1,OutputExcitations1,OutputGeometries1,End1 pending;
     class DdRecheck,DdS0Verify,DdS1Verify,S0Verify,S1Verify verification;
     linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 5 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 6 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 7 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
@@ -416,32 +417,32 @@ flowchart TB
     linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 16 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 17 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 16 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 17 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 19 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 20 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 19 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 20 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 21 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 22 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 22 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 23 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 27 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 27 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 28 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 31 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 32 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 32 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 36 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 37 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 38 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 39 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 40 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 41 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 36 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 37 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 38 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 39 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 40 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 41 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
 </pre></div>
 <script>
 window.requireDefine = window.define;
@@ -457,7 +458,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <ul>
 <li>検証した <span class="math inline">S_1</span> 極小から <span class="math inline">\theta_{\mathrm{B}_1}</span> に沿って、緩和した <span class="math inline">S_1</span> エネルギー <span class="math inline">E(\theta)</span> をたどる。<span class="math inline">S_0</span> スキャンの励起状態版です。</li>
 </ul>
-<div id="e035bf9f" class="cell" data-execution_count="2">
+<div id="76ffd736" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-002610e45d1ddf15/data.js"></script><script src="../../../../site_libs/shared-b1e5338690da20c0/data.js"></script>
 </div>
@@ -488,23 +489,18 @@ window.addEventListener("load", window.restoreRequireDefine);
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Chk</code></a></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
+<td style="text-align: left;">このジョブが書き出すチェックポイントファイル。</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Mem</code></a></td>
 <td style="text-align: left;">8 GB</td>
 <td style="text-align: left;">Gaussian が使える動的メモリ。</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%NProcShared</code></a></td>
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">共有メモリ並列実行で使うプロセッサの数。</td>
-</tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%Chk</code></a></td>
-<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
-<td style="text-align: left;">このジョブが書き出すチェックポイントファイル。</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><a href="https://gaussian.com/link0/"><code>%OldChk</code></a></td>
-<td style="text-align: left;"><span class="ditto" title="上の行と同じ">〃</span></td>
+<td style="text-align: left;"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid figure-img"></td>
 <td style="text-align: left;">前の計算のデータを読み込むために、開始時にこのジョブのチェックポイントにコピーするチェックポイントファイル。</td>
 </tr>
 </tbody>
@@ -598,6 +594,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td class="sub-odd" style="text-align: left;"><p><code>ModRedundant</code></p></td>
 <td class="sub-odd" style="text-align: left;"></td>
 <td class="sub-odd" style="text-align: left;"><p>追加の入力セクションから、スキャンや拘束の定義を含めて冗長内部座標を追加、削除、変更する。</p></td>
+</tr>
+<tr class="group-start group-odd odd">
+<td style="text-align: left;"><p><code>Fast</code></p></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -723,6 +726,24 @@ window.addEventListener("load", window.restoreRequireDefine);
      real heading and appears in the TOC. -->
 <link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
 <script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<script>
+// Hovering a cross-reference to a figure opens Quarto's popover with a copy of the figure. A copied Mol* viewer is an
+// empty canvas, so the popover drops each panel cell holding one, and a row left empty with it: a figure of a viewer
+// and its structure drawing shows the drawing alone.
+if (globalThis.tippy) {
+  globalThis.tippy.setDefaultProps({
+    onShow(instance) {
+      if (!instance.reference.matches("a.quarto-xref")) return;
+      for (const viewer of instance.popper.querySelectorAll(".molstar-notebook-viewer")) {
+        const cell = viewer.closest(".quarto-layout-cell, .cell-output-display") ?? viewer;
+        const row = cell.closest(".quarto-layout-row");
+        cell.remove();
+        if (row && !row.querySelector(".quarto-layout-cell")) row.remove();
+      }
+    },
+  });
+}
+</script>
 <!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
 <script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
 
