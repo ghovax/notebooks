@@ -213,7 +213,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 19, 2026</p>
+      <p class="date-modified">November 20, 2026</p>
     </div>
   </div>
     
@@ -234,13 +234,13 @@ window.Quarto = {
 <div class="header-breadcrumb has-remote-link">
 <span class="breadcrumb-path"><a href="../../../">Homepage</a><span class="sep">/</span><a href="../../">Twisting and charge transfer in the difluoroboron dyes</a><span class="sep">/</span><a href="../">Methoxy chelate in acetonitrile</a><span class="sep">/</span><span class="current">Verify the DD-DFT <span class="math inline">S_1</span> minimum</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115810/2026-11-13_115824/README.md:1" class="remote-readme-link" title="Open this page’s remote README in Visual Studio Code">Open remote</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Language" aria-label="Language"><i class="bi bi-translate" aria-hidden="true"></i>English</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item active" href="../../../../en/2026-11-13_115809/2026-11-13_115810/2026-11-13_115824/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a class="dropdown-item" href="../../../../ja/2026-11-13_115809/2026-11-13_115810/2026-11-13_115824/" hreflang="ja" lang="ja">日本語</a></li></ul></span></span>
 </div>
-<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Prepared
+<span class="screen-reader-only">Note</span>Ongoing
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -281,8 +281,7 @@ config:
 ---
 flowchart TB
     Start1(( ))
-    Input1[/"&lt;span&gt;Molecular-screening geometry of $$\mathbf{1}$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIGdlb21ldHJ5IG9mIHRoZSBtZXRob3h5IGNoZWxhdGUgJFxtYXRoYmZ7MX0kIGZyb20gdGhlIG1vbGVjdWxhci1zY3JlZW5pbmcgcHJvamVjdCwgd2hpY2ggdGhlIGZpcnN0ICRTXzAkIG9wdGltaXphdGlvbiBzdGFydHMgZnJvbS4='&gt;&lt;/span&gt;"/]
-        %% description: The geometry of the methoxy chelate $\mathbf{1}$ from the molecular-screening project, which the first $S_0$ optimization starts from.
+    Input1[/"&lt;span&gt;Molecular-screening geometry of $$\mathbf{1}$$&lt;/span&gt;"/]
     subgraph Excitations["&lt;span&gt;Excitations at the minima&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='RmluZCBhbmQgdmVyaWZ5IHRoZSAkU18wJCBhbmQgJFNfMSQgbWluaW1hIHdpdGggQjNMWVAgYW5kIHdpdGggREQtREZULCB3aXRoIHRoZSBzY3JlZW5pbmcgJFx2YXJlcHNpbG9uX3MkLCB0aGUgdmVydGljYWwgYWJzb3JwdGlvbiBhdCAkU18wJCBhbmQgdGhlIGVtaXNzaW9uIHByb3BlcnRpZXMgYXQgJFNfMSQu'&gt;&lt;/span&gt;"]
         %% description: Find and verify the $S_0$ and $S_1$ minima with B3LYP and with DD-DFT, with the screening $\varepsilon_s$, the vertical absorption at $S_0$ and the emission properties at $S_1$.
         direction TB
@@ -320,31 +319,27 @@ flowchart TB
             %% description: Turn the donor-side phenyl ring against the core in $S_0$ and $S_1$, with the vertical excitations along the $S_0$ scan.
             direction TB
             S0ScanB1["&lt;a href='../2026-11-13_115825/'&gt;Relaxed $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzAkIGVuZXJneSAkRShcdGhldGEpJCBhcyAkXHRoZXRhX3tcbWF0aHJte0J9XzF9JCwgdGhlIGRpaGVkcmFsICREKDUsNiw3LDgpJCwgdHVybnMgaGFsZiBhIHJldm9sdXRpb24gaW4gMTAtZGVncmVlIHN0ZXBzIGZyb20gaXRzIHZhbHVlIGF0IHRoZSAkU18wJCBtaW5pbXVtLg=='&gt;&lt;/span&gt;"]
-            S0ScanB1Td["&lt;a href='../2026-11-13_115826/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Q2FsY3VsYXRlIHRoZSB2ZXJ0aWNhbCAkU18wXHJpZ2h0YXJyb3cgU19uJCBlbmVyZ2llcywgb3NjaWxsYXRvciBzdHJlbmd0aHMgYW5kIHRoZSByZWxheGVkICRTXzEkIGRlbnNpdHkncyBjaGFyZ2VzIGF0IGV2ZXJ5IGNvbnZlcmdlZCBwb2ludCBvZiB0aGUgJFNfMCQgc2Nhbiwgc28gJFNfMSQgaXMgZHJhd24gb3ZlciB0aGUgc2FtZSAkXHRoZXRhJCBhcyAkU18wJC4='&gt;&lt;/span&gt;"]
+            S0ScanB1Td["&lt;a href='../2026-11-13_115826/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSBDYWxjdWxhdGUgdGhlIHZlcnRpY2FsICRTXzBccmlnaHRhcnJvdyBTX24kIGVuZXJnaWVzIGFuZCBvc2NpbGxhdG9yIHN0cmVuZ3RocywgdGhlIHJlbGF4ZWQgJFNfMSQgZGVuc2l0eSdzIGNoYXJnZXMgYW5kIHRoZSAkU18wXHJpZ2h0YXJyb3cgU18xJCBOVE9zIGF0IGV2ZXJ5IHBvaW50IG9mIHRoZSAkU18wJCBzY2FuLCBvbmUgcnVuIHBlciBwb2ludCwgc28gJFNfMSQgaXMgZHJhd24gb3ZlciB0aGUgc2FtZSAkXHRoZXRhX3tcbWF0aHJte0J9XzF9JCBhcyAkU18wJC4KVGhlIFtNZXRob3h5IGNoZWxhdGUgaW4gYWNldG9uaXRyaWxlXSguLi9SRUFETUUubWQpIHdvcmtmbG93IGdpdmVzIHRoZSBtZXRob2Qgb2YgdGhlc2UgcnVucy4='&gt;&lt;/span&gt;"]
             S1ScanB1["&lt;a href='../2026-11-13_115827/'&gt;Relaxed $$S_1$$ scan of $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzEkIGVuZXJneSAkRShcdGhldGEpJCBhbG9uZyAkXHRoZXRhX3tcbWF0aHJte0J9XzF9JCBmcm9tIHRoZSB2ZXJpZmllZCAkU18xJCBtaW5pbXVtLCB0aGUgZXhjaXRlZC1zdGF0ZSBjb3VudGVycGFydCBvZiB0aGUgJFNfMCQgc2Nhbi4='&gt;&lt;/span&gt;"]
         end
         subgraph TwistA["&lt;span&gt;Twist about $$\mathrm{A}$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VHVybiB0aGUgZG9ub3IgYWdhaW5zdCBpdHMgcGhlbnlsIHJpbmcgaW4gJFNfMCQgYW5kICRTXzEkLCB3aXRoIHRoZSB2ZXJ0aWNhbCBleGNpdGF0aW9ucyBhbG9uZyB0aGUgJFNfMCQgc2Nhbi4='&gt;&lt;/span&gt;"]
             %% description: Turn the donor against its phenyl ring in $S_0$ and $S_1$, with the vertical excitations along the $S_0$ scan.
             direction TB
             S0ScanA["&lt;a href='../2026-11-13_115828/'&gt;Relaxed $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzAkIGVuZXJneSAkRShcdGhldGEpJCBhcyAkXHRoZXRhX1xtYXRocm17QX0kLCB0aGUgZGloZWRyYWwgJEQoMSwyLDMsNCkkLCB0dXJucyBoYWxmIGEgcmV2b2x1dGlvbiBpbiAxMC1kZWdyZWUgc3RlcHMgZnJvbSBpdHMgdmFsdWUgYXQgdGhlICRTXzAkIG1pbmltdW0u'&gt;&lt;/span&gt;"]
-            S0ScanATd["&lt;a href='../2026-11-13_115829/'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Q2FsY3VsYXRlIHRoZSB2ZXJ0aWNhbCAkU18wXHJpZ2h0YXJyb3cgU19uJCBlbmVyZ2llcywgb3NjaWxsYXRvciBzdHJlbmd0aHMgYW5kIHRoZSByZWxheGVkICRTXzEkIGRlbnNpdHkncyBjaGFyZ2VzIGF0IGV2ZXJ5IGNvbnZlcmdlZCBwb2ludCBvZiB0aGUgJFNfMCQgc2Nhbiwgc28gJFNfMSQgaXMgZHJhd24gb3ZlciB0aGUgc2FtZSAkXHRoZXRhJCBhcyAkU18wJC4='&gt;&lt;/span&gt;"]
+            S0ScanATd["&lt;a href='../2026-11-13_115829/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Vertical excitations along the $$S_0$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSBDYWxjdWxhdGUgdGhlIHZlcnRpY2FsICRTXzBccmlnaHRhcnJvdyBTX24kIGVuZXJnaWVzIGFuZCBvc2NpbGxhdG9yIHN0cmVuZ3RocywgdGhlIHJlbGF4ZWQgJFNfMSQgZGVuc2l0eSdzIGNoYXJnZXMgYW5kIHRoZSAkU18wXHJpZ2h0YXJyb3cgU18xJCBOVE9zIGF0IGV2ZXJ5IHBvaW50IG9mIHRoZSAkU18wJCBzY2FuLCBvbmUgcnVuIHBlciBwb2ludCwgc28gJFNfMSQgaXMgZHJhd24gb3ZlciB0aGUgc2FtZSAkXHRoZXRhX1xtYXRocm17QX0kIGFzICRTXzAkLgpUaGUgW01ldGhveHkgY2hlbGF0ZSBpbiBhY2V0b25pdHJpbGVdKC4uL1JFQURNRS5tZCkgd29ya2Zsb3cgZ2l2ZXMgdGhlIG1ldGhvZCBvZiB0aGVzZSBydW5zLg=='&gt;&lt;/span&gt;"]
             S1ScanA["&lt;a href='../2026-11-13_115830/'&gt;Relaxed $$S_1$$ scan of $$\theta_\mathrm{A}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSByZWxheGVkICRTXzEkIGVuZXJneSAkRShcdGhldGEpJCBhbG9uZyAkXHRoZXRhX1xtYXRocm17QX0kIGZyb20gdGhlIHZlcmlmaWVkICRTXzEkIG1pbmltdW0sIHRoZSBleGNpdGVkLXN0YXRlIGNvdW50ZXJwYXJ0IG9mIHRoZSAkU18wJCBzY2FuLg=='&gt;&lt;/span&gt;"]
         end
         subgraph TorsionMap["&lt;span&gt;Map of both twists&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='UmVsYXggJFNfMCQgb3ZlciBib3RoIHR3aXN0cyB0b2dldGhlciBvbiBhICQzMF5cY2lyYyQgZ3JpZCwgd2l0aCB0aGUgdmVydGljYWwgZXhjaXRhdGlvbnMgYXQgZWFjaCBjb252ZXJnZWQgcG9pbnQu'&gt;&lt;/span&gt;"]
             %% description: Relax $S_0$ over both twists together on a $30^\circ$ grid, with the vertical excitations at each converged point.
             direction TB
             S0Map["&lt;a href='../2026-11-13_115831/'&gt;Relaxed $$S_0$$ map of $$\theta_\mathrm{A}$$ and $$\theta_{\mathrm{B}_1}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='TWFwIHRoZSByZWxheGVkICRTXzAkIGVuZXJneSBvdmVyIGJvdGggdHdpc3RzLCAkRShcdGhldGFfXG1hdGhybXtBfSxcdGhldGFfe1xtYXRocm17Qn1fMX0pJCwgb24gYSAzMC1kZWdyZWUgZ3JpZCwgdGhlIHR3by1kaW1lbnNpb25hbCB0b3JzaW9uYWwgc3VyZmFjZSB3aG9zZSBjdXRzIHRoZSBzY2FucyBmb2xsb3cu'&gt;&lt;/span&gt;"]
-            S0MapTd["&lt;a href='../2026-11-13_115832/'&gt;Vertical excitations over the $$S_0$$ map&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Q2FsY3VsYXRlIHRoZSB2ZXJ0aWNhbCBleGNpdGF0aW9ucyBhbmQgdGhlIHJlbGF4ZWQgJFNfMSQgZGVuc2l0eSdzIGNoYXJnZXMgYXQgZXZlcnkgY29udmVyZ2VkIHBvaW50IG9mIHRoZSBtYXAsIHNvIHRoZSAkU18xJCBzdXJmYWNlIGFuZCBpdHMgY2hhcmdlIHRyYW5zZmVyIGFyZSBkcmF3biBvdmVyIHRoZSBzYW1lIHR3byB0d2lzdHMu'&gt;&lt;/span&gt;"]
+            S0MapTd["&lt;a href='../2026-11-13_115832/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='Scan'&gt;Vertical excitations over the $$S_0$$ map&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSBDYWxjdWxhdGUgdGhlIHZlcnRpY2FsIGV4Y2l0YXRpb25zLCB0aGUgcmVsYXhlZCAkU18xJCBkZW5zaXR5J3MgY2hhcmdlcyBhbmQgdGhlICRTXzBccmlnaHRhcnJvdyBTXzEkIE5UT3MgYXQgZXZlcnkgcG9pbnQgb2YgdGhlIG1hcCwgb25lIHJ1biBwZXIgcG9pbnQsIHNvIHRoZSAkU18xJCBzdXJmYWNlIGFuZCBpdHMgY2hhcmdlIHRyYW5zZmVyIGFyZSBkcmF3biBvdmVyIHRoZSBzYW1lIHR3byB0d2lzdHMuClRoZSBbTWV0aG94eSBjaGVsYXRlIGluIGFjZXRvbml0cmlsZV0oLi4vUkVBRE1FLm1kKSB3b3JrZmxvdyBnaXZlcyB0aGUgbWV0aG9kIG9mIHRoZXNlIHJ1bnMu'&gt;&lt;/span&gt;"]
         end
     end
-    OutputScreening1[/"&lt;span&gt;Molecular screening $$\varepsilon_s$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIG1vbGVjdWxhciBzY3JlZW5pbmcgJFx2YXJlcHNpbG9uX3MkIGV2YWx1YXRlZCBhdCB0aGUgJFNfMCQgYW5kICRTXzEkIG1pbmltYSwgYW5kIGNvbnZlcmdlZCBzZWxmLWNvbnNpc3RlbnRseSBmb3IgREQtREZULg=='&gt;&lt;/span&gt;"/]
-        %% description: The molecular screening $\varepsilon_s$ evaluated at the $S_0$ and $S_1$ minima, and converged self-consistently for DD-DFT.
-    OutputExcitations1[/"&lt;span&gt;Absorption, emission and charge transfer at the minima&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIHZlcnRpY2FsIGFic29ycHRpb24gYXQgdGhlICRTXzAkIG1pbmltdW0gYW5kIHRoZSBlbWlzc2lvbiBhdCB0aGUgJFNfMSQgbWluaW11bSwgd2l0aCBCM0xZUCBhbmQgd2l0aCBERC1ERlQsIGFuZCB0aGUgY2hhcmdlIHRyYW5zZmVyIHRoZXkgc2hvdy4='&gt;&lt;/span&gt;"/]
-        %% description: The vertical absorption at the $S_0$ minimum and the emission at the $S_1$ minimum, with B3LYP and with DD-DFT, and the charge transfer they show.
-    OutputGeometries1[/"&lt;span&gt;Verified $$S_0$$ and $$S_1$$ geometries&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlICRTXzAkIGFuZCAkU18xJCBtaW5pbWEsIGVhY2ggdmVyaWZpZWQgYnkgaXRzIGZyZXF1ZW5jaWVzLCB3aXRoIEIzTFlQIGFuZCB3aXRoIERELURGVC4='&gt;&lt;/span&gt;"/]
-        %% description: The $S_0$ and $S_1$ minima, each verified by its frequencies, with B3LYP and with DD-DFT.
-    OutputTwists1[/"&lt;span&gt;$$E(\theta)$$ and charge transfer along the twists&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGhlIGVuZXJnaWVzIG9mICRTXzAkLCAkU18xJCBhbmQgdGhlIHZlcnRpY2FsIGV4Y2l0YXRpb24gYWxvbmcgdGhlIHR3aXN0cyBhYm91dCAkXG1hdGhybXtBfSQgYW5kICRcbWF0aHJte0J9XzEkLCB0aGUgY2hhcmdlIHRyYW5zZmVyIGFsb25nIHRoZW0sIGFuZCB0aGUgJFNfMCQgbWFwIG9mIGJvdGggdHdpc3RzLg=='&gt;&lt;/span&gt;"/]
-        %% description: The energies of $S_0$, $S_1$ and the vertical excitation along the twists about $\mathrm{A}$ and $\mathrm{B}_1$, the charge transfer along them, and the $S_0$ map of both twists.
+    OutputScreening1[/"&lt;span&gt;Molecular screening $$\varepsilon_s$$&lt;/span&gt;"/]
+    OutputExcitations1[/"&lt;span&gt;Absorption, emission and charge transfer at the minima&lt;/span&gt;"/]
+    OutputGeometries1[/"&lt;span&gt;Verified $$S_0$$ and $$S_1$$ geometries&lt;/span&gt;"/]
+    OutputTwists1[/"&lt;span&gt;$$E(\theta)$$ and charge transfer along the twists&lt;/span&gt;"/]
     End1((( )))
 
     Start1 --&gt; Input1
@@ -396,25 +391,24 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption,S1Opt,S1Verify,S0ScanA,S0ScanB1 success;
-    class S0ScanB1Td,S1ScanB1,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputTwists1 running;
-    class S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,OutputScreening1,OutputExcitations1,OutputGeometries1,End1 pending;
+    class Start1,Input1,S0Opt,S0Verify,S0Screening,S1Opt,S1Verify,S0ScanB1,S0ScanA,S0Map success;
+    class S0Absorption,S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,S0ScanB1Td,S1ScanB1,S0ScanATd,S1ScanA,S0MapTd,OutputScreening1,OutputExcitations1,OutputGeometries1,OutputTwists1,End1 running;
     class DdRecheck,DdS0Verify,DdS1Verify,S0Verify,S1Verify verification;
     linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 5 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 6 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 7 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 11 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 12 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 9 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 10 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 11 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 12 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 13 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 14 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 16 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 17 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
@@ -422,20 +416,20 @@ flowchart TB
     linkStyle 19 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 20 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 21 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 22 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 22 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 23 stroke:#198754,color:#198754,stroke-width:2px;
-    linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 27 stroke:#198754,color:#198754,stroke-width:2px;
-    linkStyle 28 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 24 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 25 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 26 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 27 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 28 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 29 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 30 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 31 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 32 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 33 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 34 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 35 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 36 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 37 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 38 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
@@ -452,12 +446,13 @@ window.restoreRequireDefine = () => {
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
 <script type="module" async="" onerror="restoreRequireDefine()" src="../../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
+<script src="../../../../site_libs/shared-0474cb947d66892a/script.js"></script>
 <section id="Goal" class="level2">
 <h2 class="anchored" data-anchor-id="Goal">Goal</h2>
 <ul>
 <li>Verify that the DD-DFT <span class="math inline">S_1</span> geometry is a minimum of <span class="math inline">S_1</span>, with no imaginary frequency.</li>
 </ul>
-<div id="ae7c2d9e" class="cell" data-execution_count="2">
+<div id="f3a038d1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <script src="../../../../site_libs/shared-e2bef11296775b56/data.js"></script><script src="../../../../site_libs/shared-c26886879a028c4c/data.js"></script>
 </div>

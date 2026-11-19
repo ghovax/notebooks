@@ -160,7 +160,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-22ea6c7d4c1c388d/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
@@ -213,7 +213,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026年11月17日</p>
+      <p class="date-modified">2026年11月20日</p>
     </div>
   </div>
     
@@ -366,9 +366,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <ul>
 <li>検証した鞍点から下る二つの方向をどちらもたどり、端点の領域を特定する。</li>
 </ul>
-<div id="2300fd30" class="cell" data-execution_count="2">
+<div id="4db73436" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../site_libs/shared-002610e45d1ddf15/data.js"></script><script src="../../../../site_libs/shared-b1e5338690da20c0/data.js"></script>
+<script src="../../../../site_libs/shared-6465ec68f7e7b952/data.js"></script><script src="../../../../site_libs/shared-1ffaf0b8780fe478/data.js"></script>
 </div>
 </div>
 </section>
@@ -564,6 +564,24 @@ window.addEventListener("load", window.restoreRequireDefine);
      real heading and appears in the TOC. -->
 <link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
 <script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<script>
+// Hovering a cross-reference to a figure opens Quarto's popover with a copy of the figure. A copied Mol* viewer is an
+// empty canvas, so the popover drops each panel cell holding one, and a row left empty with it: a figure of a viewer
+// and its structure drawing shows the drawing alone.
+if (globalThis.tippy) {
+  globalThis.tippy.setDefaultProps({
+    onShow(instance) {
+      if (!instance.reference.matches("a.quarto-xref")) return;
+      for (const viewer of instance.popper.querySelectorAll(".molstar-notebook-viewer")) {
+        const cell = viewer.closest(".quarto-layout-cell, .cell-output-display") ?? viewer;
+        const row = cell.closest(".quarto-layout-row");
+        cell.remove();
+        if (row && !row.querySelector(".quarto-layout-cell")) row.remove();
+      }
+    },
+  });
+}
+</script>
 <!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
 <script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
 

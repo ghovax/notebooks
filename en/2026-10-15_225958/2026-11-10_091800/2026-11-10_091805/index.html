@@ -161,7 +161,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../site_libs/shared-87f5108f1740a448/styles.css">
+<link rel="stylesheet" href="../../../../site_libs/shared-22ea6c7d4c1c388d/styles.css">
 </head>
 
 <body class="calculation-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -214,7 +214,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 17, 2026</p>
+      <p class="date-modified">November 20, 2026</p>
     </div>
   </div>
     
@@ -363,9 +363,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <ul>
 <li>Evaluate B3LYP electron-density and electrostatic-potential fields at the unconstrained forward IRC endpoint <span class="math inline">s_\mathrm{F}</span>, at its fixed PM6-D3 geometry.</li>
 </ul>
-<div id="3727f43e" class="cell" data-execution_count="2">
+<div id="54d29382" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../site_libs/shared-c56a9401e519bd88/data.js"></script><script src="../../../../site_libs/shared-51d00883c74d211e/data.js"></script>
+<script src="../../../../site_libs/shared-e2bef11296775b56/data.js"></script><script src="../../../../site_libs/shared-c26886879a028c4c/data.js"></script>
 </div>
 </div>
 </section>
@@ -543,6 +543,24 @@ window.addEventListener("load", window.restoreRequireDefine);
      real heading and appears in the TOC. -->
 <link rel="stylesheet" href="../../../../site_libs/shared-9a662a47e7ec3305/style.css">
 <script src="../../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
+<script>
+// Hovering a cross-reference to a figure opens Quarto's popover with a copy of the figure. A copied Mol* viewer is an
+// empty canvas, so the popover drops each panel cell holding one, and a row left empty with it: a figure of a viewer
+// and its structure drawing shows the drawing alone.
+if (globalThis.tippy) {
+  globalThis.tippy.setDefaultProps({
+    onShow(instance) {
+      if (!instance.reference.matches("a.quarto-xref")) return;
+      for (const viewer of instance.popper.querySelectorAll(".molstar-notebook-viewer")) {
+        const cell = viewer.closest(".quarto-layout-cell, .cell-output-display") ?? viewer;
+        const row = cell.closest(".quarto-layout-row");
+        cell.remove();
+        if (row && !row.querySelector(".quarto-layout-cell")) row.remove();
+      }
+    },
+  });
+}
+</script>
 <!-- Sections marked .step form Quarto-style tabsets for Input/Output and, nested within them, linked jobs. -->
 <script src="../../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
 
