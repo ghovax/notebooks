@@ -229,13 +229,13 @@ window.Quarto = {
 <div class="header-breadcrumb has-remote-link">
 <span class="breadcrumb-path"><a href="../../../../">Homepage</a><span class="sep">/</span><a href="../../../">Twisting and charge transfer in the difluoroboron dyes</a><span class="sep">/</span><a href="../../">Dimethylamino chelate in acetonitrile</a><span class="sep">/</span><a href="../">Vertical excitations along the <span class="math inline">S_0</span> scan of <span class="math inline">\theta_{\mathrm{B}_1}</span></a><span class="sep">/</span><span class="current"><span class="math inline">\Delta\theta_{\mathrm{B}_1}=160^\circ</span></span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-11-13_115809/2026-11-13_115835/2026-11-13_115851/2026-11-20_021016/README.md:1" class="remote-readme-link" title="Open this page’s remote README in Visual Studio Code">Open remote</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Language" aria-label="Language"><i class="bi bi-translate" aria-hidden="true"></i>English</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item active" href="../../../../../en/2026-11-13_115809/2026-11-13_115835/2026-11-13_115851/2026-11-20_021016/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a class="dropdown-item" href="../../../../../ja/2026-11-13_115809/2026-11-13_115835/2026-11-13_115851/2026-11-20_021016/" hreflang="ja" lang="ja">日本語</a></li></ul></span></span>
 </div>
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Ongoing
+<span class="screen-reader-only">Note</span>Prepared
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -386,9 +386,9 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption success;
-    class S1Opt,S1Verify,S1Emission,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputTwists1 running;
-    class S0ScanA problems;
+    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption,S0ScanATd success;
+    class S1Opt,S1Verify,S1Emission,S0ScanB1Td,S1ScanB1,S1ScanA,S0Map,S0MapTd,OutputTwists1 running;
+    class S0ScanB1,S0ScanA problems;
     class DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,OutputScreening1,OutputExcitations1,OutputGeometries1,End1 pending;
     class DdRecheck,DdS0Verify,DdS1Verify,S0Verify,S1Verify verification;
     linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
@@ -407,7 +407,7 @@ flowchart TB
     linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 16 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 16 stroke:#e0a800,color:#e0a800,stroke-width:2px;
     linkStyle 17 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 19 stroke:#e0a800,color:#e0a800,stroke-width:2px;
@@ -429,7 +429,7 @@ flowchart TB
     linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 36 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 37 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 38 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 38 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 39 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 40 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 41 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
@@ -442,16 +442,16 @@ window.restoreRequireDefine = () => {
 };
 window.addEventListener("load", window.restoreRequireDefine);
 </script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../../../site_libs/shared-c387799c560a6dc5/script.js"></script>
 <script src="../../../../../site_libs/shared-0474cb947d66892a/script.js"></script>
 <section id="Goal" class="level2">
 <h2 class="anchored" data-anchor-id="Goal">Goal</h2>
 <ul>
 <li>Calculate the vertical <span class="math inline">S_0\rightarrow S_n</span> energies and oscillator strengths, the relaxed <span class="math inline">S_1</span> density’s charges and the <span class="math inline">S_0\rightarrow S_1</span> NTOs where <span class="math inline">\Delta\theta_{\mathrm{B}_1}=160^\circ</span> from the <span class="math inline">S_0</span> minimum.</li>
 </ul>
-<div id="0b693485" class="cell" data-execution_count="2">
+<div id="d5bcccb2" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../../site_libs/shared-00c9747d0b8fbe1a/data.js"></script><script src="../../../../../site_libs/shared-a8681e9b45011030/data.js"></script>
+<script src="../../../../../site_libs/shared-856a9b2fb545775e/data.js"></script><script src="../../../../../site_libs/shared-e2d32b88d4c7977b/data.js"></script>
 </div>
 </div>
 </section>
