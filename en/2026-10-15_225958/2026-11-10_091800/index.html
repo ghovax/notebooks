@@ -33,17 +33,21 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../../../site_libs/clipboard-dc465228daee/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-html-fd12455ea9a5/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html-fd12455ea9a5/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html-fd12455ea9a5/scrollable-regions/scrollable-regions.js" type="module"></script>
-<script src="../../../site_libs/quarto-html-fd12455ea9a5/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html-fd12455ea9a5/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html-fd12455ea9a5/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html-fd12455ea9a5/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html-fd12455ea9a5/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap-d1e628947d88/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap-d1e628947d88/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-html-65e0b316ff83/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-65e0b316ff83/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-65e0b316ff83/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html-65e0b316ff83/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html-65e0b316ff83/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html-65e0b316ff83/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html-65e0b316ff83/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html-65e0b316ff83/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html-65e0b316ff83/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html-65e0b316ff83/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap-bc0f0d9d02f2/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap-bc0f0d9d02f2/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap-bc0f0d9d02f2/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap-bc0f0d9d02f2/bootstrap-dark-c1cb863f592d8b646e12c5aa64c33581.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap-bc0f0d9d02f2/bootstrap-38237278cf586248a65e0ac0afbdd4ca.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <!-- RequireJS's define, kept for math-header.html: Quarto clears it before the includes that follow. -->
 <script>window.requireJsDefine = window.define;</script>
 <!-- Preserve explicit TeX spacing as native MathML layout, independent of space glyphs. -->
@@ -139,10 +143,10 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../site_libs/shared-22ea6c7d4c1c388d/styles.css">
+<link rel="stylesheet" href="../../../site_libs/shared-43b39173736bc8c8/styles.css">
 </head>
 
-<body class="quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript" src="../../../site_libs/shared-a2f94860e84f948e/script.js"></script>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -150,16 +154,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#Calculations" id="toc-Calculations" class="nav-link active" data-scroll-target="#Calculations">Calculations</a>
+  <li><a href="#Calculations" id="toc-Calculations" class="nav-link active" data-scroll-target="#Calculations">Workflow overview</a>
   <ul class="collapse">
-  <li><a href="#Unconstrained_TS_search" id="toc-Unconstrained_TS_search" class="nav-link" data-scroll-target="#Unconstrained_TS_search">Unconstrained TS search</a></li>
-  <li><a href="#Reaction_path" id="toc-Reaction_path" class="nav-link" data-scroll-target="#Reaction_path">Reaction path</a></li>
-  <li><a href="#Electron_density_rho_and_ESP_V" id="toc-Electron_density_rho_and_ESP_V" class="nav-link" data-scroll-target="#Electron_density_rho_and_ESP_V">Electron density <span class="math inline">\rho</span> and ESP <span class="math inline">V</span></a></li>
+  <li><a href="#Workflow_map" id="toc-Workflow_map" class="nav-link" data-scroll-target="#Workflow_map"><img class="tab-icon" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNTEyZGE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMzg0IDEyOEgyNTZDMjM4LjMzIDEyOCAyMjQgMTEzLjY3IDIyNCA5NlYtMzJDMjI0IC00OS42NyAyMzguMzMgLTY0IDI1NiAtNjRIMzg0QzQwMS42NyAtNjQgNDE2IC00OS42NyA0MTYgLTMyVjk2QzQxNiAxMTMuNjcgNDAxLjY3IDEyOCAzODQgMTI4ek0xOTIgNDE2QzE5MiA0MzMuNjcgMTc3LjY3IDQ0OCAxNjAgNDQ4SDMyQzE0LjMzIDQ0OCAwIDQzMy42NyAwIDQxNlYyODhDMCAyNzAuMzMgMTQuMzMgMjU2IDMyIDI1NkgxMjcuNzJMMjAwLjg4IDEyNy45NkMyMTEuOTggMTQ3LjAyIDIzMi40IDE2MCAyNTYgMTYwSDI1Ni4yOEwxOTIgMjcyLjQ5VjMyMEg0MTZWMzg0SDE5MlY0MTZ6TTYwOCA0NDhINDgwQzQ2Mi4zMyA0NDggNDQ4IDQzMy42NyA0NDggNDE2VjI4OEM0NDggMjcwLjMzIDQ2Mi4zMyAyNTYgNDgwIDI1Nkg2MDhDNjI1LjY3IDI1NiA2NDAgMjcwLjMzMDAwMDAwMDAwMDEgNjQwIDI4OFY0MTZDNjQwIDQzMy42NyA2MjUuNjcgNDQ4IDYwOCA0NDh6Ii8+PC9zdmc+Cg==" alt="" aria-hidden="true">Workflow map</a></li>
+  <li><a href="#Groups" id="toc-Groups" class="nav-link" data-scroll-target="#Groups"><img class="tab-icon" src="../../../site_libs/shared-cdc9245dd1d579e1/tab-groups.svg" alt="" aria-hidden="true">Groups</a></li>
   </ul></li>
   </ul>
 </nav>
 </div>
 <main class="content" id="quarto-document-content" tabindex="-1">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -188,7 +192,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 20, 2026</p>
+      <p class="date-modified">November 21, 2026</p>
     </div>
   </div>
     
@@ -219,7 +223,7 @@ window.Quarto = {
 
 
 <div class="header-breadcrumb has-remote-link">
-<span class="breadcrumb-path"><a href="../../">Homepage</a><span class="sep">/</span><a href="../">Carbon exchange and central-bond torsion</a><span class="sep">/</span><span class="current">Unconstrained carbon exchange</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-15_225958/2026-11-10_091800/README.md:1" class="remote-readme-link" title="Open this page’s remote README in Visual Studio Code">Open remote</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Language" aria-label="Language"><i class="bi bi-translate" aria-hidden="true"></i>English</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item active" href="../../../en/2026-10-15_225958/2026-11-10_091800/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a class="dropdown-item" href="../../../ja/2026-10-15_225958/2026-11-10_091800/" hreflang="ja" lang="ja">日本語</a></li></ul></span></span>
+<span class="breadcrumb-path"><a href="../../">Homepage</a><span class="sep">/</span><a href="../">Carbon exchange and central-bond torsion</a><span class="sep">/</span><span class="current">Unconstrained carbon exchange</span></span><span class="header-actions"><a href="vscode://vscode-remote/ssh-remote+163.212.114.10/nas3/home/giovanni/projects/2026-10-15_225958/2026-11-10_091800/README.md:1" class="remote-readme-link" title="Open this page’s remote README in Visual Studio Code">Open remote</a><span class="dropdown language-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Language" aria-label="Language"><i class="bi bi-translate" aria-hidden="true"></i>English</a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item active" href="../../../en/2026-10-15_225958/2026-11-10_091800/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a class="dropdown-item" href="../../../ja/2026-10-15_225958/2026-11-10_091800/" hreflang="ja" lang="ja">日本語</a></li></ul></span><span class="dropdown theme-menu"><a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-popper-config="{&quot;strategy&quot;:&quot;fixed&quot;}" aria-expanded="false" title="Theme" aria-label="Theme"><i class="bi bi-circle-half theme-icon" aria-hidden="true"></i><span class="theme-current">Automatic</span></a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="#" data-theme="auto"><i class="bi bi-circle-half" aria-hidden="true"></i><span>Automatic</span></a></li><li><a class="dropdown-item" href="#" data-theme="light"><i class="bi bi-sun" aria-hidden="true"></i><span>Light</span></a></li><li><a class="dropdown-item" href="#" data-theme="dark"><i class="bi bi-moon" aria-hidden="true"></i><span>Dark</span></a></li></ul></span><script src="../../../site_libs/shared-b72820b103b377b4/script.js"></script></span>
 </div>
 <div class="status-prepared callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -245,59 +249,60 @@ window.Quarto = {
 <text x="0" y="42">Mon</text>
 <text x="0" y="72">Wed</text>
 <text x="0" y="102">Fri</text>
-<rect x="30" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="30" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="30" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="30" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="45" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="45" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="45" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="45" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="45" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="45" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="45" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="60" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="60" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="60" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="60" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="60" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="60" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="60" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="75" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="75" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="75" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="75" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="75" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="75" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="75" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="90" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="90" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="90" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="90" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="90" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="90" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="90" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="105" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="105" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="105" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="105" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="105" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="105" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="105" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="120" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="120" y="47" width="12" height="12" rx="2" fill="#216e39" data-day="2026-11-10" aria-label="Tue, 10 Nov 2026"></rect>
-<rect x="120" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="120" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="120" y="92" width="12" height="12" rx="2" fill="#216e39" data-day="2026-11-13" aria-label="Fri, 13 Nov 2026"></rect>
-<rect x="120" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="120" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="135" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="135" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="135" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="135" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="135" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
+<rect x="30" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="30" y="92" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="30" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="30" y="122" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="45" y="32" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="45" y="47" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="45" y="62" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="45" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="45" y="92" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="45" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="45" y="122" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="60" y="32" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="60" y="47" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="60" y="62" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="60" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="60" y="92" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="60" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="60" y="122" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="75" y="32" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="75" y="47" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="75" y="62" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="75" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="75" y="92" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="75" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="75" y="122" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="90" y="32" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="90" y="47" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="90" y="62" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="90" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="90" y="92" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="90" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="90" y="122" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="105" y="32" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="105" y="47" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="105" y="62" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="105" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="105" y="92" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="105" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="105" y="122" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="120" y="32" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="120" y="47" width="12" height="12" rx="2" fill="#216e39" style="--dark-fill:#39d353" data-day="2026-11-10" aria-label="Tue, 10 Nov 2026"></rect>
+<rect x="120" y="62" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="120" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="120" y="92" width="12" height="12" rx="2" fill="#216e39" style="--dark-fill:#39d353" data-day="2026-11-13" aria-label="Fri, 13 Nov 2026"></rect>
+<rect x="120" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="120" y="122" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="135" y="32" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="135" y="47" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="135" y="62" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="135" y="77" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="135" y="92" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
+<rect x="135" y="107" width="12" height="12" rx="2" fill="#ebedf0" style="--dark-fill:#161b22"></rect>
 </svg>
-<div class="calendar-legend">Less<span class="calendar-swatch" style="width:12px;height:12px;background:#ebedf0"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#9be9a8"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#40c463"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#30a14e"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#216e39"></span>More</div>
+<div class="calendar-legend">Less<span class="calendar-swatch" style="width:12px;height:12px;background:#ebedf0;--dark-fill:#161b22"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#9be9a8;--dark-fill:#0e4429"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#40c463;--dark-fill:#006d32"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#30a14e;--dark-fill:#26a641"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#216e39;--dark-fill:#39d353"></span>More</div>
 <script>
 // The calendar sits in the title block, right below the first row of metadata, before the page is first drawn.
 {
@@ -320,217 +325,8 @@ window.Quarto = {
 <script src="../../../site_libs/shared-68130dad3f0b2523/script.js"></script>
 <!-- Generated by researchsite.pages from the calculation folders; do not edit. -->
 <section id="Calculations" class="level2">
-<h2 class="anchored" data-anchor-id="Calculations">Calculations</h2>
+<h2 class="anchored" data-anchor-id="Calculations">Workflow overview</h2>
 <p>Every calculation of this workflow, grouped as in the diagram. A scan’s runs are on the scan’s page. Select a calculation to open its page.</p>
-<div class="calculations-diagram" data-workflow="2026-10-15_225958/2026-11-10_091800" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;Search1&quot;], [&quot;Search1&quot;, &quot;Path1&quot;], [&quot;Search1&quot;, &quot;Output1&quot;], [&quot;Path1&quot;, &quot;Output2&quot;], [&quot;Path1&quot;, &quot;Fields1&quot;], [&quot;Search1&quot;, &quot;Fields2&quot;], [&quot;Path1&quot;, &quot;Fields3&quot;], [&quot;Fields1&quot;, &quot;Output3&quot;], [&quot;Fields2&quot;, &quot;Output3&quot;], [&quot;Fields3&quot;, &quot;Output3&quot;], [&quot;Output1&quot;, &quot;End1&quot;], [&quot;Output2&quot;, &quot;End1&quot;], [&quot;Output3&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
-config:
-  markdownAutoWrap: false
-  themeVariables:
-    fontSize: 13px
-    primaryColor: '#ffffff'
-    primaryBorderColor: '#adb5bd'
-    primaryTextColor: '#212529'
-    lineColor: '#6c757d'
-    clusterBkg: '#f8f9fa'
-    clusterBorder: '#dee2e6'
-    titleColor: '#212529'
-    edgeLabelBackground: '#ffffff'
-  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
-
-    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
-
-    .nodeLabel math { display: inline math !important; math-style: compact; }
-
-    .nodeLabel .katex-display { display: inline; margin: 0; }
-
-    '
-  theme: base
-  flowchart:
-    useMaxWidth: false
-    defaultRenderer: elk
-    rankSpacing: 24
-    nodeSpacing: 24
-    diagramPadding: 8
-    curve: rounded
-  layout: elk
----
-flowchart TB
-    subgraph Searches["Unconstrained TS search&lt;span class='diagram-info' style='display:none' data-description='UmVsZWFzZSBldmVyeSBjb29yZGluYXRlIGF0IHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIGFuZCByZXF1aXJlIGEgY29udmVyZ2VkIGZpcnN0LW9yZGVyIHNhZGRsZSwgd2hpY2ggdGhlIHBsYW5hciByZXN1bHRzIGNvdWxkIG5vdCBwcm92aWRlLg=='&gt;&lt;/span&gt;"]
-        %% description: Release every coordinate at the sampled maximum of the planar scan and require a converged first-order saddle, which the planar results could not provide.
-        direction TB
-        Search1["&lt;a href='2026-11-10_091801/'&gt;TS search from the scan maximum&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='VGVzdCB3aGV0aGVyIHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIHJlbGF4ZXMgdG8gYSBmaXJzdC1vcmRlciBQTTYtRDMgc2FkZGxlIHdoZW4gbm8gY29vcmRpbmF0ZSBpcyBmcm96ZW4u'&gt;&lt;/span&gt;"]
-    end
-
-    subgraph Paths["Reaction path&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSBjb252ZXJnZWQgc2FkZGxlIGFsb25nICRccG0gcyQgd2l0aG91dCBhIHBsYW5hciByZXN0cmljdGlvbiwgdG8gbGVhcm4gd2hpY2ggbW9sZWN1bGVzIGl0IGNvbm5lY3RzLg=='&gt;&lt;/span&gt;"]
-        %% description: Follow the converged saddle along $\pm s$ without a planar restriction, to learn which molecules it connects.
-        direction TB
-        Path1["&lt;a href='2026-11-10_091802/'&gt;IRC along $$\pm s$$ from the TS&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSByZWFjdGlvbiBwYXRoIGFsb25nICRccG0gcyQgZnJvbSB0aGUgdW5jb25zdHJhaW5lZCBzYWRkbGUsIHdpdGhvdXQgYW55IHBsYW5hcml0eSByZXN0cmljdGlvbiwgYW5kIGZpbmQgd2hpY2ggc3RydWN0dXJlcyBpdCBjb25uZWN0cy4='&gt;&lt;/span&gt;"]
-    end
-
-    subgraph Fields["&lt;span&gt;Electron density $$\rho$$ and ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='Q29tcGFyZSB0aGUgZGVuc2l0eSBhbmQgcG90ZW50aWFsIGF0IHRoZSBzYWRkbGUgYW5kIGJvdGggcGF0aCBlbmRzIG9uIG9uZSBncmlkIGFuZCBwb3RlbnRpYWwgc2NhbGUsIHdpdGhvdXQgcmVvcHRpbWl6aW5nIGF0IHRoZSBoaWdoZXIgbGV2ZWwu'&gt;&lt;/span&gt;"]
-        %% description: Compare the density and potential at the saddle and both path ends on one grid and potential scale, without reoptimizing at the higher level.
-        direction TB
-        Fields1["&lt;a href='2026-11-10_091803/'&gt;Evaluate B3LYP fields at $$s_\mathrm{R}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIHJldmVyc2UgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Un0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
-        Fields2["&lt;a href='2026-11-10_091804/'&gt;Evaluate B3LYP fields at the TS&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIFRTLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
-        Fields3["&lt;a href='2026-11-10_091805/'&gt;Evaluate B3LYP fields at $$s_\mathrm{F}$$&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIGZvcndhcmQgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Rn0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
-    end
-
-    Start1(( ))
-    Input1[/"Sampled maximum of the planar scan&lt;span class='diagram-info' style='display:none' data-description='VGhlIHNhbXBsZWQgbWF4aW11bSBvZiB0aGUgcGxhbmFyIHNjYW4sIHJlYWQgYnkgIlRTIHNlYXJjaCBmcm9tIHRoZSBzY2FuIG1heGltdW0iLg=='&gt;&lt;/span&gt;"/]
-        %% description: The sampled maximum of the planar scan, read by "TS search from the scan maximum".
-    Output1[/"&lt;span&gt;Saddle curvature $$\nu_i$$ and stationarity&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='U2FkZGxlIGN1cnZhdHVyZSAkXG51X2kkIGFuZCBzdGF0aW9uYXJpdHksIGZyb20gIlRTIHNlYXJjaCBmcm9tIHRoZSBzY2FuIG1heGltdW0iLg=='&gt;&lt;/span&gt;"/]
-        %% description: Saddle curvature $\nu_i$ and stationarity, from "TS search from the scan maximum".
-    Output2[/"&lt;span&gt;Unconstrained IRC $$E(s)$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VW5jb25zdHJhaW5lZCBJUkMgJEUocykkLCBmcm9tICJJUkMgYWxvbmcgJFxwbSBzJCBmcm9tIHRoZSBUUyIu'&gt;&lt;/span&gt;"/]
-        %% description: Unconstrained IRC $E(s)$, from "IRC along $\pm s$ from the TS".
-    Output3[/"&lt;span&gt;Density $$\rho$$ and ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='RGVuc2l0eSAkXHJobyQgYW5kIEVTUCAkViQsIGZyb20gIkV2YWx1YXRlIEIzTFlQIGZpZWxkcyBhdCAkc19cbWF0aHJte1J9JCIsICJFdmFsdWF0ZSBCM0xZUCBmaWVsZHMgYXQgdGhlIFRTIiBhbmQgIkV2YWx1YXRlIEIzTFlQIGZpZWxkcyBhdCAkc19cbWF0aHJte0Z9JCIu'&gt;&lt;/span&gt;"/]
-        %% description: Density $\rho$ and ESP $V$, from "Evaluate B3LYP fields at $s_\mathrm{R}$", "Evaluate B3LYP fields at the TS" and "Evaluate B3LYP fields at $s_\mathrm{F}$".
-    End1((( )))
-
-    Start1 --&gt; Input1
-    Input1 --&gt; Search1
-    Search1 --&gt; Path1
-    Search1 --&gt; Output1
-    Path1 --&gt; Output2
-    Path1 --&gt; Fields1
-    Search1 --&gt; Fields2
-    Path1 --&gt; Fields3
-    Fields1 --&gt; Output3
-    Fields2 --&gt; Output3
-    Fields3 --&gt; Output3
-    Output1 --&gt; End1
-    Output2 --&gt; End1
-    Output3 --&gt; End1
-
-    classDef pending stroke:#adb5bd,stroke-width:2px;
-    classDef running stroke:#0d6efd,stroke-width:2px;
-    classDef verification stroke-dasharray:5 5;
-    classDef success stroke:#198754,stroke-width:2px;
-    classDef failed stroke:#dc3545,stroke-width:2px;
-    classDef problems stroke:#e0a800,stroke-width:2px;
-    class Search1,Path1,Fields1,Fields2,Fields3,Input1,Output1,Output2,Output3,Start1,End1 pending;
-    linkStyle 0 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 1 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 2 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 3 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 4 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 5 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 8 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 11 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 12 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-    linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
-</pre></div>
-<script>
-window.requireDefine = window.define;
-window.define = undefined;
-window.restoreRequireDefine = () => {
-  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
-};
-window.addEventListener("load", window.restoreRequireDefine);
-</script>
-<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-2fac4c92b1984ac1/script.js"></script>
-<section id="Unconstrained_TS_search" class="level3">
-<h3 class="anchored" data-anchor-id="Unconstrained_TS_search">Unconstrained TS search</h3>
-<p>Release every coordinate at the sampled maximum of the planar scan and require a converged first-order saddle, which the planar results could not provide.</p>
-<div class="calculations-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Status</th>
-<th>Calculation</th>
-<th>Program</th>
-<th>Job</th>
-<th>Calculation started</th>
-<th>Wall time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-10_091801/">TS search from the scan maximum</a></td>
-<td>Gaussian</td>
-<td>Opt (TS), Freq</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="Reaction_path" class="level3">
-<h3 class="anchored" data-anchor-id="Reaction_path">Reaction path</h3>
-<p>Follow the converged saddle along <span class="math inline">\pm s</span> without a planar restriction, to learn which molecules it connects.</p>
-<div class="calculations-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Status</th>
-<th>Calculation</th>
-<th>Program</th>
-<th>Job</th>
-<th>Calculation started</th>
-<th>Wall time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-10_091802/">IRC along <span class="math inline">\pm s</span> from the TS</a></td>
-<td>Gaussian</td>
-<td>IRC</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="Electron_density_rho_and_ESP_V" class="level3">
-<h3 class="anchored" data-anchor-id="Electron_density_rho_and_ESP_V">Electron density <span class="math inline">\rho</span> and ESP <span class="math inline">V</span></h3>
-<p>Compare the density and potential at the saddle and both path ends on one grid and potential scale, without reoptimizing at the higher level.</p>
-<div class="calculations-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Status</th>
-<th>Calculation</th>
-<th>Program</th>
-<th>Job</th>
-<th>Calculation started</th>
-<th>Wall time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-10_091803/">Evaluate B3LYP fields at <span class="math inline">s_\mathrm{R}</span></a></td>
-<td>Gaussian</td>
-<td>SP</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-10_091804/">Evaluate B3LYP fields at the TS</a></td>
-<td>Gaussian</td>
-<td>SP</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
-<td><a href="2026-11-10_091805/">Evaluate B3LYP fields at <span class="math inline">s_\mathrm{F}</span></a></td>
-<td>Gaussian</td>
-<td>SP</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="diagram-details">
 <div class="diagram-detail" data-calculation="2026-11-10_091801/">
 <div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
@@ -646,7 +442,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
 <td><a href="../2026-10-15_225959/2026-10-15_230000/">Scan planar PM6-D3 carbon exchange from indigo</a></td>
 <td>Gaussian</td>
-<td>Opt (scan); Opt (scan)</td>
+<td><span class="job-icons" title="Relaxed scan of the ground state"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjExIDExIDQ4OSA0ODkiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNzIgMzk0IEMgMTIyIDM5NCAxNDYgMTQ2IDE5NCAxNDYgQyAyNDIgMTQ2IDI3MCAzMjYgMzE4IDMyNiBDIDM2NiAzMjYgMzkyIDExOCA0NDAgMTE4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxN2JlY2YiIHN0cm9rZS13aWR0aD0iNDIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjcyIiBjeT0iMzk0IiByPSI1NiIgZmlsbD0iIzE3YmVjZiIvPgogIDxjaXJjbGUgY3g9IjE5NCIgY3k9IjE0NiIgcj0iNTYiIGZpbGw9IiMxN2JlY2YiLz4KICA8Y2lyY2xlIGN4PSIzMTgiIGN5PSIzMjYiIHI9IjU2IiBmaWxsPSIjMTdiZWNmIi8+CiAgPGNpcmNsZSBjeD0iNDQwIiBjeT0iMTE4IiByPSI1NiIgZmlsbD0iIzE3YmVjZiIvPgo8L3N2Zz4K" alt="scan"></span></td>
 <td>16 Oct 2026, 16:26:07 JST</td>
 <td>0:00:46</td>
 </tr>
@@ -654,7 +450,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
 <td><a href="../2026-10-15_225959/2026-10-16_094538/">Scan planar PM6-D3 carbon exchange from epindolidione</a></td>
 <td>Gaussian</td>
-<td>Opt (scan)</td>
+<td><span class="job-icons" title="Relaxed scan of the ground state"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjExIDExIDQ4OSA0ODkiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNzIgMzk0IEMgMTIyIDM5NCAxNDYgMTQ2IDE5NCAxNDYgQyAyNDIgMTQ2IDI3MCAzMjYgMzE4IDMyNiBDIDM2NiAzMjYgMzkyIDExOCA0NDAgMTE4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxN2JlY2YiIHN0cm9rZS13aWR0aD0iNDIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjcyIiBjeT0iMzk0IiByPSI1NiIgZmlsbD0iIzE3YmVjZiIvPgogIDxjaXJjbGUgY3g9IjE5NCIgY3k9IjE0NiIgcj0iNTYiIGZpbGw9IiMxN2JlY2YiLz4KICA8Y2lyY2xlIGN4PSIzMTgiIGN5PSIzMjYiIHI9IjU2IiBmaWxsPSIjMTdiZWNmIi8+CiAgPGNpcmNsZSBjeD0iNDQwIiBjeT0iMTE4IiByPSI1NiIgZmlsbD0iIzE3YmVjZiIvPgo8L3N2Zz4K" alt="scan"></span></td>
 <td>16 Oct 2026, 09:08:36 JST</td>
 <td>0:00:52</td>
 </tr>
@@ -682,7 +478,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
 <td><a href="../2026-10-15_225959/2026-10-16_105709/">Refine the PM6-D3 saddle within the plane</a></td>
 <td>Gaussian</td>
-<td>Opt (TS), Freq</td>
+<td><span class="job-icons" title="Geometry optimization"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0zIDExIDUxNyA1MTciPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gMzIgNDI2IEMgMTIyIDQyNiAxNTQgMTY2IDI1NiAxNjYgQyAzNTggMTY2IDM5MCA0MjYgNDgwIDQyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDYyNzI4IiBzdHJva2Utd2lkdGg9IjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIxNjYiIHI9IjgyIiBmaWxsPSIjZDYyNzI4Ii8+Cjwvc3ZnPgo=" alt="TS"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYgNiA0OTkgNDk5Ij4KICA8IS0tIERyYXduIGZvciB0aGUgY2FsY3VsYXRpb24gcGFnZXMgaW4gdGhlIHN0eWxlIG9mIEZvbnQgQXdlc29tZSdzIHNvbGlkIGljb25zLiAtLT4KICA8cGF0aCBkPSJNIDQwIDI1NiBDIDY4IDg0IDE0OCA4NCAxODQgMjU2IEMgMjIwIDQyOCAyOTIgNDI4IDMyOCAyNTYgQyAzNjQgODQgNDQ0IDg0IDQ3MiAyNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmN2YwZSIgc3Ryb2tlLXdpZHRoPSI1OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" alt="Freq"></span></td>
 <td>16 Oct 2026, 16:28:35 JST</td>
 <td>0:00:01</td>
 </tr>
@@ -690,7 +486,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
 <td><a href="../2026-10-15_225959/2026-10-16_131402/">Follow the in-plane PM6-D3 IRC along <span class="math inline">\pm s</span></a></td>
 <td>Gaussian</td>
-<td>IRC</td>
+<td><span class="job-icons" title="Reaction path"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjI0IDIwIDQ2MiA0NjIiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjEyNiIgcj0iNjQiIGZpbGw9IiM5NDY3YmQiLz4KICA8cGF0aCBkPSJNIDI1NiAxMjYgQyAxNjggMTM0IDExNCAyNDAgODQgMzY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NDY3YmQiIHN0cm9rZS13aWR0aD0iNTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0gNjQuMCA0NDIuMCBMIDI4LjkgMzE3LjAgTCAxNjUuOCAzNjEuNSBaIiBmaWxsPSIjOTQ2N2JkIi8+CiAgPHBhdGggZD0iTSAyNTYgMTI2IEMgMzQ0IDEzNCAzOTggMjQwIDQyOCAzNjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0NjdiZCIgc3Ryb2tlLXdpZHRoPSI1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTSA0NDguMCA0NDIuMCBMIDM0Ni4yIDM2MS41IEwgNDgzLjEgMzE3LjAgWiIgZmlsbD0iIzk0NjdiZCIvPgo8L3N2Zz4K" alt="IRC"></span></td>
 <td>16 Oct 2026, 16:30:01 JST</td>
 <td>0:01:18</td>
 </tr>
@@ -698,8 +494,8 @@ window.addEventListener("load", window.restoreRequireDefine);
 </table>
 </div>
 </section>
-<section id="Electron_density_rho_and_ESP_V_2" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="Electron_density_rho_and_ESP_V_2">Electron density <span class="math inline">\rho</span> and ESP <span class="math inline">V</span></h3>
+<section id="Electron_density_rho_and_ESP_V" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="Electron_density_rho_and_ESP_V">Electron density <span class="math inline">\rho</span> and ESP <span class="math inline">V</span></h3>
 <p>Compare electron density <span class="math inline">\rho</span> and electrostatic potential <span class="math inline">V</span> at the selected geometries using a common surface and potential scale.</p>
 <div class="calculations-table">
 <table class="caption-top table">
@@ -718,7 +514,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
 <td><a href="../2026-10-15_225959/2026-10-20_115624/">Evaluate B3LYP fields at <span class="math inline">s_\mathrm{R}</span></a></td>
 <td>Gaussian</td>
-<td>SP</td>
+<td><span class="job-icons" title="Single point"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==" alt="SP"></span></td>
 <td>20 Oct 2026, 13:50:23 JST</td>
 <td>0:02:04</td>
 </tr>
@@ -726,7 +522,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
 <td><a href="../2026-10-15_225959/2026-10-20_115625/">Evaluate B3LYP fields at the planar saddle</a></td>
 <td>Gaussian</td>
-<td>SP</td>
+<td><span class="job-icons" title="Single point"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==" alt="SP"></span></td>
 <td>20 Oct 2026, 13:50:23 JST</td>
 <td>0:02:34</td>
 </tr>
@@ -734,7 +530,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="Caveats"></td>
 <td><a href="../2026-10-15_225959/2026-10-20_115626/">Evaluate B3LYP fields at <span class="math inline">s_\mathrm{F}</span></a></td>
 <td>Gaussian</td>
-<td>SP</td>
+<td><span class="job-icons" title="Single point"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==" alt="SP"></span></td>
 <td>20 Oct 2026, 13:50:23 JST</td>
 <td>0:02:12</td>
 </tr>
@@ -780,7 +576,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Rejected"></td>
 <td><a href="../2026-10-20_144850/2026-10-20_144851/">Search for a PM6-D3 TS from perpendicular indigo halves</a></td>
 <td>Gaussian</td>
-<td>Opt (TS), Freq</td>
+<td><span class="job-icons" title="Geometry optimization"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0zIDExIDUxNyA1MTciPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gMzIgNDI2IEMgMTIyIDQyNiAxNTQgMTY2IDI1NiAxNjYgQyAzNTggMTY2IDM5MCA0MjYgNDgwIDQyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDYyNzI4IiBzdHJva2Utd2lkdGg9IjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIxNjYiIHI9IjgyIiBmaWxsPSIjZDYyNzI4Ii8+Cjwvc3ZnPgo=" alt="TS"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYgNiA0OTkgNDk5Ij4KICA8IS0tIERyYXduIGZvciB0aGUgY2FsY3VsYXRpb24gcGFnZXMgaW4gdGhlIHN0eWxlIG9mIEZvbnQgQXdlc29tZSdzIHNvbGlkIGljb25zLiAtLT4KICA8cGF0aCBkPSJNIDQwIDI1NiBDIDY4IDg0IDE0OCA4NCAxODQgMjU2IEMgMjIwIDQyOCAyOTIgNDI4IDMyOCAyNTYgQyAzNjQgODQgNDQ0IDg0IDQ3MiAyNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmN2YwZSIgc3Ryb2tlLXdpZHRoPSI1OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" alt="Freq"></span></td>
 <td>20 Oct 2026, 15:54:00 JST</td>
 <td>0:00:01</td>
 </tr>
@@ -788,7 +584,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZGMzNTQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0xNzUgMTc1YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwbDQ3IDQ3IDQ3LTQ3YzkuNC05LjQgMjQuNi05LjQgMzMuOSAwczkuNCAyNC42IDAgMzMuOWwtNDcgNDcgNDcgNDdjOS40IDkuNCA5LjQgMjQuNiAwIDMzLjlzLTI0LjYgOS40LTMzLjkgMGwtNDctNDctNDcgNDdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwcy05LjQtMjQuNiAwLTMzLjlsNDctNDctNDctNDdjLTkuNC05LjQtOS40LTI0LjYgMC0zMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="Rejected"></td>
 <td><a href="../2026-10-20_144850/2026-10-20_151041/">Search for a PM6-D3 TS from offset parallel indigo halves</a></td>
 <td>Gaussian</td>
-<td>Opt (TS), Freq</td>
+<td><span class="job-icons" title="Geometry optimization"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0zIDExIDUxNyA1MTciPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gMzIgNDI2IEMgMTIyIDQyNiAxNTQgMTY2IDI1NiAxNjYgQyAzNTggMTY2IDM5MCA0MjYgNDgwIDQyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDYyNzI4IiBzdHJva2Utd2lkdGg9IjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIxNjYiIHI9IjgyIiBmaWxsPSIjZDYyNzI4Ii8+Cjwvc3ZnPgo=" alt="TS"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYgNiA0OTkgNDk5Ij4KICA8IS0tIERyYXduIGZvciB0aGUgY2FsY3VsYXRpb24gcGFnZXMgaW4gdGhlIHN0eWxlIG9mIEZvbnQgQXdlc29tZSdzIHNvbGlkIGljb25zLiAtLT4KICA8cGF0aCBkPSJNIDQwIDI1NiBDIDY4IDg0IDE0OCA4NCAxODQgMjU2IEMgMjIwIDQyOCAyOTIgNDI4IDMyOCAyNTYgQyAzNjQgODQgNDQ0IDg0IDQ3MiAyNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmN2YwZSIgc3Ryb2tlLXdpZHRoPSI1OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" alt="Freq"></span></td>
 <td>20 Oct 2026, 15:54:00 JST</td>
 <td>0:00:01</td>
 </tr>
@@ -799,12 +595,227 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <script src="../../../site_libs/shared-68130dad3f0b2523/script.js"></script>
+<section id="Workflow_map" class="level3 step">
+<h3 class="step anchored" data-anchor-id="Workflow_map"><img class="tab-icon" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNTEyZGE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMzg0IDEyOEgyNTZDMjM4LjMzIDEyOCAyMjQgMTEzLjY3IDIyNCA5NlYtMzJDMjI0IC00OS42NyAyMzguMzMgLTY0IDI1NiAtNjRIMzg0QzQwMS42NyAtNjQgNDE2IC00OS42NyA0MTYgLTMyVjk2QzQxNiAxMTMuNjcgNDAxLjY3IDEyOCAzODQgMTI4ek0xOTIgNDE2QzE5MiA0MzMuNjcgMTc3LjY3IDQ0OCAxNjAgNDQ4SDMyQzE0LjMzIDQ0OCAwIDQzMy42NyAwIDQxNlYyODhDMCAyNzAuMzMgMTQuMzMgMjU2IDMyIDI1NkgxMjcuNzJMMjAwLjg4IDEyNy45NkMyMTEuOTggMTQ3LjAyIDIzMi40IDE2MCAyNTYgMTYwSDI1Ni4yOEwxOTIgMjcyLjQ5VjMyMEg0MTZWMzg0SDE5MlY0MTZ6TTYwOCA0NDhINDgwQzQ2Mi4zMyA0NDggNDQ4IDQzMy42NyA0NDggNDE2VjI4OEM0NDggMjcwLjMzIDQ2Mi4zMyAyNTYgNDgwIDI1Nkg2MDhDNjI1LjY3IDI1NiA2NDAgMjcwLjMzMDAwMDAwMDAwMDEgNjQwIDI4OFY0MTZDNjQwIDQzMy42NyA2MjUuNjcgNDQ4IDYwOCA0NDh6Ii8+PC9zdmc+Cg==" alt="" aria-hidden="true">Workflow map</h3>
+<div class="calculations-diagram" data-workflow="2026-10-15_225958/2026-11-10_091800" data-edges="[[&quot;Start1&quot;, &quot;Input1&quot;], [&quot;Input1&quot;, &quot;Search1&quot;], [&quot;Search1&quot;, &quot;Path1&quot;], [&quot;Search1&quot;, &quot;Output1&quot;], [&quot;Path1&quot;, &quot;Output2&quot;], [&quot;Path1&quot;, &quot;Fields1&quot;], [&quot;Search1&quot;, &quot;Fields2&quot;], [&quot;Path1&quot;, &quot;Fields3&quot;], [&quot;Fields1&quot;, &quot;Output3&quot;], [&quot;Fields2&quot;, &quot;Output3&quot;], [&quot;Fields3&quot;, &quot;Output3&quot;], [&quot;Output1&quot;, &quot;End1&quot;], [&quot;Output2&quot;, &quot;End1&quot;], [&quot;Output3&quot;, &quot;End1&quot;]]"><pre class="diagram-source">---
+config:
+  markdownAutoWrap: false
+  themeVariables:
+    fontSize: 13px
+    primaryColor: '#ffffff'
+    primaryBorderColor: '#adb5bd'
+    primaryTextColor: '#212529'
+    lineColor: '#6c757d'
+    clusterBkg: '#f8f9fa'
+    clusterBorder: '#dee2e6'
+    titleColor: '#212529'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: '.nodeLabel, .nodeLabel p { white-space: nowrap !important; }
+
+    .nodeLabel a { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 0.25em; }
+
+    .nodeLabel math { display: inline math !important; math-style: compact; }
+
+    .nodeLabel .katex-display { display: inline; margin: 0; }
+
+    '
+  theme: base
+  flowchart:
+    useMaxWidth: false
+    defaultRenderer: elk
+    rankSpacing: 24
+    nodeSpacing: 24
+    diagramPadding: 8
+    curve: rounded
+  layout: elk
+---
+flowchart TB
+    subgraph Searches["Unconstrained TS search&lt;span class='diagram-info' style='display:none' data-description='UmVsZWFzZSBldmVyeSBjb29yZGluYXRlIGF0IHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIGFuZCByZXF1aXJlIGEgY29udmVyZ2VkIGZpcnN0LW9yZGVyIHNhZGRsZSwgd2hpY2ggdGhlIHBsYW5hciByZXN1bHRzIGNvdWxkIG5vdCBwcm92aWRlLg=='&gt;&lt;/span&gt;"]
+        %% description: Release every coordinate at the sampled maximum of the planar scan and require a converged first-order saddle, which the planar results could not provide.
+        direction TB
+        Search1["&lt;a href='2026-11-10_091801/'&gt;TS search from the scan maximum&lt;/a&gt;&lt;span class='diagram-jobs'&gt;&lt;span class='job-icons' title='Geometry optimization'&gt;&lt;img class='job-icon' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0zIDExIDUxNyA1MTciPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gMzIgNDI2IEMgMTIyIDQyNiAxNTQgMTY2IDI1NiAxNjYgQyAzNTggMTY2IDM5MCA0MjYgNDgwIDQyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDYyNzI4IiBzdHJva2Utd2lkdGg9IjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIxNjYiIHI9IjgyIiBmaWxsPSIjZDYyNzI4Ii8+Cjwvc3ZnPgo=' alt='TS'&gt;&lt;img class='job-icon' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYgNiA0OTkgNDk5Ij4KICA8IS0tIERyYXduIGZvciB0aGUgY2FsY3VsYXRpb24gcGFnZXMgaW4gdGhlIHN0eWxlIG9mIEZvbnQgQXdlc29tZSdzIHNvbGlkIGljb25zLiAtLT4KICA8cGF0aCBkPSJNIDQwIDI1NiBDIDY4IDg0IDE0OCA4NCAxODQgMjU2IEMgMjIwIDQyOCAyOTIgNDI4IDMyOCAyNTYgQyAzNjQgODQgNDQ0IDg0IDQ3MiAyNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmN2YwZSIgc3Ryb2tlLXdpZHRoPSI1OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=' alt='Freq'&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VGVzdCB3aGV0aGVyIHRoZSBzYW1wbGVkIG1heGltdW0gb2YgdGhlIHBsYW5hciBzY2FuIHJlbGF4ZXMgdG8gYSBmaXJzdC1vcmRlciBQTTYtRDMgc2FkZGxlIHdoZW4gbm8gY29vcmRpbmF0ZSBpcyBmcm96ZW4u'&gt;&lt;/span&gt;"]
+    end
+
+    subgraph Paths["Reaction path&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSBjb252ZXJnZWQgc2FkZGxlIGFsb25nICRccG0gcyQgd2l0aG91dCBhIHBsYW5hciByZXN0cmljdGlvbiwgdG8gbGVhcm4gd2hpY2ggbW9sZWN1bGVzIGl0IGNvbm5lY3RzLg=='&gt;&lt;/span&gt;"]
+        %% description: Follow the converged saddle along $\pm s$ without a planar restriction, to learn which molecules it connects.
+        direction TB
+        Path1["&lt;a href='2026-11-10_091802/'&gt;IRC along $$\pm s$$ from the TS&lt;/a&gt;&lt;span class='diagram-jobs'&gt;&lt;span class='job-icons' title='Reaction path'&gt;&lt;img class='job-icon' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjI0IDIwIDQ2MiA0NjIiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjEyNiIgcj0iNjQiIGZpbGw9IiM5NDY3YmQiLz4KICA8cGF0aCBkPSJNIDI1NiAxMjYgQyAxNjggMTM0IDExNCAyNDAgODQgMzY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NDY3YmQiIHN0cm9rZS13aWR0aD0iNTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0gNjQuMCA0NDIuMCBMIDI4LjkgMzE3LjAgTCAxNjUuOCAzNjEuNSBaIiBmaWxsPSIjOTQ2N2JkIi8+CiAgPHBhdGggZD0iTSAyNTYgMTI2IEMgMzQ0IDEzNCAzOTggMjQwIDQyOCAzNjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0NjdiZCIgc3Ryb2tlLXdpZHRoPSI1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTSA0NDguMCA0NDIuMCBMIDM0Ni4yIDM2MS41IEwgNDgzLjEgMzE3LjAgWiIgZmlsbD0iIzk0NjdiZCIvPgo8L3N2Zz4K' alt='IRC'&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='Rm9sbG93IHRoZSByZWFjdGlvbiBwYXRoIGFsb25nICRccG0gcyQgZnJvbSB0aGUgdW5jb25zdHJhaW5lZCBzYWRkbGUsIHdpdGhvdXQgYW55IHBsYW5hcml0eSByZXN0cmljdGlvbiwgYW5kIGZpbmQgd2hpY2ggc3RydWN0dXJlcyBpdCBjb25uZWN0cy4='&gt;&lt;/span&gt;"]
+    end
+
+    subgraph Fields["&lt;span&gt;Electron density $$\rho$$ and ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='Q29tcGFyZSB0aGUgZGVuc2l0eSBhbmQgcG90ZW50aWFsIGF0IHRoZSBzYWRkbGUgYW5kIGJvdGggcGF0aCBlbmRzIG9uIG9uZSBncmlkIGFuZCBwb3RlbnRpYWwgc2NhbGUsIHdpdGhvdXQgcmVvcHRpbWl6aW5nIGF0IHRoZSBoaWdoZXIgbGV2ZWwu'&gt;&lt;/span&gt;"]
+        %% description: Compare the density and potential at the saddle and both path ends on one grid and potential scale, without reoptimizing at the higher level.
+        direction TB
+        Fields1["&lt;a href='2026-11-10_091803/'&gt;Evaluate B3LYP fields at $$s_\mathrm{R}$$&lt;/a&gt;&lt;span class='diagram-jobs'&gt;&lt;span class='job-icons' title='Single point'&gt;&lt;img class='job-icon' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==' alt='SP'&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIHJldmVyc2UgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Un0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
+        Fields2["&lt;a href='2026-11-10_091804/'&gt;Evaluate B3LYP fields at the TS&lt;/a&gt;&lt;span class='diagram-jobs'&gt;&lt;span class='job-icons' title='Single point'&gt;&lt;img class='job-icon' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==' alt='SP'&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIFRTLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
+        Fields3["&lt;a href='2026-11-10_091805/'&gt;Evaluate B3LYP fields at $$s_\mathrm{F}$$&lt;/a&gt;&lt;span class='diagram-jobs'&gt;&lt;span class='job-icons' title='Single point'&gt;&lt;img class='job-icon' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==' alt='SP'&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='RXZhbHVhdGUgQjNMWVAgZWxlY3Ryb24tZGVuc2l0eSBhbmQgZWxlY3Ryb3N0YXRpYy1wb3RlbnRpYWwgZmllbGRzIGF0IHRoZSB1bmNvbnN0cmFpbmVkIGZvcndhcmQgSVJDIGVuZHBvaW50ICRzX1xtYXRocm17Rn0kLCBhdCBpdHMgZml4ZWQgUE02LUQzIGdlb21ldHJ5Lg=='&gt;&lt;/span&gt;"]
+    end
+
+    Start1(( ))
+    Input1[/"Sampled maximum of the planar scan&lt;span class='diagram-info' style='display:none' data-description='VGhlIHNhbXBsZWQgbWF4aW11bSBvZiB0aGUgcGxhbmFyIHNjYW4sIHJlYWQgYnkgIlRTIHNlYXJjaCBmcm9tIHRoZSBzY2FuIG1heGltdW0iLg=='&gt;&lt;/span&gt;"/]
+        %% description: The sampled maximum of the planar scan, read by "TS search from the scan maximum".
+    Output1[/"&lt;span&gt;Saddle curvature $$\nu_i$$ and stationarity&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='U2FkZGxlIGN1cnZhdHVyZSAkXG51X2kkIGFuZCBzdGF0aW9uYXJpdHksIGZyb20gIlRTIHNlYXJjaCBmcm9tIHRoZSBzY2FuIG1heGltdW0iLg=='&gt;&lt;/span&gt;"/]
+        %% description: Saddle curvature $\nu_i$ and stationarity, from "TS search from the scan maximum".
+    Output2[/"&lt;span&gt;Unconstrained IRC $$E(s)$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='VW5jb25zdHJhaW5lZCBJUkMgJEUocykkLCBmcm9tICJJUkMgYWxvbmcgJFxwbSBzJCBmcm9tIHRoZSBUUyIu'&gt;&lt;/span&gt;"/]
+        %% description: Unconstrained IRC $E(s)$, from "IRC along $\pm s$ from the TS".
+    Output3[/"&lt;span&gt;Density $$\rho$$ and ESP $$V$$&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='RGVuc2l0eSAkXHJobyQgYW5kIEVTUCAkViQsIGZyb20gIkV2YWx1YXRlIEIzTFlQIGZpZWxkcyBhdCAkc19cbWF0aHJte1J9JCIsICJFdmFsdWF0ZSBCM0xZUCBmaWVsZHMgYXQgdGhlIFRTIiBhbmQgIkV2YWx1YXRlIEIzTFlQIGZpZWxkcyBhdCAkc19cbWF0aHJte0Z9JCIu'&gt;&lt;/span&gt;"/]
+        %% description: Density $\rho$ and ESP $V$, from "Evaluate B3LYP fields at $s_\mathrm{R}$", "Evaluate B3LYP fields at the TS" and "Evaluate B3LYP fields at $s_\mathrm{F}$".
+    End1((( )))
+
+    Start1 --&gt; Input1
+    Input1 --&gt; Search1
+    Search1 --&gt; Path1
+    Search1 --&gt; Output1
+    Path1 --&gt; Output2
+    Path1 --&gt; Fields1
+    Search1 --&gt; Fields2
+    Path1 --&gt; Fields3
+    Fields1 --&gt; Output3
+    Fields2 --&gt; Output3
+    Fields3 --&gt; Output3
+    Output1 --&gt; End1
+    Output2 --&gt; End1
+    Output3 --&gt; End1
+
+    classDef pending stroke:#adb5bd,stroke-width:2px;
+    classDef running stroke:#0d6efd,stroke-width:2px;
+    classDef verification stroke-dasharray:5 5;
+    classDef success stroke:#198754,stroke-width:2px;
+    classDef failed stroke:#dc3545,stroke-width:2px;
+    classDef problems stroke:#e0a800,stroke-width:2px;
+    class Search1,Path1,Fields1,Fields2,Fields3,Input1,Output1,Output2,Output3,Start1,End1 pending;
+    linkStyle 0 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 1 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 2 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 3 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 4 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 5 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 6 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 7 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 8 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 11 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 12 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+</pre></div>
+<script>
+window.requireDefine = window.define;
+window.define = undefined;
+window.restoreRequireDefine = () => {
+  if ("requireDefine" in window) { window.define = window.requireDefine; delete window.requireDefine; }
+};
+window.addEventListener("load", window.restoreRequireDefine);
+</script>
+<script type="module" async="" onerror="restoreRequireDefine()" src="../../../site_libs/shared-c387799c560a6dc5/script.js"></script>
+</section>
+<section id="Groups" class="level3 step">
+<h3 class="step anchored" data-anchor-id="Groups"><img class="tab-icon" src="../../../site_libs/shared-cdc9245dd1d579e1/tab-groups.svg" alt="" aria-hidden="true">Groups</h3>
+<section id="Unconstrained_TS_search" class="level4 step">
+<h4 class="step anchored" data-anchor-id="Unconstrained_TS_search">Unconstrained TS search</h4>
+<p>Release every coordinate at the sampled maximum of the planar scan and require a converged first-order saddle, which the planar results could not provide.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-10_091801/">TS search from the scan maximum</a></td>
+<td>Gaussian</td>
+<td><span class="job-icons" title="Geometry optimization"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0zIDExIDUxNyA1MTciPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gMzIgNDI2IEMgMTIyIDQyNiAxNTQgMTY2IDI1NiAxNjYgQyAzNTggMTY2IDM5MCA0MjYgNDgwIDQyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDYyNzI4IiBzdHJva2Utd2lkdGg9IjYwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIxNjYiIHI9IjgyIiBmaWxsPSIjZDYyNzI4Ii8+Cjwvc3ZnPgo=" alt="TS"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYgNiA0OTkgNDk5Ij4KICA8IS0tIERyYXduIGZvciB0aGUgY2FsY3VsYXRpb24gcGFnZXMgaW4gdGhlIHN0eWxlIG9mIEZvbnQgQXdlc29tZSdzIHNvbGlkIGljb25zLiAtLT4KICA8cGF0aCBkPSJNIDQwIDI1NiBDIDY4IDg0IDE0OCA4NCAxODQgMjU2IEMgMjIwIDQyOCAyOTIgNDI4IDMyOCAyNTYgQyAzNjQgODQgNDQ0IDg0IDQ3MiAyNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmN2YwZSIgc3Ryb2tlLXdpZHRoPSI1OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" alt="Freq"></span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="Reaction_path" class="level4 step">
+<h4 class="step anchored" data-anchor-id="Reaction_path">Reaction path</h4>
+<p>Follow the converged saddle along <span class="math inline">\pm s</span> without a planar restriction, to learn which molecules it connects.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-10_091802/">IRC along <span class="math inline">\pm s</span> from the TS</a></td>
+<td>Gaussian</td>
+<td><span class="job-icons" title="Reaction path"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjI0IDIwIDQ2MiA0NjIiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjEyNiIgcj0iNjQiIGZpbGw9IiM5NDY3YmQiLz4KICA8cGF0aCBkPSJNIDI1NiAxMjYgQyAxNjggMTM0IDExNCAyNDAgODQgMzY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NDY3YmQiIHN0cm9rZS13aWR0aD0iNTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0gNjQuMCA0NDIuMCBMIDI4LjkgMzE3LjAgTCAxNjUuOCAzNjEuNSBaIiBmaWxsPSIjOTQ2N2JkIi8+CiAgPHBhdGggZD0iTSAyNTYgMTI2IEMgMzQ0IDEzNCAzOTggMjQwIDQyOCAzNjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0NjdiZCIgc3Ryb2tlLXdpZHRoPSI1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTSA0NDguMCA0NDIuMCBMIDM0Ni4yIDM2MS41IEwgNDgzLjEgMzE3LjAgWiIgZmlsbD0iIzk0NjdiZCIvPgo8L3N2Zz4K" alt="IRC"></span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="Electron_density_rho_and_ESP_V_2" class="level4 step">
+<h4 class="step anchored" data-anchor-id="Electron_density_rho_and_ESP_V_2">Electron density <span class="math inline">\rho</span> and ESP <span class="math inline">V</span></h4>
+<p>Compare the density and potential at the saddle and both path ends on one grid and potential scale, without reoptimizing at the higher level.</p>
+<div class="calculations-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Calculation</th>
+<th>Program</th>
+<th>Job</th>
+<th>Calculation started</th>
+<th>Wall time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-10_091803/">Evaluate B3LYP fields at <span class="math inline">s_\mathrm{R}</span></a></td>
+<td>Gaussian</td>
+<td><span class="job-icons" title="Single point"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==" alt="SP"></span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-10_091804/">Evaluate B3LYP fields at the TS</a></td>
+<td>Gaussian</td>
+<td><span class="job-icons" title="Single point"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==" alt="SP"></span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="Prepared"></td>
+<td><a href="2026-11-10_091805/">Evaluate B3LYP fields at <span class="math inline">s_\mathrm{F}</span></a></td>
+<td>Gaussian</td>
+<td><span class="job-icons" title="Single point"><img class="job-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM1IDExIDQ2NCA0NjQiPgogIDwhLS0gRHJhd24gZm9yIHRoZSBjYWxjdWxhdGlvbiBwYWdlcyBpbiB0aGUgc3R5bGUgb2YgRm9udCBBd2Vzb21lJ3Mgc29saWQgaWNvbnMuIC0tPgogIDxwYXRoIGQ9Ik0gNjggNDQgViA0NDQgSCA0NjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmNzdiNCIgc3Ryb2tlLXdpZHRoPSI1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTSA2OCAxODYgSCAxNTIgTSAzMDYgNDQ0IFYgMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZjc3YjQiIHN0cm9rZS13aWR0aD0iNDQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjMwNiIgY3k9IjE4NiIgcj0iOTQiIGZpbGw9IiMxZjc3YjQiLz4KPC9zdmc+Cg==" alt="SP"></span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 </section>
 
 </main>
 <!-- /main column -->
-<script id="quarto-html-after-body" type="application/javascript" src="../../../site_libs/shared-7d5abf28cd7b432e/script.js"></script>
+<script id="quarto-html-after-body" type="application/javascript" src="../../../site_libs/shared-bb2d3452e26ce0c0/script.js"></script>
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
@@ -825,24 +836,9 @@ window.addEventListener("load", window.restoreRequireDefine);
      real heading and appears in the TOC. -->
 <link rel="stylesheet" href="../../../site_libs/shared-9a662a47e7ec3305/style.css">
 <script src="../../../site_libs/shared-314c5aee14b3d045/script.js"></script>
-<script>
-// Hovering a cross-reference to a figure opens Quarto's popover with a copy of the figure. A copied Mol* viewer is an
-// empty canvas, so the popover drops each panel cell holding one, and a row left empty with it: a figure of a viewer
-// and its structure drawing shows the drawing alone.
-if (globalThis.tippy) {
-  globalThis.tippy.setDefaultProps({
-    onShow(instance) {
-      if (!instance.reference.matches("a.quarto-xref")) return;
-      for (const viewer of instance.popper.querySelectorAll(".molstar-notebook-viewer")) {
-        const cell = viewer.closest(".quarto-layout-cell, .cell-output-display") ?? viewer;
-        const row = cell.closest(".quarto-layout-row");
-        cell.remove();
-        if (row && !row.querySelector(".quarto-layout-cell")) row.remove();
-      }
-    },
-  });
-}
-</script>
+<script src="../../../site_libs/shared-cac8879b72efdeaa/script.js"></script>
+<!-- Sections marked .step form Quarto-style tabsets: a calculation page's Input, Output and Run and their sub-tabs, and the groups of the homepage, project and workflow tables. -->
+<script src="../../../site_libs/shared-cbab3fb24348f22d/script.js"></script>
 
 
 
