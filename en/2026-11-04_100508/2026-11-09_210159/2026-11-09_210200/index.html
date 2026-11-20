@@ -71,19 +71,6 @@ if (location.pathname.endsWith("/index.html")) {
 <link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
 <script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
-// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
-// default scales; the browser's context menu is suppressed only over the plot itself.
-document.addEventListener('contextmenu', event => {
-    const plot = event.target.closest?.('.vega-embed');
-    if (!plot || event.target.closest('.vega-actions')) return;
-    event.preventDefault();
-    event.target.dispatchEvent(new MouseEvent('dblclick', {
-        bubbles: true, cancelable: true, composed: true, view: window,
-        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
-    }));
-});
-</script>
-<script>
 // The breadcrumb is written as the first block of the page; show it above the title block.
 document.addEventListener('DOMContentLoaded', () => {
     const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');

@@ -74,19 +74,6 @@ if (location.pathname.endsWith("/index.html")) {
 <link rel="stylesheet" href="../../../site_libs/shared-9d50a60f3f846fa4/style.css">
 <script src="../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
-// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
-// default scales; the browser's context menu is suppressed only over the plot itself.
-document.addEventListener('contextmenu', event => {
-    const plot = event.target.closest?.('.vega-embed');
-    if (!plot || event.target.closest('.vega-actions')) return;
-    event.preventDefault();
-    event.target.dispatchEvent(new MouseEvent('dblclick', {
-        bubbles: true, cancelable: true, composed: true, view: window,
-        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
-    }));
-});
-</script>
-<script>
 // The breadcrumb is written as the first block of the page; show it above the title block.
 document.addEventListener('DOMContentLoaded', () => {
     const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
@@ -246,8 +233,9 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>106 の計算をすべて投入しました。各計算は、必要な計算が終わってから始まります。</li>
-<li>励起のグループは B3LYP と DD-DFT で <span class="math inline">S_0</span> と <span class="math inline">S_1</span> の極小を求めて確かめ、ねじれのグループは二つのねじれを二つの状態でスキャンし、<span class="math inline">S_0</span> でマップします。</li>
+<li><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> 極小は検証済みで、B3LYP の遮蔽は <span class="math inline">\varepsilon_s=2.90</span>、明るい <span class="math inline">S_1</span> はメトキシキレートより <span class="math inline">0.43\,\mathrm{eV}</span> 低い <span class="math inline">2.53\,\mathrm{eV}</span> で吸収し、電荷移動も強くなります。</li>
+<li>緩和 <span class="math inline">S_0</span> スキャンとマップは実行中か待機中で、その垂直励起はスキャンごとに一つのジョブ配列として投入しました。</li>
+<li>緩和 <span class="math inline">S_1</span> スキャンは <span class="math inline">S_1</span> の検証後に始まり、DD-DFT の分岐は取り消して改めて投入を待っています。</li>
 </ul>
 </div>
 </div>
@@ -302,14 +290,14 @@ window.Quarto = {
 <rect x="120" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="120" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="120" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="120" y="92" width="12" height="12" rx="2" fill="#216e39" data-day="2026-11-13" aria-label="2026年11月13日(金)"></rect>
+<rect x="120" y="92" width="12" height="12" rx="2" fill="#9be9a8" data-day="2026-11-13" aria-label="2026年11月13日(金)"></rect>
 <rect x="120" y="107" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="120" y="122" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="135" y="32" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="135" y="47" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="135" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="135" y="77" width="12" height="12" rx="2" fill="#ebedf0"></rect>
-<rect x="135" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
+<rect x="135" y="92" width="12" height="12" rx="2" fill="#216e39" data-day="2026-11-20" aria-label="2026年11月20日(金)"></rect>
 </svg>
 <div class="calendar-legend">少ない<span class="calendar-swatch" style="width:12px;height:12px;background:#ebedf0"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#9be9a8"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#40c463"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#30a14e"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#216e39"></span>多い</div>
 <script>
@@ -325,6 +313,40 @@ window.Quarto = {
 <div class="calendar-day" data-day="2026-11-13">
 <p><span class="calendar-date">2026年11月13日(金)</span></p>
 <p>この日に始まった計算はありません。</p>
+</div>
+<div class="calendar-day" data-day="2026-11-20">
+<p><span class="calendar-date">2026年11月20日(金)</span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>計算</th>
+<th>ジョブ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="2026-11-13_115836/"><span class="math inline">S_0</span> の最適化</a></td>
+<td>Opt</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="2026-11-13_115837/"><span class="math inline">S_0</span> 極小の検証</a></td>
+<td>Freq; Stable</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="2026-11-13_115838/">遮蔽 <span class="math inline">\varepsilon_s</span> の評価</a></td>
+<td>スクリーニング</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
+<td><a href="2026-11-13_115839/">垂直励起 <span class="math inline">S_0\rightarrow S_n</span></a></td>
+<td>SP; SP（TD）; SP</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <script src="../../../site_libs/shared-68130dad3f0b2523/script.js"></script>
@@ -3876,14 +3898,14 @@ flowchart TB
         subgraph TwistB1["&lt;span&gt;$$\mathrm{B}_1$$ まわりのねじれ&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='44OJ44OK44O85YG044Gu44OV44Kn44OL44Or55Kw44KS5qC444Gr5a++44GX44GmICRTXzAkIOOBqCAkU18xJCDjgaflm57jgZfjgIEkU18wJCDjga7jgrnjgq3jg6Pjg7Pjgavmsr/jgaPjgablnoLnm7TlirHotbfjgpLmsYLjgoHjgb7jgZnjgII='&gt;&lt;/span&gt;"]
             %% description: ドナー側のフェニル環を核に対して $S_0$ と $S_1$ で回し、$S_0$ のスキャンに沿って垂直励起を求めます。
             direction TB
-            S0ScanB1["&lt;a href='2026-11-13_115850/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5LqM6Z2i6KeSICREKDYsNyw4LDkpJCDjgafjgYLjgosgJFx0aGV0YV97XG1hdGhybXtCfV8xfSQg44KS44CBJFNfMCQg5qW15bCP44Gn44Gu5YCk44GL44KJIDEwIOW6puWIu+OBv+OBp+WNiuWbnui7ouOBleOBm+OAgee3qeWSjOOBl+OBnyAkU18wJCDjgqjjg43jg6vjgq7jg7wgJEUoXHRoZXRhKSQg44KS44Gf44Gp44KL44CC'&gt;&lt;/span&gt;"]
+            S0ScanB1["&lt;a href='2026-11-13_115850/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5LqM6Z2i6KeSICRcdmFycGhpX3s2LDcsOCw5fSQg44Gn44GC44KLICRcdGhldGFfe1xtYXRocm17Qn1fMX0kIOOCkuOAgSRTXzAkIOalteWwj+OBp+OBruWApOOBi+OCiSAxMCDluqbliLvjgb/jgafljYrlm57ou6LjgZXjgZvjgIHnt6nlkozjgZfjgZ8gJFNfMCQg44Ko44ON44Or44Ku44O8ICRFKFx0aGV0YSkkIOOCkuOBn+OBqeOCi+OAgg=='&gt;&lt;/span&gt;"]
             S0ScanB1Td["&lt;a href='2026-11-13_115851/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;$$\theta_{\mathrm{B}_1}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSAkU18wJCDjgrnjgq3jg6Pjg7Pjga7lkITngrnjgafjgIHngrnjgZTjgajjgavkuIDjgaTjga7oqIjnrpfjgavjgojjgorjgIHlnoLnm7Tjgqjjg43jg6vjgq7jg7wgJFNfMFxyaWdodGFycm93IFNfbiQg44Go5oyv5YuV5a2Q5by35bqm44CB57ep5ZKM44GX44GfICRTXzEkIOWvhuW6puOBrumbu+iNt+OAgSRTXzBccmlnaHRhcnJvdyBTXzEkIOOBriBOVE8g44KS5rGC44KB44CBJFNfMSQg44KSICRTXzAkIOOBqOWQjOOBmCAkXHRoZXRhX3tcbWF0aHJte0J9XzF9JCDjga7kuIrjgavmj4/jgY/jgIIK44GT44KM44KJ44Gu6KiI566X44Gu5pa55rOV44GvIFvjgqLjgrvjg4jjg4vjg4jjg6rjg6vkuK3jga7jgrjjg6Hjg4Hjg6vjgqLjg5/jg47jgq3jg6zjg7zjg4hdKC4uL1JFQURNRS5tZCnjga7jg6/jg7zjgq/jg5Xjg63jg7zjgavjgYLjgorjgb7jgZnjgII='&gt;&lt;/span&gt;"]
             S1ScanB1["&lt;a href='2026-11-13_115852/'&gt;$$\theta_{\mathrm{B}_1}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5qSc6Ki844GX44GfICRTXzEkIOalteWwj+OBi+OCiSAkXHRoZXRhX3tcbWF0aHJte0J9XzF9JCDjgavmsr/jgaPjgabjgIHnt6nlkozjgZfjgZ8gJFNfMSQg44Ko44ON44Or44Ku44O8ICRFKFx0aGV0YSkkIOOCkuOBn+OBqeOCi+OAgiRTXzAkIOOCueOCreODo+ODs+OBruWKsei1t+eKtuaFi+eJiOOBp+OBmeOAgg=='&gt;&lt;/span&gt;"]
         end
         subgraph TwistA["&lt;span&gt;$$\mathrm{A}$$ まわりのねじれ&lt;/span&gt;&lt;span class='diagram-info' style='display:none' data-description='44OJ44OK44O844KS44Gd44Gu44OV44Kn44OL44Or55Kw44Gr5a++44GX44GmICRTXzAkIOOBqCAkU18xJCDjgaflm57jgZfjgIEkU18wJCDjga7jgrnjgq3jg6Pjg7Pjgavmsr/jgaPjgablnoLnm7TlirHotbfjgpLmsYLjgoHjgb7jgZnjgII='&gt;&lt;/span&gt;"]
             %% description: ドナーをそのフェニル環に対して $S_0$ と $S_1$ で回し、$S_0$ のスキャンに沿って垂直励起を求めます。
             direction TB
-            S0ScanA["&lt;a href='2026-11-13_115853/'&gt;$$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5LqM6Z2i6KeSICREKDEsMiw0LDUpJCDjgafjgYLjgosgJFx0aGV0YV9cbWF0aHJte0F9JCDjgpLjgIEkU18wJCDmpbXlsI/jgafjga7lgKTjgYvjgokgMTAg5bqm5Yi744G/44Gn5Y2K5Zue6Lui44GV44Gb44CB57ep5ZKM44GX44GfICRTXzAkIOOCqOODjeODq+OCruODvCAkRShcdGhldGEpJCDjgpLjgZ/jganjgovjgII='&gt;&lt;/span&gt;"]
+            S0ScanA["&lt;a href='2026-11-13_115853/'&gt;$$\theta_\mathrm{A}$$ の緩和 $$S_0$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5LqM6Z2i6KeSICRcdmFycGhpX3sxLDIsNCw1fSQg44Gn44GC44KLICRcdGhldGFfXG1hdGhybXtBfSQg44KS44CBJFNfMCQg5qW15bCP44Gn44Gu5YCk44GL44KJIDEwIOW6puWIu+OBv+OBp+WNiuWbnui7ouOBleOBm+OAgee3qeWSjOOBl+OBnyAkU18wJCDjgqjjg43jg6vjgq7jg7wgJEUoXHRoZXRhKSQg44KS44Gf44Gp44KL44CC'&gt;&lt;/span&gt;"]
             S0ScanATd["&lt;a href='2026-11-13_115854/'&gt;&lt;img src='data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==' class='diagram-scan-icon' width='14' height='14' alt='スキャン'&gt;$$\theta_\mathrm{A}$$ の $$S_0$$ スキャンに沿った垂直励起&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='LSAkU18wJCDjgrnjgq3jg6Pjg7Pjga7lkITngrnjgafjgIHngrnjgZTjgajjgavkuIDjgaTjga7oqIjnrpfjgavjgojjgorjgIHlnoLnm7Tjgqjjg43jg6vjgq7jg7wgJFNfMFxyaWdodGFycm93IFNfbiQg44Go5oyv5YuV5a2Q5by35bqm44CB57ep5ZKM44GX44GfICRTXzEkIOWvhuW6puOBrumbu+iNt+OAgSRTXzBccmlnaHRhcnJvdyBTXzEkIOOBriBOVE8g44KS5rGC44KB44CBJFNfMSQg44KSICRTXzAkIOOBqOWQjOOBmCAkXHRoZXRhX1xtYXRocm17QX0kIOOBruS4iuOBq+aPj+OBj+OAggrjgZPjgozjgonjga7oqIjnrpfjga7mlrnms5Xjga8gW+OCouOCu+ODiOODi+ODiOODquODq+S4reOBruOCuOODoeODgeODq+OCouODn+ODjuOCreODrOODvOODiF0oLi4vUkVBRE1FLm1kKeOBruODr+ODvOOCr+ODleODreODvOOBq+OBguOCiuOBvuOBmeOAgg=='&gt;&lt;/span&gt;"]
             S1ScanA["&lt;a href='2026-11-13_115855/'&gt;$$\theta_\mathrm{A}$$ の緩和 $$S_1$$ スキャン&lt;/a&gt;&lt;span class='diagram-info' style='display:none' data-description='5qSc6Ki844GX44GfICRTXzEkIOalteWwj+OBi+OCiSAkXHRoZXRhX1xtYXRocm17QX0kIOOBq+ayv+OBo+OBpuOAgee3qeWSjOOBl+OBnyAkU18xJCDjgqjjg43jg6vjgq7jg7wgJEUoXHRoZXRhKSQg44KS44Gf44Gp44KL44CCJFNfMCQg44K544Kt44Oj44Oz44Gu5Yqx6LW354q25oWL54mI44Gn44GZ44CC'&gt;&lt;/span&gt;"]
         end
@@ -3949,44 +3971,46 @@ flowchart TB
     classDef success stroke:#198754,stroke-width:2px;
     classDef failed stroke:#dc3545,stroke-width:2px;
     classDef problems stroke:#e0a800,stroke-width:2px;
-    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption,S1Opt,S1Verify,S1Emission,DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputScreening1,OutputExcitations1,OutputGeometries1,OutputTwists1,End1 running;
+    class Start1,Input1,S0Opt,S0Verify,S0Screening,S0Absorption success;
+    class S1Opt,S1Verify,S1Emission,S0ScanB1,S0ScanB1Td,S1ScanB1,S0ScanA,S0ScanATd,S1ScanA,S0Map,S0MapTd,OutputTwists1 running;
+    class DdScreening,DdS0Opt,DdS0Verify,DdRecheck,DdS0Absorption,DdS1Opt,DdS1Verify,OutputScreening1,OutputExcitations1,OutputGeometries1,End1 pending;
     class DdRecheck,DdS0Verify,DdS1Verify,S0Verify,S1Verify verification;
-    linkStyle 0 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 1 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 2 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 3 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 4 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 5 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 0 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 1 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 2 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 3 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 4 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 5 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 6 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 7 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 8 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 9 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 10 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 11 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 12 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 13 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 14 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 15 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 8 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 9 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 10 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 11 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 12 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 13 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 14 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 15 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 16 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 17 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 18 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 18 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 19 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 20 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 21 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 21 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 22 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 23 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 24 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 25 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 26 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 27 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 23 stroke:#198754,color:#198754,stroke-width:2px;
+    linkStyle 24 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 25 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 26 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 27 stroke:#198754,color:#198754,stroke-width:2px;
     linkStyle 28 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 29 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 30 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
-    linkStyle 31 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 29 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 30 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
+    linkStyle 31 stroke:#198754,color:#198754,stroke-width:2px,stroke-dasharray:5 5;
     linkStyle 32 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 33 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 34 stroke:#0d6efd,color:#0d6efd,stroke-width:2px,stroke-dasharray:5 5;
-    linkStyle 35 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
+    linkStyle 33 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 34 stroke:#adb5bd,color:#adb5bd,stroke-width:2px,stroke-dasharray:5 5;
+    linkStyle 35 stroke:#adb5bd,color:#adb5bd,stroke-width:2px;
     linkStyle 36 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 37 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
     linkStyle 38 stroke:#0d6efd,color:#0d6efd,stroke-width:2px;
@@ -4023,20 +4047,20 @@ window.addEventListener("load", window.restoreRequireDefine);
 </thead>
 <tbody>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="2026-11-13_115836/"><span class="math inline">S_0</span> の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 06:18:34 JST</td>
+<td>0:53:20</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="2026-11-13_115837/"><span class="math inline">S_0</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq; Stable</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 07:12:34 JST</td>
+<td>0:23:03</td>
 </tr>
 </tbody>
 </table>
@@ -4059,20 +4083,20 @@ window.addEventListener("load", window.restoreRequireDefine);
 </thead>
 <tbody>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="2026-11-13_115838/">遮蔽 <span class="math inline">\varepsilon_s</span> の評価</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Lotus</td>
+<td>スクリーニング</td>
+<td>2026年11月20日 07:35:42 JST</td>
+<td>0:39:42</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="2026-11-13_115839/">垂直励起 <span class="math inline">S_0\rightarrow S_n</span></a></td>
 <td>Gaussian</td>
 <td>SP; SP（TD）; SP</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 07:35:42 JST</td>
+<td>0:12:19</td>
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
@@ -4119,7 +4143,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 </thead>
 <tbody>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="2026-11-13_115843/"><span class="math inline">\varepsilon_s</span> と重みの収束</a></td>
 <td></td>
 <td></td>
@@ -4127,7 +4151,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td></td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="2026-11-13_115844/">DD-DFT の <span class="math inline">S_0</span> の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
@@ -4135,7 +4159,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td></td>
 </tr>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="2026-11-13_115845/">DD-DFT の <span class="math inline">S_0</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq; Stable</td>
@@ -4143,7 +4167,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td></td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="2026-11-13_115846/">DD-DFT 構造での <span class="math inline">\varepsilon_s</span> の再確認</a></td>
 <td></td>
 <td></td>
@@ -4151,7 +4175,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td></td>
 </tr>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="2026-11-13_115847/">DD-DFT の垂直励起 <span class="math inline">S_0\rightarrow S_n</span></a></td>
 <td>Gaussian</td>
 <td>SP; SP（TD）; SP</td>
@@ -4159,7 +4183,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td></td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="2026-11-13_115848/">DD-DFT の <span class="math inline">S_1</span> の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt（TD）</td>
@@ -4167,7 +4191,7 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td></td>
 </tr>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="2026-11-13_115849/">DD-DFT の <span class="math inline">S_1</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq（TD）</td>
@@ -4308,62 +4332,126 @@ window.addEventListener("load", window.restoreRequireDefine);
 <script src="../../../site_libs/shared-0474cb947d66892a/script.js"></script>
 <div class="diagram-details">
 <div class="diagram-detail" data-calculation="2026-11-13_115836/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ヒント</span>承認
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<ul>
+<li><a href="2026-11-13_115837/">次の計算</a>で検証した <span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> 極小です。</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115837/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ヒント</span>承認
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<ul>
+<li><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> 構造は、波動関数が安定な検証済みの極小です。</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>種類</th>
+<th>メッセージ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 155.134 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
+<td>回転を古典的に扱うと、熱化学に大きな誤差が生じる可能性があります。</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
+<td>39 個の低振動数の自由度を振動として扱うと、熱化学に大きな誤差が生じる可能性があります。</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
+<td>構造最適化が収束しませんでした。</td>
+</tr>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 155.296 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115838/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ヒント</span>承認
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<ul>
+<li><span class="math inline">\mathbf{3}</span> の B3LYP の遮蔽は <span class="math inline">\varepsilon_s=2.90</span> で、自己無撞着な DD-DFT の遮蔽と比べる基準になります。</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115839/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-accepted callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ヒント</span>承認
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<ul>
+<li><span class="math inline">\mathbf{3}</span> の <span class="math inline">S_1</span> は <span class="math inline">2.53\,\mathrm{eV}</span> の明るい <span class="math inline">\mathrm{HOMO}\rightarrow\mathrm{LUMO}</span> の状態で、メトキシキレートより電荷移動が強く、<span class="math inline">S_1</span> の最適化が緩和する状態です。</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>種類</th>
+<th>メッセージ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="警告"></td>
+<td>最大の <span class="math inline">\alpha</span> MO 係数は 155.296 です。これほど大きな係数は基底関数がほぼ線形従属であることを示唆します。</td>
+</tr>
+<tr class="even">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="情報"></td>
+<td>Gaussian は基底関数をルートではなくチェックポイントファイルから読み込みました。</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -4413,13 +4501,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115843/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ノート</span>準備済み
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4428,13 +4516,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115844/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ノート</span>準備済み
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4443,13 +4531,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115845/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ノート</span>準備済み
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4458,13 +4546,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115846/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ノート</span>準備済み
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4473,13 +4561,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115847/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ノート</span>準備済み
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4488,13 +4576,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115848/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ノート</span>準備済み
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4503,13 +4591,13 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 </div>
 <div class="diagram-detail" data-calculation="2026-11-13_115849/">
-<div class="status-ongoing callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="status-prepared callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>進行中
+<span class="screen-reader-only">ノート</span>準備済み
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5920,14 +6008,10 @@ window.addEventListener("load", window.restoreRequireDefine);
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">S_0</span> の極小は虚数振動数がなく波動関数も安定と確かめられ、B3LYP の遮蔽はその計算のとおり <span class="math inline">\varepsilon_s=2.80</span> です。</li>
-<li>垂直吸収は、TD の軌道と NTO を別々のチェックポイントに残すよう準備し直しました。吸収は <span class="math inline">S_1</span> を確かめており、緩和 <span class="math inline">S_1</span> の計算はそれに従います。</li>
-<li><span class="math inline">S_1</span> はその計算のとおりねじれずに検証された平面の極小へ緩和し、<span class="math inline">S_0</span> でメトキシ基を面から回すのに要するのはその計算のとおり最大 <span class="math inline">4.9\,\mathrm{kcal\,mol^{-1}}</span> です。</li>
-<li><span class="math inline">S_0</span> で <span class="math inline">\mathrm{B}_1</span> まわりの供与体の環をコアの面から回すのに要するのは最大 <span class="math inline">7.9\,\mathrm{kcal\,mol^{-1}}</span> で、メトキシ基は平面のままです（その計算）。</li>
-<li>二つの <span class="math inline">S_0</span> スキャンとマップに沿った垂直励起は、点ごとに一つの計算のスキャンとして準備し直し、各計算は TD の軌道と NTO を別々のチェックポイントに残します。緩和 <span class="math inline">S_1</span> スキャンも準備し直しました。</li>
-<li>緩和 <span class="math inline">S_0</span> マップの極大は一つで、二つのねじれがともに垂直なときの <span class="math inline">11.2\,\mathrm{kcal\,mol^{-1}}</span> です。これは個々の障壁の和に近い値です（その計算）。</li>
-<li>垂直吸収、垂直励起のスキャン、二つの緩和 <span class="math inline">S_1</span> スキャン、発光の計算と DD-DFT の分岐を投入しました。</li>
-<li>励起のグループは B3LYP と DD-DFT で <span class="math inline">S_0</span> と <span class="math inline">S_1</span> の極小を求めて確かめ、ねじれのグループは二つのねじれを二つの状態でスキャンし、<span class="math inline">S_0</span> でマップします。</li>
+<li>B3LYP では、<span class="math inline">\mathbf{1}</span> の <span class="math inline">S_1</span> は明るい HOMO から LUMO への状態で、吸収で <span class="math inline">2.96\,\mathrm{eV}</span>、発光で <span class="math inline">2.65\,\mathrm{eV}</span> にあり、ねじれずに検証済みの平面の極小へ緩和します。</li>
+<li><span class="math inline">S_0</span> でメトキシ基を回すのに要するのは最大 <span class="math inline">4.9</span>、<span class="math inline">\mathrm{B}_1</span> まわりに供与体の環を回すのは <span class="math inline">7.9\,\mathrm{kcal\,mol^{-1}}</span> で、マップの唯一の極大 <span class="math inline">11.2\,\mathrm{kcal\,mol^{-1}}</span> はその和に近い値です。</li>
+<li>垂直には、<span class="math inline">\mathrm{B}_1</span> まわりのねじれが <span class="math inline">S_1</span> を暗くし（平面での <span class="math inline">1.28</span> から <span class="math inline">100^\circ</span> で <span class="math inline">f=0.008</span>）、メトキシ基の回転は <span class="math inline">S_1</span> を <span class="math inline">0.18\,\mathrm{eV}</span> 上げても明るさを保ちます。</li>
+<li>DD-DFT では <span class="math inline">S_1</span> が <span class="math inline">0.37\,\mathrm{eV}</span> 高く電荷移動が弱くなります。その <span class="math inline">S_1</span> 極小は検証待ちで、二つの緩和 <span class="math inline">S_1</span> スキャンは実行中です。</li>
 </ul>
 </div>
 </div>
@@ -5995,12 +6079,12 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td>0:17:34</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115814/">垂直励起 <span class="math inline">S_0\rightarrow S_n</span></a></td>
 <td>Gaussian</td>
 <td>SP; SP（TD）; SP</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 02:37:07 JST</td>
+<td>0:11:46</td>
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
@@ -6019,12 +6103,12 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td>0:28:17</td>
 </tr>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115817/"><span class="math inline">S_1</span> 極小での発光</a></td>
 <td>Gaussian</td>
 <td>SP; SP（TD）; SP</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 02:37:06 JST</td>
+<td>0:11:28</td>
 </tr>
 </tbody>
 </table>
@@ -6047,60 +6131,60 @@ window.addEventListener("load", window.restoreRequireDefine);
 </thead>
 <tbody>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115818/"><span class="math inline">\varepsilon_s</span> と重みの収束</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年11月20日 02:37:08 JST</td>
+<td>0:28:06</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115819/">DD-DFT の <span class="math inline">S_0</span> の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 03:05:15 JST</td>
+<td>0:09:32</td>
 </tr>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115820/">DD-DFT の <span class="math inline">S_0</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq; Stable</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 03:14:58 JST</td>
+<td>0:20:51</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115821/">DD-DFT 構造での <span class="math inline">\varepsilon_s</span> の再確認</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Lotus</td>
+<td>自己無撞着スクリーニング</td>
+<td>2026年11月20日 03:35:54 JST</td>
+<td>0:35:31</td>
 </tr>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115822/">DD-DFT の垂直励起 <span class="math inline">S_0\rightarrow S_n</span></a></td>
 <td>Gaussian</td>
 <td>SP; SP（TD）; SP</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 03:37:55 JST</td>
+<td>0:10:49</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZTBhODAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiAzMmMxNC4yIDAgMjcuMyA3LjUgMzQuNSAxOS44bDIxNiAzNjhjNy4zIDEyLjQgNy4zIDI3LjcgLjIgNDAuMVM0ODYuMyA0ODAgNDcyIDQ4MEw0MCA0ODBjLTE0LjMgMC0yNy42LTcuNy0zNC43LTIwLjFzLTctMjcuOCAuMi00MC4xbDIxNi0zNjhDMjI4LjcgMzkuNSAyNDEuOCAzMiAyNTYgMzJ6bTAgMTI4Yy0xMy4zIDAtMjQgMTAuNy0yNCAyNGwwIDExMmMwIDEzLjMgMTAuNyAyNCAyNCAyNHMyNC0xMC43IDI0LTI0bDAtMTEyYzAtMTMuMy0xMC43LTI0LTI0LTI0em0zMiAyMjRhMzIgMzIgMCAxIDAgLTY0IDAgMzIgMzIgMCAxIDAgNjQgMHoiLz48L3N2Zz4=" class="workflow-status img-fluid" alt="留保付き"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115823/">DD-DFT の <span class="math inline">S_1</span> の最適化</a></td>
 <td>Gaussian</td>
 <td>Opt（TD）</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 03:48:51 JST</td>
+<td>2:43:16</td>
 </tr>
 <tr class="odd">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0yMTYgMzM2bDI0IDAgMC02NC0yNCAwYy0xMy4zIDAtMjQtMTAuNy0yNC0yNHMxMC43LTI0IDI0LTI0bDQ4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRsMCA4OCA4IDBjMTMuMyAwIDI0IDEwLjcgMjQgMjRzLTEwLjcgMjQtMjQgMjRsLTgwIDBjLTEzLjMgMC0yNC0xMC43LTI0LTI0czEwLjctMjQgMjQtMjR6bTQwLTIwOGEzMiAzMiAwIDEgMSAwIDY0IDMyIDMyIDAgMSAxIDAtNjR6Ii8+PC9zdmc+Cg==" class="workflow-status img-fluid" alt="準備済み"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115824/">DD-DFT の <span class="math inline">S_1</span> 極小の検証</a></td>
 <td>Gaussian</td>
 <td>Freq（TD）</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 06:32:48 JST</td>
+<td>0:31:02</td>
 </tr>
 </tbody>
 </table>
@@ -6135,19 +6219,19 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td>2:52:19</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115826/" class="scan-title" data-node="S0ScanB1Td"><span class="math inline">\theta_{\mathrm{B}_1}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
 <td>Gaussian</td>
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" class="workflow-status scan-icon img-fluid" alt="Scan"> SP（TD）; SP</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 02:37:19 JST</td>
+<td>2:34:08</td>
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115827/"><span class="math inline">\theta_{\mathrm{B}_1}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
 <td>Gaussian</td>
-<td>Opt（TD）</td>
-<td></td>
+<td>Opt（スキャン, TD）</td>
+<td>2026年11月20日 03:10:47 JST</td>
 <td></td>
 </tr>
 </tbody>
@@ -6179,19 +6263,19 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td>1:10:31</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115829/" class="scan-title" data-node="S0ScanATd"><span class="math inline">\theta_\mathrm{A}</span> の <span class="math inline">S_0</span> スキャンに沿った垂直励起</a></td>
 <td>Gaussian</td>
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" class="workflow-status scan-icon img-fluid" alt="Scan"> SP（TD）; SP</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 03:10:56 JST</td>
+<td>2:34:00</td>
 </tr>
 <tr class="odd">
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115830/"><span class="math inline">\theta_\mathrm{A}</span> の緩和 <span class="math inline">S_1</span> スキャン</a></td>
 <td>Gaussian</td>
-<td>Opt（TD）</td>
-<td></td>
+<td>Opt（スキャン, TD）</td>
+<td>2026年11月20日 03:53:47 JST</td>
 <td></td>
 </tr>
 </tbody>
@@ -6223,12 +6307,12 @@ window.addEventListener("load", window.restoreRequireDefine);
 <td>5:00:51</td>
 </tr>
 <tr class="even">
-<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTk4NzU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTI1NiA1MTJBMjU2IDI1NiAwIDEgMCAyNTYgMGEyNTYgMjU2IDAgMSAwIDAgNTEyek0zNjkgMjA5TDI0MSAzMzdjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwbC02NC02NGMtOS40LTkuNC05LjQtMjQuNiAwLTMzLjlzMjQuNi05LjQgMzMuOSAwbDQ3IDQ3TDMzNSAxNzVjOS40LTkuNCAyNC42LTkuNCAzMy45IDBzOS40IDI0LjYgMCAzMy45eiIvPjwvc3ZnPg==" class="workflow-status img-fluid" alt="承認"></td>
 <td><a href="../2026-11-13_115810/2026-11-13_115832/" class="scan-title" data-node="S0MapTd"><span class="math inline">S_0</span> マップ上の垂直励起</a></td>
 <td>Gaussian</td>
 <td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNmM3NTdkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA1LjEuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZSAoSWNvbnM6IENDIEJZIDQuMCwgRm9udHM6IFNJTCBPRkwgMS4xLCBDb2RlOiBNSVQgTGljZW5zZSkgLS0+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0NDgpIHNjYWxlKDEgLTEpIiBkPSJNMTI4IDk2SDMyQzE0LjMzIDk2IDAgODEuNjcgMCA2NFYtMzJDMCAtNDkuNjcgMTQuMzMgLTY0IDMyIC02NEgxMjhDMTQ1LjY3IC02NCAxNjAgLTQ5LjY3IDE2MCAtMzJWNjRDMTYwIDgxLjY3IDE0NS42NyA5NiAxMjggOTZ6TTEwNCAxNzZIMjk2VjEyOEgzNDRWMTc2SDUzNlYxMjhINTg0VjE4NS41OUM1ODQgMjA2Ljc2MDAwMDAwMDAwMDEgNTY2Ljc3IDIyNCA1NDUuNTkgMjI0SDM0NFYyODhIMzg0QzQwMS42NyAyODggNDE2IDMwMi4zMzAwMDAwMDAwMDAxIDQxNiAzMjBWNDE2QzQxNiA0MzMuNjcgNDAxLjY3IDQ0OCAzODQgNDQ4SDI1NkMyMzguMzMgNDQ4IDIyNCA0MzMuNjcgMjI0IDQxNlYzMjBDMjI0IDMwMi4zMyAyMzguMzMgMjg4IDI1NiAyODhIMjk2VjIyNEg5NC40MUM3My4yMyAyMjQgNTYgMjA2Ljc3IDU2IDE4NS41OVYxMjhIMTA0VjE3NnpNMzY4IDk2SDI3MkMyNTQuMzMgOTYgMjQwIDgxLjY3IDI0MCA2NFYtMzJDMjQwIC00OS42NyAyNTQuMzMgLTY0IDI3MiAtNjRIMzY4QzM4NS42NyAtNjQgNDAwIC00OS42NyA0MDAgLTMyVjY0QzQwMCA4MS42NyAzODUuNjcgOTYgMzY4IDk2ek02MDggOTZINTEyQzQ5NC4zMyA5NiA0ODAgODEuNjcgNDgwIDY0Vi0zMkM0ODAgLTQ5LjY3IDQ5NC4zMyAtNjQgNTEyIC02NEg2MDhDNjI1LjY3IC02NCA2NDAgLTQ5LjY3IDY0MCAtMzJWNjRDNjQwIDgxLjY3IDYyNS42NyA5NiA2MDggOTZ6Ii8+PC9zdmc+Cg==" class="workflow-status scan-icon img-fluid" alt="Scan"> SP（TD）; SP</td>
-<td></td>
-<td></td>
+<td>2026年11月20日 03:59:57 JST</td>
+<td>6:41:54</td>
 </tr>
 </tbody>
 </table>

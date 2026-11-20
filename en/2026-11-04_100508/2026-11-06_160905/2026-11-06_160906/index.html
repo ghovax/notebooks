@@ -71,19 +71,6 @@ if (location.pathname.endsWith("/index.html")) {
 <link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
 <script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
-// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
-// default scales; the browser's context menu is suppressed only over the plot itself.
-document.addEventListener('contextmenu', event => {
-    const plot = event.target.closest?.('.vega-embed');
-    if (!plot || event.target.closest('.vega-actions')) return;
-    event.preventDefault();
-    event.target.dispatchEvent(new MouseEvent('dblclick', {
-        bubbles: true, cancelable: true, composed: true, view: window,
-        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
-    }));
-});
-</script>
-<script>
 // The breadcrumb is written as the first block of the page; show it above the title block.
 document.addEventListener('DOMContentLoaded', () => {
     const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
@@ -235,11 +222,10 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>41 of the 90 starts reached the verified saddle, and the other 49 stopped at the optimizer’s step limit.</li>
+<li>41 of the 90 starts reached the verified saddle; the other 49 stopped at the step limit, which shows where this optimizer stops, not that no path exists.</li>
 <li>Starts with ethene close and face-on reach it most often: 15 of 18 at <span class="math inline">\theta=90^\circ</span> against 8 of 36 coplanar ones, and 20 of 30 at <span class="math inline">r=1.29\,\text{\AA}</span> against 6 of 30 at <span class="math inline">r=2.55\,\text{\AA}</span>.</li>
 <li>Turning the methylene groups toward the closed ring’s twist helps: 13 of 15 starts reach the saddle at <span class="math inline">\tau=45^\circ</span>, against 3 of 15 at <span class="math inline">\tau=-45^\circ</span> and 4 of 15 at <span class="math inline">\tau=90^\circ</span>.</li>
 <li>The unrestricted UB3LYP starts reach it in 3 of 18 cases, the closed-shell B3LYP ones in 38 of 72.</li>
-<li>A start that stops at the step limit shows where this optimizer stops, not that the surface has no path to the saddle.</li>
 </ul>
 </div>
 </div>

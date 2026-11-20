@@ -242,7 +242,7 @@ window.Quarto = {
 <rect x="135" y="47" width="12" height="12" rx="2" fill="#9be9a8" data-day="2026-11-17" aria-label="2026年11月17日(火)"></rect>
 <rect x="135" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="135" y="77" width="12" height="12" rx="2" fill="#9be9a8" data-day="2026-11-19" aria-label="2026年11月19日(木)"></rect>
-<rect x="135" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
+<rect x="135" y="92" width="12" height="12" rx="2" fill="#216e39" data-day="2026-11-20" aria-label="2026年11月20日(金)"></rect>
 </svg>
 <div class="calendar-legend">少ない<span class="calendar-swatch" style="width:12px;height:12px;background:#ebedf0"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#9be9a8"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#40c463"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#30a14e"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#216e39"></span>多い</div>
 <script>
@@ -395,7 +395,10 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>どちらの分子でも、PM6 のプロトン移動の経路と両方の端点の極小は検証されており、B3LYP の場は完成しています。</p>
+<ul>
+<li>どちらの分子でも、PM6 のプロトン移動の鞍点、その IRC、両方の端点の極小は検証しました。</li>
+<li>鞍点と両端での B3LYP の密度と ESP の場は完成しています。</li>
+</ul>
 </div>
 </div>
 <section id="両方の骨格での_N-H_から_O-H_へのプロトン移動" class="level3 unlisted">
@@ -436,7 +439,8 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>平面上のつながりは確立されましたが、全空間での一次の鞍点もねじれの経路も見つかっていません。</li>
+<li>平面の停留点の鞍点とその面内の IRC が、炭素の交換でインディゴとエピンドリジオンをつなぎます。</li>
+<li>その鞍点は面外に負の曲率を持ち、全空間での一次の鞍点もねじれの経路も見つかっていません。</li>
 </ul>
 </div>
 </div>
@@ -618,8 +622,9 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>二つのキレートの極小、ねじれのスキャン、ねじれのマップを投入しました。</li>
-<li>メトキシキレートの <span class="math inline">S_0</span> と <span class="math inline">S_1</span> の極小は検証され、その <span class="math inline">S_1</span> の計算のとおり <span class="math inline">S_1</span> はねじれずに緩和し、基底状態のねじれのスキャンとマップは終わりました。</li>
+<li>メトキシキレート <span class="math inline">\mathbf{1}</span> では <span class="math inline">S_1</span> は平面のまま緩和し、<span class="math inline">\mathrm{B}_1</span> まわりの供与体の環のねじれは <span class="math inline">S_1</span> を暗くしますが、メトキシ基の回転は暗くしません。</li>
+<li>DD-DFT は <span class="math inline">\mathbf{1}</span> の <span class="math inline">S_1</span> を B3LYP より <span class="math inline">0.37\,\mathrm{eV}</span> 高くし、電荷移動を弱めます。</li>
+<li>ジメチルアミノキレート <span class="math inline">\mathbf{3}</span> の <span class="math inline">S_0</span> 極小は検証済みで、その励起、スキャン、マップは実行中か待機中です。</li>
 </ul>
 </div>
 </div>
@@ -661,11 +666,10 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>オフセットした平面の鞍点は、虚振動 <span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span> を一つ持ち、閉殻の波動関数は安定で、形成中の C–C 結合は <span class="math inline">2.2675\,\text{\AA}</span> に収束しました。</li>
-<li>その IRC の分枝は <span class="math inline">\pm s</span> に沿って進み、フラグメントが分離した端は鞍点より <span class="math inline">76.6\,\mathrm{kJ\,mol^{-1}}</span> 低く、環が閉じた端は <span class="math inline">246.0\,\mathrm{kJ\,mol^{-1}}</span> 低くなりました。</li>
-<li>どちらの端点も検証した極小ではありません。逆向きの端点は虚振動を一つ持つボート形のシクロヘキセンで、反応物の最適化は 100 ステップの上限で止まりました。</li>
-<li>同一平面の初期推定のワークフローは却下されました。鞍点ではなく、閉じたシクロヘキセン状の環に緩和したためです。</li>
-<li>TS の結果マップは、90 個の初期構造のうち 41 個から鞍点に達しました。同一平面の初期構造は、メチレン基を閉環した構造のねじれに向けて回転させたときにだけ鞍点に達します。</li>
+<li>オフセットした平面の鞍点は、虚振動 <span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span> を一つ持ち、形成中の C–C 結合 <span class="math inline">2.2675\,\text{\AA}</span>、安定な閉殻の波動関数で収束しました。</li>
+<li>その IRC は、フラグメントが離れた端で鞍点より <span class="math inline">76.6\,\mathrm{kJ\,mol^{-1}}</span>、環が閉じた端で <span class="math inline">246.0\,\mathrm{kJ\,mol^{-1}}</span> 低く終わりますが、どちらの端も検証した極小ではありません。</li>
+<li>同一平面の初期推定のワークフローは却下しました。鞍点ではなく、閉じたシクロヘキセン状の環に緩和したためです。</li>
+<li>TS の結果マップは 90 の初期構造のうち 41 から鞍点に達し、同一平面のものはメチレン基を閉じた環のねじれの向きに回したときだけ達しました。</li>
 </ul>
 </div>
 </div>
@@ -1404,6 +1408,25 @@ window.Quarto = {
 </div>
 <div class="calendar-day" data-day="2026-11-19">
 <p><span class="calendar-date">2026年11月19日(木)</span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>状態</th>
+<th>プロジェクト</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="進行中"></td>
+<td><a href="2026-11-13_115809/">ジフルオロボロン色素のねじれと電荷移動</a></td>
+<td>アセトニトリル中で B3LYP により <span class="math inline">S_0</span> と <span class="math inline">S_1</span> の緩和を求め、色素の TICT を調べます。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="calendar-day" data-day="2026-11-20">
+<p><span class="calendar-date">2026年11月20日(金)</span></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">

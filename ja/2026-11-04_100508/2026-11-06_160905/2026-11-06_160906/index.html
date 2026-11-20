@@ -70,19 +70,6 @@ if (location.pathname.endsWith("/index.html")) {
 <link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
 <script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
-// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
-// default scales; the browser's context menu is suppressed only over the plot itself.
-document.addEventListener('contextmenu', event => {
-    const plot = event.target.closest?.('.vega-embed');
-    if (!plot || event.target.closest('.vega-actions')) return;
-    event.preventDefault();
-    event.target.dispatchEvent(new MouseEvent('dblclick', {
-        bubbles: true, cancelable: true, composed: true, view: window,
-        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
-    }));
-});
-</script>
-<script>
 // The breadcrumb is written as the first block of the page; show it above the title block.
 document.addEventListener('DOMContentLoaded', () => {
     const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
@@ -234,11 +221,10 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>90 の初期構造のうち 41 が検証した鞍点に達し、残りの 49 は最適化のステップ上限で止まりました。</li>
+<li>90 の初期構造のうち 41 が検証した鞍点に達し、残りの 49 はステップ上限で止まりました。これはこの最適化が止まる場所を示すだけで、経路がないことは示しません。</li>
 <li>エテンが近く正面から向かう初期構造ほどよく達します。<span class="math inline">\theta=90^\circ</span> では 18 のうち 15、同一平面では 36 のうち 8 で、<span class="math inline">r=1.29\,\text{\AA}</span> では 30 のうち 20、<span class="math inline">r=2.55\,\text{\AA}</span> では 30 のうち 6 です。</li>
-<li>メチレン基を閉じた環のねじれの向きに回すと達しやすくなります。<span class="math inline">\tau=45^\circ</span> では 15 のうち 13 が鞍点に達し、<span class="math inline">\tau=-45^\circ</span> では 15 のうち 3、<span class="math inline">\tau=90^\circ</span> では 15 のうち 4 です。</li>
+<li>メチレン基を閉じた環のねじれの向きに回すと達しやすくなります。<span class="math inline">\tau=45^\circ</span> では 15 のうち 13、<span class="math inline">\tau=-45^\circ</span> では 15 のうち 3、<span class="math inline">\tau=90^\circ</span> では 15 のうち 4 です。</li>
 <li>非制限の UB3LYP の初期構造は 18 のうち 3、閉殻の B3LYP は 72 のうち 38 で達しています。</li>
-<li>ステップ上限で止まった初期構造は、この最適化がどこで止まるかを示すだけで、ポテンシャル面に鞍点への道がないことは示しません。</li>
 </ul>
 </div>
 </div>

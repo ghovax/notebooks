@@ -73,19 +73,6 @@ if (location.pathname.endsWith("/index.html")) {
 <link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
 <script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
-// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
-// default scales; the browser's context menu is suppressed only over the plot itself.
-document.addEventListener('contextmenu', event => {
-    const plot = event.target.closest?.('.vega-embed');
-    if (!plot || event.target.closest('.vega-actions')) return;
-    event.preventDefault();
-    event.target.dispatchEvent(new MouseEvent('dblclick', {
-        bubbles: true, cancelable: true, composed: true, view: window,
-        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
-    }));
-});
-</script>
-<script>
 // The breadcrumb is written as the first block of the page; show it above the title block.
 document.addEventListener('DOMContentLoaded', () => {
     const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
@@ -362,9 +349,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <ul>
 <li>拘束のない TS で、固定した PM6-D3 構造について B3LYP の電子密度と静電ポテンシャルの場を評価する。</li>
 </ul>
-<div id="7b3e0d51" class="cell" data-execution_count="2">
+<div id="3140f6cd" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../site_libs/shared-6465ec68f7e7b952/data.js"></script><script src="../../../../site_libs/shared-1ffaf0b8780fe478/data.js"></script>
+<script src="../../../../site_libs/shared-6465ec68f7e7b952/data.js"></script><script src="../../../../site_libs/shared-66ea15957211b4f6/data.js"></script>
 </div>
 </div>
 </section>

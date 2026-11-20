@@ -74,19 +74,6 @@ if (location.pathname.endsWith("/index.html")) {
 <link rel="stylesheet" href="../../../../site_libs/shared-9d50a60f3f846fa4/style.css">
 <script src="../../../../site_libs/shared-4e701643edb40133/script.js"></script>
 <script>
-// Right-clicking a chart acts as a double-click, which resets a zoomed or panned view to its
-// default scales; the browser's context menu is suppressed only over the plot itself.
-document.addEventListener('contextmenu', event => {
-    const plot = event.target.closest?.('.vega-embed');
-    if (!plot || event.target.closest('.vega-actions')) return;
-    event.preventDefault();
-    event.target.dispatchEvent(new MouseEvent('dblclick', {
-        bubbles: true, cancelable: true, composed: true, view: window,
-        clientX: event.clientX, clientY: event.clientY, screenX: event.screenX, screenY: event.screenY,
-    }));
-});
-</script>
-<script>
 // The breadcrumb is written as the first block of the page; show it above the title block.
 document.addEventListener('DOMContentLoaded', () => {
     const crumbs = document.querySelector('.header-breadcrumb'), title = document.getElementById('title-block-header');
@@ -294,9 +281,9 @@ window.addEventListener("load", window.restoreRequireDefine);
 <ul>
 <li>Confirm, before the outcome map is read, that each of the 90 starts carries the outcome its log supports: a forming saddle matches the <a href="../../2026-11-04_100509/2026-11-04_100510/">verified saddle</a> in energy and forming-bond length, and a non-converged start stopped at the optimizer’s step limit.</li>
 </ul>
-<div id="06b3a4dc" class="cell" data-execution_count="2">
+<div id="d6eae5c5" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
-<script src="../../../../site_libs/shared-e2bef11296775b56/data.js"></script><script src="../../../../site_libs/shared-c26886879a028c4c/data.js"></script>
+<script src="../../../../site_libs/shared-e2bef11296775b56/data.js"></script><script src="../../../../site_libs/shared-f3017fc9272df5cc/data.js"></script>
 </div>
 </div>
 </section>

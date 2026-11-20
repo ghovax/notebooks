@@ -243,7 +243,7 @@ window.Quarto = {
 <rect x="135" y="47" width="12" height="12" rx="2" fill="#9be9a8" data-day="2026-11-17" aria-label="Tue, 17 Nov 2026"></rect>
 <rect x="135" y="62" width="12" height="12" rx="2" fill="#ebedf0"></rect>
 <rect x="135" y="77" width="12" height="12" rx="2" fill="#9be9a8" data-day="2026-11-19" aria-label="Thu, 19 Nov 2026"></rect>
-<rect x="135" y="92" width="12" height="12" rx="2" fill="#ebedf0"></rect>
+<rect x="135" y="92" width="12" height="12" rx="2" fill="#216e39" data-day="2026-11-20" aria-label="Fri, 20 Nov 2026"></rect>
 </svg>
 <div class="calendar-legend">Less<span class="calendar-swatch" style="width:12px;height:12px;background:#ebedf0"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#9be9a8"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#40c463"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#30a14e"></span><span class="calendar-swatch" style="width:12px;height:12px;background:#216e39"></span>More</div>
 <script>
@@ -396,7 +396,10 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For both molecules, the PM6 proton-transfer path and both endpoint minima are verified, and the B3LYP fields are complete.</p>
+<ul>
+<li>For both molecules, the PM6 proton-transfer saddle, its IRC and both endpoint minima are verified.</li>
+<li>The B3LYP density and ESP fields at the saddle and both ends are complete.</li>
+</ul>
 </div>
 </div>
 <section id="N-H_to_O-H_proton_transfer_in_both_frameworks" class="level3 unlisted">
@@ -436,7 +439,10 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The planar connection is established, but no full-space first-order saddle or torsional pathway has been found.</p>
+<ul>
+<li>A stationary planar saddle and its in-plane IRC connect indigo and epindolidione by carbon exchange.</li>
+<li>That saddle curves down out of plane, and no full-space first-order saddle or torsional pathway has been found.</li>
+</ul>
 </div>
 </div>
 <section id="In-plane_carbon_exchange" class="level3 unlisted">
@@ -617,8 +623,9 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The minima, twist scans and torsion maps of both chelates are submitted.</li>
-<li>The methoxy chelate’s <span class="math inline">S_0</span> and <span class="math inline">S_1</span> minima are verified: <span class="math inline">S_1</span> relaxes without twisting, as its <span class="math inline">S_1</span> run reports, and its ground-state twist scans and map are finished.</li>
+<li>In the methoxy chelate <span class="math inline">\mathbf{1}</span>, <span class="math inline">S_1</span> relaxes planar, and twisting the donor ring about <span class="math inline">\mathrm{B}_1</span> darkens it while turning the methoxy group does not.</li>
+<li>DD-DFT places <span class="math inline">S_1</span> of <span class="math inline">\mathbf{1}</span> <span class="math inline">0.37\,\mathrm{eV}</span> above B3LYP, with less charge transfer.</li>
+<li>The dimethylamino chelate <span class="math inline">\mathbf{3}</span> has a verified <span class="math inline">S_0</span> minimum; its excitations, scans and maps are running or queued.</li>
 </ul>
 </div>
 </div>
@@ -660,11 +667,10 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The offset-plane saddle converged with one imaginary mode at <span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span> and a stable closed-shell wavefunction, with forming C–C bonds of <span class="math inline">2.2675\,\text{\AA}</span>.</li>
-<li>Its IRC branches ran along <span class="math inline">\pm s</span>, ending <span class="math inline">76.6\,\mathrm{kJ\,mol^{-1}}</span> below the saddle with the fragments separated and <span class="math inline">246.0\,\mathrm{kJ\,mol^{-1}}</span> below it with the ring closed.</li>
-<li>Neither endpoint is a verified minimum: the reverse terminus is a boat-shaped cyclohexene with one imaginary mode, and the reactant optimization stopped at its 100-step limit.</li>
+<li>The offset-plane saddle converged with one imaginary mode at <span class="math inline">530.1194i\,\mathrm{cm}^{-1}</span>, forming C–C bonds of <span class="math inline">2.2675\,\text{\AA}</span> and a stable closed-shell wavefunction.</li>
+<li>Its IRC ends <span class="math inline">76.6\,\mathrm{kJ\,mol^{-1}}</span> below the saddle with the fragments apart and <span class="math inline">246.0\,\mathrm{kJ\,mol^{-1}}</span> below it with the ring closed, but neither end is a verified minimum.</li>
 <li>The coplanar-guess workflow is rejected: it relaxed to a closed cyclohexene-like ring instead of the saddle.</li>
-<li>The TS outcome map reached the saddle from 41 of its 90 starts; coplanar starts reach it only when the methylene groups are rotated toward the closed ring’s twist.</li>
+<li>The TS outcome map reached the saddle from 41 of its 90 starts, coplanar ones only with the methylene groups turned toward the closed ring’s twist.</li>
 </ul>
 </div>
 </div>
@@ -1403,6 +1409,25 @@ window.Quarto = {
 </div>
 <div class="calendar-day" data-day="2026-11-19">
 <p><span class="calendar-date">Thu, 19 Nov 2026</span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Project</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMGQ2ZWZkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgRnJlZSA2LjYuMCBieSBAZm9udGF3ZXNvbWUgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbSBMaWNlbnNlIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20vbGljZW5zZS9mcmVlIChJY29uczogQ0MgQlkgNC4wLCBGb250czogU0lMIE9GTCAxLjEsIENvZGU6IE1JVCBMaWNlbnNlKSBDb3B5cmlnaHQgMjAyNCBGb250aWNvbnMsIEluYy4gLS0+PHBhdGggZD0iTTMyIDBDMTQuMyAwIDAgMTQuMyAwIDMyUzE0LjMgNjQgMzIgNjRsMCAxMWMwIDQyLjQgMTYuOSA4My4xIDQ2LjkgMTEzLjFMMTQ2LjcgMjU2IDc4LjkgMzIzLjlDNDguOSAzNTMuOSAzMiAzOTQuNiAzMiA0MzdsMCAxMWMtMTcuNyAwLTMyIDE0LjMtMzIgMzJzMTQuMyAzMiAzMiAzMmwzMiAwIDI1NiAwIDMyIDBjMTcuNyAwIDMyLTE0LjMgMzItMzJzLTE0LjMtMzItMzItMzJsMC0xMWMwLTQyLjQtMTYuOS04My4xLTQ2LjktMTEzLjFMMjM3LjMgMjU2bDY3LjktNjcuOWMzMC0zMCA0Ni45LTcwLjcgNDYuOS0xMTMuMWwwLTExYzE3LjcgMCAzMi0xNC4zIDMyLTMycy0xNC4zLTMyLTMyLTMyTDMyMCAwIDY0IDAgMzIgMHpNOTYgNzVsMC0xMSAxOTIgMCAwIDExYzAgMTktNS42IDM3LjQtMTYgNTNMMTEyIDEyOGMtMTAuMy0xNS42LTE2LTM0LTE2LTUzem0xNiAzMDljMy41LTUuMyA3LjYtMTAuMyAxMi4xLTE0LjlMMTkyIDMwMS4zbDY3LjkgNjcuOWM0LjYgNC42IDguNiA5LjYgMTIuMSAxNC45TDExMiAzODR6Ii8+PC9zdmc+" class="workflow-status img-fluid" alt="Ongoing"></td>
+<td><a href="2026-11-13_115809/">Twisting and charge transfer in the difluoroboron dyes</a></td>
+<td>Tests the dyes for TICT through <span class="math inline">S_0</span> and <span class="math inline">S_1</span> relaxation with B3LYP in acetonitrile.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="calendar-day" data-day="2026-11-20">
+<p><span class="calendar-date">Fri, 20 Nov 2026</span></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
