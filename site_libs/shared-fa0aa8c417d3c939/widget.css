@@ -130,11 +130,12 @@
 .molstar-notebook-viewer .msp-traj-controls > [title="Next Model"], .molstar-notebook-viewer .msp-traj-controls > [title="Next Frame"] {order:6;}
 .molstar-notebook-viewer .msp-traj-controls .msp-slider {order:7; margin:0; box-shadow:inset 1px 0 0 rgba(51,43,31,0.14);}
 /* The handle, 18 px wide with a 2 px ring in the bar's colour, centres on the 4 px rail and on its ends, so insets of half
-   its width plus 8 px keep it 8 px from the separator at the first frame and 8 px from the counter at the last. The
-   counter's words start at its left, so that gap does not vary with the frame shown. */
+   its width plus 8 px on both sides keep it 8 px from the separator at the first frame and 8 px from whatever follows at
+   the last, the counter or the bar's end when there is none. The counter's words start at its left, so that gap does not
+   vary with the frame shown. */
 .molstar-notebook-viewer .msp-traj-controls .msp-slider-base-handle {width:18px; height:18px; margin:-7px 0 0 -9px; border-width:2px;}
-.molstar-notebook-viewer .msp-traj-controls .msp-slider > div:first-child {left:17px !important; right:9px !important;}
-.molstar-notebook-viewer .msp-traj-controls .molstar-frame-label {order:8; margin:0 !important; padding:0 12px 0 8px; justify-items:start;}
+.molstar-notebook-viewer .msp-traj-controls .msp-slider > div:first-child {left:17px !important; right:17px !important;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-frame-label {order:8; margin:0 !important; padding:0 12px 0 0; justify-items:start;}
 .molstar-notebook-viewer .msp-traj-controls .molstar-frame-choices {order:9 !important; margin-left:0;}
 .molstar-notebook-viewer .msp-traj-controls > .msp-btn-icon, .molstar-notebook-viewer .msp-traj-controls .molstar-frame-controls > .msp-btn-icon,
 .molstar-notebook-viewer .msp-state-snapshot-viewport-controls > .msp-btn-icon {box-sizing:border-box; flex:none; width:32px; height:32px; margin:0; padding:0; border:0;}
@@ -227,58 +228,3 @@
 :is(.molstar-notebook-viewer, [class^="molstarview-"], [class*=" molstarview-"]) .katex :is(.boldsymbol, .mathboldsf) {
   font-family: KaTeX_SansSerif, sans-serif; font-weight: bold; font-style: italic;
 }
-/* A molecule with its symmetry elements, below a dropdown of representations (static/symmetry.js). The colours
-   --molstarview-symmetric, --molstarview-antisymmetric and --molstarview-neither are set by the script from
-   data/symmetry.yaml; the legend takes viewer.css's copy of the pages' Altair legends. */
-.molstarview-symmetry { margin: 0.5rem 0; }
-/* The control takes the width the script measures for its widest entry, never more than the column. */
-.molstarview-symmetry-control { width: fit-content; max-width: 100%; margin: 0 0 0.75rem; text-align: left; }
-/* The label of a quantity, bold as a table's header, its math upright in weight as theirs is. */
-.molstarview-symmetry-label { margin-bottom: 0.25rem; font-weight: 700; }
-.molstarview-symmetry-label .katex { font-weight: normal; }
-.molstarview-symmetry-select { position: relative; }
-.molstarview-symmetry-select > button { display: block; max-width: 100%; min-height: 2rem; padding-right: 2.25rem; text-align: left;
-    white-space: nowrap; user-select: none; }
-.molstarview-symmetry-select > button:focus:not(:focus-visible) { box-shadow: none; transition: none; }
-.molstarview-symmetry-select .dropdown-menu {
-    position: absolute; top: 100%; left: 0; min-width: 100%; max-height: 16rem; overflow-y: auto; margin-top: 0.125rem;
-    font-size: 0.875rem; z-index: 1050;
-}
-.molstarview-symmetry-select .dropdown-item { white-space: nowrap; user-select: none; }
-.molstarview-symmetry-select .dropdown-item:focus { outline: none; }
-.molstarview-symmetry-current { opacity: 0.55; }
-/* The labels scale with the drawing, as its canvas does, so they keep the room the drawing left them at any width. */
-.molstarview-symmetry-drawing {
-    position: relative; width: min(100%, 340px); aspect-ratio: 1; margin: 0 auto; container-type: inline-size;
-}
-.molstarview-symmetry-drawing svg { display: block; width: 100%; height: 100%; }
-.molstarview-symmetry-drawing .sym { color: var(--molstarview-neither); }
-/* A wide transparent copy of each element's stroke catches the pointer for the tooltip. */
-.molstarview-symmetry-hit { stroke: transparent; stroke-width: 12px; fill: none; pointer-events: stroke; cursor: default; }
-.molstarview-symmetry-tag {
-    position: absolute; transform: translate(-50%, -50%); font-size: 4.5cqw; white-space: nowrap;
-    color: var(--molstarview-neither);
-}
-/* The table of characters takes the pages' Bootstrap table style, as wide as its content. */
-.molstarview-symmetry-characters { width: auto; margin: 1rem auto 0; }
-/* Displayed apart, the table is a part of the figure of its own, under its own caption. */
-.molstarview-symmetry-apart .molstarview-symmetry-characters { margin-top: 0; }
-/* Cells start at the left, as the pages' tables' do, not centred by the figure around them. */
-.molstarview-symmetry-characters :is(th, td) { text-align: left; padding-left: 0.6rem; padding-right: 0.6rem; }
-.molstarview-symmetry-characters td { white-space: nowrap; }
-/* The icon of what the character makes of a class, at the text's height. */
-.molstarview-symmetry-icon { width: 1em; height: 0.85em; vertical-align: -0.05em; }
-.molstarview-symmetry-legend { display: flex; flex-direction: column; align-items: center; margin-top: 0.5rem; }
-.molstarview-symmetry-legend .molstarview-depiction-legend { margin-top: 0; }
-/* The tooltip copies vega-tooltip's light theme as the pages' Altair charts show it, in their system-ui at 14px. */
-.molstarview-symmetry-tooltip {
-    visibility: hidden; position: fixed; z-index: 1000; padding: 8px; border: 1px solid #d9d9d9; border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.95); box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); color: #000;
-    font-family: system-ui; font-size: 14px; pointer-events: none;
-}
-.molstarview-symmetry-tooltip.visible { visibility: visible; }
-.molstarview-symmetry-tooltip table { border-spacing: 0; }
-.molstarview-symmetry-tooltip td { padding-top: 2px; padding-bottom: 2px; }
-.molstarview-symmetry-tooltip td.key { color: #808080; text-align: right; padding-right: 4px; }
-.molstarview-symmetry-tooltip td.value { text-align: left; }
-.molstarview-symmetry-tooltip .katex { font-size: 1em; }
