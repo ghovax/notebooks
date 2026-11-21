@@ -480,7 +480,7 @@ body.quarto-dark :is(img.tab-icon, img.job-icon) { filter: brightness(1.35) satu
    cells or plot area: a table its columns' own width, centred under its centred caption, and a chart or a viewer at
    most --figure-width, centred. A table wider than the column still scrolls in its own block; a scan matrix keeps its
    left alignment. */
-:root { --figure-width: 44rem; --viewer-width: 58rem; }
+:root { --figure-width: 52rem; --viewer-width: 58rem; }
 main table.table:not(.scan-matrix, .scan-matrix table) { width: auto; margin-inline: auto; }
 figcaption.quarto-float-tbl { text-align: center; }
 /* A molecular viewer is given more room than a chart: its scene, controls and 2D drawing share the view. */

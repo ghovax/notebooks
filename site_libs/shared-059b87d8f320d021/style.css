@@ -1,8 +1,11 @@
 
 /* Math axis labels may extend beyond Vega's native text bounds after zooming. */
 .cell-output.cell-output-display:has(.vega-embed) { overflow: visible; }
-/* A chart's redraw lays out only the chart, not the rest of the page. */
-.vega-embed { contain: layout style; }
+/* A chart's redraw lays out only the chart, not the rest of the page. A chart is as wide as its column: vega-embed's
+   own inline block would shrink to the chart drawn, so a container-wide chart could never narrow. A chart of fixed
+   width, such as a faceted one, is centred in it. */
+.vega-embed { contain: layout style; display: flex; justify-content: center; width: 100%; }
+.vega-embed > .chart-wrapper.fit-x { flex: 1 1 auto; min-width: 0; }
 .vega-embed .role-axis-title > text { visibility: hidden; }
 .vega-embed .katex, #vg-tooltip-element .katex { font-size: 1em; }
 #vg-tooltip-element, #vg-tooltip-element td, #vg-tooltip-element th { font-size: 14px; font-family: system-ui; }
