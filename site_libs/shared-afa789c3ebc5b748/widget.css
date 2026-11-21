@@ -1,0 +1,229 @@
+.molstar-notebook-viewer {position:relative;width:100%;}
+/* Until the first frame is drawn the plugin shows only its matte background; the viewer stays transparent,
+   showing the page behind it, and appears whole once mount() marks it ready. */
+.molstar-notebook-viewer:not([data-ready="1"]) {opacity:0;}
+.molstar-notebook-viewer .msp-plugin .msp-layout-standard {border:0;}
+
+/* Keep the native selection row above trajectory/animation controls and their popovers. */
+.molstar-notebook-viewer .msp-plugin :has(> .msp-viewport-top-left-controls) {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: start;
+}
+.molstar-notebook-viewer .msp-plugin .msp-selection-viewport-controls {
+    grid-row: 1;
+    position: relative;
+    width: 430px;
+    max-width: 100%;
+    margin: 10px 52px 0 10px;
+}
+.molstar-notebook-viewer .msp-plugin .msp-viewport-top-left-controls {
+    grid-row: 2;
+    position: relative;
+    left: auto;
+    top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 6px 10px;
+    margin: 8px 52px 0 10px;
+}
+.molstar-notebook-viewer .msp-plugin .msp-viewport-top-left-controls > * {
+    float: none;
+    margin-right: 0;
+}
+
+/* KaTeX phantoms (such as mhchem's subscript placeholder) are transparent text; keep the label
+   outline from stroking them into visible glyphs. */
+.molstar-notebook-viewer [style*="color:transparent"] {-webkit-text-stroke: 0 !important;}
+/* Colour scale of a coloured isosurface, in the style of Molstar's own viewport controls. */
+/* Molstar backs its right-hand buttons with a half-transparent layer, which lets the scene show through them; here
+   they are as opaque as the top-left controls. */
+.molstar-notebook-viewer .msp-viewport-controls .msp-semi-transparent-background {opacity:1 !important; background:#f3f2ee !important;}
+.molstarview-legends {display:flex; justify-content:center; gap:12px; margin-top:6px;}
+.molstarview-legend {pointer-events:none;
+  padding:6px 10px; background:rgba(243,242,238,0.92); color:#332b1f; font:12px/1.3 "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
+  text-align:center;}
+.molstarview-legend-title {margin-bottom:4px; font-weight:bold;}
+/* The title bold as the drawing's scale and the charts' titles are; its math keeps KaTeX's own weight. */
+.molstarview-legend-title .katex {font-weight:normal;}
+/* The legend lets the pointer through to the scene, except over the info button of its title. */
+.molstarview-legend .quantity-info-icon {pointer-events:auto;}
+/* The bar keeps its length however long the title, as the drawing's Altair-like scale does, and its values sit under
+   its ends. */
+.molstarview-legend-bar {width:180px; height:10px;}
+.molstarview-legend-ticks {width:180px; display:flex; justify-content:space-between; margin-top:3px; font-variant-numeric:tabular-nums;}
+/* The snapshot dropdown in Molstar's control colours, replacing its native selector so titles can hold math. Its
+   rules carry the viewer's class, so they outrank Molstar's own button rules, and its arrow is a laid-out element, so
+   the title can never run under it. */
+.molstar-notebook-viewer .msp-state-snapshot-viewport-controls select {display:none !important;}
+/* The play buttons come first and the dropdown after them, so a title of a different width never moves the buttons
+   while snapshots are switched. The dropdowns join the buttons and one another into a single control, divided by
+   thin rules, and wrap onto the next row as whole dropdowns. */
+.molstar-notebook-viewer .msp-state-snapshot-viewport-controls {display:flex !important; flex-wrap:wrap; align-items:flex-start; row-gap:6px;}
+.molstar-notebook-viewer .msp-state-snapshot-viewport-controls > * {order:0;}
+.molstar-notebook-viewer .molstarview-menu {position:relative; display:inline-block; flex:none; order:3 !important;
+  margin-left:0;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-button {display:inline-flex; align-items:center; gap:0.35em;
+  height:32px; width:auto !important; max-width:none !important; padding:0 10px !important; overflow:visible !important;
+  white-space:nowrap; text-align:left !important; justify-content:flex-start;
+  background:#f3f2ee; color:#332b1f;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-title {flex:none;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-arrow {flex:none; width:0; height:0; margin-left:0.6em;
+  border:4px solid transparent; border-top-color:currentColor; transform:translateY(2px);}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-count {flex:none; font-variant-numeric:tabular-nums;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-label {flex:none; opacity:0.7;}
+/* A thin rule before each dropdown, drawn inside it so it takes no room. */
+.molstar-notebook-viewer .molstarview-menu > .molstarview-menu-button {box-shadow:inset 1px 0 0 rgba(51,43,31,0.14);}
+/* A dropdown or typed choice that wraps to open a row has nothing before it to divide from (installRowRules). */
+.molstar-notebook-viewer .molstarview-row-start > .molstarview-menu-button,
+.molstar-notebook-viewer .molstarview-menu-input.molstarview-row-start {box-shadow:none;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-list {position:absolute; top:100%; left:0; z-index:20;
+  min-width:100%; max-height:320px; overflow-y:auto; background:#f3f2ee; box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+/* Items are rows of Molstar's own control height. */
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-item {display:block; width:100% !important;
+  height:32px !important; line-height:32px !important; padding:0 10px !important; overflow:visible !important;
+  text-align:left !important; white-space:nowrap; background:transparent; color:#332b1f;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-item:hover {background:#e2ded3;}
+/* The option a dropdown shows now: bold on a background a shade darker than the hover's, so it stands out in the open
+   list and stays apart from the option under the pointer. */
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-current {font-weight:bold; background:#d3cdbd;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-current:hover {background:#cbc4b2;}
+/* A typed choice: its label and Molstar's own text field in the dropdowns' height, colours and dividing rule. */
+.molstar-notebook-viewer .molstarview-menu-input {display:inline-flex; align-items:center; gap:0.35em; height:32px;
+  padding:0 10px; box-sizing:border-box; background:#f3f2ee; color:#332b1f; box-shadow:inset 1px 0 0 rgba(51,43,31,0.14);}
+.molstar-notebook-viewer .molstarview-menu-input .msp-form-control {width:auto; height:24px; padding:0 6px;
+  font-variant-numeric:tabular-nums; text-align:right;}
+.molstar-notebook-viewer .molstarview-menu .molstarview-menu-item[hidden] {display:none !important;}
+/* The field display group's level label holds a unit; the slider's track takes Molstar's accent colour, whose
+   own rule is an unresolved Sass tint and draws nothing. */
+.molstar-notebook-viewer .molstarview-field-group .msp-slider-base-track {background-color:#9c835f;}
+
+/* Center every trajectory control and icon in Molstar's 32-pixel toolbar row. Molstar's default icon
+   margin shifts its SVGs upward, while an inline menu can otherwise align on a text baseline. */
+.molstar-notebook-viewer .msp-traj-controls .molstar-frame-controls > .msp-btn-icon,
+.molstar-notebook-viewer .msp-traj-controls > .msp-btn-icon {display:inline-flex !important; align-items:center; justify-content:center;}
+.molstar-notebook-viewer .msp-traj-controls .msp-material-icon {display:inline-flex; align-items:center; justify-content:center; line-height:1;}
+.molstar-notebook-viewer .msp-traj-controls .msp-material-icon svg {margin-bottom:0;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-frame-label {line-height:32px;}
+/* Named frame landmarks use the snapshot menu's compact, content-sized control. */
+.molstar-notebook-viewer .molstar-frame-choices {display:inline-flex; align-items:center; height:32px; margin-left:6px;}
+.molstar-notebook-viewer .molstar-frame-choices .molstarview-menu-button {padding:0 8px !important;}
+.molstar-notebook-viewer .molstar-frame-choice-icon {display:inline-flex; flex:none; width:16px; height:16px;}
+.molstar-notebook-viewer .molstar-frame-choice-icon svg {width:100%; height:100%; fill:currentColor;}
+.molstar-notebook-viewer .molstar-frame-choices[hidden],
+.molstar-notebook-viewer .molstar-frame-choices .molstarview-menu-item[hidden] {display:none !important;}
+
+/* Frames: playback options | step and play | slider and where it is | named frames. The group's controls and Molstar's step
+   buttons share one row, ordered here: loop mode, speed | first, previous, play, next | slider, frame label | frame
+   landmarks. Starts: previous, play through, next | one dropdown per choice. Their icons differ: single chevrons and a
+   play triangle for frames, double chevrons and a playlist for starts. Each group wraps onto a new row as a whole.
+   Rules between clusters are drawn inside the control that follows them, and every icon button has one fixed size, so
+   neither a rule nor hovering moves anything. */
+.molstar-notebook-viewer .msp-traj-controls .molstar-frame-controls {display:contents !important;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-mode-button {order:1;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-speed-menu {order:2 !important; display:flex; align-items:center; height:32px;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-speed-menu > .molstarview-menu-button {box-shadow:none;}
+.molstar-notebook-viewer .msp-traj-controls > [title="First Model"], .molstar-notebook-viewer .msp-traj-controls > [title="First Frame"] {order:3; box-shadow:inset 1px 0 0 rgba(51,43,31,0.14);}
+.molstar-notebook-viewer .msp-traj-controls > [title="Previous Model"], .molstar-notebook-viewer .msp-traj-controls > [title="Previous Frame"] {order:4;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-play-button {order:5;}
+.molstar-notebook-viewer .msp-traj-controls > [title="Next Model"], .molstar-notebook-viewer .msp-traj-controls > [title="Next Frame"] {order:6;}
+.molstar-notebook-viewer .msp-traj-controls .msp-slider {order:7; margin:0; box-shadow:inset 1px 0 0 rgba(51,43,31,0.14);}
+/* The handle, 18 px wide with a 2 px ring in the bar's colour, centres on the 4 px rail and on its ends, so insets of half
+   its width plus 8 px keep it 8 px from the separator at the first frame and 8 px from the counter at the last. The
+   counter's words start at its left, so that gap does not vary with the frame shown. */
+.molstar-notebook-viewer .msp-traj-controls .msp-slider-base-handle {width:18px; height:18px; margin:-7px 0 0 -9px; border-width:2px;}
+.molstar-notebook-viewer .msp-traj-controls .msp-slider > div:first-child {left:17px !important; right:9px !important;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-frame-label {order:8; margin:0 !important; padding:0 12px 0 8px; justify-items:start;}
+.molstar-notebook-viewer .msp-traj-controls .molstar-frame-choices {order:9 !important; margin-left:0;}
+.molstar-notebook-viewer .msp-traj-controls > .msp-btn-icon, .molstar-notebook-viewer .msp-traj-controls .molstar-frame-controls > .msp-btn-icon,
+.molstar-notebook-viewer .msp-state-snapshot-viewport-controls > .msp-btn-icon {box-sizing:border-box; flex:none; width:32px; height:32px; margin:0; padding:0; border:0;}
+.molstar-notebook-viewer .msp-state-snapshot-viewport-controls > [title="Previous Start"] {order:0;}
+.molstar-notebook-viewer .msp-state-snapshot-viewport-controls > [title="Play Through Starts"] {order:1;}
+.molstar-notebook-viewer .msp-state-snapshot-viewport-controls > [title="Next Start"] {order:2;}
+/* What an icon control does, in Molstar's own hover box. Only its placement differs: fixed to the window, so it shifts
+   nothing, and as wide as its words, at least the native 100 px. */
+.molstar-notebook-viewer .molstar-control-label {position:fixed !important; z-index:100000; pointer-events:none;}
+.molstar-control-label[hidden] {display:none;}
+.molstar-notebook-viewer .molstar-control-label .msp-hover-box-body {position:static !important; visibility:visible !important; width:max-content !important; min-width:100px;}
+.molstar-notebook-viewer .molstar-control-label .msp-btn {padding:0 10px; color:#332b1f;}
+.molstar-notebook-viewer button:has(> .molstar-control-cover) {position:relative;}
+.molstar-notebook-viewer .molstar-control-cover::after {content:""; position:absolute; inset:0;}
+/* The control row's gap alone separates its groups; Molstar's own margin on the animation button would double it. */
+.molstar-notebook-viewer .msp-plugin .msp-viewport-top-left-controls > .msp-animation-viewport-controls {margin-right:0 !important;}
+/* A control that can never be used is not shown. The frame and snapshot buttons are disabled only for a moment while the
+   state updates, so hiding those would make the bar jump. */
+.molstar-notebook-viewer .msp-viewport-controls-buttons button:disabled {display:none;}
+.molstar-notebook-viewer .msp-viewport-controls-buttons > div:has(> button:disabled):not(:has(button:not(:disabled))) {display:none;}
+
+/* The 2D structure below a viewer, and the legend of its measurements. */
+.molstarview-depiction { display: flex; flex-direction: column; align-items: center; margin-top: 0.5rem; }
+.molstarview-depiction-picture { width: 100%; display: flex; justify-content: center; }
+
+/* The legend copies the pages' Altair legends (calcpages.notebook.display_chart with Vega's defaults): system-ui at
+   14px, a filled circle of area 100 px² per entry, 4px between symbol and label, 10px between entries and 2px between
+   rows, 18px below the drawing as Vega offsets a legend from its chart. */
+.molstarview-depiction-legend { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 10px; row-gap: 2px; margin-top: 18px; font-family: system-ui; font-size: 14px; line-height: 1; color: #000; }
+/* KaTeX enlarges its math by 1.21em; legend labels keep the 14px of Altair's, as its math header sets them. */
+.molstarview-depiction-legend .katex { font-size: 1em; }
+/* The 2D map's colour scale, as Vega-Lite draws a gradient legend at the bottom of the pages' Altair charts: bold title,
+   a bar 16 pixels high and as long as DEPICTION_SCALE in depiction.js sets it, its labels 4 pixels below it, in the
+   charts' system-ui at 14 pixels. */
+.molstarview-depiction-scale { display: flex; flex-direction: column; align-items: flex-start; margin-top: 18px; font-family: system-ui; font-size: 14px; line-height: 1.15; color: #000; }
+.molstarview-depiction-scale-title { font-weight: bold; margin-bottom: 5px; white-space: nowrap; }
+.molstarview-depiction-scale-title .katex { font-size: 1em; font-weight: normal; }
+.molstarview-depiction-scale-bar { height: 16px; }
+/* A tick under the bar at each contour level, in the contour lines' grey. */
+.molstarview-depiction-scale-ticks { position: relative; height: 4px; }
+.molstarview-depiction-scale-ticks > span { position: absolute; top: 0; width: 1px; height: 4px; margin-left: -0.5px; background: rgba(0, 0, 0, 0.45); }
+.molstarview-depiction-scale-labels { position: relative; height: 1.15em; margin-top: 1px; }
+.molstarview-depiction-scale-labels > span { position: absolute; top: 0; white-space: nowrap; }
+.molstarview-depiction-item { display: inline-flex; align-items: center; gap: 4px; }
+.molstarview-depiction-swatch { width: 11.28px; height: 11.28px; border-radius: 50%; display: inline-block; flex: none; }
+/* The drawing in the viewer's lower left corner, straight on the scene with no background, frame or shadow, as RDKit
+   draws it on a transparent canvas; the script scales it from its top left corner to fit. */
+.molstarview-depiction-inset { position: absolute; left: 10px; bottom: 10px; z-index: 5; padding: 6px; box-sizing: content-box;
+    background: transparent; }
+.molstarview-depiction-inset[hidden] { display: none; }
+.molstarview-depiction-inset .molstarview-depiction-picture { display: block; width: max-content; transform-origin: 0 0; }
+/* A similarity map: the field image and the structure drawn over it fill one box of the map's proportions. */
+/* The drawing, with a similarity map's field under it on a canvas placed from the script, reaching past the drawing
+   where the field does rather than being cut at its edge. */
+.molstarview-depiction-drawing { position: relative; display: inline-block; line-height: 0; max-width: min(100%, 640px); }
+.molstarview-depiction-drawing > svg { position: relative; display: block; max-width: 100%; height: auto; }
+.molstarview-depiction-field { position: absolute; pointer-events: none; }
+
+/* A dark page (mount.js sets data-scheme from it). The scene stays on its transparent canvas over the page, with every
+   Molstar surface behind it transparent too; the controls, menus and colour scales are a slate a step lighter than the
+   page, with near-white text. The 2D drawing stays transparent; depiction.js draws it in light lines on a dark page. */
+.molstar-notebook-viewer :is(.msp-plugin, .msp-layout-standard, .msp-layout-main, .msp-layout-static, .msp-viewport,
+    .msp-viewport-host3d, canvas) { background-color: transparent !important; background-image: none !important; }
+[data-scheme="dark"] .molstar-notebook-viewer :is(.msp-btn, .msp-form-control, .msp-control-row, .msp-control-group-wrapper,
+    .msp-viewport-controls-panel, .msp-hover-box-body, .msp-semi-transparent-background, .msp-traj-controls, .msp-slider,
+    .molstarview-menu-button, .molstarview-menu-list, .molstarview-menu-item, .msp-state-snapshot-viewport-controls,
+    .msp-state-snapshot-viewport-controls [disabled], .msp-highlight-info, .msp-highlight-info-additional) {
+    background-color: #3d4349 !important; color: #f1f3f5 !important; border-color: #565e66 !important; }
+[data-scheme="dark"] .molstar-notebook-viewer :is(.msp-btn, .molstarview-menu-item):hover { background-color: #4b525a !important; }
+[data-scheme="dark"] .molstarview-legend { background: rgba(61, 67, 73, 0.94); color: #f1f3f5; }
+[data-scheme="dark"] :is(.molstarview-depiction-legend, .molstarview-depiction-scale) { color: #f1f3f5; }
+
+/* Math in the viewers, their labels, legends and tooltips, in sans-serif, as the figures set it in Computer Modern
+   Sans: KaTeX's sans-serif face for Latin letters, digits and capital Greek, italic for variables and bold for bold
+   symbols. Upright symbols that face lacks, such as the degree's \circ, come from KaTeX's main font, whose measures
+   KaTeX places them by, as do accents such as the ring of Å; lower-case Greek takes the sans-serif italic. Large
+   operators and delimiters keep KaTeX's size fonts. */
+:is(.molstar-notebook-viewer, [class^="molstarview-"], [class*=" molstarview-"]) :is(.katex, .katex :is(.mathrm, .textrm, .mainrm, .mathsf, .textsf, .amsrm)) {
+  font-family: KaTeX_SansSerif, KaTeX_Main, sans-serif;
+}
+:is(.molstar-notebook-viewer, [class^="molstarview-"], [class*=" molstarview-"]) .katex .accent .accent-body {
+  font-family: KaTeX_Main; font-style: normal; font-weight: normal;
+}
+:is(.molstar-notebook-viewer, [class^="molstarview-"], [class*=" molstarview-"]) .katex :is(.mathnormal, .mathit, .textit) {
+  font-family: KaTeX_SansSerif, sans-serif; font-style: italic;
+}
+:is(.molstar-notebook-viewer, [class^="molstarview-"], [class*=" molstarview-"]) .katex :is(.mathbf, .textbf) {
+  font-family: KaTeX_SansSerif, sans-serif; font-weight: bold;
+}
+:is(.molstar-notebook-viewer, [class^="molstarview-"], [class*=" molstarview-"]) .katex :is(.boldsymbol, .mathboldsf) {
+  font-family: KaTeX_SansSerif, sans-serif; font-weight: bold; font-style: italic;
+}
