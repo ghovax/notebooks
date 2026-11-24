@@ -35,10 +35,13 @@
         return '<table class="table table-sm">' + (head.length ? '<thead>' + head.map(cells => row(cells, 'th')).join('') + '</thead>' : '')
             + '<tbody>' + body.map(cells => row(cells, 'td')).join('') + '</tbody></table>';
     }
+    function citationEntry(key) {
+        return document.querySelector(`[data-bib-key="${CSS.escape(key)}"]`) || document.getElementById(`ref-${key}`);
+    }
     function citationNumber(key) {
         const link = document.querySelector(`a[role="doc-biblioref"][href="#ref-${CSS.escape(key)}"]`);
         if (link) return link.textContent.trim();
-        const entry = document.getElementById(`ref-${key}`);
+        const entry = citationEntry(key);
         if (!entry || !entry.parentElement) return null;
         const entries = [...entry.parentElement.children].filter(el => el.classList.contains('csl-entry'));
         const index = entries.indexOf(entry);
@@ -47,10 +50,12 @@
     function inlineMarkdown(text) {
         const escape = part => part.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const cite = (_, group) => {
-            const items = group.split(';').map(item => {
+            const items = group.split(/[;,]/).map(item => {
                 const key = item.trim().replace(/^@/, '');
+                const entry = citationEntry(key);
                 const num = citationNumber(key);
-                return num ? `<a href="#ref-${key}">${num}</a>` : `@${key}`;
+                const href = entry && entry.id ? `#${entry.id}` : `#ref-${key}`;
+                return num ? `<a href="${href}" role="doc-biblioref">${num}</a>` : `@${key}`;
             });
             return `[${items.join(', ')}]`;
         };
